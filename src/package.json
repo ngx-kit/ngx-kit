@@ -1,0 +1,16 @@
+{
+  "name": "@ngx-kit/core",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "main": "bundle/ngx-kit-core.umd.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "author": "Sasha Novik",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/ngx-kit/core.git",
+    "type": "git"
+  },
+  "dependencies": {
+  }
+}
