@@ -6,7 +6,7 @@
   },
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
@@ -14,11 +14,17 @@
     "experimentalDecorators": true,
     "outDir": "dist",
     "removeComments": false,
-    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "lib": ["dom", "es2015", "es2016"]
-  },
-  "files": [
-    "./src/index.ts"
-  ]
+    "lib": ["dom", "es2015", "es2016"],
+    "baseUrl": ".",
+    "paths": {
+      "@ngx-kit/*": ["./packages/*"]
+    },
+    "rootDir": ".",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true
+  }
 }
