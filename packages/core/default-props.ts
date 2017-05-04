@@ -21,10 +21,13 @@ export const kitDefaultProps: KitThemeProps = {
     bgInverse: '',
     link: '#0084ff',
     primary: '#0084ff',
+    important: '#ff5500',
     info: '#aaaaaa',
     success: '#2dc100',
     warning: '#ffb62f',
     error: '#ff5500',
     disabled: '#bbbbbb',
+    added: '#2dc100',
+    removed: '#ff5500',
   }
 };

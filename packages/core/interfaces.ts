@@ -5,11 +5,14 @@ export type KitMainColor =
     | 'bgInverse'
     | 'link'
     | 'primary'
+    | 'important'
     | 'info'
     | 'success'
     | 'warning'
     | 'error'
-    | 'disabled';
+    | 'disabled'
+    | 'added'
+    | 'removed';
 
 export type KitTypoHeaders = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

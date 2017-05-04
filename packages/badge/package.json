@@ -1,8 +1,8 @@
 {
-  "name": "@ngx-kit/core",
+  "name": "@ngx-kit/badge",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - core",
-  "main": "bundle/ngx-kit-core.umd.js",
+  "description": "ngx-kit - badge component",
+  "main": "bundle/ngx-kit-badge.umd.js",
   "module": "index.js",
   "types": "index.d.ts",
   "author": "Sasha Novik",
@@ -12,9 +12,8 @@
     "type": "git"
   },
   "peerDependencies": {
-    "@angular/compiler": "^4.0.3",
-    "@angular/compiler-cli": "^4.0.3",
-    "@angular/core": "^4.0.3",
-    "typestyle": "^1.3.2"
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
+  },
+  "dependencies": {
   }
 }
