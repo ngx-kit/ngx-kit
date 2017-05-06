@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KitComponentService, KitCoreService, KitThemeProps } from '@ngx-kit/core';
+import { KitComponentService, KitCoreService, KitSwatch, KitThemeProps } from '@ngx-kit/core';
 
 import { KitBadgeTheme } from './interfaces';
 
@@ -40,27 +40,9 @@ export class KitBadgeService extends KitComponentService<KitBadgeTheme> {
             fontSize: '1.1rem',
           },
         },
-        type: {
-          default: {
-            background: this.themeProps.colors.primary,
-            color: '#ffffff',
-          },
-          primary: {
-            background: this.themeProps.colors.primary,
-            color: '#ffffff',
-          },
-          important: {
-            background: this.themeProps.colors.important,
-            color: '#ffffff',
-          },
-          added: {
-            background: this.themeProps.colors.added,
-            color: '#ffffff',
-          },
-          removed: {
-            background: this.themeProps.colors.removed,
-            color: '#ffffff',
-          },
+        swatchMap: {
+          background: 'color',
+          color: 'text',
         },
       }
     };

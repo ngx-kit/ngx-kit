@@ -1,21 +1,13 @@
-export type KitBadgeSize = 's' | 'm' | 'l';
+import { KitStyle, KitStylesMap, KitSwatch } from '@ngx-kit/core';
 
-export type KitBadgeType = 'default' | 'primary' | 'important' | 'added' | 'removed';
+export type KitBadgeSize = 's' | 'm' | 'l';
 
 export interface KitBadgeTheme {
   host: {
-    base: {
-      [index: string]: string | number | null;
-    };
+    base: KitStyle;
     size: {
-      [P in KitBadgeSize]: {
-        [index: string]: string | number | null;
-      };
+      [P in KitBadgeSize]: KitStyle;
     };
-    type: {
-      [P in KitBadgeType]: {
-        [index: string]: string | number | null;
-      };
-    };
+    swatchMap: KitStylesMap;
   };
 }

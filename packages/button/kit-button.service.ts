@@ -58,36 +58,21 @@ export class KitButtonService extends KitComponentService<KitButtonTheme> {
             fontSize: '1.6rem',
           },
         },
+        swatchMap: {
+          background: 'color',
+          color: 'text',
+        },
         type: {
-          default: {
-            background: this.themeProps.colors.primary,
-            color: '#ffffff',
-          },
-          success: {
-            background: this.themeProps.colors.success,
-            color: '#ffffff',
-          },
-          info: {
-            background: this.themeProps.colors.info,
-            color: '#ffffff',
-          },
-          warning: {
-            background: this.themeProps.colors.warning,
-            color: '#ffffff',
-          },
-          error: {
-            background: this.themeProps.colors.error,
-            color: '#ffffff',
-          },
+          primary: {},
+          success: {},
+          info: {},
+          warning: {},
+          error: {},
           link: {
-            background: 'transparent',
-            color: this.themeProps.colors.link,
             boxShadow: 'none'
           }
         },
         disabled: {
-          color: '#666666',
-          background: this.themeProps.colors.disabled,
           cursor: 'default',
         },
       }

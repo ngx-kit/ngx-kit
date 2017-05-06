@@ -1,7 +1,9 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { style } from 'typestyle';
 
-import { KitBadgeSize, KitBadgeType } from '../interfaces';
+import { KitCoreService } from '@ngx-kit/core';
+
+import { KitBadgeSize } from '../interfaces';
 import { KitBadgeService } from '../kit-badge.service';
 
 @Component({
@@ -12,13 +14,14 @@ import { KitBadgeService } from '../kit-badge.service';
 })
 export class KitBadgeComponent implements OnInit {
 
+  @Input() color: string = 'primary';
   @Input() size: KitBadgeSize = 'm';
-  @Input() type: KitBadgeType = 'default';
   @Input() value: number;
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private service: KitBadgeService) {
+  constructor(private core: KitCoreService,
+              private service: KitBadgeService) {
   }
 
   ngOnInit() {
@@ -34,7 +37,8 @@ export class KitBadgeComponent implements OnInit {
     this.hostClass = style(
         theme.host.base,
         theme.host.size[this.size],
-        theme.host.type[this.type]);
+        this.core.mapColor(this.color, theme.host.swatchMap),
+    );
   }
 
 }

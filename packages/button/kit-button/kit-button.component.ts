@@ -1,6 +1,8 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { style } from 'typestyle';
 
+import { KitCoreService } from '@ngx-kit/core';
+
 import { KitButtonService } from '../kit-button.service';
 import { KitButtonSize, KitButtonType } from '../interfaces';
 
@@ -13,12 +15,13 @@ import { KitButtonSize, KitButtonType } from '../interfaces';
 export class KitButtonComponent implements OnInit {
 
   @Input() size: KitButtonSize = 'm';
-  @Input() type: KitButtonType = 'default';
+  @Input() type: KitButtonType = 'primary';
   @Input() disabled = false;
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private service: KitButtonService) {
+  constructor(private core: KitCoreService,
+              private service: KitButtonService) {
   }
 
   ngOnInit() {
@@ -34,7 +37,9 @@ export class KitButtonComponent implements OnInit {
     this.hostClass = style(
         theme.host.base,
         theme.host.size[this.size],
+        this.core.mapColor(this.type, theme.host.swatchMap),
         theme.host.type[this.type],
+        this.disabled ? this.core.mapColor('disabled', theme.host.swatchMap) : null,
         this.disabled ? theme.host.disabled : null);
   }
 

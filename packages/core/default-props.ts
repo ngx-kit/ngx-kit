@@ -15,19 +15,57 @@ export const kitDefaultProps: KitThemeProps = {
     }
   },
   colors: {
-    brand: '',
-    brandInverse: '',
-    bg: '',
-    bgInverse: '',
-    link: '#0084ff',
-    primary: '#0084ff',
-    important: '#ff5500',
-    info: '#aaaaaa',
-    success: '#2dc100',
-    warning: '#ffb62f',
-    error: '#ff5500',
-    disabled: '#bbbbbb',
-    added: '#2dc100',
-    removed: '#ff5500',
-  }
+    swatches: [
+      {
+        name: 'white',
+        color: '#ffffff',
+        text: '#333333',
+      },
+      {
+        name: 'blue',
+        color: '#0084ff',
+        text: '#ffffff',
+      },
+      {
+        name: 'green',
+        color: '#2dc100',
+        text: '#ffffff',
+      },
+      {
+        name: 'red',
+        color: '#ff5500',
+        text: '#ffffff',
+      },
+      {
+        name: 'orange',
+        color: '#ffb62f',
+        text: '#ffffff',
+      },
+      {
+        name: 'grey',
+        color: '#cccccc',
+        text: '#444444',
+      },
+      {
+        name: 'dark-grey',
+        color: '#aaaaaa',
+        text: '#333333',
+      },
+    ],
+    types: {
+      brand: 'blue',
+      page: 'white',
+      border: 'grey',
+      link: 'blue',
+      primary: 'blue',
+      important: 'red',
+      info: 'grey',
+      success: 'green',
+      warning: 'orange',
+      error: 'red',
+      disabled: 'dark-grey',
+      added: 'green',
+      removed: 'red',
+    }
+  },
 };
