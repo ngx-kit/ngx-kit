@@ -1,0 +1,19 @@
+{
+  "name": "@ngx-kit/modal",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "ngx-kit - modal component",
+  "main": "bundle/ngx-kit-modal.umd.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "author": "Sasha Novik",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/ngx-kit/ngx-kit.git",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
+  },
+  "dependencies": {
+  }
+}
