@@ -20,7 +20,33 @@ export class KitTabsService extends KitComponentService<KitTabsTheme> {
       host: {
         base: {
         },
-      }
+      },
+      nav: {
+        base: {
+          display: 'flex',
+          flexDirection: 'row',
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        },
+      },
+      navTab: {
+        base: {
+          cursor: 'pointer',
+          padding: '8px',
+        },
+        baseSwatchMap: {
+          color: 'text',
+          background: 'color',
+        },
+        active: {
+          fontWeight: 600,
+        },
+        activeSwatchMap: {
+          color: 'text',
+          background: 'darken',
+        }
+      },
     };
   }
 

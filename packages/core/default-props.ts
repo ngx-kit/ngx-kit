@@ -20,6 +20,7 @@ export const kitDefaultProps: KitThemeProps = {
         name: 'white',
         color: '#ffffff',
         text: '#333333',
+        darken: '#eeeeee',
       },
       {
         name: 'blue',
