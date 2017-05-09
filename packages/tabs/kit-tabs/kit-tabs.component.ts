@@ -4,7 +4,7 @@ import { style } from 'typestyle';
 import { KitCoreService } from '@ngx-kit/core';
 
 import { KitTabsService } from '../kit-tabs.service';
-import { KitTabComponent } from '../kit-tab/kit-tab.component';
+import { KitTabsPanelComponent } from '../kit-tabs-panel/kit-tabs-panel.component';
 
 @Component({
   selector: 'kit-tabs',
@@ -25,7 +25,7 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
 
   @HostBinding('class') hostClass: string;
 
-  @ContentChildren(KitTabComponent) tabs: QueryList<KitTabComponent>;
+  @ContentChildren(KitTabsPanelComponent) tabs: QueryList<KitTabsPanelComponent>;
 
   navClass: string;
 
@@ -42,14 +42,14 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
     this.activateFirst();
   }
 
-  setActive(tab: KitTabComponent) {
+  setActive(tab: KitTabsPanelComponent) {
     console.log('sA', tab);
     this.tabs.forEach(t => {
       t.active = t === tab;
     });
   }
 
-  getTabClass(tab: KitTabComponent): string {
+  getTabClass(tab: KitTabsPanelComponent): string {
     const theme = this.service.getTheme();
     return style(
         theme.navTab.base,

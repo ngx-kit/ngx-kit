@@ -6,14 +6,14 @@ import { KitCoreService } from '@ngx-kit/core';
 import { KitTabsService } from '../kit-tabs.service';
 
 @Component({
-  selector: 'kit-tab',
+  selector: 'kit-tabs-panel',
   template: `
     <div *ngIf="active">
       <ng-content></ng-content>
     </div>
   `,
 })
-export class KitTabComponent implements OnInit {
+export class KitTabsPanelComponent implements OnInit {
 
   @Input() active: boolean;
   @Input() title: string;

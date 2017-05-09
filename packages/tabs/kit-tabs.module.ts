@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
-import { KitTabComponent } from './kit-tab/kit-tab.component';
+import { KitTabsPanelComponent } from './kit-tabs-panel/kit-tabs-panel.component';
 import { KitTabsService } from './kit-tabs.service';
 
 const external = [
   KitTabsComponent,
-  KitTabComponent,
+  KitTabsPanelComponent,
 ];
 
 @NgModule({
