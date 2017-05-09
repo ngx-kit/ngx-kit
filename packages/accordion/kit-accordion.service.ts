@@ -20,6 +20,22 @@ export class KitAccordionService extends KitComponentService<KitAccordionTheme> 
       host: {
         base: {
         },
+      },
+      panelTitle: {
+        base: {
+          padding: '8px',
+          borderBottom: '1px solid transparent',
+        },
+        swatchMap: {
+          color: 'text',
+          background: 'color',
+          borderBottomColor: 'darken',
+        },
+      },
+      panel: {
+        base: {
+          padding: '8px',
+        }
       }
     };
   }
