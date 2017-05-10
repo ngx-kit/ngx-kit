@@ -1,8 +1,8 @@
 {
-  "name": "@ngx-kit/modal",
+  "name": "@ngx-kit/dialog",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - modal component",
-  "main": "bundle/ngx-kit-modal.umd.js",
+  "description": "ngx-kit - dialog component",
+  "main": "bundle/ngx-kit-dialog.umd.js",
   "module": "index.js",
   "types": "index.d.ts",
   "author": "Sasha Novik",
@@ -15,5 +15,6 @@
     "@ngx-kit/core": "0.0.0-PLACEHOLDER"
   },
   "dependencies": {
+    "@angular/animations": "^4.1.1"
   }
 }

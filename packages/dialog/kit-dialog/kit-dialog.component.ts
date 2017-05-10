@@ -3,20 +3,20 @@ import { style } from 'typestyle';
 
 import { KitCoreService } from '@ngx-kit/core';
 
-import { KitModalService } from '../kit-modal.service';
+import { KitDialogService } from '../kit-dialog.service';
 
 @Component({
-  selector: 'kit-modal',
+  selector: 'kit-dialog',
   template: `
     modal
   `,
 })
-export class KitModalComponent implements OnInit {
+export class KitDialogComponent implements OnInit {
 
   @HostBinding('class') hostClass: string;
 
   constructor(private core: KitCoreService,
-              private service: KitModalService) {
+              private service: KitDialogService) {
   }
 
   ngOnInit() {
