@@ -1,3 +1,5 @@
+import { types } from 'typestyle';
+
 export type KitTypoHeaders = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type KitThemeComponents = {componentId: string, modifiers: any}[];
@@ -46,6 +48,4 @@ export type KitStylesMap = {
   [index: string]: string;
 }
 
-export type KitStyle = {
-  [index: string]: string | number | null;
-};
+export type KitStyle = types.NestedCSSProperties;

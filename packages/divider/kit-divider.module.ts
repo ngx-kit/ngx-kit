@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 
-import { KitNameComponent } from './kit-divider/kit-divider.component';
-import { KitNameService } from './kit-divider.service';
+import { KitDividerComponent } from './kit-divider/kit-divider.component';
+import { KitDividerService } from './kit-divider.service';
 
 @NgModule({
   imports: [],
   exports: [
-    KitNameComponent,
+    KitDividerComponent,
   ],
   declarations: [
-    KitNameComponent,
+    KitDividerComponent,
   ],
   providers: [
-    KitNameService,
+    KitDividerService,
   ]
 })
-export class KitNameModule {
+export class KitDividerModule {
 }

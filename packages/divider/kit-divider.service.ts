@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { KitComponentService, KitCoreService, KitThemeProps } from '@ngx-kit/core';
 
-import { KitNameTheme } from './interfaces';
+import { KitDividerTheme } from './interfaces';
 
 @Injectable()
-export class KitNameService extends KitComponentService<KitNameTheme> {
+export class KitDividerService extends KitComponentService<KitDividerTheme> {
 
   private themeProps: KitThemeProps;
 
@@ -12,15 +12,35 @@ export class KitNameService extends KitComponentService<KitNameTheme> {
     super();
     this.themeProps = this.kitCore.getThemeProps();
     this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitNameTheme>('divider'));
+    this.modify(this.kitCore.getComponentModifiers<KitDividerTheme>('divider'));
   }
 
   private compileTheme() {
     this.theme = {
       host: {
         base: {
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: '16px 0',
         },
-      }
+      },
+      line: {
+        base: {
+          flexGrow: 1,
+          borderTop: '1px solid rgba(34,36,38,.15)',
+          borderBottom: '1px solid rgba(255,255,255,.1)',
+        }
+      },
+      text: {
+        base: {
+          $nest: {
+            '&:not(:empty)': {
+              padding: '0 16px',
+            },
+          },
+        },
+      },
     };
   }
 
