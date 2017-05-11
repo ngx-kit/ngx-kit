@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 
-import { KitTooltipComponent } from './kit-tooltip/kit-tooltip.component';
+import { KitTooltipDirective } from './kit-tooltip/kit-tooltip.directive';
+import { KitTooltipViewComponent } from './kit-tooltip-view/kit-tooltip-view.component';
 import { KitTooltipService } from './kit-tooltip.service';
+
+const external = [
+  KitTooltipDirective,
+];
+
+const entry = [
+  KitTooltipViewComponent,
+];
 
 @NgModule({
   imports: [],
-  exports: [
-    KitTooltipComponent,
-  ],
+  exports: external,
   declarations: [
-    KitTooltipComponent,
+    ...external,
+    ...entry,
   ],
+  entryComponents: entry,
   providers: [
     KitTooltipService,
   ]
