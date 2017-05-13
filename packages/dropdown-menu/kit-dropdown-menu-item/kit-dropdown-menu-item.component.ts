@@ -3,20 +3,20 @@ import { style } from 'typestyle';
 
 import { KitCoreService } from '@ngx-kit/core';
 
-import { KitDropdownService } from '../kit-dropdown.service';
+import { KitDropdownMenuService } from '../kit-dropdown-menu.service';
 
 @Component({
-  selector: 'kit-dropdown',
+  selector: 'kit-dropdown-menu-item',
   template: `
-    dropdown
+    <ng-content></ng-content>
   `,
 })
-export class KitDropdownComponent implements OnInit {
+export class KitDropdownMenuItemComponent implements OnInit {
 
   @HostBinding('class') hostClass: string;
 
   constructor(private core: KitCoreService,
-              private service: KitDropdownService) {
+              private service: KitDropdownMenuService) {
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class KitDropdownComponent implements OnInit {
   calcStyles() {
     const theme = this.service.getTheme();
     this.hostClass = style(
-        theme.host.base,
+        theme.item.base,
     );
   }
 

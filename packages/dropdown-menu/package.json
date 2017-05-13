@@ -1,8 +1,8 @@
 {
-  "name": "@ngx-kit/dropdown",
+  "name": "@ngx-kit/dropdown-menu",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - dropdown component",
-  "main": "bundle/ngx-kit-dropdown.umd.js",
+  "description": "ngx-kit - dropdown-menu component",
+  "main": "bundle/ngx-kit-dropdown-menu.umd.js",
   "module": "index.js",
   "types": "index.d.ts",
   "author": "Sasha Novik",
@@ -12,7 +12,8 @@
     "type": "git"
   },
   "peerDependencies": {
-    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER",
+    "@ngx-kit/popover": "0.0.0-PLACEHOLDER"
   },
   "dependencies": {
   }
