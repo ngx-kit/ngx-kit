@@ -7,6 +7,7 @@ import { KitPopoverService } from '../kit-popover.service';
 
 /**
  * @todo add and implement position param
+ * @todo handle window edges
  * @todo handle outside click closing
  * @todo handle popup click closing
  */
@@ -14,7 +15,7 @@ import { KitPopoverService } from '../kit-popover.service';
 @Component({
   selector: 'kit-popover',
   template: `
-    popover
+    <ng-content></ng-content>
   `,
 })
 export class KitPopoverComponent implements OnInit {
