@@ -21,7 +21,7 @@ import { KitTooltipService } from '../kit-tooltip.service';
 })
 export class KitTooltipViewComponent implements OnInit {
 
-  hostRect: {top: number, right: number, bottom: number, left: number, width: number};
+  hostRect: ClientRect;
   text: string;
   top: number;
   left: number;

@@ -68,7 +68,6 @@ export class KitTooltipDirective implements OnInit {
 
   private show() {
     this.viewRef = this.host.host<KitTooltipViewComponent>(KitTooltipViewComponent);
-    console.log('el', this.el.nativeElement.getBoundingClientRect());
     this.viewRef.instance.hostRect = this.el.nativeElement.getBoundingClientRect();
     this.viewRef.instance.text = this._text;
   }
