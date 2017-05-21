@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0-alpha.1",
+  "packages": [
+    "core",
+    "button",
+    "icon"
+  ]
+}

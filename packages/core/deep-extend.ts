@@ -27,14 +27,14 @@
 
 'use strict';
 
-function isSpecificValue(val) {
+function isSpecificValue(val: any) {
   return (
       val instanceof Date
       || val instanceof RegExp
   ) ? true : false;
 }
 
-function cloneSpecificValue(val) {
+function cloneSpecificValue(val: any) {
   if (val instanceof Date) {
     return new Date(val.getTime());
   } else if (val instanceof RegExp) {
@@ -47,9 +47,9 @@ function cloneSpecificValue(val) {
 /**
  * Recursive cloning array.
  */
-function deepCloneArray(arr) {
-  const clone = [];
-  arr.forEach(function (item, index) {
+function deepCloneArray(arr: any) {
+  const clone: any = [];
+  arr.forEach(function (item: any, index: any) {
     if (typeof item === 'object' && item !== null) {
       if (Array.isArray(item)) {
         clone[index] = deepCloneArray(item);
@@ -74,7 +74,7 @@ function deepCloneArray(arr) {
  * object as first argument, like this:
  *   deepExtend({}, yourObj_1, [yourObj_N]);
  */
-export function deepExtend(...raw) {
+export function deepExtend(...raw: any[]) {
   if (raw.length < 1 || typeof raw[0] !== 'object') {
     return false;
   }
@@ -90,7 +90,7 @@ export function deepExtend(...raw) {
 
   let val, src;
 
-  args.forEach(function (obj) {
+  args.forEach(function (obj: any) {
     // skip argument if it is array or isn't object
     if (typeof obj !== 'object' || Array.isArray(obj)) {
       return;
