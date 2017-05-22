@@ -3,7 +3,6 @@ import { HttpModule } from '@angular/http';
 
 import { KitIconComponent } from './kit-icon/kit-icon.component';
 import { KitIconService } from './kit-icon.service';
-import { KitIconRegistryService } from './kit-icon-registry.service';
 
 @NgModule({
   imports: [
@@ -17,7 +16,6 @@ import { KitIconRegistryService } from './kit-icon-registry.service';
   ],
   providers: [
     KitIconService,
-    KitIconRegistryService,
   ]
 })
 export class KitIconModule {

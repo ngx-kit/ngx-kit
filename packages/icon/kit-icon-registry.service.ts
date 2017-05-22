@@ -43,7 +43,7 @@ export class KitIconRegistryService {
             .map(this.cloneSvg)
       }
     } else {
-      throw new Error(`Icon "${name} not found!`);
+      throw new Error(`Icon "${name}" not found!`);
     }
   }
 
