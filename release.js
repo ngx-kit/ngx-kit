@@ -4,6 +4,8 @@ const fs = require('fs-extra');
 const config = require('./release.config.json');
 
 config.packages.forEach(packageName => {
+  // Copy sources
+  fs.copySync(path.resolve('packages', packageName), path.resolve('dist/packages', packageName));
   // Generate package.json
   const blueprint = fs.readFileSync(path.resolve('packages', packageName, 'package.json'), 'utf-8');
   const result = blueprint
