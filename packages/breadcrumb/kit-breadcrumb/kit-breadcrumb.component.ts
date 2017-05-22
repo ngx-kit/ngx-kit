@@ -1,9 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style } from 'typestyle';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitBreadcrumbService } from '../kit-breadcrumb.service';
 import { KitBreadcrumbItem } from '../interfaces';
 
 @Component({
@@ -22,24 +18,10 @@ export class KitBreadcrumbComponent implements OnInit {
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitBreadcrumbService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-    console.log('items', this.items);
-  }
-
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
 }

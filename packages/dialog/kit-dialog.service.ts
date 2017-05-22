@@ -1,30 +1,15 @@
-import {
-  ComponentRef, Injectable,
-  Type
-} from '@angular/core';
+import { ComponentRef, Injectable, Type } from '@angular/core';
 
-import { KitComponentService, KitCoreService, KitHostService, KitThemeProps } from '@ngx-kit/core';
+import { KitHostService } from '@ngx-kit/core';
 
-import { KitDialogTheme, DialogHandlers } from './interfaces';
+import { DialogHandlers } from './interfaces';
 
 @Injectable()
-export class KitDialogService extends KitComponentService<KitDialogTheme> {
+export class KitDialogService {
 
-  private themeProps: KitThemeProps;
   private dialogRef: ComponentRef<any>;
 
-  constructor(private kitCore: KitCoreService,
-              private host: KitHostService) {
-    super();
-    // theming
-  }
-
-  private compileTheme() {
-    this.theme = {
-      host: {
-        base: {},
-      }
-    };
+  constructor(private host: KitHostService) {
   }
 
   show<T extends DialogHandlers>(component: Type<T>): T {

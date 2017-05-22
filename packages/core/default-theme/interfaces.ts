@@ -1,8 +1,8 @@
 export interface KitDefaultThemeParams {
   grid: {
-    v: number,
-    h: number,
-  },
+    v: number;
+    h: number;
+  };
   colors: {
     body: KitDefaultThemeColor;
     brand: KitDefaultThemeColor;
@@ -12,7 +12,20 @@ export interface KitDefaultThemeParams {
     success: KitDefaultThemeColor;
     warning: KitDefaultThemeColor;
     error: KitDefaultThemeColor;
-  }
+  };
+  typo: {
+    bodyFontSize: string;
+    primaryFontSize: string;
+    secondaryFontSize: string;
+    headers: {
+      h1: string;
+      h2: string;
+      h3: string;
+      h4: string;
+      h5: string;
+      h6: string;
+    };
+  };
 }
 
 export interface KitDefaultThemeColor {

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitBadgeComponent } from './kit-badge/kit-badge.component';
-import { KitBadgeService } from './kit-badge.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitBadgeService } from './kit-badge.service';
   declarations: [
     KitBadgeComponent,
   ],
-  providers: [
-    KitBadgeService,
-  ]
+  providers: []
 })
 export class KitBadgeModule {
 }

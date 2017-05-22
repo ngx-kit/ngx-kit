@@ -1,9 +1,4 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { style } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitAccordionService } from '../kit-accordion.service';
 
 @Component({
   selector: 'kit-accordion-panel',
@@ -25,30 +20,10 @@ export class KitAccordionPanelComponent implements OnInit {
   titleClass: string;
   panelClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitAccordionService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-//    this.hostClass = style(
-//        theme.host.base,
-//    );
-    this.titleClass = style(
-        theme.panelTitle.base,
-//        this.core.mapColor('page', theme.panelTitle.swatchMap),
-    );
-    this.panelClass = style(
-        theme.panel.base,
-    );
   }
 
   activateClick() {

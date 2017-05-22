@@ -1,5 +1,4 @@
 import {
-  Component,
   ComponentRef,
   Directive,
   ElementRef,
@@ -8,11 +7,9 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import { style } from 'typestyle';
 
-import { KitCoreService, KitHostService } from '@ngx-kit/core';
+import { KitHostService } from '@ngx-kit/core';
 
-import { KitTooltipService } from '../kit-tooltip.service';
 import { KitTooltipViewComponent } from '../kit-tooltip-view/kit-tooltip-view.component';
 import { KitTooltipPosition } from '../interfaces';
 
@@ -45,25 +42,11 @@ export class KitTooltipDirective implements OnInit {
     alert(this._text);
   }
 
-  constructor(private core: KitCoreService,
-              private service: KitTooltipService,
-              private host: KitHostService,
+  constructor(private host: KitHostService,
               private el: ElementRef) {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
-  }
-
-  private compileStyles() {
   }
 
   private show() {

@@ -1,9 +1,5 @@
 import { AfterContentInit, Component, ContentChildren, HostBinding, Input, OnInit, QueryList } from '@angular/core';
-import { style } from 'typestyle';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitAccordionService } from '../kit-accordion.service';
 import { KitAccordionPanelComponent } from '../kit-accordion-panel/kit-accordion-panel.component';
 
 @Component({
@@ -21,28 +17,15 @@ export class KitAccordionComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(KitAccordionPanelComponent) panels: QueryList<KitAccordionPanelComponent>;
 
-  constructor(private core: KitCoreService,
-              private service: KitAccordionService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
   }
 
   ngAfterContentInit() {
     this.activateFirst();
     this.subscribeOnActivations();
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
-  }
-
-  private compileStyles() {
   }
 
   private activateFirst() {

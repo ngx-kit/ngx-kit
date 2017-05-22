@@ -1,9 +1,5 @@
-import { Component, HostBinding, Input, OnInit, ViewChild } from '@angular/core';
-import { style } from 'typestyle';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitDropdownMenuService } from '../kit-dropdown-menu.service';
 import { KitPopoverComponent } from '@ngx-kit/popover';
 
 /**
@@ -26,27 +22,32 @@ export class KitDropdownMenuComponent implements OnInit {
 
   @ViewChild(KitPopoverComponent) popover: KitPopoverComponent;
 
-  constructor(private core: KitCoreService,
-              private service: KitDropdownMenuService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
   toggle(event: any) {
     this.popover.toggle(event);
   }
 
-  private compileStyles() {
-  }
+//  this.theme = {
+//  host: {
+//    base: {
+//    },
+//  },
+//  item: {
+//    base: {
+//      display: 'block',
+//      borderBottom: '1px solid #eeeeee',
+//      $nest: {
+//        '&:last-child': {
+//          borderBottom: 0,
+//        },
+//      },
+//    },
+//  },
+//};
 
 }

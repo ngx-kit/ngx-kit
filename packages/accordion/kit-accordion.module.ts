@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { KitAccordionComponent } from './kit-accordion/kit-accordion.component';
 import { KitAccordionPanelComponent } from './kit-accordion-panel/kit-accordion-panel.component';
-import { KitAccordionService } from './kit-accordion.service';
 
 const external = [
   KitAccordionComponent,
@@ -18,9 +17,7 @@ const external = [
   declarations: [
     ...external,
   ],
-  providers: [
-    KitAccordionService,
-  ]
+  providers: []
 })
 export class KitAccordionModule {
 }

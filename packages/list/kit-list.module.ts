@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitListComponent } from './kit-list/kit-list.component';
-import { KitListService } from './kit-list.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitListService } from './kit-list.service';
   declarations: [
     KitListComponent,
   ],
-  providers: [
-    KitListService,
-  ]
+  providers: []
 })
 export class KitListModule {
 }

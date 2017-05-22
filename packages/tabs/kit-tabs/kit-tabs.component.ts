@@ -1,9 +1,5 @@
 import { AfterContentInit, Component, ContentChildren, HostBinding, Input, OnInit, QueryList } from '@angular/core';
-import { style } from 'typestyle';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitTabsService } from '../kit-tabs.service';
 import { KitTabsPanelComponent } from '../kit-tabs-panel/kit-tabs-panel.component';
 
 @Component({
@@ -29,13 +25,10 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
 
   navClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitTabsService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
   }
 
   ngAfterContentInit() {
@@ -49,27 +42,14 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
     });
   }
 
-  getTabClass(tab: KitTabsPanelComponent): string {
-    const theme = this.service.getTheme();
-    return style(
-        theme.navTab.base,
+  getTabClass(tab: KitTabsPanelComponent) {
+//    const theme = this.service.getTheme();
+//    return style(
+//        theme.navTab.base,
 //        this.core.mapColor('page', theme.navTab.baseSwatchMap),
-        tab.active ? theme.navTab.active : null,
+//        tab.active ? theme.navTab.active : null,
 //        tab.active ? this.core.mapColor('page', theme.navTab.activeSwatchMap): null,
-    );
-  }
-
-  private calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
-    this.navClass = style(
-        theme.nav.base,
-    );
-  }
-
-  private compileStyles() {
+//    );
   }
 
   private activateFirst() {
@@ -79,5 +59,38 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
       }
     }
   }
+//
+//  this.theme = {
+//  host: {
+//    base: {
+//    },
+//  },
+//  nav: {
+//    base: {
+//      display: 'flex',
+//      flexDirection: 'row',
+//      listStyle: 'none',
+//      margin: 0,
+//      padding: 0,
+//    },
+//  },
+//  navTab: {
+//    base: {
+//      cursor: 'pointer',
+//      padding: '8px',
+//    },
+//    baseSwatchMap: {
+//      color: 'text',
+//      background: 'color',
+//    },
+//    active: {
+//      fontWeight: 600,
+//    },
+//    activeSwatchMap: {
+//      color: 'text',
+//      background: 'darken',
+//    }
+//  },
+//};
 
 }

@@ -1,44 +1,54 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitLabelSize } from '../interfaces';
-import { KitLabelService } from '../kit-label.service';
 
 @Component({
   selector: 'kit-label',
   template: `
-    {{ value }} 
+    {{ value }}
   `,
 })
 export class KitLabelComponent implements OnInit {
 
   @Input() color: string = 'primary';
-  @Input() size: KitLabelSize = 'm';
+  @Input() size: string = 'm';
   @Input() value: number;
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitLabelService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
   }
 
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-        theme.host.size[this.size],
-//        this.core.mapColor(this.color, theme.host.swatchMap),
-    );
-  }
+//  this.theme = {
+//  host: {
+//    base: {
+//      borderRadius: '.33rem',
+//      display: 'inline-block',
+//      fontWeight: 'normal',
+//      lineHeight: 1,
+//      minWidth: '1px',
+//      textAlign: 'center',
+//    },
+//    size: {
+//      s: {
+//        padding: '2px 4px',
+//        fontSize: '.8rem',
+//      },
+//      m: {
+//        padding: '2px 6px',
+//        fontSize: '.9rem',
+//      },
+//      l: {
+//        padding: '4px 8px',
+//        fontSize: '1.1rem',
+//      },
+//    },
+//    swatchMap: {
+//      background: 'color',
+//      color: 'text',
+//    },
+//  }
+//};
 
 }

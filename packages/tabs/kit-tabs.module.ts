@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
 import { KitTabsPanelComponent } from './kit-tabs-panel/kit-tabs-panel.component';
-import { KitTabsService } from './kit-tabs.service';
 
 const external = [
   KitTabsComponent,
@@ -18,9 +17,7 @@ const external = [
   declarations: [
     ...external,
   ],
-  providers: [
-    KitTabsService,
-  ]
+  providers: []
 })
 export class KitTabsModule {
 }

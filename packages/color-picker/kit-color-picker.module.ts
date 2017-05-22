@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitColorPickerComponent } from './kit-color-picker/kit-color-picker.component';
-import { KitColorPickerService } from './kit-color-picker.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitColorPickerService } from './kit-color-picker.service';
   declarations: [
     KitColorPickerComponent,
   ],
-  providers: [
-    KitColorPickerService,
-  ]
+  providers: []
 })
 export class KitColorPickerModule {
 }

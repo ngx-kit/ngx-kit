@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitTreeComponent } from './kit-tree/kit-tree.component';
-import { KitTreeService } from './kit-tree.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitTreeService } from './kit-tree.service';
   declarations: [
     KitTreeComponent,
   ],
-  providers: [
-    KitTreeService,
-  ]
+  providers: []
 })
 export class KitTreeModule {
 }

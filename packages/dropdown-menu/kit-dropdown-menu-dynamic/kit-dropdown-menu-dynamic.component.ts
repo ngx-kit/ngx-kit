@@ -1,9 +1,5 @@
 import { Component, HostBinding, Input, OnInit, ViewChild } from '@angular/core';
-import { style } from 'typestyle';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitDropdownMenuService } from '../kit-dropdown-menu.service';
 import { KitDropdownMenuComponent } from '../kit-dropdown-menu/kit-dropdown-menu.component';
 
 @Component({
@@ -22,27 +18,14 @@ export class KitDropdownMenuDynamicComponent implements OnInit {
 
   @ViewChild(KitDropdownMenuComponent) dropdown: KitDropdownMenuComponent;
 
-  constructor(private core: KitCoreService,
-              private service: KitDropdownMenuService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
   toggle(event: any) {
     this.dropdown.toggle(event);
-  }
-
-  private compileStyles() {
   }
 
 }

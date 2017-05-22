@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { KitPaginationComponent } from './kit-pagination/kit-pagination.component';
-import { KitPaginationService } from './kit-pagination.service';
 
 @NgModule({
   imports: [
@@ -14,9 +13,7 @@ import { KitPaginationService } from './kit-pagination.service';
   declarations: [
     KitPaginationComponent,
   ],
-  providers: [
-    KitPaginationService,
-  ]
+  providers: []
 })
 export class KitPaginationModule {
 }

@@ -47,7 +47,20 @@ export class KitDefaultThemeService implements KitThemeService {
         color: '#ff5500',
         text: '#ffffff',
       }
-    }
+    },
+    typo: {
+      bodyFontSize: '13px',
+      primaryFontSize: '1rem',
+      secondaryFontSize: '.9rem',
+      headers: {
+        h1: '3rem',
+        h2: '2rem',
+        h3: '1.8rem',
+        h4: '1.6rem',
+        h5: '1.4rem',
+        h6: '1rem',
+      }
+    },
   };
 
   private stylers = {

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitPopoverComponent } from './kit-popover/kit-popover.component';
-import { KitPopoverService } from './kit-popover.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitPopoverService } from './kit-popover.service';
   declarations: [
     KitPopoverComponent,
   ],
-  providers: [
-    KitPopoverService,
-  ]
+  providers: []
 })
 export class KitPopoverModule {
 }

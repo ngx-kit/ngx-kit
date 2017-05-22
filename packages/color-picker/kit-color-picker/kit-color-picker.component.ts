@@ -1,9 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitColorPickerService } from '../kit-color-picker.service';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'kit-color-picker',
@@ -15,23 +10,10 @@ export class KitColorPickerComponent implements OnInit {
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitColorPickerService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
 }

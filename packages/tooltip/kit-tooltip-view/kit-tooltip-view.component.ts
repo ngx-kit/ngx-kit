@@ -1,9 +1,5 @@
-import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { style as s } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitTooltipService } from '../kit-tooltip.service';
 
 /**
  * @todo add right/bottom/left positions
@@ -52,24 +48,11 @@ export class KitTooltipViewComponent implements OnInit {
   @HostBinding('style.top.px') styleTop: number;
   @HostBinding('style.left.px') styleLeft: number;
 
-  constructor(private core: KitCoreService,
-              private service: KitTooltipService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
     this.reposition();
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-//    this.hostClass = s(
-//        theme.host.base,
-//    );
-  }
-
-  private compileStyles() {
   }
 
   private reposition() {

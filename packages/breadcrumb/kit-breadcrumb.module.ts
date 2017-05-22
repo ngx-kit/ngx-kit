@@ -3,22 +3,21 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { KitBreadcrumbComponent } from './kit-breadcrumb/kit-breadcrumb.component';
-import { KitBreadcrumbService } from './kit-breadcrumb.service';
+
+const external = [
+  KitBreadcrumbComponent,
+];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([]),
   ],
-  exports: [
-    KitBreadcrumbComponent,
-  ],
+  exports: external,
   declarations: [
-    KitBreadcrumbComponent,
+    ...external,
   ],
-  providers: [
-    KitBreadcrumbService,
-  ]
+  providers: []
 })
 export class KitBreadcrumbModule {
 }

@@ -1,9 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style as s } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitDividerService } from '../kit-divider.service';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 /**
  * @todo add vertical setting
@@ -24,23 +19,37 @@ export class KitDividerComponent implements OnInit {
   lineClass: string;
   textClass: string;
 
-  constructor(private core: KitCoreService,
-              private service: KitDividerService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
   }
 
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = s(theme.host.base);
-    this.lineClass = s(theme.line.base);
-    this.textClass = s(theme.text.base);
-  }
+//  this.theme = {
+//  host: {
+//    base: {
+//      display: 'flex',
+//      flexDirection: 'row',
+//      alignItems: 'center',
+//      padding: '16px 0',
+//    },
+//  },
+//  line: {
+//    base: {
+//      flexGrow: 1,
+//      borderTop: '1px solid rgba(34,36,38,.15)',
+//      borderBottom: '1px solid rgba(255,255,255,.1)',
+//    }
+//  },
+//  text: {
+//    base: {
+//      $nest: {
+//        '&:not(:empty)': {
+//          padding: '0 16px',
+//        },
+//      },
+//    },
+//  },
+//};
 
 }

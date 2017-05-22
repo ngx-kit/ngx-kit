@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitNavComponent } from './kit-nav/kit-nav.component';
-import { KitNavService } from './kit-nav.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitNavService } from './kit-nav.service';
   declarations: [
     KitNavComponent,
   ],
-  providers: [
-    KitNavService,
-  ]
+  providers: []
 })
 export class KitNavModule {
 }

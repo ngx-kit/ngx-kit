@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitDividerComponent } from './kit-divider/kit-divider.component';
-import { KitDividerService } from './kit-divider.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitDividerService } from './kit-divider.service';
   declarations: [
     KitDividerComponent,
   ],
-  providers: [
-    KitDividerService,
-  ]
+  providers: []
 })
 export class KitDividerModule {
 }

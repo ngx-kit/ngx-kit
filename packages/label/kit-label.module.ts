@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { KitLabelComponent } from './kit-label/kit-label.component';
-import { KitLabelService } from './kit-label.service';
 
 @NgModule({
   imports: [],
@@ -11,9 +10,7 @@ import { KitLabelService } from './kit-label.service';
   declarations: [
     KitLabelComponent,
   ],
-  providers: [
-    KitLabelService,
-  ]
+  providers: []
 })
 export class KitLabelModule {
 }

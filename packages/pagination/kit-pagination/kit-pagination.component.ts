@@ -1,9 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { style } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitPaginationService } from '../kit-pagination.service';
+import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 /**
  * @todo use button-group for styling
@@ -28,7 +23,7 @@ import { KitPaginationService } from '../kit-pagination.service';
     </button>
   `,
 })
-export class KitPaginationComponent implements OnInit {
+export class KitPaginationComponent implements OnInit, OnChanges {
 
   @Input() totalRows: number;
   @Input() currentPage: number;
@@ -47,13 +42,10 @@ export class KitPaginationComponent implements OnInit {
   pages: number[] = [];
   totalPages: number;
 
-  constructor(private core: KitCoreService,
-              private service: KitPaginationService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
   }
 
   ngOnChanges() {
@@ -77,16 +69,6 @@ export class KitPaginationComponent implements OnInit {
     for (let i = leftSide; i <= rightSide; i++) {
       this.pages.push(i);
     }
-  }
-
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
 }

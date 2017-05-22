@@ -1,9 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style } from 'typestyle';
-
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitPopoverService } from '../kit-popover.service';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 /**
  * @todo add and implement position param
@@ -36,21 +31,11 @@ export class KitPopoverComponent implements OnInit {
 
   private _display: boolean;
 
-  constructor(private core: KitCoreService,
-              private service: KitPopoverService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
     this.display = false;
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-    );
   }
 
   toggle(event: any) {
@@ -63,9 +48,6 @@ export class KitPopoverComponent implements OnInit {
     }
   }
 
-  private compileStyles() {
-  }
-
   private calcPosition(target: Element) {
     console.log('rect', target.getBoundingClientRect());
     const hostRect = target.getBoundingClientRect();
@@ -73,5 +55,16 @@ export class KitPopoverComponent implements OnInit {
     this.styleTop =  hostRect.bottom;
 //    const position = target.
   }
+
+//  this.theme = {
+//  host: {
+//    base: {
+//      position: 'fixed',
+//      padding: 8,
+//      border: '1px solid #eeeeee',
+//      background: '#ffffff',
+//    },
+//  }
+//};
 
 }
