@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm install @ngx-kit/button --save`
+`npm install @ngx-kit/core @ngx-kit/button --save`
 
 ## Usage
 

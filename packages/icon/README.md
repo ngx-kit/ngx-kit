@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm install @ngx-kit/icon --save`
+`npm install @ngx-kit/core @ngx-kit/icon --save`
 
 ## Usage
 
