@@ -13,20 +13,12 @@ import { KitIconModule } from '@ngx-kit/icon';
 ..
 @NgModule({
   imports: [
-    KitIconModule,
+    KitIconModule.forRoot(),
 ...
 ```
 
-### Provide registry service
-
-```typescript
-import { KitIconRegistryService } from './kit-icon-registry.service';
-...
-@NgModule({
-  providers: [
-    KitIconRegistryService,
-...
-```
+Use import with `.forRoot()` only once on the top level. 
+In other modules just import `KitIconModule`.
 
 ### Register icons
 
