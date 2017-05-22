@@ -13,6 +13,10 @@ export interface KitDefaultThemeParams {
     warning: KitDefaultThemeColor;
     error: KitDefaultThemeColor;
   };
+  shadows: {
+    element: string;
+    deep: string;
+  }
   typo: {
     bodyFontSize: string;
     primaryFontSize: string;

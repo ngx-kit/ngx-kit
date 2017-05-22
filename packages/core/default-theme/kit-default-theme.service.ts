@@ -48,6 +48,10 @@ export class KitDefaultThemeService implements KitThemeService {
         text: '#ffffff',
       }
     },
+    shadows: {
+      element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
+      deep: '',
+    },
     typo: {
       bodyFontSize: '13px',
       primaryFontSize: '1rem',
@@ -68,6 +72,10 @@ export class KitDefaultThemeService implements KitThemeService {
   };
 
   constructor() {
+  }
+
+  customize(params: KitDefaultThemeParams) {
+    this.params = params;
   }
 
   style(component: string, styler: StylerService) {

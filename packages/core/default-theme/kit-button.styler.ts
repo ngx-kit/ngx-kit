@@ -23,7 +23,7 @@ export class KitButtonStyler {
         lineHeight: 1.42857,
         borderRadius: '3px',
         userSelect: 'none',
-        boxShadow: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
+        boxShadow: params.shadows.element,
       }
     });
 
@@ -31,31 +31,31 @@ export class KitButtonStyler {
     styler.registerState('size', {
       xs: {
         host: {
-          padding: '1px 4px',
+          padding: `${params.grid.h / 8}px ${params.grid.v / 2}px`,
           fontSize: '.8rem',
         },
       },
       s: {
         host: {
-          padding: '2px 8px',
+          padding: `${params.grid.h / 4}px ${params.grid.v}px`,
           fontSize: '1rem',
         },
       },
       m: {
         host: {
-          padding: '6px 12px',
+          padding: `${params.grid.h / 2}px ${params.grid.v * 1.5}px`,
           fontSize: '1.1rem',
         },
       },
       l: {
         host: {
-          padding: '8px 20px',
+          padding: `${params.grid.h}px ${params.grid.v * 2.5}px`,
           fontSize: '1.3rem',
         },
       },
       xl: {
         host: {
-          padding: '16px 32px',
+          padding: `${params.grid.h * 2}px ${params.grid.v * 4}px`,
           fontSize: '1.6rem',
         },
       }
