@@ -10,9 +10,6 @@ export class KitAccordionService extends KitComponentService<KitAccordionTheme> 
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitAccordionTheme>('accordion'));
   }
 
   private compileTheme() {

@@ -10,18 +10,6 @@ export class KitNameService extends KitComponentService<KitNameTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitNameTheme>('name'));
-  }
-
-  private compileTheme() {
-    this.theme = {
-      host: {
-        base: {
-        },
-      }
-    };
   }
 
 }

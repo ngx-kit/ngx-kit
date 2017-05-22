@@ -10,9 +10,6 @@ export class KitTabsService extends KitComponentService<KitTabsTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitTabsTheme>('tabs'));
   }
 
   private compileTheme() {

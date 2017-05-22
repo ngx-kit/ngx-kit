@@ -10,9 +10,6 @@ export class KitBadgeService extends KitComponentService<KitBadgeTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitBadgeTheme>('badge'));
   }
 
   private compileTheme() {

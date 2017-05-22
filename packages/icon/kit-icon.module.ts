@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { KitIconComponent } from './kit-icon/kit-icon.component';
-import { KitIconService } from './kit-icon.service';
 import { KitIconRegistryService } from './kit-icon-registry.service';
 
 const external = [
@@ -22,12 +21,11 @@ const external = [
     ...external,
   ],
   providers: [
-    KitIconService,
   ]
 })
 export class KitIconModule {
 
-  static forRoot() {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: KitIconModule,
       providers: [KitIconRegistryService]

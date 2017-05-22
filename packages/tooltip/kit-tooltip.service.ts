@@ -10,9 +10,6 @@ export class KitTooltipService extends KitComponentService<KitTooltipTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitTooltipTheme>('tooltip'));
   }
 
   private compileTheme() {

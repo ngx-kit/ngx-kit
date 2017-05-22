@@ -10,9 +10,6 @@ export class KitDropdownMenuService extends KitComponentService<KitDropdownMenuT
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitDropdownMenuTheme>('dropdown-menu'));
   }
 
   private compileTheme() {

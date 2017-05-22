@@ -10,9 +10,6 @@ export class KitListService extends KitComponentService<KitListTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitListTheme>('list'));
   }
 
   private compileTheme() {

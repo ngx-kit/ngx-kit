@@ -53,9 +53,9 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
     const theme = this.service.getTheme();
     return style(
         theme.navTab.base,
-        this.core.mapColor('page', theme.navTab.baseSwatchMap),
+//        this.core.mapColor('page', theme.navTab.baseSwatchMap),
         tab.active ? theme.navTab.active : null,
-        tab.active ? this.core.mapColor('page', theme.navTab.activeSwatchMap): null,
+//        tab.active ? this.core.mapColor('page', theme.navTab.activeSwatchMap): null,
     );
   }
 

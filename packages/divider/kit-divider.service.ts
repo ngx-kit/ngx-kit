@@ -10,9 +10,6 @@ export class KitDividerService extends KitComponentService<KitDividerTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitDividerTheme>('divider'));
   }
 
   private compileTheme() {

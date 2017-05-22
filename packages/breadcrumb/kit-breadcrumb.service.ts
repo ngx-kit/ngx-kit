@@ -10,9 +10,6 @@ export class KitBreadcrumbService extends KitComponentService<KitBreadcrumbTheme
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitBreadcrumbTheme>('breadcrumb'));
   }
 
   private compileTheme() {

@@ -10,9 +10,6 @@ export class KitColorPickerService extends KitComponentService<KitColorPickerThe
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitColorPickerTheme>('color-picker'));
   }
 
   private compileTheme() {

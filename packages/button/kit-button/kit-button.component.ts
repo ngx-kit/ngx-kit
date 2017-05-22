@@ -1,46 +1,41 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { style } from 'typestyle';
+import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 
-import { KitCoreService } from '@ngx-kit/core';
-
-import { KitButtonService } from '../kit-button.service';
-import { KitButtonSize, KitButtonType } from '../interfaces';
+import { KitTheme, KitThemeService } from '@ngx-kit/core';
+import { StylerService } from '@ngx-kit/styler';
 
 @Component({
   selector: 'kit-button',
   template: `
     <ng-content></ng-content>
   `,
+  viewProviders: [
+    StylerService,
+  ],
 })
 export class KitButtonComponent implements OnInit {
 
-  @Input() size: KitButtonSize = 'm';
-  @Input() type: KitButtonType = 'primary';
-  @Input() disabled = false;
+  @Input() set size(size: string) {
+    this.styler.setState('size', size);
+  }
 
-  @HostBinding('class') hostClass: string;
+  @Input() set type(type: string) {
+    this.styler.setState('type', type);
+  }
 
-  constructor(private core: KitCoreService,
-              private service: KitButtonService) {
+  @Input() set disabled(disabled: boolean) {
+    this.styler.setState('disabled', disabled ? 'disabled' : null);
+  }
+
+  @HostBinding('class') get hostClass() {
+    return this.styler.getHostClass();
+  };
+
+  constructor(private styler: StylerService,
+              @Inject(KitTheme) private theme: KitThemeService) {
+    this.theme.style('button', this.styler);
   }
 
   ngOnInit() {
-    this.compileStyles();
-    this.calcStyles();
-  }
-
-  private compileStyles() {
-  }
-
-  calcStyles() {
-    const theme = this.service.getTheme();
-    this.hostClass = style(
-        theme.host.base,
-        theme.host.size[this.size],
-        this.core.mapColor(this.type, theme.host.swatchMap),
-        theme.host.type[this.type],
-        this.disabled ? this.core.mapColor('disabled', theme.host.swatchMap) : null,
-        this.disabled ? theme.host.disabled : null);
   }
 
 }

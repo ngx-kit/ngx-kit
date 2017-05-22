@@ -10,9 +10,6 @@ export class KitLabelService extends KitComponentService<KitLabelTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitLabelTheme>('label'));
   }
 
   private compileTheme() {

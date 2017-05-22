@@ -9,10 +9,12 @@
 ### Import module
 
 ```typescript
+import { KitCoreModule } from '@ngx-kit/core';
 import { KitIconModule } from '@ngx-kit/icon';
 ..
 @NgModule({
   imports: [
+    KitCoreModule.forRoot(),
     KitIconModule.forRoot(),
 ...
 ```

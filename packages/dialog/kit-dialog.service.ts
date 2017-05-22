@@ -17,9 +17,6 @@ export class KitDialogService extends KitComponentService<KitDialogTheme> {
               private host: KitHostService) {
     super();
     // theming
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitDialogTheme>('dialog'));
   }
 
   private compileTheme() {

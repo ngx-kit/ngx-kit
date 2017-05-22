@@ -1,5 +1,11 @@
 import { types } from 'typestyle';
 
+import { StylerService } from '@ngx-kit/styler';
+
+export interface KitThemeService {
+  style(component: string, styler: StylerService): void;
+}
+
 export type KitTypoHeaders = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type KitThemeComponents = {componentId: string, modifiers: any}[];
@@ -36,12 +42,6 @@ export interface KitThemeProps {
       [propName: string]: string;
     };
   };
-}
-
-export interface KitThemeService {
-  name: string;
-  props: KitThemeProps;
-  components: KitThemeComponents;
 }
 
 export type KitStylesMap = {

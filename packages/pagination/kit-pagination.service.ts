@@ -10,9 +10,6 @@ export class KitPaginationService extends KitComponentService<KitPaginationTheme
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitPaginationTheme>('pagination'));
   }
 
   private compileTheme() {

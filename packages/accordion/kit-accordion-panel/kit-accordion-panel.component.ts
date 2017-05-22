@@ -44,7 +44,7 @@ export class KitAccordionPanelComponent implements OnInit {
 //    );
     this.titleClass = style(
         theme.panelTitle.base,
-        this.core.mapColor('page', theme.panelTitle.swatchMap),
+//        this.core.mapColor('page', theme.panelTitle.swatchMap),
     );
     this.panelClass = style(
         theme.panel.base,

@@ -10,9 +10,6 @@ export class KitGridService extends KitComponentService<KitGridTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitGridTheme>('grid'));
   }
 
   private compileTheme() {

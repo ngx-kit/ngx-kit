@@ -10,9 +10,6 @@ export class KitTreeService extends KitComponentService<KitTreeTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitTreeTheme>('tree'));
   }
 
   private compileTheme() {

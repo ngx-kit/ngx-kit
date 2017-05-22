@@ -20,6 +20,7 @@
     "lib": ["dom", "es2015", "es2016"],
     "baseUrl": ".",
     "paths": {
+      "@ngx-kit/styler": ["./node_modules/@ngx-kit/styler"],
       "@ngx-kit/*": ["./packages/*"]
     },
     "rootDir": ".",

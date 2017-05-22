@@ -10,9 +10,6 @@ export class KitNavService extends KitComponentService<KitNavTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitNavTheme>('nav'));
   }
 
   private compileTheme() {

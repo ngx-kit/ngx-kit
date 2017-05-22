@@ -37,7 +37,7 @@ export class KitBadgeComponent implements OnInit {
     this.hostClass = style(
         theme.host.base,
         theme.host.size[this.size],
-        this.core.mapColor(this.color, theme.host.swatchMap),
+//        this.core.mapColor(this.color, theme.host.swatchMap),
     );
   }
 

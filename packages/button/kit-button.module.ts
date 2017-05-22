@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { KitButtonService } from './kit-button.service';
 import { KitButtonComponent } from './kit-button/kit-button.component';
+
+const external = [
+  KitButtonComponent,
+];
 
 @NgModule({
   imports: [],
-  exports: [
-    KitButtonComponent,
-  ],
+  exports: external,
   declarations: [
-    KitButtonComponent,
+    ...external,
   ],
-  providers: [
-    KitButtonService,
-  ]
+  providers: []
 })
 export class KitButtonModule {
 }

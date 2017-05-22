@@ -9,13 +9,17 @@
 ### Import
 
 ```typescript
+import { KitCoreModule } from '@ngx-kit/core';
 import { KitButtonModule } from '@ngx-kit/button';
 ..
 @NgModule({
   imports: [
-      KitButtonModule
+      KitCoreModule.forRoot(),
+      KitButtonModule,
 ...
 ```
+
+Use import with `.forRoot()` only once on the top level.
 
 ### Use in a template
 
@@ -33,6 +37,13 @@ Customize a button with input params:
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *type* | `primary`, `success`, `info`, `warning`, `error`, `link` | `primary` | Mainly color changing |
-| *size* | `xs`, `s`, `m`, `l`, `xl` | `m` | Button size |
+| *type* | string | in-theme | Mainly color changing |
+| *size* | string | in-theme | Button size |
 | *disabled* | boolean | false | In a disabled state does not raise click event |
+
+Type and size can be different depends on a theme.
+
+#### Default theme params
+
+* type: `default`, `primary`, `success`, `warning`, `error`, `link`
+* size: `xs`, `s`, `m`, `l`, `xl`

@@ -10,9 +10,6 @@ export class KitPopoverService extends KitComponentService<KitPopoverTheme> {
 
   constructor(private kitCore: KitCoreService) {
     super();
-    this.themeProps = this.kitCore.getThemeProps();
-    this.compileTheme();
-    this.modify(this.kitCore.getComponentModifiers<KitPopoverTheme>('popover'));
   }
 
   private compileTheme() {
