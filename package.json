@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "release": "npm run release:clean && npm run release:ngc && npm run release:release",
-    "release:clean": "rimraf ./dist",
-    "release:ngc": "ngc -p tsconfig.json",
-    "release:rollup": "rollup -c rollup.config.js",
-    "release:release": "node ./release.js",
-    "release:publish": "npm publish ./dist --access=public"
+    "build": "npm run build:clean && npm run build:ngc && npm run build:release",
+    "build:clean": "rimraf ./dist",
+    "build:ngc": "ngc -p tsconfig.json",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:release": "node ./release.js",
+    "publish": "npm publish ./dist --access=public",
+    "release": "npm run build && npm run publish"
   },
   "private": true,
   "dependencies": {},
