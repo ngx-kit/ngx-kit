@@ -15,15 +15,15 @@ import { StylerService } from '@ngx-kit/styler';
 export class KitButtonComponent implements OnInit {
 
   @Input() set size(size: string) {
-    this.styler.setState('size', size);
+    this.styler.setState('host', {size});
   }
 
   @Input() set type(type: string) {
-    this.styler.setState('type', type);
+    this.styler.setState('host', {type});
   }
 
   @Input() set disabled(disabled: boolean) {
-    this.styler.setState('disabled', disabled ? 'disabled' : null);
+    this.styler.setState('host', {disabled: disabled ? 'disabled' : null});
   }
 
   @HostBinding('class') get hostClass() {

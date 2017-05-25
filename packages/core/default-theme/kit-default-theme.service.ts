@@ -32,8 +32,8 @@ export class KitDefaultThemeService implements KitThemeService {
         text: '#585858',
       },
       border: {
-        color: '#9ea1aa',
-        text: '#494b54',
+        color: '#b6b9c2',
+        text: '#63656f',
       },
       success: {
         color: '#2dc100',
