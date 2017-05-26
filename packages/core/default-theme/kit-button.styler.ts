@@ -24,7 +24,7 @@ export class KitButtonStyler {
         userSelect: 'none',
         boxShadow: params.shadows.element,
         $states: {
-          size: {
+          size: [{
             xs: {
               padding: `${params.grid.h / 8}px ${params.grid.v / 2}px`,
               fontSize: '.8rem',
@@ -46,8 +46,8 @@ export class KitButtonStyler {
               fontSize: '1.6rem',
             },
             $default: 'm',
-          },
-          type: {
+          }],
+          type: [{
             'default': {
               background: params.colors.button.color,
               color: params.colors.button.text,
@@ -82,14 +82,12 @@ export class KitButtonStyler {
               color: params.colors.link.text,
             },
             $default: 'default',
-          },
+          }],
           disabled: {
-            'disabled': {
-              cursor: 'default',
-              background: params.colors.border.color,
-              borderColor: params.colors.border.color,
-              color: params.colors.border.text,
-            },
+            cursor: 'default',
+            background: params.colors.border.color,
+            borderColor: params.colors.border.color,
+            color: params.colors.border.text,
           },
         },
       },

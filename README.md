@@ -4,6 +4,8 @@
 
 Angular 4 UI-kit with a powerful customizing engine which uses Typestyle (CSS in JavaScript with typings).
 
+Currently in a deep beta!
+
 ## Let's look
 
 * Default theme
