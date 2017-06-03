@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { StylerService } from '@ngx-kit/styler';
+import { StylerComponent } from '@ngx-kit/styler';
 
 import { KitThemeService } from '../interfaces';
 import { KitButtonStyler } from './kit-button.styler';
@@ -78,11 +78,11 @@ export class KitDefaultThemeService implements KitThemeService {
     this.params = params;
   }
 
-  style(component: string, styler: StylerService) {
-    if (this.stylers[component]) {
-      this.stylers[component](styler, this.params);
+  style(name: string, component: StylerComponent) {
+    if (this.stylers[name]) {
+      this.stylers[name](component, this.params);
     } else {
-      throw new Error(`Kit.Core.DefaultTheme: Styler for component "${component} not found!"`);
+      throw new Error(`Kit.Core.DefaultTheme: Styler for component "${name} not found!"`);
     }
   }
 

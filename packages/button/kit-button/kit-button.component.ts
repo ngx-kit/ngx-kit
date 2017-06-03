@@ -1,7 +1,7 @@
 import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 
 import { KitTheme, KitThemeService } from '@ngx-kit/core';
-import { StylerService, StylerUnit } from '@ngx-kit/styler';
+import { StylerElement, StylerComponent } from '@ngx-kit/styler';
 
 @Component({
   selector: 'kit-button',
@@ -9,33 +9,33 @@ import { StylerService, StylerUnit } from '@ngx-kit/styler';
     <ng-content></ng-content>
   `,
   viewProviders: [
-    StylerService,
+    StylerComponent,
   ],
 })
 export class KitButtonComponent implements OnInit {
 
   @Input() set size(size: string) {
-    this.hostStyler.setState({size});
+    this.hostStyler.applyState({size});
   }
 
   @Input() set type(type: string) {
-    this.hostStyler.setState({type});
+    this.hostStyler.applyState({type});
   }
 
   @Input() set disabled(disabled: boolean) {
-    this.hostStyler.setState({disabled});
+    this.hostStyler.applyState({disabled});
   }
 
-  @HostBinding('class') get hostClass() {
-    return this.hostStyler.getClass();
+  @HostBinding('attr.sid') get hostClass() {
+    return this.hostStyler.sid;
   };
 
-  private hostStyler: StylerUnit;
+  private hostStyler: StylerElement;
 
-  constructor(private styler: StylerService,
+  constructor(private styler: StylerComponent,
               @Inject(KitTheme) private theme: KitThemeService) {
     this.theme.style('button', this.styler);
-    this.hostStyler = this.styler.getHostUnit();
+    this.hostStyler = this.styler.host;
   }
 
   ngOnInit() {

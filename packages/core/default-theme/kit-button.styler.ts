@@ -1,10 +1,10 @@
-import { StylerService } from '@ngx-kit/styler';
+import { StylerComponent } from '@ngx-kit/styler';
 
 import { KitDefaultThemeParams } from './interfaces';
 
 export class KitButtonStyler {
 
-  static style(styler: StylerService, params: KitDefaultThemeParams) {
+  static style(styler: StylerComponent, params: KitDefaultThemeParams) {
     styler.register({
       host: {
         position: 'relative',
