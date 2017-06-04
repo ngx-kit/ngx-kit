@@ -13,6 +13,10 @@ export interface KitDefaultThemeParams {
     warning: KitDefaultThemeColor;
     error: KitDefaultThemeColor;
   };
+  colorMod: {
+    type: 'shade' | 'tint' | 'lighten' | 'darken';
+    ratio: number;
+  }
   shadows: {
     element: string;
     deep: string;

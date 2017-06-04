@@ -1,7 +1,7 @@
 import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 
-import { KitTheme, KitThemeService } from '@ngx-kit/core';
-import { StylerElement, StylerComponent } from '@ngx-kit/styler';
+import { KitButtonStyle, kitComponentButton } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 @Component({
   selector: 'kit-button',
@@ -31,8 +31,8 @@ export class KitButtonComponent implements OnInit {
   };
 
   constructor(private styler: StylerComponent,
-              @Inject(KitTheme) private theme: KitThemeService) {
-    this.theme.style('button', this.styler);
+              @Inject(kitComponentButton) private style: KitButtonStyle) {
+    this.styler.register(this.style.getStyles());
   }
 
   ngOnInit() {

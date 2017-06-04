@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 
-import { StylerComponent } from '@ngx-kit/styler';
+import { StylerColorService, StylerComponent } from '@ngx-kit/styler';
 
-import { KitThemeService } from '../interfaces';
 import { KitDefaultThemeParams } from './interfaces';
-import { KitButtonStyler } from './components/kit-button.styler';
-import { KitSelectStyler } from './components/kit-select.styler';
+import { KitThemeService } from '../meta/theme';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
 
-  private params: KitDefaultThemeParams = {
+  private _params: KitDefaultThemeParams = {
     grid: {
       v: 8,
       h: 8,
@@ -49,6 +47,10 @@ export class KitDefaultThemeService implements KitThemeService {
         text: '#ffffff',
       }
     },
+    colorMod: {
+      type: 'shade',
+      ratio: 0,
+    },
     shadows: {
       element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
       deep: '',
@@ -76,26 +78,28 @@ export class KitDefaultThemeService implements KitThemeService {
     },
   };
 
-  private stylers = {
-    // general
-    button: KitButtonStyler.style,
-    // forms
-    select: KitSelectStyler.style,
-  };
-
-  constructor() {
+  constructor(private color: StylerColorService) {
   }
 
   customize(params: KitDefaultThemeParams) {
-    this.params = params;
+    this._params = params;
+  }
+
+  get params() {
+    return this._params;
   }
 
   style(name: string, component: StylerComponent) {
-    if (this.stylers[name]) {
-      this.stylers[name](component, this.params);
-    } else {
-      throw new Error(`Kit.Core.DefaultTheme: Styler for component "${name} not found!"`);
-    }
+
+//    if (this.stylers[name]) {
+//      this.stylers[name](component, this._params);
+//    } else {
+//      throw new Error(`Kit.Core.DefaultTheme: Styler for component "${name} not found!"`);
+//    }
+  }
+
+  colorMod(amount: number, color: string): string {
+    return this.color[this._params.colorMod.type](amount * this._params.colorMod.ratio, color);
   }
 
 }

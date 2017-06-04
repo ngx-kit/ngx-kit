@@ -1,11 +1,18 @@
-import { StylerComponent } from '@ngx-kit/styler';
+import { Inject, Injectable } from '@angular/core';
 
-import { KitDefaultThemeParams } from '../interfaces';
+import { KitButtonStyle, KitButtonStyleSet } from '../../meta/components/button-style';
+import { KitDefaultThemeService } from '../kit-default-theme.service';
+import { kitTheme } from '../../meta/tokens';
 
-export class KitButtonStyler {
+@Injectable()
+export class KitDefaultButtonStyle implements KitButtonStyle {
 
-  static style(styler: StylerComponent, params: KitDefaultThemeParams) {
-    styler.register({
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
+  }
+
+  getStyles(): KitButtonStyleSet {
+    const params = this.theme.params;
+    return {
       host: {
         position: 'relative',
         display: 'inline-block',
@@ -91,7 +98,7 @@ export class KitButtonStyler {
           },
         },
       },
-    });
+    };
   }
 
 }

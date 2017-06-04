@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitTheme, KitThemeService } from '@ngx-kit/core';
+import { kitComponentSelect, KitSelectStyle } from '@ngx-kit/core';
 
 export const ACCOUNT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -47,8 +47,8 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(KitTheme) private theme: KitThemeService) {
-    this.theme.style('select', this.styler);
+              @Inject(kitComponentSelect) private style: KitSelectStyle) {
+    this.styler.register(this.style.getStyles());
   }
 
   writeValue(value: any) {

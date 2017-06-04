@@ -9,9 +9,17 @@ Currently in a deep beta!
 ## Let's look
 
 * Default theme
-* Dark theme
+* Default theme: dark preset
 
-## Elements
+## Packages
+
+### Core
+
+### General
 
 * button
 * icon
+
+### Forms
+
+* select
