@@ -1,6 +1,6 @@
 # ngx-kit
 
-**Package is not released, aprx release June 6.**
+**Package is not released, aprx release June 23.**
 
 Angular 4 UI-kit with a powerful customizing engine which uses Typestyle (CSS in JavaScript with typings).
 

@@ -1,12 +1,13 @@
 {
   "version": "1.0.0-alpha.1",
   "vendors": {
-    "styler": "^1.0.0-alpha.9",
+    "styler": "^1.0.0-alpha.13",
     "angular": "^4.0.0"
   },
   "packages": [
     "core",
     "button",
-    "icon"
+    "icon",
+    "forms"
   ]
 }

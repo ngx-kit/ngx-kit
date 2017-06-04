@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
 import { KitThemeService } from '../interfaces';
-import { KitButtonStyler } from './kit-button.styler';
 import { KitDefaultThemeParams } from './interfaces';
+import { KitButtonStyler } from './components/kit-button.styler';
+import { KitSelectStyler } from './components/kit-select.styler';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
@@ -65,10 +66,21 @@ export class KitDefaultThemeService implements KitThemeService {
         h6: '1rem',
       }
     },
+    border: {
+      width: 1,
+      radius: {
+        s: 3,
+        m: 6,
+        l: 12,
+      },
+    },
   };
 
   private stylers = {
+    // general
     button: KitButtonStyler.style,
+    // forms
+    select: KitSelectStyler.style,
   };
 
   constructor() {

@@ -16,7 +16,7 @@ export interface KitDefaultThemeParams {
   shadows: {
     element: string;
     deep: string;
-  }
+  };
   typo: {
     bodyFontSize: string;
     primaryFontSize: string;
@@ -28,6 +28,14 @@ export interface KitDefaultThemeParams {
       h4: string;
       h5: string;
       h6: string;
+    };
+  };
+  border: {
+    width: number;
+    radius: {
+      s: number;
+      m: number;
+      l: number;
     };
   };
 }

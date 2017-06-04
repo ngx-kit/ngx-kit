@@ -1,6 +1,6 @@
 import { StylerComponent } from '@ngx-kit/styler';
 
-import { KitDefaultThemeParams } from './interfaces';
+import { KitDefaultThemeParams } from '../interfaces';
 
 export class KitButtonStyler {
 

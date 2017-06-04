@@ -1,5 +1,4 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { style as s } from 'typestyle';
 
 /**
  * @todo add right/bottom/left positions
@@ -22,29 +21,29 @@ export class KitTooltipViewComponent implements OnInit {
   top: number;
   left: number;
 
-  css = {
-    host: s({
-      position: 'fixed',
-      height: 0,
-      width: 0,
-    }),
-    wrapper: s({
-      position: 'absolute',
-      bottom: 0,
-      left: '-100px',
-      width: '200px',
-      textAlign: 'center',
-      padding: 8,
-    }),
-    text: s({
-      background: 'rgba(0,0,0,.5)',
-      color: '#ffffff',
-      borderRadius: '2px',
-      padding: '4px 8px',
-    }),
-  };
+//  css = {
+//    host: s({
+//      position: 'fixed',
+//      height: 0,
+//      width: 0,
+//    }),
+//    wrapper: s({
+//      position: 'absolute',
+//      bottom: 0,
+//      left: '-100px',
+//      width: '200px',
+//      textAlign: 'center',
+//      padding: 8,
+//    }),
+//    text: s({
+//      background: 'rgba(0,0,0,.5)',
+//      color: '#ffffff',
+//      borderRadius: '2px',
+//      padding: '4px 8px',
+//    }),
+//  };
 
-  @HostBinding('class') hostClass = this.css.host;
+//  @HostBinding('class') hostClass = this.css.host;
   @HostBinding('style.top.px') styleTop: number;
   @HostBinding('style.left.px') styleLeft: number;
 
