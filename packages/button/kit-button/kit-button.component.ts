@@ -15,27 +15,24 @@ import { StylerElement, StylerComponent } from '@ngx-kit/styler';
 export class KitButtonComponent implements OnInit {
 
   @Input() set size(size: string) {
-    this.hostStyler.applyState({size});
+    this.styler.host.applyState({size});
   }
 
   @Input() set type(type: string) {
-    this.hostStyler.applyState({type});
+    this.styler.host.applyState({type});
   }
 
   @Input() set disabled(disabled: boolean) {
-    this.hostStyler.applyState({disabled});
+    this.styler.host.applyState({disabled});
   }
 
   @HostBinding('attr.sid') get hostClass() {
-    return this.hostStyler.sid;
+    return this.styler.host.sid;
   };
-
-  private hostStyler: StylerElement;
 
   constructor(private styler: StylerComponent,
               @Inject(KitTheme) private theme: KitThemeService) {
     this.theme.style('button', this.styler);
-    this.hostStyler = this.styler.host;
   }
 
   ngOnInit() {
