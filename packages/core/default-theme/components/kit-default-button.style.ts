@@ -26,7 +26,7 @@ export class KitDefaultButtonStyle implements KitButtonStyle {
         backgroundImage: 'none',
         border: '1px solid transparent',
         whiteSpace: 'nowrap',
-        lineHeight: 1.42857,
+        lineHeight: '1.42857',
         borderRadius: '3px',
         userSelect: 'none',
         boxShadow: params.shadows.element,
