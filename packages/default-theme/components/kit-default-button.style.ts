@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitButtonStyle, KitButtonStyleSet } from '../../meta/components/button-style';
+import { KitButtonStyle, KitButtonStyleSet, kitTheme } from '@ngx-kit/core';
+
 import { KitDefaultThemeService } from '../kit-default-theme.service';
-import { kitTheme } from '../../meta/tokens';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitButtonStyle {

@@ -1,9 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { StylerColorService, StylerComponent } from '@ngx-kit/styler';
+import { KitThemeService } from '@ngx-kit/core';
+import { StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeParams } from './interfaces';
-import { KitThemeService } from '../meta/theme';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
@@ -87,15 +87,6 @@ export class KitDefaultThemeService implements KitThemeService {
 
   get params() {
     return this._params;
-  }
-
-  style(name: string, component: StylerComponent) {
-
-//    if (this.stylers[name]) {
-//      this.stylers[name](component, this._params);
-//    } else {
-//      throw new Error(`Kit.Core.DefaultTheme: Styler for component "${name} not found!"`);
-//    }
   }
 
   colorMod(amount: number, color: string): string {

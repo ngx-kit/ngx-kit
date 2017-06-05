@@ -1,10 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 
+import { KitSelectStyle, KitSelectStyleSet, kitTheme } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
 
-import { KitSelectStyle, KitSelectStyleSet } from '../../meta/components/select-style';
 import { KitDefaultThemeService } from '../kit-default-theme.service';
-import { kitTheme } from '../../meta/tokens';
 
 @Injectable()
 export class KitDefaultSelectStyle implements KitSelectStyle {

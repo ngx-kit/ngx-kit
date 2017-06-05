@@ -6,5 +6,3 @@ export * from './meta/tokens';
 export * from './meta/components/button-style';
 export * from './meta/components/select-style';
 export * from './meta/components/date-picker-style';
-export * from './default-theme/interfaces';
-export * from './default-theme/kit-default-theme.service';

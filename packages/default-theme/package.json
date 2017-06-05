@@ -1,8 +1,8 @@
 {
-  "name": "@ngx-kit/core",
+  "name": "@ngx-kit/default-theme",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - core module",
-  "main": "bundle/ngx-kit-core.umd.js",
+  "description": "ngx-kit - default theme module",
+  "main": "bundle/ngx-kit-default-theme.umd.js",
   "module": "index.js",
   "types": "index.d.ts",
   "author": "Sasha Novik",
