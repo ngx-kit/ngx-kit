@@ -16,7 +16,8 @@
     "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/forms": "0.0.0-ANGULAR-PLACEHOLDER",
     "@ngx-kit/core": "0.0.0-PLACEHOLDER",
-    "@ngx-kit/styler": "0.0.0-STYLER-PLACEHOLDER"
+    "@ngx-kit/styler": "0.0.0-STYLER-PLACEHOLDER",
+    "moment": "0.0.0-MOMENT-PLACEHOLDER"
   },
   "dependencies": {
   }

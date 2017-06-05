@@ -3,9 +3,10 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitCoreService } from './kit-core.service';
 import { KitHostService } from './kit-host.service';
 import { KitDefaultThemeService } from './default-theme/kit-default-theme.service';
-import { kitComponentButton, kitComponentSelect, kitTheme } from './meta/tokens';
+import { kitComponentButton, kitComponentSelect, kitTheme, kitComponentDatePicker } from './meta/tokens';
 import { KitDefaultButtonStyle } from './default-theme/components/kit-default-button.style';
 import { KitDefaultSelectStyle } from './default-theme/components/kit-default-select.style';
+import { KitDefaultDatePickerStyle } from './default-theme/components/kit-default-date-picker.style';
 
 @NgModule({
   imports: [],
@@ -34,6 +35,10 @@ export class KitCoreModule {
         {
           provide: kitComponentSelect,
           useClass: KitDefaultSelectStyle,
+        },
+        {
+          provide: kitComponentDatePicker,
+          useClass: KitDefaultDatePickerStyle,
         },
       ]
     }

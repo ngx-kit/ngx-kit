@@ -9,3 +9,4 @@ export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 export const kitComponentButton = new InjectionToken<KitButtonStyle>('kitComponentButton');
 // forms
 export const kitComponentSelect = new InjectionToken<KitSelectStyle>('kitComponentSelect');
+export const kitComponentDatePicker = new InjectionToken<KitSelectStyle>('kitComponentDatePicker');

@@ -1,8 +1,9 @@
 {
   "version": "1.0.0-alpha.1",
   "vendors": {
-    "styler": "^1.0.0-alpha.13",
-    "angular": "^4.0.0"
+    "styler": "^1.0.0-alpha.14",
+    "angular": "^4.0.0",
+    "moment": "^2.18.1"
   },
   "packages": [
     "core",

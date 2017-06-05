@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentSelect, KitSelectStyle } from '@ngx-kit/core';
 
-export const ACCOUNT_VALUE_ACCESSOR: any = {
+export const KIT_SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitSelectComponent),
   multi: true
@@ -26,7 +26,7 @@ export const ACCOUNT_VALUE_ACCESSOR: any = {
       {{ option[labelFiled] }}
     </div>
   `,
-  providers: [ACCOUNT_VALUE_ACCESSOR],
+  providers: [KIT_SELECT_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
   ]

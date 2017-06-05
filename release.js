@@ -11,6 +11,7 @@ config.packages.forEach(packageName => {
   const result = blueprint
       .replace(/0\.0\.0\-PLACEHOLDER/g, config.version)
       .replace(/0\.0\.0\-STYLER\-PLACEHOLDER/g, config.vendors.styler)
-      .replace(/0\.0\.0\-ANGULAR\-PLACEHOLDER/g, config.vendors.angular);
+      .replace(/0\.0\.0\-ANGULAR\-PLACEHOLDER/g, config.vendors.angular)
+      .replace(/0\.0\.0\-MOMENT\-PLACEHOLDER/g, config.vendors.moment);
   fs.writeFileSync(path.resolve('dist/packages', packageName, 'package.json'), result);
 });
