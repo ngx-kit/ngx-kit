@@ -96,6 +96,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
 
   set date(date: any) {
     this._date = date;
+    this.updateDatesGrid();
     this.changes$.next(this.value);
     this.touches$.next(true);
   }
