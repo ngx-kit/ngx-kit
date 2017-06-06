@@ -1,0 +1,19 @@
+{
+  "name": "@ngx-kit/misc",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "ngx-kit - misc module",
+  "main": "bundle/ngx-kit-misc.umd.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "author": "Sasha Novik",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/ngx-kit/ngx-kit.git",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
+  },
+  "dependencies": {
+  }
+}

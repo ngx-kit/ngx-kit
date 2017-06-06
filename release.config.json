@@ -6,10 +6,16 @@
     "moment": "^2.18.1"
   },
   "packages": [
+    "buttons",
     "core",
     "default-theme",
-    "button",
-    "icon",
-    "forms"
+    "forms",
+    "grid",
+    "icons",
+    "lists",
+    "misc",
+    "modals",
+    "navigation",
+    "panels"
   ]
 }

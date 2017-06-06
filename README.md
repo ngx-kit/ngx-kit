@@ -13,13 +13,56 @@ Currently in a deep beta!
 
 ## Packages
 
-### Core
+### core
 
-### General
+### buttons
 
-* button
-* icon
+- [ ] button
+- [ ] dropdown-menu
 
-### Forms
+### forms
 
-* select
+- [ ] color-picker
+- [ ] date-picker
+- [ ] form-error
+- [ ] form-group
+- [ ] form-label
+- [ ] input
+- [ ] select
+
+### grid
+
+- [ ] grid
+
+### icons
+
+- [ ] icon
+
+### lists
+
+- [ ] list
+- [ ] tree
+
+### misc
+
+- [ ] badge
+- [ ] divider
+- [ ] label
+- [ ] popover
+- [ ] tooltip
+
+### modals
+
+- [ ] modal 
+- [ ] router-modal
+
+### navigation
+
+- [ ] breadcrumb
+- [ ] nav
+- [ ] pagination
+
+### panels
+
+- [ ] accordion
+- [ ] tabs
