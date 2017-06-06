@@ -11,9 +11,9 @@ import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'kit-dropdown-menu',
   template: `
-    <kit-popover>
-      <ng-content></ng-content>
-    </kit-popover>
+    <!--<kit-popover>-->
+      <!--<ng-content></ng-content>-->
+    <!--</kit-popover>-->
   `,
 })
 export class KitDropdownMenuComponent implements OnInit {

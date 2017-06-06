@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { KitButtonComponent } from './kit-button/kit-button.component';
 import { KitDropdownMenuComponent } from './kit-dropdown-menu/kit-dropdown-menu.component';
@@ -13,7 +14,9 @@ const exported = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+      CommonModule,
+  ],
   exports: [
     ...exported,
   ],
