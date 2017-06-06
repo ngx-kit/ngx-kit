@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { StylerModule } from '@ngx-kit/styler';
 
-import { KitSelectComponent } from './kit-select/kit-select.component';
 import { KitDatePickerComponent } from './kit-date-picker/kit-date-picker.component';
+import { KitInputComponent } from './kit-input/kit-input.component';
+import { KitSelectComponent } from './kit-select/kit-select.component';
 
 const exported = [
-  KitSelectComponent,
   KitDatePickerComponent,
+  KitInputComponent,
+  KitSelectComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     StylerModule,
+    FormsModule,
   ],
   exports: [
     ...exported,
