@@ -1,13 +1,17 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
-  kitComponentButton, kitComponentDatePicker, kitComponentInput, kitComponentSelect,
+  kitComponentButton, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
+  kitComponentFormLabel, kitComponentInput, kitComponentSelect,
   kitTheme
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 import { KitDefaultDatePickerStyle } from './components/kit-default-date-picker.style';
+import { KitDefaultFormErrorStyle } from './components/kit-default-form-error.style';
+import { KitDefaultFormGroupStyle } from './components/kit-default-form-group.style';
+import { KitDefaultFormLabelStyle } from './components/kit-default-form-label.style';
 import { KitDefaultInputStyle } from './components/kit-default-input.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 
@@ -36,6 +40,18 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentDatePicker,
           useClass: KitDefaultDatePickerStyle,
+        },
+        {
+          provide: kitComponentFormError,
+          useClass: KitDefaultFormErrorStyle,
+        },
+        {
+          provide: kitComponentFormGroup,
+          useClass: KitDefaultFormGroupStyle,
+        },
+        {
+          provide: kitComponentFormLabel,
+          useClass: KitDefaultFormLabelStyle,
         },
         {
           provide: kitComponentInput,

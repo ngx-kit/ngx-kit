@@ -14,7 +14,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-input',
   template: `
-    <input type="text" [ngModel]="value" (ngModelChange)="value = $event">
+    <input type="text" [ngModel]="value" (ngModelChange)="value = $event" (blur)="touch()">
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [
@@ -58,6 +58,10 @@ export class KitInputComponent implements ControlValueAccessor {
   set value(value: any) {
     this._value = value;
     this.changes$.next(value);
+    this.touches$.next(true);
+  }
+
+  touch() {
     this.touches$.next(true);
   }
 
