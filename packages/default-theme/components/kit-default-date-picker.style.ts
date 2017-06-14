@@ -88,6 +88,11 @@ export class KitDefaultDatePickerStyle implements KitDatePickerStyle {
         textAlign: 'center',
         transition: 'background .2s',
         width: '14.28574%',
+        $nest: {
+          '&:hover': {
+            background: this.theme.colorMod(.04, params.colors.body.color),
+          }
+        },
         $states: {
           outside: {
             opacity: .7,
@@ -96,7 +101,13 @@ export class KitDefaultDatePickerStyle implements KitDatePickerStyle {
             background: this.theme.colorMod(.1, params.colors.body.color),
             borderColor: this.theme.colorMod(.1, params.colors.border.color),
             boxShadow: `0 0 7px 0 rgba(0, 0, 0, .2)`,
+            cursor: 'default',
             fontWeight: 600,
+            $nest: {
+              '&:hover': {
+                background: this.theme.colorMod(.1, params.colors.body.color),
+              },
+            },
           },
         },
       },

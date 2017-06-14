@@ -1,49 +1,16 @@
-# @ngx-kit/button
+# @ngx-kit/forms
 
 ## Installation
 
-`npm install @ngx-kit/core @ngx-kit/button --save`
+`npm install @ngx-kit/core @ngx-kit/forms --save`
 
 ## Usage
 
-### Import
-
-```typescript
-import { KitCoreModule } from '@ngx-kit/core';
-import { KitButtonModule } from '@ngx-kit/button';
-..
-@NgModule({
-  imports: [
-      KitCoreModule.forRoot(),
-      KitButtonModule,
-...
-```
-
-Use import with `.forRoot()` only once on the top level.
-
-### Use in a template
-
 ```html
-<kit-button>Button text</kit-button>
+<kit-form-group>
+  <kit-form-label>Testy</kit-form-label>
+  <kit-input [formControl]="form.controls['testy']"></kit-input>
+  <kit-form-error [validator]="'required'" [touched]="true">Yoohoo: You can't leave this empty.</kit-form-error>
+  <kit-form-error [validator]="'email'" [touched]="true">Yoohoo: Email invalid.</kit-form-error>
+</kit-form-group>
 ```
-
-### API
-
-Customize a button with input params:
-
-```html
-<kit-button [type]="'success'" [size]="'s'" ...></kit-button> 
-```
-
-| Property | Type | Default | Description |
-| --- | --- | --- | --- |
-| *type* | string | in-theme | Mainly color changing |
-| *size* | string | in-theme | Button size |
-| *disabled* | boolean | false | In a disabled state does not raise click event |
-
-Type and size can be different depends on a theme.
-
-#### Default theme params
-
-* type: `default`, `primary`, `success`, `warning`, `error`, `link`
-* size: `xs`, `s`, `m`, `l`, `xl`
