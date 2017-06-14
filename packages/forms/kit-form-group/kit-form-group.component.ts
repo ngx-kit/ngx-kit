@@ -1,5 +1,6 @@
 import {
-  AfterViewInit, Component, ContentChild, ContentChildren, DoCheck, forwardRef, Inject, OnInit, Optional,
+  AfterViewInit, Component, ContentChild, ContentChildren, DoCheck, forwardRef, HostBinding, Inject,
+  Input, OnInit, Optional,
   QueryList
 } from '@angular/core';
 import { AbstractControl, FormControlDirective, FormGroupDirective } from '@angular/forms';
@@ -32,13 +33,19 @@ import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.componen
 })
 export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
 
-  private errors$ = new Subject<string[]>();
-  private touched$ = new Subject<boolean>();
-  private dirty$ = new Subject<boolean>();
+  @Input() touched: boolean = false;
+  @Input() dirty: boolean = false;
 
   @ContentChild(FormControlDirective) controlDirective: FormControlDirective;
   @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
 
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  }
+
+  private errors$ = new Subject<string[]>();
+  private touched$ = new Subject<boolean>();
+  private dirty$ = new Subject<boolean>();
   private control: AbstractControl;
 
   constructor(private styler: StylerComponent,
@@ -56,6 +63,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
     }
     this.initControl();
     this.initErrors();
+    this.initStyling();
   }
 
   ngDoCheck() {
@@ -69,18 +77,6 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
 
   hasError(errorCode: string): boolean {
     return this.control && this.control.hasError(errorCode);
-  }
-
-  private initControl(): void {
-    this.control = this.controlDirective.control;
-  }
-
-  private initErrors(): void {
-    if (this.errors) {
-      this.errors.forEach(error => {
-        error.init();
-      });
-    }
   }
 
   get statusChanges() {
@@ -97,6 +93,26 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
           };
         }
     );
+  }
+
+  private initControl(): void {
+    this.control = this.controlDirective.control;
+  }
+
+  private initErrors(): void {
+    if (this.errors) {
+      this.errors.forEach(error => {
+        error.init();
+      });
+    }
+  }
+
+  private initStyling(): void {
+    this.statusChanges.subscribe(status => {
+      const hasError = status.errors.length > 0;
+      const visible = hasError && (!this.touched || status.touched) && (!this.dirty || status.dirty);
+      this.styler.host.applyState({error: visible});
+    });
   }
 
 }

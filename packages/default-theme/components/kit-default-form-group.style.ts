@@ -15,7 +15,13 @@ export class KitDefaultFormGroupStyle implements KitFormGroupStyle {
   getStyles(): KitFormGroupStyleSet {
     const params = this.theme.params;
     return {
-      host: {},
+      host: {
+        $states: {
+          error: {
+            background: params.colors.error.color,
+          }
+        }
+      },
     };
   }
 

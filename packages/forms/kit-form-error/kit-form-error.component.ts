@@ -20,8 +20,8 @@ import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.componen
 export class KitFormErrorComponent implements OnInit, AfterViewInit {
 
   @Input() validator: string;
-  @Input() touched: boolean = false;
-  @Input() dirty: boolean = false;
+  @Input() touched: boolean | null = null;
+  @Input() dirty: boolean | null = null;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
@@ -45,8 +45,12 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
   init() {
     this.formGroup.statusChanges.subscribe(status => {
       const hasError = this.formGroup.hasError(this.validator);
-      const visible = hasError && (!this.touched || status.touched) && (!this.dirty || status.dirty);
-      console.log('ER-ST-CH', {hasError, status, visible});
+      // proxy touched & dirty to form-group
+      const touched = this.touched === null ? this.formGroup.touched : this.touched;
+      const dirty = this.dirty === null ? this.formGroup.dirty : this.dirty;
+      // ident visibility
+      const visible = hasError && (!touched || status.touched) && (!dirty || status.dirty);
+      // apply state
       this.styler.host.applyState({visible});
     });
   }
