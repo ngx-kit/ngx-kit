@@ -19,10 +19,10 @@ import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.componen
 @Component({
   selector: 'kit-form-group',
   template: `
-    <div>Label:
+    <div>
       <ng-content select="kit-form-label"></ng-content>
     </div>
-    <div>Content:
+    <div>
       <ng-content></ng-content>
     </div>
   `,
