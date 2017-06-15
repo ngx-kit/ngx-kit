@@ -18,7 +18,7 @@ export class KitDefaultFormGroupStyle implements KitFormGroupStyle {
       host: {
         $states: {
           error: {
-            background: params.colors.error.color,
+            border: [1, 'solid', params.colors.error.color],
           }
         }
       },

@@ -67,7 +67,7 @@ export class KitMathInputComponent implements ControlValueAccessor {
     this._result = isNaN(parsed) ? null : parsed;
     this.displayResult = this._result && this._value != this._result;
     // emit
-    this.changes$.next(value);
+    this.changes$.next(this._result);
     this.touches$.next(true);
   }
 
