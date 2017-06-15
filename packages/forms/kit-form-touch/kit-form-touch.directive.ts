@@ -2,7 +2,7 @@ import { Directive, HostListener, Input, OnInit } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 
 @Directive({
-  selector: '[kit-form-touch]',
+  selector: '[kitFormTouch]',
 })
 export class KitFormTouchComponent implements OnInit {
 
