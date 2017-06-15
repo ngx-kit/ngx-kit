@@ -36,7 +36,6 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
   }
 
   setActive(tab: KitTabsPanelComponent) {
-    console.log('sA', tab);
     this.tabs.forEach(t => {
       t.active = t === tab;
     });

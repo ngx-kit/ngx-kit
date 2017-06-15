@@ -24,7 +24,6 @@ export class MathParser {
       s = MathParser.replaceAll(s, i + "(", i + "*" + "(");
     }
     while (s.charAt(0) == "+") s = s.substr(1);
-    // console.log(s);
     return s;
   } // standardize string format
 

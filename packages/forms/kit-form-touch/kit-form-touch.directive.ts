@@ -9,7 +9,6 @@ export class KitFormTouchComponent implements OnInit {
   @Input() kitFormTouch: any;
 
   @HostListener('click') click() {
-    console.log('click kft');
     const form = this.formGroupDirective.form;
     form.markAsTouched();
     for (const i in form.controls) {

@@ -18,7 +18,6 @@ export class KitDialogService {
     // subscribe to modal events
     // close event
     instance.close.subscribe(() => {
-      console.log('close', 111);
       modalRef.destroy();
     });
     // store modalRef

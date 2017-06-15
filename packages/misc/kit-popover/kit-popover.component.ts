@@ -40,7 +40,6 @@ export class KitPopoverComponent implements OnInit {
 
   toggle(event: any) {
     this.display = !this.display;
-    console.log('ev', event);
     if (event.target) {
       this.calcPosition(event.target);
     } else {
