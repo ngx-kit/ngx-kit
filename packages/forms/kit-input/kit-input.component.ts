@@ -36,7 +36,7 @@ export class KitInputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this.value = value;
+    this._value = value;
   }
 
   registerOnChange(fn: any) {
