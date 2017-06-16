@@ -3,6 +3,7 @@ export * from './kit-core.service';
 export * from './kit-host.service';
 export * from './meta/theme';
 export * from './meta/tokens';
+export * from './meta/components/auto-complete-style';
 export * from './meta/components/button-style';
 export * from './meta/components/date-picker-style';
 export * from './meta/components/form-error-style';
