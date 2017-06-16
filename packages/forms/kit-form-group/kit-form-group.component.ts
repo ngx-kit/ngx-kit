@@ -3,7 +3,7 @@ import {
   Input, OnInit, Optional,
   QueryList
 } from '@angular/core';
-import { AbstractControl, FormControlDirective, FormGroupDirective } from '@angular/forms';
+import { AbstractControl, FormControlDirective, FormControlName, FormGroupDirective } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -37,6 +37,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   @Input() dirty: boolean = false;
 
   @ContentChild(FormControlDirective) controlDirective: FormControlDirective;
+  @ContentChild(FormControlName) controlNameDirective: FormControlName;
   @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
 
   @HostBinding('attr.sid') get sid() {
@@ -58,8 +59,8 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   ngAfterViewInit() {
-    if (!this.controlDirective) {
-      throw new Error('kit-form-group: FormControlDirective not found!');
+    if (!this.controlDirective && !this.controlNameDirective) {
+      throw new Error('kit-form-group: FormControlDirective/FormControlName not found!');
     }
     this.initControl();
     this.initErrors();
@@ -96,7 +97,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   private initControl(): void {
-    this.control = this.controlDirective.control;
+    this.control = (this.controlDirective || this.controlNameDirective).control;
   }
 
   private initErrors(): void {
