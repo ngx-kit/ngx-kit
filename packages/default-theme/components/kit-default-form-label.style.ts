@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitFormLabelStyle, KitFormLabelStyleSet, kitTheme } from '@ngx-kit/core';
+import { KitFormLabelStyle, KitFormLabelStyleDef, kitTheme } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
@@ -12,7 +12,7 @@ export class KitDefaultFormLabelStyle implements KitFormLabelStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitFormLabelStyleSet {
+  getStyles(): KitFormLabelStyleDef {
     const params = this.theme.params;
     return {
       host: {},

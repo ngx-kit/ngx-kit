@@ -1,14 +1,14 @@
 import { ElementDef, RegistrationDef, StyleDef } from '@ngx-kit/styler';
 
 export interface KitButtonStyle {
-  getStyles(): KitButtonStyleSet;
+  getStyles(): KitButtonStyleDef;
 }
 
-export interface KitButtonStyleSet extends RegistrationDef {
-  host: KitButtonStyleSetHost;
+export interface KitButtonStyleDef extends RegistrationDef {
+  host: KitButtonStyleDefHost;
 }
 
-export interface KitButtonStyleSetHost extends ElementDef {
+export interface KitButtonStyleDefHost extends ElementDef {
   $states: {
     size: StyleDef;
     type: StyleDef;

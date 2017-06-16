@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitFormGroupStyle, KitFormGroupStyleSet, kitTheme } from '@ngx-kit/core';
+import { KitFormGroupStyle, KitFormGroupStyleDef, kitTheme } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
@@ -12,7 +12,7 @@ export class KitDefaultFormGroupStyle implements KitFormGroupStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitFormGroupStyleSet {
+  getStyles(): KitFormGroupStyleDef {
     const params = this.theme.params;
     return {
       host: {

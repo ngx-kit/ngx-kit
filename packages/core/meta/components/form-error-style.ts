@@ -1,14 +1,14 @@
 import { ElementDef, RegistrationDef, StateDef } from '@ngx-kit/styler';
 
 export interface KitFormErrorStyle {
-  getStyles(): KitFormErrorStyleSet;
+  getStyles(): KitFormErrorStyleDef;
 }
 
-export interface KitFormErrorStyleSet extends RegistrationDef {
-  host: KitFormErrorStyleSetHost;
+export interface KitFormErrorStyleDef extends RegistrationDef {
+  host: KitFormErrorStyleDefHost;
 }
 
-export interface KitFormErrorStyleSetHost extends ElementDef {
+export interface KitFormErrorStyleDefHost extends ElementDef {
   $states: {
     visible: StateDef;
   };

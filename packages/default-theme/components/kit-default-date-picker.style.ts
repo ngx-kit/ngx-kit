@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitDatePickerStyle, KitDatePickerStyleSet, kitTheme } from '@ngx-kit/core';
+import { KitDatePickerStyle, KitDatePickerStyleDef, kitTheme } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
@@ -12,7 +12,7 @@ export class KitDefaultDatePickerStyle implements KitDatePickerStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitDatePickerStyleSet {
+  getStyles(): KitDatePickerStyleDef {
     const params = this.theme.params;
     return {
       host: {},

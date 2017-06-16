@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 
 import {
-  KitFormErrorStyle, KitFormErrorStyleSet, kitTheme
+  KitFormErrorStyle, KitFormErrorStyleDef, kitTheme
 } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
 
@@ -14,7 +14,7 @@ export class KitDefaultFormErrorStyle implements KitFormErrorStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitFormErrorStyleSet {
+  getStyles(): KitFormErrorStyleDef {
     const params = this.theme.params;
     return {
       host: {

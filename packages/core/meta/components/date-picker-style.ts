@@ -1,34 +1,34 @@
 import { ElementDef, RegistrationDef, StateDef } from '@ngx-kit/styler';
 
 export interface KitDatePickerStyle {
-  getStyles(): KitDatePickerStyleSet;
+  getStyles(): KitDatePickerStyleDef;
 }
 
-export interface KitDatePickerStyleSet extends RegistrationDef {
+export interface KitDatePickerStyleDef extends RegistrationDef {
   host: ElementDef;
   years: ElementDef;
-  year: KitDatePickerStyleSetYear;
+  year: KitDatePickerStyleDefYear;
   months: ElementDef;
-  month: KitDatePickerStyleSetElement;
+  month: KitDatePickerStyleDefElement;
   weekdays: ElementDef;
   weekday: ElementDef;
   dates: ElementDef;
-  date: KitDatePickerStyleSetDate;
+  date: KitDatePickerStyleDefDate;
 }
 
-export interface KitDatePickerStyleSetYear extends ElementDef {
+export interface KitDatePickerStyleDefYear extends ElementDef {
   $states: {
     type: StateDef;
   };
 }
 
-export interface KitDatePickerStyleSetElement extends ElementDef {
+export interface KitDatePickerStyleDefElement extends ElementDef {
   $states: {
     type: StateDef;
   };
 }
 
-export interface KitDatePickerStyleSetDate extends ElementDef {
+export interface KitDatePickerStyleDefDate extends ElementDef {
   $states: {
     outside: StateDef;
     active: StateDef;

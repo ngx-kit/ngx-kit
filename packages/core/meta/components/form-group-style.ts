@@ -1,9 +1,9 @@
 import { ElementDef, RegistrationDef } from '@ngx-kit/styler';
 
 export interface KitFormGroupStyle {
-  getStyles(): KitFormGroupStyleSet;
+  getStyles(): KitFormGroupStyleDef;
 }
 
-export interface KitFormGroupStyleSet extends RegistrationDef {
+export interface KitFormGroupStyleDef extends RegistrationDef {
   host: ElementDef;
 }
