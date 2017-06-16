@@ -1,10 +1,11 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Inject, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentInput, KitInputStyle } from '@ngx-kit/core';
+import { kitComponentMathInput, KitMathInputStyle } from '@ngx-kit/core';
 import { MathParser } from '@ngx-kit/forms/kit-math-input/math-parser';
+import { KitInputComponent } from '@ngx-kit/forms';
 
 export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -15,17 +16,19 @@ export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-math-input',
   template: `
-    <input type="text" [ngModel]="value" (ngModelChange)="value = $event" (blur)="touch()">
-    <div *ngIf="displayResult">= {{ result }}</div>
+    <kit-input></kit-input>
+    <div *ngIf="displayResult" styler="result">= {{ result }}</div>
   `,
   providers: [KIT_MATH_INPUT_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
   ]
 })
-export class KitMathInputComponent implements ControlValueAccessor {
+export class KitMathInputComponent implements ControlValueAccessor, AfterViewInit {
 
   displayResult = false;
+
+  @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
 
   private _result: any;
   private _value: any;
@@ -36,12 +39,20 @@ export class KitMathInputComponent implements ControlValueAccessor {
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentInput) private style: KitInputStyle) {
+              @Inject(kitComponentMathInput) private style: KitMathInputStyle) {
     this.styler.register(this.style.getStyles());
+  }
+
+  ngAfterViewInit() {
+    this.input.registerOnTouched(this.touches$);
+    this.input.registerOnChange((value: any) => {
+      this.value = value;
+    });
   }
 
   writeValue(value: any) {
     this.value = value;
+    this.input.writeValue(this.value);
   }
 
   registerOnChange(fn: any) {
@@ -54,6 +65,7 @@ export class KitMathInputComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean) {
     this.isDisabled = isDisabled;
+    this.input.setDisabledState(this.isDisabled);
   }
 
   get value(): any {

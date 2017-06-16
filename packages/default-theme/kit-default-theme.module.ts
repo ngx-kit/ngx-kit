@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
   kitComponentButton, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
-  kitComponentFormLabel, kitComponentInput, kitComponentSelect,
+  kitComponentFormLabel, kitComponentInput, kitComponentMathInput, kitComponentSelect,
   kitTheme
 } from '@ngx-kit/core';
 
@@ -13,6 +13,7 @@ import { KitDefaultFormErrorStyle } from './components/kit-default-form-error.st
 import { KitDefaultFormGroupStyle } from './components/kit-default-form-group.style';
 import { KitDefaultFormLabelStyle } from './components/kit-default-form-label.style';
 import { KitDefaultInputStyle } from './components/kit-default-input.style';
+import { KitDefaultMathInputStyle } from './components/kit-default-math-input.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 
 @NgModule({
@@ -56,6 +57,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentInput,
           useClass: KitDefaultInputStyle,
+        },
+        {
+          provide: kitComponentMathInput,
+          useClass: KitDefaultMathInputStyle,
         },
         {
           provide: kitComponentSelect,

@@ -7,6 +7,7 @@ import { KitFormErrorStyle } from './components/form-error-style';
 import { KitFormGroupStyle } from './components/form-group-style';
 import { KitFormLabelStyle } from './components/form-label-style';
 import { KitInputStyle } from './components/input-style';
+import { KitMathInputStyle } from './components/math-input-style';
 import { KitSelectStyle } from './components/select-style';
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
@@ -18,4 +19,5 @@ export const kitComponentFormError = new InjectionToken<KitFormErrorStyle>('kitC
 export const kitComponentFormGroup = new InjectionToken<KitFormGroupStyle>('kitComponentFormGroup');
 export const kitComponentFormLabel = new InjectionToken<KitFormLabelStyle>('kitComponentFormLabel');
 export const kitComponentInput = new InjectionToken<KitInputStyle>('kitComponentInput');
+export const kitComponentMathInput = new InjectionToken<KitMathInputStyle>('kitComponentMathInput');
 export const kitComponentSelect = new InjectionToken<KitSelectStyle>('kitComponentSelect');

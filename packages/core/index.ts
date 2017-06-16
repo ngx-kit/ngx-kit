@@ -9,4 +9,5 @@ export * from './meta/components/form-error-style';
 export * from './meta/components/form-group-style';
 export * from './meta/components/form-label-style';
 export * from './meta/components/input-style';
+export * from './meta/components/math-input-style';
 export * from './meta/components/select-style';
