@@ -3,11 +3,13 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   kitComponentAutoComplete,
   kitComponentButton, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
-  kitComponentFormLabel, kitComponentInput, kitComponentMathInput, kitComponentSelect,
+  kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput, kitComponentSelect,
   kitTheme
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
+// core
+import { KitDefaultHostContainerStyle } from './components/kit-default-host-container.style';
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 // forms
@@ -35,6 +37,11 @@ export class KitDefaultThemeModule {
         {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
+        },
+          // core
+        {
+          provide: kitComponentHostContainer,
+          useClass: KitDefaultHostContainerStyle,
         },
         // buttons
         {
