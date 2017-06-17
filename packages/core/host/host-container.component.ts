@@ -61,7 +61,7 @@ export class KitHostContainerComponent implements OnInit, OnChanges, OnDestroy, 
       // @todo use renderer2 (currently it does not have listenGlobal)
       // reposition
       document.addEventListener('scroll', this.reposition, true);
-      document.addEventListener('resize', this.reposition, true);
+      window.addEventListener('resize', this.reposition, true);
       // outside click
       document.addEventListener('click', this.clickListener);
     });
@@ -85,7 +85,7 @@ export class KitHostContainerComponent implements OnInit, OnChanges, OnDestroy, 
 
   ngOnDestroy() {
     document.removeEventListener('scroll', this.reposition, true);
-    document.removeEventListener('resize', this.reposition, true);
+    window.removeEventListener('resize', this.reposition, true);
     document.removeEventListener('click', this.clickListener);
   }
 
