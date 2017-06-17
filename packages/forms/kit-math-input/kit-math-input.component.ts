@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentMathInput, KitMathInputStyle } from '@ngx-kit/core';
+import { kitComponentMathInput, KitComponentStyle } from '@ngx-kit/core';
 import { MathParser } from '@ngx-kit/forms/kit-math-input/math-parser';
 import { KitInputComponent } from '@ngx-kit/forms';
 
@@ -39,7 +39,7 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMathInput) private style: KitMathInputStyle) {
+              @Inject(kitComponentMathInput) private style: KitComponentStyle) {
     this.styler.register(this.style.getStyles());
   }
 

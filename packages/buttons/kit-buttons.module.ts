@@ -15,7 +15,7 @@ const exported = [
 
 @NgModule({
   imports: [
-      CommonModule,
+    CommonModule,
   ],
   exports: [
     ...exported,

@@ -1,18 +1,18 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitInputStyle, KitInputStyleDef, kitTheme } from '@ngx-kit/core';
-import { StylerColorService } from '@ngx-kit/styler';
+import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
+import { RegistrationDef, StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
-export class KitDefaultInputStyle implements KitInputStyle {
+export class KitDefaultInputStyle implements KitComponentStyle {
 
   constructor(private color: StylerColorService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitInputStyleDef {
+  getStyles(): RegistrationDef {
     const params = this.theme.params;
     return {
       host: {},
@@ -21,11 +21,9 @@ export class KitDefaultInputStyle implements KitInputStyle {
         borderRadius: params.border.radius.s,
         transition: 'background 0.2s',
         $nest: {
-          '&:focus': {
-          },
+          '&:focus': {},
         },
-        $states: {
-        },
+        $states: {},
       },
     };
   }
