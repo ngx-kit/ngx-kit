@@ -20,6 +20,7 @@ export interface KitDefaultThemeParams {
   shadows: {
     element: string;
     deep: string;
+    overlay: string;
   };
   typo: {
     bodyFontSize: string;

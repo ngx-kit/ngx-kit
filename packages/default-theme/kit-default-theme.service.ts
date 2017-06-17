@@ -53,7 +53,8 @@ export class KitDefaultThemeService implements KitThemeService {
     },
     shadows: {
       element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
-      deep: '',
+      deep: '0 0 20px 0 rgba(50, 50, 50, 0.1)',
+      overlay: '0 0 6px 0 rgba(50, 50, 50, 0.1)',
     },
     typo: {
       bodyFontSize: '13px',

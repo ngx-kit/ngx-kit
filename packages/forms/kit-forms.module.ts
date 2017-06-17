@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { StylerModule } from '@ngx-kit/styler';
-import { KitHostService } from '@ngx-kit/core';
+import { KitCoreModule, KitHostService } from '@ngx-kit/core';
 
 import { KitAutoCompleteComponent } from './kit-auto-complete/kit-auto-complete.component';
-import { KitAutoCompleteResultsComponent } from './kit-auto-complete/kit-auto-complete-results.component';
 import { KitDatePickerComponent } from './kit-date-picker/kit-date-picker.component';
 import { KitFormErrorComponent } from './kit-form-error/kit-form-error.component';
 import { KitFormGroupComponent } from './kit-form-group/kit-form-group.component';
@@ -28,25 +27,18 @@ const exported = [
   KitSelectComponent,
 ];
 
-const entry = [
-  KitAutoCompleteResultsComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     StylerModule,
     FormsModule,
+    KitCoreModule,
   ],
   exports: [
     ...exported,
   ],
   declarations: [
     ...exported,
-    ...entry,
-  ],
-  entryComponents: [
-    ...entry,
   ],
   providers: [
     KitHostService,

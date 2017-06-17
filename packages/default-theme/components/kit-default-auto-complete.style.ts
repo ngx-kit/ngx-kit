@@ -16,6 +16,13 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
     const params = this.theme.params;
     return {
       host: {},
+      input: {
+        display: 'block',
+      },
+      results: {
+        background: params.colors.body.color,
+        boxShadow: params.shadows.deep,
+      },
       result: {
         borderBottom: '1px solid #eee',
         cursor: 'pointer',

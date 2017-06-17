@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentRef, forwardRef, Inject, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
@@ -9,7 +9,6 @@ import { KitInputComponent } from '@ngx-kit/forms';
 import { kitComponentAutoComplete, KitComponentStyle, KitHostService } from '@ngx-kit/core';
 
 import { KitDataSourceFactory } from './data-source-factory';
-import { KitAutoCompleteResultsComponent } from './kit-auto-complete-results.component';
 
 export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -27,14 +26,26 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   template: `
     <kit-input (keydown.ArrowUp)="activeUp($event)"
                (keydown.ArrowDown)="activeDown($event)"
-               (keydown.Enter)="activePick($event)">
+               (keydown.Enter)="activePick($event)"
+               [kitAnchor]
+               #anchorRef="anchor"
+               styler="input">
     </kit-input>
-    <div *ngIf="results">
-      <div *ngFor="let result of results; let i = index"
-           [styler]="['result', {active: i === activeResult}]"
-           (click)="pick(result)">
-        {{ result }}
-      </div>
+    <div *ngIf="results.length > 0">
+      <kit-host [template]="resultsRef"
+                [type]="'dropdown'"
+                [anchor]="anchorRef"
+                (outsideClick)="clearResults()">
+      </kit-host>
+      <ng-template #resultsRef>
+        <div styler="results">
+          <div *ngFor="let result of results; let i = index"
+               [styler]="['result', {active: i === activeResult}]"
+               (click)="pick(result)">
+            {{ result }}
+          </div>
+        </div>
+      </ng-template>
     </div>
   `,
   providers: [KIT_AUTO_COMPLETE_VALUE_ACCESSOR],
@@ -53,7 +64,6 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   private _value: any;
   private results: string[] = [];
   private activeResult: number = -1;
-  private resultsRef: ComponentRef<KitAutoCompleteResultsComponent>;
 
   private isDisabled = false;
   private changes$ = new Subject<number>();
@@ -77,7 +87,6 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
           .subscribe(res => {
             this.results = res;
             this.validateActiveResult();
-            this.showResults();
           });
     } else {
       throw new Error(`[kit-auto-complete]: Data source was not declared, use [data] or [dataSourceUrl + dataSourceParam]`);
@@ -124,8 +133,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   pick(value: string): void {
     this.value = value;
-    this.results = [];
-    this.activeResult = -1;
+    this.clearResults();
   }
 
   activeUp(event: Event) {
@@ -150,18 +158,17 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     }
   }
 
+  clearResults(): void {
+    this.results = [];
+    this.activeResult = -1;
+  }
+
   private validateActiveResult() {
     if (this.results.length === 0) {
       this.activeResult = -1;
     } else if (this.activeResult > this.results.length - 1) {
       this.activeResult = this.results.length - 1;
     }
-  }
-
-  private showResults() {
-//    this.resultsRef = this.host.host<KitAutoCompleteResultsComponent>(KitAutoCompleteResultsComponent);
-//    this.resultsRef.instance.hostRect = this.el.nativeElement.getBoundingClientRect();
-//    this.resultsRef.instance.text = this._text;
   }
 
 }
