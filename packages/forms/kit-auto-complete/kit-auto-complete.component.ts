@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, ComponentRef, forwardRef, Inject, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitInputComponent } from '@ngx-kit/forms';
-import { KitAutoCompleteStyle, kitComponentAutoComplete, KitHostService } from '@ngx-kit/core';
+import { kitComponentAutoComplete, KitComponentStyle, KitHostService } from '@ngx-kit/core';
 
 import { KitDataSourceFactory } from './data-source-factory';
 import { KitAutoCompleteResultsComponent } from './kit-auto-complete-results.component';
@@ -61,7 +60,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAutoComplete) private style: KitAutoCompleteStyle,
+              @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
               private host: KitHostService) {
     this.styler.register(this.style.getStyles());
   }

@@ -1,16 +1,17 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitButtonStyle, KitButtonStyleDef, kitTheme } from '@ngx-kit/core';
+import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
+import { RegistrationDef } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
-export class KitDefaultButtonStyle implements KitButtonStyle {
+export class KitDefaultButtonStyle implements KitComponentStyle {
 
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitButtonStyleDef {
+  getStyles(): RegistrationDef {
     const params = this.theme.params;
     return {
       host: {

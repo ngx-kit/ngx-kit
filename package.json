@@ -8,6 +8,7 @@
     "build:ngc": "ngc -p tsconfig.json",
     "build:rollup": "rollup -c rollup.config.js",
     "build:release": "node ./release.js",
+    "dev-build": "npm run build && node ./dev-copy.js",
     "publish": "npm publish ./dist --access=public",
     "release": "npm run build && npm run publish"
   },

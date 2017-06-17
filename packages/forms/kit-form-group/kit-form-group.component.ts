@@ -9,7 +9,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/combineLatest';
 
-import { kitComponentFormGroup, KitFormGroupStyle } from '@ngx-kit/core';
+import { kitComponentFormGroup, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
 import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.component';
@@ -50,7 +50,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   private control: AbstractControl;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentFormGroup) private style: KitFormGroupStyle,
+              @Inject(kitComponentFormGroup) private style: KitComponentStyle,
               @Optional() private form: FormGroupDirective) {
     this.styler.register(this.style.getStyles());
   }

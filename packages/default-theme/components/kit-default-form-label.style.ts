@@ -1,18 +1,18 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { KitFormLabelStyle, KitFormLabelStyleDef, kitTheme } from '@ngx-kit/core';
-import { StylerColorService } from '@ngx-kit/styler';
+import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
+import { RegistrationDef, StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
-export class KitDefaultFormLabelStyle implements KitFormLabelStyle {
+export class KitDefaultFormLabelStyle implements KitComponentStyle {
 
   constructor(private color: StylerColorService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): KitFormLabelStyleDef {
+  getStyles(): RegistrationDef {
     const params = this.theme.params;
     return {
       host: {},
