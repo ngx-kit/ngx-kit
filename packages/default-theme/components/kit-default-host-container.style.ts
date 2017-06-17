@@ -28,7 +28,9 @@ export class KitDefaultHostContainerStyle implements KitComponentStyle {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 10000,
-            }
+            },
+            dropdown: {},
+            side: {},
           }],
           overlay: {
             background: this.color.rgba(0, 0, 0, .7),

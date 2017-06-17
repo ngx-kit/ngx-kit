@@ -1,6 +1,7 @@
 import {
-  AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, HostBinding, Inject, Input, NgZone, OnChanges,
-  OnInit, TemplateRef
+  AfterViewChecked, AfterViewInit, Component,
+  ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnChanges, OnDestroy,
+  OnInit, Output,
 } from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
@@ -13,6 +14,7 @@ import { KitAnchorDirective } from './anchor.directive';
  * @todo click hide
  * @todo dropdown - show at other side if space is not enough
  * @todo improve reposition performance
+ * @todo impl type=side
  */
 @Component({
   selector: 'kit-host-container',
@@ -30,7 +32,7 @@ import { KitAnchorDirective } from './anchor.directive';
     StylerComponent,
   ],
 })
-export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewInit, AfterViewChecked {
+export class KitHostContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked {
 
   @Input() component: any;
   @Input() template: any;
@@ -38,6 +40,8 @@ export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewIn
   @Input() type: string;
   @Input() anchor: KitAnchorDirective;
   @Input() side: string;
+
+  @Output() outsideClick = new EventEmitter<any>();
 
   @HostBinding('attr.sid') get hostClass() {
     return this.styler.host.sid;
@@ -47,19 +51,19 @@ export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewIn
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentHostContainer) private style: KitComponentStyle,
-              private zone: NgZone) {
+              private zone: NgZone,
+              private elementRef: ElementRef) {
     this.styler.register(this.style.getStyles());
   }
 
   ngOnInit() {
     this.zone.runOutsideAngular(() => {
       // @todo use renderer2 (currently it does not have listenGlobal)
-      document.addEventListener('scroll', () => {
-        this.reposition();
-      }, true);
-      document.addEventListener('resize', () => {
-        this.reposition();
-      }, true);
+      // reposition
+      document.addEventListener('scroll', this.reposition, true);
+      document.addEventListener('resize', this.reposition, true);
+      // outside click
+      document.addEventListener('click', this.clickListener);
     });
   }
 
@@ -79,10 +83,15 @@ export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewIn
     this.reposition();
   }
 
-  private reposition() {
+  ngOnDestroy() {
+    document.removeEventListener('scroll', this.reposition, true);
+    document.removeEventListener('resize', this.reposition, true);
+    document.removeEventListener('click', this.clickListener);
+  }
+
+  private reposition = () => {
     if (this.type === 'dropdown') {
       const el: HTMLElement = this.anchor.nativeEl;
-      console.log('natEl', el);
       const rect: ClientRect = el.getBoundingClientRect();
       this.zone.run(() => {
         this.holderStyle = {
@@ -92,11 +101,18 @@ export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewIn
           width: `${Math.round(el.offsetWidth)}px`
         };
       });
-      console.log('rect', rect);
-      console.log('hS', this.holderStyle);
     } else {
       this.holderStyle = {};
     }
-  }
+  };
+
+  private clickListener = (event: MouseEvent) => {
+    const path = event['path'];
+    if (path.indexOf(this.elementRef.nativeElement) === -1) {
+      this.zone.run(() => {
+        this.outsideClick.emit(true);
+      });
+    }
+  };
 
 }
