@@ -1,4 +1,7 @@
-import { Component, HostBinding, Inject, Input, NgZone, OnChanges, OnInit } from '@angular/core';
+import {
+  AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, HostBinding, Inject, Input, NgZone, OnChanges,
+  OnInit, TemplateRef
+} from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -6,6 +9,11 @@ import { kitComponentHostContainer } from '../meta/tokens';
 import { KitComponentStyle } from '../meta/component';
 import { KitAnchorDirective } from './anchor.directive';
 
+/**
+ * @todo click hide
+ * @todo dropdown - show at other side if space is not enough
+ * @todo improve reposition performance
+ */
 @Component({
   selector: 'kit-host-container',
   template: `
@@ -22,22 +30,20 @@ import { KitAnchorDirective } from './anchor.directive';
     StylerComponent,
   ],
 })
-export class KitHostContainerComponent implements OnInit, OnChanges {
+export class KitHostContainerComponent implements OnInit, OnChanges, AfterViewInit, AfterViewChecked {
 
   @Input() component: any;
   @Input() template: any;
-  @Input() position: string;
   @Input() overlay: boolean;
+  @Input() type: string;
   @Input() anchor: KitAnchorDirective;
+  @Input() side: string;
 
   @HostBinding('attr.sid') get hostClass() {
     return this.styler.host.sid;
   };
 
   holderStyle = {};
-
-  private cacheTop: number;
-  private cacheLeft: number;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentHostContainer) private style: KitComponentStyle,
@@ -47,7 +53,7 @@ export class KitHostContainerComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.zone.runOutsideAngular(() => {
-      // @todo use renderer2 (currently it does not have listenGlobal
+      // @todo use renderer2 (currently it does not have listenGlobal)
       document.addEventListener('scroll', () => {
         this.reposition();
       }, true);
@@ -59,26 +65,34 @@ export class KitHostContainerComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.styler.host.applyState({
-      position: this.position,
       overlay: this.overlay,
+      type: this.type,
     });
     this.reposition();
   }
 
+  ngAfterViewInit() {
+    this.reposition();
+  }
+
+  ngAfterViewChecked() {
+    this.reposition();
+  }
+
   private reposition() {
-    if (this.position === 'anchor') {
-      const rect = this.anchor.nativeEl.getBoundingClientRect();
-      if (this.cacheTop !== rect.top || this.cacheLeft !== rect.left) {
-        this.cacheTop = rect.top;
-        this.cacheLeft = rect.left;
-        this.zone.run(() => {
-          this.holderStyle = {
-            position: 'fixed',
-            top: `${Math.round(rect.top)}px`,
-            left: `${Math.round(rect.left + rect.width / 2)}px`,
-          };
-        });
-      }
+    if (this.type === 'dropdown') {
+      const el: HTMLElement = this.anchor.nativeEl;
+      console.log('natEl', el);
+      const rect: ClientRect = el.getBoundingClientRect();
+      this.zone.run(() => {
+        this.holderStyle = {
+          position: 'fixed',
+          top: `${Math.round(rect.top + el.offsetHeight)}px`,
+          left: `${Math.round(rect.left)}px`,
+          width: `${Math.round(el.offsetWidth)}px`
+        };
+      });
+      console.log('rect', rect);
       console.log('hS', this.holderStyle);
     } else {
       this.holderStyle = {};

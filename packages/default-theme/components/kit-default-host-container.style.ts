@@ -17,7 +17,7 @@ export class KitDefaultHostContainerStyle implements KitComponentStyle {
     return {
       host: {
         $states: {
-          position: [{
+          type: [{
             center: {
               position: 'fixed',
               top: 0,
