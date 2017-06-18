@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
   kitComponentAutoComplete,
-  kitComponentButton, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
+  kitComponentButton, kitComponentCheckbox, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput, kitComponentSelect,
   kitTheme
 } from '@ngx-kit/core';
@@ -14,6 +14,7 @@ import { KitDefaultHostContainerStyle } from './components/kit-default-host-cont
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 // forms
 import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
+import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
 import { KitDefaultDatePickerStyle } from './components/kit-default-date-picker.style';
 import { KitDefaultFormErrorStyle } from './components/kit-default-form-error.style';
 import { KitDefaultFormGroupStyle } from './components/kit-default-form-group.style';
@@ -52,6 +53,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentAutoComplete,
           useClass: KitDefaultAutoCompleteStyle,
+        },
+        {
+          provide: kitComponentCheckbox,
+          useClass: KitDefaultCheckboxStyle,
         },
         {
           provide: kitComponentDatePicker,

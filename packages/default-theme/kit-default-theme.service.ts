@@ -72,10 +72,13 @@ export class KitDefaultThemeService implements KitThemeService {
     border: {
       width: 1,
       radius: {
-        s: 3,
+        s: 2,
         m: 6,
         l: 12,
       },
+    },
+    transitions: {
+      default: 'all .3s',
     },
   };
 

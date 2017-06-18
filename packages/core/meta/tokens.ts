@@ -11,6 +11,7 @@ export const kitComponentHostContainer = new InjectionToken<KitComponentStyle>('
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
 // forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
+export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');
 export const kitComponentDatePicker = new InjectionToken<KitComponentStyle>('kitComponentDatePicker');
 export const kitComponentFormError = new InjectionToken<KitComponentStyle>('kitComponentFormError');
 export const kitComponentFormGroup = new InjectionToken<KitComponentStyle>('kitComponentFormGroup');

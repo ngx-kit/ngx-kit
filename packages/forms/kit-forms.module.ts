@@ -6,6 +6,7 @@ import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule, KitHostService } from '@ngx-kit/core';
 
 import { KitAutoCompleteComponent } from './kit-auto-complete/kit-auto-complete.component';
+import { KitCheckboxComponent } from './kit-checkbox/kit-checkbox.component';
 import { KitDatePickerComponent } from './kit-date-picker/kit-date-picker.component';
 import { KitFormErrorComponent } from './kit-form-error/kit-form-error.component';
 import { KitFormGroupComponent } from './kit-form-group/kit-form-group.component';
@@ -17,6 +18,7 @@ import { KitSelectComponent } from './kit-select/kit-select.component';
 
 const exported = [
   KitAutoCompleteComponent,
+  KitCheckboxComponent,
   KitDatePickerComponent,
   KitFormErrorComponent,
   KitFormGroupComponent,

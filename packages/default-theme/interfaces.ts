@@ -43,6 +43,9 @@ export interface KitDefaultThemeParams {
       l: number;
     };
   };
+  transitions: {
+    default: string;
+  };
 }
 
 export interface KitDefaultThemeColor {
