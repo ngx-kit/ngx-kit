@@ -14,7 +14,11 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-input',
   template: `
-    <input type="text" [ngModel]="value" (ngModelChange)="value = $event" (blur)="touch()">
+    <input [ngModel]="value"
+           (ngModelChange)="value = $event"
+           (blur)="touch()"
+           type="text"
+           styler="input">
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [
