@@ -48,7 +48,7 @@ export class KitDefaultThemeService implements KitThemeService {
       }
     },
     colorMod: {
-      type: 'shade',
+      type: 'darken',
       ratio: 0,
     },
     shadows: {

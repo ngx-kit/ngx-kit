@@ -20,6 +20,7 @@ export class KitDefaultInputStyle implements KitComponentStyle {
         border: `${params.border.width}px solid ${params.colors.border.color}`,
         borderRadius: params.border.radius.s,
         transition: 'background 0.2s',
+        width: '100%',
         $nest: {
           '&:focus': {},
         },
