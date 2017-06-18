@@ -72,14 +72,14 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
               color: params.colors.success.text,
             },
             warning: {
-              background: params.colors.success.color,
-              borderColor: params.colors.success.color,
-              color: params.colors.success.text,
+              background: params.colors.warning.color,
+              borderColor: params.colors.warning.color,
+              color: params.colors.warning.text,
             },
             error: {
-              background: params.colors.success.color,
-              borderColor: params.colors.success.color,
-              color: params.colors.success.text,
+              background: params.colors.error.color,
+              borderColor: params.colors.error.color,
+              color: params.colors.error.text,
             },
             link: {
               boxShadow: 'none',
