@@ -2,7 +2,11 @@
 
 ## Installation
 
-`npm install @ngx-kit/core @ngx-kit/forms --save`
+`npm install @ngx-kit/core @ngx-kit/forms moment --save`
+
+### Add moment script to `.angular-cli.json`
+
+`"../node_modules/moment/moment.js",`
 
 ## Usage
 

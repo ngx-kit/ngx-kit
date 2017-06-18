@@ -12,3 +12,4 @@ export * from './kit-radio/kit-radio.component';
 export * from './kit-math-input/kit-math-input.component';
 export * from './kit-select/kit-select.component';
 export * from './kit-textarea/kit-textarea.component';
+export * from './kit-toggle/kit-toggle.component';

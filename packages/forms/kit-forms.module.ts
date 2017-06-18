@@ -17,6 +17,7 @@ import { KitMathInputComponent } from './kit-math-input/kit-math-input.component
 import { KitRadioComponent } from './kit-radio/kit-radio.component';
 import { KitSelectComponent } from './kit-select/kit-select.component';
 import { KitTextareaComponent } from './kit-textarea/kit-textarea.component';
+import { KitToggleComponent } from './kit-toggle/kit-toggle.component';
 
 const exported = [
   KitAutoCompleteComponent,
@@ -31,6 +32,7 @@ const exported = [
   KitRadioComponent,
   KitSelectComponent,
   KitTextareaComponent,
+  KitToggleComponent,
 ];
 
 @NgModule({

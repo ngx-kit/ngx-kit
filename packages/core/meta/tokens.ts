@@ -21,3 +21,4 @@ export const kitComponentMathInput = new InjectionToken<KitComponentStyle>('kitC
 export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitComponentRadio');
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentTextarea = new InjectionToken<KitComponentStyle>('kitComponentTextarea');
+export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComponentToggle');
