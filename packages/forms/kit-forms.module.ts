@@ -14,6 +14,7 @@ import { KitFormLabelComponent } from './kit-form-label/kit-form-label.component
 import { KitFormTouchComponent } from './kit-form-touch/kit-form-touch.directive';
 import { KitInputComponent } from './kit-input/kit-input.component';
 import { KitMathInputComponent } from './kit-math-input/kit-math-input.component';
+import { KitRadioComponent } from './kit-radio/kit-radio.component';
 import { KitSelectComponent } from './kit-select/kit-select.component';
 
 const exported = [
@@ -26,6 +27,7 @@ const exported = [
   KitFormTouchComponent,
   KitInputComponent,
   KitMathInputComponent,
+  KitRadioComponent,
   KitSelectComponent,
 ];
 

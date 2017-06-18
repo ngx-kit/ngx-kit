@@ -3,7 +3,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   kitComponentAutoComplete,
   kitComponentButton, kitComponentCheckbox, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
-  kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput, kitComponentSelect,
+  kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
+  kitComponentRadio, kitComponentSelect,
   kitTheme
 } from '@ngx-kit/core';
 
@@ -21,6 +22,7 @@ import { KitDefaultFormGroupStyle } from './components/kit-default-form-group.st
 import { KitDefaultFormLabelStyle } from './components/kit-default-form-label.style';
 import { KitDefaultInputStyle } from './components/kit-default-input.style';
 import { KitDefaultMathInputStyle } from './components/kit-default-math-input.style';
+import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 
 @NgModule({
@@ -81,6 +83,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentMathInput,
           useClass: KitDefaultMathInputStyle,
+        },
+        {
+          provide: kitComponentRadio,
+          useClass: KitDefaultRadioStyle,
         },
         {
           provide: kitComponentSelect,

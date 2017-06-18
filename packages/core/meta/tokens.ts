@@ -18,4 +18,5 @@ export const kitComponentFormGroup = new InjectionToken<KitComponentStyle>('kitC
 export const kitComponentFormLabel = new InjectionToken<KitComponentStyle>('kitComponentFormLabel');
 export const kitComponentInput = new InjectionToken<KitComponentStyle>('kitComponentInput');
 export const kitComponentMathInput = new InjectionToken<KitComponentStyle>('kitComponentMathInput');
+export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitComponentRadio');
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
