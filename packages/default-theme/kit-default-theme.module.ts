@@ -4,7 +4,7 @@ import {
   kitComponentAutoComplete,
   kitComponentButton, kitComponentCheckbox, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
-  kitComponentRadio, kitComponentSelect,
+  kitComponentRadio, kitComponentSelect, kitComponentTextarea,
   kitTheme
 } from '@ngx-kit/core';
 
@@ -24,6 +24,7 @@ import { KitDefaultInputStyle } from './components/kit-default-input.style';
 import { KitDefaultMathInputStyle } from './components/kit-default-math-input.style';
 import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
+import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
 
 @NgModule({
   imports: [],
@@ -91,6 +92,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentSelect,
           useClass: KitDefaultSelectStyle,
+        },
+        {
+          provide: kitComponentTextarea,
+          useClass: KitDefaultTextareaStyle,
         },
       ]
     }
