@@ -1,7 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
-  kitComponentAutoComplete,
+  kitComponentAutoComplete, kitComponentBadge,
   kitComponentButton, kitComponentCheckbox, kitComponentDatePicker,
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
@@ -28,6 +28,7 @@ import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
 import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
 // misc
+import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
 import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 
 @NgModule({
@@ -106,6 +107,10 @@ export class KitDefaultThemeModule {
           useClass: KitDefaultToggleStyle,
         },
         // misc
+        {
+          provide: kitComponentBadge,
+          useClass: KitDefaultBadgeStyle,
+        },
         {
           provide: kitComponentDivider,
           useClass: KitDefaultDividerStyle,
