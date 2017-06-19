@@ -3,10 +3,14 @@ import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentBadge, KitComponentStyle } from '@ngx-kit/core';
 
+/**
+ * @todo overflowCount - max count
+ * @todo showZero
+ */
 @Component({
   selector: 'kit-badge',
   template: `
-    {{ value }}
+    {{ count }}
   `,
   viewProviders: [
     StylerComponent,
@@ -22,7 +26,7 @@ export class KitBadgeComponent implements OnInit {
     this.styler.host.applyState({size});
   }
 
-  @Input() value: any;
+  @Input() count: number;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
