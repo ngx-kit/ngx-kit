@@ -22,3 +22,5 @@ export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentTextarea = new InjectionToken<KitComponentStyle>('kitComponentTextarea');
 export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComponentToggle');
+// misc
+export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');

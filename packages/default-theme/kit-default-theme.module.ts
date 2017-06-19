@@ -2,7 +2,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
   kitComponentAutoComplete,
-  kitComponentButton, kitComponentCheckbox, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
+  kitComponentButton, kitComponentCheckbox, kitComponentDatePicker,
+  kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTextarea, kitComponentToggle,
   kitTheme
@@ -26,6 +27,8 @@ import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
 import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
+// misc
+import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 
 @NgModule({
   imports: [],
@@ -43,7 +46,7 @@ export class KitDefaultThemeModule {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
         },
-          // core
+        // core
         {
           provide: kitComponentHostContainer,
           useClass: KitDefaultHostContainerStyle,
@@ -101,6 +104,11 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentToggle,
           useClass: KitDefaultToggleStyle,
+        },
+        // misc
+        {
+          provide: kitComponentDivider,
+          useClass: KitDefaultDividerStyle,
         },
       ]
     }

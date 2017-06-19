@@ -26,7 +26,7 @@ export class KitButtonComponent implements OnInit {
     this.styler.host.applyState({disabled});
   }
 
-  @HostBinding('attr.sid') get hostClass() {
+  @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
   };
 

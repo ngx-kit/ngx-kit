@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { StylerModule } from '@ngx-kit/styler';
+
 import { KitBadgeComponent } from './kit-badge/kit-badge.component';
 import { KitDividerComponent } from './kit-divider/kit-divider.component';
 import { KitLabelComponent } from './kit-label/kit-label.component';
@@ -21,7 +23,9 @@ const entry = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+    StylerModule,
+  ],
   exports: [
     ...exported,
   ],
