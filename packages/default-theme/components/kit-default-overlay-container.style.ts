@@ -6,7 +6,7 @@ import { RegistrationDef, StylerColorService } from '@ngx-kit/styler';
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
-export class KitDefaultHostContainerStyle implements KitComponentStyle {
+export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
 
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService,
               private color: StylerColorService) {

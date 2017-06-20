@@ -4,14 +4,14 @@ import {
   kitComponentAutoComplete, kitComponentBadge,
   kitComponentButton, kitComponentCheckbox, kitComponentDatePicker,
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
-  kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
+  kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
   kitTheme
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
 // core
-import { KitDefaultHostContainerStyle } from './components/kit-default-host-container.style';
+import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 // forms
@@ -50,8 +50,8 @@ export class KitDefaultThemeModule {
         },
         // core
         {
-          provide: kitComponentHostContainer,
-          useClass: KitDefaultHostContainerStyle,
+          provide: kitComponentOverlayContainer,
+          useClass: KitDefaultOverlayContainerStyle,
         },
         // buttons
         {

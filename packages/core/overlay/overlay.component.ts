@@ -10,15 +10,15 @@ import {
   Output
 } from '@angular/core';
 
-import { KitHostContainerComponent } from './host-container.component';
+import { KitOverlayHostComponent } from './overlay-host.component';
 import { KitAnchorDirective } from './anchor.directive';
-import { KitHostService } from '../kit-host.service';
+import { KitOverlayService } from './kit-overlay.service';
 
 @Component({
-  selector: 'kit-host',
+  selector: 'kit-overlay',
   template: '',
 })
-export class KitHostComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {
+export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {
 
   @Input() component: any;
   @Input() template: any;
@@ -29,9 +29,9 @@ export class KitHostComponent implements OnInit, OnChanges, OnDestroy, AfterCont
 
   @Output() outsideClick = new EventEmitter<any>();
 
-  private containerRef: ComponentRef<KitHostContainerComponent>;
+  private hostRef: ComponentRef<KitOverlayHostComponent>;
 
-  constructor(private host: KitHostService) {
+  constructor(private overlayService: KitOverlayService) {
   }
 
   ngOnInit() {
@@ -45,25 +45,25 @@ export class KitHostComponent implements OnInit, OnChanges, OnDestroy, AfterCont
   }
 
   ngOnChanges() {
-    if (this.containerRef) {
+    if (this.hostRef) {
       this.passToContainer();
     }
   }
 
   ngOnDestroy() {
-    if (this.containerRef) {
-      this.containerRef.destroy();
+    if (this.hostRef) {
+      this.hostRef.destroy();
     }
   }
 
   private createContainer() {
-    this.containerRef = this.host.host<KitHostContainerComponent>(KitHostContainerComponent);
-    this.containerRef.instance.outsideClick.subscribe(this.outsideClick);
+    this.hostRef = this.overlayService.host<KitOverlayHostComponent>(KitOverlayHostComponent);
+    this.hostRef.instance.outsideClick.subscribe(this.outsideClick);
   }
 
   private passToContainer() {
-    if (this.containerRef) {
-      const instance = this.containerRef.instance;
+    if (this.hostRef) {
+      const instance = this.hostRef.instance;
       // template setup
       if (this.component) {
         if (this.template) {
@@ -83,9 +83,9 @@ export class KitHostComponent implements OnInit, OnChanges, OnDestroy, AfterCont
       }
       // proxy
       instance.type = this.type;
-      instance.anchor = this.anchor;
+      instance.anchor = this.anchor.nativeEl;
       instance.side = this.side;
-      instance.ngOnChanges();
+      // @todo run CD
     }
   }
 

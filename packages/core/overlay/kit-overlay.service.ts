@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 @Injectable()
-export class KitHostService {
+export class KitOverlayService {
 
   private rootRef: ComponentRef<any>;
 

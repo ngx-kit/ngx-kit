@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitInputComponent } from '@ngx-kit/forms';
-import { kitComponentAutoComplete, KitComponentStyle, KitHostService } from '@ngx-kit/core';
+import { kitComponentAutoComplete, KitComponentStyle } from '@ngx-kit/core';
 
 import { KitDataSourceFactory } from './data-source-factory';
 
@@ -32,11 +32,11 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
                styler="input">
     </kit-input>
     <div *ngIf="results.length > 0">
-      <kit-host [template]="resultsRef"
+      <kit-overlay [template]="resultsRef"
                 [type]="'dropdown'"
                 [anchor]="anchorRef"
                 (outsideClick)="clearResults()">
-      </kit-host>
+      </kit-overlay>
       <ng-template #resultsRef>
         <div styler="results">
           <div *ngFor="let result of results; let i = index"
@@ -71,8 +71,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
-              private host: KitHostService) {
+              @Inject(kitComponentAutoComplete) private style: KitComponentStyle) {
     this.styler.register(this.style.getStyles());
   }
 

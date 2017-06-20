@@ -67,7 +67,7 @@ export class KitDefaultThemeService implements KitThemeService {
         h4: '1.6rem',
         h5: '1.4rem',
         h6: '1rem',
-      }
+      },
     },
     border: {
       width: 1,

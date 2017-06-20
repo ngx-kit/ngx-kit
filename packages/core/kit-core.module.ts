@@ -4,18 +4,20 @@ import { CommonModule } from '@angular/common';
 import { StylerModule } from '@ngx-kit/styler';
 
 import { KitCoreService } from './kit-core.service';
-import { KitHostService } from './kit-host.service';
-import { KitAnchorDirective } from './host/anchor.directive';
-import { KitHostComponent } from './host/host.component';
-import { KitHostContainerComponent } from './host/host-container.component';
+import { KitOverlayService } from './overlay/kit-overlay.service';
+import { KitAnchorDirective } from './overlay/anchor.directive';
+import { KitOverlayComponent } from './overlay/overlay.component';
+import { KitOverlayHostComponent } from './overlay/overlay-host.component';
+import { KitOverlayContainerComponent } from './overlay/overlay-container.component';
 
 const exported = [
   KitAnchorDirective,
-  KitHostComponent,
+  KitOverlayComponent,
+  KitOverlayContainerComponent,
 ];
 
 const entry = [
-  KitHostContainerComponent,
+  KitOverlayHostComponent,
 ];
 
 @NgModule({
@@ -42,7 +44,7 @@ export class KitCoreModule {
       ngModule: KitCoreModule,
       providers: [
         KitCoreService,
-        KitHostService,
+        KitOverlayService,
       ]
     }
   }

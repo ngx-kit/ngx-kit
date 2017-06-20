@@ -6,7 +6,7 @@ import { KitComponentStyle } from './component';
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 // core
-export const kitComponentHostContainer = new InjectionToken<KitComponentStyle>('kitComponentHostContainer');
+export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 // buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
 // forms
