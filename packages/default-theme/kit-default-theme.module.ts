@@ -6,7 +6,7 @@ import {
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
-  kitTheme
+  kitTheme, kitComponentTooltipView
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -31,6 +31,7 @@ import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
 import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
 import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 import { KitDefaultTagStyle } from './components/kit-default-tag.style';
+import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
 
 @NgModule({
   imports: [],
@@ -120,8 +121,12 @@ export class KitDefaultThemeModule {
           provide: kitComponentTag,
           useClass: KitDefaultTagStyle,
         },
-      ]
-    }
+        {
+          provide: kitComponentTooltipView,
+          useClass: KitDefaultTooltipViewStyle,
+        },
+      ],
+    };
   }
 
 }

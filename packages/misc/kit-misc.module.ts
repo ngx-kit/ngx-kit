@@ -7,7 +7,8 @@ import { KitDividerComponent } from './kit-divider/kit-divider.component';
 import { KitPopoverComponent } from './kit-popover/kit-popover.component';
 import { KitTagComponent } from './kit-tag/kit-tag.component';
 import { KitTooltipDirective } from './kit-tooltip/kit-tooltip.directive';
-import { KitTooltipViewComponent } from './kit-tooltip-view/kit-tooltip-view.component';
+import { KitTooltipViewComponent } from './kit-tooltip/kit-tooltip-view.component';
+import { KitCoreModule } from '@ngx-kit/core';
 
 const exported = [
   KitBadgeComponent,
@@ -24,6 +25,7 @@ const entry = [
 @NgModule({
   imports: [
     StylerModule,
+    KitCoreModule,
   ],
   exports: [
     ...exported,
