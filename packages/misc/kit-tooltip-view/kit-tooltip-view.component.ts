@@ -9,8 +9,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 @Component({
   selector: 'kit-tooltip-view',
   template: `
-    <div [class]="css.wrapper">
-      <span [class]="css.text">{{ text }}</span>
+    <div>
+      <span>{{ text }}</span>
     </div>
   `,
 })
