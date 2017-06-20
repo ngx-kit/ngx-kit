@@ -9,12 +9,13 @@ import { StylerComponent } from '@ngx-kit/styler';
 
 import { kitComponentOverlayContainer } from '../meta/tokens';
 import { KitComponentStyle } from '../meta/component';
+import { OverlayContainerPosition } from '../meta/overlay';
 
 /**
  * @todo click hide
  * @todo dropdown - show at other side if space is not enough
  * @todo improve reposition performance
- * @todo impl type=side
+ * @todo type=side move from edge
  */
 @Component({
   selector: 'kit-overlay-container',
@@ -32,8 +33,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   @Input() overlay: boolean;
   @Input() type: string;
   @Input() anchor: HTMLElement;
-  // @todo rename -> position
-  @Input() side: string;
+  @Input() position: OverlayContainerPosition;
 
   @Output() outsideClick = new EventEmitter<any>();
 
@@ -101,12 +101,42 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
     } else if (this.type === 'side') {
       const rect: ClientRect = this.anchor.getBoundingClientRect();
       this.zone.run(() => {
-        this.holderStyle = {
-          position: 'fixed',
-          top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
-          left: `${Math.round(rect.left)}px`,
-          width: `${Math.round(this.anchor.offsetWidth)}px`
-        };
+        switch (this.position) {
+          case 'top':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top)}px`,
+              left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
+              transform: 'translateX(-50%) translateY(-100%)',
+            };
+            break;
+          case 'bottom':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.bottom)}px`,
+              left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
+              transform: 'translateX(-50%)',
+            };
+            break;
+          case 'left':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
+              left: `${Math.round(rect.left)}px`,
+              transform: 'translateX(-100%) translateY(-50%)',
+            };
+            break;
+          case 'right':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
+              left: `${Math.round(rect.right)}px`,
+              transform: 'translateY(-50%)',
+            };
+            break;
+          default:
+            throw new Error('In development!');
+        }
       });
     }
   };

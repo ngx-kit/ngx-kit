@@ -13,6 +13,7 @@ import {
 import { KitOverlayHostComponent } from './overlay-host.component';
 import { KitAnchorDirective } from './anchor.directive';
 import { KitOverlayService } from './kit-overlay.service';
+import { OverlayContainerPosition } from '../meta/overlay';
 
 @Component({
   selector: 'kit-overlay',
@@ -25,7 +26,7 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
   @Input() overlay = false;
   @Input() type: 'center' | 'side' | 'dropdown' = 'center';
   @Input() anchor: KitAnchorDirective;
-  @Input() side: 'top' | 'right' | 'bottom' | 'left' = 'top';
+  @Input() position: OverlayContainerPosition = 'top';
 
   @Output() outsideClick = new EventEmitter<any>();
 
@@ -84,7 +85,7 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
       // proxy
       instance.type = this.type;
       instance.anchor = this.anchor.nativeEl;
-      instance.side = this.side;
+      instance.position = this.position;
       // @todo run CD
     }
   }

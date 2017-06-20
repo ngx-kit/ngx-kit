@@ -2,13 +2,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
 
+import { OverlayContainerPosition } from '../meta/overlay';
+
 @Component({
   selector: 'kit-overlay-host',
   template: `
     <kit-overlay-container [overlay]="overlay"
                            [type]="type"
                            [anchor]="anchor"
-                           [side]="side"
+                           [position]="position"
                            (outsideClick)="outsideClick.emit($event)">
       <div *ngIf="component">
         <ng-container *ngTemplateOutlet="component"></ng-container>
@@ -29,7 +31,7 @@ export class KitOverlayHostComponent implements OnInit {
   @Input() overlay: boolean;
   @Input() type: string;
   @Input() anchor: HTMLElement;
-  @Input() side: string;
+  @Input() position: OverlayContainerPosition;
 
   @Output() outsideClick = new EventEmitter<any>();
 

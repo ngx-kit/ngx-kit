@@ -26,3 +26,4 @@ export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComp
 export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
+export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');
