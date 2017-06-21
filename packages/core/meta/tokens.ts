@@ -10,6 +10,8 @@ export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle
 // buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
 export const kitComponentButtonGroup = new InjectionToken<KitComponentStyle>('kitComponentButtonGroup');
+export const kitComponentDropdownMenu = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenu');
+export const kitComponentDropdownMenuItem = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenuItem');
 // forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');

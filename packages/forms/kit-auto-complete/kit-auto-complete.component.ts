@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
@@ -33,9 +33,9 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
     </kit-input>
     <div *ngIf="results.length > 0">
       <kit-overlay [template]="resultsRef"
-                [type]="'dropdown'"
-                [anchor]="anchorRef"
-                (outsideClick)="clearResults()">
+                   [type]="'dropdown'"
+                   [anchor]="anchorRef"
+                   (outsideClick)="clearResults()">
       </kit-overlay>
       <ng-template #resultsRef>
         <div styler="results">
@@ -71,7 +71,8 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAutoComplete) private style: KitComponentStyle) {
+              @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
+              private renderer: Renderer2) {
     this.styler.register(this.style.getStyles());
   }
 

@@ -1,53 +1,63 @@
-import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
 
-//import { KitPopoverComponent } from '@ngx-kit/popover';
+import { StylerComponent } from '@ngx-kit/styler';
+import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from '@ngx-kit/core';
 
 /**
- * @todo implement sub-menus
- * @todo style popover
- * @todo add hover showing param
+ * @todo right-click open
  */
-
 @Component({
   selector: 'kit-dropdown-menu',
   template: `
-    <!--<kit-popover>-->
-      <!--<ng-content></ng-content>-->
-    <!--</kit-popover>-->
+    <div *ngIf="opened">
+      <kit-overlay [template]="contentRef"
+                   [anchor]="anchor"
+                   [type]="'dropdown'"
+                   [widthType]="'auto'"
+                   (outsideClick)="close()"></kit-overlay>
+      <ng-template #contentRef>
+        <div styler="menu">
+          <ng-content></ng-content>
+        </div>
+      </ng-template>
+    </div>
   `,
+  viewProviders: [
+    StylerComponent,
+  ],
 })
-export class KitDropdownMenuComponent implements OnInit {
+export class KitDropdownMenuComponent implements OnInit, OnChanges {
 
-  @HostBinding('class') hostClass: string;
+  @Input() anchor: KitAnchorDirective;
 
-//  @ViewChild(KitPopoverComponent) popover: KitPopoverComponent;
+  @Output() itemClick = new EventEmitter<MouseEvent>();
 
-  constructor() {
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  };
+
+  opened = false;
+
+  constructor(private styler: StylerComponent,
+              @Inject(kitComponentDropdownMenu) private style: KitComponentStyle) {
+    this.styler.register(this.style.getStyles());
   }
 
   ngOnInit() {
   }
 
-  toggle(event: any) {
-//    this.popover.toggle(event);
+  ngOnChanges() {
+    this.anchor.hostClick.subscribe(() => {
+      this.toggle();
+    });
   }
 
-//  this.theme = {
-//  host: {
-//    base: {
-//    },
-//  },
-//  item: {
-//    base: {
-//      display: 'block',
-//      borderBottom: '1px solid #eeeeee',
-//      $nest: {
-//        '&:last-child': {
-//          borderBottom: 0,
-//        },
-//      },
-//    },
-//  },
-//};
+  toggle() {
+    this.opened = !this.opened;
+  }
+
+  close() {
+    this.opened = false;
+  }
 
 }

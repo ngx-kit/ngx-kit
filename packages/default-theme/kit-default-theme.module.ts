@@ -6,7 +6,7 @@ import {
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
-  kitTheme, kitComponentTooltipView, kitComponentButtonGroup
+  kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -15,6 +15,8 @@ import { KitDefaultOverlayContainerStyle } from './components/kit-default-overla
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 import { KitDefaultButtonGroupStyle } from './components/kit-default-button-group.style';
+import { KitDefaultDropdownMenuStyle } from './components/kit-default-dropdown-menu.style';
+import { KitDefaultDropdownMenuItemStyle } from './components/kit-default-dropdown-menu-item.style';
 // forms
 import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
 import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
@@ -63,6 +65,14 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentButtonGroup,
           useClass: KitDefaultButtonGroupStyle,
+        },
+        {
+          provide: kitComponentDropdownMenu,
+          useClass: KitDefaultDropdownMenuStyle,
+        },
+        {
+          provide: kitComponentDropdownMenuItem,
+          useClass: KitDefaultDropdownMenuItemStyle,
         },
         // forms
         {
