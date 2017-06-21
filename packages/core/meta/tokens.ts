@@ -9,6 +9,7 @@ export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 // buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
+export const kitComponentButtonGroup = new InjectionToken<KitComponentStyle>('kitComponentButtonGroup');
 // forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');

@@ -6,7 +6,7 @@ import {
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
-  kitTheme, kitComponentTooltipView
+  kitTheme, kitComponentTooltipView, kitComponentButtonGroup
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -14,6 +14,7 @@ import { KitDefaultThemeService } from './kit-default-theme.service';
 import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
+import { KitDefaultButtonGroupStyle } from './components/kit-default-button-group.style';
 // forms
 import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
 import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
@@ -58,6 +59,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentButton,
           useClass: KitDefaultButtonStyle,
+        },
+        {
+          provide: kitComponentButtonGroup,
+          useClass: KitDefaultButtonGroupStyle,
         },
         // forms
         {
