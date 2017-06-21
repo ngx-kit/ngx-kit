@@ -9,7 +9,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 
 import { kitComponentOverlayContainer } from '../meta/tokens';
 import { KitComponentStyle } from '../meta/component';
-import { OverlayContainerPosition } from '../meta/overlay';
+import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 
 /**
  * @todo click hide
@@ -30,10 +30,13 @@ import { OverlayContainerPosition } from '../meta/overlay';
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
 
+  @Input() anchor: HTMLElement;
   @Input() overlay: boolean;
   @Input() type: string;
-  @Input() anchor: HTMLElement;
+  // for type: side
   @Input() position: OverlayContainerPosition;
+  // for type: dropdown
+  @Input() widthType: OverlayContainerWidthType;
 
   @Output() outsideClick = new EventEmitter<any>();
 
@@ -95,7 +98,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
           position: 'fixed',
           top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
           left: `${Math.round(rect.left)}px`,
-          width: `${Math.round(this.anchor.offsetWidth)}px`
+          width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
         };
       });
     } else if (this.type === 'side') {
