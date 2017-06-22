@@ -19,6 +19,7 @@ export class KitDefaultDropdownMenuStyle implements KitComponentStyle {
       menu: {
         background: params.colors.body.color,
         border: [1, 'solid', params.colors.border.color],
+        borderRadius: '3px',
         boxShadow: params.shadows.deep,
         marginTop: params.grid.v / 4,
       },
