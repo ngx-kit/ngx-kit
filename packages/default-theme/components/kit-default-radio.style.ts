@@ -51,22 +51,19 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
         transition: params.transitions.default,
         $states: {
           checked: {
-            backgroundColor: params.colors.brand.color,
             borderColor: params.colors.brand.color,
             $nest: {
               '&:after': {
-                transform: 'rotate(45deg) scale(1)',
                 position: 'absolute',
                 left: 4,
-                top: 1,
+                top: 4,
                 display: 'table',
-                width: 5,
-                height: 8,
-                border: [2, 'solid', params.colors.body.color],
-                borderTop: 0,
-                borderLeft: 0,
+                width: 6,
+                height: 6,
+                backgroundColor: params.colors.brand.color,
+                border: 0,
+                borderRadius: '50%',
                 content: '" "',
-                transition: 'all .2s cubic-bezier(.12,.4,.29,1.46) .1s',
               },
             },
           },
