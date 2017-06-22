@@ -15,7 +15,8 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
   getStyles(): RegistrationDef {
     const params = this.theme.params;
     return {
-      host: {},
+      host: {
+      },
       radio: {
         whiteSpace: 'nowrap',
         cursor: 'pointer',
@@ -37,7 +38,6 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
         right: 0,
         width: '100%',
         height: '100%',
-        background: params.colors.body.color,
       },
       view: {
         position: 'relative',
@@ -47,7 +47,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
         width: 14,
         height: 14,
         border: [1, 'solid', params.colors.border.color],
-        borderRadius: params.border.radius.s,
+        borderRadius: '50%',
         transition: params.transitions.default,
         $states: {
           checked: {
@@ -70,6 +70,9 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
               },
             },
           },
+          hover: {
+            borderColor: params.colors.brand.color,
+          }
         },
       },
       label: {
