@@ -160,7 +160,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             $default: 'none',
           }],
           disabled: {
-            cursor: 'default',
+            cursor: 'not-allowed',
             background: params.colors.border.color,
             borderColor: params.colors.border.color,
             color: params.colors.border.text,
