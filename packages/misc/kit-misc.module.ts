@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 
+import { StylerModule } from '@ngx-kit/styler';
+
 import { KitBadgeComponent } from './kit-badge/kit-badge.component';
 import { KitDividerComponent } from './kit-divider/kit-divider.component';
-import { KitLabelComponent } from './kit-label/kit-label.component';
 import { KitPopoverComponent } from './kit-popover/kit-popover.component';
+import { KitTagComponent } from './kit-tag/kit-tag.component';
 import { KitTooltipDirective } from './kit-tooltip/kit-tooltip.directive';
-import { KitTooltipViewComponent } from './kit-tooltip-view/kit-tooltip-view.component';
+import { KitTooltipViewComponent } from './kit-tooltip/kit-tooltip-view.component';
+import { KitCoreModule } from '@ngx-kit/core';
 
 const exported = [
   KitBadgeComponent,
   KitDividerComponent,
-  KitLabelComponent,
   KitPopoverComponent,
+  KitTagComponent,
   KitTooltipDirective,
-
 ];
 
 const entry = [
@@ -21,7 +23,10 @@ const entry = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+    StylerModule,
+    KitCoreModule,
+  ],
   exports: [
     ...exported,
   ],

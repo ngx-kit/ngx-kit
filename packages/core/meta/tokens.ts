@@ -6,9 +6,12 @@ import { KitComponentStyle } from './component';
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 // core
-export const kitComponentHostContainer = new InjectionToken<KitComponentStyle>('kitComponentHostContainer');
+export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 // buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
+export const kitComponentButtonGroup = new InjectionToken<KitComponentStyle>('kitComponentButtonGroup');
+export const kitComponentDropdownMenu = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenu');
+export const kitComponentDropdownMenuItem = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenuItem');
 // forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');
@@ -22,3 +25,8 @@ export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentTextarea = new InjectionToken<KitComponentStyle>('kitComponentTextarea');
 export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComponentToggle');
+// misc
+export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
+export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
+export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
+export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');

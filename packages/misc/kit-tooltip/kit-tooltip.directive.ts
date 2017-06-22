@@ -1,32 +1,19 @@
 import {
-  ComponentRef,
-  Directive,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  Input,
-  OnInit
+  ComponentRef, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit
 } from '@angular/core';
 
-import { KitHostService } from '@ngx-kit/core';
-
-import { KitTooltipViewComponent } from '../kit-tooltip-view/kit-tooltip-view.component';
-import { KitTooltipPosition } from '../interfaces';
+import { KitTooltipViewComponent } from './kit-tooltip-view.component';
+import { KitOverlayService, OverlayContainerPosition } from '@ngx-kit/core';
 
 @Directive({
-  selector: '[kit-tooltip]',
+  selector: '[kitTooltip]',
 })
-export class KitTooltipDirective implements OnInit {
+export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
 
-  private viewRef: ComponentRef<KitTooltipViewComponent>;
-  private _text: string;
+  private containerRef: ComponentRef<KitTooltipViewComponent>;
 
-  @Input('kit-tooltip')
-  set text(content: string) {
-    this._text = content;
-  }
-
-  @Input() position: KitTooltipPosition = 'top';
+  @Input('kitTooltip') text: string;
+  @Input('kitTooltipPosition') position: OverlayContainerPosition = 'top';
 
   @HostBinding('class') hostClass: string;
 
@@ -38,25 +25,37 @@ export class KitTooltipDirective implements OnInit {
     this.hide();
   }
 
-  @HostListener('click') click() {
-    alert(this._text);
-  }
-
-  constructor(private host: KitHostService,
+  constructor(private overlay: KitOverlayService,
               private el: ElementRef) {
   }
 
   ngOnInit() {
   }
 
+  ngOnChanges() {
+    this.proxyProps();
+  }
+
+  ngOnDestroy() {
+    // @todo destr
+  }
+
   private show() {
-    this.viewRef = this.host.host<KitTooltipViewComponent>(KitTooltipViewComponent);
-    this.viewRef.instance.hostRect = this.el.nativeElement.getBoundingClientRect();
-    this.viewRef.instance.text = this._text;
+    this.containerRef = this.overlay.host<KitTooltipViewComponent>(KitTooltipViewComponent);
+    this.proxyProps();
+  }
+
+  private proxyProps() {
+    if (this.containerRef) {
+      const instance = this.containerRef.instance;
+      instance.text = this.text;
+      instance.position = this.position;
+      instance.anchor = this.el.nativeElement;
+    }
   }
 
   private hide() {
-    this.viewRef.destroy();
+    this.containerRef.destroy();
   }
 
 }

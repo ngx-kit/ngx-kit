@@ -123,6 +123,42 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             },
             $default: 'default',
           }],
+          grouped: [{
+            none: {},
+            horizontal: {
+              borderRadius: 0,
+              $nest: {
+                '&:first-child': {
+                  borderBottomLeftRadius: '3px',
+                  borderTopLeftRadius: '3px',
+                },
+                '&:last-child': {
+                  borderBottomRightRadius: '3px',
+                  borderTopRightRadius: '3px',
+                },
+                '&:not(:first-child)': {
+                  borderLeft: 0,
+                },
+              }
+            },
+            vertical: {
+              borderRadius: 0,
+              $nest: {
+                '&:first-child': {
+                  borderTopRightRadius: '3px',
+                  borderTopLeftRadius: '3px',
+                },
+                '&:last-child': {
+                  borderBottomRightRadius: '3px',
+                  borderBottomLeftRadius: '3px',
+                },
+                '&:not(:first-child)': {
+                  borderTop: 0,
+                },
+              }
+            },
+            $default: 'none',
+          }],
           disabled: {
             cursor: 'default',
             background: params.colors.border.color,

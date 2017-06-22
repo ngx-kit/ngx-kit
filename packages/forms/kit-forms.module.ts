@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { StylerModule } from '@ngx-kit/styler';
-import { KitCoreModule, KitHostService } from '@ngx-kit/core';
+import { KitCoreModule } from '@ngx-kit/core';
 
 import { KitAutoCompleteComponent } from './kit-auto-complete/kit-auto-complete.component';
 import { KitCheckboxComponent } from './kit-checkbox/kit-checkbox.component';
@@ -49,7 +49,6 @@ const exported = [
     ...exported,
   ],
   providers: [
-    KitHostService,
   ]
 })
 export class KitFormsModule {

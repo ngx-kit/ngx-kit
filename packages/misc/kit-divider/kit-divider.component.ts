@@ -1,4 +1,6 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { StylerComponent } from '@ngx-kit/styler';
+import { kitComponentDivider, KitComponentStyle } from '@ngx-kit/core';
 
 /**
  * @todo add vertical setting
@@ -7,49 +9,26 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 @Component({
   selector: 'kit-divider',
   template: `
-    <div [class]="lineClass"></div>
-    <div [class]="textClass"><ng-content></ng-content></div>
-    <div [class]="lineClass"></div>
+    <div styler="line"></div>
+    <div styler="text"><ng-content></ng-content></div>
+    <div styler="line"></div>
   `,
+  viewProviders: [
+    StylerComponent,
+  ],
 })
 export class KitDividerComponent implements OnInit {
 
-  @HostBinding('class') hostClass: string;
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  };
 
-  lineClass: string;
-  textClass: string;
-
-  constructor() {
+  constructor(private styler: StylerComponent,
+              @Inject(kitComponentDivider) private style: KitComponentStyle) {
+    this.styler.register(this.style.getStyles());
   }
 
   ngOnInit() {
   }
-
-//  this.theme = {
-//  host: {
-//    base: {
-//      display: 'flex',
-//      flexDirection: 'row',
-//      alignItems: 'center',
-//      padding: '16px 0',
-//    },
-//  },
-//  line: {
-//    base: {
-//      flexGrow: 1,
-//      borderTop: '1px solid rgba(34,36,38,.15)',
-//      borderBottom: '1px solid rgba(255,255,255,.1)',
-//    }
-//  },
-//  text: {
-//    base: {
-//      $nest: {
-//        '&:not(:empty)': {
-//          padding: '0 16px',
-//        },
-//      },
-//    },
-//  },
-//};
 
 }

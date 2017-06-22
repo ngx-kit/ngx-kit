@@ -3,6 +3,8 @@ import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 import { kitComponentButton, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
+import { KitButtonGroupDirection } from '../interfaces';
+
 @Component({
   selector: 'kit-button',
   template: `
@@ -26,7 +28,7 @@ export class KitButtonComponent implements OnInit {
     this.styler.host.applyState({disabled});
   }
 
-  @HostBinding('attr.sid') get hostClass() {
+  @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
   };
 
@@ -36,6 +38,10 @@ export class KitButtonComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  set grouped(direction: KitButtonGroupDirection) {
+    this.styler.host.applyState({grouped: direction});
   }
 
 }

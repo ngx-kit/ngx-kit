@@ -23,7 +23,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitInputComponent implements ControlValueAccessor {
 

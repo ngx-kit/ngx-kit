@@ -1,18 +1,22 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import {
-  kitComponentAutoComplete,
-  kitComponentButton, kitComponentCheckbox, kitComponentDatePicker, kitComponentFormError, kitComponentFormGroup,
-  kitComponentFormLabel, kitComponentHostContainer, kitComponentInput, kitComponentMathInput,
-  kitComponentRadio, kitComponentSelect, kitComponentTextarea, kitComponentToggle,
-  kitTheme
+  kitComponentAutoComplete, kitComponentBadge,
+  kitComponentButton, kitComponentCheckbox, kitComponentDatePicker,
+  kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
+  kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
+  kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
+  kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
 // core
-import { KitDefaultHostContainerStyle } from './components/kit-default-host-container.style';
+import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
+import { KitDefaultButtonGroupStyle } from './components/kit-default-button-group.style';
+import { KitDefaultDropdownMenuStyle } from './components/kit-default-dropdown-menu.style';
+import { KitDefaultDropdownMenuItemStyle } from './components/kit-default-dropdown-menu-item.style';
 // forms
 import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
 import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
@@ -26,6 +30,11 @@ import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
 import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
+// misc
+import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
+import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
+import { KitDefaultTagStyle } from './components/kit-default-tag.style';
+import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
 
 @NgModule({
   imports: [],
@@ -43,15 +52,27 @@ export class KitDefaultThemeModule {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
         },
-          // core
+        // core
         {
-          provide: kitComponentHostContainer,
-          useClass: KitDefaultHostContainerStyle,
+          provide: kitComponentOverlayContainer,
+          useClass: KitDefaultOverlayContainerStyle,
         },
         // buttons
         {
           provide: kitComponentButton,
           useClass: KitDefaultButtonStyle,
+        },
+        {
+          provide: kitComponentButtonGroup,
+          useClass: KitDefaultButtonGroupStyle,
+        },
+        {
+          provide: kitComponentDropdownMenu,
+          useClass: KitDefaultDropdownMenuStyle,
+        },
+        {
+          provide: kitComponentDropdownMenuItem,
+          useClass: KitDefaultDropdownMenuItemStyle,
         },
         // forms
         {
@@ -102,8 +123,25 @@ export class KitDefaultThemeModule {
           provide: kitComponentToggle,
           useClass: KitDefaultToggleStyle,
         },
-      ]
-    }
+        // misc
+        {
+          provide: kitComponentBadge,
+          useClass: KitDefaultBadgeStyle,
+        },
+        {
+          provide: kitComponentDivider,
+          useClass: KitDefaultDividerStyle,
+        },
+        {
+          provide: kitComponentTag,
+          useClass: KitDefaultTagStyle,
+        },
+        {
+          provide: kitComponentTooltipView,
+          useClass: KitDefaultTooltipViewStyle,
+        },
+      ],
+    };
   }
 
 }

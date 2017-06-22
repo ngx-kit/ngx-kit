@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitInputComponent } from '@ngx-kit/forms';
-import { kitComponentAutoComplete, KitComponentStyle, KitHostService } from '@ngx-kit/core';
+import { kitComponentAutoComplete, KitComponentStyle } from '@ngx-kit/core';
 
 import { KitDataSourceFactory } from './data-source-factory';
 
@@ -32,11 +32,11 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
                styler="input">
     </kit-input>
     <div *ngIf="results.length > 0">
-      <kit-host [template]="resultsRef"
-                [type]="'dropdown'"
-                [anchor]="anchorRef"
-                (outsideClick)="clearResults()">
-      </kit-host>
+      <kit-overlay [template]="resultsRef"
+                   [type]="'dropdown'"
+                   [anchor]="anchorRef"
+                   (outsideClick)="clearResults()">
+      </kit-overlay>
       <ng-template #resultsRef>
         <div styler="results">
           <div *ngFor="let result of results; let i = index"
@@ -61,8 +61,9 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
 
+  results: string[] = [];
+
   private _value: any;
-  private results: string[] = [];
   private activeResult: number = -1;
 
   private isDisabled = false;
@@ -71,7 +72,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
-              private host: KitHostService) {
+              private renderer: Renderer2) {
     this.styler.register(this.style.getStyles());
   }
 

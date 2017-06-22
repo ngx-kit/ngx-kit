@@ -1,6 +1,6 @@
 import { ComponentRef, Injectable, Type } from '@angular/core';
 
-import { KitHostService } from '@ngx-kit/core';
+import { KitOverlayService } from '@ngx-kit/core';
 
 import { DialogHandlers } from './interfaces';
 
@@ -9,11 +9,11 @@ export class KitDialogService {
 
   private dialogRef: ComponentRef<any>;
 
-  constructor(private host: KitHostService) {
+  constructor(private overlay: KitOverlayService) {
   }
 
   show<T extends DialogHandlers>(component: Type<T>): T {
-    let modalRef: ComponentRef<T> = this.host.host<T>(component);
+    let modalRef: ComponentRef<T> = this.overlay.host<T>(component);
     let instance: T = modalRef.instance;
     // subscribe to modal events
     // close event
