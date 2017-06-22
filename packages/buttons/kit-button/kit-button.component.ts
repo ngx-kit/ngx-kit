@@ -1,10 +1,11 @@
-import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
 
 import { kitComponentButton, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
 import { KitButtonGroupDirection } from '../interfaces';
 
+// @todo proxy enter listener to (action)
 @Component({
   selector: 'kit-button',
   template: `
@@ -28,9 +29,24 @@ export class KitButtonComponent implements OnInit {
     this.styler.host.applyState({disabled});
   }
 
+  @Input() set selected(selected: boolean) {
+    this._selected = selected;
+    this.styler.host.applyState({selected});
+  }
+
+  @Output() selectedChanged = new EventEmitter<boolean>();
+
+  @Output() action = new EventEmitter<any>();
+
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
   };
+
+  @HostListener('click') clickListener(event: MouseEvent) {
+    this.action.emit(event);
+  }
+
+  private _selected = false;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentButton) private style: KitComponentStyle) {
@@ -42,6 +58,15 @@ export class KitButtonComponent implements OnInit {
 
   set grouped(direction: KitButtonGroupDirection) {
     this.styler.host.applyState({grouped: direction});
+  }
+
+  pushSelected(selected: boolean) {
+    this.selected = selected;
+    this.selectedChanged.emit(selected);
+  }
+
+  get selected(): boolean {
+    return this._selected;
   }
 
 }

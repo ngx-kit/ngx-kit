@@ -8,6 +8,9 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { KitButtonComponent } from '../kit-button/kit-button.component';
 import { KitButtonGroupDirection } from '../interfaces';
 
+/**
+ * @todo VALUE_ACCESSOR
+ */
 @Component({
   selector: 'kit-button-group',
   template: `
@@ -24,6 +27,10 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
     this.styler.host.applyState({direction});
     this.proxyToButtons();
   }
+
+  @Input() selectable = false;
+
+  @Input() multiply = false;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
@@ -43,14 +50,31 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     this.proxyToButtons();
+    this.subscribeOnActions();
   }
 
-  private proxyToButtons() {
+  private proxyToButtons(): void {
     if (this.buttons) {
       this.buttons.forEach(button => {
         button.grouped = this._direction;
       });
     }
+  }
+
+  private subscribeOnActions(): void {
+    // @todo unsub
+    this.buttons.forEach(button => {
+      button.action.subscribe(() => {
+        if (this.selectable) {
+          // deselect other if needed
+          if (!button.selected && !this.multiply) {
+            this.buttons.filter(b => b !== button).forEach(b => b.pushSelected(false));
+          }
+          // toggle button selection
+          button.pushSelected(!button.selected);
+        }
+      });
+    });
   }
 
 }
