@@ -40,7 +40,7 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDropdownMenu) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

@@ -30,7 +30,7 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentFormError) private style: KitComponentStyle,
               private formGroup: KitFormGroupComponent) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

@@ -34,7 +34,7 @@ export class KitBadgeComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentBadge) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

@@ -56,7 +56,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDatePicker) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

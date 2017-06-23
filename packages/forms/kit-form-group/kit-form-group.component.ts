@@ -52,7 +52,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentFormGroup) private style: KitComponentStyle,
               @Optional() private form: FormGroupDirective) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

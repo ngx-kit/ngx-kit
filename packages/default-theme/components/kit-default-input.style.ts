@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
-import { RegistrationDef, StylerColorService } from '@ngx-kit/styler';
+import { StyleDef, StylerColorService } from '@ngx-kit/styler';
 
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
@@ -12,19 +12,19 @@ export class KitDefaultInputStyle implements KitComponentStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  getStyles(): RegistrationDef {
+  host(): StyleDef {
+    return {};
+  }
+
+  input(): StyleDef {
     const params = this.theme.params;
     return {
-      host: {},
-      input: {
-        border: `${params.border.width}px solid ${params.colors.border.color}`,
-        borderRadius: params.border.radius.s,
-        transition: 'background 0.2s',
-        width: '100%',
-        $nest: {
-          '&:focus': {},
-        },
-        $states: {},
+      border: `${params.border.width}px solid ${params.colors.border.color}`,
+      borderRadius: params.border.radius.s,
+      transition: 'background 0.2s',
+      width: '100%',
+      $nest: {
+        '&:focus': {},
       },
     };
   }

@@ -35,7 +35,7 @@ export class KitTextareaComponent implements ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTextarea) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   writeValue(value: any) {

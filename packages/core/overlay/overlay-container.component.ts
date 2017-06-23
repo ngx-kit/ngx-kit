@@ -50,7 +50,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
               @Inject(kitComponentOverlayContainer) private style: KitComponentStyle,
               private zone: NgZone,
               private elementRef: ElementRef) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

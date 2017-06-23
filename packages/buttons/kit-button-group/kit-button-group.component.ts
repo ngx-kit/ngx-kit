@@ -42,7 +42,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentButtonGroup) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

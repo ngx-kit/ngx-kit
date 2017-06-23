@@ -51,7 +51,7 @@ export class KitRadioComponent implements ControlValueAccessor {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentRadio) private style: KitComponentStyle,
               private core: KitCoreService) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
     this.id = this.core.uuid();
   }
 

@@ -28,7 +28,7 @@ export class KitTooltipViewComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTooltipView) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

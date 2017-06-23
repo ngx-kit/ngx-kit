@@ -1,5 +1,4 @@
-import { RegistrationDef } from '@ngx-kit/styler';
+import { ComponentStyle } from '@ngx-kit/styler';
 
-export interface KitComponentStyle {
-  getStyles(): RegistrationDef;
+export interface KitComponentStyle extends ComponentStyle {
 }

@@ -40,7 +40,7 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMathInput) private style: KitComponentStyle) {
-    this.styler.register(this.style.getStyles());
+    this.styler.register(this.style);
   }
 
   ngAfterViewInit() {
