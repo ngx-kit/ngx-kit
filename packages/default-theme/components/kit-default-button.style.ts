@@ -67,26 +67,51 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           background: params.colors.button.color,
           color: params.colors.button.text,
           borderColor: params.colors.border.color,
+          $nest: {
+            '&:hover': {
+              background: this.theme.colorMod(.05, params.colors.button.color),
+            },
+          }
         },
         primary: {
           background: params.colors.brand.color,
           borderColor: params.colors.brand.color,
           color: params.colors.brand.text,
+          $nest: {
+            '&:hover': {
+              background: this.theme.colorMod(.05, params.colors.brand.color),
+            },
+          }
         },
         success: {
           background: params.colors.success.color,
           borderColor: params.colors.success.color,
           color: params.colors.success.text,
+          $nest: {
+            '&:hover': {
+              background: this.theme.colorMod(.05, params.colors.success.color),
+            },
+          }
         },
         warning: {
-          background: params.colors.success.color,
-          borderColor: params.colors.success.color,
-          color: params.colors.success.text,
+          background: params.colors.warning.color,
+          borderColor: params.colors.warning.color,
+          color: params.colors.warning.text,
+          $nest: {
+            '&:hover': {
+              background: this.theme.colorMod(.05, params.colors.warning.color),
+            },
+          }
         },
         error: {
-          background: params.colors.success.color,
-          borderColor: params.colors.success.color,
-          color: params.colors.success.text,
+          background: params.colors.error.color,
+          borderColor: params.colors.error.color,
+          color: params.colors.error.text,
+          $nest: {
+            '&:hover': {
+              background: this.theme.colorMod(.05, params.colors.error.color),
+            },
+          }
         },
         link: {
           boxShadow: 'none',
@@ -95,6 +120,12 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           background: params.colors.link.color,
           borderColor: 'transparent',
           color: params.colors.link.text,
+          $nest: {
+            '&:hover': {
+              color: this.theme.colorMod(.05, params.colors.link.text),
+              textDecoration: 'underline',
+            },
+          }
         },
       }, 'default'),
       this.def.pick(state.grouped, {
@@ -136,6 +167,11 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
         background: params.colors.border.color,
         borderColor: params.colors.border.color,
         color: params.colors.border.text,
+        $nest: {
+          '&:hover': {
+            background: params.colors.border.color,
+          },
+        }
       }),
     ]);
     if (state.selected) {

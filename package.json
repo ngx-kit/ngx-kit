@@ -25,7 +25,7 @@
     "@angular/platform-browser": "^4.1.1",
     "@angular/platform-browser-dynamic": "^4.1.1",
     "@angular/router": "^4.1.1",
-    "@ngx-kit/styler": "1.0.0",
+    "@angular/styler": "^1.0.0",
     "fs-extra": "^3.0.1",
     "moment": "^2.18.1",
     "ncp": "^2.0.0",

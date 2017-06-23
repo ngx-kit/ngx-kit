@@ -18,14 +18,14 @@ export class KitDefaultDropdownMenuItemStyle implements KitComponentStyle {
       borderBottom: '1px solid #eee',
       cursor: 'pointer',
       display: 'block',
-      padding: [params.grid.v / 2, params.grid.h],
+      padding: [params.grid.v /1.5, params.grid.h * 1.5],
       $nest: {
         '&:hover': {
-          background: '#ddd',
+          background: '#f0f0f0',
         },
       },
       ...this.def.toggle(state.active, {
-        background: '#ddd',
+        background: '#f0f0f0',
       }),
     };
   }

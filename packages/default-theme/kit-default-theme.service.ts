@@ -49,7 +49,7 @@ export class KitDefaultThemeService implements KitThemeService {
     },
     colorMod: {
       type: 'darken',
-      ratio: 0,
+      ratio: 1,
     },
     shadows: {
       element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',

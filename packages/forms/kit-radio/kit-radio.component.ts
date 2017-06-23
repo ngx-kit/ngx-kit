@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input } from '@angular/core';
+import { Component, forwardRef, HostBinding, HostListener, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -24,7 +24,7 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
                (ngModelChange)="checked = $event"
                type="radio"
                styler="input">
-        <span [styler]="['view', {checked: checked}]"></span>
+        <span [styler]="['view', {checked: checked, hover: hover}]"></span>
       </span>
     <label [attr.for]="id" styler="label">
       <ng-content></ng-content>
@@ -39,7 +39,20 @@ export class KitRadioComponent implements ControlValueAccessor {
 
   @Input() value: any;
 
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  }
+
+  @HostListener('mouseenter') mouseenter() {
+    this.hover = true;
+  }
+
+  @HostListener('mouseleave') mouseleave() {
+    this.hover = false;
+  }
+
   id: string;
+  hover = false;
 
   private _checked: any;
 

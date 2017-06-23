@@ -19,10 +19,12 @@ export class KitDefaultInputStyle implements KitComponentStyle {
   input(): StyleDef {
     const params = this.theme.params;
     return {
-      border: `${params.border.width}px solid ${params.colors.border.color}`,
+      border: [params.border.width, 'solid', params.colors.border.color],
       borderRadius: params.border.radius.s,
+      boxSizing: 'border-box',
       transition: 'background 0.2s',
       width: '100%',
+      padding: [params.grid.v / 2, params.grid.h / 2],
       $nest: {
         '&:focus': {},
       },
