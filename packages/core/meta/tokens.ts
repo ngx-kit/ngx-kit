@@ -25,6 +25,12 @@ export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentTextarea = new InjectionToken<KitComponentStyle>('kitComponentTextarea');
 export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComponentToggle');
+// layout
+export const kitComponentLayout = new InjectionToken<KitComponentStyle>('kitComponentLayout');
+export const kitComponentLayoutContent = new InjectionToken<KitComponentStyle>('kitComponentLayoutContent');
+export const kitComponentLayoutFooter = new InjectionToken<KitComponentStyle>('kitComponentLayoutFooter');
+export const kitComponentLayoutHeader = new InjectionToken<KitComponentStyle>('kitComponentLayoutHeader');
+export const kitComponentLayoutSide = new InjectionToken<KitComponentStyle>('kitComponentLayoutSide');
 // misc
 export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');

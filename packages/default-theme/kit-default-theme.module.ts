@@ -7,7 +7,8 @@ import {
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
   kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem,
-  kitComponentTabs, kitComponentAccordion, kitComponentAccordionPanel
+  kitComponentTabs, kitComponentAccordion, kitComponentAccordionPanel, kitComponentLayout, kitComponentLayoutContent,
+  kitComponentLayoutFooter, kitComponentLayoutHeader, kitComponentLayoutSide
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -31,6 +32,12 @@ import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
 import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
 import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
+// layout
+import { KitDefaultLayoutStyle } from './components/kit-default-layout.style';
+import { KitDefaultLayoutContentStyle } from './components/kit-default-layout-content.style';
+import { KitDefaultLayoutFooterStyle } from './components/kit-default-layout-footer.style';
+import { KitDefaultLayoutHeaderStyle } from './components/kit-default-layout-header.style';
+import { KitDefaultLayoutSideStyle } from './components/kit-default-layout-side.style';
 // misc
 import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
 import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
@@ -127,6 +134,27 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentToggle,
           useClass: KitDefaultToggleStyle,
+        },
+        // layout
+        {
+          provide: kitComponentLayout,
+          useClass: KitDefaultLayoutStyle,
+        },
+        {
+          provide: kitComponentLayoutContent,
+          useClass: KitDefaultLayoutContentStyle,
+        },
+        {
+          provide: kitComponentLayoutFooter,
+          useClass: KitDefaultLayoutFooterStyle,
+        },
+        {
+          provide: kitComponentLayoutHeader,
+          useClass: KitDefaultLayoutHeaderStyle,
+        },
+        {
+          provide: kitComponentLayoutSide,
+          useClass: KitDefaultLayoutSideStyle,
         },
         // misc
         {
