@@ -12,7 +12,8 @@
     "type": "git"
   },
   "peerDependencies": {
-    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER",
+    "@ngx-kit/http": "0.0.0-PLACEHOLDER"
   },
   "dependencies": {
   }
