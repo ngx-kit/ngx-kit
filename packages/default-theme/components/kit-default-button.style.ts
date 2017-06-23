@@ -42,23 +42,23 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
       },
       this.def.pick(state.size, {
         xs: {
-          padding: `${params.grid.h / 8}px ${params.grid.v / 2}px`,
+          padding: `${params.grid.v / 8}px ${params.grid.h / 2}px`,
           fontSize: '.8rem',
         },
         s: {
-          padding: `${params.grid.h / 4}px ${params.grid.v}px`,
+          padding: `${params.grid.v / 4}px ${params.grid.h}px`,
           fontSize: '1rem',
         },
         m: {
-          padding: `${params.grid.h / 2}px ${params.grid.v * 1.5}px`,
+          padding: `${params.grid.v / 2}px ${params.grid.h * 1.5}px`,
           fontSize: '1.1rem',
         },
         l: {
-          padding: `${params.grid.h}px ${params.grid.v * 2.5}px`,
+          padding: `${params.grid.v}px ${params.grid.h * 2.5}px`,
           fontSize: '1.3rem',
         },
         xl: {
-          padding: `${params.grid.h * 2}px ${params.grid.v * 4}px`,
+          padding: `${params.grid.v * 2}px ${params.grid.h * 4}px`,
           fontSize: '1.6rem',
         },
       }, 'm'),
