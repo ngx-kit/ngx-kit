@@ -35,8 +35,10 @@ export class KitAccordionPanelComponent implements OnInit {
   }
 
   activateClick() {
-    this.active = true;
-    this.activate.emit(true);
+    this.active = !this.active;
+    if (this.active) {
+      this.activate.emit(true);
+    }
   }
 
 }
