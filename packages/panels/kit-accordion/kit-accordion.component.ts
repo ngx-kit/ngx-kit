@@ -1,23 +1,36 @@
-import { AfterContentInit, Component, ContentChildren, HostBinding, Input, OnInit, QueryList } from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, HostBinding, Inject, Input, OnInit,
+  QueryList
+} from '@angular/core';
 
-import { KitAccordionPanelComponent } from '../kit-accordion-panel/kit-accordion-panel.component';
+import { StylerComponent } from '@ngx-kit/styler';
+import { kitComponentAccordion, KitComponentStyle } from '@ngx-kit/core';
+
+import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 
 @Component({
   selector: 'kit-accordion',
   template: `
     <ng-content></ng-content>
   `,
+  viewProviders: [
+    StylerComponent,
+  ],
 })
 export class KitAccordionComponent implements OnInit, AfterContentInit {
 
   @Input() firstActivate = true;
   @Input() multiple = false;
 
-  @HostBinding('class') hostClass: string;
-
   @ContentChildren(KitAccordionPanelComponent) panels: QueryList<KitAccordionPanelComponent>;
 
-  constructor() {
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  };
+
+  constructor(private styler: StylerComponent,
+              @Inject(kitComponentAccordion) private style: KitComponentStyle) {
+    this.styler.register(this.style);
   }
 
   ngOnInit() {

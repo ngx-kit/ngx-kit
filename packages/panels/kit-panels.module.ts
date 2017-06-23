@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { StylerModule } from '@ngx-kit/styler';
 
 import { KitAccordionComponent } from './kit-accordion/kit-accordion.component';
-import { KitAccordionPanelComponent } from './kit-accordion-panel/kit-accordion-panel.component';
+import { KitAccordionPanelComponent } from './kit-accordion/kit-accordion-panel.component';
 import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
 import { KitTabsPanelComponent } from './kit-tabs/kit-tabs-panel.component';
 
-const external = [
+const exported = [
   KitTabsComponent,
   KitTabsPanelComponent,
   KitAccordionComponent,
@@ -20,9 +20,11 @@ const external = [
     CommonModule,
     StylerModule,
   ],
-  exports: external,
+  exports: [
+    ...exported,
+  ],
   declarations: [
-    ...external,
+    ...exported,
   ],
   providers: []
 })

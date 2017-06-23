@@ -31,4 +31,6 @@ export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitCom
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
 export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');
 // panels
+export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
+export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');
 export const kitComponentTabs = new InjectionToken<KitComponentStyle>('kitComponentTabs');

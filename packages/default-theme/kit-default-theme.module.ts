@@ -7,7 +7,7 @@ import {
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
   kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem,
-  kitComponentTabs
+  kitComponentTabs, kitComponentAccordion, kitComponentAccordionPanel
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -37,6 +37,8 @@ import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 import { KitDefaultTagStyle } from './components/kit-default-tag.style';
 import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
 // panels
+import { KitDefaultAccordionStyle } from './components/kit-default-accordion.style';
+import { KitDefaultAccordionPanelStyle } from './components/kit-default-accordion-panel.style';
 import { KitDefaultTabsStyle } from './components/kit-default-tabs.style';
 
 @NgModule({
@@ -144,6 +146,14 @@ export class KitDefaultThemeModule {
           useClass: KitDefaultTooltipViewStyle,
         },
         // panels
+        {
+          provide: kitComponentAccordion,
+          useClass: KitDefaultAccordionStyle,
+        },
+        {
+          provide: kitComponentAccordionPanel,
+          useClass: KitDefaultAccordionPanelStyle,
+        },
         {
           provide: kitComponentTabs,
           useClass: KitDefaultTabsStyle,
