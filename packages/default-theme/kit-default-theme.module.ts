@@ -6,17 +6,18 @@ import {
   kitComponentDivider, kitComponentFormError, kitComponentFormGroup,
   kitComponentFormLabel, kitComponentOverlayContainer, kitComponentInput, kitComponentMathInput,
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
-  kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem
+  kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem,
+  kitComponentTabs
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
-// core
-import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 // buttons
 import { KitDefaultButtonStyle } from './components/kit-default-button.style';
 import { KitDefaultButtonGroupStyle } from './components/kit-default-button-group.style';
 import { KitDefaultDropdownMenuStyle } from './components/kit-default-dropdown-menu.style';
 import { KitDefaultDropdownMenuItemStyle } from './components/kit-default-dropdown-menu-item.style';
+// core
+import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 // forms
 import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
 import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
@@ -35,6 +36,8 @@ import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
 import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 import { KitDefaultTagStyle } from './components/kit-default-tag.style';
 import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
+// panels
+import { KitDefaultTabsStyle } from './components/kit-default-tabs.style';
 
 @NgModule({
   imports: [],
@@ -52,11 +55,6 @@ export class KitDefaultThemeModule {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
         },
-        // core
-        {
-          provide: kitComponentOverlayContainer,
-          useClass: KitDefaultOverlayContainerStyle,
-        },
         // buttons
         {
           provide: kitComponentButton,
@@ -73,6 +71,11 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentDropdownMenuItem,
           useClass: KitDefaultDropdownMenuItemStyle,
+        },
+        // core
+        {
+          provide: kitComponentOverlayContainer,
+          useClass: KitDefaultOverlayContainerStyle,
         },
         // forms
         {
@@ -139,6 +142,11 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentTooltipView,
           useClass: KitDefaultTooltipViewStyle,
+        },
+        // panels
+        {
+          provide: kitComponentTabs,
+          useClass: KitDefaultTabsStyle,
         },
       ],
     };

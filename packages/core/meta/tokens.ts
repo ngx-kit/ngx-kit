@@ -5,13 +5,13 @@ import { KitComponentStyle } from './component';
 
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
-// core
-export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 // buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
 export const kitComponentButtonGroup = new InjectionToken<KitComponentStyle>('kitComponentButtonGroup');
 export const kitComponentDropdownMenu = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenu');
 export const kitComponentDropdownMenuItem = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenuItem');
+// core
+export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 // forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');
@@ -30,3 +30,5 @@ export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
 export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');
+// panels
+export const kitComponentTabs = new InjectionToken<KitComponentStyle>('kitComponentTabs');

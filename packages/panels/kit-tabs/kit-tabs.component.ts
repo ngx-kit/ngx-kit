@@ -1,31 +1,42 @@
-import { AfterContentInit, Component, ContentChildren, HostBinding, Input, OnInit, QueryList } from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, HostBinding, Inject, Input, OnInit,
+  QueryList
+} from '@angular/core';
 
-import { KitTabsPanelComponent } from '../kit-tabs-panel/kit-tabs-panel.component';
+import { StylerComponent } from '@ngx-kit/styler';
+import { KitComponentStyle, kitComponentTabs } from '@ngx-kit/core';
+
+import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 
 @Component({
   selector: 'kit-tabs',
   template: `
-    <ul [class]="navClass">
+    <ul styler="nav">
       <li *ngFor="let tab of tabs"
-          [class]="getTabClass(tab)"
+          [styler]="['tab', {active: tab.active}]"
           (click)="setActive(tab)">
         {{ tab.title }}
       </li>
     </ul>
     <ng-content></ng-content>
   `,
+  viewProviders: [
+    StylerComponent,
+  ],
 })
 export class KitTabsComponent implements OnInit, AfterContentInit {
 
   @Input() firstActivate = true;
 
-  @HostBinding('class') hostClass: string;
-
   @ContentChildren(KitTabsPanelComponent) tabs: QueryList<KitTabsPanelComponent>;
 
-  navClass: string;
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  };
 
-  constructor() {
+  constructor(private styler: StylerComponent,
+              @Inject(kitComponentTabs) private style: KitComponentStyle) {
+    this.styler.register(this.style);
   }
 
   ngOnInit() {
@@ -41,16 +52,6 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
     });
   }
 
-  getTabClass(tab: KitTabsPanelComponent) {
-//    const theme = this.service.getTheme();
-//    return style(
-//        theme.navTab.base,
-//        this.core.mapColor('page', theme.navTab.baseSwatchMap),
-//        tab.active ? theme.navTab.active : null,
-//        tab.active ? this.core.mapColor('page', theme.navTab.activeSwatchMap): null,
-//    );
-  }
-
   private activateFirst() {
     if (this.firstActivate) {
       if (!this.tabs.find(t => t.active)) {
@@ -58,38 +59,5 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
       }
     }
   }
-//
-//  this.theme = {
-//  host: {
-//    base: {
-//    },
-//  },
-//  nav: {
-//    base: {
-//      display: 'flex',
-//      flexDirection: 'row',
-//      listStyle: 'none',
-//      margin: 0,
-//      padding: 0,
-//    },
-//  },
-//  navTab: {
-//    base: {
-//      cursor: 'pointer',
-//      padding: '8px',
-//    },
-//    baseSwatchMap: {
-//      color: 'text',
-//      background: 'color',
-//    },
-//    active: {
-//      fontWeight: 600,
-//    },
-//    activeSwatchMap: {
-//      color: 'text',
-//      background: 'darken',
-//    }
-//  },
-//};
 
 }
