@@ -1,8 +1,8 @@
 {
-  "name": "@ngx-kit/icons",
+  "name": "@ngx-kit/layout",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - icons module",
-  "main": "bundle/ngx-kit-icons.umd.js",
+  "description": "ngx-kit - layout module",
+  "main": "bundle/ngx-kit-layout.umd.js",
   "module": "index.js",
   "types": "index.d.ts",
   "author": "Sasha Novik",
@@ -12,8 +12,7 @@
     "type": "git"
   },
   "peerDependencies": {
-    "@ngx-kit/core": "0.0.0-PLACEHOLDER",
-    "@ngx-kit/http": "0.0.0-PLACEHOLDER"
+    "@ngx-kit/core": "0.0.0-PLACEHOLDER"
   },
   "dependencies": {
   }
