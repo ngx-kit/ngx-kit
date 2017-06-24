@@ -6,8 +6,8 @@ import { KitBreadcrumbItem } from '../interfaces';
   selector: 'kit-breadcrumb',
   template: `
     <span *ngFor="let item of items; let l = last">
-      <a [routerLink]="item.link">{{ item.title }}</a>
-      <span *ngIf="!l">{{ delimiter }}</span>
+      <!--<a [routerLink]="item.link">{{ item.title }}</a>-->
+      <!--<span *ngIf="!l">{{ delimiter }}</span>-->
     </span>
   `,
 })

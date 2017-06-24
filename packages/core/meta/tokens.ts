@@ -36,6 +36,12 @@ export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
 export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');
+// navigation
+export const kitComponentMenu = new InjectionToken<KitComponentStyle>('kitComponentMenu');
+export const kitComponentMenuGroup = new InjectionToken<KitComponentStyle>('kitComponentMenuGroup');
+export const kitComponentMenuItem = new InjectionToken<KitComponentStyle>('kitComponentMenuItem');
+export const kitComponentMenuSeparator = new InjectionToken<KitComponentStyle>('kitComponentMenuSeparator');
+export const kitComponentMenuSub = new InjectionToken<KitComponentStyle>('kitComponentMenuSub');
 // panels
 export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
 export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');

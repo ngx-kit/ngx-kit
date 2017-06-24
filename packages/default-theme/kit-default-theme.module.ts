@@ -8,7 +8,8 @@ import {
   kitComponentRadio, kitComponentSelect, kitComponentTag, kitComponentTextarea, kitComponentToggle,
   kitTheme, kitComponentTooltipView, kitComponentButtonGroup, kitComponentDropdownMenu, kitComponentDropdownMenuItem,
   kitComponentTabs, kitComponentAccordion, kitComponentAccordionPanel, kitComponentLayout, kitComponentLayoutContent,
-  kitComponentLayoutFooter, kitComponentLayoutHeader, kitComponentLayoutSide
+  kitComponentLayoutFooter, kitComponentLayoutHeader, kitComponentLayoutSide, kitComponentMenu, kitComponentMenuGroup,
+  kitComponentMenuItem, kitComponentMenuSeparator, kitComponentMenuSub
 } from '@ngx-kit/core';
 
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -43,6 +44,12 @@ import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
 import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
 import { KitDefaultTagStyle } from './components/kit-default-tag.style';
 import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
+// navigation
+import { KitDefaultMenuStyle } from './components/kit-default-menu.style';
+import { KitDefaultMenuGroupStyle } from './components/kit-default-menu-group.style';
+import { KitDefaultMenuItemStyle } from './components/kit-default-menu-item.style';
+import { KitDefaultMenuSeparatorStyle } from './components/kit-default-menu-separator.style';
+import { KitDefaultMenuSubStyle } from './components/kit-default-menu-sub.style';
 // panels
 import { KitDefaultAccordionStyle } from './components/kit-default-accordion.style';
 import { KitDefaultAccordionPanelStyle } from './components/kit-default-accordion-panel.style';
@@ -172,6 +179,27 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentTooltipView,
           useClass: KitDefaultTooltipViewStyle,
+        },
+        // navigation
+        {
+          provide: kitComponentMenu,
+          useClass: KitDefaultMenuStyle,
+        },
+        {
+          provide: kitComponentMenuGroup,
+          useClass: KitDefaultMenuGroupStyle,
+        },
+        {
+          provide: kitComponentMenuItem,
+          useClass: KitDefaultMenuItemStyle,
+        },
+        {
+          provide: kitComponentMenuSeparator,
+          useClass: KitDefaultMenuSeparatorStyle,
+        },
+        {
+          provide: kitComponentMenuSub,
+          useClass: KitDefaultMenuSubStyle,
         },
         // panels
         {
