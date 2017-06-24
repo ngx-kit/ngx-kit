@@ -12,7 +12,9 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
                            [type]="type"
                            [position]="position"
                            [widthType]="widthType"
-                           (outsideClick)="outsideClick.emit($event)">
+                           (outsideClick)="outsideClick.emit($event)"
+                           (mouseenter)="containerMouseEnter.emit()"
+                           (mouseleave)="containerMouseLeave.emit()">
       <div *ngIf="component">
         <ng-container *ngTemplateOutlet="component"></ng-container>
       </div>
@@ -36,6 +38,8 @@ export class KitOverlayHostComponent implements OnInit {
   @Input() widthType: OverlayContainerWidthType;
 
   @Output() outsideClick = new EventEmitter<any>();
+  @Output() containerMouseEnter = new EventEmitter<any>();
+  @Output() containerMouseLeave = new EventEmitter<any>();
 
   constructor() {
   }

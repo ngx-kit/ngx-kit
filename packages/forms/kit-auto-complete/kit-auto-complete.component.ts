@@ -33,8 +33,9 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
     </kit-input>
     <div *ngIf="results.length > 0">
       <kit-overlay [template]="resultsRef"
-                   [type]="'dropdown'"
                    [anchor]="anchorRef"
+                   [type]="'dropdown'"
+                   [position]="'bottom'"
                    (outsideClick)="clearResults()">
       </kit-overlay>
       <ng-template #resultsRef>

@@ -12,7 +12,7 @@ import { KitComponentStyle } from '../meta/component';
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 
 /**
- * @todo click hide
+ * @todo click close
  * @todo dropdown - show at other side if space is not enough
  * @todo improve reposition performance
  * @todo type=side move from edge
@@ -94,12 +94,41 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
     if (this.type === 'dropdown') {
       const rect: ClientRect = this.anchor.getBoundingClientRect();
       this.zone.run(() => {
-        this.holderStyle = {
-          position: 'fixed',
-          top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
-          left: `${Math.round(rect.left)}px`,
-          width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
-        };
+        switch (this.position) {
+          case 'top':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top)}px`,
+              left: `${Math.round(rect.left)}px`,
+              transform: 'translateY(-100%)',
+              width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+            };
+            break;
+          case 'bottom':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
+              left: `${Math.round(rect.left)}px`,
+              width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+            };
+            break;
+          case 'left':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top)}px`,
+              left: `${Math.round(rect.left)}px`,
+            };
+            break;
+          case 'right':
+            this.holderStyle = {
+              position: 'fixed',
+              top: `${Math.round(rect.top)}px`,
+              left: `${Math.round(rect.right)}px`,
+            };
+            break;
+          default:
+            throw new Error('In development!');
+        }
       });
     } else if (this.type === 'side') {
       const rect: ClientRect = this.anchor.getBoundingClientRect();

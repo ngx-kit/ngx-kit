@@ -24,12 +24,14 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
   @Input() component: any;
   @Input() template: any;
   @Input() overlay = false;
-  @Input() anchor: KitAnchorDirective;
+  @Input() anchor: KitAnchorDirective | Element;
   @Input() type: 'center' | 'side' | 'dropdown' = 'center';
   @Input() position: OverlayContainerPosition = 'top';
   @Input() widthType: OverlayContainerWidthType = 'full';
 
   @Output() outsideClick = new EventEmitter<any>();
+  @Output() containerMouseEnter = new EventEmitter<any>();
+  @Output() containerMouseLeave = new EventEmitter<any>();
 
   private hostRef: ComponentRef<KitOverlayHostComponent>;
 
@@ -61,6 +63,8 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
   private createContainer() {
     this.hostRef = this.overlayService.host<KitOverlayHostComponent>(KitOverlayHostComponent);
     this.hostRef.instance.outsideClick.subscribe(this.outsideClick);
+    this.hostRef.instance.containerMouseEnter.subscribe(this.containerMouseEnter);
+    this.hostRef.instance.containerMouseLeave.subscribe(this.containerMouseLeave);
   }
 
   private passToContainer() {
@@ -84,7 +88,9 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
         }
       }
       // proxy
-      instance.anchor = this.anchor.nativeEl;
+      instance.anchor = this.anchor instanceof KitAnchorDirective
+          ? this.anchor.nativeEl
+          : this.anchor;
       instance.type = this.type;
       instance.position = this.position;
       instance.widthType = this.widthType;

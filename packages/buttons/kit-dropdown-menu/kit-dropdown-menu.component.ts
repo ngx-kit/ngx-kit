@@ -14,6 +14,7 @@ import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from 
                    [anchor]="anchor"
                    [type]="'dropdown'"
                    [widthType]="'auto'"
+                   [position]="'bottom'"
                    (outsideClick)="close()"></kit-overlay>
       <ng-template #contentRef>
         <div styler="menu">
