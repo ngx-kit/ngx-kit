@@ -18,7 +18,9 @@ import { KitTabsPanelComponent } from './kit-tabs-panel.component';
         {{ tab.title }}
       </li>
     </ul>
-    <ng-content></ng-content>
+    <div styler="panel">
+      <ng-content></ng-content>
+    </div>
   `,
   viewProviders: [
     StylerComponent,
