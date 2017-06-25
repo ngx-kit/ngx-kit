@@ -9,7 +9,7 @@
     "build:rollup": "rollup -c rollup.config.js",
     "build:release": "node ./release.js",
     "build-and-copy": "npm run build && node ./dev/dev-copy.js",
-    "publish": "npm publish ./dist --access=public",
+    "publish": "node ./publish.js",
     "release": "npm run build && npm run publish"
   },
   "private": true,
