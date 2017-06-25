@@ -18,6 +18,7 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
 
   nav(): StyleDef {
     return {
+      borderBottom: [1, 'solid', '#d9d9d9'],
       display: 'flex',
       flexDirection: 'row',
       listStyle: 'none',
@@ -29,11 +30,28 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   tab(state: {active: boolean}): StyleDef {
     return {
       cursor: 'pointer',
+      userSelect: 'none',
       padding: '8px',
       ...this.def.toggle(state.active, {
-        fontWeight: 600,
+        background: '#ffffff',
+        borderTop: [1, 'solid', '#d9d9d9'],
+        borderRight: [1, 'solid', '#d9d9d9'],
+        borderLeft: [1, 'solid', '#d9d9d9'],
+        marginBottom: -1,
+
       }),
     }
+  }
+
+  panel(): StyleDef {
+    return {
+      borderBottom: [1, 'solid', '#d9d9d9'],
+      borderRight: [1, 'solid', '#d9d9d9'],
+      borderLeft: [1, 'solid', '#d9d9d9'],
+      paddingTop: this.theme.params.grid.h * 2,
+      paddingBottom: this.theme.params.grid.h * 2,
+      paddingLeft: this.theme.params.grid.v * 2,
+    };
   }
 
 }
