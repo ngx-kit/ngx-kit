@@ -1,6 +1,7 @@
 import {
+  AfterContentInit,
   Component, ContentChildren, ElementRef,
-  forwardRef, HostBinding, HostListener, Inject, Input, OnInit,
+  forwardRef, HostBinding, HostListener, Inject, Input, OnInit, Optional,
   QueryList,
 } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
@@ -21,23 +22,28 @@ import { KitMenuComponent } from './kit-menu.component';
     StylerComponent,
   ],
 })
-export class KitMenuItemComponent implements OnInit {
+export class KitMenuItemComponent implements OnInit, AfterContentInit {
 
-  @Input() set disabled(disabled: boolean) {
+  @Input()
+  set disabled(disabled: boolean) {
     this.styler.host.applyState({disabled});
   }
 
-  @HostListener('mouseenter') mouseenter() {
+  @HostListener('mouseenter')
+  mouseenter() {
     this._hover = true;
+    this.styler.host.applyState({hover: true});
     this.openSub();
   }
 
-  @HostListener('mouseleave') mouseleave() {
+  @HostListener('mouseleave')
+  mouseleave() {
     this._hover = false;
     this.menu.checkLeave$.next();
   }
 
-  @HostBinding('attr.sid') get sid() {
+  @HostBinding('attr.sid')
+  get sid() {
     return this.styler.host.sid;
   };
 
@@ -49,15 +55,18 @@ export class KitMenuItemComponent implements OnInit {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuItem) private style: KitComponentStyle,
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
+              @Inject(forwardRef(() => KitMenuSubComponent)) @Optional() private sub: KitMenuSubComponent,
               private el: ElementRef) {
     this.styler.register(this.style);
   }
 
   ngOnInit() {
+    // hover handler
     this.menu.checkLeave$
         .debounceTime(200)
         .subscribe(() => {
           if (!this.hover) {
+            this.styler.host.applyState({hover: false});
             this.closeSub();
           }
         });
@@ -65,6 +74,15 @@ export class KitMenuItemComponent implements OnInit {
 //        .debounceTime(200)
 //        .filter(() => !this.hover)
 //        .subscribe(() => this.closeSub());
+  }
+
+  ngAfterContentInit() {
+    // apply styler states
+    this.styler.host.applyState({
+      menuDirection: this.menu.direction,
+      root: !this.sub,
+      hasSubs: this.subs && this.subs.length > 0
+    });
   }
 
   get nativeEl() {

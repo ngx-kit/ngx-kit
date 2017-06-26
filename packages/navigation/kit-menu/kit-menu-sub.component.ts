@@ -27,7 +27,7 @@ import { KitMenuComponent } from './kit-menu.component';
                    (containerMouseEnter)="containerMouseEnter()"
                    (containerMouseLeave)="containerMouseLeave()"></kit-overlay>
       <ng-template #contentRef>
-        <div styler="menu">
+        <div [styler]="['menu', {position: overlayPosition}]">
           <ng-content></ng-content>
         </div>
       </ng-template>
@@ -48,7 +48,8 @@ export class KitMenuSubComponent implements OnInit {
     return this.styler.host.sid;
   };
 
-  @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false}) items: QueryList<KitMenuItemComponent>;
+  @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false})
+  items: QueryList<KitMenuItemComponent>;
 
   containerMouseEnter() {
     this._hover = true;

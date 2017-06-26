@@ -54,6 +54,10 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
     this.proxyDirectionToSeparators();
   }
 
+  get direction() {
+    return this._direction;
+  }
+
   private proxyDirectionToSubs() {
     if (this.subs) {
       this.subs.forEach(sub => {

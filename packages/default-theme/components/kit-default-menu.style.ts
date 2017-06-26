@@ -14,14 +14,15 @@ export class KitDefaultMenuStyle implements KitComponentStyle {
 
   host(state: {direction: 'horizontal' | 'vertical'}): StyleDef {
     return {
-      borderBottom: [1, 'solid', '#e9e9e9'],
       display: 'flex',
       justifyContent: 'flex-start',
       ...this.def.pick(state.direction, {
         horizontal: {
+          borderBottom: [1, 'solid', '#e9e9e9'],
           flexDirection: 'row',
         },
         vertical: {
+          borderRight: [1, 'solid', '#e9e9e9'],
           flexDirection: 'column',
         },
       }, 'horizontal'),
