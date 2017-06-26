@@ -1,0 +1,21 @@
+<kit-layout>
+  <kit-layout-side>
+    <kit-menu [direction]="'vertical'">
+      <kit-menu-item [routerLink]="['']">Overview</kit-menu-item>
+      <kit-menu-item [routerLink]="['getting-started']">Getting Started</kit-menu-item>
+      <kit-menu-group>
+        <div title>Core</div>
+        <kit-menu-item [routerLink]="['core/overlay']">Overlay</kit-menu-item>
+      </kit-menu-group>
+      <kit-menu-group>
+        <div title>Buttons</div>
+        <kit-menu-item [routerLink]="['buttons/button']">Button</kit-menu-item>
+        <kit-menu-item [routerLink]="['buttons/button-group']">Button Group</kit-menu-item>
+        <kit-menu-item [routerLink]="['buttons/dropdown-menu']">Dropdown Menu</kit-menu-item>
+      </kit-menu-group>
+    </kit-menu>
+  </kit-layout-side>
+  <kit-layout-content>
+    <router-outlet></router-outlet>
+  </kit-layout-content>
+</kit-layout>
