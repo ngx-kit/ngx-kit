@@ -1,9 +1,6 @@
-import {
-  Component, HostBinding, Inject, Input, OnInit,
-} from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
+import { Component, HostBinding, Inject, Input, OnInit, } from '@angular/core';
 import { kitComponentMenuGroup, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 @Component({
   selector: 'kit-menu-group,[kit-menu-group],[kitMenuGroup]',
@@ -20,19 +17,18 @@ import { kitComponentMenuGroup, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitMenuGroupComponent implements OnInit {
-
   @Input() kitMenuGroup: any;
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuGroup) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
 
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
   ngOnInit() {
   }
-
 }

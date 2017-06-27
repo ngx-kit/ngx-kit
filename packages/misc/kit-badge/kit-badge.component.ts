@@ -1,7 +1,6 @@
 import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentBadge, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 /**
  * @todo overflowCount - max count
@@ -17,29 +16,30 @@ import { kitComponentBadge, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitBadgeComponent implements OnInit {
-
-  @Input() kitBadge: any;
-
-  @Input() set type(type: string) {
-    this.styler.host.applyState({type});
-  };
-
-  @Input() set size(size: string) {
-    this.styler.host.applyState({size});
-  }
-
   @Input() count: number;
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
+  @Input() kitBadge: any;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentBadge) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
+  @Input()
+  set size(size: string) {
+    this.styler.host.applyState({size});
   }
 
+  @Input()
+  set type(type: string) {
+    this.styler.host.applyState({type});
+  };
+
+  ngOnInit() {
+  }
 }

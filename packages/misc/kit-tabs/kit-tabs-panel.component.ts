@@ -9,18 +9,17 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   `,
 })
 export class KitTabsPanelComponent implements OnInit {
+  @Input() active: boolean;
+
+  @HostBinding('class') hostClass: string;
 
   @Input() kitTabsPanel: any;
 
-  @Input() active: boolean;
   @Input() title: string;
-
-  @HostBinding('class') hostClass: string;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

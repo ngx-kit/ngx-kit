@@ -7,15 +7,13 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   `,
 })
 export class KitTreeComponent implements OnInit {
+  @HostBinding('class') hostClass: string;
 
   @Input() kitTree: any;
-
-  @HostBinding('class') hostClass: string;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

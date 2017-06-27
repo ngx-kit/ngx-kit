@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
-
 import { kitComponentFormError, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
-
 import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.component';
 
 /**
@@ -18,16 +16,13 @@ import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.componen
   ],
 })
 export class KitFormErrorComponent implements OnInit, AfterViewInit {
+  @Input() dirty: boolean | null = null;
 
   @Input() kitFormError: any;
 
-  @Input() validator: string;
   @Input() touched: boolean | null = null;
-  @Input() dirty: boolean | null = null;
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  }
+  @Input() validator: string;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentFormError) private style: KitComponentStyle,
@@ -35,13 +30,18 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
   }
 
   ngAfterViewInit() {
     if (!this.validator) {
       throw new Error('kit-form-error: validator attribute is required!');
     }
+  }
+
+  ngOnInit() {
   }
 
   init() {
@@ -56,5 +56,4 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
       this.styler.host.applyState({visible});
     });
   }
-
 }

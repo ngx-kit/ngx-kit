@@ -1,14 +1,13 @@
-import { Component, Input, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentSelect, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 
 export const KIT_SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitSelectComponent),
-  multi: true
+  multi: true,
 };
 
 /**
@@ -29,23 +28,28 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   providers: [KIT_SELECT_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitSelectComponent<T> implements ControlValueAccessor {
-
   @Input() kitSelect: any;
 
-  @Input() options: T[] = [];
-  @Input() type: 'list' | 'dropdown' = 'list';
-  @Input() multi = false;
-  @Input() valueField = 'value';
   @Input() labelFiled = 'label';
+
+  @Input() multi = false;
+
+  @Input() options: T[] = [];
+
+  @Input() type: 'list' | 'dropdown' = 'list';
+
+  @Input() valueField = 'value';
 
   private _value: any;
 
+  private changes$ = new Subject<number>();
+
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<number>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -53,8 +57,14 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
     this.styler.register(this.style);
   }
 
-  writeValue(value: any) {
-    this.value = value;
+  get value(): any {
+    return this._value;
+  }
+
+  set value(value: any) {
+    this._value = value;
+    this.changes$.next(value);
+    this.touches$.next(true);
   }
 
   registerOnChange(fn: any) {
@@ -69,14 +79,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  get value(): any {
-    return this._value;
+  writeValue(value: any) {
+    this.value = value;
   }
-
-  set value(value: any) {
-    this._value = value;
-    this.changes$.next(value);
-    this.touches$.next(true);
-  }
-
 }

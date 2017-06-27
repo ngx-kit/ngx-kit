@@ -1,6 +1,6 @@
 export interface KitBreadcrumbItem {
-  title: string;
   link: any[];
+  title: string;
 }
 
 export type KitMenuDirection = 'horizontal' | 'vertical';

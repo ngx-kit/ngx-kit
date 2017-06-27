@@ -7,40 +7,43 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
-
-import { KitOverlayHostComponent } from './overlay-host.component';
+import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 import { KitAnchorDirective } from './anchor.directive';
 import { KitOverlayService } from './kit-overlay.service';
-import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
+import { KitOverlayHostComponent } from './overlay-host.component';
 
 @Component({
   selector: 'kit-overlay,[kit-overlay],[kitOverlay]',
   template: '',
 })
 export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {
+  @Input() anchor: KitAnchorDirective | Element;
+
+  @Input() component: any;
+
+  @Output() containerMouseEnter = new EventEmitter<any>();
+
+  @Output() containerMouseLeave = new EventEmitter<any>();
 
   @Input() kitOverlay: any;
 
-  @Input() component: any;
-  @Input() template: any;
-  @Input() overlay = false;
-  @Input() anchor: KitAnchorDirective | Element;
-  @Input() type: 'center' | 'side' | 'dropdown' = 'center';
-  @Input() position: OverlayContainerPosition = 'top';
-  @Input() widthType: OverlayContainerWidthType = 'full';
-
   @Output() outsideClick = new EventEmitter<any>();
-  @Output() containerMouseEnter = new EventEmitter<any>();
-  @Output() containerMouseLeave = new EventEmitter<any>();
+
+  @Input() overlay = false;
+
+  @Input() position: OverlayContainerPosition = 'top';
+
+  @Input() template: any;
+
+  @Input() type: 'center' | 'side' | 'dropdown' = 'center';
+
+  @Input() widthType: OverlayContainerWidthType = 'full';
 
   private hostRef: ComponentRef<KitOverlayHostComponent>;
 
   constructor(private overlayService: KitOverlayService) {
-  }
-
-  ngOnInit() {
   }
 
   ngAfterContentInit() {
@@ -60,6 +63,9 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
     if (this.hostRef) {
       this.hostRef.destroy();
     }
+  }
+
+  ngOnInit() {
   }
 
   private createContainer() {
@@ -99,5 +105,4 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
       // @todo run CD
     }
   }
-
 }

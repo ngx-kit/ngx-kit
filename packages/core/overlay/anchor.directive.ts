@@ -2,26 +2,25 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 
 @Directive({
   selector: '[kitAnchor]',
-  exportAs: 'anchor'
+  exportAs: 'anchor',
 })
 export class KitAnchorDirective implements OnInit {
+  @Output() hostClick = new EventEmitter<MouseEvent>();
 
   @Input() kitAnchor: any;
 
-  @Output() hostClick = new EventEmitter<MouseEvent>();
-
-  @HostListener('click') click(event: MouseEvent) {
-    this.hostClick.emit(event);
-  }
-
   constructor(private elementRef: ElementRef) {
-  }
-
-  ngOnInit() {
   }
 
   get nativeEl() {
     return this.elementRef.nativeElement;
   }
 
+  ngOnInit() {
+  }
+
+  @HostListener('click')
+  click(event: MouseEvent) {
+    this.hostClick.emit(event);
+  }
 }

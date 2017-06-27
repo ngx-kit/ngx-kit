@@ -1,8 +1,16 @@
 export interface KitDefaultThemeParams {
-  grid: {
-    v: number;
-    h: number;
+  border: {
+    width: number;
+    radius: {
+      s: number;
+      m: number;
+      l: number;
+    };
   };
+  colorMod: {
+    type: 'shade' | 'tint' | 'lighten' | 'darken';
+    ratio: number;
+  }
   colors: {
     body: KitDefaultThemeColor;
     brand: KitDefaultThemeColor;
@@ -13,14 +21,17 @@ export interface KitDefaultThemeParams {
     warning: KitDefaultThemeColor;
     error: KitDefaultThemeColor;
   };
-  colorMod: {
-    type: 'shade' | 'tint' | 'lighten' | 'darken';
-    ratio: number;
-  }
+  grid: {
+    v: number;
+    h: number;
+  };
   shadows: {
     element: string;
     deep: string;
     overlay: string;
+  };
+  transitions: {
+    default: string;
   };
   typo: {
     bodyFontSize: string;
@@ -34,17 +45,6 @@ export interface KitDefaultThemeParams {
       h5: string;
       h6: string;
     };
-  };
-  border: {
-    width: number;
-    radius: {
-      s: number;
-      m: number;
-      l: number;
-    };
-  };
-  transitions: {
-    default: string;
   };
 }
 

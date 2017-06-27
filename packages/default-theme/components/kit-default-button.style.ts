@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               private color: StylerColorService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
@@ -71,7 +68,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:hover': {
               background: this.theme.colorMod(.05, params.colors.button.color),
             },
-          }
+          },
         },
         primary: {
           background: params.colors.brand.color,
@@ -81,7 +78,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:hover': {
               background: this.theme.colorMod(.05, params.colors.brand.color),
             },
-          }
+          },
         },
         success: {
           background: params.colors.success.color,
@@ -91,7 +88,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:hover': {
               background: this.theme.colorMod(.05, params.colors.success.color),
             },
-          }
+          },
         },
         warning: {
           background: params.colors.warning.color,
@@ -101,7 +98,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:hover': {
               background: this.theme.colorMod(.05, params.colors.warning.color),
             },
-          }
+          },
         },
         error: {
           background: params.colors.error.color,
@@ -111,7 +108,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:hover': {
               background: this.theme.colorMod(.05, params.colors.error.color),
             },
-          }
+          },
         },
         link: {
           boxShadow: 'none',
@@ -125,7 +122,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
               color: this.theme.colorMod(.05, params.colors.link.text),
               textDecoration: 'underline',
             },
-          }
+          },
         },
       }, 'default'),
       this.def.pick(state.grouped, {
@@ -143,7 +140,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:not(:first-child)': {
               borderLeft: 0,
             },
-          }
+          },
         },
         vertical: {
           borderRadius: 0,
@@ -159,7 +156,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:not(:first-child)': {
               borderTop: 0,
             },
-          }
+          },
         },
       }),
       this.def.toggle(state.disabled, {
@@ -171,7 +168,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           '&:hover': {
             background: params.colors.border.color,
           },
-        }
+        },
       }),
     ]);
     if (state.selected) {
@@ -179,5 +176,4 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     }
     return styles;
   }
-
 }

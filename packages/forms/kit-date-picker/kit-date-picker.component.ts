@@ -1,12 +1,10 @@
 import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { kitComponentDatePicker, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 
-import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentDatePicker, KitComponentStyle } from '@ngx-kit/core';
-
-import * as moment from 'moment';
-
+declare const moment: any;
 export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitDatePickerComponent),
@@ -40,20 +38,22 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   providers: [KIT_DATE_PICKER_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
+  datesGrid: {date: any, isActive: boolean, isOutside: boolean}[] = [];
 
   @Input() kitDatePicker: any;
 
-  datesGrid: {date: any, isActive: boolean, isOutside: boolean}[] = [];
   weekdays: any;
 
   private _date: any;
 
+  private changes$ = new Subject<string>();
+
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<string>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -61,24 +61,15 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
-    this.weekdays = moment.weekdaysMin();
+  get date(): any {
+    return this._date;
   }
 
-  writeValue(value: any) {
-    this.value = value;
-  }
-
-  registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+  set date(date: any) {
+    this._date = date;
+    this.updateDatesGrid();
+    this.changes$.next(this.value);
+    this.touches$.next(true);
   }
 
   get value(): string {
@@ -92,15 +83,27 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     this.touches$.next(true);
   }
 
-  get date(): any {
-    return this._date;
+  ngOnInit() {
+    this.weekdays = moment.weekdaysMin();
   }
 
-  set date(date: any) {
-    this._date = date;
+  add(amount: any, unit: string): void {
+    let m = moment(this._date);
+    m.add(amount, unit);
+    this._date = m;
     this.updateDatesGrid();
-    this.changes$.next(this.value);
-    this.touches$.next(true);
+  }
+
+  registerOnChange(fn: any) {
+    this.changes$.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any) {
+    this.touches$.subscribe(fn);
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
   }
 
   updateDatesGrid() {
@@ -121,11 +124,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  add(amount: any, unit: string): void {
-    let m = moment(this._date);
-    m.add(amount, unit);
-    this._date = m;
-    this.updateDatesGrid();
+  writeValue(value: any) {
+    this.value = value;
   }
-
 }

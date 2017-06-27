@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultTabsStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
@@ -27,22 +24,6 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
     };
   }
 
-  tab(state: {active: boolean}): StyleDef {
-    return {
-      cursor: 'pointer',
-      userSelect: 'none',
-      padding: '8px',
-      ...this.def.toggle(state.active, {
-        background: '#ffffff',
-        borderTop: [1, 'solid', '#d9d9d9'],
-        borderRight: [1, 'solid', '#d9d9d9'],
-        borderLeft: [1, 'solid', '#d9d9d9'],
-        marginBottom: -1,
-
-      }),
-    }
-  }
-
   panel(): StyleDef {
     return {
       borderBottom: [1, 'solid', '#d9d9d9'],
@@ -54,4 +35,18 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
     };
   }
 
+  tab(state: {active: boolean}): StyleDef {
+    return {
+      cursor: 'pointer',
+      userSelect: 'none',
+      padding: '8px',
+      ...this.def.toggle(state.active, {
+        background: '#ffffff',
+        borderTop: [1, 'solid', '#d9d9d9'],
+        borderRight: [1, 'solid', '#d9d9d9'],
+        borderLeft: [1, 'solid', '#d9d9d9'],
+        marginBottom: -1,
+      }),
+    }
+  }
 }

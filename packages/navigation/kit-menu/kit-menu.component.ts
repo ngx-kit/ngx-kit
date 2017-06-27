@@ -1,15 +1,20 @@
 import {
   AfterContentInit,
-  Component, ContentChildren, forwardRef, HostBinding, Inject, Input, OnInit, QueryList,
+  Component,
+  ContentChildren,
+  forwardRef,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
 } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentMenu, KitComponentStyle } from '@ngx-kit/core';
-
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 import { KitMenuDirection } from '../interfaces';
-import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
+import { KitMenuSubComponent } from './kit-menu-sub.component';
 
 @Component({
   selector: 'kit-menu,[kit-menu],[kitMenu]',
@@ -21,25 +26,14 @@ import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
   ],
 })
 export class KitMenuComponent implements OnInit, AfterContentInit {
+  checkLeave$ = new Subject<any>();
 
   @Input() kitMenu: any;
 
-  @Input() set direction(direction: KitMenuDirection) {
-    this._direction = direction;
-    this.styler.host.applyState({direction});
-    this.proxyDirectionToSubs();
-    this.proxyDirectionToSeparators();
-  }
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
-
-  @ContentChildren(forwardRef(() => KitMenuSubComponent), {descendants: true}) subs: QueryList<KitMenuSubComponent>;
   @ContentChildren(forwardRef(() => KitMenuSeparatorComponent), {descendants: false})
   separators: QueryList<KitMenuSeparatorComponent>;
 
-  checkLeave$ = new Subject<any>();
+  @ContentChildren(forwardRef(() => KitMenuSubComponent), {descendants: true}) subs: QueryList<KitMenuSubComponent>;
 
   private _direction: KitMenuDirection = 'horizontal';
 
@@ -48,24 +42,29 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  get direction() {
+    return this._direction;
   }
+
+  @Input()
+  set direction(direction: KitMenuDirection) {
+    this._direction = direction;
+    this.styler.host.applyState({direction});
+    this.proxyDirectionToSubs();
+    this.proxyDirectionToSeparators();
+  }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngAfterContentInit() {
     this.proxyDirectionToSubs();
     this.proxyDirectionToSeparators();
   }
 
-  get direction() {
-    return this._direction;
-  }
-
-  private proxyDirectionToSubs() {
-    if (this.subs) {
-      this.subs.forEach(sub => {
-        sub.menuDirection = this._direction;
-      });
-    }
+  ngOnInit() {
   }
 
   private proxyDirectionToSeparators() {
@@ -76,4 +75,11 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
     }
   }
 
+  private proxyDirectionToSubs() {
+    if (this.subs) {
+      this.subs.forEach(sub => {
+        sub.menuDirection = this._direction;
+      });
+    }
+  }
 }

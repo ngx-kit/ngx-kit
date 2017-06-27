@@ -1,12 +1,18 @@
 import {
-  AfterContentInit, Component, ContentChildren, forwardRef, HostBinding, Inject, Input, OnInit, QueryList,
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  forwardRef,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
 } from '@angular/core';
-
 import { kitComponentButtonGroup, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
-
-import { KitButtonComponent } from '../kit-button/kit-button.component';
 import { KitButtonGroupDirection } from '../interfaces';
+import { KitButtonComponent } from '../kit-button/kit-button.component';
 
 /**
  * @todo VALUE_ACCESSOR
@@ -21,24 +27,13 @@ import { KitButtonGroupDirection } from '../interfaces';
   ],
 })
 export class KitButtonGroupComponent implements OnInit, AfterContentInit {
+  @ContentChildren(forwardRef(() => KitButtonComponent)) buttons: QueryList<KitButtonComponent>;
 
   @Input() kitButtonGroup: any;
 
-  @Input() set direction(direction: KitButtonGroupDirection) {
-    this._direction = direction;
-    this.styler.host.applyState({direction});
-    this.proxyToButtons();
-  }
-
-  @Input() selectable = false;
-
   @Input() multiply = false;
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
-
-  @ContentChildren(forwardRef(() => KitButtonComponent)) buttons: QueryList<KitButtonComponent>;
+  @Input() selectable = false;
 
   private _direction: KitButtonGroupDirection = 'horizontal';
 
@@ -47,12 +42,24 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @Input()
+  set direction(direction: KitButtonGroupDirection) {
+    this._direction = direction;
+    this.styler.host.applyState({direction});
+    this.proxyToButtons();
   }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngAfterContentInit() {
     this.proxyToButtons();
     this.subscribeOnActions();
+  }
+
+  ngOnInit() {
   }
 
   private proxyToButtons(): void {
@@ -78,5 +85,4 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
       });
     });
   }
-
 }

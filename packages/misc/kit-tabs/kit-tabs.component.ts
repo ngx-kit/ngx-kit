@@ -1,11 +1,15 @@
 import {
-  AfterContentInit, Component, ContentChildren, HostBinding, Inject, Input, OnInit,
-  QueryList
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
 } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle, kitComponentTabs } from '@ngx-kit/core';
-
+import { StylerComponent } from '@ngx-kit/styler';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 
 @Component({
@@ -27,27 +31,27 @@ import { KitTabsPanelComponent } from './kit-tabs-panel.component';
   ],
 })
 export class KitTabsComponent implements OnInit, AfterContentInit {
+  @Input() firstActivate = true;
 
   @Input() kitTabs: any;
 
-  @Input() firstActivate = true;
-
   @ContentChildren(KitTabsPanelComponent) tabs: QueryList<KitTabsPanelComponent>;
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTabs) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
-  }
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngAfterContentInit() {
     this.activateFirst();
+  }
+
+  ngOnInit() {
   }
 
   setActive(tab: KitTabsPanelComponent) {
@@ -63,5 +67,4 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
       }
     }
   }
-
 }

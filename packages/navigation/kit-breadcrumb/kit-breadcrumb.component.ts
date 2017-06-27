@@ -1,5 +1,4 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-
 import { KitBreadcrumbItem } from '../interfaces';
 
 @Component({
@@ -12,18 +11,17 @@ import { KitBreadcrumbItem } from '../interfaces';
   `,
 })
 export class KitBreadcrumbComponent implements OnInit {
-
-  @Input() kitBreadcrumb: any;
-
-  @Input() items: KitBreadcrumbItem[];
   @Input() delimiter = '/';
 
   @HostBinding('class') hostClass: string;
+
+  @Input() items: KitBreadcrumbItem[];
+
+  @Input() kitBreadcrumb: any;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

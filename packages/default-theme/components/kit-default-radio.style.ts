@@ -1,31 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultRadioStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
     return {};
-  }
-
-  radio(): StyleDef {
-    return {
-      whiteSpace: 'nowrap',
-      cursor: 'pointer',
-      outline: 'none',
-      display: 'inline-block',
-      lineHeight: 1,
-      position: 'relative',
-      verticalAlign: 'text-bottom',
-    };
   }
 
   input(): StyleDef {
@@ -41,6 +26,24 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
       right: 0,
       width: '100%',
       height: '100%',
+    };
+  }
+
+  label(): StyleDef {
+    return {
+      cursor: 'pointer',
+    };
+  }
+
+  radio(): StyleDef {
+    return {
+      whiteSpace: 'nowrap',
+      cursor: 'pointer',
+      outline: 'none',
+      display: 'inline-block',
+      lineHeight: 1,
+      position: 'relative',
+      verticalAlign: 'text-bottom',
     };
   }
 
@@ -78,11 +81,4 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
       }),
     }
   }
-
-  label(): StyleDef {
-    return {
-      cursor: 'pointer',
-    };
-  }
-
 }

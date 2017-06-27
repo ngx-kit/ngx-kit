@@ -7,15 +7,13 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   `,
 })
 export class KitColorPickerComponent implements OnInit {
+  @HostBinding('class') hostClass: string;
 
   @Input() kitColorPicker: any;
-
-  @HostBinding('class') hostClass: string;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

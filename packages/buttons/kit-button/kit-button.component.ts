@@ -1,8 +1,6 @@
 import { Component, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
-
 import { kitComponentButton, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
-
 import { KitButtonGroupDirection } from '../interfaces';
 
 // @todo proxy enter listener to (action)
@@ -16,37 +14,11 @@ import { KitButtonGroupDirection } from '../interfaces';
   ],
 })
 export class KitButtonComponent implements OnInit {
+  @Output() action = new EventEmitter<any>();
 
   @Input() kitButton: any;
 
-  @Input() set size(size: string) {
-    this.styler.host.applyState({size});
-  }
-
-  @Input() set type(type: string) {
-    this.styler.host.applyState({type});
-  }
-
-  @Input() set disabled(disabled: boolean) {
-    this.styler.host.applyState({disabled});
-  }
-
-  @Input() set selected(selected: boolean) {
-    this._selected = selected;
-    this.styler.host.applyState({selected});
-  }
-
   @Output() selectedChanged = new EventEmitter<boolean>();
-
-  @Output() action = new EventEmitter<any>();
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
-
-  @HostListener('click') clickListener(event: MouseEvent) {
-    this.action.emit(event);
-  }
 
   private _selected = false;
 
@@ -55,20 +27,50 @@ export class KitButtonComponent implements OnInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @Input()
+  set disabled(disabled: boolean) {
+    this.styler.host.applyState({disabled});
   }
 
   set grouped(direction: KitButtonGroupDirection) {
     this.styler.host.applyState({grouped: direction});
   }
 
-  pushSelected(selected: boolean) {
-    this.selected = selected;
-    this.selectedChanged.emit(selected);
-  }
-
   get selected(): boolean {
     return this._selected;
   }
 
+  @Input()
+  set selected(selected: boolean) {
+    this._selected = selected;
+    this.styler.host.applyState({selected});
+  }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
+  @Input()
+  set size(size: string) {
+    this.styler.host.applyState({size});
+  }
+
+  @Input()
+  set type(type: string) {
+    this.styler.host.applyState({type});
+  }
+
+  ngOnInit() {
+  }
+
+  @HostListener('click')
+  clickListener(event: MouseEvent) {
+    this.action.emit(event);
+  }
+
+  pushSelected(selected: boolean) {
+    this.selected = selected;
+    this.selectedChanged.emit(selected);
+  }
 }

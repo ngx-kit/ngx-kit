@@ -1,17 +1,24 @@
 import {
-  AfterViewInit, Component, ContentChild, ContentChildren, DoCheck, forwardRef, HostBinding, Inject,
-  Input, OnInit, Optional,
-  QueryList
+  AfterViewInit,
+  Component,
+  ContentChild,
+  ContentChildren,
+  DoCheck,
+  forwardRef,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  QueryList,
 } from '@angular/core';
 import { AbstractControl, FormControlDirective, FormControlName, FormGroupDirective } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/combineLatest';
-
 import { kitComponentFormGroup, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
-
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/distinctUntilChanged';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.component';
 
 /**
@@ -32,24 +39,25 @@ import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.componen
   ],
 })
 export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
+  @ContentChild(FormControlDirective) controlDirective: FormControlDirective;
+
+  @ContentChild(FormControlName) controlNameDirective: FormControlName;
+
+  @Input() dirty: boolean = false;
+
+  @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
 
   @Input() kitFormGroup: any;
 
   @Input() touched: boolean = false;
-  @Input() dirty: boolean = false;
 
-  @ContentChild(FormControlDirective) controlDirective: FormControlDirective;
-  @ContentChild(FormControlName) controlNameDirective: FormControlName;
-  @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
+  private control: AbstractControl;
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  }
+  private dirty$ = new Subject<boolean>();
 
   private errors$ = new Subject<string[]>();
+
   private touched$ = new Subject<boolean>();
-  private dirty$ = new Subject<boolean>();
-  private control: AbstractControl;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentFormGroup) private style: KitComponentStyle,
@@ -57,7 +65,25 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  }
+
+  get statusChanges() {
+    return Observable.combineLatest(this.errors$
+        // @todo performance issue & non strict compare
+        .distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
+        this.touched$.distinctUntilChanged(),
+        this.dirty$.distinctUntilChanged(),
+        (errors: string, touched: boolean, dirty: boolean) => {
+          return {
+            errors,
+            touched,
+            dirty,
+          };
+        },
+    );
   }
 
   ngAfterViewInit() {
@@ -78,24 +104,11 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
     }
   }
 
-  hasError(errorCode: string): boolean {
-    return this.control && this.control.hasError(errorCode);
+  ngOnInit() {
   }
 
-  get statusChanges() {
-    return Observable.combineLatest(this.errors$
-        // @todo performance issue & non strict compare
-            .distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
-        this.touched$.distinctUntilChanged(),
-        this.dirty$.distinctUntilChanged(),
-        (errors: string, touched: boolean, dirty: boolean) => {
-          return {
-            errors,
-            touched,
-            dirty,
-          };
-        }
-    );
+  hasError(errorCode: string): boolean {
+    return this.control && this.control.hasError(errorCode);
   }
 
   private initControl(): void {
@@ -117,5 +130,4 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
       this.styler.host.applyState({error: visible});
     });
   }
-
 }

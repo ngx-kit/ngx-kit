@@ -1,19 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { StylerModule } from '@ngx-kit/styler';
+import { NgModule } from '@angular/core';
 import { KitCoreModule } from '@ngx-kit/core';
-
+import { StylerModule } from '@ngx-kit/styler';
+import { KitAccordionPanelComponent } from './kit-accordion/kit-accordion-panel.component';
+import { KitAccordionComponent } from './kit-accordion/kit-accordion.component';
 import { KitBadgeComponent } from './kit-badge/kit-badge.component';
 import { KitDividerComponent } from './kit-divider/kit-divider.component';
 import { KitPopoverComponent } from './kit-popover/kit-popover.component';
-import { KitTagComponent } from './kit-tag/kit-tag.component';
-import { KitTooltipDirective } from './kit-tooltip/kit-tooltip.directive';
-import { KitTooltipViewComponent } from './kit-tooltip/kit-tooltip-view.component';
-import { KitAccordionComponent } from './kit-accordion/kit-accordion.component';
-import { KitAccordionPanelComponent } from './kit-accordion/kit-accordion-panel.component';
-import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
 import { KitTabsPanelComponent } from './kit-tabs/kit-tabs-panel.component';
+import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
+import { KitTagComponent } from './kit-tag/kit-tag.component';
+import { KitTooltipViewComponent } from './kit-tooltip/kit-tooltip-view.component';
+import { KitTooltipDirective } from './kit-tooltip/kit-tooltip.directive';
 
 const exported = [
   KitAccordionComponent,
@@ -26,7 +24,6 @@ const exported = [
   KitTagComponent,
   KitTooltipDirective,
 ];
-
 const entry = [
   KitTooltipViewComponent,
 ];
@@ -45,7 +42,7 @@ const entry = [
     ...entry,
   ],
   entryComponents: entry,
-  providers: []
+  providers: [],
 })
 export class KitMiscModule {
 }

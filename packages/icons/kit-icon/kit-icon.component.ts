@@ -1,34 +1,22 @@
 import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
-
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
 @Component({
   selector: 'kit-icon,[kit-icon],[kitIcon]',
   template: `
-      <ng-content></ng-content>
+    <ng-content></ng-content>
   `,
 })
 export class KitIconComponent implements OnInit, OnChanges {
-
-  @Input() kitIcon: any;
-
   @Input() color: string;
-  @Input() name: string;
-  @Input() size = 24;
 
   @HostBinding('class') hostClass: string;
 
-  constructor(private registry: KitIconsRegistryService,
-              private el: ElementRef,
-              private renderer: Renderer2) {
-  }
+  @Input() kitIcon: any;
 
-  ngOnInit() {
-  }
+  @Input() name: string;
 
-  ngOnChanges() {
-    this.registry.get(this.name).subscribe(this.setSvg);
-  }
+  @Input() size = 24;
 
   private setSvg = (svg: SVGElement) => {
     const el = this.el.nativeElement;
@@ -37,6 +25,18 @@ export class KitIconComponent implements OnInit, OnChanges {
     this.renderer.appendChild(el, svg);
   };
 
+  constructor(private registry: KitIconsRegistryService,
+              private el: ElementRef,
+              private renderer: Renderer2) {
+  }
+
+  ngOnChanges() {
+    this.registry.get(this.name).subscribe(this.setSvg);
+  }
+
+  ngOnInit() {
+  }
+
   private getIconClass() {
 //    return s({
 //      height: this.size,
@@ -44,5 +44,4 @@ export class KitIconComponent implements OnInit, OnChanges {
 //      fill: this.color,
 //    });
   }
-
 }

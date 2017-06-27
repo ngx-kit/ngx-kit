@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
@@ -21,13 +18,6 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
       display: 'block',
     };
   };
-
-  results(): StyleDef {
-    return {
-      background: this.theme.params.colors.body.color,
-      boxShadow: this.theme.params.shadows.deep,
-    };
-  }
 
   result(state: {active: boolean}): StyleDef {
     return {
@@ -44,4 +34,10 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
     };
   }
 
+  results(): StyleDef {
+    return {
+      background: this.theme.params.colors.body.color,
+      boxShadow: this.theme.params.shadows.deep,
+    };
+  }
 }

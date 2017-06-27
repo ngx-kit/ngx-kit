@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { KitThemeService } from '@ngx-kit/core';
 import { StylerColorService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeParams } from './interfaces';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
-
   private _params: KitDefaultThemeParams = {
     grid: {
       v: 8,
@@ -45,7 +42,7 @@ export class KitDefaultThemeService implements KitThemeService {
       error: {
         color: '#ff5500',
         text: '#ffffff',
-      }
+      },
     },
     colorMod: {
       type: 'darken',
@@ -85,10 +82,6 @@ export class KitDefaultThemeService implements KitThemeService {
   constructor(private color: StylerColorService) {
   }
 
-  customize(params: KitDefaultThemeParams) {
-    this._params = params;
-  }
-
   get params() {
     return this._params;
   }
@@ -97,4 +90,7 @@ export class KitDefaultThemeService implements KitThemeService {
     return this.color[this._params.colorMod.type](amount * this._params.colorMod.ratio, color);
   }
 
+  customize(params: KitDefaultThemeParams) {
+    this._params = params;
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-
 import { kitComponentFormGroup, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -13,7 +12,6 @@ import { StylerComponent } from '@ngx-kit/styler';
   ],
 })
 export class KitFormLabelComponent implements OnInit {
-
   @Input() kitFormLabel: any;
 
   constructor(private styler: StylerComponent,
@@ -23,5 +21,4 @@ export class KitFormLabelComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

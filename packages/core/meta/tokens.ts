@@ -1,8 +1,6 @@
 import { InjectionToken } from '@angular/core';
-
-import { KitThemeService } from './theme';
 import { KitComponentStyle } from './component';
-
+import { KitThemeService } from './theme';
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 // buttons

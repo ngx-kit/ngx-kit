@@ -1,15 +1,19 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  }
+
+  content(): StyleDef {
+    return {
+      padding: [this.theme.params.grid.v * 2, this.theme.params.grid.h * 3],
+      backgroundColor: '#ffffff',
+    };
   }
 
   host(): StyleDef {
@@ -23,11 +27,10 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
           borderBottomWidth: 1,
         },
       },
-
     };
   }
 
-  title(state: { active: boolean }): StyleDef {
+  title(state: {active: boolean}): StyleDef {
     return {
       cursor: 'pointer',
       height: this.theme.params.grid.v * 4,
@@ -36,13 +39,4 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
       ...this.def.toggle(state.active, {}),
     };
   }
-
-  content(): StyleDef {
-    return {
-      padding: [this.theme.params.grid.v * 2, this.theme.params.grid.h * 3],
-      backgroundColor: '#ffffff',
-
-    };
-  }
-
 }

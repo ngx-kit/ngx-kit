@@ -1,19 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultCheckboxStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
-  }
-
-  host(): StyleDef {
-    return {};
   }
 
   checkbox(): StyleDef {
@@ -26,6 +19,10 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       position: 'relative',
       verticalAlign: 'text-bottom',
     };
+  }
+
+  host(): StyleDef {
+    return {};
   }
 
   input(): StyleDef {
@@ -41,6 +38,12 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       right: 0,
       width: '100%',
       height: '100%',
+    };
+  }
+
+  label(): StyleDef {
+    return {
+      cursor: 'pointer',
     };
   }
 
@@ -79,11 +82,4 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       }),
     };
   }
-
-  label(): StyleDef {
-    return {
-      cursor: 'pointer',
-    };
-  }
-
 }

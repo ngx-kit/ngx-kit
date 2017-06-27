@@ -6,7 +6,6 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
  * @todo handle outside click closing
  * @todo handle popup click closing
  */
-
 @Component({
   selector: 'kit-popover,[kit-popover],[kitPopover]',
   template: `
@@ -14,26 +13,28 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   `,
 })
 export class KitPopoverComponent implements OnInit {
+  @HostBinding('class') hostClass: string;
 
   @Input() kitPopover: any;
 
-  @HostBinding('class') hostClass: string;
   @HostBinding('style.display') styleDisplay: string;
-  @HostBinding('style.top.px') styleTop: number;
+
   @HostBinding('style.left.px') styleLeft: number;
 
-  set display(display: boolean) {
-    this._display = display;
-    this.styleDisplay = this._display ? 'block' : 'none';
+  @HostBinding('style.top.px') styleTop: number;
+
+  private _display: boolean;
+
+  constructor() {
   }
 
   get display(): boolean {
     return this._display;
   }
 
-  private _display: boolean;
-
-  constructor() {
+  set display(display: boolean) {
+    this._display = display;
+    this.styleDisplay = this._display ? 'block' : 'none';
   }
 
   ngOnInit() {
@@ -53,7 +54,7 @@ export class KitPopoverComponent implements OnInit {
     console.log('rect', target.getBoundingClientRect());
     const hostRect = target.getBoundingClientRect();
     this.styleLeft = hostRect.left;
-    this.styleTop =  hostRect.bottom;
+    this.styleTop = hostRect.bottom;
 //    const position = target.
   }
 
@@ -67,5 +68,4 @@ export class KitPopoverComponent implements OnInit {
 //    },
 //  }
 //};
-
 }

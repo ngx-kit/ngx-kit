@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultMenuSubStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
@@ -23,13 +20,12 @@ export class KitDefaultMenuSubStyle implements KitComponentStyle {
       display: 'block',
       ...this.def.pick(state.position, {
         right: {
-          marginLeft: this.theme.params.grid.h /2,
+          marginLeft: this.theme.params.grid.h / 2,
         },
         bottom: {
-          marginTop: this.theme.params.grid.v /2,
+          marginTop: this.theme.params.grid.v / 2,
         },
       }),
     };
   }
-
 }

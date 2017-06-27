@@ -1,5 +1,5 @@
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'kit-dialog-layout',
@@ -44,10 +44,10 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
   ],
 })
 export class KitDialogLayoutComponent implements OnInit {
+  @Output() close = new EventEmitter<boolean>();
 
   @Input() header: string;
 
-  @Output() close = new EventEmitter<boolean>();
   @Output() overlay: EventEmitter<any> = new EventEmitter<any>();
 
 //  css = {
@@ -96,9 +96,7 @@ export class KitDialogLayoutComponent implements OnInit {
 //      textAlign: 'right',
 //    })
 //  };
-
 //  @HostBinding('class') hostClass = this.css.host;
-
   constructor() {
   }
 
@@ -108,5 +106,4 @@ export class KitDialogLayoutComponent implements OnInit {
   raiseClose() {
     this.close.next(true);
   }
-
 }

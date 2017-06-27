@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
 import { StylerComponent } from '@ngx-kit/styler';
-
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 
 @Component({
@@ -28,25 +26,31 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
   ],
 })
 export class KitOverlayHostComponent implements OnInit {
+  @Input() anchor: HTMLElement;
+
+  @Input() component: any;
+
+  @Output() containerMouseEnter = new EventEmitter<any>();
+
+  @Output() containerMouseLeave = new EventEmitter<any>();
 
   @Input() kitOverlayHost: any;
 
-  @Input() component: any;
-  @Input() template: any;
-  @Input() overlay: boolean;
-  @Input() anchor: HTMLElement;
-  @Input() type: string;
-  @Input() position: OverlayContainerPosition;
-  @Input() widthType: OverlayContainerWidthType;
-
   @Output() outsideClick = new EventEmitter<any>();
-  @Output() containerMouseEnter = new EventEmitter<any>();
-  @Output() containerMouseLeave = new EventEmitter<any>();
+
+  @Input() overlay: boolean;
+
+  @Input() position: OverlayContainerPosition;
+
+  @Input() template: any;
+
+  @Input() type: string;
+
+  @Input() widthType: OverlayContainerWidthType;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

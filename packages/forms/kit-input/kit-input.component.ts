@@ -1,14 +1,13 @@
 import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentInput, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 
 export const KIT_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitInputComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
@@ -26,14 +25,15 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitInputComponent implements ControlValueAccessor {
-
   @Input() kitInput: any;
 
   private _value: any;
 
+  private changes$ = new Subject<number>();
+
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<number>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -41,8 +41,14 @@ export class KitInputComponent implements ControlValueAccessor {
     this.styler.register(this.style);
   }
 
-  writeValue(value: any) {
+  get value(): any {
+    return this._value;
+  }
+
+  set value(value: any) {
     this._value = value;
+    this.changes$.next(value);
+    this.touches$.next(true);
   }
 
   registerOnChange(fn: any) {
@@ -57,18 +63,11 @@ export class KitInputComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
-    this._value = value;
-    this.changes$.next(value);
-    this.touches$.next(true);
-  }
-
   touch() {
     this.touches$.next(true);
   }
 
+  writeValue(value: any) {
+    this._value = value;
+  }
 }

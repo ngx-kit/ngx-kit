@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 import { KitIcon, KitIconCached } from './interfaces';
 
 /**
  * @todo cache pending (avoid parallel loading of same icon)
  */
-
 @Injectable()
 export class KitIconsRegistryService {
+  private cache: KitIconCached[] = [];
 
   private icons: KitIcon[] = [];
-  private cache: KitIconCached[] = [];
 
   constructor(private http: Http) {
   }
 
-  register(name: string, url: string) {
-    this.icons.push({name, url});
-  }
-
-  registerSet(icons: KitIcon[]) {
-    this.icons = [...this.icons, ...icons];
+  cloneSvg(svg: SVGElement): SVGElement {
+    return svg.cloneNode(true) as SVGElement;
   }
 
   get(name: string): Observable<SVGElement> {
@@ -47,6 +41,14 @@ export class KitIconsRegistryService {
     }
   }
 
+  register(name: string, url: string) {
+    this.icons.push({name, url});
+  }
+
+  registerSet(icons: KitIcon[]) {
+    this.icons = [...this.icons, ...icons];
+  }
+
   /**
    * Creates a DOM element from the given SVG string.
    */
@@ -56,9 +58,4 @@ export class KitIconsRegistryService {
     const svg = div.querySelector('svg') as SVGElement;
     return svg;
   }
-
-  cloneSvg(svg: SVGElement): SVGElement {
-    return svg.cloneNode(true) as SVGElement;
-  }
-
 }

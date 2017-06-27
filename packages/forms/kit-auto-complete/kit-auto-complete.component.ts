@@ -1,19 +1,17 @@
 import { AfterViewInit, Component, forwardRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
+import { kitComponentAutoComplete, KitComponentStyle } from '@ngx-kit/core';
+import { KitInputComponent } from '@ngx-kit/forms';
+import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
-
-import { StylerComponent } from '@ngx-kit/styler';
-import { KitInputComponent } from '@ngx-kit/forms';
-import { kitComponentAutoComplete, KitComponentStyle } from '@ngx-kit/core';
-
+import { Subject } from 'rxjs/Subject';
 import { KitDataSourceFactory } from './data-source-factory';
 
 export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitAutoCompleteComponent),
-  multi: true
+  multi: true,
 };
 
 /**
@@ -52,31 +50,47 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   providers: [KIT_AUTO_COMPLETE_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit {
-
-  @Input() kitAutoComplete: any;
-
   @Input() data: string[] | null = null;
+
   @Input() dataSourceFactory: KitDataSourceFactory | null = null;
+
   @Input() debounce = 500;
 
   @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
 
+  @Input() kitAutoComplete: any;
+
   results: string[] = [];
 
   private _value: any;
+
   private activeResult: number = -1;
 
-  private isDisabled = false;
   private changes$ = new Subject<number>();
+
+  private isDisabled = false;
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
               private renderer: Renderer2) {
     this.styler.register(this.style);
+  }
+
+  get value(): any {
+    return this._value;
+  }
+
+  set value(value: any) {
+    this._value = value;
+    this.input.writeValue(this._value);
+    // emit
+    this.changes$.next(this._value);
+    this.touches$.next(true);
   }
 
   ngAfterViewInit() {
@@ -97,56 +111,6 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     }
   }
 
-  writeValue(value: any) {
-    this.value = value;
-    this.input.writeValue(this.value);
-  }
-
-  registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
-    this.input.setDisabledState(this.isDisabled);
-  }
-
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
-    this._value = value;
-    this.input.writeValue(this._value);
-    // emit
-    this.changes$.next(this._value);
-    this.touches$.next(true);
-  }
-
-  handleDataSearch(value: any) {
-    if (this.data && value) {
-      this.results = this.data.filter(x => x.indexOf(value) !== -1);
-    } else {
-      this.results = [];
-    }
-  }
-
-  pick(value: string): void {
-    this.value = value;
-    this.clearResults();
-  }
-
-  activeUp(event: Event) {
-    event.preventDefault();
-    if (this.activeResult > 0) {
-      this.activeResult--;
-    }
-  }
-
   activeDown(event: Event) {
     event.preventDefault();
     if (this.activeResult < this.results.length - 1) {
@@ -162,9 +126,47 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     }
   }
 
+  activeUp(event: Event) {
+    event.preventDefault();
+    if (this.activeResult > 0) {
+      this.activeResult--;
+    }
+  }
+
   clearResults(): void {
     this.results = [];
     this.activeResult = -1;
+  }
+
+  handleDataSearch(value: any) {
+    if (this.data && value) {
+      this.results = this.data.filter(x => x.indexOf(value) !== -1);
+    } else {
+      this.results = [];
+    }
+  }
+
+  pick(value: string): void {
+    this.value = value;
+    this.clearResults();
+  }
+
+  registerOnChange(fn: any) {
+    this.changes$.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any) {
+    this.touches$.subscribe(fn);
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
+    this.input.setDisabledState(this.isDisabled);
+  }
+
+  writeValue(value: any) {
+    this.value = value;
+    this.input.writeValue(this.value);
   }
 
   private validateActiveResult() {
@@ -174,5 +176,4 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
       this.activeResult = this.results.length - 1;
     }
   }
-
 }

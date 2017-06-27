@@ -1,11 +1,15 @@
 import {
-  ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector,
-  Type
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EmbeddedViewRef,
+  Injectable,
+  Injector,
+  Type,
 } from '@angular/core';
 
 @Injectable()
 export class KitOverlayService {
-
   private rootRef: ComponentRef<any>;
 
   constructor(private resolver: ComponentFactoryResolver,
@@ -27,5 +31,4 @@ export class KitOverlayService {
       this.rootRef = this.applicationRef['_rootComponents'][0];
     }
   }
-
 }

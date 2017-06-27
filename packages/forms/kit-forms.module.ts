@@ -1,10 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '@ngx-kit/core';
-
+import { StylerModule } from '@ngx-kit/styler';
 import { KitAutoCompleteComponent } from './kit-auto-complete/kit-auto-complete.component';
 import { KitCheckboxComponent } from './kit-checkbox/kit-checkbox.component';
 import { KitDatePickerComponent } from './kit-date-picker/kit-date-picker.component';
@@ -48,8 +46,7 @@ const exported = [
   declarations: [
     ...exported,
   ],
-  providers: [
-  ]
+  providers: [],
 })
 export class KitFormsModule {
 }

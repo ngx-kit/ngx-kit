@@ -7,7 +7,6 @@ import { Component, HostBinding, OnInit } from '@angular/core';
   `,
 })
 export class KitDialogComponent implements OnInit {
-
   @HostBinding('class') hostClass: string;
 
   constructor() {
@@ -15,5 +14,4 @@ export class KitDialogComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

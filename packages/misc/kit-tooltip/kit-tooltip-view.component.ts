@@ -1,12 +1,10 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle, kitComponentTooltipView, OverlayContainerPosition } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 /**
  * @todo add pointer
  */
-
 @Component({
   selector: 'kit-tooltip-view,[kit-tooltip-view],[kitTooltipView]',
   template: `
@@ -21,12 +19,13 @@ import { KitComponentStyle, kitComponentTooltipView, OverlayContainerPosition } 
   ],
 })
 export class KitTooltipViewComponent implements OnInit {
+  @Input() anchor: HTMLElement;
 
   @Input() kitTooltipView: any;
 
-  @Input() text: string;
   @Input() position: OverlayContainerPosition;
-  @Input() anchor: HTMLElement;
+
+  @Input() text: string;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTooltipView) private style: KitComponentStyle) {
@@ -35,5 +34,4 @@ export class KitTooltipViewComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

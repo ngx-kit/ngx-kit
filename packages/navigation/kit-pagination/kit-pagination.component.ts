@@ -24,34 +24,40 @@ import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output 
   `,
 })
 export class KitPaginationComponent implements OnInit, OnChanges {
-
-  @Input() kitPagination: any;
-
-  @Input() totalRows: number;
   @Input() currentPage: number;
-  @Input() rowsPerPage: number;
 
-  @Input() pageLinksNumber = 5;
-  @Input() displayNextLink: boolean = true;
-  @Input() displayPrevLink: boolean = true;
   @Input() displayFirstLink: boolean = true;
+
   @Input() displayLastLink: boolean = true;
 
-  @Output() pageChange = new EventEmitter<number>();
+  @Input() displayNextLink: boolean = true;
+
+  @Input() displayPrevLink: boolean = true;
 
   @HostBinding('class') hostClass: string;
 
+  @Input() kitPagination: any;
+
+  @Output() pageChange = new EventEmitter<number>();
+
+  @Input() pageLinksNumber = 5;
+
   pages: number[] = [];
+
+  @Input() rowsPerPage: number;
+
   totalPages: number;
+
+  @Input() totalRows: number;
 
   constructor() {
   }
 
-  ngOnInit() {
-  }
-
   ngOnChanges() {
     this.recalcPages();
+  }
+
+  ngOnInit() {
   }
 
   private recalcPages() {
@@ -72,5 +78,4 @@ export class KitPaginationComponent implements OnInit, OnChanges {
       this.pages.push(i);
     }
   }
-
 }

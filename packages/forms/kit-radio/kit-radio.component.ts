@@ -1,9 +1,8 @@
 import { Component, forwardRef, HostBinding, HostListener, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentRadio, KitComponentStyle, KitCoreService } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 
 export const KIT_RADIO_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -33,34 +32,24 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
   providers: [KIT_RADIO_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitRadioComponent implements ControlValueAccessor {
+  hover = false;
+
+  id: string;
 
   @Input() kitRadio: any;
 
   @Input() value: any;
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  }
-
-  @HostListener('mouseenter') mouseenter() {
-    this.hover = true;
-  }
-
-  @HostListener('mouseleave') mouseleave() {
-    this.hover = false;
-  }
-
-  id: string;
-  hover = false;
-
   private _checked: any;
+
+  private changes$ = new Subject<number>();
 
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<number>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -68,22 +57,6 @@ export class KitRadioComponent implements ControlValueAccessor {
               private core: KitCoreService) {
     this.styler.register(this.style);
     this.id = this.core.uuid();
-  }
-
-  writeValue(value: any) {
-    this._checked = this.value === value;
-  }
-
-  registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
   }
 
   get checked(): any {
@@ -98,4 +71,34 @@ export class KitRadioComponent implements ControlValueAccessor {
     }
   }
 
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  }
+
+  @HostListener('mouseenter')
+  mouseenter() {
+    this.hover = true;
+  }
+
+  @HostListener('mouseleave')
+  mouseleave() {
+    this.hover = false;
+  }
+
+  registerOnChange(fn: any) {
+    this.changes$.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any) {
+    this.touches$.subscribe(fn);
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
+  }
+
+  writeValue(value: any) {
+    this._checked = this.value === value;
+  }
 }

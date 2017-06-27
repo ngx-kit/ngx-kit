@@ -2,14 +2,37 @@
  * @todo typing
  */
 export class MathParser {
-
+  static allocFx(eq: any, symbol: any, alloc: any, minus?: any) {
+    minus = (typeof minus !== 'undefined'); // sometimes we want to capture minus signs, sometimes not
+    if (MathParser.strContain(eq, symbol)) {
+      let middleIndex = eq.indexOf(symbol);
+      let left = MathParser.getSide(eq, middleIndex, -1, minus);
+      let right = MathParser.getSide(eq, middleIndex, 1, false);
+      eq = MathParser.replaceAll(eq, left + symbol + right, alloc(left, right));
+    }
+    return eq;
+  } // fx to generically map a symbol to a function for parsing
+  static getSide(haystack: any, middle: any, direction: any, minus: any) {
+    let i = middle + direction;
+    let term = "";
+    let limit = (direction == -1) ? 0 : haystack.length; // set the stopping point, when you have gone too far
+    while (i * direction <= limit) { // while the current position is >= 0, or <= upper limit
+      if (MathParser.isParseable(haystack[i], minus)) {
+        if (direction == 1) term = term + haystack[i];
+        else term = haystack[i] + term;
+        i += direction;
+      } else {
+        return term;
+      }
+    }
+    return term;
+  } // general fx to get two terms of any fx (multiply, add, etc)
+  static isParseable(n: any, minus: any) {
+    return (!isNaN(n) || (n == "-" && !minus) || n == ".");
+  } // determine if char should be added to side
   static parse(string: string) {
     return MathParser.round(MathParser.solveStr(MathParser.reformat(string)));
   }
-
-  static replaceAll(haystack: any, needle: any, replace: any) {
-    return haystack.split(needle).join(replace);
-  } // replace all fx
 
   static reformat(s: any) {
     s = s.toLowerCase();
@@ -26,41 +49,12 @@ export class MathParser {
     while (s.charAt(0) == "+") s = s.substr(1);
     return s;
   } // standardize string format
-
-  static strContain(haystack: any, needle: any) {
-    return haystack.indexOf(needle) > -1;
-  } // custom true/false contains
-
-  static isParseable(n: any, minus: any) {
-    return (!isNaN(n) || (n == "-" && !minus) || n == ".");
-  } // determine if char should be added to side
-
-  static getSide(haystack: any, middle: any, direction: any, minus: any) {
-    let i = middle + direction;
-    let term = "";
-    let limit = (direction == -1) ? 0 : haystack.length; // set the stopping point, when you have gone too far
-    while (i * direction <= limit) { // while the current position is >= 0, or <= upper limit
-      if (MathParser.isParseable(haystack[i], minus)) {
-        if (direction == 1) term = term + haystack[i];
-        else term = haystack[i] + term;
-        i += direction;
-      } else {
-        return term;
-      }
-    }
-    return term;
-  } // general fx to get two terms of any fx (multiply, add, etc)
-
-  static allocFx(eq: any, symbol: any, alloc: any, minus?: any) {
-    minus = (typeof minus !== 'undefined'); // sometimes we want to capture minus signs, sometimes not
-    if (MathParser.strContain(eq, symbol)) {
-      let middleIndex = eq.indexOf(symbol);
-      let left = MathParser.getSide(eq, middleIndex, -1, minus);
-      let right = MathParser.getSide(eq, middleIndex, 1, false);
-      eq = MathParser.replaceAll(eq, left + symbol + right, alloc(left, right));
-    }
-    return eq;
-  } // fx to generically map a symbol to a function for parsing
+  static replaceAll(haystack: any, needle: any, replace: any) {
+    return haystack.split(needle).join(replace);
+  } // replace all fx
+  static round(value: number): number {
+    return Math.round(value * 100) / 100;
+  }
 
   static solveStr(eq: any) {
     firstNest:
@@ -71,7 +65,8 @@ export class MathParser {
           while (layer != 0) { // loop this until we've found the close parenthesis
             if (eq[last] == ")") { // if we run into a close parenthesis, then subtract one from "layer"
               layer--;
-              if (layer == 0) break; // if it is the corresponding closing parenthesis for our outermost open parenthesis, then we can deal with this expression
+              if (layer == 0) break; // if it is the corresponding closing parenthesis for our outermost open
+                                     // parenthesis, then we can deal with this expression
             }
             else if (eq[last] == "(") { // if we see an open parenthesis, add one to "layer"
               layer++;
@@ -79,15 +74,12 @@ export class MathParser {
             last++; // increment the character we're looking at
             if (last > eq.length) break firstNest;
           }
-
           let nested = eq.substr(first + 1, last - first - 1); // get the expression between the parentheses
-
           if (last + 1 <= eq.length) { // if there is exponentiation, change to a different symbol
             if (eq[last + 1] == "^") {
               eq = eq.substr(0, last + 1) + "&" + eq.substr((last + 1) + 1);
             }
           }
-
           let solvedStr = MathParser.solveStr(nested);
           let preStr = "(" + nested + ")";
           eq = eq.replace(preStr, solvedStr); // replace parenthetical with value
@@ -116,9 +108,7 @@ export class MathParser {
     });
     return eq;
   } // main recursive fx + PEMDAS
-
-  static round(value: number):number {
-    return Math.round(value * 100) / 100;
-  }
-
+  static strContain(haystack: any, needle: any) {
+    return haystack.indexOf(needle) > -1;
+  } // custom true/false contains
 }

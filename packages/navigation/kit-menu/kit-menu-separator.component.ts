@@ -1,10 +1,6 @@
-import {
-  Component, HostBinding, Inject, Input, OnInit,
-} from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
+import { Component, HostBinding, Inject, Input, OnInit, } from '@angular/core';
 import { kitComponentMenuSeparator, KitComponentStyle } from '@ngx-kit/core';
-
+import { StylerComponent } from '@ngx-kit/styler';
 import { KitMenuDirection } from '../interfaces';
 
 @Component({
@@ -16,17 +12,7 @@ import { KitMenuDirection } from '../interfaces';
   ],
 })
 export class KitMenuSeparatorComponent implements OnInit {
-
   @Input() kitMenuSeparator: any;
-
-  @Input() set parentDirection(parentDirection: KitMenuDirection) {
-    this._parentDirection = parentDirection;
-    this.styler.host.applyState({parentDirection});
-  }
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
 
   private _parentDirection: KitMenuDirection = 'vertical';
 
@@ -35,7 +21,17 @@ export class KitMenuSeparatorComponent implements OnInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @Input()
+  set parentDirection(parentDirection: KitMenuDirection) {
+    this._parentDirection = parentDirection;
+    this.styler.host.applyState({parentDirection});
   }
 
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
+  ngOnInit() {
+  }
 }

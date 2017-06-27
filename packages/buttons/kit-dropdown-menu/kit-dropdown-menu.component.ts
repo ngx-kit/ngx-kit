@@ -1,7 +1,6 @@
 import { Component, EventEmitter, HostBinding, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 /**
  * @todo right-click open
@@ -28,16 +27,11 @@ import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from 
   ],
 })
 export class KitDropdownMenuComponent implements OnInit, OnChanges {
-
-  @Input() kitDropdownMenu: any;
-
   @Input() anchor: KitAnchorDirective;
 
   @Output() itemClick = new EventEmitter<MouseEvent>();
 
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
+  @Input() kitDropdownMenu: any;
 
   opened = false;
 
@@ -46,8 +40,10 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
-  }
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngOnChanges() {
     this.anchor.hostClick.subscribe(() => {
@@ -55,12 +51,14 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
     });
   }
 
-  toggle() {
-    this.opened = !this.opened;
+  ngOnInit() {
   }
 
   close() {
     this.opened = false;
   }
 
+  toggle() {
+    this.opened = !this.opened;
+  }
 }

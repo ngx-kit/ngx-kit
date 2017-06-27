@@ -5,16 +5,7 @@ import { FormGroupDirective } from '@angular/forms';
   selector: '[kitFormTouch]',
 })
 export class KitFormTouchComponent implements OnInit {
-
   @Input() kitFormTouch: any;
-
-  @HostListener('click') click() {
-    const form = this.formGroupDirective.form;
-    form.markAsTouched();
-    for (const i in form.controls) {
-      form.controls[i].markAsTouched();
-    }
-  }
 
   constructor(private formGroupDirective: FormGroupDirective) {
   }
@@ -22,4 +13,12 @@ export class KitFormTouchComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('click')
+  click() {
+    const form = this.formGroupDirective.form;
+    form.markAsTouched();
+    for (const i in form.controls) {
+      form.controls[i].markAsTouched();
+    }
+  }
 }

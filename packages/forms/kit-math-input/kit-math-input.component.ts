@@ -1,16 +1,15 @@
 import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentMathInput, KitComponentStyle } from '@ngx-kit/core';
-import { MathParser } from '@ngx-kit/forms/kit-math-input/math-parser';
 import { KitInputComponent } from '@ngx-kit/forms';
+import { MathParser } from '@ngx-kit/forms/kit-math-input/math-parser';
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 
 export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitMathInputComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
@@ -22,22 +21,24 @@ export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
   providers: [KIT_MATH_INPUT_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitMathInputComponent implements ControlValueAccessor, AfterViewInit {
-
-  @Input() kitMathInput: any;
+  displayResult = false;
 
   @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
 
-  displayResult = false;
+  @Input() kitMathInput: any;
 
   private _result: any;
+
   private _value: any;
+
+  private changes$ = new Subject<number>();
 
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<number>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -45,29 +46,8 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
     this.styler.register(this.style);
   }
 
-  ngAfterViewInit() {
-    this.input.registerOnTouched(this.touches$);
-    this.input.registerOnChange((value: any) => {
-      this.value = value;
-    });
-  }
-
-  writeValue(value: any) {
-    this.value = value;
-    this.input.writeValue(this.value);
-  }
-
-  registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
-    this.input.setDisabledState(this.isDisabled);
+  get result(): any {
+    return this._result;
   }
 
   get value(): any {
@@ -85,12 +65,32 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
     this.touches$.next(true);
   }
 
-  get result(): any {
-    return this._result;
+  ngAfterViewInit() {
+    this.input.registerOnTouched(this.touches$);
+    this.input.registerOnChange((value: any) => {
+      this.value = value;
+    });
+  }
+
+  registerOnChange(fn: any) {
+    this.changes$.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any) {
+    this.touches$.subscribe(fn);
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
+    this.input.setDisabledState(this.isDisabled);
   }
 
   touch() {
     this.touches$.next(true);
   }
 
+  writeValue(value: any) {
+    this.value = value;
+    this.input.writeValue(this.value);
+  }
 }

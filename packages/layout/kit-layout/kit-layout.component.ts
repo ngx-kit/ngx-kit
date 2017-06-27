@@ -1,10 +1,15 @@
 import {
-  AfterContentInit, Component, ContentChildren, HostBinding, Inject, Input, OnInit, QueryList,
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
 } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentLayout, KitComponentStyle } from '@ngx-kit/core';
-
+import { StylerComponent } from '@ngx-kit/styler';
 import { KitLayoutSideComponent } from './kit-layout-side.component';
 
 @Component({
@@ -17,26 +22,24 @@ import { KitLayoutSideComponent } from './kit-layout-side.component';
   ],
 })
 export class KitLayoutComponent implements OnInit, AfterContentInit {
-
   @Input() kitLayout: any;
 
-  @Input() set fullscreen(fullscreen: boolean) {
-    this.styler.host.applyState({fullscreen});
-  }
-
   @ContentChildren(KitLayoutSideComponent, {descendants: false}) sides: QueryList<KitLayoutSideComponent>;
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLayout) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
+  @Input()
+  set fullscreen(fullscreen: boolean) {
+    this.styler.host.applyState({fullscreen});
   }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngAfterContentInit() {
     if (this.sides.length > 0) {
@@ -45,4 +48,6 @@ export class KitLayoutComponent implements OnInit, AfterContentInit {
     }
   }
 
+  ngOnInit() {
+  }
 }

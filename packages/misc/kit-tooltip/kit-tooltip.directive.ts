@@ -1,35 +1,31 @@
 import {
-  ComponentRef, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
-
-import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 import { KitOverlayService, OverlayContainerPosition } from '@ngx-kit/core';
+import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 
 @Directive({
   selector: '[kitTooltip]',
 })
 export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
+  @HostBinding('class') hostClass: string;
+
+  @Input('kitTooltipPosition') position: OverlayContainerPosition = 'top';
+
+  @Input('kitTooltip') text: string;
 
   private containerRef: ComponentRef<KitTooltipViewComponent>;
 
-  @Input('kitTooltip') text: string;
-  @Input('kitTooltipPosition') position: OverlayContainerPosition = 'top';
-
-  @HostBinding('class') hostClass: string;
-
-  @HostListener('mouseenter') mouseenter() {
-    this.show();
-  }
-
-  @HostListener('mouseleave') mouseleave() {
-    this.hide();
-  }
-
   constructor(private overlay: KitOverlayService,
               private el: ElementRef) {
-  }
-
-  ngOnInit() {
   }
 
   ngOnChanges() {
@@ -40,9 +36,21 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
     // @todo destr
   }
 
-  private show() {
-    this.containerRef = this.overlay.host<KitTooltipViewComponent>(KitTooltipViewComponent);
-    this.proxyProps();
+  ngOnInit() {
+  }
+
+  @HostListener('mouseenter')
+  mouseenter() {
+    this.show();
+  }
+
+  @HostListener('mouseleave')
+  mouseleave() {
+    this.hide();
+  }
+
+  private hide() {
+    this.containerRef.destroy();
   }
 
   private proxyProps() {
@@ -54,8 +62,8 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  private hide() {
-    this.containerRef.destroy();
+  private show() {
+    this.containerRef = this.overlay.host<KitTooltipViewComponent>(KitTooltipViewComponent);
+    this.proxyProps();
   }
-
 }

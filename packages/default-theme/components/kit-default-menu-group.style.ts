@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultMenuGroupStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
@@ -18,6 +15,12 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
     };
   }
 
+  items(): StyleDef {
+    return {
+      paddingLeft: this.theme.params.grid.h * 2,
+    };
+  }
+
   title(): StyleDef {
     return {
       color: '#888',
@@ -25,11 +28,4 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
       padding: [this.theme.params.grid.v / 2, this.theme.params.grid.h],
     };
   }
-
-  items(): StyleDef {
-    return {
-      paddingLeft: this.theme.params.grid.h * 2,
-    };
-  }
-
 }

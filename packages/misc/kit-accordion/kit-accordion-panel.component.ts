@@ -1,7 +1,6 @@
 import { Component, EventEmitter, HostBinding, Inject, Input, OnInit, Output } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentAccordionPanel, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 
 @Component({
   selector: 'kit-accordion-panel,[kit-accordion-panel],[kitAccordionPanel]',
@@ -16,22 +15,23 @@ import { kitComponentAccordionPanel, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitAccordionPanelComponent implements OnInit {
+  @Output() activate = new EventEmitter<boolean>();
+
+  @Input() active: boolean;
 
   @Input() kitAccordionPanel: any;
 
-  @Input() active: boolean;
   @Input() title: string;
-
-  @Output() activate = new EventEmitter<boolean>();
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAccordionPanel) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
 
   ngOnInit() {
   }
@@ -42,5 +42,4 @@ export class KitAccordionPanelComponent implements OnInit {
       this.activate.emit(true);
     }
   }
-
 }

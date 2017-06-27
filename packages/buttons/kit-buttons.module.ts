@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { StylerModule } from '@ngx-kit/styler';
+import { NgModule } from '@angular/core';
 import { KitCoreModule } from '@ngx-kit/core';
-
-import { KitButtonComponent } from './kit-button/kit-button.component';
+import { StylerModule } from '@ngx-kit/styler';
 import { KitButtonGroupComponent } from './kit-button-group/kit-button-group.component';
-import { KitDropdownMenuComponent } from './kit-dropdown-menu/kit-dropdown-menu.component';
+import { KitButtonComponent } from './kit-button/kit-button.component';
 import { KitDropdownMenuItemComponent } from './kit-dropdown-menu/kit-dropdown-menu-item.component';
+import { KitDropdownMenuComponent } from './kit-dropdown-menu/kit-dropdown-menu.component';
 
 const exported = [
   KitButtonComponent,
@@ -28,7 +26,7 @@ const exported = [
   declarations: [
     ...exported,
   ],
-  providers: []
+  providers: [],
 })
 export class KitButtonsModule {
 }

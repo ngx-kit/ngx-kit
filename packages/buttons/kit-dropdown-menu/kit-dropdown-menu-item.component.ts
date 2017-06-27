@@ -1,8 +1,6 @@
 import { Component, HostBinding, HostListener, Inject, Input, OnInit, Optional } from '@angular/core';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentDropdownMenuItem, KitComponentStyle } from '@ngx-kit/core';
-
+import { StylerComponent } from '@ngx-kit/styler';
 import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
 
 @Component({
@@ -15,17 +13,7 @@ import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
   ],
 })
 export class KitDropdownMenuItemComponent implements OnInit {
-
   @Input() kitDropdownMenuItem: any;
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
-
-  @HostListener('click') click(event: MouseEvent) {
-    this.menu.itemClick.emit(event);
-    this.menu.close();
-  }
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDropdownMenuItem) private style: KitComponentStyle,
@@ -33,7 +21,17 @@ export class KitDropdownMenuItemComponent implements OnInit {
     this.styler.register(this.style);
   }
 
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
   ngOnInit() {
   }
 
+  @HostListener('click')
+  click(event: MouseEvent) {
+    this.menu.itemClick.emit(event);
+    this.menu.close();
+  }
 }

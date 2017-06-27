@@ -1,31 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultToggleStyle implements KitComponentStyle {
-
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
     return {};
-  }
-
-  toggle(): StyleDef {
-    return {
-      whiteSpace: 'nowrap',
-      cursor: 'pointer',
-      outline: 'none',
-      display: 'inline-block',
-      lineHeight: 1,
-      position: 'relative',
-      verticalAlign: 'text-bottom',
-    };
   }
 
   input(): StyleDef {
@@ -39,6 +24,24 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
       top: 0,
       width: 44,
       height: 22,
+    };
+  }
+
+  label(): StyleDef {
+    return {
+      cursor: 'pointer',
+    };
+  }
+
+  toggle(): StyleDef {
+    return {
+      whiteSpace: 'nowrap',
+      cursor: 'pointer',
+      outline: 'none',
+      display: 'inline-block',
+      lineHeight: 1,
+      position: 'relative',
+      verticalAlign: 'text-bottom',
     };
   }
 
@@ -100,11 +103,4 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
       }),
     };
   }
-
-  label(): StyleDef {
-    return {
-      cursor: 'pointer',
-    };
-  }
-
 }

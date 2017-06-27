@@ -1,15 +1,23 @@
 import {
   AfterContentInit,
-  AfterViewChecked, AfterViewInit, Component,
-  ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnChanges, OnDestroy,
-  OnInit, Output,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Inject,
+  Input,
+  NgZone,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
 } from '@angular/core';
-
 import { StylerComponent } from '@ngx-kit/styler';
-
-import { kitComponentOverlayContainer } from '../meta/tokens';
 import { KitComponentStyle } from '../meta/component';
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
+import { kitComponentOverlayContainer } from '../meta/tokens';
 
 /**
  * @todo click close
@@ -29,68 +37,32 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
   ],
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
-
-  @Input() kitOverlayContainer: any;
-
   @Input() anchor: HTMLElement;
-  @Input() overlay: boolean;
-  @Input() type: string;
-  // for type: side
-  @Input() position: OverlayContainerPosition;
-  // for type: dropdown
-  @Input() widthType: OverlayContainerWidthType;
-
-  @Output() outsideClick = new EventEmitter<any>();
-
-  @HostBinding('attr.sid') get hostClass() {
-    return this.styler.host.sid;
-  };
 
   holderStyle = {};
 
-  constructor(private styler: StylerComponent,
-              @Inject(kitComponentOverlayContainer) private style: KitComponentStyle,
-              private zone: NgZone,
-              private elementRef: ElementRef) {
-    this.styler.register(this.style);
-  }
+  @Input() kitOverlayContainer: any;
 
-  ngOnInit() {
-    // listeners
-    this.zone.runOutsideAngular(() => {
-      // @todo use renderer2 (currently it does not have listenGlobal)
-      // reposition
-      document.addEventListener('scroll', this.reposition, true);
-      window.addEventListener('resize', this.reposition, true);
-      // outside click
-      document.addEventListener('click', this.clickListener);
-    });
-  }
+  @Output() outsideClick = new EventEmitter<any>();
 
-  ngOnChanges() {
-    this.styler.host.applyState({
-      overlay: this.overlay,
-      type: this.type,
-    });
-    this.reposition();
-  }
+  @Input() overlay: boolean;
 
-  ngAfterViewInit() {
-    this.reposition();
-  }
+  // for type: side
+  @Input() position: OverlayContainerPosition;
 
-  ngAfterViewChecked() {
-    this.reposition();
-  }
+  @Input() type: string;
 
-  ngAfterContentInit() {
-  }
+  // for type: dropdown
+  @Input() widthType: OverlayContainerWidthType;
 
-  ngOnDestroy() {
-    document.removeEventListener('scroll', this.reposition, true);
-    window.removeEventListener('resize', this.reposition, true);
-    document.removeEventListener('click', this.clickListener);
-  }
+  private clickListener = (event: MouseEvent) => {
+    const path = event['path'];
+    if (path.indexOf(this.elementRef.nativeElement) === -1) {
+      this.zone.run(() => {
+        this.outsideClick.emit(true);
+      });
+    }
+  };
 
   private reposition = () => {
     if (this.type === 'dropdown') {
@@ -175,13 +147,52 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
     }
   };
 
-  private clickListener = (event: MouseEvent) => {
-    const path = event['path'];
-    if (path.indexOf(this.elementRef.nativeElement) === -1) {
-      this.zone.run(() => {
-        this.outsideClick.emit(true);
-      });
-    }
+  constructor(private styler: StylerComponent,
+              @Inject(kitComponentOverlayContainer) private style: KitComponentStyle,
+              private zone: NgZone,
+              private elementRef: ElementRef) {
+    this.styler.register(this.style);
+  }
+
+  @HostBinding('attr.sid')
+  get hostClass() {
+    return this.styler.host.sid;
   };
 
+  ngAfterContentInit() {
+  }
+
+  ngAfterViewChecked() {
+    this.reposition();
+  }
+
+  ngAfterViewInit() {
+    this.reposition();
+  }
+
+  ngOnChanges() {
+    this.styler.host.applyState({
+      overlay: this.overlay,
+      type: this.type,
+    });
+    this.reposition();
+  }
+
+  ngOnDestroy() {
+    document.removeEventListener('scroll', this.reposition, true);
+    window.removeEventListener('resize', this.reposition, true);
+    document.removeEventListener('click', this.clickListener);
+  }
+
+  ngOnInit() {
+    // listeners
+    this.zone.runOutsideAngular(() => {
+      // @todo use renderer2 (currently it does not have listenGlobal)
+      // reposition
+      document.addEventListener('scroll', this.reposition, true);
+      window.addEventListener('resize', this.reposition, true);
+      // outside click
+      document.addEventListener('click', this.clickListener);
+    });
+  }
 }

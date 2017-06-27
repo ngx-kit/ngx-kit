@@ -7,15 +7,13 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   `,
 })
 export class KitNavComponent implements OnInit {
+  @HostBinding('class') hostClass: string;
 
   @Input() kitNav: any;
-
-  @HostBinding('class') hostClass: string;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

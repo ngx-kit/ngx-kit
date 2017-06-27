@@ -1,12 +1,19 @@
 import {
-  Component, ContentChildren, forwardRef, HostBinding, Inject, Input, OnInit, Optional, QueryList, SkipSelf,
+  Component,
+  ContentChildren,
+  forwardRef,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  QueryList,
+  SkipSelf,
 } from '@angular/core';
+import { kitComponentMenuSub, KitComponentStyle } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/filter';
-
-import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentMenuSub, KitComponentStyle } from '@ngx-kit/core';
-
 import { KitMenuDirection } from '../interfaces';
 import { KitMenuItemComponent } from './kit-menu-item.component';
 import { KitMenuComponent } from './kit-menu.component';
@@ -38,35 +45,18 @@ import { KitMenuComponent } from './kit-menu.component';
   ],
 })
 export class KitMenuSubComponent implements OnInit {
-
-  @Input() kitMenuSub: any;
-
-  @Input() set menuDirection(direction: KitMenuDirection) {
-    this._menuDirection = direction;
-    this.overlayPosition = this._menuDirection === 'horizontal' && !this.parentSub ? 'bottom' : 'right';
-  }
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  };
-
   @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false})
   items: QueryList<KitMenuItemComponent>;
 
-  containerMouseEnter() {
-    this._hover = true;
-  }
-
-  containerMouseLeave() {
-    this._hover = false;
-    this.menu.checkLeave$.next();
-  }
+  @Input() kitMenuSub: any;
 
   overlayPosition = 'bottom';
 
-  private _menuDirection: KitMenuDirection;
-  private _opened = false;
   private _hover = false;
+
+  private _menuDirection: KitMenuDirection;
+
+  private _opened = false;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuSub) private style: KitComponentStyle,
@@ -77,28 +67,44 @@ export class KitMenuSubComponent implements OnInit {
     this.styler.register(this.style);
   }
 
-  ngOnInit() {
-    this._menuDirection = this.parentSub ? 'vertical' : 'horizontal';
-  }
-
   get anchor() {
     return this.parentItem.nativeEl;
   }
 
-  open() {
-    this._opened = true;
+  get hover() {
+    return this._hover || this.hasHoveredChildren();
   }
 
-  close() {
-    this._opened = false;
+  @Input()
+  set menuDirection(direction: KitMenuDirection) {
+    this._menuDirection = direction;
+    this.overlayPosition = this._menuDirection === 'horizontal' && !this.parentSub ? 'bottom' : 'right';
   }
 
   get opened() {
     return this._opened;
   }
 
-  get hover() {
-    return this._hover || this.hasHoveredChildren();
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
+  };
+
+  ngOnInit() {
+    this._menuDirection = this.parentSub ? 'vertical' : 'horizontal';
+  }
+
+  close() {
+    this._opened = false;
+  }
+
+  containerMouseEnter() {
+    this._hover = true;
+  }
+
+  containerMouseLeave() {
+    this._hover = false;
+    this.menu.checkLeave$.next();
   }
 
   hasHoveredChildren(): boolean {
@@ -109,4 +115,7 @@ export class KitMenuSubComponent implements OnInit {
     }
   }
 
+  open() {
+    this._opened = true;
+  }
 }

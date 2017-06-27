@@ -1,13 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-
 import { KitComponentStyle, kitTheme } from '@ngx-kit/core';
 import { StyleDef } from '@ngx-kit/styler';
-
 import { KitDefaultThemeService } from '../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultTextareaStyle implements KitComponentStyle {
-
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
@@ -27,5 +24,4 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
       },
     }
   }
-
 }

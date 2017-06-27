@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { KitDialogComponent } from './kit-dialog/kit-dialog.component';
 import { KitDialogLayoutComponent } from './kit-dialog-layout/kit-dialog-layout.component';
 import { KitDialogService } from './kit-dialog.service';
+import { KitDialogComponent } from './kit-dialog/kit-dialog.component';
 
 const external = [
   KitDialogComponent,
@@ -20,7 +19,7 @@ const external = [
   ],
   providers: [
     KitDialogService,
-  ]
+  ],
 })
 export class KitDialogModule {
 }

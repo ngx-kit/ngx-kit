@@ -1,15 +1,16 @@
 import { ComponentRef, Injectable, Type } from '@angular/core';
-
 import { KitOverlayService } from '@ngx-kit/core';
-
 import { DialogHandlers } from './interfaces';
 
 @Injectable()
 export class KitDialogService {
-
   private dialogRef: ComponentRef<any>;
 
   constructor(private overlay: KitOverlayService) {
+  }
+
+  hide() {
+    this.dialogRef.destroy();
   }
 
   show<T extends DialogHandlers>(component: Type<T>): T {
@@ -25,9 +26,4 @@ export class KitDialogService {
     // return instance
     return instance;
   }
-
-  hide() {
-    this.dialogRef.destroy();
-  }
-
 }

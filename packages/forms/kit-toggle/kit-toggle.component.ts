@@ -1,14 +1,13 @@
 import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-
-import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle, kitComponentToggle, KitCoreService } from '@ngx-kit/core';
+import { StylerComponent } from '@ngx-kit/styler';
+import { Subject } from 'rxjs/Subject';
 
 export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitToggleComponent),
-  multi: true
+  multi: true,
 };
 
 /**
@@ -34,19 +33,20 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   providers: [KIT_TOGGLE_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
-  ]
+  ],
 })
 export class KitToggleComponent implements ControlValueAccessor {
+  id: string;
 
   @Input() kitToggle: any;
 
-  id: string;
-
   private _value: any;
+
+  private changes$ = new Subject<number>();
 
   // @todo do not change if disabled
   private isDisabled = false;
-  private changes$ = new Subject<number>();
+
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
@@ -56,8 +56,14 @@ export class KitToggleComponent implements ControlValueAccessor {
     this.id = this.core.uuid();
   }
 
-  writeValue(value: any) {
+  get value(): any {
+    return this._value;
+  }
+
+  set value(value: any) {
     this._value = value;
+    this.changes$.next(value);
+    this.touches$.next(true);
   }
 
   registerOnChange(fn: any) {
@@ -72,14 +78,7 @@ export class KitToggleComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
+  writeValue(value: any) {
     this._value = value;
-    this.changes$.next(value);
-    this.touches$.next(true);
   }
-
 }
