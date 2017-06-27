@@ -3,12 +3,14 @@ import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
 @Component({
-  selector: 'kit-icon',
+  selector: 'kit-icon,[kit-icon],[kitIcon]',
   template: `
       <ng-content></ng-content>
   `,
 })
 export class KitIconComponent implements OnInit, OnChanges {
+
+  @Input() kitIcon: any;
 
   @Input() color: string;
   @Input() name: string;

@@ -4,7 +4,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentAccordionPanel, KitComponentStyle } from '@ngx-kit/core';
 
 @Component({
-  selector: 'kit-accordion-panel',
+  selector: 'kit-accordion-panel,[kit-accordion-panel],[kitAccordionPanel]',
   template: `
     <div [styler]="['title', {active: active}]" (click)="activateClick()">{{ title }}</div>
     <div *ngIf="active" styler="content">
@@ -16,6 +16,8 @@ import { kitComponentAccordionPanel, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitAccordionPanelComponent implements OnInit {
+
+  @Input() kitAccordionPanel: any;
 
   @Input() active: boolean;
   @Input() title: string;

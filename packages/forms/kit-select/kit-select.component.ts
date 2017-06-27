@@ -18,7 +18,7 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
  * @todo option output template
  */
 @Component({
-  selector: 'kit-select',
+  selector: 'kit-select,[kit-select],[kitSelect]',
   template: `
     <div *ngFor="let option of options"
          [styler]="['option', {selected: option[valueField] === value}]"
@@ -32,6 +32,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitSelectComponent<T> implements ControlValueAccessor {
+
+  @Input() kitSelect: any;
 
   @Input() options: T[] = [];
   @Input() type: 'list' | 'dropdown' = 'list';

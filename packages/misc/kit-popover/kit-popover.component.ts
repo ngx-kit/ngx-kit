@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 /**
  * @todo add and implement position param
@@ -8,12 +8,14 @@ import { Component, HostBinding, OnInit } from '@angular/core';
  */
 
 @Component({
-  selector: 'kit-popover',
+  selector: 'kit-popover,[kit-popover],[kitPopover]',
   template: `
     <ng-content></ng-content>
   `,
 })
 export class KitPopoverComponent implements OnInit {
+
+  @Input() kitPopover: any;
 
   @HostBinding('class') hostClass: string;
   @HostBinding('style.display') styleDisplay: string;

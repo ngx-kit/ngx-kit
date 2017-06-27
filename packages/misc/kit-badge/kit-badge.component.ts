@@ -8,7 +8,7 @@ import { kitComponentBadge, KitComponentStyle } from '@ngx-kit/core';
  * @todo showZero
  */
 @Component({
-  selector: 'kit-badge',
+  selector: 'kit-badge,[kit-badge],[kitBadge]',
   template: `
     {{ count }}
   `,
@@ -17,6 +17,8 @@ import { kitComponentBadge, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitBadgeComponent implements OnInit {
+
+  @Input() kitBadge: any;
 
   @Input() set type(type: string) {
     this.styler.host.applyState({type});

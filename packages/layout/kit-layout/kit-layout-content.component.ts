@@ -1,10 +1,10 @@
-import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentLayoutContent, KitComponentStyle } from '@ngx-kit/core';
 
 @Component({
-  selector: 'kit-layout-content',
+  selector: 'kit-layout-content,[kit-layout-content],[kitLayoutContent]',
   template: `
     <ng-content></ng-content>
   `,
@@ -13,6 +13,8 @@ import { kitComponentLayoutContent, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitLayoutContentComponent implements OnInit {
+
+  @Input() kitLayoutContent: any;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;

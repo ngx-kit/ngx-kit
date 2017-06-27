@@ -7,7 +7,7 @@ import { KitButtonGroupDirection } from '../interfaces';
 
 // @todo proxy enter listener to (action)
 @Component({
-  selector: 'kit-button',
+  selector: 'kit-button,[kit-button],[kitButton]',
   template: `
     <ng-content></ng-content>
   `,
@@ -16,6 +16,8 @@ import { KitButtonGroupDirection } from '../interfaces';
   ],
 })
 export class KitButtonComponent implements OnInit {
+
+  @Input() kitButton: any;
 
   @Input() set size(size: string) {
     this.styler.host.applyState({size});

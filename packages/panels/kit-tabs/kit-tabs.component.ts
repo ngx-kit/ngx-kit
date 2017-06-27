@@ -9,7 +9,7 @@ import { KitComponentStyle, kitComponentTabs } from '@ngx-kit/core';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 
 @Component({
-  selector: 'kit-tabs',
+  selector: 'kit-tabs,[kit-tabs],[kitTabs]',
   template: `
     <ul styler="nav">
       <li *ngFor="let tab of tabs"
@@ -27,6 +27,8 @@ import { KitTabsPanelComponent } from './kit-tabs-panel.component';
   ],
 })
 export class KitTabsComponent implements OnInit, AfterContentInit {
+
+  @Input() kitTabs: any;
 
   @Input() firstActivate = true;
 

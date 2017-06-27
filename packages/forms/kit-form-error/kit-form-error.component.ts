@@ -9,7 +9,7 @@ import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.componen
  * @todo default [touched], [dirty] via DI
  */
 @Component({
-  selector: 'kit-form-error',
+  selector: 'kit-form-error,[kit-form-error],[kitFormError]',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,6 +18,8 @@ import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.componen
   ],
 })
 export class KitFormErrorComponent implements OnInit, AfterViewInit {
+
+  @Input() kitFormError: any;
 
   @Input() validator: string;
   @Input() touched: boolean | null = null;

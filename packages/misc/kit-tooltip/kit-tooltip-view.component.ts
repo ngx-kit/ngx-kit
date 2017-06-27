@@ -8,7 +8,7 @@ import { KitComponentStyle, kitComponentTooltipView, OverlayContainerPosition } 
  */
 
 @Component({
-  selector: 'kit-tooltip-view',
+  selector: 'kit-tooltip-view,[kit-tooltip-view],[kitTooltipView]',
   template: `
     <kit-overlay-container [type]="'side'"
                            [anchor]="anchor"
@@ -21,6 +21,8 @@ import { KitComponentStyle, kitComponentTooltipView, OverlayContainerPosition } 
   ],
 })
 export class KitTooltipViewComponent implements OnInit {
+
+  @Input() kitTooltipView: any;
 
   @Input() text: string;
   @Input() position: OverlayContainerPosition;

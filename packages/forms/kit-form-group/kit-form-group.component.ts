@@ -18,7 +18,7 @@ import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.componen
  * @todo process few controls in one group
  */
 @Component({
-  selector: 'kit-form-group',
+  selector: 'kit-form-group,[kit-form-group],[kitFormGroup]',
   template: `
     <div>
       <ng-content select="kit-form-label"></ng-content>
@@ -32,6 +32,8 @@ import { KitFormErrorComponent } from '../kit-form-error/kit-form-error.componen
   ],
 })
 export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
+
+  @Input() kitFormGroup: any;
 
   @Input() touched: boolean = false;
   @Input() dirty: boolean = false;

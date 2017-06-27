@@ -12,7 +12,7 @@ import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
 
 @Component({
-  selector: 'kit-menu',
+  selector: 'kit-menu,[kit-menu],[kitMenu]',
   template: `
     <ng-content></ng-content>
   `,
@@ -21,6 +21,8 @@ import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
   ],
 })
 export class KitMenuComponent implements OnInit, AfterContentInit {
+
+  @Input() kitMenu: any;
 
   @Input() set direction(direction: KitMenuDirection) {
     this._direction = direction;

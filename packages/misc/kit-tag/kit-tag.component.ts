@@ -9,7 +9,7 @@ import { KitComponentStyle, kitComponentTag } from '@ngx-kit/core';
  * @todo colors presets
  */
 @Component({
-  selector: 'kit-tag',
+  selector: 'kit-tag,[kit-tag],[kitTag]',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,6 +18,8 @@ import { KitComponentStyle, kitComponentTag } from '@ngx-kit/core';
   ],
 })
 export class KitTagComponent implements OnInit {
+
+  @Input() kitTag: any;
 
   @Input() set color(color: string) {
     this.styleBackgroundColor = color;

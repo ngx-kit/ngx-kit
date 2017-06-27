@@ -1,12 +1,12 @@
 import {
-  Component, HostBinding, Inject, OnInit,
+  Component, HostBinding, Inject, Input, OnInit,
 } from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentMenuGroup, KitComponentStyle } from '@ngx-kit/core';
 
 @Component({
-  selector: 'kit-menu-group',
+  selector: 'kit-menu-group,[kit-menu-group],[kitMenuGroup]',
   template: `
     <ng-content select="[title]"></ng-content>
     <ng-content></ng-content>
@@ -16,6 +16,8 @@ import { kitComponentMenuGroup, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitMenuGroupComponent implements OnInit {
+
+  @Input() kitMenuGroup: any;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;

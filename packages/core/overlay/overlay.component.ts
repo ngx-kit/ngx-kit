@@ -16,10 +16,12 @@ import { KitOverlayService } from './kit-overlay.service';
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 
 @Component({
-  selector: 'kit-overlay',
+  selector: 'kit-overlay,[kit-overlay],[kitOverlay]',
   template: '',
 })
 export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {
+
+  @Input() kitOverlay: any;
 
   @Input() component: any;
   @Input() template: any;

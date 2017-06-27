@@ -7,7 +7,7 @@ import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from 
  * @todo right-click open
  */
 @Component({
-  selector: 'kit-dropdown-menu',
+  selector: 'kit-dropdown-menu,[kit-dropdown-menu],[kitDropdownMenu]',
   template: `
     <div *ngIf="opened">
       <kit-overlay [template]="contentRef"
@@ -28,6 +28,8 @@ import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from 
   ],
 })
 export class KitDropdownMenuComponent implements OnInit, OnChanges {
+
+  @Input() kitDropdownMenu: any;
 
   @Input() anchor: KitAnchorDirective;
 

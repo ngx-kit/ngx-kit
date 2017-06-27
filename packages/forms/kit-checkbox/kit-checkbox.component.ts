@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -15,7 +15,7 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
  * @todo checkbox-group
  */
 @Component({
-  selector: 'kit-checkbox',
+  selector: 'kit-checkbox,[kit-checkbox],[kitCheckbox]',
   template: `
     <span styler="checkbox">
         <input [id]="id"
@@ -35,6 +35,8 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitCheckboxComponent implements ControlValueAccessor {
+
+  @Input() kitCheckbox: any;
 
   id: string;
 

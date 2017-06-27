@@ -18,7 +18,7 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
  * @todo type=side move from edge
  */
 @Component({
-  selector: 'kit-overlay-container',
+  selector: 'kit-overlay-container,[kit-overlay-container],[kitOverlayContainer]',
   template: `
     <div [ngStyle]="holderStyle">
       <ng-content></ng-content>
@@ -29,6 +29,8 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
   ],
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
+
+  @Input() kitOverlayContainer: any;
 
   @Input() anchor: HTMLElement;
   @Input() overlay: boolean;

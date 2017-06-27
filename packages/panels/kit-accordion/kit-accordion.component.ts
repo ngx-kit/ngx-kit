@@ -9,7 +9,7 @@ import { kitComponentAccordion, KitComponentStyle } from '@ngx-kit/core';
 import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 
 @Component({
-  selector: 'kit-accordion',
+  selector: 'kit-accordion,[kit-accordion],[kitAccordion]',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,6 +18,8 @@ import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
   ],
 })
 export class KitAccordionComponent implements OnInit, AfterContentInit {
+
+  @Input() kitAccordion: any;
 
   @Input() firstActivate = true;
   @Input() multiple = false;

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -12,7 +12,7 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-textarea',
+  selector: 'kit-textarea,[kit-textarea],[kitTextarea]',
   template: `
     <textarea [ngModel]="value"
               (ngModelChange)="value = $event"
@@ -25,6 +25,8 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitTextareaComponent implements ControlValueAccessor {
+
+  @Input() kitTextarea: any;
 
   private _value: any;
 

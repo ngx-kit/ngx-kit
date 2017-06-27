@@ -1,10 +1,10 @@
-import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentLayoutFooter, KitComponentStyle } from '@ngx-kit/core';
 
 @Component({
-  selector: 'kit-layout-footer',
+  selector: 'kit-layout-footer,[kit-layout-footer],[kitLayoutFooter]',
   template: `
     <ng-content></ng-content>
   `,
@@ -13,6 +13,8 @@ import { kitComponentLayoutFooter, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitLayoutFooterComponent implements OnInit {
+
+  @Input() kitLayoutFooter: any;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;

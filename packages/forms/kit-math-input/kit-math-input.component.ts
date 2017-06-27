@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, forwardRef, Inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -14,7 +14,7 @@ export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-math-input',
+  selector: 'kit-math-input,[kit-math-input],[kitMathInput]',
   template: `
     <kit-input></kit-input>
     <div *ngIf="displayResult" styler="result">= {{ result }}</div>
@@ -26,9 +26,11 @@ export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
 })
 export class KitMathInputComponent implements ControlValueAccessor, AfterViewInit {
 
-  displayResult = false;
+  @Input() kitMathInput: any;
 
   @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
+
+  displayResult = false;
 
   private _result: any;
   private _value: any;

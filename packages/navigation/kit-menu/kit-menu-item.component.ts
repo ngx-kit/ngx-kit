@@ -14,7 +14,7 @@ import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuComponent } from './kit-menu.component';
 
 @Component({
-  selector: 'kit-menu-item',
+  selector: 'kit-menu-item,[kit-menu-item],[kitMenuItem]',
   template: `
     <ng-content></ng-content>
   `,
@@ -23,6 +23,8 @@ import { KitMenuComponent } from './kit-menu.component';
   ],
 })
 export class KitMenuItemComponent implements OnInit, AfterContentInit {
+
+  @Input() kitMenuItem: any;
 
   @Input()
   set disabled(disabled: boolean) {

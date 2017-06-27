@@ -22,7 +22,7 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
  * @todo cancel pending request
  */
 @Component({
-  selector: 'kit-auto-complete',
+  selector: 'kit-auto-complete,[kit-auto-complete],[kitAutoComplete]',
   template: `
     <kit-input (keydown.ArrowUp)="activeUp($event)"
                (keydown.ArrowDown)="activeDown($event)"
@@ -55,6 +55,8 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit {
+
+  @Input() kitAutoComplete: any;
 
   @Input() data: string[] | null = null;
   @Input() dataSourceFactory: KitDataSourceFactory | null = null;

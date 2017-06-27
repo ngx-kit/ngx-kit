@@ -12,7 +12,7 @@ import { KitButtonGroupDirection } from '../interfaces';
  * @todo VALUE_ACCESSOR
  */
 @Component({
-  selector: 'kit-button-group',
+  selector: 'kit-button-group,[kit-button-group],[kitButtonGroup]',
   template: `
     <ng-content></ng-content>
   `,
@@ -21,6 +21,8 @@ import { KitButtonGroupDirection } from '../interfaces';
   ],
 })
 export class KitButtonGroupComponent implements OnInit, AfterContentInit {
+
+  @Input() kitButtonGroup: any;
 
   @Input() set direction(direction: KitButtonGroupDirection) {
     this._direction = direction;

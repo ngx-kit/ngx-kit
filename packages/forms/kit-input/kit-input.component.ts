@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -12,7 +12,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-input',
+  selector: 'kit-input,[kit-input],[kitInput]',
   template: `
     <input [ngModel]="value"
            (ngModelChange)="value = $event"
@@ -26,6 +26,8 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitInputComponent implements ControlValueAccessor {
+
+  @Input() kitInput: any;
 
   private _value: any;
 

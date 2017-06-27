@@ -4,7 +4,7 @@ import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output 
  * @todo use button-group for styling
  */
 @Component({
-  selector: 'kit-pagination',
+  selector: 'kit-pagination,[kit-pagination],[kitPagination]',
   template: `
     <button *ngIf="displayFirstLink"
             (click)="pageChange.emit(1)">First
@@ -24,6 +24,8 @@ import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output 
   `,
 })
 export class KitPaginationComponent implements OnInit, OnChanges {
+
+  @Input() kitPagination: any;
 
   @Input() totalRows: number;
   @Input() currentPage: number;

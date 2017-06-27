@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -14,7 +14,7 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-date-picker',
+  selector: 'kit-date-picker,[kit-date-picker],[kitDatePicker]',
   template: `
     <div styler="years">
       <div [styler]="['year', {type: 'change'}]" (click)="add(-1, 'year')">&larr;</div>
@@ -43,6 +43,8 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
+
+  @Input() kitDatePicker: any;
 
   datesGrid: {date: any, isActive: boolean, isOutside: boolean}[] = [];
   weekdays: any;

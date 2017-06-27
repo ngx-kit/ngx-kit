@@ -8,7 +8,7 @@ import { kitComponentMenuSeparator, KitComponentStyle } from '@ngx-kit/core';
 import { KitMenuDirection } from '../interfaces';
 
 @Component({
-  selector: 'kit-menu-separator',
+  selector: 'kit-menu-separator,[kit-menu-separator],[kitMenuSeparator]',
   template: `
   `,
   viewProviders: [
@@ -16,6 +16,8 @@ import { KitMenuDirection } from '../interfaces';
   ],
 })
 export class KitMenuSeparatorComponent implements OnInit {
+
+  @Input() kitMenuSeparator: any;
 
   @Input() set parentDirection(parentDirection: KitMenuDirection) {
     this._parentDirection = parentDirection;

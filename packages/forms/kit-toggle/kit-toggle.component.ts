@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 
@@ -15,7 +15,7 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
  * @todo checkbox-group
  */
 @Component({
-  selector: 'kit-toggle',
+  selector: 'kit-toggle,[kit-toggle],[kitToggle]',
   template: `
     <span styler="toggle">
         <input [id]="id"
@@ -37,6 +37,8 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   ]
 })
 export class KitToggleComponent implements ControlValueAccessor {
+
+  @Input() kitToggle: any;
 
   id: string;
 

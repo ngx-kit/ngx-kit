@@ -15,7 +15,7 @@ import { KitMenuComponent } from './kit-menu.component';
  * @todo separator inside group
  */
 @Component({
-  selector: 'kit-menu-sub',
+  selector: 'kit-menu-sub,[kit-menu-sub],[kitMenuSub]',
   template: `
     <div *ngIf="opened">
       <kit-overlay [template]="contentRef"
@@ -38,6 +38,8 @@ import { KitMenuComponent } from './kit-menu.component';
   ],
 })
 export class KitMenuSubComponent implements OnInit {
+
+  @Input() kitMenuSub: any;
 
   @Input() set menuDirection(direction: KitMenuDirection) {
     this._menuDirection = direction;

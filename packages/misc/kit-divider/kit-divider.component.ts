@@ -1,4 +1,4 @@
-import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitComponentDivider, KitComponentStyle } from '@ngx-kit/core';
 
@@ -7,7 +7,7 @@ import { kitComponentDivider, KitComponentStyle } from '@ngx-kit/core';
  */
 
 @Component({
-  selector: 'kit-divider',
+  selector: 'kit-divider,[kit-divider],[kitDivider]',
   template: `
     <div styler="line"></div>
     <div styler="text"><ng-content></ng-content></div>
@@ -18,6 +18,8 @@ import { kitComponentDivider, KitComponentStyle } from '@ngx-kit/core';
   ],
 })
 export class KitDividerComponent implements OnInit {
+
+  @Input() kitDivider: any;
 
   @HostBinding('attr.sid') get sid() {
     return this.styler.host.sid;
