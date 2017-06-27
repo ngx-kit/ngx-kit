@@ -20,6 +20,10 @@ export class KitLayoutComponent implements OnInit, AfterContentInit {
 
   @Input() kitLayout: any;
 
+  @Input() set fullscreen(fullscreen: boolean) {
+    this.styler.host.applyState({fullscreen});
+  }
+
   @ContentChildren(KitLayoutSideComponent, {descendants: false}) sides: QueryList<KitLayoutSideComponent>;
 
   @HostBinding('attr.sid') get sid() {

@@ -12,12 +12,19 @@ export class KitDefaultLayoutStyle implements KitComponentStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(state: {hasSide: boolean}): StyleDef {
+  host(state: {hasSide: boolean, fullscreen: boolean}): StyleDef {
     return {
       display: 'flex',
       flexDirection: 'column',
       ...this.def.toggle(state.hasSide, {
         flexDirection: 'row',
+      }),
+      ...this.def.toggle(state.fullscreen, {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
       }),
     };
   }

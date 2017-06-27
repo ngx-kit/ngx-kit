@@ -14,7 +14,9 @@ export class KitDefaultLayoutContentStyle implements KitComponentStyle {
 
   host(): StyleDef {
     return {
-      flex: 'auto',
+      display: 'flex',
+      flexGrow: 1,
+      overflow: 'auto',
     };
   }
 
