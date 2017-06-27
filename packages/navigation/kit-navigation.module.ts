@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { KitCoreModule } from '@ngx-kit/core';
+import { StylerModule } from '@ngx-kit/styler';
 
 import { KitBreadcrumbComponent } from './kit-breadcrumb/kit-breadcrumb.component';
 import { KitMenuComponent } from './kit-menu/kit-menu.component';
@@ -26,6 +27,7 @@ const exported = [
 @NgModule({
   imports: [
     CommonModule,
+    StylerModule,
     KitCoreModule,
   ],
   exports: [
