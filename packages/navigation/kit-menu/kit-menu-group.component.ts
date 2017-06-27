@@ -8,8 +8,12 @@ import { kitComponentMenuGroup, KitComponentStyle } from '@ngx-kit/core';
 @Component({
   selector: 'kit-menu-group,[kit-menu-group],[kitMenuGroup]',
   template: `
-    <ng-content select="[title]"></ng-content>
-    <ng-content></ng-content>
+    <div styler="title">
+      <ng-content select="[title]"></ng-content>
+    </div>
+    <div styler="items">
+      <ng-content></ng-content>
+    </div>
   `,
   viewProviders: [
     StylerComponent,
@@ -30,5 +34,5 @@ export class KitMenuGroupComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 }

@@ -14,7 +14,21 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
 
   host(): StyleDef {
     return {
-      padding: [this.theme.params.grid.v, this.theme.params.grid.h],
+//      padding: [this.theme.params.grid.v, this.theme.params.grid.h],
+    };
+  }
+
+  title(): StyleDef {
+    return {
+      color: '#888',
+      fontSize: this.theme.params.typo.secondaryFontSize,
+      padding: [this.theme.params.grid.v / 2, this.theme.params.grid.h],
+    };
+  }
+
+  items(): StyleDef {
+    return {
+      paddingLeft: this.theme.params.grid.h * 2,
     };
   }
 

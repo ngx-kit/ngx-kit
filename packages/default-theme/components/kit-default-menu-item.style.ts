@@ -21,14 +21,18 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
   }): StyleDef {
     const params = this.theme.params;
     return {
-      display: 'block',
+      display: 'flex',
+      alignItems: 'center',
       borderBottom: [2, 'solid', 'transparent'],
       cursor: 'pointer',
       userSelect: 'none',
-      padding: [params.grid.v, params.grid.h * 3],
+      padding: [params.grid.v / 2, params.grid.h],
+      color: params.colors.border.text,
+      textDecoration: 'none',
       ...this.def.toggle(state.root, {
         ...this.def.pick(state.menuDirection, {
           horizontal: {
+            padding: [params.grid.v, params.grid.h * 2],
             ...this.def.toggle(state.hover, {
               borderBottom: [2, 'solid', this.theme.colorMod(.05, params.colors.brand.color)],
               color: this.theme.colorMod(.05, params.colors.brand.color),
@@ -42,7 +46,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
         }),
       }, {
         ...this.def.toggle(state.hover, {
-         color: this.theme.colorMod(.05, params.colors.brand.color),
+          color: this.theme.colorMod(.05, params.colors.brand.color),
         }),
         ...this.def.toggle(state.hasSubs, {}),
       }),

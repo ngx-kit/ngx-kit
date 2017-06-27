@@ -16,7 +16,7 @@ export class KitDefaultMenuSeparatorStyle implements KitComponentStyle {
     return {
       display: 'block',
       borderStyle: 'solid',
-      borderColor: '#aaa',
+      borderColor: this.theme.params.colors.border.color,
       borderWidth: 0,
       ...this.def.pick(state.parentDirection, {
         vertical: {

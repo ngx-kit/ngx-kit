@@ -14,7 +14,6 @@ export class KitDefaultLayoutSideStyle implements KitComponentStyle {
 
   host(): StyleDef {
     return {
-      flex: '0 0',
     };
   }
 
