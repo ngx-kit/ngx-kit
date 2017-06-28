@@ -3,7 +3,6 @@ import { ComponentStyle, StyleDef, StylerDefService } from '@ngx-kit/styler';
 
 @Injectable()
 export class ButtonStyle implements ComponentStyle {
-
   constructor(private def: StylerDefService) {
   }
 
@@ -29,5 +28,4 @@ export class ButtonStyle implements ComponentStyle {
       gridRow: 'start / end',
     };
   }
-
 }

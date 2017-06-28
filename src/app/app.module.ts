@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { StylerModule } from '@ngx-kit/styler';
+import { BrowserModule } from '@angular/platform-browser';
 import { KitCoreModule } from '@ngx-kit/core';
 import { KitDefaultThemeModule } from '@ngx-kit/default-theme';
 import { KitLayoutModule } from '@ngx-kit/layout';
 import { KitNavigationModule } from '@ngx-kit/navigation';
+import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
-
 import { AppRoutingModule } from './app-routing.module';
-import { RootComponent } from './root/root.component';
 import { CoreModule } from './core/core.module';
+import { RootComponent } from './root/root.component';
 
 @NgModule({
   imports: [
@@ -33,7 +32,7 @@ import { CoreModule } from './core/core.module';
     RootComponent,
   ],
   providers: [],
-  bootstrap: [RootComponent]
+  bootstrap: [RootComponent],
 })
 export class AppModule {
 }

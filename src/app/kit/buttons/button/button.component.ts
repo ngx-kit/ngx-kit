@@ -1,7 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-
 import { Content } from '../../../interfaces/content';
 import { ButtonStyle } from './button.style';
 
@@ -11,18 +10,18 @@ import { ButtonStyle } from './button.style';
   styleUrls: ['./button.component.css'],
   viewProviders: [
     StylerModule.forComponent(ButtonStyle),
-  ]
+  ],
 })
 export class ButtonComponent implements OnInit {
-
   content: Content;
-
-  @HostBinding('attr.sid') get sid() {
-    return this.styler.host.sid;
-  }
 
   constructor(private route: ActivatedRoute,
               private styler: StylerComponent) {
+  }
+
+  @HostBinding('attr.sid')
+  get sid() {
+    return this.styler.host.sid;
   }
 
   ngOnInit() {
@@ -30,5 +29,4 @@ export class ButtonComponent implements OnInit {
       this.content = data.content;
     });
   }
-
 }

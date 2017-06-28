@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { KitComponent } from './kit/kit.component';
-import { OverlayComponent } from './core/overlay/overlay.component';
-import { ButtonComponent } from './buttons/button/button.component';
-import { ButtonGroupComponent } from './buttons/button-group/button-group.component';
-import { DropdownMenuComponent } from './buttons/dropdown-menu/dropdown-menu.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../core/content-resolver.service';
 import { ContentComponent } from '../shared/content/content.component';
+import { ButtonGroupComponent } from './buttons/button-group/button-group.component';
+import { ButtonComponent } from './buttons/button/button.component';
+import { DropdownMenuComponent } from './buttons/dropdown-menu/dropdown-menu.component';
+import { OverlayComponent } from './core/overlay/overlay.component';
+import { KitComponent } from './kit/kit.component';
 
 const routes: Routes = [
   {

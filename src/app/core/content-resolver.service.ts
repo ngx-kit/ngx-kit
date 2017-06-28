@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Http } from '@angular/http';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { MdRenderService } from '@nvxme/ngx-md-render';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-
 import { Content } from '../interfaces/content';
 
 @Injectable()
 export class ContentResolverService implements Resolve<Content> {
-
   constructor(private http: Http,
               private mdRender: MdRenderService) {
   }
@@ -33,5 +31,4 @@ export class ContentResolverService implements Resolve<Content> {
       alert(404);
     }
   }
-
 }

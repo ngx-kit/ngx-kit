@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef, StylerDefService } from '@ngx-kit/styler';
-
 import { ThemeService } from '../../core/theme.service';
 
 @Injectable()
 export class KitStyle implements ComponentStyle {
-
   constructor(private def: StylerDefService,
               private theme: ThemeService) {
+  }
+
+  content(): StyleDef {
+    return {
+      padding: 16,
+    }
   }
 
   host(): StyleDef {
@@ -31,11 +35,4 @@ export class KitStyle implements ComponentStyle {
       boxSizing: 'border-box',
     };
   }
-
-  content(): StyleDef {
-    return {
-      padding: 16,
-    }
-  }
-
 }
