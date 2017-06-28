@@ -11,12 +11,14 @@ import { ButtonGroupComponent } from './buttons/button-group/button-group.compon
 import { DropdownMenuComponent } from './buttons/dropdown-menu/dropdown-menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { KitButtonsModule } from '@ngx-kit/buttons';
+import { StylerModule } from '@ngx-kit/styler';
 
 @NgModule({
   imports: [
     // angular
     CommonModule,
     // kit
+    StylerModule,
     KitRoutingModule,
     KitLayoutModule,
     KitNavigationModule,

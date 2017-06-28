@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+import { ComponentStyle, StyleDef, StylerDefService } from '@ngx-kit/styler';
+
+import { ThemeService } from '../../core/theme.service';
+
+@Injectable()
+export class KitStyle implements ComponentStyle {
+
+  constructor(private def: StylerDefService,
+              private theme: ThemeService) {
+  }
+
+  host(): StyleDef {
+    return {
+      display: 'flex',
+      flexGrow: 1,
+    };
+  }
+
+  layout(): StyleDef {
+    return {
+      flexGrow: 1,
+    }
+  }
+
+  side(): StyleDef {
+    return {
+      width: this.theme.sideWidth,
+      background: '#eee',
+      padding: 8,
+      boxSizing: 'border-box',
+    };
+  }
+
+  content(): StyleDef {
+    return {
+      padding: 16,
+    }
+  }
+
+}

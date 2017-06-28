@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContentResolverService } from './content-resolver.service';
+import { ThemeService } from './theme.service';
 
 @NgModule({
   imports: [
@@ -9,6 +10,7 @@ import { ContentResolverService } from './content-resolver.service';
   ],
   declarations: [],
   providers: [
+    ThemeService,
     ContentResolverService,
   ]
 })

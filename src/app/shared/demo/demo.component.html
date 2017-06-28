@@ -1,4 +1,8 @@
-<ng-content></ng-content>
-<a href="https://github.com/ngx-kit/website/edit/master/{{ content.file }}">Edit</a>
-<h1>{{ content.meta.title }}</h1>
-<div [innerHtml]="content.body"></div>
+<h2>{{ file.meta.title }}</h2>
+<div styler="demo">
+  <ng-content></ng-content>
+</div>
+<div styler="content">
+  <div [innerHtml]="file.body" styler="body"></div>
+  <a href="https://github.com/ngx-kit/website/edit/master/{{ file.file }}" styler="edit">Edit</a>
+</div>

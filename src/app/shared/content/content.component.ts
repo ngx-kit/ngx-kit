@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { ContentFile } from '../../interfaces/content';
+import { Content } from '../../interfaces/content';
 
 @Component({
   selector: 'app-kit-content',
@@ -11,14 +11,15 @@ import { ContentFile } from '../../interfaces/content';
 })
 export class ContentComponent implements OnInit {
 
-  content$: Observable<ContentFile>;
+  content: Observable<Content>;
 
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.content$ = this.route.data
-        .map(data => data.content.find(file => file.meta.id === 'content'));
+    this.route.data.subscribe(data => {
+      this.content = data.content;
+    });
   }
 
 }

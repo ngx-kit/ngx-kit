@@ -1,30 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 
-import { ContentFile } from '../../../interfaces/content';
+import { Content } from '../../../interfaces/content';
+import { ButtonStyle } from './button.style';
 
 @Component({
   selector: 'app-kit-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: ['./button.component.css'],
+  viewProviders: [
+    StylerModule.forComponent(ButtonStyle),
+  ]
 })
 export class ButtonComponent implements OnInit {
 
-  content$: Observable<ContentFile>;
-  demoMain$: Observable<ContentFile>;
-  demoTypes$: Observable<ContentFile>;
+  content: Content;
 
-  constructor(private route: ActivatedRoute) {
+  @HostBinding('attr.sid') get sid() {
+    return this.styler.host.sid;
+  }
+
+  constructor(private route: ActivatedRoute,
+              private styler: StylerComponent) {
   }
 
   ngOnInit() {
-    this.content$ = this.route.data
-        .map(data => data.content.find(file => file.meta.id === 'content'));
-    this.demoMain$ = this.route.data
-        .map(data => data.content.find(file => file.meta.id === 'demo-main'));
-    this.demoTypes$ = this.route.data
-        .map(data => data.content.find(file => file.meta.id === 'demo-types'));
+    this.route.data.subscribe(data => {
+      this.content = data.content;
+    });
   }
 
 }

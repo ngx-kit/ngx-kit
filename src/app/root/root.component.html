@@ -1,16 +1,16 @@
-<kit-layout>
+<kit-layout [fullscreen]="true">
   <kit-layout-header styler="header">
-    <a [routerLink]="['/kit']">ngx-kit</a> (alpha)
-    <kit-menu>
-      <kit-menu-item [routerLink]="['/kit']">kit</kit-menu-item>
-      <kit-menu-item [routerLink]="['/styler']">styler</kit-menu-item>
-      <kit-menu-item [routerLink]="['/store']">store</kit-menu-item>
+    <a [routerLink]="['/kit']" styler="logo">ngx-kit (alpha)</a>
+    <kit-menu styler="menu">
+      <a [kitMenuItem] [routerLink]="['/kit']">kit</a>
+      <a [kitMenuItem] [routerLink]="['/styler']">styler</a>
+      <a [kitMenuItem] [routerLink]="['/store']">store</a>
     </kit-menu>
   </kit-layout-header>
   <kit-layout-content>
     <router-outlet></router-outlet>
   </kit-layout-content>
-  <kit-layout-footer>
+  <kit-layout-footer styler="footer">
     <div>
       Full install: `npm install @ngx-kit/styler @ngx-kit/buttons @ngx-kit/core @ngx-kit/default-theme @ngx-kit/forms
       @ngx-kit/grid @ngx-kit/icons @ngx-kit/layout @ngx-kit/lists @ngx-kit/misc @ngx-kit/modals @ngx-kit/navigation
