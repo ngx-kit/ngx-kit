@@ -1,4 +1,4 @@
-import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { kitComponentDivider, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -25,11 +25,6 @@ export class KitDividerComponent implements OnInit {
               @Inject(kitComponentDivider) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnInit() {
   }

@@ -1,13 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  HostBinding,
-  Inject,
-  Input,
-  OnInit,
-  QueryList,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Inject, Input, OnInit, QueryList, } from '@angular/core';
 import { kitComponentLayout, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitLayoutSideComponent } from './kit-layout-side.component';
@@ -35,11 +26,6 @@ export class KitLayoutComponent implements OnInit, AfterContentInit {
   set fullscreen(fullscreen: boolean) {
     this.styler.host.applyState({fullscreen});
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngAfterContentInit() {
     if (this.sides.length > 0) {

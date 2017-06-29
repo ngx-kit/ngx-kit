@@ -58,11 +58,6 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
     return this.el.nativeElement;
   }
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   ngAfterContentInit() {
     // apply styler states
     this.styler.host.applyState({

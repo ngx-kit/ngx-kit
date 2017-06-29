@@ -1,4 +1,4 @@
-import { Component, forwardRef, HostBinding, HostListener, Inject, Input } from '@angular/core';
+import { Component, forwardRef, HostListener, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { kitComponentRadio, KitComponentStyle, KitCoreService } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
@@ -69,11 +69,6 @@ export class KitRadioComponent implements ControlValueAccessor {
       this.changes$.next(this.value);
       this.touches$.next(true);
     }
-  }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
   }
 
   @HostListener('mouseenter')

@@ -54,11 +54,6 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
     this.proxyDirectionToSeparators();
   }
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   ngAfterContentInit() {
     this.proxyDirectionToSubs();
     this.proxyDirectionToSeparators();

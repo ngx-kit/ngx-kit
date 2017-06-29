@@ -1,13 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  HostBinding,
-  Inject,
-  Input,
-  OnInit,
-  QueryList,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Inject, Input, OnInit, QueryList, } from '@angular/core';
 import { KitComponentStyle, kitComponentTabs } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
@@ -41,11 +32,6 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
               @Inject(kitComponentTabs) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngAfterContentInit() {
     this.activateFirst();

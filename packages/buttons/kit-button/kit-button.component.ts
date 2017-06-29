@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
 import { kitComponentButton, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitButtonGroupDirection } from '../interfaces';
@@ -45,11 +45,6 @@ export class KitButtonComponent implements OnInit {
     this._selected = selected;
     this.styler.host.applyState({selected});
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   @Input()
   set size(size: string) {

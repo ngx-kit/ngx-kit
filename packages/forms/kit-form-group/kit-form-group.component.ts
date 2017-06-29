@@ -5,7 +5,6 @@ import {
   ContentChildren,
   DoCheck,
   forwardRef,
-  HostBinding,
   Inject,
   Input,
   OnInit,
@@ -63,11 +62,6 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
               @Inject(kitComponentFormGroup) private style: KitComponentStyle,
               @Optional() private form: FormGroupDirective) {
     this.styler.register(this.style);
-  }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
   }
 
   get statusChanges() {

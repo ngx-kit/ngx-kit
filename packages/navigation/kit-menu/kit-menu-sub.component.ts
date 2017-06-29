@@ -85,11 +85,6 @@ export class KitMenuSubComponent implements OnInit {
     return this._opened;
   }
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   ngOnInit() {
     this._menuDirection = this.parentSub ? 'vertical' : 'horizontal';
   }

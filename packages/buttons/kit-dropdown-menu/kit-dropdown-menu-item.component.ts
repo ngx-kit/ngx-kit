@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, Inject, Input, OnInit, Optional } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnInit, Optional } from '@angular/core';
 import { kitComponentDropdownMenuItem, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
@@ -20,11 +20,6 @@ export class KitDropdownMenuItemComponent implements OnInit {
               @Optional() private menu: KitDropdownMenuComponent) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnInit() {
   }

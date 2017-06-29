@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { KitAnchorDirective, kitComponentDropdownMenu, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -39,11 +39,6 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
               @Inject(kitComponentDropdownMenu) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnChanges() {
     this.anchor.hostClick.subscribe(() => {

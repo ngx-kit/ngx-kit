@@ -1,4 +1,4 @@
-import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { kitComponentLayoutSide, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -18,11 +18,6 @@ export class KitLayoutSideComponent implements OnInit {
               @Inject(kitComponentLayoutSide) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnInit() {
   }

@@ -27,11 +27,6 @@ export class KitMenuSeparatorComponent implements OnInit {
     this.styler.host.applyState({parentDirection});
   }
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   ngOnInit() {
   }
 }

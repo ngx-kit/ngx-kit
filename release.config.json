@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "vendors": {
-    "styler": "^1.0.0-beta.1",
+    "styler": "^1.0.0-beta.3",
     "angular": "^4.0.0",
     "moment": "^2.18.1"
   },

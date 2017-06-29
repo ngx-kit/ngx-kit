@@ -24,11 +24,6 @@ export class KitMenuGroupComponent implements OnInit {
     this.styler.register(this.style);
   }
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   ngOnInit() {
   }
 }

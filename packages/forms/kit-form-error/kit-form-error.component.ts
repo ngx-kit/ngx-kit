@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
 import { kitComponentFormError, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitFormGroupComponent } from '../kit-form-group/kit-form-group.component';
@@ -28,11 +28,6 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
               @Inject(kitComponentFormError) private style: KitComponentStyle,
               private formGroup: KitFormGroupComponent) {
     this.styler.register(this.style);
-  }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
   }
 
   ngAfterViewInit() {

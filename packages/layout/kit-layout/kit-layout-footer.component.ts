@@ -1,4 +1,4 @@
-import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { kitComponentLayoutFooter, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 
@@ -18,11 +18,6 @@ export class KitLayoutFooterComponent implements OnInit {
               @Inject(kitComponentLayoutFooter) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnInit() {
   }

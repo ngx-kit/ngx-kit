@@ -3,7 +3,6 @@ import {
   Component,
   ContentChildren,
   forwardRef,
-  HostBinding,
   Inject,
   Input,
   OnInit,
@@ -48,11 +47,6 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
     this.styler.host.applyState({direction});
     this.proxyToButtons();
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngAfterContentInit() {
     this.proxyToButtons();

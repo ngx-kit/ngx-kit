@@ -36,11 +36,6 @@ export class KitTagComponent implements OnInit {
     this.styleBorderColor = color;
   };
 
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
-
   @Input()
   set textColor(color: string) {
     this.styleColor = color;

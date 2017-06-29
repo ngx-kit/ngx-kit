@@ -5,7 +5,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   Inject,
   Input,
   NgZone,
@@ -156,11 +155,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
               private elementRef: ElementRef) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get hostClass() {
-    return this.styler.host.sid;
-  };
 
   ngAfterContentInit() {
   }
