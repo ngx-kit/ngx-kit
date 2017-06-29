@@ -99,6 +99,7 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
       instance.anchor = this.anchor instanceof KitAnchorDirective
           ? this.anchor.nativeEl
           : this.anchor;
+      instance.overlay = this.overlay;
       instance.type = this.type;
       instance.position = this.position;
       instance.widthType = this.widthType;

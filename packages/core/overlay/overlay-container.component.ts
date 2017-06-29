@@ -13,6 +13,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../meta/component';
@@ -28,7 +29,7 @@ import { kitComponentOverlayContainer } from '../meta/tokens';
 @Component({
   selector: 'kit-overlay-container,[kit-overlay-container],[kitOverlayContainer]',
   template: `
-    <div [ngStyle]="holderStyle">
+    <div [ngStyle]="holderStyle" #holder>
       <ng-content></ng-content>
     </div>
   `,
@@ -38,6 +39,8 @@ import { kitComponentOverlayContainer } from '../meta/tokens';
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
   @Input() anchor: HTMLElement;
+
+  @ViewChild('holder') holderElement: ElementRef;
 
   holderStyle = {};
 
@@ -57,7 +60,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   private clickListener = (event: MouseEvent) => {
     const path = event['path'];
-    if (path.indexOf(this.elementRef.nativeElement) === -1) {
+    if (path.indexOf(this.holderElement.nativeElement) === -1) {
       this.zone.run(() => {
         this.outsideClick.emit(true);
       });
