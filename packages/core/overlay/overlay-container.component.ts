@@ -59,7 +59,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   @Input() widthType: OverlayContainerWidthType;
 
   private clickListener = (event: MouseEvent) => {
-    const path = event['path'];
+    const path = event['path'] || this.getEventPath(event);
     if (path.indexOf(this.holderElement.nativeElement) === -1) {
       this.zone.run(() => {
         this.outsideClick.emit(true);
@@ -197,5 +197,15 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
       // outside click
       document.addEventListener('click', this.clickListener);
     });
+  }
+
+  private getEventPath(event: Event) {
+    const path = [];
+    let node = event.target;
+    while (node != document.body) {
+      path.push(node);
+      node = node['parentNode'];
+    }
+    return path;
   }
 }
