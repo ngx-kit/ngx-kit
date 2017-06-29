@@ -2,7 +2,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'kit-dialog-layout',
+  selector: 'kit-modal-layout',
   template: `
     <div [class]="css.overlay" [@overlay]="'default'" (click)="overlay.emit()"></div>
     <div [class]="css.body" [@body]="'default'">
@@ -43,7 +43,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     ]),
   ],
 })
-export class KitDialogLayoutComponent implements OnInit {
+export class KitModalLayoutComponent implements OnInit {
   @Output() close = new EventEmitter<boolean>();
 
   @Input() header: string;

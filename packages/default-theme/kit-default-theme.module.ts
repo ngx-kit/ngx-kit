@@ -26,6 +26,7 @@ import {
   kitComponentMenuItem,
   kitComponentMenuSeparator,
   kitComponentMenuSub,
+  kitComponentModal,
   kitComponentOverlayContainer,
   kitComponentRadio,
   kitComponentSelect,
@@ -62,6 +63,7 @@ import { KitDefaultMenuItemStyle } from './components/kit-default-menu-item.styl
 import { KitDefaultMenuSeparatorStyle } from './components/kit-default-menu-separator.style';
 import { KitDefaultMenuSubStyle } from './components/kit-default-menu-sub.style';
 import { KitDefaultMenuStyle } from './components/kit-default-menu.style';
+import { KitDefaultModalStyle } from './components/kit-default-modal.style';
 import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
 import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './components/kit-default-select.style';
@@ -207,6 +209,11 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentTooltipView,
           useClass: KitDefaultTooltipViewStyle,
+        },
+        // modals
+        {
+          provide: kitComponentModal,
+          useClass: KitDefaultModalStyle,
         },
         // navigation
         {

@@ -40,6 +40,8 @@ export const kitComponentMenuGroup = new InjectionToken<KitComponentStyle>('kitC
 export const kitComponentMenuItem = new InjectionToken<KitComponentStyle>('kitComponentMenuItem');
 export const kitComponentMenuSeparator = new InjectionToken<KitComponentStyle>('kitComponentMenuSeparator');
 export const kitComponentMenuSub = new InjectionToken<KitComponentStyle>('kitComponentMenuSub');
+// modals
+export const kitComponentModal = new InjectionToken<KitComponentStyle>('kitComponentModal');
 // panels
 export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
 export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');

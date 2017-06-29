@@ -3,7 +3,7 @@ import { KitOverlayService } from '@ngx-kit/core';
 import { DialogHandlers } from './interfaces';
 
 @Injectable()
-export class KitDialogService {
+export class KitModalService {
   private dialogRef: ComponentRef<any>;
 
   constructor(private overlay: KitOverlayService) {
