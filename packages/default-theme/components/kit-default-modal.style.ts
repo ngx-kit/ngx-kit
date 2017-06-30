@@ -17,7 +17,6 @@ export class KitDefaultModalStyle implements KitComponentStyle {
 
   footer(): StyleDef {
     return {
-      background: 'aliceblue',
       borderRadius: '0 0 4px 4px',
       borderTop: '1px solid #e0e0e0',
       padding: '16px 32px',
@@ -28,7 +27,7 @@ export class KitDefaultModalStyle implements KitComponentStyle {
   header(): StyleDef {
     return {
       padding: '16px 32px',
-      fontSize: '1.6rem',
+      fontSize: '1.4rem',
       fontWeight: 600,
       borderBottom: '1px solid #e0e0e0',
       borderRadius: '4px 4px 0 0',
