@@ -65,12 +65,13 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   get statusChanges() {
-    return Observable.combineLatest(this.errors$
-        // @todo performance issue & non strict compare
-        .distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
-        this.touched$.distinctUntilChanged(),
-        this.dirty$.distinctUntilChanged(),
-        (errors: string, touched: boolean, dirty: boolean) => {
+    return Observable.combineLatest<string[], boolean, boolean, {errors: string[], touched: boolean, dirty: boolean}>(
+        this.errors$.asObservable()
+            // @todo performance issue & non strict compare
+            .distinctUntilChanged<string[]>((x: string[], y: string[]) => JSON.stringify(x) === JSON.stringify(y)),
+        this.touched$.asObservable().distinctUntilChanged<boolean>(),
+        this.dirty$.asObservable().distinctUntilChanged<boolean>(),
+        (errors: string[], touched: boolean, dirty: boolean) => {
           return {
             errors,
             touched,
