@@ -10,6 +10,7 @@ import { StylerComponent } from '@ngx-kit/styler';
   template: `
     <kit-overlay-container [type]="'side'"
                            [anchor]="anchor"
+                           [opened]="opened"
                            [position]="position">
       <div styler="tooltip">{{ text }}</div>
     </kit-overlay-container>
@@ -22,6 +23,8 @@ export class KitTooltipViewComponent implements OnInit {
   @Input() anchor: HTMLElement;
 
   @Input() kitTooltipView: any;
+
+  @Input() opened = false;
 
   @Input() position: OverlayContainerPosition;
 

@@ -8,19 +8,18 @@ import { StylerComponent } from '@ngx-kit/styler';
 @Component({
   selector: 'kit-dropdown-menu,[kit-dropdown-menu],[kitDropdownMenu]',
   template: `
-    <div *ngIf="opened">
-      <kit-overlay [template]="contentRef"
-                   [anchor]="anchor"
-                   [type]="'dropdown'"
-                   [widthType]="'auto'"
-                   [position]="'bottom'"
-                   (outsideClick)="close()"></kit-overlay>
-      <ng-template #contentRef>
-        <div styler="menu">
-          <ng-content></ng-content>
-        </div>
-      </ng-template>
-    </div>
+    <kit-overlay [anchor]="anchor"
+                 [opened]="opened"
+                 [position]="'bottom'"
+                 [template]="contentRef"
+                 [type]="'dropdown'"
+                 [widthType]="'auto'"
+                 (outsideClick)="close()"></kit-overlay>
+    <ng-template #contentRef>
+      <div styler="menu">
+        <ng-content></ng-content>
+      </div>
+    </ng-template>
   `,
   viewProviders: [
     StylerComponent,

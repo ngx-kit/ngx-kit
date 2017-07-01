@@ -10,7 +10,7 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService,) {
   }
 
-  host(state: {type: 'center' | 'dropdown' | 'side', overlay: boolean}): StyleDef {
+  host(state: {type: 'center' | 'dropdown' | 'side', opened: boolean}): StyleDef {
     return {
       ...this.def.pick(state.type, {
         center: {
@@ -27,9 +27,27 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
         dropdown: {},
         side: {},
       }),
-      ...this.def.toggle(state.overlay, {
-        background: this.color.rgba(0, 0, 0, .7),
+      ...this.def.toggle(!state.opened, {
+        display: 'none',
       }),
     };
+  }
+
+  overlay(): StyleDef {
+    return {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      background: this.color.rgba(0, 0, 0, .7),
+      zIndex: 10001,
+    }
+  }
+
+  holder(): StyleDef {
+    return {
+      zIndex: 10002,
+    }
   }
 }

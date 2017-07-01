@@ -1,4 +1,6 @@
 import {
+  AfterContentInit,
+  AfterViewInit,
   ComponentRef,
   Directive,
   ElementRef,
@@ -15,7 +17,7 @@ import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 @Directive({
   selector: '[kitTooltip]',
 })
-export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
+export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @HostBinding('class') hostClass: string;
 
   @Input('kitTooltipPosition') position: OverlayContainerPosition = 'top';
@@ -28,12 +30,19 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
               private el: ElementRef) {
   }
 
+  ngAfterContentInit() {
+    setTimeout(() => {
+      this.containerRef = this.overlay.host<KitTooltipViewComponent>(KitTooltipViewComponent);
+      this.proxyProps();
+    }, 1);
+  }
+
   ngOnChanges() {
     this.proxyProps();
   }
 
   ngOnDestroy() {
-    // @todo destr
+    this.containerRef.destroy();
   }
 
   ngOnInit() {
@@ -50,7 +59,7 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   private hide() {
-    this.containerRef.destroy();
+    this.containerRef.instance.opened = false;
   }
 
   private proxyProps() {
@@ -63,7 +72,6 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   private show() {
-    this.containerRef = this.overlay.host<KitTooltipViewComponent>(KitTooltipViewComponent);
-    this.proxyProps();
+    this.containerRef.instance.opened = true;
   }
 }

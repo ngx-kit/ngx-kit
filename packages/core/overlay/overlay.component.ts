@@ -29,6 +29,8 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
 
   @Input() kitOverlay: any;
 
+  @Input() opened = false;
+
   @Output() outsideClick = new EventEmitter<any>();
 
   @Input() overlay = false;
@@ -99,9 +101,10 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
       instance.anchor = this.anchor instanceof KitAnchorDirective
           ? this.anchor.nativeEl
           : this.anchor;
+      instance.opened = this.opened;
       instance.overlay = this.overlay;
-      instance.type = this.type;
       instance.position = this.position;
+      instance.type = this.type;
       instance.widthType = this.widthType;
       // @todo run CD
     }

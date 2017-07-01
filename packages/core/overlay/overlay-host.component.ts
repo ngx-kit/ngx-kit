@@ -8,6 +8,7 @@ import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/ove
     <kit-overlay-container [overlay]="overlay"
                            [anchor]="anchor"
                            [type]="type"
+                           [opened]="opened"
                            [position]="position"
                            [widthType]="widthType"
                            (outsideClick)="outsideClick.emit($event)"
@@ -35,6 +36,8 @@ export class KitOverlayHostComponent implements OnInit {
   @Output() containerMouseLeave = new EventEmitter<any>();
 
   @Input() kitOverlayHost: any;
+
+  @Input() opened: boolean;
 
   @Output() outsideClick = new EventEmitter<any>();
 

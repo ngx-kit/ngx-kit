@@ -2,7 +2,6 @@ import {
   Component,
   ContentChildren,
   forwardRef,
-  HostBinding,
   Inject,
   Input,
   OnInit,
@@ -24,21 +23,20 @@ import { KitMenuComponent } from './kit-menu.component';
 @Component({
   selector: 'kit-menu-sub,[kit-menu-sub],[kitMenuSub]',
   template: `
-    <div *ngIf="opened">
-      <kit-overlay [template]="contentRef"
-                   [anchor]="anchor"
-                   [type]="'dropdown'"
-                   [widthType]="'auto'"
-                   [position]="overlayPosition"
-                   (outsideClick)="close()"
-                   (containerMouseEnter)="containerMouseEnter()"
-                   (containerMouseLeave)="containerMouseLeave()"></kit-overlay>
-      <ng-template #contentRef>
-        <div [styler]="['menu', {position: overlayPosition}]">
-          <ng-content></ng-content>
-        </div>
-      </ng-template>
-    </div>
+    <kit-overlay [anchor]="anchor"
+                 [opened]="opened"
+                 [position]="overlayPosition"
+                 [template]="contentRef"
+                 [type]="'dropdown'"
+                 [widthType]="'auto'"
+                 (outsideClick)="close()"
+                 (containerMouseEnter)="containerMouseEnter()"
+                 (containerMouseLeave)="containerMouseLeave()"></kit-overlay>
+    <ng-template #contentRef>
+      <div [styler]="['menu', {position: overlayPosition}]">
+        <ng-content></ng-content>
+      </div>
+    </ng-template>
   `,
   viewProviders: [
     StylerComponent,

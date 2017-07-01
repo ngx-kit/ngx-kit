@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   AfterContentInit,
   AfterViewChecked,
@@ -28,12 +29,31 @@ import { kitComponentOverlayContainer } from '../meta/tokens';
 @Component({
   selector: 'kit-overlay-container,[kit-overlay-container],[kitOverlayContainer]',
   template: `
-    <div [ngStyle]="holderStyle" #holder>
+    <div *ngIf="overlay" [@overlay]="overlayTrigger" styler="overlay"></div>
+    <div [ngStyle]="holderStyle" [@holder]="holderTrigger" (@holder.done)="holderTriggerDone()"  #holder styler="holder">
       <ng-content></ng-content>
     </div>
   `,
   viewProviders: [
     StylerComponent,
+  ],
+  animations: [
+    trigger('overlay', [
+      state('closed', style({opacity: 0})),
+      state('opened', style({opacity: 1})),
+      transition('* => closed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
+      transition('* => opened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
+    ]),
+    trigger('holder', [
+      state('modalClosed', style({transform: 'scale(0)'})),
+      state('anchorClosed', style({opacity: 0})),
+      state('modalOpened', style({transform: 'scale(1)'})),
+      state('anchorOpened', style({opacity: 1})),
+      transition('* => modalClosed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
+      transition('* => anchorClosed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
+      transition('* => modalOpened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
+      transition('* => anchorOpened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
+    ]),
   ],
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
@@ -43,11 +63,15 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   holderStyle = {};
 
+  holderTrigger = 'modalClosed';
+
   @Input() kitOverlayContainer: any;
 
   @Output() outsideClick = new EventEmitter<any>();
 
   @Input() overlay: boolean;
+
+  overlayTrigger = 'closed';
 
   // for type: side
   @Input() position: OverlayContainerPosition;
@@ -57,9 +81,11 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   // for type: dropdown
   @Input() widthType: OverlayContainerWidthType;
 
+  private _opened: boolean;
+
   private clickListener = (event: MouseEvent) => {
     const path = event['path'] || this.getEventPath(event);
-    if (path.indexOf(this.holderElement.nativeElement) === -1) {
+    if (this._opened && path.indexOf(this.holderElement.nativeElement) === -1) {
       this.zone.run(() => {
         this.outsideClick.emit(true);
       });
@@ -156,6 +182,19 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
     this.styler.register(this.style);
   }
 
+  @Input()
+  set opened(opened: boolean) {
+    this._opened = opened;
+    if (opened) {
+      this.styler.host.applyState({opened: true});
+      this.initListeners();
+    }
+    this.overlayTrigger = opened ? 'opened' : 'closed';
+    this.holderTrigger = opened
+        ? this.type === 'center' ? 'modalOpened' : 'anchorOpened'
+        : this.type === 'center' ? 'modalClosed' : 'anchorClosed';
+  }
+
   ngAfterContentInit() {
   }
 
@@ -169,28 +208,42 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   ngOnChanges() {
     this.styler.host.applyState({
-      overlay: this.overlay,
       type: this.type,
     });
     this.reposition();
   }
 
   ngOnDestroy() {
-    document.removeEventListener('scroll', this.reposition, true);
-    window.removeEventListener('resize', this.reposition, true);
-    document.removeEventListener('click', this.clickListener);
+    this.removeListeners();
   }
 
   ngOnInit() {
-    // listeners
-    this.zone.runOutsideAngular(() => {
-      // @todo use renderer2 (currently it does not have listenGlobal)
-      // reposition
-      document.addEventListener('scroll', this.reposition, true);
-      window.addEventListener('resize', this.reposition, true);
-      // outside click
-      document.addEventListener('click', this.clickListener);
-    });
+  }
+
+  initListeners() {
+    setTimeout(() => {
+      this.zone.runOutsideAngular(() => {
+        // @todo use renderer2 (currently it does not have listenGlobal)
+        // reposition
+        document.addEventListener('scroll', this.reposition, true);
+        window.addEventListener('resize', this.reposition, true);
+        // outside click
+        document.addEventListener('click', this.clickListener);
+      });
+    }, 1);
+  }
+
+  holderTriggerDone() {
+    if (!this._opened) {
+      this.styler.host.applyState({opened: false});
+      this.removeListeners();
+    }
+  }
+
+  removeListeners() {
+    document.removeEventListener('scroll', this.reposition, true);
+    window.removeEventListener('resize', this.reposition, true);
+    document.removeEventListener('click', this.clickListener);
   }
 
   private getEventPath(event: Event) {

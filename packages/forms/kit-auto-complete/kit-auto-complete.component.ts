@@ -29,23 +29,22 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
                #anchorRef="anchor"
                styler="input">
     </kit-input>
-    <div *ngIf="results.length > 0">
-      <kit-overlay [template]="resultsRef"
-                   [anchor]="anchorRef"
-                   [type]="'dropdown'"
-                   [position]="'bottom'"
-                   (outsideClick)="clearResults()">
-      </kit-overlay>
-      <ng-template #resultsRef>
-        <div styler="results">
-          <div *ngFor="let result of results; let i = index"
-               [styler]="['result', {active: i === activeResult}]"
-               (click)="pick(result)">
-            {{ result }}
-          </div>
+    <kit-overlay [anchor]="anchorRef"
+                 [template]="resultsRef"
+                 [opened]="results.length > 0"
+                 [position]="'bottom'"
+                 [type]="'dropdown'"
+                 (outsideClick)="clearResults()">
+    </kit-overlay>
+    <ng-template #resultsRef>
+      <div styler="results">
+        <div *ngFor="let result of results; let i = index"
+             [styler]="['result', {active: i === activeResult}]"
+             (click)="pick(result)">
+          {{ result }}
         </div>
-      </ng-template>
-    </div>
+      </div>
+    </ng-template>
   `,
   providers: [KIT_AUTO_COMPLETE_VALUE_ACCESSOR],
   viewProviders: [
