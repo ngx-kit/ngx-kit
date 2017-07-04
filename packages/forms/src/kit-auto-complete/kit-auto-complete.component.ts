@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, forwardRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { kitComponentAutoComplete, KitComponentStyle } from '@ngx-kit/core';
-import { KitInputComponent } from '@ngx-kit/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import { Subject } from 'rxjs/Subject';
+import { KitInputComponent } from '../kit-input/kit-input.component';
 import { KitDataSourceFactory } from './data-source-factory';
 
 export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {

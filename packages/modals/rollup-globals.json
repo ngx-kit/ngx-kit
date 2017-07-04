@@ -1,0 +1,8 @@
+{
+  "typescript": "ts",
+  "@angular/animations": "ng.animations",
+  "@angular/core": "ng.core",
+  "@angular/common": "ng.common",
+  "@ngx-kit/styler": "styler",
+  "@ngx-kit/core": "kit-core"
+}

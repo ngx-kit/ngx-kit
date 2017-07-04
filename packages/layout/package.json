@@ -2,9 +2,9 @@
   "name": "@ngx-kit/layout",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - layout module",
-  "main": "bundle/ngx-kit-layout.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "./bundle/kit-layout.umd.js",
+  "module": "./module/kit-layout.js",
+  "types": "./kit-layout.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {

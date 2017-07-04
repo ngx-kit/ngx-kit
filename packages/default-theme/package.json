@@ -2,9 +2,9 @@
   "name": "@ngx-kit/default-theme",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - default theme module",
-  "main": "bundle/ngx-kit-default-theme.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "./bundle/kit-default-theme.umd.js",
+  "module": "./module/kit-default-theme.js",
+  "types": "./kit-default-theme.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {

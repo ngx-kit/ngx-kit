@@ -2,30 +2,42 @@
   "angularCompilerOptions": {
     "genDir": "aot",
     "skipTemplateCodegen": true,
-    "skipMetadataEmit": false
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true,
+    "annotateForClosureCompiler": true,
+    "flatModuleOutFile": "kit-navigation.js",
+    "flatModuleId": "@ngx-kit/navigation"
   },
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "dist",
+    "outDir": "../../dist/navigation",
     "removeComments": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "lib": ["dom", "es2015", "es2016"],
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@ngx-kit/styler": ["./node_modules/@ngx-kit/styler"],
-      "@ngx-kit/*": ["./packages/*/public_api"]
+      "@ngx-kit/core": [
+        "../../dist/core/public_api"
+      ]
     },
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true
-  }
+  },
+  "files": [
+    "./public_api.ts"
+  ]
 }

@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, forwardRef, Inject, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { kitComponentMathInput, KitComponentStyle } from '@ngx-kit/core';
-import { KitInputComponent } from '@ngx-kit/forms';
-import { MathParser } from '@ngx-kit/forms/kit-math-input/math-parser';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
+import { KitInputComponent } from '../kit-input/kit-input.component';
+import { MathParser } from './math-parser';
 
 export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

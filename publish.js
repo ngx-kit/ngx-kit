@@ -1,6 +1,6 @@
 const {execSync} = require('child_process');
 
-const config = require('./release.config.json');
+const config = require('./build.config.json');
 
 config.packages.forEach(packageName => {
   execSync(`npm publish ./dist/packages/${packageName} --access=public`, (error, stdout, stderr) => {

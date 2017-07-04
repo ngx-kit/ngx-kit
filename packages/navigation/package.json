@@ -2,9 +2,9 @@
   "name": "@ngx-kit/navigation",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - navigation module",
-  "main": "bundle/ngx-kit-navigation.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "./bundle/kit-navigation.umd.js",
+  "module": "./module/kit-navigation.js",
+  "types": "./kit-navigation.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {

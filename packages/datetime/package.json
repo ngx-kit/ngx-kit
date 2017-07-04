@@ -2,9 +2,9 @@
   "name": "@ngx-kit/datetime",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - datetime module",
-  "main": "bundle/ngx-kit-datetime.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "./bundle/kit-datetime.umd.js",
+  "module": "./module/kit-datetime.js",
+  "types": "./kit-datetime.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {

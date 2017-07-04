@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:clean && npm run build:ngc && npm run build:release",
+    "build": "npm run build:clean && npm run build:build",
     "build:clean": "rimraf ./dist",
-    "build:ngc": "ngc -p tsconfig.json",
-    "build:rollup": "rollup -c rollup.config.js",
-    "build:release": "node ./release.js",
+    "build:build": "node build.js",
     "build-and-copy": "npm run build && node ./dev/dev-copy.js",
     "publish": "node ./publish.js",
     "release": "npm run build && npm run publish"

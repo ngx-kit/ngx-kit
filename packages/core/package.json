@@ -2,9 +2,9 @@
   "name": "@ngx-kit/core",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - core module",
-  "main": "bundle/ngx-kit-core.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "./bundle/kit-core.umd.js",
+  "module": "./module/kit-core.js",
+  "types": "./kit-core.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {
@@ -12,6 +12,8 @@
     "type": "git"
   },
   "peerDependencies": {
+    "@angular/animations": "0.0.0-ANGULAR-PLACEHOLDER",
+    "@angular/common": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/compiler": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/compiler-cli": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER"

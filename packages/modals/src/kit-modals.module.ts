@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KitCoreModule } from '@ngx-kit/core';
-import { StylerModule } from '@ngx-kit/styler/src/styler.module';
+import { StylerModule } from '@ngx-kit/styler';
 import { KitModalService } from './kit-modal.service';
 import { KitModalComponent } from './kit-modal/kit-modal.component';
 
@@ -12,7 +11,6 @@ const external = [
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     StylerModule,
     KitCoreModule,
