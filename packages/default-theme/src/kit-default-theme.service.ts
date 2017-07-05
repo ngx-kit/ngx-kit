@@ -5,6 +5,10 @@ import { KitDefaultThemeParams } from './interfaces';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
+  overlayCloseAnimationTimings = '150ms cubic-bezier(0.4, 0.0, 1, 1)';
+
+  overlayOpenAnimationTimings = '150ms cubic-bezier(0.0, 0.0, 0.2, 1)';
+
   private _params: KitDefaultThemeParams = {
     grid: {
       v: 8,

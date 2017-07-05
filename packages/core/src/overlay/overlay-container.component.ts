@@ -18,7 +18,8 @@ import {
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../meta/component';
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
-import { kitComponentOverlayContainer } from '../meta/tokens';
+import { KitThemeService } from '../meta/theme';
+import { kitComponentOverlayContainer, kitTheme } from '../meta/tokens';
 
 /**
  * @todo click close
@@ -29,8 +30,15 @@ import { kitComponentOverlayContainer } from '../meta/tokens';
 @Component({
   selector: 'kit-overlay-container,[kit-overlay-container],[kitOverlayContainer]',
   template: `
-    <div *ngIf="overlay" [@overlay]="overlayTrigger" styler="overlay"></div>
-    <div [ngStyle]="holderStyle" [@holder]="holderTrigger" (@holder.done)="holderTriggerDone()"  #holder styler="holder">
+    <div *ngIf="overlay"
+         [@overlay]="{value: overlayTrigger, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
+         styler="overlay">
+    </div>
+    <div [ngStyle]="holderStyle"
+         [@holder]="{value: holderTrigger, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
+         (@holder.done)="holderTriggerDone()"
+         #holder
+         styler="holder">
       <ng-content></ng-content>
     </div>
   `,
@@ -41,18 +49,18 @@ import { kitComponentOverlayContainer } from '../meta/tokens';
     trigger('overlay', [
       state('closed', style({opacity: 0})),
       state('opened', style({opacity: 1})),
-      transition('* => closed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
-      transition('* => opened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
+      transition('* => closed', animate('{{closeTimings}}')),
+      transition('* => opened', animate('{{openTimings}}')),
     ]),
     trigger('holder', [
       state('modalClosed', style({transform: 'scale(0)'})),
       state('anchorClosed', style({opacity: 0})),
       state('modalOpened', style({transform: 'scale(1)'})),
       state('anchorOpened', style({opacity: 1})),
-      transition('* => modalClosed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
-      transition('* => anchorClosed', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
-      transition('* => modalOpened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
-      transition('* => anchorOpened', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
+      transition('* => modalClosed', animate('{{closeTimings}}')),
+      transition('* => anchorClosed', animate('{{closeTimings}}')),
+      transition('* => modalOpened', animate('{{openTimings}}')),
+      transition('* => anchorOpened', animate('{{openTimings}}')),
     ]),
   ],
 })
@@ -178,8 +186,17 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   constructor(private styler: StylerComponent,
               @Inject(kitComponentOverlayContainer) private style: KitComponentStyle,
               private zone: NgZone,
-              private elementRef: ElementRef) {
+              private elementRef: ElementRef,
+              @Inject(kitTheme) private theme: KitThemeService) {
     this.styler.register(this.style);
+  }
+
+  get closeAnimationTimings(): string {
+    return this.theme.overlayCloseAnimationTimings;
+  }
+
+  get openAnimationTimings(): string {
+    return this.theme.overlayOpenAnimationTimings;
   }
 
   @Input()
@@ -220,6 +237,13 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   ngOnInit() {
   }
 
+  holderTriggerDone() {
+    if (!this._opened) {
+      this.styler.host.applyState({opened: false});
+      this.removeListeners();
+    }
+  }
+
   initListeners() {
     setTimeout(() => {
       this.zone.runOutsideAngular(() => {
@@ -231,13 +255,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
         document.addEventListener('click', this.clickListener);
       });
     }, 1);
-  }
-
-  holderTriggerDone() {
-    if (!this._opened) {
-      this.styler.host.applyState({opened: false});
-      this.removeListeners();
-    }
   }
 
   removeListeners() {
