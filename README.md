@@ -55,9 +55,11 @@ Currently in a deep beta!
 - [x] textarea
 - [x] toggle
 
-### grid
+### data
 
-- [ ] grid
+- [ ] table
+- [ ] list
+- [ ] tree
 
 ### icons
 
@@ -66,13 +68,9 @@ Currently in a deep beta!
 ### layout
 
 - [ ] affix
-- [ ] layout
+- [ ] grid
+- [x] layout
 - [ ] sidebar
-
-### lists
-
-- [ ] list
-- [ ] tree
 
 ### loaders
  
@@ -87,11 +85,14 @@ Currently in a deep beta!
 
 ### misc
 
+- [ ] accordion
 - [ ] alert
 - [x] badge
 - [ ] card 
+- [ ] carousel
 - [x] divider
 - [ ] popover
+- [ ] tabs
 - [x] tag
 - [x] tooltip
 
@@ -114,9 +115,3 @@ Currently in a deep beta!
 - [ ] pagination
 - [ ] scroll
 - [ ] scroll-spy
-
-### panels
-
-- [ ] accordion
-- [ ] carousel
-- [ ] tabs
