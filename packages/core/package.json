@@ -14,8 +14,8 @@
   "peerDependencies": {
     "@angular/animations": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/common": "0.0.0-ANGULAR-PLACEHOLDER",
-    "@angular/compiler": "0.0.0-ANGULAR-PLACEHOLDER",
-    "@angular/compiler-cli": "0.0.0-ANGULAR-PLACEHOLDER",
-    "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER"
+    "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER",
+    "@angular/platform-browser": "0.0.0-ANGULAR-PLACEHOLDER",
+    "@ngx-kit/styler": "0.0.0-STYLER-PLACEHOLDER"
   }
 }
