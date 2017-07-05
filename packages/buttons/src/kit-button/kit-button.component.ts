@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output, } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, Input, OnInit, Output, } from '@angular/core';
 import { kitComponentButton, KitComponentStyle } from '@ngx-kit/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitButtonGroupDirection } from '../interfaces';
@@ -20,6 +20,8 @@ export class KitButtonComponent implements OnInit {
 
   @Output() selectedChanged = new EventEmitter<boolean>();
 
+  private _loading = false;
+
   private _selected = false;
 
   constructor(private styler: StylerComponent,
@@ -34,6 +36,12 @@ export class KitButtonComponent implements OnInit {
 
   set grouped(direction: KitButtonGroupDirection) {
     this.styler.host.applyState({grouped: direction});
+  }
+
+  @Input()
+  set loading(loading: boolean) {
+    this._loading = this.loading;
+    this.styler.host.applyState({loading});
   }
 
   get selected(): boolean {
@@ -61,7 +69,9 @@ export class KitButtonComponent implements OnInit {
 
   @HostListener('click')
   clickListener(event: MouseEvent) {
-    this.action.emit(event);
+    if (!this._loading) {
+      this.action.emit(event);
+    }
   }
 
   pushSelected(selected: boolean) {

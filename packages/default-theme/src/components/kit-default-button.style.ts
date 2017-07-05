@@ -16,6 +16,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     grouped: 'none' | 'horizontal' | 'vertical';
     selected: boolean;
     disabled: boolean;
+    loading: boolean;
   }): StyleDef {
     const params = this.theme.params;
     const styles: StyleDef = this.def.merge([
@@ -170,9 +171,22 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       }),
+      this.def.toggle(state.loading, {
+        cursor: 'default',
+      }),
     ]);
     if (state.selected) {
-      styles['background'] = this.color.darken(.1, styles['background']);
+      if ('background' in styles) {
+        styles.background = this.color.darken(.1, styles.background);
+      }
+    }
+    if (state.loading) {
+      if ('background' in styles) {
+        styles.background = this.color.lighten(.1, styles.background);
+      }
+      if ('color' in styles) {
+        styles.color = this.color.lighten(.1, styles.color as string);
+      }
     }
     return styles;
   }
