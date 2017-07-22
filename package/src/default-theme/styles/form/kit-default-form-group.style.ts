@@ -15,7 +15,7 @@ export class KitDefaultFormGroupStyle implements KitComponentStyle {
     return {
       display: 'block',
       ...this.def.toggle(state.error, {
-        border: [1, 'solid', params.colors.error.color],
+        border: [1, 'solid', this.theme.getColor(params.modules.form.errorColor).border],
       }),
     };
   }

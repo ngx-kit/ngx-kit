@@ -12,9 +12,10 @@ export class KitDefaultFormErrorStyle implements KitComponentStyle {
 
   host(state: {visible: boolean}): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.form.errorColor);
     return {
       display: 'none',
-      color: params.colors.error.color,
+      color: color.border,
       ...this.def.toggle(state.visible, {
         display: 'block',
       }),

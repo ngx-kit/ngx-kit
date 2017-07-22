@@ -16,8 +16,9 @@ export class KitDefaultInputStyle implements KitComponentStyle {
 
   input(): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.input.color);
     return {
-      border: [params.border.width, 'solid', params.colors.border.color],
+      border: [params.border.width, 'solid', color.border],
       borderRadius: params.border.radius.s,
       boxSizing: 'border-box',
       transition: 'background 0.2s',

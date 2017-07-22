@@ -10,8 +10,12 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(state: {type: any, size: any}): StyleDef {
+  host(state: {
+    color: string,
+    size: any,
+  }): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(state.color || params.modules.badge.defaultColor);
     return {
       borderRadius: '1rem',
       display: 'inline-block',
@@ -19,28 +23,8 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
       minWidth: '1px',
       textAlign: 'center',
       lineHeight: '1',
-      ...this.def.pick(state.type, {
-        'default': {
-          background: params.colors.button.color,
-          color: params.colors.button.text,
-        },
-        primary: {
-          background: params.colors.brand.color,
-          color: params.colors.brand.text,
-        },
-        success: {
-          background: params.colors.success.color,
-          color: params.colors.success.text,
-        },
-        warning: {
-          background: params.colors.warning.color,
-          color: params.colors.warning.text,
-        },
-        error: {
-          background: params.colors.error.color,
-          color: params.colors.error.text,
-        },
-      }, 'default'),
+      background: color.background,
+      color: color.text,
       ...this.def.pick(state.size, {
         s: {
           padding: `${params.grid.v / 4}px ${params.grid.h / 2}px`,

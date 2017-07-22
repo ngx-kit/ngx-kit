@@ -1,3 +1,4 @@
+import { KitThemeColor } from '../core/meta/theme';
 export interface KitDefaultThemeParams {
   border: {
     width: number;
@@ -11,16 +12,7 @@ export interface KitDefaultThemeParams {
     type: 'shade' | 'tint' | 'lighten' | 'darken';
     ratio: number;
   }
-  colors: {
-    body: KitDefaultThemeColor;
-    brand: KitDefaultThemeColor;
-    link: KitDefaultThemeColor;
-    button: KitDefaultThemeColor;
-    border: KitDefaultThemeColor;
-    success: KitDefaultThemeColor;
-    warning: KitDefaultThemeColor;
-    error: KitDefaultThemeColor;
-  };
+  colors: KitThemeColor[];
   grid: {
     v: number;
     h: number;
@@ -46,6 +38,50 @@ export interface KitDefaultThemeParams {
       h6: string;
     };
   };
+  modules: {
+    autoComplete: {
+      resultsColor: string;
+    },
+    badge: {
+      defaultColor: string;
+    }
+    buttons: {
+      defaultColor: string,
+    },
+    checkbox: {
+      color: string;
+      checkedColor: string;
+    },
+    datePicker: {
+      color: string;
+    },
+    dropdownMenu: {
+      menuColor: string;
+    },
+    form: {
+      errorColor: string;
+    },
+    input: {
+      color: string;
+    },
+    menu: {
+      color: string;
+    },
+    radio: {
+      color: string;
+      checkedColor: string;
+    },
+    select: {
+      color: string;
+    },
+    textarea: {
+      color: string;
+    },
+    toggle: {
+      color: string;
+      checkedColor: string;
+    },
+  },
 }
 
 export interface KitDefaultThemeColor {

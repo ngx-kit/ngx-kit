@@ -48,8 +48,12 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
     };
   }
 
-  view(state: {checked: boolean}): StyleDef {
+  view(state: {
+    checked: boolean,
+  }): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.checkbox.color);
+    const checkedColor = this.theme.getColor(params.modules.checkbox.checkedColor);
     return {
       position: 'relative',
       top: 0,
@@ -57,13 +61,13 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       display: 'block',
       width: 14,
       height: 14,
-      background: params.colors.body.color,
-      border: [1, 'solid', params.colors.border.color],
+      background: color.background,
+      border: [1, 'solid', color.border],
       borderRadius: params.border.radius.s,
       transition: params.transitions.default,
       ...this.def.toggle(state.checked, {
-        backgroundColor: params.colors.brand.color,
-        borderColor: params.colors.brand.color,
+        backgroundColor: checkedColor.background,
+        borderColor: checkedColor.border,
         $nest: {
           '&:after': {
             transform: 'rotate(45deg) scale(1)',
@@ -73,7 +77,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
             display: 'table',
             width: 5,
             height: 8,
-            border: [2, 'solid', params.colors.body.color],
+            border: [2, 'solid', checkedColor.text],
             borderTop: 0,
             borderLeft: 0,
             content: '" "',

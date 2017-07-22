@@ -17,16 +17,18 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
 
   option(state: {selected: boolean}): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.select.color);
     return {
-      border: `${params.border.width}px solid ${params.colors.border.color}`,
+      background: color.background,
+      border: [params.border.width, 'solid', color.border],
       borderRadius: params.border.radius.s,
       cursor: 'pointer',
       marginBottom: params.grid.v / 2,
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,
       transition: 'background 0.2s',
       ...this.def.toggle(state.selected, {
-        background: this.theme.colorMod(.05, params.colors.body.color),
-        borderColor: this.theme.colorMod(.1, params.colors.border.color),
+        background: this.theme.colorMod(.05, color.background),
+        borderColor: this.theme.colorMod(.1, color.border),
       }),
     };
   }

@@ -36,8 +36,9 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
   }
 
   results(): StyleDef {
+    const color = this.theme.getColor(this.theme.params.modules.autoComplete.resultsColor);
     return {
-      background: this.theme.params.colors.body.color,
+      background: color.background,
       boxShadow: this.theme.params.shadows.deep,
     };
   }

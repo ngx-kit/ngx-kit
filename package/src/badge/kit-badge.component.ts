@@ -27,14 +27,14 @@ export class KitBadgeComponent implements OnInit {
   }
 
   @Input()
+  set color(color: string) {
+    this.styler.host.applyState({color});
+  };
+
+  @Input()
   set size(size: string) {
     this.styler.host.applyState({size});
   }
-
-  @Input()
-  set type(type: string) {
-    this.styler.host.applyState({type});
-  };
 
   ngOnInit() {
   }

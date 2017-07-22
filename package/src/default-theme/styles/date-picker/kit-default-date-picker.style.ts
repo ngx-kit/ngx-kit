@@ -12,9 +12,10 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   date(state: {outside: boolean, active: boolean}): StyleDef {
+    const color = this.theme.getColor(this.theme.params.modules.datePicker.color);
     return this.def.merge([
       {
-        border: `1px solid ${this.theme.params.colors.border.color}`,
+        border: [1, 'solid', color.border],
         boxSizing: 'border-box',
         cursor: 'pointer',
         flexShrink: 0,
@@ -24,7 +25,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         width: '14.28574%',
         $nest: {
           '&:hover': {
-            background: this.theme.colorMod(.04, this.theme.params.colors.body.color),
+            background: this.theme.colorMod(.04, color.background),
           },
         },
       },
@@ -32,14 +33,14 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         opacity: .7,
       }),
       this.def.toggle(state.active, {
-        background: this.theme.colorMod(.1, this.theme.params.colors.body.color),
-        borderColor: this.theme.colorMod(.1, this.theme.params.colors.border.color),
+        background: this.theme.colorMod(.1, color.background),
+        borderColor: this.theme.colorMod(.1, color.border),
         boxShadow: `0 0 7px 0 rgba(0, 0, 0, .2)`,
         cursor: 'default',
         fontWeight: 600,
         $nest: {
           '&:hover': {
-            background: this.theme.colorMod(.1, this.theme.params.colors.body.color),
+            background: this.theme.colorMod(.1, color.background),
           },
         },
       }),
@@ -59,8 +60,9 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   month(state: {type: 'change' | 'current'}): StyleDef {
+    const color = this.theme.getColor(this.theme.params.modules.datePicker.color);
     return {
-      border: `1px solid ${this.theme.params.colors.border.color}`,
+      border: [1, 'solid', color.border],
       ...this.def.pick(state.type, {
         change: {
           cursor: 'pointer',
@@ -85,8 +87,9 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   weekday(): StyleDef {
+    const color = this.theme.getColor(this.theme.params.modules.datePicker.color);
     return {
-      border: `1px solid ${this.theme.params.colors.border.color}`,
+      border: [1, 'solid', color.border],
       boxSizing: 'border-box',
       cursor: 'pointer',
       flexShrink: 0,
@@ -105,8 +108,9 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   year(state: {type: 'change' | 'current'}): StyleDef {
+    const color = this.theme.getColor(this.theme.params.modules.datePicker.color);
     return {
-      border: `1px solid ${this.theme.params.colors.border.color}`,
+      border: [1, 'solid', color.border],
       ...this.def.pick(state.type, {
         change: {
           cursor: 'pointer',

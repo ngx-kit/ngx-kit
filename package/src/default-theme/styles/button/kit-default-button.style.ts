@@ -12,14 +12,16 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
   }
 
   host(state: {
+    color: string;
     size: 'xs' | 's' | 'm' | 'l' | 'xs';
-    type: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'link';
     grouped: 'none' | 'horizontal' | 'vertical';
     selected: boolean;
     disabled: boolean;
     loading: boolean;
+    link: boolean;
   }): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(state.color || params.modules.buttons.defaultColor);
     const styles: StyleDef = this.def.merge([
       {
         position: 'relative',
@@ -61,72 +63,16 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           fontSize: '1.6rem',
         },
       }, 'm'),
-      this.def.pick(state.type, {
-        'default': {
-          background: params.colors.button.color,
-          color: params.colors.button.text,
-          borderColor: params.colors.border.color,
-          $nest: {
-            '&:hover': {
-              background: this.theme.colorMod(.05, params.colors.button.color),
-            },
+      {
+        background: color.background,
+        borderColor: color.border,
+        color: color.text,
+        $nest: {
+          '&:hover': {
+            background: this.theme.colorMod(.05, color.background),
           },
         },
-        primary: {
-          background: params.colors.brand.color,
-          borderColor: params.colors.brand.color,
-          color: params.colors.brand.text,
-          $nest: {
-            '&:hover': {
-              background: this.theme.colorMod(.05, params.colors.brand.color),
-            },
-          },
-        },
-        success: {
-          background: params.colors.success.color,
-          borderColor: params.colors.success.color,
-          color: params.colors.success.text,
-          $nest: {
-            '&:hover': {
-              background: this.theme.colorMod(.05, params.colors.success.color),
-            },
-          },
-        },
-        warning: {
-          background: params.colors.warning.color,
-          borderColor: params.colors.warning.color,
-          color: params.colors.warning.text,
-          $nest: {
-            '&:hover': {
-              background: this.theme.colorMod(.05, params.colors.warning.color),
-            },
-          },
-        },
-        error: {
-          background: params.colors.error.color,
-          borderColor: params.colors.error.color,
-          color: params.colors.error.text,
-          $nest: {
-            '&:hover': {
-              background: this.theme.colorMod(.05, params.colors.error.color),
-            },
-          },
-        },
-        link: {
-          boxShadow: 'none',
-          paddingLeft: 0,
-          paddingRight: 0,
-          background: params.colors.link.color,
-          borderColor: 'transparent',
-          color: params.colors.link.text,
-          $nest: {
-            '&:hover': {
-              color: this.theme.colorMod(.05, params.colors.link.text),
-              textDecoration: 'underline',
-            },
-          },
-        },
-      }, 'default'),
+      },
       this.def.pick(state.grouped, {
         horizontal: {
           borderRadius: 0,
@@ -161,17 +107,17 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       }),
-      this.def.toggle(state.disabled, {
-        cursor: 'default',
-        background: params.colors.border.color,
-        borderColor: params.colors.border.color,
-        color: params.colors.border.text,
-        $nest: {
-          '&:hover': {
-            background: params.colors.border.color,
-          },
-        },
-      }),
+//      this.def.toggle(state.disabled, {
+//        cursor: 'default',
+//        background: params.colors.border.color,
+//        borderColor: params.colors.border.color,
+//        color: params.colors.border.text,
+//        $nest: {
+//          '&:hover': {
+//            background: params.colors.border.color,
+//          },
+//        },
+//      }),
       this.def.toggle(state.loading, {
         cursor: 'default',
       }),

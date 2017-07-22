@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StylerColorService } from '@ngx-kit/styler';
-import { KitThemeService } from '../core/meta/theme';
+import { KitThemeColor, KitThemeService } from '../core/meta/theme';
 import { KitDefaultThemeParams } from './meta';
 
 @Injectable()
@@ -14,40 +14,50 @@ export class KitDefaultThemeService implements KitThemeService {
       v: 8,
       h: 8,
     },
-    colors: {
-      body: {
-        color: '#ffffff',
-        text: '#333333',
-      },
-      brand: {
-        color: '#0084ff',
+    colors: [
+      {
+        name: 'brand',
+        background: '#0084ff',
         text: '#ffffff',
+        border: '#0084ff',
       },
-      link: {
-        color: 'transparent',
-        text: '#0084ff',
+      {
+        name: 'body',
+        background: '#fff',
+        text: '#444',
+        border: '#eee',
       },
-      button: {
-        color: '#f7f7f7',
+      {
+        name: 'input',
+        background: '#f7f7f7',
         text: '#585858',
+        border: '#eee',
       },
-      border: {
-        color: '#b6b9c2',
-        text: '#63656f',
+      {
+        name: 'button',
+        background: '#f7f7f7',
+        text: '#585858',
+        border: '#f7f7f7',
       },
-      success: {
-        color: '#2dc100',
+      {
+        name: 'success',
+        background: '#2dc100',
         text: '#ffffff',
+        border: '#2dc100',
       },
-      warning: {
-        color: '#ffb62f',
+      {
+        name: 'warning',
+        background: '#ffb62f',
         text: '#ffffff',
+        border: '#ffb62f',
       },
-      error: {
-        color: '#ff5500',
+      {
+        name: 'error',
+        background: '#ff5500',
         text: '#ffffff',
+        border: '#ffb62f',
       },
-    },
+    ],
     colorMod: {
       type: 'darken',
       ratio: 1,
@@ -81,6 +91,50 @@ export class KitDefaultThemeService implements KitThemeService {
     transitions: {
       default: 'all .3s',
     },
+    modules: {
+      autoComplete: {
+        resultsColor: 'body',
+      },
+      badge: {
+        defaultColor: 'brand',
+      },
+      buttons: {
+        defaultColor: 'button',
+      },
+      checkbox: {
+        color: 'input',
+        checkedColor: 'brand',
+      },
+      datePicker: {
+        color: 'input',
+      },
+      dropdownMenu: {
+        menuColor: 'body',
+      },
+      form: {
+        errorColor: 'error',
+      },
+      input: {
+        color: 'input',
+      },
+      menu: {
+        color: 'body',
+      },
+      radio: {
+        color: 'input',
+        checkedColor: 'brand',
+      },
+      select: {
+        color: 'button',
+      },
+      textarea: {
+        color: 'input',
+      },
+      toggle: {
+        color: 'input',
+        checkedColor: 'brand',
+      },
+    },
   };
 
   constructor(private color: StylerColorService) {
@@ -96,5 +150,14 @@ export class KitDefaultThemeService implements KitThemeService {
 
   customize(params: KitDefaultThemeParams) {
     this._params = params;
+  }
+
+  getColor(name: string): KitThemeColor {
+    const color = this._params.colors.find(c => c.name === name);
+    if (color) {
+      return color;
+    } else {
+      throw new Error(`Color ${name} not found!`);
+    }
   }
 }

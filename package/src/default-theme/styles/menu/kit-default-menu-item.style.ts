@@ -18,6 +18,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     hasSubs: boolean,
   }): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.menu.color);
     return {
       display: 'flex',
       alignItems: 'center',
@@ -25,26 +26,26 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
       cursor: 'pointer',
       userSelect: 'none',
       padding: [params.grid.v / 2, params.grid.h],
-      color: params.colors.border.text,
+      color: color.text,
       textDecoration: 'none',
       ...this.def.toggle(state.root, {
         ...this.def.pick(state.menuDirection, {
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
             ...this.def.toggle(state.hover, {
-              borderBottom: [2, 'solid', this.theme.colorMod(.05, params.colors.brand.color)],
-              color: this.theme.colorMod(.05, params.colors.brand.color),
+              borderBottom: [2, 'solid', this.theme.colorMod(.05, color.border)],
+              color: this.theme.colorMod(.05, color.text),
             }),
           },
           vertical: {
             ...this.def.toggle(state.hover, {
-              color: this.theme.colorMod(.05, params.colors.brand.color),
+              color: this.theme.colorMod(.05, color.text),
             }),
           },
         }),
       }, {
         ...this.def.toggle(state.hover, {
-          color: this.theme.colorMod(.05, params.colors.brand.color),
+          color: this.theme.colorMod(.05, color.text),
         }),
         ...this.def.toggle(state.hasSubs, {}),
       }),

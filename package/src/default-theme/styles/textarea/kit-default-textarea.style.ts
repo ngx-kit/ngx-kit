@@ -15,8 +15,9 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
 
   textarea(): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getColor(params.modules.textarea.color);
     return {
-      border: [params.border.width, 'solid', params.colors.border.color],
+      border: [params.border.width, 'solid', color.border],
       borderRadius: params.border.radius.s,
       transition: 'background 0.2s',
       width: '100%',
