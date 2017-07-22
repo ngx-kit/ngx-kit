@@ -1,31 +1,48 @@
 {
   "angularCompilerOptions": {
-    "genDir": "aot",
+    "genDir": "./dist/package",
     "skipTemplateCodegen": true,
-    "skipMetadataEmit": false
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true,
+    "annotateForClosureCompiler": true,
+    "flatModuleOutFile": "ngx-kit.js",
+    "flatModuleId": "@ngx-kit/ngx-kit"
   },
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "dist",
     "removeComments": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "lib": ["dom", "es2015", "es2016"],
-    "baseUrl": ".",
-    "paths": {
-      "@ngx-kit/styler": ["./node_modules/@ngx-kit/styler"],
-      "@ngx-kit/*": ["./packages/*/public_api"]
-    },
-    "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
-    "noFallthroughCasesInSwitch": true
-  }
+    "noFallthroughCasesInSwitch": true,
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
+    "baseUrl": ".",
+    "rootDir": "./package",
+    "outDir": "./dist/package",
+    "paths": {
+      "@ngx-kit/styler": [
+        "./node_modules/@ngx-kit/styler"
+      ]
+    }
+  },
+  "files": [
+    "./package/public_api.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "package/src/**/*.spec.ts"
+  ]
 }
