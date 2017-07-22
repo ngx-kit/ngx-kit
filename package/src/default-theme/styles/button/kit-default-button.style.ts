@@ -22,6 +22,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
   }): StyleDef {
     const params = this.theme.params;
     const color = this.theme.getColor(state.color || params.modules.buttons.defaultColor);
+    const disabledColor = this.theme.getColor(params.modules.buttons.disabledColor);
     const styles: StyleDef = this.def.merge([
       {
         position: 'relative',
@@ -73,6 +74,21 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       },
+      this.def.toggle(state.link, {
+        boxShadow: 'none',
+        paddingLeft: 0,
+        paddingRight: 0,
+        background: 'transparent',
+        borderColor: 'transparent',
+        color: color.background,
+        $nest: {
+          '&:hover': {
+            color: this.theme.colorMod(.05, color.background),
+            background: 'transparent',
+            textDecoration: 'underline',
+          },
+        },
+      }),
       this.def.pick(state.grouped, {
         horizontal: {
           borderRadius: 0,
@@ -107,17 +123,19 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       }),
-//      this.def.toggle(state.disabled, {
-//        cursor: 'default',
-//        background: params.colors.border.color,
-//        borderColor: params.colors.border.color,
-//        color: params.colors.border.text,
-//        $nest: {
-//          '&:hover': {
-//            background: params.colors.border.color,
-//          },
-//        },
-//      }),
+      this.def.toggle(state.disabled, {
+        cursor: 'default',
+        background: disabledColor.background,
+        borderColor: disabledColor.border,
+        color: disabledColor.text,
+        $nest: {
+          '&:hover': {
+            background: disabledColor.background,
+            borderColor: disabledColor.border,
+            color: disabledColor.text,
+          },
+        },
+      }),
       this.def.toggle(state.loading, {
         cursor: 'default',
       }),

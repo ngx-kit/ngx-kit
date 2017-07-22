@@ -45,6 +45,11 @@ export class KitButtonComponent implements OnInit {
   }
 
   @Input()
+  set link(link: boolean) {
+    this.styler.host.applyState({link});
+  }
+
+  @Input()
   set loading(loading: boolean) {
     this._loading = this.loading;
     this.styler.host.applyState({loading});

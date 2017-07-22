@@ -40,6 +40,12 @@ export class KitDefaultThemeService implements KitThemeService {
         border: '#f7f7f7',
       },
       {
+        name: 'disabled',
+        background: '#ccc',
+        text: '#585858',
+        border: '#aaa',
+      },
+      {
         name: 'success',
         background: '#2dc100',
         text: '#ffffff',
@@ -100,6 +106,7 @@ export class KitDefaultThemeService implements KitThemeService {
       },
       buttons: {
         defaultColor: 'button',
+        disabledColor: 'disabled',
       },
       checkbox: {
         color: 'input',

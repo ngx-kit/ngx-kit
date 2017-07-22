@@ -47,6 +47,7 @@ export interface KitDefaultThemeParams {
     }
     buttons: {
       defaultColor: string,
+      disabledColor: string,
     },
     checkbox: {
       color: string;
