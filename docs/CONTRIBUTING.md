@@ -34,24 +34,9 @@ Must be one of the following:
 
 ### Scope
 
-The scope should be the name of the npm package affected (as perceived by person reading changelog generated from commit messages.
+The scope should be the name of the module affected (**core**, **buttons** etc).
 
-The following is the list of supported scopes:
-
-* **buttons**
-* **core**
-* **default-theme**
-* **forms**
-* **grid**
-* **icons**
-* **lists**
-* **misc**
-* **modals**
-* **navigation**
-* **panels**
-
-There is currently few exception to the "use package name" rule:
-
+There is currently few exception to the "use module name" rule:
 
 * **packaging**: used for changes that change the npm package layout in all of our packages, e.g. public path changes, package.json changes done to all packages, d.ts file/format changes, changes to bundles, etc.
 * **changelog**: used for updating the release notes in CHANGELOG.md

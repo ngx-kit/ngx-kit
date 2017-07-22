@@ -1,8 +1,8 @@
 # ngx-kit
 
-**Package is not released, aprx release June 23.**
+**Package is not released, aprx release August 18.**
 
-Angular 4 UI-kit with a powerful customizing engine which uses Typestyle (CSS in JavaScript with typings).
+Angular 4 UI-kit with a powerful customizing engine which uses CSSinJS styling.
 
 Currently in a deep beta!
 
@@ -11,107 +11,32 @@ Currently in a deep beta!
 * Default theme
 * Default theme: dark preset
 
-## Packages
+## Modules
 
-### buttons
-
-- [x] button
-- [x] button-group
-- [x] dropdown-menu
-- [ ] split-button
-
-### core
-
-- [x] overlay
-
-### datetime
-
-- [ ] calendar
-- [ ] date-picker
-- [ ] date-time-picker
-- [ ] time-picker
-
-### forms
-
-- [x] auto-complete
-- [ ] captcha
-- [x] checkbox
-- [ ] checkbox-group
-- [ ] color-picker
-- [ ] file
-- [x] form-error
-- [x] form-group
-- [x] form-label
-- [x] [form-touch]
-- [ ] inline-edit
-- [x] input
-- [x] math-input
-- [ ] multi-select
-- [x] radio
-- [ ] radio-group
-- [ ] range-selector
-- [ ] rating
-- [ ] select
-- [x] textarea
-- [x] toggle
-
-### data
-
-- [ ] table
-- [ ] list
-- [ ] tree
-
-### icons
-
-- [x] icon
-
-### layout
-
-- [ ] affix
-- [ ] grid
-- [x] layout
-- [ ] sidebar
-
-### loaders
- 
-- [ ] loading-line
-- [ ] progress-bar
-- [ ] spinner
-
-### media
-
-- [ ] audio
-- [ ] video
-
-### misc
-
-- [ ] accordion
-- [ ] alert
-- [x] badge
-- [ ] card 
-- [ ] carousel
-- [x] divider
-- [ ] popover
-- [ ] tabs
-- [x] tag
-- [x] tooltip
-
-### modals
-
-- [ ] confirm
-- [ ] dimmer
-- [ ] message
-- [ ] modal 
-- [ ] notification
-- [ ] pop-confirm
-- [ ] router-modal 
-
-### navigation
-
-- [ ] back-top
-- [ ] breadcrumb
-- [ ] menu
-- [ ] nav
-- [ ] pagination
-- [ ] scroll
-- [ ] scroll-spy
+* [accordion](./package/src/accordion)
+* [auto-complete](./package/src/auto-complete)
+* [badge](./package/src/badge)
+* [breadcrumd](./package/src/breadcrumd)
+* [core](./package/src/core)
+* [date-picker](./package/src/date-picker)
+* [buttons](./package/src/buttons)
+* [checkbox](./package/src/checkbox)
+* [default-theme](./package/src/default-theme)
+* [divider](./package/src/divider)
+* [dropdown-menu](./package/src/dropdown-menu)
+* [form](./package/src/form)
+* [icons](./package/src/icons)
+* [input](./package/src/input)
+* [layout](./package/src/layout)
+* [math-input](./package/src/math-input)
+* [menu](./package/src/menu)
+* [modal](./package/src/modal)
+* [pagination](./package/src/pagination)
+* [popover](./package/src/popover)
+* [radio](./package/src/radio)
+* [select](./package/src/select)
+* [tabs](./package/src/tabs)
+* [tag](./package/src/tag)
+* [textarea](./package/src/textarea)
+* [toggle](./package/src/toggle)
+* [tooltip](./package/src/tooltip)
