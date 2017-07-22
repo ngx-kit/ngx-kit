@@ -11,6 +11,7 @@ export * from './src/divider';
 export * from './src/dropdown-menu';
 export * from './src/form';
 export * from './src/icons';
+export * from './src/importer';
 export * from './src/input';
 export * from './src/layout';
 export * from './src/math-input';
