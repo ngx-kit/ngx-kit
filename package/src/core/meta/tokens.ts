@@ -3,14 +3,11 @@ import { KitComponentStyle } from './component';
 import { KitThemeService } from './theme';
 
 export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
-// buttons
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');
 export const kitComponentButtonGroup = new InjectionToken<KitComponentStyle>('kitComponentButtonGroup');
 export const kitComponentDropdownMenu = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenu');
 export const kitComponentDropdownMenuItem = new InjectionToken<KitComponentStyle>('kitComponentDropdownMenuItem');
-// core
 export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
-// forms
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentCheckbox = new InjectionToken<KitComponentStyle>('kitComponentCheckbox');
 export const kitComponentDatePicker = new InjectionToken<KitComponentStyle>('kitComponentDatePicker');
@@ -23,26 +20,21 @@ export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentTextarea = new InjectionToken<KitComponentStyle>('kitComponentTextarea');
 export const kitComponentToggle = new InjectionToken<KitComponentStyle>('kitComponentToggle');
-// layout
 export const kitComponentLayout = new InjectionToken<KitComponentStyle>('kitComponentLayout');
 export const kitComponentLayoutContent = new InjectionToken<KitComponentStyle>('kitComponentLayoutContent');
 export const kitComponentLayoutFooter = new InjectionToken<KitComponentStyle>('kitComponentLayoutFooter');
 export const kitComponentLayoutHeader = new InjectionToken<KitComponentStyle>('kitComponentLayoutHeader');
 export const kitComponentLayoutSide = new InjectionToken<KitComponentStyle>('kitComponentLayoutSide');
-// misc
 export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');
 export const kitComponentTooltipView = new InjectionToken<KitComponentStyle>('kitComponentTooltipView');
-// navigation
 export const kitComponentMenu = new InjectionToken<KitComponentStyle>('kitComponentMenu');
 export const kitComponentMenuGroup = new InjectionToken<KitComponentStyle>('kitComponentMenuGroup');
 export const kitComponentMenuItem = new InjectionToken<KitComponentStyle>('kitComponentMenuItem');
 export const kitComponentMenuSeparator = new InjectionToken<KitComponentStyle>('kitComponentMenuSeparator');
 export const kitComponentMenuSub = new InjectionToken<KitComponentStyle>('kitComponentMenuSub');
-// modals
 export const kitComponentModal = new InjectionToken<KitComponentStyle>('kitComponentModal');
-// panels
 export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
 export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');
 export const kitComponentTabs = new InjectionToken<KitComponentStyle>('kitComponentTabs');

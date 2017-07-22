@@ -37,42 +37,42 @@ import {
   kitComponentTooltipView,
   kitTheme,
 } from '../core/meta/tokens';
-import { KitDefaultAccordionPanelStyle } from './components/kit-default-accordion-panel.style';
-import { KitDefaultAccordionStyle } from './components/kit-default-accordion.style';
-import { KitDefaultAutoCompleteStyle } from './components/kit-default-auto-complete.style';
-import { KitDefaultBadgeStyle } from './components/kit-default-badge.style';
-import { KitDefaultButtonGroupStyle } from './components/kit-default-button-group.style';
-import { KitDefaultButtonStyle } from './components/kit-default-button.style';
-import { KitDefaultCheckboxStyle } from './components/kit-default-checkbox.style';
-import { KitDefaultDatePickerStyle } from './components/kit-default-date-picker.style';
-import { KitDefaultDividerStyle } from './components/kit-default-divider.style';
-import { KitDefaultDropdownMenuItemStyle } from './components/kit-default-dropdown-menu-item.style';
-import { KitDefaultDropdownMenuStyle } from './components/kit-default-dropdown-menu.style';
-import { KitDefaultFormErrorStyle } from './components/kit-default-form-error.style';
-import { KitDefaultFormGroupStyle } from './components/kit-default-form-group.style';
-import { KitDefaultFormLabelStyle } from './components/kit-default-form-label.style';
-import { KitDefaultInputStyle } from './components/kit-default-input.style';
-import { KitDefaultLayoutContentStyle } from './components/kit-default-layout-content.style';
-import { KitDefaultLayoutFooterStyle } from './components/kit-default-layout-footer.style';
-import { KitDefaultLayoutHeaderStyle } from './components/kit-default-layout-header.style';
-import { KitDefaultLayoutSideStyle } from './components/kit-default-layout-side.style';
-import { KitDefaultLayoutStyle } from './components/kit-default-layout.style';
-import { KitDefaultMathInputStyle } from './components/kit-default-math-input.style';
-import { KitDefaultMenuGroupStyle } from './components/kit-default-menu-group.style';
-import { KitDefaultMenuItemStyle } from './components/kit-default-menu-item.style';
-import { KitDefaultMenuSeparatorStyle } from './components/kit-default-menu-separator.style';
-import { KitDefaultMenuSubStyle } from './components/kit-default-menu-sub.style';
-import { KitDefaultMenuStyle } from './components/kit-default-menu.style';
-import { KitDefaultModalStyle } from './components/kit-default-modal.style';
-import { KitDefaultOverlayContainerStyle } from './components/kit-default-overlay-container.style';
-import { KitDefaultRadioStyle } from './components/kit-default-radio.style';
-import { KitDefaultSelectStyle } from './components/kit-default-select.style';
-import { KitDefaultTabsStyle } from './components/kit-default-tabs.style';
-import { KitDefaultTagStyle } from './components/kit-default-tag.style';
-import { KitDefaultTextareaStyle } from './components/kit-default-textarea.style';
-import { KitDefaultToggleStyle } from './components/kit-default-toggle.style';
-import { KitDefaultTooltipViewStyle } from './components/kit-default-tooltip-view.style';
 import { KitDefaultThemeService } from './kit-default-theme.service';
+import { KitDefaultAccordionPanelStyle } from './styles/accordion/kit-default-accordion-panel.style';
+import { KitDefaultAccordionStyle } from './styles/accordion/kit-default-accordion.style';
+import { KitDefaultAutoCompleteStyle } from './styles/auto-complete/kit-default-auto-complete.style';
+import { KitDefaultBadgeStyle } from './styles/badge/kit-default-badge.style';
+import { KitDefaultButtonGroupStyle } from './styles/button/kit-default-button-group.style';
+import { KitDefaultButtonStyle } from './styles/button/kit-default-button.style';
+import { KitDefaultCheckboxStyle } from './styles/checkbox/kit-default-checkbox.style';
+import { KitDefaultOverlayContainerStyle } from './styles/core/kit-default-overlay-container.style';
+import { KitDefaultDatePickerStyle } from './styles/date-picker/kit-default-date-picker.style';
+import { KitDefaultDividerStyle } from './styles/divider/kit-default-divider.style';
+import { KitDefaultDropdownMenuItemStyle } from './styles/dropdown-menu/kit-default-dropdown-menu-item.style';
+import { KitDefaultDropdownMenuStyle } from './styles/dropdown-menu/kit-default-dropdown-menu.style';
+import { KitDefaultFormErrorStyle } from './styles/form/kit-default-form-error.style';
+import { KitDefaultFormGroupStyle } from './styles/form/kit-default-form-group.style';
+import { KitDefaultFormLabelStyle } from './styles/form/kit-default-form-label.style';
+import { KitDefaultInputStyle } from './styles/input/kit-default-input.style';
+import { KitDefaultLayoutContentStyle } from './styles/layout/kit-default-layout-content.style';
+import { KitDefaultLayoutFooterStyle } from './styles/layout/kit-default-layout-footer.style';
+import { KitDefaultLayoutHeaderStyle } from './styles/layout/kit-default-layout-header.style';
+import { KitDefaultLayoutSideStyle } from './styles/layout/kit-default-layout-side.style';
+import { KitDefaultLayoutStyle } from './styles/layout/kit-default-layout.style';
+import { KitDefaultMathInputStyle } from './styles/math-input/kit-default-math-input.style';
+import { KitDefaultMenuGroupStyle } from './styles/menu/kit-default-menu-group.style';
+import { KitDefaultMenuItemStyle } from './styles/menu/kit-default-menu-item.style';
+import { KitDefaultMenuSeparatorStyle } from './styles/menu/kit-default-menu-separator.style';
+import { KitDefaultMenuSubStyle } from './styles/menu/kit-default-menu-sub.style';
+import { KitDefaultMenuStyle } from './styles/menu/kit-default-menu.style';
+import { KitDefaultModalStyle } from './styles/modal/kit-default-modal.style';
+import { KitDefaultRadioStyle } from './styles/radio/kit-default-radio.style';
+import { KitDefaultSelectStyle } from './styles/select/kit-default-select.style';
+import { KitDefaultTabsStyle } from './styles/tabs/kit-default-tabs.style';
+import { KitDefaultTagStyle } from './styles/tag/kit-default-tag.style';
+import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.style';
+import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
+import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 
 @NgModule({
   imports: [],
@@ -89,7 +89,6 @@ export class KitDefaultThemeModule {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
         },
-        // buttons
         {
           provide: kitComponentButton,
           useClass: KitDefaultButtonStyle,
@@ -106,12 +105,10 @@ export class KitDefaultThemeModule {
           provide: kitComponentDropdownMenuItem,
           useClass: KitDefaultDropdownMenuItemStyle,
         },
-        // core
         {
           provide: kitComponentOverlayContainer,
           useClass: KitDefaultOverlayContainerStyle,
         },
-        // forms
         {
           provide: kitComponentAutoComplete,
           useClass: KitDefaultAutoCompleteStyle,
@@ -160,7 +157,6 @@ export class KitDefaultThemeModule {
           provide: kitComponentToggle,
           useClass: KitDefaultToggleStyle,
         },
-        // layout
         {
           provide: kitComponentLayout,
           useClass: KitDefaultLayoutStyle,
@@ -181,7 +177,6 @@ export class KitDefaultThemeModule {
           provide: kitComponentLayoutSide,
           useClass: KitDefaultLayoutSideStyle,
         },
-        // misc
         {
           provide: kitComponentAccordion,
           useClass: KitDefaultAccordionStyle,
@@ -210,12 +205,10 @@ export class KitDefaultThemeModule {
           provide: kitComponentTooltipView,
           useClass: KitDefaultTooltipViewStyle,
         },
-        // modals
         {
           provide: kitComponentModal,
           useClass: KitDefaultModalStyle,
         },
-        // navigation
         {
           provide: kitComponentMenu,
           useClass: KitDefaultMenuStyle,
