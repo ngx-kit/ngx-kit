@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "vendors": {
     "styler": "^1.0.0-beta.3",
     "angular": "^4.2.0",

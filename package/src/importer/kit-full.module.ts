@@ -28,12 +28,12 @@ import { KitTextareaModule } from '../textarea/kit-textarea.module';
 import { KitToggleModule } from '../toggle/kit-toggle.module';
 import { KitTooltipModule } from '../tooltip/kit-tooltip.module';
 
-const initable = [
+const initableModules = [
   StylerModule,
   KitCoreModule,
   KitDefaultThemeModule,
 ];
-const simple = [
+const simpleModules = [
   KitAccordionModule,
   KitAutoCompleteModule,
   KitBadgeModule,
@@ -63,14 +63,16 @@ const simple = [
 
 @NgModule({
   imports: [
-    ...initable.map(mod => mod.forRoot()),
-    ...simple,
+    StylerModule.forRoot(),
+    KitCoreModule.forRoot(),
+    KitDefaultThemeModule.forRoot(),
+    ...simpleModules,
   ],
   declarations: [],
   providers: [],
   exports: [
-    ...initable,
-    ...simple,
+    ...initableModules,
+    ...simpleModules,
   ],
 })
 export class KitFullForRootModule {
@@ -78,14 +80,14 @@ export class KitFullForRootModule {
 
 @NgModule({
   imports: [
-    ...initable,
-    ...simple,
+    ...initableModules,
+    ...simpleModules,
   ],
   declarations: [],
   providers: [],
   exports: [
-    ...initable,
-    ...simple,
+    ...initableModules,
+    ...simpleModules,
   ],
 })
 export class KitFullModule {

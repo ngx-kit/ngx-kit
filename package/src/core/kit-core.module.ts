@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreService } from './kit-core.service';
 import { KitAnchorDirective } from './overlay/anchor.directive';
@@ -21,7 +20,6 @@ const entry = [
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     StylerModule,
   ],
   exports: [
