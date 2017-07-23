@@ -33,7 +33,7 @@ https://ngx-kit.com/kit/modules/buttons
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
 | *multiply* | `boolean` | `false` | |
-| *direction* | `horizontal|vertical` | `horizontal` | |
+| *direction* | `horizontal`,`vertical` | `horizontal` | |
 
 #### Outputs
 
