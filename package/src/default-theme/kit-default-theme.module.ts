@@ -42,8 +42,8 @@ import { KitDefaultAccordionPanelStyle } from './styles/accordion/kit-default-ac
 import { KitDefaultAccordionStyle } from './styles/accordion/kit-default-accordion.style';
 import { KitDefaultAutoCompleteStyle } from './styles/auto-complete/kit-default-auto-complete.style';
 import { KitDefaultBadgeStyle } from './styles/badge/kit-default-badge.style';
-import { KitDefaultButtonGroupStyle } from './styles/button/kit-default-button-group.style';
-import { KitDefaultButtonStyle } from './styles/button/kit-default-button.style';
+import { KitDefaultButtonGroupStyle } from './styles/buttons/kit-default-button-group.style';
+import { KitDefaultButtonStyle } from './styles/buttons/kit-default-button.style';
 import { KitDefaultCheckboxStyle } from './styles/checkbox/kit-default-checkbox.style';
 import { KitDefaultOverlayContainerStyle } from './styles/core/kit-default-overlay-container.style';
 import { KitDefaultDatePickerStyle } from './styles/date-picker/kit-default-date-picker.style';

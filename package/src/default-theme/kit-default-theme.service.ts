@@ -35,9 +35,9 @@ export class KitDefaultThemeService implements KitThemeService {
       },
       {
         name: 'button',
-        background: '#f7f7f7',
+        background: '#e2e2e2',
         text: '#585858',
-        border: '#f7f7f7',
+        border: '#dadada',
       },
       {
         name: 'disabled',
