@@ -14,7 +14,8 @@
     "release": "npm run build && npm run publish"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "@angular/animations": "^4.2.4",
     "@angular/common": "^4.2.4",
@@ -26,7 +27,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "@angular/styler": "^1.0.0",
+    "@ngx-kit/styler": "^1.0.0-beta.3",
     "fs-extra": "^3.0.1",
     "moment": "^2.18.1",
     "ncp": "^2.0.0",
