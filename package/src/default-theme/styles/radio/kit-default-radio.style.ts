@@ -72,7 +72,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
             display: 'table',
             width: 6,
             height: 6,
-            backgroundColor: checkedColor.text,
+            backgroundColor: checkedColor.background,
             border: 0,
             borderRadius: '50%',
             content: '" "',
