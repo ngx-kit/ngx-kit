@@ -123,6 +123,7 @@ export class KitDefaultThemeService implements KitThemeService {
       },
       input: {
         color: 'input',
+        focusColor: 'brand',
       },
       menu: {
         color: 'body',
@@ -136,9 +137,10 @@ export class KitDefaultThemeService implements KitThemeService {
       },
       textarea: {
         color: 'input',
+        focusColor: 'brand',
       },
       toggle: {
-        color: 'input',
+        color: 'button',
         checkedColor: 'brand',
       },
     },

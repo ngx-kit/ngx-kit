@@ -64,6 +64,7 @@ export interface KitDefaultThemeParams {
     },
     input: {
       color: string;
+      focusColor: string;
     },
     menu: {
       color: string;
@@ -77,6 +78,7 @@ export interface KitDefaultThemeParams {
     },
     textarea: {
       color: string;
+      focusColor: string;
     },
     toggle: {
       color: string;
