@@ -31,7 +31,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
 
   @Input() kitButtonGroup: any;
 
-  @Input() multiply = false;
+  @Input() multiple = false;
 
   @Input() selectable = false;
 
@@ -71,7 +71,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
       button.action.subscribe(() => {
         if (this.selectable) {
           // deselect other if needed
-          if (!button.selected && !this.multiply) {
+          if (!button.selected && !this.multiple) {
             this.buttons.filter(b => b !== button).forEach(b => b.pushSelected(false));
           }
           // toggle button selection
