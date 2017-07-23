@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
+import { StylerModule } from '@ngx-kit/styler';
 import { KitAccordionModule } from '../accordion/kit-accordion.module';
 import { KitAutoCompleteModule } from '../auto-complete/kit-auto-complete.module';
 import { KitBadgeModule } from '../badge/kit-badge.module';
 import { KitBreadcrumbModule } from '../breadcrumd/kit-breadcrumb.module';
 import { KitButtonsModule } from '../buttons/kit-buttons.module';
 import { KitCheckboxModule } from '../checkbox/kit-checkbox.module';
+import { KitCoreModule } from '../core/kit-core.module';
 import { KitDatePickerModule } from '../date-picker/kit-date-picker.module';
 import { KitDefaultThemeModule } from '../default-theme/kit-default-theme.module';
 import { KitDividerModule } from '../divider/kit-divider.module';
@@ -25,9 +27,9 @@ import { KitTagModule } from '../tag/kit-tag.module';
 import { KitTextareaModule } from '../textarea/kit-textarea.module';
 import { KitToggleModule } from '../toggle/kit-toggle.module';
 import { KitTooltipModule } from '../tooltip/kit-tooltip.module';
-import { KitCoreModule } from '../core/kit-core.module';
 
 const initable = [
+  StylerModule,
   KitCoreModule,
   KitDefaultThemeModule,
 ];
@@ -64,10 +66,8 @@ const simple = [
     ...initable.map(mod => mod.forRoot()),
     ...simple,
   ],
-  declarations: [
-  ],
-  providers: [
-  ],
+  declarations: [],
+  providers: [],
   exports: [
     ...initable,
     ...simple,
@@ -81,10 +81,8 @@ export class KitFullForRootModule {
     ...initable,
     ...simple,
   ],
-  declarations: [
-  ],
-  providers: [
-  ],
+  declarations: [],
+  providers: [],
   exports: [
     ...initable,
     ...simple,
