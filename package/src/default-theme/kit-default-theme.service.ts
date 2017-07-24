@@ -14,6 +14,7 @@ export class KitDefaultThemeService implements KitThemeService {
 
   constructor(private color: StylerColorService,
               private stylerService: StylerService) {
+    this.compileRaws();
   }
 
   get params() {
@@ -24,8 +25,34 @@ export class KitDefaultThemeService implements KitThemeService {
     return this.color[this._params.colorMod.type](amount * this._params.colorMod.ratio, color);
   }
 
+  compileRaws() {
+    // body
+    const bodyColor = this.getColor(this.params.raws.bodyColor);
+    this.stylerService.setRaw('body', {
+      background: bodyColor.background,
+      color: bodyColor.text,
+      fontSize: this.params.raws.bodyFontSize,
+    });
+    // headers
+    for (const tag in this.params.raws.headersSizes) {
+      this.stylerService.setRaw(tag, {
+        fontSize: this.params.raws.headersSizes[tag],
+      });
+    }
+    // links
+    const linkColor = this.getColor(this.params.raws.linkColor);
+    this.stylerService.setRaw('a', {
+      background: linkColor.background,
+      color: linkColor.text,
+    });
+    this.stylerService.setRaw('a:hover', {
+      color: this.colorMod(.1, linkColor.text),
+    });
+  }
+
   customize(params: KitDefaultThemeCustomizer) {
     this._params = mergeDeepAll([{}, defaultParams, params]);
+    this.compileRaws();
     this.stylerService.updateComponents();
   }
 

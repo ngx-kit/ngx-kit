@@ -25,7 +25,7 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
   title(): StyleDef {
     return {
       color: '#888',
-      fontSize: this.theme.params.typo.secondaryFontSize,
+      fontSize: this.theme.params.modules.menu.groupTitleFontSize,
       padding: [this.theme.params.grid.v / 2, this.theme.params.grid.h],
     };
   }

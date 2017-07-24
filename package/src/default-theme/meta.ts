@@ -48,6 +48,7 @@ export interface KitDefaultThemeParams {
     },
     menu: {
       color: string;
+      groupTitleFontSize: string;
     },
     radio: {
       color: string;
@@ -65,19 +66,10 @@ export interface KitDefaultThemeParams {
       checkedColor: string;
     },
   },
-  shadows: {
-    element: string;
-    deep: string;
-    overlay: string;
-  };
-  transitions: {
-    default: string;
-  };
-  typo: {
+  raws: {
+    bodyColor: string;
     bodyFontSize: string;
-    primaryFontSize: string;
-    secondaryFontSize: string;
-    headers: {
+    headersSizes: {
       h1: string;
       h2: string;
       h3: string;
@@ -85,6 +77,15 @@ export interface KitDefaultThemeParams {
       h5: string;
       h6: string;
     };
+    linkColor: string;
+  }
+  shadows: {
+    element: string;
+    deep: string;
+    overlay: string;
+  };
+  transitions: {
+    default: string;
   };
 }
 

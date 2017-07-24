@@ -19,6 +19,12 @@ export const defaultParams: KitDefaultThemeParams = {
       border: '#eee',
     },
     {
+      name: 'link',
+      background: 'transparent',
+      text: '#0084ff',
+      border: 'transparent',
+    },
+    {
       name: 'input',
       background: '#f7f7f7',
       text: '#585858',
@@ -64,19 +70,6 @@ export const defaultParams: KitDefaultThemeParams = {
     deep: '0 0 20px 0 rgba(50, 50, 50, 0.1)',
     overlay: '0 0 6px 0 rgba(50, 50, 50, 0.1)',
   },
-  typo: {
-    bodyFontSize: '13px',
-    primaryFontSize: '1rem',
-    secondaryFontSize: '.9rem',
-    headers: {
-      h1: '3rem',
-      h2: '2rem',
-      h3: '1.8rem',
-      h4: '1.6rem',
-      h5: '1.4rem',
-      h6: '1rem',
-    },
-  },
   border: {
     width: 1,
     radius: {
@@ -118,6 +111,7 @@ export const defaultParams: KitDefaultThemeParams = {
     },
     menu: {
       color: 'body',
+      groupTitleFontSize: '.9rem',
     },
     radio: {
       color: 'input',
@@ -134,5 +128,18 @@ export const defaultParams: KitDefaultThemeParams = {
       color: 'button',
       checkedColor: 'brand',
     },
+  },
+  raws: {
+    bodyColor: 'body',
+    bodyFontSize: '13px',
+    headersSizes: {
+      h1: '2.2rem',
+      h2: '1.6rem',
+      h3: '1.4rem',
+      h4: '1.1rem',
+      h5: '1rem',
+      h6: '.9rem',
+    },
+    linkColor: 'link',
   },
 };
