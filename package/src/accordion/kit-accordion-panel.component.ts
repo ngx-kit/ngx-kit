@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentAccordionPanel } from '../core/meta/tokens';
@@ -28,11 +28,6 @@ export class KitAccordionPanelComponent implements OnInit {
               @Inject(kitComponentAccordionPanel) private style: KitComponentStyle) {
     this.styler.register(this.style);
   }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
-  };
 
   ngOnInit() {
   }

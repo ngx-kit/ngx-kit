@@ -1,4 +1,5 @@
 import { KitThemeColor } from '../core/meta/theme';
+
 export interface KitDefaultThemeParams {
   border: {
     width: number;
@@ -16,27 +17,6 @@ export interface KitDefaultThemeParams {
   grid: {
     v: number;
     h: number;
-  };
-  shadows: {
-    element: string;
-    deep: string;
-    overlay: string;
-  };
-  transitions: {
-    default: string;
-  };
-  typo: {
-    bodyFontSize: string;
-    primaryFontSize: string;
-    secondaryFontSize: string;
-    headers: {
-      h1: string;
-      h2: string;
-      h3: string;
-      h4: string;
-      h5: string;
-      h6: string;
-    };
   };
   modules: {
     autoComplete: {
@@ -83,7 +63,31 @@ export interface KitDefaultThemeParams {
       checkedColor: string;
     },
   },
+  shadows: {
+    element: string;
+    deep: string;
+    overlay: string;
+  };
+  transitions: {
+    default: string;
+  };
+  typo: {
+    bodyFontSize: string;
+    primaryFontSize: string;
+    secondaryFontSize: string;
+    headers: {
+      h1: string;
+      h2: string;
+      h3: string;
+      h4: string;
+      h5: string;
+      h6: string;
+    };
+  };
 }
+
+export type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]>; };
+export type KitDefaultThemeCustomizer = DeepPartial<KitDefaultThemeParams>;
 
 export interface KitDefaultThemeColor {
   color: string;
