@@ -17,7 +17,7 @@ Currently in a deep beta!
 * [auto-complete](./package/src/auto-complete)
 * [badge](./package/src/badge)
 * [breadcrumd](./package/src/breadcrumd)
-* [buttons](./package/src/buttons)
+* [button](package/src/button)
 * [core](./package/src/core)
 * [date-picker](./package/src/date-picker)
 * [checkbox](./package/src/checkbox)

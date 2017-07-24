@@ -4,7 +4,7 @@ export * from './src/accordion/index';
 export * from './src/auto-complete/index';
 export * from './src/badge/index';
 export * from './src/breadcrumd/index';
-export * from './src/buttons/index';
+export * from './src/button/index';
 export * from './src/date-picker/index';
 export * from './src/checkbox/index';
 export * from './src/divider/index';

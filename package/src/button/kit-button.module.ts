@@ -24,5 +24,5 @@ const exported = [
   ],
   providers: [],
 })
-export class KitButtonsModule {
+export class KitButtonModule {
 }
