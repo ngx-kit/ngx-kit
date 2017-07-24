@@ -11,10 +11,13 @@ import { RootStyle } from './root.style';
   ],
 })
 export class RootComponent {
+  hljsTheme = 'hljs-theme-default';
+
   constructor(private theme: ThemeService) {
   }
 
   applyTheme(name: string) {
+    this.hljsTheme = `hljs-theme-${name}`;
     this.theme.applyTheme(name);
   }
 }

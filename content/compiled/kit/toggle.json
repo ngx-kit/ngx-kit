@@ -1,0 +1,1 @@
+[{"file":"content/kit/toggle/demo-default.md","meta":{"route":"kit/toggle","title":"Default toggle","id":"demo-default"},"body":"\n```html\n<kit-toggle [(ngModel)]=\"checked\">Toggle</kit-toggle>\n<span *ngIf=\"checked\">is checked</span>\n```\n\n```typescript\nchecked: boolean;\n```\n"}]

@@ -1,0 +1,8 @@
+<app-title [link]="'select'">Select</app-title>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <kit-select [options]="options"
+              [valueField]="'id'"
+              [labelFiled]="'id'"
+              [(ngModel)]="selected"></kit-select>
+</app-demo>

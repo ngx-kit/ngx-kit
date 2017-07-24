@@ -1,0 +1,1 @@
+[{"file":"content/kit/textarea/demo-default.md","meta":{"route":"kit/textarea","title":"Default textarea","id":"demo-default"},"body":"\n```html\n<kit-textarea [(ngModel)]=\"value\"></kit-textarea>\n{{ value }}\n```\n\n```typescript\nvalue: string;\n```\n"}]

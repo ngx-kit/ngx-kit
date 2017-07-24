@@ -43,12 +43,24 @@ export class ThemeService {
         this.kitTheme.customize({
           colors: [
             {
+              name: 'body',
+              background: '#444',
+              text: '#ddd',
+              border: '#666',
+            },
+            {
               name: 'brand',
               background: '#5cdbff',
               text: '#323232',
               border: '#5cdbff',
             },
-          ]
+            {
+              name: 'link',
+              background: 'transparent',
+              text: '#5cdbff',
+              border: 'transparent',
+            },
+          ],
         });
         break;
     }

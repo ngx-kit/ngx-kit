@@ -10,7 +10,11 @@
       "assets": [
         "assets",
         "favicon.ico",
-        { "glob": "**/*", "input": "../content/compiled", "output": "./content/" }
+        {
+          "glob": "**/*",
+          "input": "../content/compiled",
+          "output": "./content/"
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,9 +25,12 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/highlight.js/styles/github.css"
+        "./assets/default.scss",
+        "./assets/dark.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/moment/moment.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

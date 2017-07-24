@@ -1,0 +1,6 @@
+<app-title [link]="'checkbox'">Checkbox</app-title>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <kit-checkbox [(ngModel)]="checked">Checkbox</kit-checkbox>
+  <span *ngIf="checked">is checked</span>
+</app-demo>

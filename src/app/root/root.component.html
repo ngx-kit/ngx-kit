@@ -1,4 +1,4 @@
-<kit-layout [fullscreen]="true">
+<kit-layout [fullscreen]="true" [ngClass]="hljsTheme">
   <kit-layout-header styler="header">
     <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
@@ -7,11 +7,12 @@
       <a [kitMenuItem] [routerLink]="['/store']">store (alpha)</a>
     </kit-menu>
     <div styler="themeButton">
-      <kit-button [kitAnchor] #dropdownRef="anchor">Pick a theme</kit-button>
+      <kit-button [kitAnchor] #dropdownRef="anchor">Pick a preset</kit-button>
       <kit-dropdown-menu [anchor]="dropdownRef">
-        <kit-dropdown-menu-item (click)="applyTheme('default')">DEF</kit-dropdown-menu-item>
-        <kit-dropdown-menu-item (click)="applyTheme('default-compact')">DEF COMPACT</kit-dropdown-menu-item>
-        <kit-dropdown-menu-item (click)="applyTheme('dark')">DARK</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('default')">default</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('default-compact')">default-compact</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('dark')">dark</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('dark')">More presets</kit-dropdown-menu-item>
       </kit-dropdown-menu>
     </div>
   </kit-layout-header>

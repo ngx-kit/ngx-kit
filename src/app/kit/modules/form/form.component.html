@@ -1,0 +1,16 @@
+<app-title [link]="'form'">Form</app-title>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <form [formGroup]="form">
+    <kit-form-group [touched]="true">
+      <kit-form-label>Name</kit-form-label>
+      <kit-input [formControlName]="'name'"></kit-input>
+      <kit-form-error [validator]="'required'" i18n>You can't leave this empty.</kit-form-error>
+      <kit-form-error [validator]="'minlength'" i18n>Name must be at least 4 characters long..</kit-form-error>
+    </kit-form-group>
+  </form>
+</app-demo>
+
+<div>non-touched example</div>
+<div>dirty example</div>
+<div>non-reactive example</div>

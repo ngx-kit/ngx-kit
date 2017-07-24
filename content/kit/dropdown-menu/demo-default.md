@@ -1,0 +1,13 @@
+---
+route: kit/dropdown-menu
+title: Default dropdown-menu
+---
+
+```html
+<kit-button [kitAnchor] #dropdownRef="anchor">Click</kit-button>
+<kit-dropdown-menu [anchor]="dropdownRef">
+  <kit-dropdown-menu-item>Item 1</kit-dropdown-menu-item>
+  <kit-dropdown-menu-item>Item 2</kit-dropdown-menu-item>
+  <kit-dropdown-menu-item>Item 3</kit-dropdown-menu-item>
+</kit-dropdown-menu>
+```
