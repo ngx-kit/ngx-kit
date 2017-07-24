@@ -114,6 +114,7 @@ export const defaultParams: KitDefaultThemeParams = {
     },
     input: {
       color: 'input',
+      focusColor: 'brand',
     },
     menu: {
       color: 'body',
@@ -127,9 +128,10 @@ export const defaultParams: KitDefaultThemeParams = {
     },
     textarea: {
       color: 'input',
+      focusColor: 'brand',
     },
     toggle: {
-      color: 'input',
+      color: 'button',
       checkedColor: 'brand',
     },
   },

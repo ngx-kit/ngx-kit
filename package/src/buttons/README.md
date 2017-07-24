@@ -4,9 +4,11 @@
 
 https://ngx-kit.com/kit/modules/buttons
 
-## `<kit-button>`
+## API
 
-### Inputs
+### `<kit-button>`
+
+#### Inputs
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -17,23 +19,23 @@ https://ngx-kit.com/kit/modules/buttons
 | *loading* | `boolean` | `false` | Show progress and prevent actions |
 | *selected* | `boolean` | `false` | |
 
-### Outputs
+#### Outputs
 
 | Event | Type | Description |
 | --- | --- | --- |
 | *action* | `Event` | Mouse click or keyboard enter in focused state |
 | *focus* | `Event` | Change focused state |
 
-## `<kit-button-group>`
+### `<kit-button-group>`
 
-### Inputs
+#### Inputs
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
 | *multiply* | `boolean` | `false` | |
-| *direction* | `'horizontal' | 'vertical'` | `'horizontal'` | |
+| *direction* | `horizontal`,`vertical` | `horizontal` | |
 
-### Outputs
+#### Outputs
 
 | Event | Type | Description |
 | --- | --- | --- |

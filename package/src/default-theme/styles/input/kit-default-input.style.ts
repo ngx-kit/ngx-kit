@@ -17,15 +17,19 @@ export class KitDefaultInputStyle implements KitComponentStyle {
   input(): StyleDef {
     const params = this.theme.params;
     const color = this.theme.getColor(params.modules.input.color);
+    const focusColor = this.theme.getColor(params.modules.input.focusColor);
     return {
       border: [params.border.width, 'solid', color.border],
       borderRadius: params.border.radius.s,
       boxSizing: 'border-box',
       transition: 'background 0.2s',
       width: '100%',
-      padding: [params.grid.v / 2, params.grid.h / 2],
+      padding: [params.grid.v / 2, params.grid.h],
       $nest: {
-        '&:focus': {},
+        '&:focus': {
+          borderColor: focusColor.background,
+          transition: '0.8s',
+        },
       },
     };
   }
