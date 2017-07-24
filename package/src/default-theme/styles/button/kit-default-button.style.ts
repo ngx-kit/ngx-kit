@@ -41,6 +41,14 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
         borderRadius: '3px',
         userSelect: 'none',
         boxShadow: params.shadows.element,
+        background: color.background,
+        borderColor: color.border,
+        color: color.text,
+        $nest: {
+          '&:hover': {
+            background: this.theme.colorMod(.05, color.background),
+          },
+        },
       },
       this.def.pick(state.size, {
         xs: {
@@ -64,16 +72,6 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           fontSize: '1.6rem',
         },
       }, 'm'),
-      {
-        background: color.background,
-        borderColor: color.border,
-        color: color.text,
-        $nest: {
-          '&:hover': {
-            background: this.theme.colorMod(.05, color.background),
-          },
-        },
-      },
       this.def.toggle(state.link, {
         boxShadow: 'none',
         paddingLeft: 0,

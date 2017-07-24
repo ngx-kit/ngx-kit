@@ -120,6 +120,9 @@ export const defaultParams: KitDefaultThemeParams = {
     select: {
       color: 'button',
     },
+    tag: {
+      defaultColor: 'button',
+    },
     textarea: {
       color: 'input',
       focusColor: 'brand',

@@ -57,6 +57,9 @@ export interface KitDefaultThemeParams {
     select: {
       color: string;
     },
+    tag: {
+      defaultColor: string;
+    }
     textarea: {
       color: string;
       focusColor: string;
