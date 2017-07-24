@@ -9,8 +9,11 @@ export class KitStyle implements ComponentStyle {
   }
 
   content(): StyleDef {
+    console.log('! pARAMSD', this.theme.params);
     return {
       padding: 16,
+      justifyContent: 'center',
+      background: this.theme.params.contentColor,
     }
   }
 
@@ -29,8 +32,8 @@ export class KitStyle implements ComponentStyle {
 
   side(): StyleDef {
     return {
-      width: this.theme.sideWidth,
-      background: '#eee',
+      width: this.theme.params.sideWidth,
+      background: this.theme.params.sideColor,
       padding: 8,
       boxSizing: 'border-box',
     };

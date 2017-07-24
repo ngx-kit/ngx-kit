@@ -1,0 +1,53 @@
+<h1>Buttons (<a href="https://github.com/ngx-kit/ngx-kit/tree/master/package/src/buttons">API</a>)</h1>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <kit-button>Click!</kit-button>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-colors'">
+  <kit-button [color]="'brand'">Brand color</kit-button>
+  <kit-button [color]="'success'">Success color</kit-button>
+  <kit-button [color]="'warning'">Warning color</kit-button>
+  <kit-button [color]="'error'">Error color</kit-button>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-sizes'">
+  <kit-button [size]="'xs'">Size=xs</kit-button>
+  <kit-button [size]="'s'">Size=s</kit-button>
+  <kit-button [size]="'m'">Size=m</kit-button>
+  <kit-button [size]="'l'">Size=l</kit-button>
+  <kit-button [size]="'xl'">Size=xl</kit-button>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-link'">
+  <kit-button [link]="true">Link</kit-button>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-disabled'">
+  <kit-button [disabled]="true">Disabled</kit-button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-group-default'">
+  <kit-button-group>
+    <kit-button>Grouped 1</kit-button>
+    <kit-button>Grouped 2</kit-button>
+    <kit-button>Grouped 3</kit-button>
+  </kit-button-group>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-group-vertical'">
+  <kit-button-group [direction]="'vertical'">
+    <kit-button>Vert Grouped 1</kit-button>
+    <kit-button>Vert Grouped 2</kit-button>
+    <kit-button>Vert Grouped 3</kit-button>
+  </kit-button-group>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-group-selectable'">
+  <kit-button-group [selectable]="true">
+    <kit-button>Selectable 1</kit-button>
+    <kit-button>Selectable 2</kit-button>
+    <kit-button>Selectable 3</kit-button>
+  </kit-button-group>
+</app-demo>
+<app-demo [content]="content" [id]="'demo-group-multiple'">
+  <kit-button-group [selectable]="true" [multiple]="true">
+    <kit-button>Selectable 1</kit-button>
+    <kit-button>Selectable 2</kit-button>
+    <kit-button>Selectable 3</kit-button>
+  </kit-button-group>
+</app-demo>

@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
 import { ComponentStyle, StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { ThemeService } from '../core/theme.service';
 
 @Injectable()
 export class RootStyle implements ComponentStyle {
   constructor(private def: StylerDefService,
-              private theme: ThemeService) {
+              private theme: ThemeService,
+              @Inject(kitTheme) private kitTheme: KitDefaultThemeService) {
   }
 
   footer(): StyleDef {
     return {
-      background: '#ddd',
+      background: this.theme.params.footerColor,
       padding: 16,
     };
   }
@@ -20,7 +22,7 @@ export class RootStyle implements ComponentStyle {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
-      background: '#eee',
+      background: this.theme.params.headerColor,
     };
   }
 
@@ -30,7 +32,7 @@ export class RootStyle implements ComponentStyle {
 
   logo(): StyleDef {
     return {
-      width: this.theme.sideWidth,
+      width: this.theme.params.sideWidth,
       padding: 16,
       background: '#0DD8DF',
       color: '#fff',
@@ -43,6 +45,13 @@ export class RootStyle implements ComponentStyle {
   menu(): StyleDef {
     return {
       padding: [0, 16],
+      flexGrow: 1,
+    }
+  }
+
+  themeButton(): StyleDef {
+    return {
+      padding: [0, this.kitTheme.params.grid.h * 2],
     }
   }
 }

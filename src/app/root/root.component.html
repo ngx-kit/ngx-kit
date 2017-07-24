@@ -1,20 +1,26 @@
 <kit-layout [fullscreen]="true">
   <kit-layout-header styler="header">
-    <a [routerLink]="['/kit']" styler="logo">ngx-kit (alpha)</a>
+    <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
-      <a [kitMenuItem] [routerLink]="['/kit']">kit</a>
-      <a [kitMenuItem] [routerLink]="['/styler']">styler</a>
-      <a [kitMenuItem] [routerLink]="['/store']">store</a>
+      <a [kitMenuItem] [routerLink]="['/kit']">ngx-kit (alpha)</a>
+      <a [kitMenuItem] [routerLink]="['/styler']">styler (beta)</a>
+      <a [kitMenuItem] [routerLink]="['/store']">store (alpha)</a>
     </kit-menu>
+    <div styler="themeButton">
+      <kit-button [kitAnchor] #dropdownRef="anchor">Pick a theme</kit-button>
+      <kit-dropdown-menu [anchor]="dropdownRef">
+        <kit-dropdown-menu-item (click)="applyTheme('default')">DEF</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('default-compact')">DEF COMPACT</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('dark')">DARK</kit-dropdown-menu-item>
+      </kit-dropdown-menu>
+    </div>
   </kit-layout-header>
   <kit-layout-content>
     <router-outlet></router-outlet>
   </kit-layout-content>
   <kit-layout-footer styler="footer">
     <div>
-      Full install: `npm install @ngx-kit/styler @ngx-kit/buttons @ngx-kit/core @ngx-kit/default-theme @ngx-kit/forms
-      @ngx-kit/grid @ngx-kit/icons @ngx-kit/layout @ngx-kit/lists @ngx-kit/misc @ngx-kit/modals @ngx-kit/navigation
-      @ngx-kit/panels`
+      Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
     </div>
   </kit-layout-footer>
 </kit-layout>

@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../core/content-resolver.service';
 import { ContentComponent } from '../shared/content/content.component';
-import { ButtonGroupComponent } from './buttons/button-group/button-group.component';
-import { ButtonComponent } from './buttons/button/button.component';
-import { DropdownMenuComponent } from './buttons/dropdown-menu/dropdown-menu.component';
-import { OverlayComponent } from './core/overlay/overlay.component';
 import { KitComponent } from './kit/kit.component';
+import { ButtonsComponent } from './modules/buttons/buttons.component';
+import { AccordionComponent } from './modules/accordion/accordion.component';
+import { AutoCompleteComponent } from './modules/auto-complete/auto-complete.component';
+import { BadgeComponent } from './modules/badge/badge.component';
 
 const routes: Routes = [
   {
@@ -34,34 +34,47 @@ const routes: Routes = [
         },
       },
       {
-        path: 'core',
+        path: 'modules',
         children: [
           {
-            path: 'overlay',
-            component: OverlayComponent,
-          },
-        ],
-      },
-      {
-        path: 'buttons',
-        children: [
-          {
-            path: 'button',
-            component: ButtonComponent,
+            path: 'accordion',
+            component: AccordionComponent,
             data: {
-              content: 'kit/buttons/button.json',
+              content: 'kit/accordion.json',
             },
             resolve: {
               content: ContentResolverService,
             },
           },
           {
-            path: 'button-group',
-            component: ButtonGroupComponent,
+            path: 'auto-complete',
+            component: AutoCompleteComponent,
+            data: {
+              content: 'kit/auto-complete.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
           },
           {
-            path: 'dropdown-menu',
-            component: DropdownMenuComponent,
+            path: 'badge',
+            component: BadgeComponent,
+            data: {
+              content: 'kit/badge.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
+          },
+          {
+            path: 'buttons',
+            component: ButtonsComponent,
+            data: {
+              content: 'kit/buttons.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
           },
         ],
       },

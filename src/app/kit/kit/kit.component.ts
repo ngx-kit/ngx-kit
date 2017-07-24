@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { KitStyle } from './kit.style';
 
@@ -11,11 +11,6 @@ import { KitStyle } from './kit.style';
 })
 export class KitComponent implements OnInit {
   constructor(private styler: StylerComponent) {
-  }
-
-  @HostBinding('attr.sid')
-  get sid() {
-    return this.styler.host.sid;
   }
 
   ngOnInit() {

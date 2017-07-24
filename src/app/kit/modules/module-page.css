@@ -1,0 +1,4 @@
+:host {
+  flex-grow: 1;
+  max-width: 1000px;
+}

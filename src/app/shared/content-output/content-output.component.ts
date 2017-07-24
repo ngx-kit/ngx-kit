@@ -11,11 +11,13 @@ export class ContentOutputComponent implements OnInit, OnChanges {
 
   file: ContentFile;
 
+  @Input() id = 'index';
+
   constructor() {
   }
 
   ngOnChanges() {
-    this.file = this.content.find(f => f.meta.id === 'content');
+    this.file = this.content.find(f => f.meta.id === this.id);
   }
 
   ngOnInit() {

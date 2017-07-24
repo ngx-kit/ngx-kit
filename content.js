@@ -5,7 +5,7 @@ const matter = require('front-matter');
 
 const posts = {};
 
-walker = walk.walk('./content');
+walker = walk.walk('./content/kit');
 
 walker.on('file', function(root, fileStats, next) {
   fs.readFile(fileStats.name, function() {
@@ -14,7 +14,9 @@ walker.on('file', function(root, fileStats, next) {
     // console.log('parse', parsed);
     const post = {
       file: path.normalize(root).replace(/\\/g, '/') + '/' + fileStats.name,
-      meta: parsed.attributes,
+      meta: Object.assign(parsed.attributes, {
+        id: fileStats.name.replace(/\.md/, ''),
+      }),
       body: parsed.body,
     };
     if (posts[post.meta.route]) {

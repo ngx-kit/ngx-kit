@@ -4,20 +4,17 @@
       <a [kitMenuItem] [routerLink]="['']">Overview</a>
       <a [kitMenuItem] [routerLink]="['getting-started']">Getting Started</a>
       <kit-menu-group>
-        <div title>Core</div>
-        <a [kitMenuItem] [routerLink]="['core/overlay']">Overlay</a>
-      </kit-menu-group>
-      <kit-menu-group>
-        <div title>Buttons</div>
-        <a [kitMenuItem] [routerLink]="['buttons/button']">Button</a>
-        <a [kitMenuItem] [routerLink]="['buttons/button-group']">Button Group</a>
-        <a [kitMenuItem] [routerLink]="['buttons/dropdown-menu']">Dropdown Menu</a>
+        <div title>Modules</div>
+        <a [kitMenuItem] [routerLink]="['modules/accordion']">Accordion</a>
+        <a [kitMenuItem] [routerLink]="['modules/auto-complete']">Auto-complete</a>
+        <a [kitMenuItem] [routerLink]="['modules/badge']">Badge</a>
+        <a [kitMenuItem] [routerLink]="['modules/buttons']">Buttons</a>
       </kit-menu-group>
       <kit-menu-separator></kit-menu-separator>
-      <a [kitMenuItem]>Changelog</a>
+      <a [kitMenuItem] href="https://github.com/ngx-kit/ngx-kit/releases" target="_blank">Changelog</a>
       <kit-menu-separator></kit-menu-separator>
-      <a [kitMenuItem]>GitHub</a>
-      <a [kitMenuItem]>Discord</a>
+      <a [kitMenuItem] href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
+      <a [kitMenuItem] href="https://discord.gg/66Tt9WT" target="_blank">Discord</a>
     </kit-menu>
   </kit-layout-side>
   <kit-layout-content styler="content">
