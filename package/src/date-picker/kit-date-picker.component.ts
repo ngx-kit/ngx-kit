@@ -77,15 +77,9 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     return this._date.format('YYYY-MM-DD');
   }
 
-  set value(value: string) {
-    this._date = moment(value);
-    this.updateDatesGrid();
-    this.changes$.next(this.value);
-    this.touches$.next(true);
-  }
-
   ngOnInit() {
     this.weekdays = moment.weekdaysMin();
+    this.updateDatesGrid();
   }
 
   add(amount: any, unit: string): void {
@@ -108,24 +102,28 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   updateDatesGrid() {
+    // set today if empty or invalid
+    if (!this._date || !this._date.isValid()) {
+      this._date = moment();
+    }
+    // calc grids
     this.datesGrid = [];
-    if (this._date) {
-      let cursor = moment(this._date);
-      cursor.startOf('month').startOf('week');
-      let end = moment(this._date);
-      end.endOf('month').endOf('week').add(1, 'day');
-      while (!cursor.isSame(end, 'day')) {
-        this.datesGrid.push({
-          date: moment(cursor),
-          isOutside: cursor.month() != this._date.month(),
-          isActive: cursor.isSame(this._date, 'day'),
-        });
-        cursor.add(1, 'day');
-      }
+    let cursor = moment(this._date);
+    cursor.startOf('month').startOf('week');
+    let end = moment(this._date);
+    end.endOf('month').endOf('week').add(1, 'day');
+    while (!cursor.isSame(end, 'day')) {
+      this.datesGrid.push({
+        date: moment(cursor),
+        isOutside: cursor.month() != this._date.month(),
+        isActive: cursor.isSame(this._date, 'day'),
+      });
+      cursor.add(1, 'day');
     }
   }
 
   writeValue(value: any) {
-    this.value = value;
+    this._date = moment(value);
+    this.updateDatesGrid();
   }
 }
