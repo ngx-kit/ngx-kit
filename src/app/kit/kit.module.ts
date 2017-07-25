@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { KitFullModule, } from '@ngx-kit/ngx-kit';
+import { KitFullModule, KitLoadingBarService, } from '@ngx-kit/ngx-kit';
 import { SharedModule } from '../shared/shared.module';
 import { KitRoutingModule } from './kit-routing.module';
 import { KitComponent } from './kit/kit.component';
@@ -17,6 +17,7 @@ import { DropdownMenuComponent } from './modules/dropdown-menu/dropdown-menu.com
 import { FormComponent } from './modules/form/form.component';
 import { InputComponent } from './modules/input/input.component';
 import { LayoutComponent } from './modules/layout/layout.component';
+import { LoadingBarComponent } from './modules/loading-bar/loading-bar.component';
 import { MathInputComponent } from './modules/math-input/math-input.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { ModalComponent } from './modules/modal/modal.component';
@@ -67,6 +68,10 @@ import { TitleComponent } from './title/title.component';
     TagComponent,
     PaginationComponent,
     PopoverComponent,
+    LoadingBarComponent,
+  ],
+  providers: [
+    KitLoadingBarService,
   ],
 })
 export class KitModule {

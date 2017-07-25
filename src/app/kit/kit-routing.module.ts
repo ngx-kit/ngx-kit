@@ -27,6 +27,7 @@ import { TagComponent } from './modules/tag/tag.component';
 import { TextareaComponent } from './modules/textarea/textarea.component';
 import { ToggleComponent } from './modules/toggle/toggle.component';
 import { TooltipComponent } from './modules/tooltip/tooltip.component';
+import { LoadingBarComponent } from './modules/loading-bar/loading-bar.component';
 
 const routes: Routes = [
   {
@@ -171,6 +172,16 @@ const routes: Routes = [
             component: LayoutComponent,
             data: {
               content: 'kit/layout.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
+          },
+          {
+            path: 'loading-bar',
+            component: LoadingBarComponent,
+            data: {
+              content: 'kit/loading-bar.json',
             },
             resolve: {
               content: ContentResolverService,

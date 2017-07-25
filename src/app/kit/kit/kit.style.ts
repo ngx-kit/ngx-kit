@@ -9,7 +9,6 @@ export class KitStyle implements ComponentStyle {
   }
 
   content(): StyleDef {
-    console.log('! pARAMSD', this.theme.params);
     return {
       padding: 16,
       justifyContent: 'center',
