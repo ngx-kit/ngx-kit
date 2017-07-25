@@ -25,6 +25,7 @@ export const kitComponentLayoutContent = new InjectionToken<KitComponentStyle>('
 export const kitComponentLayoutFooter = new InjectionToken<KitComponentStyle>('kitComponentLayoutFooter');
 export const kitComponentLayoutHeader = new InjectionToken<KitComponentStyle>('kitComponentLayoutHeader');
 export const kitComponentLayoutSide = new InjectionToken<KitComponentStyle>('kitComponentLayoutSide');
+export const kitComponentLoadingBar = new InjectionToken<KitComponentStyle>('kitLoadingBar');
 export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
 export const kitComponentDivider = new InjectionToken<KitComponentStyle>('kitComponentDivider');
 export const kitComponentTag = new InjectionToken<KitComponentStyle>('kitComponentTag');

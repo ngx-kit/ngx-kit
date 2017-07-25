@@ -20,6 +20,7 @@ import {
   kitComponentLayoutFooter,
   kitComponentLayoutHeader,
   kitComponentLayoutSide,
+  kitComponentLoadingBar,
   kitComponentMathInput,
   kitComponentMenu,
   kitComponentMenuGroup,
@@ -59,6 +60,7 @@ import { KitDefaultLayoutFooterStyle } from './styles/layout/kit-default-layout-
 import { KitDefaultLayoutHeaderStyle } from './styles/layout/kit-default-layout-header.style';
 import { KitDefaultLayoutSideStyle } from './styles/layout/kit-default-layout-side.style';
 import { KitDefaultLayoutStyle } from './styles/layout/kit-default-layout.style';
+import { KitDefaultLoadingBarStyle } from './styles/loading-bar/kit-default-loading-bar.style';
 import { KitDefaultMathInputStyle } from './styles/math-input/kit-default-math-input.style';
 import { KitDefaultMenuGroupStyle } from './styles/menu/kit-default-menu-group.style';
 import { KitDefaultMenuItemStyle } from './styles/menu/kit-default-menu-item.style';
@@ -176,6 +178,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentLayoutSide,
           useClass: KitDefaultLayoutSideStyle,
+        },
+        {
+          provide: kitComponentLoadingBar,
+          useClass: KitDefaultLoadingBarStyle,
         },
         {
           provide: kitComponentAccordion,

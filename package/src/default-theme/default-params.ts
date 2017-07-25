@@ -109,6 +109,9 @@ export const defaultParams: KitDefaultThemeParams = {
       color: 'input',
       focusColor: 'brand',
     },
+    loadingBar: {
+      color: 'brand',
+    },
     menu: {
       color: 'body',
       groupTitleFontSize: '.9rem',

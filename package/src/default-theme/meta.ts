@@ -46,6 +46,9 @@ export interface KitDefaultThemeParams {
       color: string;
       focusColor: string;
     },
+    loadingBar: {
+      color: string;
+    },
     menu: {
       color: string;
       groupTitleFontSize: string;

@@ -1,25 +1,4 @@
-const globals = {
-  "typescript": "ts",
-  "@angular/animations": "ng.animations",
-  "@angular/core": "ng.core",
-  "@angular/common": "ng.common",
-  "@angular/http": "ng.http",
-  "@angular/forms": "ng.forms",
-  "@angular/platform-browser": "ng.platform-browser",
-  "@angular/platform-browser/animations": "ng.platform-browser.animations",
-  "@angular/router": "ng.router",
-  "@ngx-kit/styler": "styler",
-  "rxjs/add/observable/combineLatest": "Rx.add",
-  "rxjs/add/observable/of": "Rx.add",
-  "rxjs/add/operator/do": "Rx.add",
-  "rxjs/add/operator/debounceTime": "Rx.add",
-  "rxjs/add/operator/distinctUntilChanged": "Rx.add",
-  "rxjs/add/operator/filter": "Rx.add",
-  "rxjs/add/operator/map": "Rx.add",
-  "rxjs/add/operator/switchMap": "Rx.add",
-  "rxjs/Observable": "Rx",
-  "rxjs/Subject": "Rx"
-};
+const globals = require('./rollup_globals');
 
 export default {
   entry: './dist/package/ngx-kit.js',

@@ -14,6 +14,7 @@ export * from './src/icons/index';
 export * from './src/importer/index';
 export * from './src/input/index';
 export * from './src/layout/index';
+export * from './src/loading-bar/index';
 export * from './src/math-input/index';
 export * from './src/menu/index';
 export * from './src/modal/index';

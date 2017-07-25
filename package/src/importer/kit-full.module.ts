@@ -15,6 +15,7 @@ import { KitFormModule } from '../form/kit-form.module';
 import { KitIconsModule } from '../icons/kit-icons.module';
 import { KitInputModule } from '../input/kit-input.module';
 import { KitLayoutModule } from '../layout/kit-layout.module';
+import { KitLoadingBarModule } from '../loading-bar/kit-loading-bar.module';
 import { KitMathInputModule } from '../math-input/kit-math-input.module';
 import { KitMenuModule } from '../menu/kit-menu.module';
 import { KitModalModule } from '../modal/kit-modal.module';
@@ -47,6 +48,7 @@ const simpleModules = [
   KitIconsModule,
   KitInputModule,
   KitLayoutModule,
+  KitLoadingBarModule,
   KitMathInputModule,
   KitMenuModule,
   KitModalModule,
