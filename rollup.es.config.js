@@ -1,8 +1,8 @@
 const globals = require('./rollup_globals');
 
 export default {
-  entry: './dist/package/ngx-kit.js',
-  dest: './dist/package/module/ngx-kit.js',
+  entry: './dist/build/ngx-kit.js',
+  dest: './dist/release/module/ngx-kit.js',
   format: 'es',
   exports: 'named',
   external: Object.keys(globals),

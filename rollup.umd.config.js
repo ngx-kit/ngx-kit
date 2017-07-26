@@ -1,8 +1,8 @@
 const globals = require('./rollup_globals');
 
 export default {
-  entry: './dist/package/ngx-kit.js',
-  dest: './dist/package/bundle/ngx-kit.umd.js',
+  entry: './dist/build/ngx-kit.js',
+  dest: './dist/release/bundle/ngx-kit.umd.js',
   format: 'umd',
   exports: 'named',
   moduleName: 'styler',

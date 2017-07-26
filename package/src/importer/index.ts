@@ -1,1 +1,1 @@
-export * from './kit-full.module';
+export { KitFullModule, KitFullForRootModule } from './kit-full.module';

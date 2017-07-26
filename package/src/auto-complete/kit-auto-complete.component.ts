@@ -7,7 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentAutoComplete } from '../core/meta/tokens';
 import { KitInputComponent } from '../input/kit-input.component';
-import { KitDataSourceFactory } from './data-source-factory';
+import { KitDataSourceFactory } from './meta';
 
 export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

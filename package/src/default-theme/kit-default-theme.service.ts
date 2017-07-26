@@ -26,28 +26,28 @@ export class KitDefaultThemeService implements KitThemeService {
   }
 
   compileRaws() {
-    // body
-    const bodyColor = this.getColor(this.params.raws.bodyColor);
-    this.stylerService.setRaw('body', {
-      background: bodyColor.background,
-      color: bodyColor.text,
-      fontSize: this.params.raws.bodyFontSize,
-    });
-    // headers
-    for (const tag in this.params.raws.headersSizes) {
-      this.stylerService.setRaw(tag, {
-        fontSize: this.params.raws.headersSizes[tag],
-      });
-    }
-    // links
-    const linkColor = this.getColor(this.params.raws.linkColor);
-    this.stylerService.setRaw('a', {
-      background: linkColor.background,
-      color: linkColor.text,
-    });
-    this.stylerService.setRaw('a:hover', {
-      color: this.colorMod(.1, linkColor.text),
-    });
+//    // body
+//    const bodyColor = this.getColor(this.params.raws.bodyColor);
+//    this.stylerService.setRaw('body', {
+//      background: bodyColor.background,
+//      color: bodyColor.text,
+//      fontSize: this.params.raws.bodyFontSize,
+//    });
+//    // headers
+//    for (const tag in this.params.raws.headersSizes) {
+//      this.stylerService.setRaw(tag, {
+//        fontSize: this.params.raws.headersSizes[tag],
+//      });
+//    }
+//    // links
+//    const linkColor = this.getColor(this.params.raws.linkColor);
+//    this.stylerService.setRaw('a', {
+//      background: linkColor.background,
+//      color: linkColor.text,
+//    });
+//    this.stylerService.setRaw('a:hover', {
+//      color: this.colorMod(.1, linkColor.text),
+//    });
   }
 
   customize(params: KitDefaultThemeCustomizer) {
