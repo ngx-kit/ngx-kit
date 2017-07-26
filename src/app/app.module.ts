@@ -10,7 +10,7 @@ import { RootComponent } from './root/root.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: '_stage'}),
     BrowserAnimationsModule,
     HttpModule,
     KitFullForRootModule,
