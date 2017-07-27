@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class TagComponent implements OnInit {
   content: Content;

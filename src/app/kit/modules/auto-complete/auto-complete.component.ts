@@ -7,7 +7,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-auto-complete',
   templateUrl: './auto-complete.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class AutoCompleteComponent implements OnInit {
   content: Content;

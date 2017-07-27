@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-divider',
   templateUrl: './divider.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class DividerComponent implements OnInit {
   content: Content;

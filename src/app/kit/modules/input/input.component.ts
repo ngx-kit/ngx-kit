@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class InputComponent implements OnInit {
   content: Content;

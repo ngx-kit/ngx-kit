@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class CheckboxComponent implements OnInit {
   checked = false;

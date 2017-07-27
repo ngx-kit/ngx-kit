@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-radop',
   templateUrl: './radio.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class RadioComponent implements OnInit {
   selected = 'first';

@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class PaginationComponent implements OnInit {
   content: Content;

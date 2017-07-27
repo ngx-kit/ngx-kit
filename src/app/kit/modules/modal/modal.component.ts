@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class ModalComponent implements OnInit {
   content: Content;

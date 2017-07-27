@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class DatePickerComponent implements OnInit {
   content: Content;

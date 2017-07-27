@@ -37,4 +37,11 @@ export class KitStyle implements ComponentStyle {
       boxSizing: 'border-box',
     };
   }
+
+  typoContainer(): StyleDef {
+    return {
+      flexGrow: 1,
+      maxWidth: 1000,
+    };
+  }
 }

@@ -6,7 +6,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class BreadcrumbComponent implements OnInit {
   content: Content;

@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-math-input',
   templateUrl: './math-input.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class MathInputComponent implements OnInit {
   content: Content;

@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-dropdown-menu',
   templateUrl: './dropdown-menu.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class DropdownMenuComponent implements OnInit {
   content: Content;

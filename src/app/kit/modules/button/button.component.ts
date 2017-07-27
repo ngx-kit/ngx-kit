@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-kit-buttons',
   templateUrl: './button.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class ButtonComponent implements OnInit {
   content: Content;

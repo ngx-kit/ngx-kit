@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class AccordionComponent implements OnInit {
   content: Content;

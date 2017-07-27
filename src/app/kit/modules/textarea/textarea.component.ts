@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class TextareaComponent implements OnInit {
   content: Content;

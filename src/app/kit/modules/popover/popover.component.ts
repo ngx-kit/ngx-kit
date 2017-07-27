@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-popover',
   templateUrl: './popover.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class PopoverComponent implements OnInit {
   content: Content;

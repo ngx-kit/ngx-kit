@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class LayoutComponent implements OnInit {
   content: Content;

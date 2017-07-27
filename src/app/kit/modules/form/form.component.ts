@@ -6,7 +6,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class FormComponent implements OnInit {
   content: Content;

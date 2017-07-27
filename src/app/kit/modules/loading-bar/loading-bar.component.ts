@@ -8,7 +8,6 @@ import { LoadingBarStyle } from './loading-bar.style';
 @Component({
   selector: 'app-loading-bar',
   templateUrl: './loading-bar.component.html',
-  styleUrls: ['../module-page.css'],
   viewProviders: [
     StylerModule.forComponent(LoadingBarStyle),
   ],

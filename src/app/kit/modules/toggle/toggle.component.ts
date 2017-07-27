@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-toggle',
   templateUrl: './toggle.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class ToggleComponent implements OnInit {
   checked = false;

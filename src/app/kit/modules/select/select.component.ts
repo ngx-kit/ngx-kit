@@ -5,7 +5,6 @@ import { Content } from '../../../interfaces/content';
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['../module-page.css'],
 })
 export class SelectComponent implements OnInit {
   content: Content;

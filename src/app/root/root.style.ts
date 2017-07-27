@@ -27,15 +27,20 @@ export class RootStyle implements ComponentStyle {
   }
 
   host(): StyleDef {
-    return {};
+    const bodyColor = this.kitTheme.getColor('body');
+    return {
+      background: bodyColor.background,
+      color: bodyColor.text,
+    };
   }
 
   logo(): StyleDef {
+    const brandColor = this.kitTheme.getColor('brand');
     return {
       width: this.theme.params.sideWidth,
       padding: 16,
-      background: '#0DD8DF',
-      color: '#fff',
+      background: brandColor.background,
+      color: brandColor.text,
       textDecoration: 'none',
       fontWeight: 600,
       boxSizing: 'border-box',
