@@ -28,6 +28,7 @@ import { KitTagModule } from '../tag/kit-tag.module';
 import { KitTextareaModule } from '../textarea/kit-textarea.module';
 import { KitToggleModule } from '../toggle/kit-toggle.module';
 import { KitTooltipModule } from '../tooltip/kit-tooltip.module';
+import { KitTypoModule } from '../typo/kit-typo.module';
 
 const initableModules = [
   StylerModule,
@@ -61,6 +62,7 @@ const simpleModules = [
   KitTextareaModule,
   KitToggleModule,
   KitTooltipModule,
+  KitTypoModule,
 ];
 
 @NgModule({

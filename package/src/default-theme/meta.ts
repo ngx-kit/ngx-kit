@@ -71,20 +71,20 @@ export interface KitDefaultThemeParams {
       color: string;
       checkedColor: string;
     },
+    typo: {
+      fontSize: string;
+      headingFontSizes: {
+        h1: string;
+        h2: string;
+        h3: string;
+        h4: string;
+        h5: string;
+        h6: string;
+      };
+      textColor: string;
+      linkColor: string;
+    }
   },
-  raws: {
-    bodyColor: string;
-    bodyFontSize: string;
-    headersSizes: {
-      h1: string;
-      h2: string;
-      h3: string;
-      h4: string;
-      h5: string;
-      h6: string;
-    };
-    linkColor: string;
-  }
   shadows: {
     element: string;
     deep: string;

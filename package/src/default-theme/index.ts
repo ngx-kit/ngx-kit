@@ -38,3 +38,4 @@ export * from './styles/dropdown-menu/kit-default-dropdown-menu.style';
 export * from './styles/button/kit-default-button-group.style';
 export * from './styles/button/kit-default-button.style';
 export * from './styles/core/kit-default-overlay-container.style';
+export * from './styles/typo/kit-default-typo-container.style';

@@ -39,3 +39,4 @@ export const kitComponentModal = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
 export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');
 export const kitComponentTabs = new InjectionToken<KitComponentStyle>('kitComponentTabs');
+export const kitComponentTypoContainer = new InjectionToken<KitComponentStyle>('kitComponentTypoContainer');

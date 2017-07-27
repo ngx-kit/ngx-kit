@@ -36,6 +36,7 @@ import {
   kitComponentTextarea,
   kitComponentToggle,
   kitComponentTooltipView,
+  kitComponentTypoContainer,
   kitTheme,
 } from '../core/meta/tokens';
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -75,6 +76,7 @@ import { KitDefaultTagStyle } from './styles/tag/kit-default-tag.style';
 import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.style';
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
+import { KitDefaultTypoContainerStyle } from './styles/typo/kit-default-typo-container.style';
 
 @NgModule({
   imports: [],
@@ -234,6 +236,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentMenuSub,
           useClass: KitDefaultMenuSubStyle,
+        },
+        {
+          provide: kitComponentTypoContainer,
+          useClass: KitDefaultTypoContainerStyle,
         },
       ],
     };

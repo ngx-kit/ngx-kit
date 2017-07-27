@@ -27,3 +27,4 @@ export * from './src/tag/index';
 export * from './src/textarea/index';
 export * from './src/toggle/index';
 export * from './src/tooltip/index';
+export * from './src/typo/index';

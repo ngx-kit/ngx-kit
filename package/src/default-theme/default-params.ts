@@ -134,18 +134,18 @@ export const defaultParams: KitDefaultThemeParams = {
       color: 'button',
       checkedColor: 'brand',
     },
-  },
-  raws: {
-    bodyColor: 'body',
-    bodyFontSize: '13px',
-    headersSizes: {
-      h1: '2.2rem',
-      h2: '1.6rem',
-      h3: '1.4rem',
-      h4: '1.1rem',
-      h5: '1rem',
-      h6: '.9rem',
+    typo: {
+      fontSize: '13px',
+      headingFontSizes: {
+        h1: '2.2rem',
+        h2: '1.6rem',
+        h3: '1.4rem',
+        h4: '1.1rem',
+        h5: '1rem',
+        h6: '.9rem',
+      },
+      textColor: 'body',
+      linkColor: 'link',
     },
-    linkColor: 'link',
   },
 };
