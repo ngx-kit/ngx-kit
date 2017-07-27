@@ -10,7 +10,7 @@
     "build:rollup:umd": "rollup -c rollup.umd.config.js",
     "build:release": "node release.js",
     "build-and-copy": "npm run build && node ./dev/dev-copy.js",
-    "publish": "npm publish ./dist/package --access=public",
+    "publish": "npm publish ./dist/release --access=public",
     "release": "npm run build && npm run publish"
   },
   "private": true,
@@ -26,7 +26,7 @@
     "@angular/platform-browser": "^4.3.1",
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
-    "@ngx-kit/styler": "^1.0.0-beta.4",
+    "@ngx-kit/styler": "^1.0.0-beta.5",
     "fs-extra": "^4.0.0",
     "moment": "^2.18.1",
     "ncp": "^2.0.0",
