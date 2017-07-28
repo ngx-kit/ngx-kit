@@ -86,10 +86,10 @@ export const defaultParams: KitDefaultThemeParams = {
       resultsColor: 'body',
     },
     badge: {
-      defaultColor: 'brand',
+      color: 'brand',
     },
     buttons: {
-      defaultColor: 'button',
+      color: 'button',
       disabledColor: 'disabled',
     },
     checkbox: {
@@ -124,7 +124,7 @@ export const defaultParams: KitDefaultThemeParams = {
       color: 'button',
     },
     tag: {
-      defaultColor: 'button',
+      color: 'button',
     },
     textarea: {
       color: 'input',

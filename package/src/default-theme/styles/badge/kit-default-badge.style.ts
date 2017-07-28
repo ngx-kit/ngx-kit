@@ -15,7 +15,7 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
     size: any,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.badge.defaultColor);
+    const color = this.theme.getColor(state.color || params.modules.badge.color);
     return {
       borderRadius: '1rem',
       display: 'inline-block',

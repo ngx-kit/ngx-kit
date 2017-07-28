@@ -21,7 +21,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     link: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.buttons.defaultColor);
+    const color = this.theme.getColor(state.color || params.modules.buttons.color);
     const disabledColor = this.theme.getColor(params.modules.buttons.disabledColor);
     const styles: StyleDef = this.def.merge([
       {

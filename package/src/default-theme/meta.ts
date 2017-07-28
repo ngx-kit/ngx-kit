@@ -23,10 +23,10 @@ export interface KitDefaultThemeParams {
       resultsColor: string;
     },
     badge: {
-      defaultColor: string;
+      color: string;
     }
     buttons: {
-      defaultColor: string,
+      color: string,
       disabledColor: string,
     },
     checkbox: {
@@ -61,7 +61,7 @@ export interface KitDefaultThemeParams {
       color: string;
     },
     tag: {
-      defaultColor: string;
+      color: string;
     }
     textarea: {
       color: string;

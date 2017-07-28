@@ -14,7 +14,7 @@ export class KitDefaultTagStyle implements KitComponentStyle {
     color: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.tag.defaultColor);
+    const color = this.theme.getColor(state.color || params.modules.tag.color);
     return {
       display: 'inline-block',
       lineHeight: 20,
