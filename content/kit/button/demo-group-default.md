@@ -5,8 +5,8 @@ title: Default group
 
 ```html
 <kit-button-group>
-  <kit-button>Grouped 1</kit-button>
-  <kit-button>Grouped 2</kit-button>
-  <kit-button>Grouped 3</kit-button>
+  <button [kitButton]>Grouped 1</button>
+  <button [kitButton]>Grouped 2</button>
+  <button [kitButton]>Grouped 3</button>
 </kit-button-group>
 ```

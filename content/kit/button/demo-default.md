@@ -4,5 +4,5 @@ title: Default button
 ---
 
 ```html
-<kit-button>Click!</kit-button>
+<button [kitButton]>Click!</button>
 ```

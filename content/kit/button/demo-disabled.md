@@ -4,5 +4,5 @@ title: Disabled button
 ---
 
 ```html
-<kit-button [disabled]="true">Disabled</kit-button>
+<button [kitButton] [disabled]="true">Disabled</button>
 ```

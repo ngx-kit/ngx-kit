@@ -5,8 +5,8 @@ title: Multiple group
 
 ```html
 <kit-button-group [selectable]="true" [multiple]="true">
-  <kit-button>Multi 1</kit-button>
-  <kit-button>Multi 2</kit-button>
-  <kit-button>Multi 3</kit-button>
+  <button [kitButton]>Selectable 1</button>
+  <button [kitButton]>Selectable 2</button>
+  <button [kitButton]>Selectable 3</button>
 </kit-button-group>
 ```

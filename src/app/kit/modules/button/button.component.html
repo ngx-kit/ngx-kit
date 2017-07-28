@@ -1,53 +1,50 @@
 <app-title [link]="'button'">Button</app-title>
 
 <app-demo [content]="content" [id]="'demo-default'">
-  <kit-button>Click!</kit-button>
+  <button [kitButton]>Click!</button>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-colors'">
-  <kit-button [color]="'brand'">Brand color</kit-button>
-  <kit-button [color]="'success'">Success color</kit-button>
-  <kit-button [color]="'warning'">Warning color</kit-button>
-  <kit-button [color]="'error'">Error color</kit-button>
+  <button [kitButton] [color]="'brand'">Brand color</button>
+  <button [kitButton] [color]="'success'">Success color</button>
+  <button [kitButton] [color]="'warning'">Warning color</button>
+  <button [kitButton] [color]="'error'">Error color</button>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-sizes'">
-  <kit-button [size]="'xs'">Size=xs</kit-button>
-  <kit-button [size]="'s'">Size=s</kit-button>
-  <kit-button [size]="'m'">Size=m</kit-button>
-  <kit-button [size]="'l'">Size=l</kit-button>
-  <kit-button [size]="'xl'">Size=xl</kit-button>
-</app-demo>
-<app-demo [content]="content" [id]="'demo-link'">
-  <kit-button [link]="true">Link</kit-button>
+  <button [kitButton] [size]="'xs'">Size=xs</button>
+  <button [kitButton] [size]="'s'">Size=s</button>
+  <button [kitButton] [size]="'m'">Size=m</button>
+  <button [kitButton] [size]="'l'">Size=l</button>
+  <button [kitButton] [size]="'xl'">Size=xl</button>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-disabled'">
-  <kit-button [disabled]="true">Disabled</kit-button>
+  <button [kitButton] [disabled]="true">Disabled</button>
 </app-demo>
 
 <app-demo [content]="content" [id]="'demo-group-default'">
   <kit-button-group>
-    <kit-button>Grouped 1</kit-button>
-    <kit-button>Grouped 2</kit-button>
-    <kit-button>Grouped 3</kit-button>
+    <button [kitButton]>Grouped 1</button>
+    <button [kitButton]>Grouped 2</button>
+    <button [kitButton]>Grouped 3</button>
   </kit-button-group>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-group-vertical'">
   <kit-button-group [direction]="'vertical'">
-    <kit-button>Vert Grouped 1</kit-button>
-    <kit-button>Vert Grouped 2</kit-button>
-    <kit-button>Vert Grouped 3</kit-button>
+    <button [kitButton]>Vert Grouped 1</button>
+    <button [kitButton]>Vert Grouped 2</button>
+    <button [kitButton]>Vert Grouped 3</button>
   </kit-button-group>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-group-selectable'">
   <kit-button-group [selectable]="true">
-    <kit-button>Selectable 1</kit-button>
-    <kit-button>Selectable 2</kit-button>
-    <kit-button>Selectable 3</kit-button>
+    <button [kitButton]>Selectable 1</button>
+    <button [kitButton]>Selectable 2</button>
+    <button [kitButton]>Selectable 3</button>
   </kit-button-group>
 </app-demo>
 <app-demo [content]="content" [id]="'demo-group-multiple'">
   <kit-button-group [selectable]="true" [multiple]="true">
-    <kit-button>Selectable 1</kit-button>
-    <kit-button>Selectable 2</kit-button>
-    <kit-button>Selectable 3</kit-button>
+    <button [kitButton]>Selectable 1</button>
+    <button [kitButton]>Selectable 2</button>
+    <button [kitButton]>Selectable 3</button>
   </kit-button-group>
 </app-demo>
