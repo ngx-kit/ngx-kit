@@ -1,6 +1,6 @@
 ---
 route: kit/button
-title: Button colors
+title: Button color
 ---
 
 ```html

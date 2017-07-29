@@ -1,6 +1,6 @@
 ---
 route: kit/button
-title: Button sizes
+title: Button size
 ---
 
 ```html
