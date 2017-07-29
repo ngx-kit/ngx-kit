@@ -19,6 +19,9 @@ export interface KitDefaultThemeParams {
     h: number;
   };
   modules: {
+    accordion: {
+      color: string,
+    },
     autoComplete: {
       resultsColor: string;
     },

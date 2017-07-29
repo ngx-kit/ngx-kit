@@ -26,7 +26,7 @@ export const defaultParams: KitDefaultThemeParams = {
     },
     {
       name: 'input',
-      background: '#f7f7f7',
+      background: '#FFFFFF',
       text: '#585858',
       border: '#eee',
     },
@@ -41,6 +41,12 @@ export const defaultParams: KitDefaultThemeParams = {
       background: '#ccc',
       text: '#585858',
       border: '#aaa',
+    },
+    {
+      name: 'panel',
+      background: '#f7f7f7',
+      text: '#585858',
+      border: '#eee',
     },
     {
       name: 'success',
@@ -82,6 +88,9 @@ export const defaultParams: KitDefaultThemeParams = {
     default: 'all .3s',
   },
   modules: {
+    accordion: {
+      color: 'panel',
+    },
     autoComplete: {
       resultsColor: 'body',
     },
