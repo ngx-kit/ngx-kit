@@ -8,7 +8,7 @@ import { kitComponentBadge } from '../core/meta/tokens';
  * @todo showZero
  */
 @Component({
-  selector: 'kit-badge,[kit-badge],[kitBadge]',
+  selector: 'kit-badge,[kitBadge]',
   template: `
     {{ count }}
   `,

@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { KitBreadcrumbItem } from './meta';
 
 @Component({
-  selector: 'kit-breadcrumb,[kit-breadcrumb],[kitBreadcrumb]',
+  selector: 'kit-breadcrumb,[kitBreadcrumb]',
   template: `
     <span *ngFor="let item of items; let l = last">
       <a [routerLink]="item.link">{{ item.title }}</a>

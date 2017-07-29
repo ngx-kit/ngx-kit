@@ -8,7 +8,7 @@ import { KitFormGroupComponent } from './kit-form-group.component';
  * @todo default [touched], [dirty] via DI
  */
 @Component({
-  selector: 'kit-form-error,[kit-form-error],[kitFormError]',
+  selector: 'kit-form-error,[kitFormError]',
   template: `
     <ng-content></ng-content>
   `,

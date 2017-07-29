@@ -17,7 +17,7 @@ import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuDirection } from './meta';
 
 @Component({
-  selector: 'kit-menu,[kit-menu],[kitMenu]',
+  selector: 'kit-menu,[kitMenu]',
   template: `
     <ng-content></ng-content>
   `,

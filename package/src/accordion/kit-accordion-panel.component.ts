@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentAccordionPanel } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-accordion-panel,[kit-accordion-panel],[kitAccordionPanel]',
+  selector: 'kit-accordion-panel,[kitAccordionPanel]',
   template: `
     <div [styler]="['title', {active: active}]" (click)="activateClick()">{{ title }}</div>
     <div *ngIf="active" styler="content">

@@ -11,6 +11,10 @@ export class KitDefaultInputStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
+    return {};
+  }
+
+  input(): StyleDef {
     const params = this.theme.params;
     const color = this.theme.getColor(params.modules.input.color);
     const focusColor = this.theme.getColor(params.modules.input.focusColor);

@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentMenuGroup } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-menu-group,[kit-menu-group],[kitMenuGroup]',
+  selector: 'kit-menu-group,[kitMenuGroup]',
   template: `
     <div styler="title">
       <ng-content select="[title]"></ng-content>

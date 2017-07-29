@@ -21,7 +21,7 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
  * @todo cancel pending request
  */
 @Component({
-  selector: 'kit-auto-complete,[kit-auto-complete],[kitAutoComplete]',
+  selector: 'kit-auto-complete,[kitAutoComplete]',
   template: `
     <kit-input (keydown.ArrowUp)="activeUp($event)"
                (keydown.ArrowDown)="activeDown($event)"

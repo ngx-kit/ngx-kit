@@ -13,7 +13,7 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-date-picker,[kit-date-picker],[kitDatePicker]',
+  selector: 'kit-date-picker,[kitDatePicker]',
   template: `
     <div styler="years">
       <div [styler]="['year', {type: 'change'}]" (click)="add(-1, 'year')">&larr;</div>

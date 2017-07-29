@@ -8,7 +8,7 @@ import { kitComponentTooltipView } from '../core/meta/tokens';
  * @todo add pointer
  */
 @Component({
-  selector: 'kit-tooltip-view,[kit-tooltip-view],[kitTooltipView]',
+  selector: 'kit-tooltip-view,[kitTooltipView]',
   template: `
     <kit-overlay-container [type]="'side'"
                            [anchor]="anchor"

@@ -22,7 +22,7 @@ import { KitMenuDirection } from './meta';
  * @todo separator inside group
  */
 @Component({
-  selector: 'kit-menu-sub,[kit-menu-sub],[kitMenuSub]',
+  selector: 'kit-menu-sub,[kitMenuSub]',
   template: `
     <kit-overlay [anchor]="anchor"
                  [opened]="opened"

@@ -9,7 +9,7 @@ import { kitComponentTag } from '../core/meta/tokens';
  * @todo colors presets
  */
 @Component({
-  selector: 'kit-tag,[kit-tag],[kitTag]',
+  selector: 'kit-tag,[kitTag]',
   template: `
     <ng-content></ng-content>
   `,

@@ -8,7 +8,7 @@ import { kitComponentLoadingBar } from '../core/meta/tokens';
 import { KitLoadingBarService } from './kit-loading-bar.service';
 
 @Component({
-  selector: 'kit-loading-bar,[kit-loading-bar],[kitLoadingBar]',
+  selector: 'kit-loading-bar,[kitLoadingBar]',
   template: `
     <div styler="bar" [@load]="loadTrigger | async"></div>
   `,

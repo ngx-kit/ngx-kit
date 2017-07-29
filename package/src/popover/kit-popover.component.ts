@@ -7,7 +7,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
  * @todo handle popup click closing
  */
 @Component({
-  selector: 'kit-popover,[kit-popover],[kitPopover]',
+  selector: 'kit-popover,[kitPopover]',
   template: `
     <ng-content></ng-content>
   `,

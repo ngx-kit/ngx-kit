@@ -6,7 +6,7 @@ import { kitButtonGroupDirection } from './meta';
 
 // @todo proxy enter listener to (action)
 @Component({
-  selector: 'kit-button,[kit-button],[kitButton]',
+  selector: 'kit-button,[kitButton]',
   template: `
     <ng-content></ng-content>
   `,

@@ -15,7 +15,7 @@ import { KitOverlayService } from './kit-overlay.service';
 import { KitOverlayHostComponent } from './overlay-host.component';
 
 @Component({
-  selector: 'kit-overlay,[kit-overlay],[kitOverlay]',
+  selector: 'kit-overlay,[kitOverlay]',
   template: '',
 })
 export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {

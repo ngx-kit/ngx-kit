@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentFormGroup } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-form-label,[kit-form-label],[kitFormLabel]',
+  selector: 'kit-form-label,[kitFormLabel]',
   template: `
     <ng-content></ng-content>
   `,

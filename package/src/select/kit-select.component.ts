@@ -18,7 +18,7 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
  * @todo option output template
  */
 @Component({
-  selector: 'kit-select,[kit-select],[kitSelect]',
+  selector: 'kit-select,[kitSelect]',
   template: `
     <div *ngFor="let option of options"
          [styler]="['option', {selected: option[valueField] === value}]"

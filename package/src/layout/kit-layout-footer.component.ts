@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentLayoutFooter } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-layout-footer,[kit-layout-footer],[kitLayoutFooter]',
+  selector: 'kit-layout-footer,[kitLayoutFooter]',
   template: `
     <ng-content></ng-content>
   `,

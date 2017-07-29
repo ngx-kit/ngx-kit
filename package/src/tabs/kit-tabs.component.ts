@@ -5,7 +5,7 @@ import { kitComponentTabs } from '../core/meta/tokens';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 
 @Component({
-  selector: 'kit-tabs,[kit-tabs],[kitTabs]',
+  selector: 'kit-tabs,[kitTabs]',
   template: `
     <ul styler="nav">
       <li *ngFor="let tab of tabs"

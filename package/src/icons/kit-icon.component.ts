@@ -2,7 +2,7 @@ import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2
 import { KitIconsRegistryService } from './kit-icons-registry.service';
 
 @Component({
-  selector: 'kit-icon,[kit-icon],[kitIcon]',
+  selector: 'kit-icon,[kitIcon]',
   template: `
     <ng-content></ng-content>
   `,

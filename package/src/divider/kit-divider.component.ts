@@ -8,7 +8,7 @@ import { KitComponentStyle } from '../core/meta/component';
  * @todo solve :empty auto-format collision
  */
 @Component({
-  selector: 'kit-divider,[kit-divider],[kitDivider]',
+  selector: 'kit-divider,[kitDivider]',
   template: `
     <div styler="line"></div>
     <div styler="text"><ng-content></ng-content></div>

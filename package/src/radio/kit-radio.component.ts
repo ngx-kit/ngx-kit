@@ -16,7 +16,7 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
  * @todo radio-group
  */
 @Component({
-  selector: 'kit-radio,[kit-radio],[kitRadio]',
+  selector: 'kit-radio,[kitRadio]',
   template: `
     <span styler="radio">
         <input [id]="id"

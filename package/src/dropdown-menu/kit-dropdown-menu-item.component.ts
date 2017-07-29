@@ -5,7 +5,7 @@ import { kitComponentDropdownMenuItem } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
 
 @Component({
-  selector: 'kit-dropdown-menu-item,[kit-dropdown-menu-item],[kitDropdownMenuItem]',
+  selector: 'kit-dropdown-menu-item,[kitDropdownMenuItem]',
   template: `
     <ng-content></ng-content>
   `,

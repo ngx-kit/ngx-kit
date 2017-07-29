@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'kit-tabs-panel,[kit-tabs-panel],[kitTabsPanel]',
+  selector: 'kit-tabs-panel,[kitTabsPanel]',
   template: `
     <div *ngIf="active">
       <ng-content></ng-content>

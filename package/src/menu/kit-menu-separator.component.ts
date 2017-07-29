@@ -5,7 +5,7 @@ import { kitComponentMenuSeparator } from '../core/meta/tokens';
 import { KitMenuDirection } from './meta';
 
 @Component({
-  selector: 'kit-menu-separator,[kit-menu-separator],[kitMenuSeparator]',
+  selector: 'kit-menu-separator,[kitMenuSeparator]',
   template: `
   `,
   viewProviders: [

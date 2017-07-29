@@ -5,7 +5,7 @@ import { kitComponentAccordion } from '../core/meta/tokens';
 import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 
 @Component({
-  selector: 'kit-accordion,[kit-accordion],[kitAccordion]',
+  selector: 'kit-accordion,[kitAccordion]',
   template: `
     <ng-content></ng-content>
   `,

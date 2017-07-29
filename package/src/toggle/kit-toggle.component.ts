@@ -16,7 +16,7 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
  * @todo checkbox-group
  */
 @Component({
-  selector: 'kit-toggle,[kit-toggle],[kitToggle]',
+  selector: 'kit-toggle,[kitToggle]',
   template: `
     <span styler="toggle">
         <input [id]="id"

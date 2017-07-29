@@ -12,7 +12,7 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-textarea,[kit-textarea],[kitTextarea]',
+  selector: 'kit-textarea,[kitTextarea]',
   template: `
     <textarea [ngModel]="value"
               (ngModelChange)="value = $event"

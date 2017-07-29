@@ -25,7 +25,7 @@ import { KitFormErrorComponent } from './kit-form-error.component';
  * @todo process few controls in one group
  */
 @Component({
-  selector: 'kit-form-group,[kit-form-group],[kitFormGroup]',
+  selector: 'kit-form-group,[kitFormGroup]',
   template: `
     <div>
       <ng-content select="kit-form-label"></ng-content>

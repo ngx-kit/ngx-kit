@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentModal } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-modal,[kit-modal],[kitModal]',
+  selector: 'kit-modal,[kitModal]',
   template: `
     <kit-overlay [template]="modalRef"
                  [type]="'center'"

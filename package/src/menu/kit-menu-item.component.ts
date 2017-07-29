@@ -20,7 +20,7 @@ import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuComponent } from './kit-menu.component';
 
 @Component({
-  selector: 'kit-menu-item,[kit-menu-item],[kitMenuItem]',
+  selector: 'kit-menu-item,[kitMenuItem]',
   template: `
     <ng-content></ng-content>
   `,

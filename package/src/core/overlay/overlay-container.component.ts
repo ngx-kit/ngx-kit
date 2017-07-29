@@ -28,7 +28,7 @@ import { kitComponentOverlayContainer, kitTheme } from '../meta/tokens';
  * @todo type=side move from edge
  */
 @Component({
-  selector: 'kit-overlay-container,[kit-overlay-container],[kitOverlayContainer]',
+  selector: 'kit-overlay-container,[kitOverlayContainer]',
   template: `
     <div *ngIf="overlay"
          [@overlay]="{value: overlayTrigger, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"

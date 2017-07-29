@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentLayoutSide } from '../core/meta/tokens';
 
 @Component({
-  selector: 'kit-layout-side,[kit-layout-side],[kitLayoutSide]',
+  selector: 'kit-layout-side,[kitLayoutSide]',
   template: `
     <ng-content></ng-content>
   `,

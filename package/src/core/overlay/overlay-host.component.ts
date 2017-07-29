@@ -3,7 +3,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
 
 @Component({
-  selector: 'kit-overlay-host,[kit-overlay-host],[kitOverlayHost]',
+  selector: 'kit-overlay-host,[kitOverlayHost]',
   template: `
     <kit-overlay-container [overlay]="overlay"
                            [anchor]="anchor"

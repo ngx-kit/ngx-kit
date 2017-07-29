@@ -12,7 +12,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-input,[kit-input],[kitInput]',
+  selector: 'kit-input,[kitInput]',
   template: `
     <input [ngModel]="value"
            (ngModelChange)="value = $event"

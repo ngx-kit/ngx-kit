@@ -8,7 +8,7 @@ import { KitAnchorDirective } from '../core/overlay/anchor.directive';
  * @todo right-click open
  */
 @Component({
-  selector: 'kit-dropdown-menu,[kit-dropdown-menu],[kitDropdownMenu]',
+  selector: 'kit-dropdown-menu,[kitDropdownMenu]',
   template: `
     <kit-overlay [anchor]="anchor"
                  [opened]="opened"

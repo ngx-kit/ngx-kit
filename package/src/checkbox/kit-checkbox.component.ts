@@ -16,7 +16,7 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
  * @todo checkbox-group
  */
 @Component({
-  selector: 'kit-checkbox,[kit-checkbox],[kitCheckbox]',
+  selector: 'kit-checkbox,[kitCheckbox]',
   template: `
     <span styler="checkbox">
         <input [id]="id"
