@@ -11,7 +11,9 @@
     "build:release": "node release.js",
     "build-and-copy": "npm run build && node ./dev/dev-copy.js",
     "publish": "npm publish ./dist/release --access=public",
-    "release": "npm run build && npm run publish"
+    "release": "npm run build && npm run publish",
+    "test": "karma start ./karma.conf.js --browsers Firefox --single-run",
+    "test:local": "karma start ./karma.conf.js"
   },
   "private": true,
   "dependencies": {},
@@ -27,13 +29,23 @@
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
     "@ngx-kit/styler": "^1.0.0-beta.5",
+    "@types/jasmine": "^2.5.53",
+    "awesome-typescript-loader": "^3.2.2",
     "fs-extra": "^4.0.0",
+    "jasmine": "^2.7.0",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.4",
     "moment": "^2.18.1",
     "ncp": "^2.0.0",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.2",
     "rxjs": "^5.4.2",
     "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
     "zone.js": "^0.8.14"
   }
 }

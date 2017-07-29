@@ -31,6 +31,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
   label(): StyleDef {
     return {
       cursor: 'pointer',
+      userSelect: 'none',
     };
   }
 
