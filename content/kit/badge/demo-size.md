@@ -1,6 +1,6 @@
 ---
 route: kit/badge
-title: Badge sizes
+title: Badge size
 ---
 
 ```html

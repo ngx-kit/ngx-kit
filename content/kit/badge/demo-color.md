@@ -1,6 +1,6 @@
 ---
 route: kit/badge
-title: Badge colors
+title: Badge color
 ---
 
 ```html
