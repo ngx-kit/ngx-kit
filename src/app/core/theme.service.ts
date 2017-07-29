@@ -43,22 +43,58 @@ export class ThemeService {
         this.kitTheme.customize({
           colors: [
             {
-              name: 'body',
-              background: '#444',
-              text: '#ddd',
-              border: '#666',
-            },
-            {
               name: 'brand',
               background: '#5cdbff',
               text: '#323232',
               border: '#5cdbff',
             },
             {
+              name: 'body',
+              background: '#444',
+              text: '#ddd',
+              border: '#666',
+            },
+            {
               name: 'link',
               background: 'transparent',
               text: '#5cdbff',
               border: 'transparent',
+            },
+            {
+              name: 'input',
+              background: '#f7f7f7',
+              text: '#585858',
+              border: '#eee',
+            },
+            {
+              name: 'button',
+              background: '#e2e2e2',
+              text: '#585858',
+              border: '#dadada',
+            },
+            {
+              name: 'disabled',
+              background: '#ccc',
+              text: '#585858',
+              border: '#aaa',
+            },
+            {
+              name: 'success',
+              background: '#2dc100',
+              text: '#ffffff',
+              border: '#2dc100',
+            },
+            {
+              name: 'warning',
+              background: '#ffb62f',
+              text: '#ffffff',
+              border: '#ffb62f',
+            },
+            {
+              name: 'error',
+              background: '#ff5500',
+              text: '#ffffff',
+              border: '#ffb62f',
             },
           ],
         });
