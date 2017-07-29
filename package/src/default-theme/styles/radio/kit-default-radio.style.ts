@@ -33,6 +33,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
   label(): StyleDef {
     return {
       cursor: 'pointer',
+      userSelect: 'none',
     };
   }
 

@@ -45,6 +45,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
   label(): StyleDef {
     return {
       cursor: 'pointer',
+      userSelect: 'none',
     };
   }
 

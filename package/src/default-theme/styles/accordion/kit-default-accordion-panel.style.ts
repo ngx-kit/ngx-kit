@@ -37,6 +37,7 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
       height: this.theme.params.grid.v * 4,
       lineHeight: this.theme.params.grid.h * 4,
       paddingLeft: this.theme.params.grid.v * 3,
+      userSelect: 'none',
       ...this.def.toggle(state.active, {}),
     };
   }

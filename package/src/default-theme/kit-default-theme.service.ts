@@ -24,8 +24,14 @@ export class KitDefaultThemeService implements KitThemeService {
     return this.color[this._params.colorMod.type](amount * this._params.colorMod.ratio, color);
   }
 
+  // @todo params validation + fault tolerance
   customize(params: KitDefaultThemeCustomizer) {
-    this._params = mergeDeepAll([{}, defaultParams, params]);
+    this._params = mergeDeepAll([{}, defaultParams, params], {
+      // do not merge arrays
+      arrayMerge: (target: any, source: any) => {
+        return mergeDeep({}, source);
+      },
+    });
     this.stylerService.updateComponents();
   }
 
