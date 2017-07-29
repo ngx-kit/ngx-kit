@@ -44,9 +44,9 @@ export class ThemeService {
           colors: [
             {
               name: 'brand',
-              background: '#5cdbff',
-              text: '#323232',
-              border: '#5cdbff',
+              background: '#0080FF',
+              text: '#ffffff',
+              border: '#0080FF',
             },
             {
               name: 'body',
@@ -62,9 +62,9 @@ export class ThemeService {
             },
             {
               name: 'input',
-              background: '#f7f7f7',
-              text: '#585858',
-              border: '#eee',
+              background: '#55575a',
+              text: '#ffffff',
+              border: '#898989',
             },
             {
               name: 'button',
@@ -79,22 +79,28 @@ export class ThemeService {
               border: '#aaa',
             },
             {
+              name: 'panel',
+              background: '#212121',
+              text: '#ddd',
+              border: '#333',
+            },
+            {
               name: 'success',
-              background: '#2dc100',
+              background: '#36C77C',
               text: '#ffffff',
-              border: '#2dc100',
+              border: '#36C77C',
             },
             {
               name: 'warning',
-              background: '#ffb62f',
+              background: '#E15E3A',
               text: '#ffffff',
-              border: '#ffb62f',
+              border: '#E15E3A',
             },
             {
               name: 'error',
-              background: '#ff5500',
+              background: '#FC5241',
               text: '#ffffff',
-              border: '#ffb62f',
+              border: '#FC5241',
             },
           ],
         });
