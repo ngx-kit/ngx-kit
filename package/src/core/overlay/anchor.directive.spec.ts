@@ -1,22 +1,14 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { KitAnchorDirective } from './anchor.directive';
-
-@Component({
-  selector: 'container',
-  template: `
-    <div [kitAnchor] #anchorRef="anchor"></div>
-  `,
-})
-class ContainerComponent {
-  @ViewChild('anchorRef') anchorRef: KitAnchorDirective;
-}
 
 describe('Core/AnchorDirective', () => {
   let fixture: ComponentFixture<ContainerComponent>;
   let container: ContainerComponent;
   let element: Element;
   let de: DebugElement;
+  let anchoredDiv: any;
   // setup
   beforeEach(async(() =>
       TestBed.configureTestingModule({
@@ -28,6 +20,7 @@ describe('Core/AnchorDirective', () => {
     container = fixture.componentInstance;
     element = fixture.nativeElement;
     de = fixture.debugElement;
+    anchoredDiv = de.query(By.css('.anchored')).nativeElement;
     fixture.detectChanges();
   });
   // specs
@@ -37,9 +30,24 @@ describe('Core/AnchorDirective', () => {
   it('should export directive to param', () => {
     expect(container.anchorRef instanceof KitAnchorDirective).toBeTruthy();
   });
-//  it('should emit click', async(() => {
-//    const div = de.query(By.directive(KitAnchorDirective));
-//
-//    div.nativeElement.click();
-//  }));
+  it('anchor should return nativeEl', () => {
+    expect(container.anchorRef.nativeEl).toBe(anchoredDiv);
+  });
+  it('should emit click', async(() => {
+    anchoredDiv.click();
+    expect(container.clicks).toBeTruthy();
+  }));
 });
+
+// Component with directive
+@Component({
+  selector: 'container',
+  template: `
+    <div [kitAnchor] #anchorRef="anchor" class="anchored" (hostClick)="clicks = true"></div>
+  `,
+})
+class ContainerComponent {
+  @ViewChild('anchorRef') anchorRef: KitAnchorDirective;
+
+  clicks = false;
+}
