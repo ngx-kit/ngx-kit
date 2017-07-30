@@ -9,7 +9,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader?configFileName=./test/tsconfig.json']
+        loaders: ['awesome-typescript-loader?configFileName=./test/tsconfig.spec.json']
       },
     ],
   }

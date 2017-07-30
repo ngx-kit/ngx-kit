@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:ngc && npm run build:release && npm run build:rollup:es && npm run build:rollup:umd",
     "build:clean": "rimraf ./dist",
-    "build:ngc": "ngc",
+    "build:ngc": "ngc -p ./package/tsconfig.package.json",
     "build:rollup:es": "rollup -c rollup.es.config.js",
     "build:rollup:umd": "rollup -c rollup.umd.config.js",
     "build:release": "node release.js",

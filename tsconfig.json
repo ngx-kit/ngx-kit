@@ -1,13 +1,4 @@
 {
-  "angularCompilerOptions": {
-    "genDir": "./dist/build",
-    "skipTemplateCodegen": true,
-    "skipMetadataEmit": false,
-    "strictMetadataEmit": true,
-    "annotateForClosureCompiler": true,
-    "flatModuleOutFile": "ngx-kit.js",
-    "flatModuleId": "@ngx-kit/ngx-kit"
-  },
   "compilerOptions": {
     "target": "es5",
     "module": "es2015",
@@ -37,13 +28,5 @@
         "./node_modules/@ngx-kit/styler"
       ]
     }
-  },
-  "files": [
-    "./package/public_api.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "package/src/**/*.spec.ts"
-  ]
+  }
 }
