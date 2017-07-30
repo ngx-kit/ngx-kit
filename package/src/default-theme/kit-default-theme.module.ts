@@ -31,6 +31,7 @@ import {
   kitComponentOverlayContainer,
   kitComponentRadio,
   kitComponentSelect,
+  kitComponentSpinner,
   kitComponentTabs,
   kitComponentTag,
   kitComponentTextarea,
@@ -71,6 +72,7 @@ import { KitDefaultMenuStyle } from './styles/menu/kit-default-menu.style';
 import { KitDefaultModalStyle } from './styles/modal/kit-default-modal.style';
 import { KitDefaultRadioStyle } from './styles/radio/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './styles/select/kit-default-select.style';
+import { KitDefaultSpinnerStyle } from './styles/spinner/kit-default-spinner.style';
 import { KitDefaultTabsStyle } from './styles/tabs/kit-default-tabs.style';
 import { KitDefaultTagStyle } from './styles/tag/kit-default-tag.style';
 import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.style';
@@ -93,6 +95,23 @@ export class KitDefaultThemeModule {
           provide: kitTheme,
           useClass: KitDefaultThemeService,
         },
+        // styles
+        {
+          provide: kitComponentAccordion,
+          useClass: KitDefaultAccordionStyle,
+        },
+        {
+          provide: kitComponentAccordionPanel,
+          useClass: KitDefaultAccordionPanelStyle,
+        },
+        {
+          provide: kitComponentAutoComplete,
+          useClass: KitDefaultAutoCompleteStyle,
+        },
+        {
+          provide: kitComponentBadge,
+          useClass: KitDefaultBadgeStyle,
+        },
         {
           provide: kitComponentButton,
           useClass: KitDefaultButtonStyle,
@@ -102,24 +121,20 @@ export class KitDefaultThemeModule {
           useClass: KitDefaultButtonGroupStyle,
         },
         {
+          provide: kitComponentCheckbox,
+          useClass: KitDefaultCheckboxStyle,
+        },
+        {
+          provide: kitComponentDivider,
+          useClass: KitDefaultDividerStyle,
+        },
+        {
           provide: kitComponentDropdownMenu,
           useClass: KitDefaultDropdownMenuStyle,
         },
         {
           provide: kitComponentDropdownMenuItem,
           useClass: KitDefaultDropdownMenuItemStyle,
-        },
-        {
-          provide: kitComponentOverlayContainer,
-          useClass: KitDefaultOverlayContainerStyle,
-        },
-        {
-          provide: kitComponentAutoComplete,
-          useClass: KitDefaultAutoCompleteStyle,
-        },
-        {
-          provide: kitComponentCheckbox,
-          useClass: KitDefaultCheckboxStyle,
         },
         {
           provide: kitComponentDatePicker,
@@ -140,26 +155,6 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentInput,
           useClass: KitDefaultInputStyle,
-        },
-        {
-          provide: kitComponentMathInput,
-          useClass: KitDefaultMathInputStyle,
-        },
-        {
-          provide: kitComponentRadio,
-          useClass: KitDefaultRadioStyle,
-        },
-        {
-          provide: kitComponentSelect,
-          useClass: KitDefaultSelectStyle,
-        },
-        {
-          provide: kitComponentTextarea,
-          useClass: KitDefaultTextareaStyle,
-        },
-        {
-          provide: kitComponentToggle,
-          useClass: KitDefaultToggleStyle,
         },
         {
           provide: kitComponentLayout,
@@ -186,36 +181,8 @@ export class KitDefaultThemeModule {
           useClass: KitDefaultLoadingBarStyle,
         },
         {
-          provide: kitComponentAccordion,
-          useClass: KitDefaultAccordionStyle,
-        },
-        {
-          provide: kitComponentAccordionPanel,
-          useClass: KitDefaultAccordionPanelStyle,
-        },
-        {
-          provide: kitComponentBadge,
-          useClass: KitDefaultBadgeStyle,
-        },
-        {
-          provide: kitComponentDivider,
-          useClass: KitDefaultDividerStyle,
-        },
-        {
-          provide: kitComponentTabs,
-          useClass: KitDefaultTabsStyle,
-        },
-        {
-          provide: kitComponentTag,
-          useClass: KitDefaultTagStyle,
-        },
-        {
-          provide: kitComponentTooltipView,
-          useClass: KitDefaultTooltipViewStyle,
-        },
-        {
-          provide: kitComponentModal,
-          useClass: KitDefaultModalStyle,
+          provide: kitComponentMathInput,
+          useClass: KitDefaultMathInputStyle,
         },
         {
           provide: kitComponentMenu,
@@ -236,6 +203,46 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentMenuSub,
           useClass: KitDefaultMenuSubStyle,
+        },
+        {
+          provide: kitComponentModal,
+          useClass: KitDefaultModalStyle,
+        },
+        {
+          provide: kitComponentOverlayContainer,
+          useClass: KitDefaultOverlayContainerStyle,
+        },
+        {
+          provide: kitComponentRadio,
+          useClass: KitDefaultRadioStyle,
+        },
+        {
+          provide: kitComponentSelect,
+          useClass: KitDefaultSelectStyle,
+        },
+        {
+          provide: kitComponentSpinner,
+          useClass: KitDefaultSpinnerStyle,
+        },
+        {
+          provide: kitComponentTabs,
+          useClass: KitDefaultTabsStyle,
+        },
+        {
+          provide: kitComponentTag,
+          useClass: KitDefaultTagStyle,
+        },
+        {
+          provide: kitComponentTextarea,
+          useClass: KitDefaultTextareaStyle,
+        },
+        {
+          provide: kitComponentToggle,
+          useClass: KitDefaultToggleStyle,
+        },
+        {
+          provide: kitComponentTooltipView,
+          useClass: KitDefaultTooltipViewStyle,
         },
         {
           provide: kitComponentTypoContainer,

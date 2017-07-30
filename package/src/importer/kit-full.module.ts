@@ -23,6 +23,7 @@ import { KitPaginationModule } from '../pagination/kit-pagination.module';
 import { KitPopoverModule } from '../popover/kit-popover.module';
 import { KitRadioModule } from '../radio/kit-radio.module';
 import { KitSelectModule } from '../select/kit-select.module';
+import { KitSpinnerModule } from '../spinner/kit-spinner.module';
 import { KitTabsModule } from '../tabs/kit-tabs.module';
 import { KitTagModule } from '../tag/kit-tag.module';
 import { KitTextareaModule } from '../textarea/kit-textarea.module';
@@ -57,6 +58,7 @@ const simpleModules = [
   KitPopoverModule,
   KitRadioModule,
   KitSelectModule,
+  KitSpinnerModule,
   KitTabsModule,
   KitTagModule,
   KitTextareaModule,

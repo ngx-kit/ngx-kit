@@ -132,6 +132,12 @@ export const defaultParams: KitDefaultThemeParams = {
     select: {
       color: 'button',
     },
+    spinner: {
+      color: 'brand',
+      duration: '1.5s',
+      size: 50,
+      type: 'spin-1',
+    },
     tag: {
       color: 'button',
     },
