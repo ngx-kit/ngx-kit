@@ -30,7 +30,6 @@ export class KitLayoutComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     if (this.sides.length > 0) {
-      console.log('side', this.sides);
       this.styler.host.applyState({hasSide: true});
     }
   }

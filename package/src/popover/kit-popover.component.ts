@@ -51,7 +51,6 @@ export class KitPopoverComponent implements OnInit {
   }
 
   private calcPosition(target: Element) {
-    console.log('rect', target.getBoundingClientRect());
     const hostRect = target.getBoundingClientRect();
     this.styleLeft = hostRect.left;
     this.styleTop = hostRect.bottom;

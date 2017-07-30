@@ -10,7 +10,6 @@ export class KitLoadingBarService {
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
-      console.log('ROUTER EVENT', event, event instanceof NavigationStart);
       if (event instanceof NavigationStart) {
         this.start('Router');
       }

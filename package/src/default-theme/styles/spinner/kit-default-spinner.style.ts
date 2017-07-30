@@ -39,7 +39,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
       pointerEvents: 'none',
       boxSizing: 'border-box',
       ...this.def.pick(type, {
-        'spin-1': {
+        'spin-1': () => ({
           border: [border, 'solid', 'transparent'],
           borderTopColor: color.background,
           borderRadius: '50%',
@@ -70,8 +70,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
               boxSizing: 'border-box',
             },
           },
-        },
-        'spin-2': {
+        }),
+        'spin-2': () => ({
           border: [border, 'solid', 'transparent'],
           borderLeftColor: color.background,
           borderRightColor: color.background,
@@ -87,8 +87,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           }),
           animationTimingFunction: 'linear',
           animationIterationCount: 'infinite',
-        },
-        'spin-3': {
+        }),
+        'spin-3': () => ({
           border: [border, 'solid', color.background],
           borderBottomColor: 'transparent',
           borderRadius: '50%',
@@ -104,8 +104,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           }),
           animationTimingFunction: 'linear',
           animationIterationCount: 'infinite',
-        },
-        'ping-1': {
+        }),
+        'ping-1': () => ({
           border: [border, 'solid', color.background],
           borderRadius: '50%',
           animationDuration: duration,
@@ -124,8 +124,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           }),
           animationTimingFunction: 'ease-out',
           animationIterationCount: 'infinite',
-        },
-        'ping-2': {
+        }),
+        'ping-2': () => ({
           backgroundColor: color.background,
           borderRadius: '50%',
           animationDuration: duration,
@@ -140,8 +140,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           }),
           animationTimingFunction: 'ease-in-out',
           animationIterationCount: 'infinite',
-        },
-        'tile-1': {
+        }),
+        'tile-1': () => ({
           backgroundColor: color.background,
           animationDuration: duration,
           animationName: this.stylerService.keyframes({
@@ -157,7 +157,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           }),
           animationTimingFunction: 'ease-in-out',
           animationIterationCount: 'infinite',
-        },
+        }),
         'tile-2': () => {
           const tile = (): Style => {
             const shadowSize = Math.round(size / 2);
@@ -200,20 +200,6 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           };
         },
       }),
-//      border: ['.2em', 'dotted', color],
-//      borderRadius: '50%',
-//      animation: '1s loader-01 linear infinite',
-//      animationDuration: '1s',
-//      animationName: this.stylerService.keyframes({
-//        '0%': {
-//          transform: 'rotate(0deg)',
-//        },
-//        '100%': {
-//          transform: 'rotate(360deg)',
-//        },
-//      }),
-//      animationTimingFunction: 'linear',
-//      animationIterationCount: 'infinite',
     };
   }
 }
