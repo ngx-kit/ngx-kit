@@ -7,7 +7,7 @@ describe('Core/KitCoreService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [KitCoreService],
   }));
-  beforeEach(inject([KitCoreService], s => {
+  beforeEach(inject([KitCoreService], (s: KitCoreService) => {
     service = s;
   }));
   // specs

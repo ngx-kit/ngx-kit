@@ -14,11 +14,11 @@ import { kitComponentSpinner } from '../core/meta/tokens';
 export class KitSpinnerComponent {
   @Input() color: string;
 
+  @Input() duration: string;
+
   @Input() kitSpinner: any;
 
   @Input() size: number;
-
-  @Input() duration: string;
 
   @Input() type: string;
 
