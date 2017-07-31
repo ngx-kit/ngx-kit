@@ -2,7 +2,7 @@
 
 ## Demos
 
-https://ngx-kit.com/kit/modules/buttons
+https://ngx-kit.com/kit/modules/button
 
 ## API
 
