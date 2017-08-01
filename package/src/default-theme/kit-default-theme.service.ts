@@ -33,7 +33,7 @@ export class KitDefaultThemeService implements KitThemeService {
   getModuleColor(module: string, colorIndex: string | null) {
     const moduleColors = this._params[`module${module}`].colors;
     if (!moduleColors) {
-      throw new Error(`Module ${moduleColors} not found in params!`);
+      throw new Error(`"module${module}.colors" not found in params!`);
     }
     if (colorIndex) {
       const color = moduleColors[colorIndex];

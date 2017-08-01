@@ -3,7 +3,7 @@ export interface KitDefaultThemeParams {
   colors: KitDefaultThemeParamsColors;
   grid: KitDefaultThemeParamsGrid;
   moduleAccordion: KitDefaultThemeParamsAccordion;
-  moduleAlert: any;
+  moduleAlert: KitDefaultThemeParamsAlert;
   moduleAutoComplete: KitDefaultThemeParamsAutoComplete;
   moduleBadge: KitDefaultThemeParamsBadge;
   moduleButton: KitDefaultThemeParamsButton;
@@ -55,6 +55,21 @@ export interface KitDefaultThemeParamsAccordion {
       text: string;
     }
   };
+}
+
+export interface KitDefaultThemeParamsAlert {
+  colors: {
+    info: KitDefaultThemeParamsAlertColor;
+    success: KitDefaultThemeParamsAlertColor;
+    warning: KitDefaultThemeParamsAlertColor;
+    error: KitDefaultThemeParamsAlertColor;
+  };
+}
+
+export interface KitDefaultThemeParamsAlertColor {
+  background: string,
+  border: string,
+  text: string,
 }
 
 export interface KitDefaultThemeParamsAutoComplete {

@@ -3,6 +3,7 @@ import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler'
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { KitDefaultThemeParamsButtonColor } from '../../meta';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitComponentStyle {
@@ -12,7 +13,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
   }
 
   host(state: {
-    color: 'default' | 'primary';
+    color: string;
     size: 'xs' | 's' | 'm' | 'l' | 'xs';
     grouped: 'none' | 'horizontal' | 'vertical';
     selected: boolean;
@@ -20,7 +21,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     loading: boolean;
     link: boolean;
   }): StyleDef {
-    const color = this.theme.getModuleColor('Button', state.color);
+    const color = this.theme.getModuleColor('Button', state.color) as KitDefaultThemeParamsButtonColor;
     const styles: StyleDef = this.def.merge([
       {
         position: 'relative',

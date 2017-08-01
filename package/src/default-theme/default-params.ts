@@ -1,6 +1,7 @@
 import {
   KitDefaultThemeParams,
   KitDefaultThemeParamsAccordion,
+  KitDefaultThemeParamsAlert,
   KitDefaultThemeParamsAutoComplete,
   KitDefaultThemeParamsBadge,
   KitDefaultThemeParamsButton,
@@ -34,15 +35,19 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   get colors() {
     return {
       white: '#fff',
+      lightBlue1: '#92ccff',
       blue1: '#0084ff',
       blue2: '#0071e2',
       blue3: '#0066cb',
+      lightGreen1: '#a5e396',
       green1: '#2dc100',
       green2: '#2bab00',
       green3: '#259100',
+      lightOrange1: '#fff198',
       orange1: '#ffb62f',
       orange2: '#e0a527',
       orange3: '#d69714',
+      lightRed1: '#ffcdca',
       red1: '#ff5500',
       red2: '#e14c00',
       red3: '#cb4000',
@@ -83,8 +88,31 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     };
   }
 
-  get moduleAlert() {
-    return {};
+  get moduleAlert(): KitDefaultThemeParamsAlert {
+    return {
+      colors: {
+        info: {
+          background: this.colors.lightBlue1,
+          border: this.colors.blue1,
+          text: `rgba(0,0,0,.7)`,
+        },
+        success: {
+          background: this.colors.lightGreen1,
+          border: this.colors.green1,
+          text: `rgba(0,0,0,.7)`,
+        },
+        warning: {
+          background: this.colors.lightOrange1,
+          border: this.colors.orange1,
+          text: `rgba(0,0,0,.7)`,
+        },
+        error: {
+          background: this.colors.lightRed1,
+          border: this.colors.red1,
+          text: `rgba(0,0,0,.7)`,
+        },
+      },
+    };
   }
 
   get moduleAutoComplete(): KitDefaultThemeParamsAutoComplete {
@@ -175,18 +203,18 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         },
         success: {
           base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
+            background: this.colors.green1,
+            border: this.colors.green1,
             text: this.colors.white,
           },
           hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
+            background: this.colors.green2,
+            border: this.colors.green2,
             text: this.colors.white,
           },
           active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
+            background: this.colors.green3,
+            border: this.colors.green3,
             text: this.colors.white,
           },
           disabled,
