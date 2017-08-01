@@ -349,3 +349,6 @@ export interface KitDefaultThemeParamsShadows {
 export interface KitDefaultThemeParamsTransitions {
   'default': string;
 }
+
+export type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]>; };
+export type KitDefaultThemeParamsDef = DeepPartial<KitDefaultThemeParams>;
