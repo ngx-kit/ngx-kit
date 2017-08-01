@@ -14,6 +14,7 @@ export class RootComponent {
   hljsTheme = 'hljs-theme-default';
 
   constructor(private theme: ThemeService) {
+    this.theme.applyTheme('default');
   }
 
   applyTheme(name: string) {

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { KitRoutingModule } from './kit-routing.module';
 import { KitComponent } from './kit/kit.component';
 import { AccordionComponent } from './modules/accordion/accordion.component';
+import { AlertComponent } from './modules/alert/alert.component';
 import { AutoCompleteComponent } from './modules/auto-complete/auto-complete.component';
 import { BadgeComponent } from './modules/badge/badge.component';
 import { BreadcrumbComponent } from './modules/breadcrumb/breadcrumb.component';
@@ -25,6 +26,7 @@ import { PaginationComponent } from './modules/pagination/pagination.component';
 import { PopoverComponent } from './modules/popover/popover.component';
 import { RadioComponent } from './modules/radio/radio.component';
 import { SelectComponent } from './modules/select/select.component';
+import { SpinnerComponent } from './modules/spinner/spinner.component';
 import { TabsComponent } from './modules/tabs/tabs.component';
 import { TagComponent } from './modules/tag/tag.component';
 import { TextareaComponent } from './modules/textarea/textarea.component';
@@ -46,6 +48,7 @@ import { TitleComponent } from './title/title.component';
     BreadcrumbComponent,
     ButtonComponent,
     AccordionComponent,
+    AlertComponent,
     AutoCompleteComponent,
     BadgeComponent,
     CheckboxComponent,
@@ -69,6 +72,7 @@ import { TitleComponent } from './title/title.component';
     PaginationComponent,
     PopoverComponent,
     LoadingBarComponent,
+    SpinnerComponent,
   ],
   providers: [
     KitLoadingBarService,

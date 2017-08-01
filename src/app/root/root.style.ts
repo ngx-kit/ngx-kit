@@ -7,7 +7,7 @@ import { ThemeService } from '../core/theme.service';
 export class RootStyle implements ComponentStyle {
   constructor(private def: StylerDefService,
               private theme: ThemeService,
-              @Inject(kitTheme) private kitTheme: KitDefaultThemeService) {
+              @Inject(kitTheme) private kitThemeService: KitDefaultThemeService) {
   }
 
   footer(): StyleDef {
@@ -27,20 +27,15 @@ export class RootStyle implements ComponentStyle {
   }
 
   host(): StyleDef {
-    const bodyColor = this.kitTheme.getColor('body');
-    return {
-      background: bodyColor.background,
-      color: bodyColor.text,
-    };
+    return {};
   }
 
   logo(): StyleDef {
-    const brandColor = this.kitTheme.getColor('brand');
     return {
       width: this.theme.params.sideWidth,
       padding: 16,
-      background: brandColor.background,
-      color: brandColor.text,
+      background: this.theme.params.logoColor,
+      color: '#fff',
       textDecoration: 'none',
       fontWeight: 600,
       boxSizing: 'border-box',
@@ -56,7 +51,7 @@ export class RootStyle implements ComponentStyle {
 
   themeButton(): StyleDef {
     return {
-      padding: [0, this.kitTheme.params.grid.h * 2],
+      padding: [0, this.kitThemeService.params.grid.h * 2],
     }
   }
 }

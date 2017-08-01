@@ -35,6 +35,7 @@ export class KitStyle implements ComponentStyle {
       background: this.theme.params.sideColor,
       padding: 8,
       boxSizing: 'border-box',
+      overflowY: 'scroll',
     };
   }
 
