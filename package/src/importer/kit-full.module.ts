@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
 import { KitAccordionModule } from '../accordion/kit-accordion.module';
+import { KitAlertModule } from '../alert/kit-alert.module';
 import { KitAutoCompleteModule } from '../auto-complete/kit-auto-complete.module';
 import { KitBadgeModule } from '../badge/kit-badge.module';
 import { KitBreadcrumbModule } from '../breadcrumd/kit-breadcrumb.module';
@@ -38,6 +39,7 @@ const initableModules = [
 ];
 const simpleModules = [
   KitAccordionModule,
+  KitAlertModule,
   KitAutoCompleteModule,
   KitBadgeModule,
   KitBreadcrumbModule,

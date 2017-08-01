@@ -15,21 +15,29 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
 
   textarea(): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.textarea.color);
-    const focusColor = this.theme.getColor(params.modules.textarea.focusColor);
-
     return {
-      border: [params.border.width, 'solid', color.border],
-      borderRadius: params.border.radius.s,
+      background: params.moduleTextarea.colors.base.background,
+      border: [params.borders.width, 'solid', params.moduleTextarea.colors.base.border],
+      borderRadius: params.borders.radius.s,
+      color: params.moduleTextarea.colors.base.text,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       $nest: {
+        '&:hover': {
+          background: params.moduleInput.colors.hover.background,
+          borderColor: params.moduleInput.colors.hover.border,
+          color: params.moduleInput.colors.hover.text,
+          outline: 'none',
+        },
         '&:focus': {
-          borderColor: focusColor.background,
+          background: params.moduleInput.colors.focus.background,
+          borderColor: params.moduleInput.colors.focus.border,
+          color: params.moduleInput.colors.focus.text,
           transition: '0.8s',
+          outline: 'none',
         },
       },
-    }
+    };
   }
 }

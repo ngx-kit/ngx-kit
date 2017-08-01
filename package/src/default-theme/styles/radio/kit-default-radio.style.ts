@@ -51,8 +51,6 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
 
   view(state: {checked: boolean, hover: boolean}): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.radio.color);
-    const checkedColor = this.theme.getColor(params.modules.radio.checkedColor);
     return {
       position: 'relative',
       top: 0,
@@ -60,11 +58,12 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
       display: 'block',
       width: 14,
       height: 14,
-      border: [1, 'solid', color.border],
+      background: params.moduleRadio.colors.base.background,
+      border: [1, 'solid', params.moduleRadio.colors.base.border],
       borderRadius: '50%',
       transition: params.transitions.default,
       ...this.def.toggle(state.checked, {
-        borderColor: checkedColor.background,
+        borderColor: params.moduleRadio.colors.checked.background,
         $nest: {
           '&:after': {
             position: 'absolute',
@@ -73,7 +72,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
             display: 'table',
             width: 6,
             height: 6,
-            backgroundColor: checkedColor.background,
+            backgroundColor: params.moduleRadio.colors.checked.dot,
             border: 0,
             borderRadius: '50%',
             content: '" "',
@@ -81,7 +80,8 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
         },
       }),
       ...this.def.toggle(state.hover, {
-        borderColor: checkedColor.background,
+        background: params.moduleRadio.colors.checked.background,
+        borderColor: params.moduleRadio.colors.checked.border,
       }),
     }
   }

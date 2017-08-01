@@ -1,6 +1,7 @@
 export * from './src/core/index';
 export * from './src/default-theme/index';
 export * from './src/accordion/index';
+export * from './src/alert/index';
 export * from './src/auto-complete/index';
 export * from './src/badge/index';
 export * from './src/breadcrumd/index';

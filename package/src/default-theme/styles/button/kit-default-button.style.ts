@@ -12,7 +12,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
   }
 
   host(state: {
-    color: string;
+    color: 'default' | 'primary';
     size: 'xs' | 's' | 'm' | 'l' | 'xs';
     grouped: 'none' | 'horizontal' | 'vertical';
     selected: boolean;
@@ -20,9 +20,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     loading: boolean;
     link: boolean;
   }): StyleDef {
-    const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.buttons.color);
-    const disabledColor = this.theme.getColor(params.modules.buttons.disabledColor);
+    const color = this.theme.getModuleColor('Button', state.color);
     const styles: StyleDef = this.def.merge([
       {
         position: 'relative',
@@ -40,53 +38,68 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
         lineHeight: '1.42857',
         borderRadius: '3px',
         userSelect: 'none',
-        boxShadow: params.shadows.element,
-        background: color.background,
-        borderColor: color.border,
-        color: color.text,
-        $nest: {
-          '&:hover': {
-            background: this.theme.colorMod(.05, color.background),
-          },
-        },
+        boxShadow: this.theme.params.shadows.element,
       },
-      this.def.pick(state.size, {
-        xs: {
-          padding: `${params.grid.v / 8}px ${params.grid.h / 2}px`,
-          fontSize: '.8rem',
-        },
-        s: {
-          padding: `${params.grid.v / 4}px ${params.grid.h}px`,
-          fontSize: '1rem',
-        },
-        m: {
-          padding: `${params.grid.v / 2}px ${params.grid.h * 1.5}px`,
-          fontSize: '1.1rem',
-        },
-        l: {
-          padding: `${params.grid.v}px ${params.grid.h * 2.5}px`,
-          fontSize: '1.3rem',
-        },
-        xl: {
-          padding: `${params.grid.v * 2}px ${params.grid.h * 4}px`,
-          fontSize: '1.6rem',
-        },
-      }, 'm'),
-      this.def.toggle(state.link, {
-        boxShadow: 'none',
-        paddingLeft: 0,
-        paddingRight: 0,
-        background: 'transparent',
-        borderColor: 'transparent',
-        color: color.background,
+      this.def.toggle(state.disabled, {
+        cursor: 'default',
+        background: color.disabled.background,
+        borderColor: color.disabled.border,
+        color: color.disabled.text,
+      }, {
+        cursor: 'pointer',
+        background: color.base.background,
+        borderColor: color.base.border,
+        color: color.base.text,
         $nest: {
           '&:hover': {
-            color: this.theme.colorMod(.05, color.background),
-            background: 'transparent',
-            textDecoration: 'underline',
+            background: color.hover.background,
+            borderColor: color.hover.border,
+            color: color.hover.text,
+          },
+          '&:active': {
+            background: color.active.background,
+            borderColor: color.active.border,
+            color: color.active.text,
           },
         },
       }),
+      this.def.pick(state.size, {
+        xs: {
+          padding: `${this.theme.params.grid.v / 8}px ${this.theme.params.grid.h / 2}px`,
+          fontSize: '.8rem',
+        },
+        s: {
+          padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
+          fontSize: '1rem',
+        },
+        m: {
+          padding: `${this.theme.params.grid.v / 2}px ${this.theme.params.grid.h * 1.5}px`,
+          fontSize: '1.1rem',
+        },
+        l: {
+          padding: `${this.theme.params.grid.v}px ${this.theme.params.grid.h * 2.5}px`,
+          fontSize: '1.3rem',
+        },
+        xl: {
+          padding: `${this.theme.params.grid.v * 2}px ${this.theme.params.grid.h * 4}px`,
+          fontSize: '1.6rem',
+        },
+      }, 'm'),
+//      this.def.toggle(state.link, {
+//        boxShadow: 'none',
+//        paddingLeft: 0,
+//        paddingRight: 0,
+//        background: 'transparent',
+//        borderColor: 'transparent',
+//        color: color.background,
+//        $nest: {
+//          '&:hover': {
+//            color: this.theme.colorMod(.05, color.background),
+//            background: 'transparent',
+//            textDecoration: 'underline',
+//          },
+//        },
+//      }),
       this.def.pick(state.grouped, {
         horizontal: {
           borderRadius: 0,
@@ -118,19 +131,6 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
             '&:not(:first-child)': {
               borderTop: 0,
             },
-          },
-        },
-      }),
-      this.def.toggle(state.disabled, {
-        cursor: 'default',
-        background: disabledColor.background,
-        borderColor: disabledColor.border,
-        color: disabledColor.text,
-        $nest: {
-          '&:hover': {
-            background: disabledColor.background,
-            borderColor: disabledColor.border,
-            color: disabledColor.text,
           },
         },
       }),

@@ -12,7 +12,7 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
 
   host(): StyleDef {
     return {
-//      padding: [this.theme.params.grid.v, this.theme.params.grid.h],
+      padding: [this.theme.params.grid.v, this.theme.params.grid.h],
     };
   }
 
@@ -25,7 +25,7 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
   title(): StyleDef {
     return {
       color: '#888',
-      fontSize: this.theme.params.modules.menu.groupTitleFontSize,
+      fontSize: this.theme.params.moduleMenu.titleFontSize,
       padding: [this.theme.params.grid.v / 2, this.theme.params.grid.h],
     };
   }

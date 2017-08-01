@@ -25,11 +25,11 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
     type: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.spinner.color);
-    const duration = state.duration || params.modules.spinner.duration;
-    const size = state.size || params.modules.spinner.size;
+    const color = state.color ? params.colors[state.color] : params.moduleSpinner.defaultColor;
+    const duration = state.duration || params.moduleSpinner.duration;
+    const size = state.size || params.moduleSpinner.size;
     const border = Math.round(size / 5);
-    const type = state.type || params.modules.spinner.type;
+    const type = state.type || params.moduleSpinner.type;
     return {
       display: 'inline-block',
       width: size,
@@ -41,7 +41,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
       ...this.def.pick(type, {
         'spin-1': () => ({
           border: [border, 'solid', 'transparent'],
-          borderTopColor: color.background,
+          borderTopColor: color,
           borderRadius: '50%',
           position: 'relative',
           animationDuration: duration,
@@ -64,7 +64,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
               position: 'absolute',
               top: -border,
               left: -border,
-              border: [border, 'solid', color.background],
+              border: [border, 'solid', color],
               borderRadius: '50%',
               opacity: .5,
               boxSizing: 'border-box',
@@ -73,8 +73,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
         }),
         'spin-2': () => ({
           border: [border, 'solid', 'transparent'],
-          borderLeftColor: color.background,
-          borderRightColor: color.background,
+          borderLeftColor: color,
+          borderRightColor: color,
           borderRadius: '50%',
           animationDuration: duration,
           animationName: this.stylerService.keyframes({
@@ -89,7 +89,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           animationIterationCount: 'infinite',
         }),
         'spin-3': () => ({
-          border: [border, 'solid', color.background],
+          border: [border, 'solid', color],
           borderBottomColor: 'transparent',
           borderRadius: '50%',
           position: 'relative',
@@ -106,7 +106,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           animationIterationCount: 'infinite',
         }),
         'ping-1': () => ({
-          border: [border, 'solid', color.background],
+          border: [border, 'solid', color],
           borderRadius: '50%',
           animationDuration: duration,
           animationName: this.stylerService.keyframes({
@@ -126,7 +126,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           animationIterationCount: 'infinite',
         }),
         'ping-2': () => ({
-          backgroundColor: color.background,
+          backgroundColor: color,
           borderRadius: '50%',
           animationDuration: duration,
           animationName: this.stylerService.keyframes({
@@ -142,7 +142,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
           animationIterationCount: 'infinite',
         }),
         'tile-1': () => ({
-          backgroundColor: color.background,
+          backgroundColor: color,
           animationDuration: duration,
           animationName: this.stylerService.keyframes({
             '0%': {
@@ -165,20 +165,20 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
               content: '""',
               display: 'block',
               position: 'absolute',
-              backgroundColor: color.background,
+              backgroundColor: color,
               left: '50%',
               right: 0,
               top: 0,
               bottom: '50%',
-              boxShadow: `-${shadowSize}px 0 0 ${color.background}`,
+              boxShadow: `-${shadowSize}px 0 0 ${color}`,
               animationDuration: duration,
               animationName: this.stylerService.keyframes({
                 '0%, 100%': {
                   boxShadow: `-${shadowSize}px 0 0 transparent`,
-                  backgroundColor: color.background,
+                  backgroundColor: color,
                 },
                 '50%': {
-                  boxShadow: `-${shadowSize}px 0 0 ${color.background}`,
+                  boxShadow: `-${shadowSize}px 0 0 ${color}`,
                   backgroundColor: 'transparent',
                 },
               }),

@@ -6,8 +6,7 @@ import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultInputStyle implements KitComponentStyle {
-  constructor(private color: StylerColorService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -16,21 +15,28 @@ export class KitDefaultInputStyle implements KitComponentStyle {
 
   input(): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.input.color);
-    const focusColor = this.theme.getColor(params.modules.input.focusColor);
     return {
-      background: color.background,
-      border: [params.border.width, 'solid', color.border],
-      borderRadius: params.border.radius.s,
+      background: params.moduleInput.colors.base.background,
+      border: [params.borders.width, 'solid', params.moduleInput.colors.base.border],
+      borderRadius: params.borders.radius.s,
       boxSizing: 'border-box',
-      color: color.text,
+      color: params.moduleInput.colors.base.text,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       $nest: {
+        '&:hover': {
+          background: params.moduleInput.colors.hover.background,
+          borderColor: params.moduleInput.colors.hover.border,
+          color: params.moduleInput.colors.hover.text,
+          outline: 'none',
+        },
         '&:focus': {
-          borderColor: focusColor.background,
+          background: params.moduleInput.colors.focus.background,
+          borderColor: params.moduleInput.colors.focus.border,
+          color: params.moduleInput.colors.focus.text,
           transition: '0.8s',
+          outline: 'none',
         },
       },
     };

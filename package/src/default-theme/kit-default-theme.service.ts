@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { mergeDeep, mergeDeepAll, StylerColorService, StylerService } from '@ngx-kit/styler';
-import { KitThemeColor, KitThemeService } from '../core/meta/theme';
-import { defaultParams } from './default-params';
-import { KitDefaultThemeCustomizer, KitDefaultThemeParams } from './meta';
+import { StylerColorService, StylerService } from '@ngx-kit/styler';
+import { KitThemeService } from '../core/meta/theme';
+import { KitDefaultThemeDefaultParams } from './default-params';
+import { KitDefaultThemeParams } from './meta';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
@@ -10,37 +10,39 @@ export class KitDefaultThemeService implements KitThemeService {
 
   overlayOpenAnimationTimings = '150ms cubic-bezier(0.0, 0.0, 0.2, 1)';
 
-  private _params: KitDefaultThemeParams = mergeDeep({}, defaultParams);
+  private _params: KitDefaultThemeParams;
 
   constructor(private color: StylerColorService,
               private stylerService: StylerService) {
+    this.applyParams(new KitDefaultThemeDefaultParams());
   }
 
-  get params() {
+  get params(): KitDefaultThemeParams {
     return this._params;
   }
 
-  colorMod(amount: number, color: string): string {
-    return this.color[this._params.colorMod.type](amount * this._params.colorMod.ratio, color);
-  }
-
-  // @todo params validation + fault tolerance
-  customize(params: KitDefaultThemeCustomizer) {
-    this._params = mergeDeepAll([{}, defaultParams, params], {
-      // do not merge arrays
-      arrayMerge: (target: any, source: any) => {
-        return mergeDeep({}, source);
-      },
-    });
+  applyParams(paramsFactory: KitDefaultThemeParams) {
+    const params: any = {};
+    for (const key in paramsFactory) {
+      params[key] = paramsFactory[key];
+    }
+    this._params = params;
     this.stylerService.updateComponents();
   }
 
-  getColor(name: string): KitThemeColor {
-    const color = this._params.colors.find(c => c.name === name);
-    if (color) {
+  getModuleColor(module: string, colorIndex: string | null) {
+    const moduleColors = this._params[`module${module}`].colors;
+    if (!moduleColors) {
+      throw new Error(`Module ${moduleColors} not found in params!`);
+    }
+    if (colorIndex) {
+      const color = moduleColors[colorIndex];
+      if (!color) {
+        throw new Error(`Color "${colorIndex}" not found in module "${module}"!`);
+      }
       return color;
     } else {
-      throw new Error(`Color ${name} not found!`);
+      return moduleColors[Object.keys(moduleColors)[0]];
     }
   }
 }

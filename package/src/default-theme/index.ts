@@ -5,6 +5,7 @@ export * from './meta';
 // styles
 export * from './styles/accordion/kit-default-accordion-panel.style';
 export * from './styles/accordion/kit-default-accordion.style';
+export * from './styles/alert/kit-default-alert.style';
 export * from './styles/auto-complete/kit-default-auto-complete.style';
 export * from './styles/badge/kit-default-badge.style';
 export * from './styles/checkbox/kit-default-checkbox.style';

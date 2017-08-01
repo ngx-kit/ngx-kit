@@ -3,6 +3,7 @@ import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { KitDefaultThemeParamsBadgeColor } from '../../meta';
 
 @Injectable()
 export class KitDefaultBadgeStyle implements KitComponentStyle {
@@ -12,10 +13,9 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
 
   host(state: {
     color: string,
-    size: any,
+    size: 's' | 'm' | 'l',
   }): StyleDef {
-    const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.badge.color);
+    const color = this.theme.getModuleColor('Badge', state.color) as KitDefaultThemeParamsBadgeColor;
     return {
       borderRadius: '1rem',
       display: 'inline-block',
@@ -25,17 +25,18 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
       lineHeight: '1',
       background: color.background,
       color: color.text,
+      border: [1, 'solid', color.border],
       ...this.def.pick(state.size, {
         s: {
-          padding: `${params.grid.v / 4}px ${params.grid.h / 2}px`,
+          padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h / 2}px`,
           fontSize: '.8rem',
         },
         m: {
-          padding: `${params.grid.v / 4}px ${params.grid.h}px`,
+          padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
           fontSize: '.9rem',
         },
         l: {
-          padding: `${params.grid.v / 2}px ${params.grid.h}px`,
+          padding: `${this.theme.params.grid.v / 2}px ${this.theme.params.grid.h}px`,
           fontSize: '1.1rem',
         },
       }, 'm'),

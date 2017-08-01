@@ -8,7 +8,7 @@ import { KitDefaultThemeService } from '../../kit-default-theme.service';
 export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
   constructor(private def: StylerDefService,
               private color: StylerColorService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService,) {
+              @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {type: 'center' | 'dropdown' | 'side', opened: boolean}): StyleDef {

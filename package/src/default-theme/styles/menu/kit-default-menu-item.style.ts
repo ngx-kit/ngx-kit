@@ -18,39 +18,43 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     hasSubs: boolean,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.menu.color);
+    const color = params.moduleMenu.colors.item;
     return {
       display: 'flex',
       alignItems: 'center',
-      borderBottom: [2, 'solid', 'transparent'],
+      borderBottom: [2, 'solid', color.base.border],
       cursor: 'pointer',
       userSelect: 'none',
       padding: [params.grid.v / 2, params.grid.h],
-      color: color.text,
+      color: color.base.text,
+      background: color.base.background,
       textDecoration: 'none',
       ...this.def.toggle(state.root, {
+        // root items
         ...this.def.pick(state.menuDirection, {
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
             ...this.def.toggle(state.hover, {
-              borderBottom: [2, 'solid', this.theme.colorMod(.05, color.border)],
-              color: this.theme.colorMod(.05, color.text),
+              background: color.hover.background,
+              borderBottom: [2, 'solid', color.hover.border],
+              color: color.hover.text,
             }),
           },
           vertical: {
             ...this.def.toggle(state.hover, {
-              color: this.theme.colorMod(.05, color.text),
+              background: color.hover.background,
+              color: color.hover.text,
             }),
           },
         }),
       }, {
-        ...this.def.toggle(state.hover, {
-          color: this.theme.colorMod(.05, color.text),
-        }),
+        // sub items
+        ...this.def.toggle(state.hover, {}),
         ...this.def.toggle(state.hasSubs, {}),
       }),
       ...this.def.toggle(state.disabled, {
-        color: '#888888',
+        background: color.hover.background,
+        color: color.hover.text,
       }),
     };
   }

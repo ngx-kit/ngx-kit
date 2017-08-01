@@ -14,13 +14,13 @@ export class KitDefaultTagStyle implements KitComponentStyle {
     color: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(state.color || params.modules.tag.color);
+    const color = this.theme.getModuleColor('Tag', state.color);
     return {
       display: 'inline-block',
       lineHeight: 20,
       height: 22,
       padding: [0, params.grid.h],
-      borderRadius: params.border.radius.s,
+      borderRadius: params.borders.radius.s,
       background: color.background,
       color: color.text,
       border: [1, 'solid', color.border],

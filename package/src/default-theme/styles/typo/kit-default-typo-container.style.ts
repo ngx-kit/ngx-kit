@@ -10,37 +10,45 @@ export class KitDefaultTypoContainerStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    const typoParams = this.theme.params.modules.typo;
-    const textColor = this.theme.getColor(typoParams.textColor);
-    const linkColor = this.theme.getColor(typoParams.linkColor);
+    const params = this.theme.params;
     return {
-      color: textColor.text,
-      fontSize: typoParams.fontSize,
+      background: params.moduleTypo.colors.text.background,
+      color: params.moduleTypo.colors.text.text,
+      fontSize: params.moduleTypo.fontSize,
       $nest: {
         '& a': {
-          color: linkColor.text,
-          background: linkColor.background,
+          color: params.moduleTypo.colors.link.base.text,
+          background: params.moduleTypo.colors.link.base.background,
         },
         '& a:hover': {
-          color: this.theme.colorMod(.1, linkColor.text),
+          color: params.moduleTypo.colors.link.hover.text,
+          background: params.moduleTypo.colors.link.hover.background,
+        },
+        '& a:focus': {
+          color: params.moduleTypo.colors.link.focus.text,
+          background: params.moduleTypo.colors.link.focus.background,
+        },
+        '& a:visited': {
+          color: params.moduleTypo.colors.link.visited.text,
+          background: params.moduleTypo.colors.link.visited.background,
         },
         '& h1': {
-          fontSize: typoParams.headingFontSizes.h1,
+          fontSize: params.moduleTypo.headingFontSizes.h1,
         },
         '& h2': {
-          fontSize: typoParams.headingFontSizes.h2,
+          fontSize: params.moduleTypo.headingFontSizes.h2,
         },
         '& h3': {
-          fontSize: typoParams.headingFontSizes.h3,
+          fontSize: params.moduleTypo.headingFontSizes.h3,
         },
         '& h4': {
-          fontSize: typoParams.headingFontSizes.h4,
+          fontSize: params.moduleTypo.headingFontSizes.h4,
         },
         '& h5': {
-          fontSize: typoParams.headingFontSizes.h5,
+          fontSize: params.moduleTypo.headingFontSizes.h5,
         },
         '& h6': {
-          fontSize: typoParams.headingFontSizes.h6,
+          fontSize: params.moduleTypo.headingFontSizes.h6,
         },
       },
     };

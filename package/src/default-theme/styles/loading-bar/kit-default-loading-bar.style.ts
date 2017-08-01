@@ -12,10 +12,9 @@ export class KitDefaultLoadingBarStyle implements KitComponentStyle {
 
   bar(): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.loadingBar.color);
     return {
-      background: color.background,
-      boxShadow: `-7px 2px 11px 0 ${color.background}`,
+      background: params.moduleLoadingBar.colors.background,
+      boxShadow: `-7px 2px 11px 0 ${params.moduleLoadingBar.colors.shadow}`,
       height: 4,
       width: '100%',
     }

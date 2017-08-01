@@ -49,10 +49,10 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   view(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getColor(params.modules.toggle.color);
-    const checkedColor = this.theme.getColor(params.modules.toggle.checkedColor);
     return this.def.merge([
       {
+        background: params.moduleToggle.colors.base.background,
+        border: [1, 'solid', params.moduleToggle.colors.base.border],
         position: 'relative',
         display: 'inline-block',
         boxSizing: 'border-box',
@@ -60,9 +60,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
         width: 44,
         lineHeight: 20,
         verticalAlign: 'middle',
-        background: color.background,
         borderRadius: 20,
-        border: '1px solid #ccc',
         cursor: 'pointer',
         transition: params.transitions.default,
         userSelect: 'none',
@@ -74,7 +72,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
             left: 1,
             top: 1,
             borderRadius: 18,
-            backgroundColor: '#ffffff',
+            background: params.moduleToggle.colors.base.toggle,
             content: '" "',
             cursor: 'pointer',
             transition: 'all .3s,width .3s',
@@ -82,12 +80,13 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
         },
       },
       this.def.toggle(state.checked, {
-        backgroundColor: checkedColor.background,
-        borderColor: checkedColor.border,
+        background: params.moduleToggle.colors.checked.background,
+        borderColor: params.moduleToggle.colors.checked.border,
         $nest: {
           '&:after': {
             left: '100%',
             marginLeft: -19,
+            background: params.moduleToggle.colors.checked.toggle,
           },
         },
       }),

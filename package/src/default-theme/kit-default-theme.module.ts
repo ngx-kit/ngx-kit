@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   kitComponentAccordion,
   kitComponentAccordionPanel,
+  kitComponentAlert,
   kitComponentAutoComplete,
   kitComponentBadge,
   kitComponentButton,
@@ -40,9 +41,11 @@ import {
   kitComponentTypoContainer,
   kitTheme,
 } from '../core/meta/tokens';
+import { KitDefaultThemeDefaultParams } from './default-params';
 import { KitDefaultThemeService } from './kit-default-theme.service';
 import { KitDefaultAccordionPanelStyle } from './styles/accordion/kit-default-accordion-panel.style';
 import { KitDefaultAccordionStyle } from './styles/accordion/kit-default-accordion.style';
+import { KitDefaultAlertStyle } from './styles/alert/kit-default-alert.style';
 import { KitDefaultAutoCompleteStyle } from './styles/auto-complete/kit-default-auto-complete.style';
 import { KitDefaultBadgeStyle } from './styles/badge/kit-default-badge.style';
 import { KitDefaultButtonGroupStyle } from './styles/button/kit-default-button-group.style';
@@ -103,6 +106,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentAccordionPanel,
           useClass: KitDefaultAccordionPanelStyle,
+        },
+        {
+          provide: kitComponentAlert,
+          useClass: KitDefaultAlertStyle,
         },
         {
           provide: kitComponentAutoComplete,
