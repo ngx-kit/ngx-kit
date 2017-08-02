@@ -58,6 +58,7 @@ export interface KitDefaultThemeParamsAccordion {
 }
 
 export interface KitDefaultThemeParamsAlert {
+  titleFontSize: string;
   colors: {
     info: KitDefaultThemeParamsAlertColor;
     success: KitDefaultThemeParamsAlertColor;
@@ -69,8 +70,9 @@ export interface KitDefaultThemeParamsAlert {
 export interface KitDefaultThemeParamsAlertColor {
   background: string;
   border: string;
-  text: string;
   closeText: string;
+  text: string;
+  titleText: string;
 }
 
 export interface KitDefaultThemeParamsAutoComplete {

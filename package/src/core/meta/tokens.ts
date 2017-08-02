@@ -6,6 +6,7 @@ export const kitTheme = new InjectionToken<KitThemeService>('kitTheme');
 export const kitComponentAccordion = new InjectionToken<KitComponentStyle>('kitComponentAccordion');
 export const kitComponentAccordionPanel = new InjectionToken<KitComponentStyle>('kitComponentAccordionPanel');
 export const kitComponentAlert = new InjectionToken<KitComponentStyle>('kitComponentAlert');
+export const kitComponentAlertTitle = new InjectionToken<KitComponentStyle>('kitComponentAlertTitle');
 export const kitComponentAutoComplete = new InjectionToken<KitComponentStyle>('kitComponentAutoComplete');
 export const kitComponentBadge = new InjectionToken<KitComponentStyle>('kitComponentBadge');
 export const kitComponentButton = new InjectionToken<KitComponentStyle>('kitComponentButton');

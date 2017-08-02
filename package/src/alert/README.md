@@ -12,10 +12,14 @@ https://ngx-kit.com/kit/modules/alert
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *color* | `string` | `info` | |
+| *color* | `string` | `info`* | |
+| *closable* | `boolean` | `false` | Display closing link that hides alert |
+| *closeText* | `string` | `''` | Closing link text |
 
 _* Defaults based on default preset of default-theme._ 
 
 #### Outputs
 
-none
+| Event | Type | Description |
+| --- | --- | --- |
+| *close* | `null` | Alert close |

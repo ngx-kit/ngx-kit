@@ -12,7 +12,7 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
   }
 
   close(state: {
-    color: string,
+    color: string;
   }): StyleDef {
     const params = this.theme.params;
     const color = this.theme.getModuleColor('Alert', state.color) as KitDefaultThemeParamsAlertColor;
