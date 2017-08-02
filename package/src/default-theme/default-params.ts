@@ -95,21 +95,25 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           background: this.colors.lightBlue1,
           border: this.colors.blue1,
           text: `rgba(0,0,0,.7)`,
+          closeText: this.colors.blue2,
         },
         success: {
           background: this.colors.lightGreen1,
           border: this.colors.green1,
           text: `rgba(0,0,0,.7)`,
+          closeText: this.colors.green2,
         },
         warning: {
           background: this.colors.lightOrange1,
           border: this.colors.orange1,
           text: `rgba(0,0,0,.7)`,
+          closeText: this.colors.orange2,
         },
         error: {
           background: this.colors.lightRed1,
           border: this.colors.red1,
           text: `rgba(0,0,0,.7)`,
+          closeText: this.colors.red2,
         },
       },
     };

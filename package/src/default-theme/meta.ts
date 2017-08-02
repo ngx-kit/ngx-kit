@@ -67,9 +67,10 @@ export interface KitDefaultThemeParamsAlert {
 }
 
 export interface KitDefaultThemeParamsAlertColor {
-  background: string,
-  border: string,
-  text: string,
+  background: string;
+  border: string;
+  text: string;
+  closeText: string;
 }
 
 export interface KitDefaultThemeParamsAutoComplete {
