@@ -8,6 +8,10 @@ body {
   font-size: 14px;
 }
 
+button, input, textarea, select {
+  font-family: 'Montserrat', Arial;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
