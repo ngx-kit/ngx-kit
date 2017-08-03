@@ -21,23 +21,30 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
   };
 
   result(state: {active: boolean}): StyleDef {
+    const params = this.theme.params;
     return {
-      borderBottom: '1px solid #eee',
+      background: params.moduleAutoComplete.colors.resultItem.base.background,
+      borderBottom: [1, 'solid', params.moduleAutoComplete.colors.resultItem.base.border],
+      color: params.moduleAutoComplete.colors.resultItem.base.text,
       cursor: 'pointer',
+      padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
       $nest: {
         '&:hover': {
-          background: '#ddd',
+          background: params.moduleAutoComplete.colors.resultItem.hover.background,
+          borderColor: params.moduleAutoComplete.colors.resultItem.hover.border,
+          color: params.moduleAutoComplete.colors.resultItem.hover.text,
         },
       },
       ...this.def.toggle(state.active, {
-        background: '#ddd',
+        background: params.moduleAutoComplete.colors.resultItem.active.background,
+        borderColor: params.moduleAutoComplete.colors.resultItem.active.border,
+        color: params.moduleAutoComplete.colors.resultItem.active.text,
       }),
     };
   }
 
   results(): StyleDef {
     return {
-      background: this.theme.params.moduleAutoComplete.colors.results.background,
       boxShadow: this.theme.params.shadows.deep,
     };
   }

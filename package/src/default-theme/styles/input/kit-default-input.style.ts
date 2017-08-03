@@ -35,7 +35,7 @@ export class KitDefaultInputStyle implements KitComponentStyle {
           background: params.moduleInput.colors.focus.background,
           borderColor: params.moduleInput.colors.focus.border,
           color: params.moduleInput.colors.focus.text,
-          transition: '0.8s',
+          transition: '0.2s',
           outline: 'none',
         },
       },

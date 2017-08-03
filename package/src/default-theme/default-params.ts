@@ -127,8 +127,22 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   get moduleAutoComplete(): KitDefaultThemeParamsAutoComplete {
     return {
       colors: {
-        results: {
-          background: this.colors.white,
+        resultItem: {
+          base: {
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
+          },
+          hover: {
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
+          },
+          active: {
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
+          },
         },
       },
     };
