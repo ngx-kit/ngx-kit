@@ -34,6 +34,7 @@ export * from './styles/menu/kit-default-menu-separator.style';
 export * from './styles/menu/kit-default-menu-sub.style';
 export * from './styles/menu/kit-default-menu.style';
 export * from './styles/modal/kit-default-modal.style';
+export * from './styles/notification/kit-default-notification-host.style';
 export * from './styles/spinner/kit-default-spinner.style';
 export * from './styles/radio/kit-default-radio.style';
 export * from './styles/select/kit-default-select.style';

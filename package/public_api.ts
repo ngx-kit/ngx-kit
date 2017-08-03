@@ -19,6 +19,7 @@ export * from './src/loading-bar/index';
 export * from './src/math-input/index';
 export * from './src/menu/index';
 export * from './src/modal/index';
+export * from './src/notification/index';
 export * from './src/pagination/index';
 export * from './src/popover/index';
 export * from './src/radio/index';

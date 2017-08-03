@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { OverlayContainerPosition } from '../core/meta/overlay';
+import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { kitComponentTooltipView } from '../core/meta/tokens';
 
 /**
@@ -28,7 +28,7 @@ export class KitTooltipViewComponent implements OnInit {
 
   @Input() opened = false;
 
-  @Input() position: OverlayContainerPosition;
+  @Input() position: KitCoreOverlayContainerPosition;
 
   @Input() text: string;
 

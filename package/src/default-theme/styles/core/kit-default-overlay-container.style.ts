@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
+import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
@@ -11,7 +12,17 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(state: {type: 'center' | 'dropdown' | 'side', opened: boolean}): StyleDef {
+  holder(): StyleDef {
+    return {
+      zIndex: 10002,
+    }
+  }
+
+  host(state: {
+    type: KitCoreOverlayContainerType;
+    position: KitCoreOverlayContainerPosition;
+    opened: boolean;
+  }): StyleDef {
     return {
       ...this.def.pick(state.type, {
         center: {
@@ -24,6 +35,16 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 10000,
+        },
+        fixedSide: {
+          position: 'fixed',
+          zIndex: 10000,
+          ...this.def.pick(state.position, {
+            'top-right': {
+              top: 0,
+              right: 0,
+            },
+          }),
         },
         dropdown: {},
         side: {},
@@ -43,12 +64,6 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
       left: 0,
       background: this.color.rgba(0, 0, 0, .7),
       zIndex: 10001,
-    }
-  }
-
-  holder(): StyleDef {
-    return {
-      zIndex: 10002,
     }
   }
 }

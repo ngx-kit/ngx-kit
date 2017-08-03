@@ -9,7 +9,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
+import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerWidthType } from '../meta/overlay';
 import { KitAnchorDirective } from './anchor.directive';
 import { KitOverlayService } from './kit-overlay.service';
 import { KitOverlayHostComponent } from './overlay-host.component';
@@ -35,13 +35,13 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
 
   @Input() overlay = false;
 
-  @Input() position: OverlayContainerPosition = 'top';
+  @Input() position: KitCoreOverlayContainerPosition = 'top';
 
   @Input() template: any;
 
   @Input() type: 'center' | 'side' | 'dropdown' = 'center';
 
-  @Input() widthType: OverlayContainerWidthType = 'full';
+  @Input() widthType: KitCoreOverlayContainerWidthType = 'full';
 
   private hostRef: ComponentRef<KitOverlayHostComponent>;
 

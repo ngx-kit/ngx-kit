@@ -20,6 +20,7 @@ import { KitLoadingBarModule } from '../loading-bar/kit-loading-bar.module';
 import { KitMathInputModule } from '../math-input/kit-math-input.module';
 import { KitMenuModule } from '../menu/kit-menu.module';
 import { KitModalModule } from '../modal/kit-modal.module';
+import { KitNotificationModule } from '../notification/kit-notification.module';
 import { KitPaginationModule } from '../pagination/kit-pagination.module';
 import { KitPopoverModule } from '../popover/kit-popover.module';
 import { KitRadioModule } from '../radio/kit-radio.module';
@@ -36,6 +37,7 @@ const initableModules = [
   StylerModule,
   KitCoreModule,
   KitDefaultThemeModule,
+  KitNotificationModule,
 ];
 const simpleModules = [
   KitAccordionModule,
@@ -74,6 +76,7 @@ const simpleModules = [
     StylerModule.forRoot(),
     KitCoreModule.forRoot(),
     KitDefaultThemeModule.forRoot(),
+    KitNotificationModule.forRoot(),
     ...simpleModules,
   ],
   declarations: [],

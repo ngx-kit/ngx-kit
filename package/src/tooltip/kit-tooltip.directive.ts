@@ -10,7 +10,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { OverlayContainerPosition } from '../core/meta/overlay';
+import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
 import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 
@@ -20,7 +20,7 @@ import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @HostBinding('class') hostClass: string;
 
-  @Input('kitTooltipPosition') position: OverlayContainerPosition = 'top';
+  @Input('kitTooltipPosition') position: KitCoreOverlayContainerPosition = 'top';
 
   @Input('kitTooltip') text: string;
 

@@ -30,6 +30,7 @@ import {
   kitComponentMenuSeparator,
   kitComponentMenuSub,
   kitComponentModal,
+  kitComponentNotificationHost,
   kitComponentOverlayContainer,
   kitComponentRadio,
   kitComponentSelect,
@@ -74,6 +75,7 @@ import { KitDefaultMenuSeparatorStyle } from './styles/menu/kit-default-menu-sep
 import { KitDefaultMenuSubStyle } from './styles/menu/kit-default-menu-sub.style';
 import { KitDefaultMenuStyle } from './styles/menu/kit-default-menu.style';
 import { KitDefaultModalStyle } from './styles/modal/kit-default-modal.style';
+import { KitDefaultNotificationHostStyle } from './styles/notification/kit-default-notification-host.style';
 import { KitDefaultRadioStyle } from './styles/radio/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './styles/select/kit-default-select.style';
 import { KitDefaultSpinnerStyle } from './styles/spinner/kit-default-spinner.style';
@@ -219,6 +221,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentModal,
           useClass: KitDefaultModalStyle,
+        },
+        {
+          provide: kitComponentNotificationHost,
+          useClass: KitDefaultNotificationHostStyle,
         },
         {
           provide: kitComponentOverlayContainer,

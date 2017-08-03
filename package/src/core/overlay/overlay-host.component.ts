@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
+import {
+  KitCoreOverlayContainerPosition,
+  KitCoreOverlayContainerType,
+  KitCoreOverlayContainerWidthType,
+} from '../meta/overlay';
 
 @Component({
   selector: 'kit-overlay-host,[kitOverlayHost]',
@@ -43,13 +47,13 @@ export class KitOverlayHostComponent implements OnInit {
 
   @Input() overlay: boolean;
 
-  @Input() position: OverlayContainerPosition;
+  @Input() position: KitCoreOverlayContainerPosition;
 
   @Input() template: any;
 
-  @Input() type: string;
+  @Input() type: KitCoreOverlayContainerType;
 
-  @Input() widthType: OverlayContainerWidthType;
+  @Input() widthType: KitCoreOverlayContainerWidthType;
 
   constructor() {
   }

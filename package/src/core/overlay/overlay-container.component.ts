@@ -17,7 +17,11 @@ import {
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../meta/component';
-import { OverlayContainerPosition, OverlayContainerWidthType } from '../meta/overlay';
+import {
+  KitCoreOverlayContainerPosition,
+  KitCoreOverlayContainerType,
+  KitCoreOverlayContainerWidthType,
+} from '../meta/overlay';
 import { KitThemeService } from '../meta/theme';
 import { kitComponentOverlayContainer, kitTheme } from '../meta/tokens';
 
@@ -82,12 +86,18 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   overlayTrigger = 'closed';
 
   // for type: side
-  @Input() position: OverlayContainerPosition;
+  @Input() position: KitCoreOverlayContainerPosition;
 
-  @Input() type: string;
+  /**
+   * Overlay types:
+   * dropdown - for menus, auto-completes ets
+   * side - for tooltips and popups, anchored to component
+   * center - for modals
+   */
+  @Input() type: KitCoreOverlayContainerType;
 
   // for type: dropdown
-  @Input() widthType: OverlayContainerWidthType;
+  @Input() widthType: KitCoreOverlayContainerWidthType;
 
   private _opened: boolean;
 
@@ -101,85 +111,13 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   };
 
   private reposition = () => {
-    if (this.type === 'dropdown') {
-      const rect: ClientRect = this.anchor.getBoundingClientRect();
-      this.zone.run(() => {
-        switch (this.position) {
-          case 'top':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top)}px`,
-              left: `${Math.round(rect.left)}px`,
-              transform: 'translateY(-100%)',
-              width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
-            };
-            break;
-          case 'bottom':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
-              left: `${Math.round(rect.left)}px`,
-              width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
-            };
-            break;
-          case 'left':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top)}px`,
-              left: `${Math.round(rect.left)}px`,
-            };
-            break;
-          case 'right':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top)}px`,
-              left: `${Math.round(rect.right)}px`,
-            };
-            break;
-          default:
-            throw new Error('In development!');
-        }
-      });
-    } else if (this.type === 'side') {
-      const rect: ClientRect = this.anchor.getBoundingClientRect();
-      this.zone.run(() => {
-        switch (this.position) {
-          case 'top':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top)}px`,
-              left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
-              transform: 'translateX(-50%) translateY(-100%)',
-            };
-            break;
-          case 'bottom':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.bottom)}px`,
-              left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
-              transform: 'translateX(-50%)',
-            };
-            break;
-          case 'left':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
-              left: `${Math.round(rect.left)}px`,
-              transform: 'translateX(-100%) translateY(-50%)',
-            };
-            break;
-          case 'right':
-            this.holderStyle = {
-              position: 'fixed',
-              top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
-              left: `${Math.round(rect.right)}px`,
-              transform: 'translateY(-50%)',
-            };
-            break;
-          default:
-            throw new Error('In development!');
-        }
-      });
+    switch (this.type) {
+      case 'dropdown':
+        this.repositionDropdown();
+        break;
+      case 'side':
+        this.repositionSide();
+        break;
     }
   };
 
@@ -226,6 +164,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   ngOnChanges() {
     this.styler.host.applyState({
       type: this.type,
+      position: this.position,
     });
     this.reposition();
   }
@@ -271,5 +210,88 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
       node = node['parentNode'];
     }
     return path;
+  }
+
+  private repositionDropdown() {
+    const rect: ClientRect = this.anchor.getBoundingClientRect();
+    this.zone.run(() => {
+      switch (this.position) {
+        case 'top':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top)}px`,
+            left: `${Math.round(rect.left)}px`,
+            transform: 'translateY(-100%)',
+            width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+          };
+          break;
+        case 'bottom':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
+            left: `${Math.round(rect.left)}px`,
+            width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+          };
+          break;
+        case 'left':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top)}px`,
+            left: `${Math.round(rect.left)}px`,
+          };
+          break;
+        case 'right':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top)}px`,
+            left: `${Math.round(rect.right)}px`,
+          };
+          break;
+        default:
+          throw new Error('In development!');
+      }
+    });
+  }
+
+  private repositionSide() {
+    const rect: ClientRect = this.anchor.getBoundingClientRect();
+    this.zone.run(() => {
+      switch (this.position) {
+        case 'top':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top)}px`,
+            left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
+            transform: 'translateX(-50%) translateY(-100%)',
+          };
+          break;
+        case 'bottom':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.bottom)}px`,
+            left: `${Math.round(rect.left + this.anchor.offsetWidth / 2)}px`,
+            transform: 'translateX(-50%)',
+          };
+          break;
+        case 'left':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
+            left: `${Math.round(rect.left)}px`,
+            transform: 'translateX(-100%) translateY(-50%)',
+          };
+          break;
+        case 'right':
+          this.holderStyle = {
+            position: 'fixed',
+            top: `${Math.round(rect.top + this.anchor.offsetHeight / 2)}px`,
+            left: `${Math.round(rect.right)}px`,
+            transform: 'translateY(-50%)',
+          };
+          break;
+        default:
+          throw new Error('In development!');
+      }
+    });
   }
 }

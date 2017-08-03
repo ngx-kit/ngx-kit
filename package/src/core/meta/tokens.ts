@@ -33,6 +33,7 @@ export const kitComponentMenuItem = new InjectionToken<KitComponentStyle>('kitCo
 export const kitComponentMenuSeparator = new InjectionToken<KitComponentStyle>('kitComponentMenuSeparator');
 export const kitComponentMenuSub = new InjectionToken<KitComponentStyle>('kitComponentMenuSub');
 export const kitComponentModal = new InjectionToken<KitComponentStyle>('kitComponentModal');
+export const kitComponentNotificationHost = new InjectionToken<KitComponentStyle>('kitComponentNotificationHost');
 export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitComponentRadio');
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
