@@ -77,10 +77,18 @@ export interface KitDefaultThemeParamsAlertColor {
 
 export interface KitDefaultThemeParamsAutoComplete {
   colors: {
-    results: {
-      background: string;
-    };
+    resultItem: {
+      base: KitDefaultThemeParamsAutoCompleteColor;
+      hover: KitDefaultThemeParamsAutoCompleteColor;
+      active: KitDefaultThemeParamsAutoCompleteColor;
+    }
   };
+}
+
+export interface KitDefaultThemeParamsAutoCompleteColor {
+  background: string;
+  border: string;
+  text: string;
 }
 
 export interface KitDefaultThemeParamsBadge {
