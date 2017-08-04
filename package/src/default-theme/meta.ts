@@ -247,22 +247,23 @@ export interface KitDefaultThemeParamsRadio {
 
 export interface KitDefaultThemeParamsSelect {
   colors: {
-    base: {
-      background: string;
-      border: string;
-      text: string;
+    select: {
+      base: KitDefaultThemeParamsSelectColor;
+      hover: KitDefaultThemeParamsSelectColor;
+      focus: KitDefaultThemeParamsSelectColor;
     };
-    hover: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    selected: {
-      background: string;
-      border: string;
-      text: string;
+    option: {
+      base: KitDefaultThemeParamsSelectColor;
+      hover: KitDefaultThemeParamsSelectColor;
+      selected: KitDefaultThemeParamsSelectColor;
     };
   };
+}
+
+export interface KitDefaultThemeParamsSelectColor {
+  background: string;
+  border: string;
+  text: string;
 }
 
 export interface KitDefaultThemeParamsSpinner {
