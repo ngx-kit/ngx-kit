@@ -36,21 +36,25 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
     return {
       white: '#fff',
       lightBlue1: '#5cdbff',
-      blue1: '#0080FF',
+      blue1: '#0578ff',
       blue2: '#0080FF',
-      blue3: '#0080FF',
+      blue3: '#05a0ff',
+      lightPurple1: '#DCC6E0',
+      purple1: '#80459f',
+      purple2: '#8E44AD',
+      purple3: '#a245c2',
       lightGreen1: '#a5e396',
-      green1: '#36C77C',
+      green1: '#36b66b',
       green2: '#36C77C',
-      green3: '#36C77C',
+      green3: '#36dd92',
       lightOrange1: '#fff198',
-      orange1: '#E15E3A',
+      orange1: '#ce5c39',
       orange2: '#E15E3A',
-      orange3: '#E15E3A',
+      orange3: '#fe5f3b',
       lightRed1: '#ffcdca',
-      red1: '#FC5241',
-      red2: '#FC5241',
-      red3: '#FC5241',
+      red1: '#b43b2c',
+      red2: '#C0392B',
+      red3: '#d73b2b',
       lightGrey1: '#fafafa',
       lightGrey2: '#f4f4f4',
       lightGrey3: '#efefef',
@@ -79,7 +83,7 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
   get moduleAccordion(): KitDefaultThemeParamsAccordion {
     return {
       colors: {
-        border: this.colors.dark2,
+        border: this.colors.grey7,
         title: {
           background: this.colors.dark4,
           text: this.colors.grey2,
@@ -131,8 +135,22 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
   get moduleAutoComplete(): KitDefaultThemeParamsAutoComplete {
     return {
       colors: {
-        results: {
-          background: this.colors.white,
+        resultItem: {
+          base: {
+            background: this.colors.grey7,
+            border: this.colors.grey6,
+            text: this.colors.white,
+          },
+          hover: {
+            background: this.colors.grey5,
+            border: this.colors.grey6,
+            text: this.colors.white,
+          },
+          active: {
+            background: this.colors.grey6,
+            border: this.colors.grey6,
+            text: this.colors.white,
+          },
         },
       },
     };
@@ -180,90 +198,90 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
       colors: {
         'default': {
           base: {
-            background: this.colors.grey2,
-            border: this.colors.grey2,
-            text: this.colors.grey8,
+            background: this.colors.blue2,
+            border: this.colors.blue2,
+            text: this.colors.white,
           },
           hover: {
-            background: this.colors.grey3,
-            border: this.colors.grey3,
-            text: this.colors.grey8,
+            background: this.colors.blue3,
+            border: this.colors.blue3,
+            text: this.colors.white,
           },
           active: {
-            background: this.colors.grey4,
-            border: this.colors.grey3,
-            text: this.colors.grey8,
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
           },
           disabled,
         },
         primary: {
           base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
+            background: this.colors.purple2,
+            border: this.colors.purple2,
             text: this.colors.white,
           },
           hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
+            background: this.colors.purple3,
+            border: this.colors.purple3,
             text: this.colors.white,
           },
           active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
+            background: this.colors.purple1,
+            border: this.colors.purple1,
             text: this.colors.white,
           },
           disabled,
         },
         success: {
           base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
+            background: this.colors.green2,
+            border: this.colors.green2,
             text: this.colors.white,
           },
           hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
+            background: this.colors.green3,
+            border: this.colors.green3,
             text: this.colors.white,
           },
           active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
+            background: this.colors.green1,
+            border: this.colors.green1,
             text: this.colors.white,
           },
           disabled,
         },
         warning: {
           base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
+            background: this.colors.orange2,
+            border: this.colors.orange2,
             text: this.colors.white,
           },
           hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
+            background: this.colors.orange3,
+            border: this.colors.orange3,
             text: this.colors.white,
           },
           active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
+            background: this.colors.orange1,
+            border: this.colors.orange1,
             text: this.colors.white,
           },
           disabled,
         },
         error: {
           base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
+            background: this.colors.red2,
+            border: this.colors.red2,
             text: this.colors.white,
           },
           hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
+            background: this.colors.red3,
+            border: this.colors.red3,
             text: this.colors.white,
           },
           active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
+            background: this.colors.red1,
+            border: this.colors.red1,
             text: this.colors.white,
           },
           disabled,
@@ -276,11 +294,11 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
     return {
       colors: {
         base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
+          background: this.colors.grey7,
+          border: this.colors.grey4,
         },
         checked: {
-          background: this.colors.lightGrey2,
+          background: this.colors.grey8,
           border: this.colors.blue1,
           check: this.colors.blue1,
         },
@@ -297,7 +315,7 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
       colors: {
         menu: {
           border: this.colors.grey1,
-          background: this.colors.lightGrey1,
+          background: this.colors.grey7,
         },
       },
     };
@@ -318,19 +336,19 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
     return {
       colors: {
         base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-          text: this.colors.grey7,
+          background: this.colors.grey6,
+          border: this.colors.grey6,
+          text: this.colors.white,
         },
         hover: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey3,
-          text: this.colors.grey7,
+          background: this.colors.grey7,
+          border: this.colors.grey6,
+          text: this.colors.white,
         },
         focus: {
-          background: this.colors.lightGrey2,
+          background: this.colors.grey8,
           border: this.colors.blue1,
-          text: this.colors.grey8,
+          text: this.colors.white,
         },
       },
     };
