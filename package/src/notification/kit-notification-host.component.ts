@@ -14,9 +14,17 @@ import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage 
                            [opened]="true"
                            [position]="hostConfig.position">
       <div [styler]="['wrapper', {position: hostConfig.position}]">
-        <div *ngFor="let item of items" [@item]="hostConfig.position" [styler]="['item', {color: item.message.color}]">
-          <div *ngIf="item.message.title" [styler]="['itemTitle', {color: item.message.color}]">{{ item.message.title }}</div>
-          <div [styler]="['itemMessage', {color: item.message.color}]">{{ item.message.message }}</div>
+        <div *ngFor="let item of items"
+             [@item]="hostConfig.position"
+             [styler]="['item', {color: item.message.color}]"
+             (click)="close(item.__id)">
+          <div *ngIf="item.message.title"
+               [styler]="['itemTitle', {color: item.message.color}]">
+            {{ item.message.title }}
+          </div>
+          <div [styler]="['itemMessage', {color: item.message.color}]">
+            {{ item.message.message }}
+          </div>
         </div>
       </div>
     </kit-overlay-container>
@@ -88,7 +96,9 @@ export class KitNotificationHostComponent {
 
   close(__id: string) {
     const index = this.items.findIndex(i => i.__id === __id);
-    this.items.splice(index, 1);
+    if (index !== -1) {
+      this.items.splice(index, 1);
+    }
   }
 
   handleConfig(): any {
