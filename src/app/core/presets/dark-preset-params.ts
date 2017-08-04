@@ -371,20 +371,24 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
           base: {
             background: 'transparent',
             border: 'transparent',
-            text: this.colors.grey3,
+            text: this.colors.grey6,
           },
           hover: {
             background: 'transparent',
-            border: this.colors.grey4,
-            text: this.colors.grey3,
+            border: this.colors.grey3,
+            text: this.colors.grey6,
           },
           disabled: {
             background: 'transparent',
             border: 'transparent',
-            text: this.colors.grey6,
+            text: this.colors.grey3,
           },
         },
-        separator: this.colors.grey8,
+        groupTitle: {
+          background: 'transparent',
+          text: this.colors.grey5,
+        },
+        separator: this.colors.grey1,
       },
     };
   }
@@ -412,21 +416,40 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
   get moduleSelect(): KitDefaultThemeParamsSelect {
     return {
       colors: {
-        base: {
-          background: this.colors.lightGrey3,
-          border: this.colors.grey2,
-          text: this.colors.grey7,
+        select: {
+          base: {
+            background: this.colors.lightGrey2,
+            border: this.colors.grey1,
+            text: this.colors.grey7,
+          },
+          hover: {
+            background: this.colors.lightGrey2,
+            border: this.colors.grey3,
+            text: this.colors.grey7,
+          },
+          focus: {
+            background: this.colors.lightGrey2,
+            border: this.colors.blue1,
+            text: this.colors.grey8,
+          },
         },
-        hover: {
-          background: this.colors.grey1,
-          border: this.colors.grey3,
-          text: this.colors.grey7,
-        },
-        selected: {
-          background: this.colors.grey2,
-          border: this.colors.grey4,
-          text: this.colors.grey8,
-        },
+        option: {
+          base: {
+            background: this.colors.lightGrey2,
+            border: this.colors.grey1,
+            text: this.colors.grey7,
+          },
+          hover: {
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
+          },
+          selected: {
+            background: this.colors.blue1,
+            border: this.colors.blue1,
+            text: this.colors.white,
+          },
+        }
       },
     };
   }

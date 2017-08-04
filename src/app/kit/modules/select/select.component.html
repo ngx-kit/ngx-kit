@@ -6,3 +6,19 @@
               [labelFiled]="'id'"
               [(ngModel)]="selected"></kit-select>
 </app-demo>
+
+<app-demo [content]="content" [id]="'demo-dropdown'">
+  <kit-select [type]="'dropdown'"
+              [options]="options"
+              [valueField]="'id'"
+              [labelFiled]="'id'"
+              [(ngModel)]="selected"></kit-select>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-list'">
+  <kit-select [type]="'list'"
+              [options]="options"
+              [valueField]="'id'"
+              [labelFiled]="'id'"
+              [(ngModel)]="selected"></kit-select>
+</app-demo>

@@ -1,6 +1,6 @@
 ---
 route: kit/select
-title: Default select
+title: Default (native) select
 ---
 
 ```html
