@@ -78,7 +78,7 @@ describe('Notification/NotificationHostComponent', () => {
   });
   // @todo close click
   // @todo handle config
-  // @todo set color
+  // @todo set text
 });
 
 @Component({

@@ -6,9 +6,7 @@ import { kitComponentMenuGroup } from '../core/meta/tokens';
 @Component({
   selector: 'kit-menu-group,[kitMenuGroup]',
   template: `
-    <div styler="title">
-      <ng-content select="[title]"></ng-content>
-    </div>
+    <ng-content select="kit-menu-group-title,[kitMenuGroupTitle]"></ng-content>
     <div styler="items">
       <ng-content></ng-content>
     </div>

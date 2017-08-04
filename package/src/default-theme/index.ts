@@ -29,6 +29,7 @@ export * from './styles/layout/kit-default-layout.style';
 export * from './styles/loading-bar/kit-default-loading-bar.style';
 export * from './styles/math-input/kit-default-math-input.style';
 export * from './styles/menu/kit-default-menu-group.style';
+export * from './styles/menu/kit-default-menu-group-title.style';
 export * from './styles/menu/kit-default-menu-item.style';
 export * from './styles/menu/kit-default-menu-separator.style';
 export * from './styles/menu/kit-default-menu-sub.style';

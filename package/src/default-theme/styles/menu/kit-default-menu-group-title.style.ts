@@ -5,20 +5,19 @@ import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
-export class KitDefaultMenuGroupStyle implements KitComponentStyle {
+export class KitDefaultMenuGroupTitleStyle implements KitComponentStyle {
   constructor(private def: StylerDefService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
+    const params = this.theme.params;
     return {
-      padding: [this.theme.params.grid.v, this.theme.params.grid.h],
-    };
-  }
-
-  items(): StyleDef {
-    return {
-      paddingLeft: this.theme.params.grid.h * 2,
+      background: params.moduleMenu.colors.groupTitle.background,
+      color: params.moduleMenu.colors.groupTitle.text,
+      display: 'block',
+      fontSize: params.moduleMenu.titleFontSize,
+      padding: [0, params.grid.h, params.grid.v / 2],
     };
   }
 }

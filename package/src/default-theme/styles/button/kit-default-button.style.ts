@@ -92,10 +92,10 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
 //        paddingRight: 0,
 //        background: 'transparent',
 //        borderColor: 'transparent',
-//        color: color.background,
+//        text: text.background,
 //        $nest: {
 //          '&:hover': {
-//            color: this.theme.colorMod(.05, color.background),
+//            text: this.theme.colorMod(.05, text.background),
 //            background: 'transparent',
 //            textDecoration: 'underline',
 //          },

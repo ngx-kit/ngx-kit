@@ -25,7 +25,7 @@ import {
   kitComponentLoadingBar,
   kitComponentMathInput,
   kitComponentMenu,
-  kitComponentMenuGroup,
+  kitComponentMenuGroup, kitComponentMenuGroupTitle,
   kitComponentMenuItem,
   kitComponentMenuSeparator,
   kitComponentMenuSub,
@@ -85,6 +85,7 @@ import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 import { KitDefaultTypoContainerStyle } from './styles/typo/kit-default-typo-container.style';
+import { KitDefaultMenuGroupTitleStyle } from './styles/menu/kit-default-menu-group-title.style';
 
 @NgModule({
   imports: [],
@@ -205,6 +206,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentMenuGroup,
           useClass: KitDefaultMenuGroupStyle,
+        },
+        {
+          provide: kitComponentMenuGroupTitle,
+          useClass: KitDefaultMenuGroupTitleStyle,
         },
         {
           provide: kitComponentMenuItem,

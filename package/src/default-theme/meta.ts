@@ -201,6 +201,10 @@ export interface KitDefaultThemeParamsMenu {
         text: string;
       };
     };
+    groupTitle: {
+      background: string;
+      text: string;
+    };
     separator: string;
   },
   titleFontSize: string;

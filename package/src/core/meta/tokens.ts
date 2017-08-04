@@ -29,6 +29,7 @@ export const kitComponentLoadingBar = new InjectionToken<KitComponentStyle>('kit
 export const kitComponentMathInput = new InjectionToken<KitComponentStyle>('kitComponentMathInput');
 export const kitComponentMenu = new InjectionToken<KitComponentStyle>('kitComponentMenu');
 export const kitComponentMenuGroup = new InjectionToken<KitComponentStyle>('kitComponentMenuGroup');
+export const kitComponentMenuGroupTitle = new InjectionToken<KitComponentStyle>('kitComponentMenuGroupTitle');
 export const kitComponentMenuItem = new InjectionToken<KitComponentStyle>('kitComponentMenuItem');
 export const kitComponentMenuSeparator = new InjectionToken<KitComponentStyle>('kitComponentMenuSeparator');
 export const kitComponentMenuSub = new InjectionToken<KitComponentStyle>('kitComponentMenuSub');

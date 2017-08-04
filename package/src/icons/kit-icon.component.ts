@@ -41,7 +41,7 @@ export class KitIconComponent implements OnInit, OnChanges {
 //    return s({
 //      height: this.size,
 //      width: this.size,
-//      fill: this.color,
+//      fill: this.text,
 //    });
   }
 }

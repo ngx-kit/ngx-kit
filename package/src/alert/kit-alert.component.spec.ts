@@ -84,7 +84,7 @@ describe('Alert/AlertComponent', () => {
     const alert = de.query(By.css('.alert'));
     expect(alert.nativeElement.textContent.trim()).toEqual(message);
   });
-  it('should pass color state', () => {
+  it('should pass text state', () => {
     const color = 'color';
     container.color = color;
     fixture.detectChanges();
@@ -121,7 +121,7 @@ describe('Alert/AlertComponent', () => {
     const closingLink = de.query(By.css('button'));
     closingLink.nativeElement.click();
   });
-  it('should proxy color state to title', () => {
+  it('should proxy text state to title', () => {
     const color = 'color';
     container.color = color;
     fixture.detectChanges();

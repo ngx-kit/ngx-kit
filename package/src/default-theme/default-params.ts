@@ -377,6 +377,10 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
             text: this.colors.grey3,
           },
         },
+        groupTitle: {
+          background: 'transparent',
+          text: this.colors.grey5,
+        },
         separator: this.colors.grey1,
       },
     };
