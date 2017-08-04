@@ -11,6 +11,7 @@ export interface KitNotificationItem {
 }
 
 export interface KitNotificationMessage {
+  color?: string;
   duration?: number;
   message: string;
   title?: string;

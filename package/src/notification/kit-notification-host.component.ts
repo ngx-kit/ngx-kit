@@ -14,9 +14,9 @@ import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage 
                            [opened]="true"
                            [position]="hostConfig.position">
       <div [styler]="['wrapper', {position: hostConfig.position}]">
-        <div *ngFor="let item of items" [@item]="hostConfig.position" styler="item">
-          <div *ngIf="item.message.title" styler="itemTitle">{{ item.message.title }}</div>
-          <div styler="itemMessage">{{ item.message.message }}</div>
+        <div *ngFor="let item of items" [@item]="hostConfig.position" [styler]="['item', {color: item.message.color}]">
+          <div *ngIf="item.message.title" [styler]="['itemTitle', {color: item.message.color}]">{{ item.message.title }}</div>
+          <div [styler]="['itemMessage', {color: item.message.color}]">{{ item.message.message }}</div>
         </div>
       </div>
     </kit-overlay-container>

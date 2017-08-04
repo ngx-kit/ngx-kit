@@ -11,6 +11,7 @@ import {
   KitDefaultThemeParamsInput,
   KitDefaultThemeParamsLoadingBar,
   KitDefaultThemeParamsMenu,
+  KitDefaultThemeParamsNotification,
   KitDefaultThemeParamsRadio,
   KitDefaultThemeParamsSelect,
   KitDefaultThemeParamsSpinner,
@@ -377,6 +378,43 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           },
         },
         separator: this.colors.grey1,
+      },
+    };
+  }
+
+  get moduleNotification(): KitDefaultThemeParamsNotification {
+    return {
+      colors: {
+        'default': {
+          background: this.colors.grey8,
+          border: this.colors.grey8,
+          titleText: this.colors.white,
+          messageText: this.colors.lightGrey2,
+        },
+        primary: {
+          background: this.colors.blue1,
+          border: this.colors.blue1,
+          titleText: this.colors.white,
+          messageText: this.colors.lightGrey2,
+        },
+        success: {
+          background: this.colors.green1,
+          border: this.colors.green1,
+          titleText: this.colors.white,
+          messageText: this.colors.lightGrey2,
+        },
+        warning: {
+          background: this.colors.orange1,
+          border: this.colors.orange1,
+          titleText: this.colors.white,
+          messageText: this.colors.lightGrey2,
+        },
+        error: {
+          background: this.colors.red1,
+          border: this.colors.red1,
+          titleText: this.colors.white,
+          messageText: this.colors.lightGrey2,
+        },
       },
     };
   }

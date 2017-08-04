@@ -4,6 +4,7 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { KitCoreOverlayContainerPositionCorner } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { KitDefaultThemeParamsNotificationColor } from '../../meta';
 
 @Injectable()
 export class KitDefaultNotificationHostStyle implements KitComponentStyle {
@@ -15,26 +16,36 @@ export class KitDefaultNotificationHostStyle implements KitComponentStyle {
     return {};
   }
 
-  item(): StyleDef {
+  item(state: {
+    color: string;
+  }): StyleDef {
     const params = this.theme.params;
+    const color = this.theme.getModuleColor('Notification', state.color) as KitDefaultThemeParamsNotificationColor;
     return {
       margin: [params.grid.v, params.grid.h],
       padding: [params.grid.v, params.grid.h],
-      background: 'rgba(0,0,0,.7)',
+      background: color.background,
       borderRadius: params.borders.radius.m,
+      border: [1, 'solid', color.border],
     };
   }
 
-  itemMessage(): StyleDef {
+  itemMessage(state: {
+    color: string;
+  }): StyleDef {
+    const color = this.theme.getModuleColor('Notification', state.color) as KitDefaultThemeParamsNotificationColor;
     return {
-      color: 'rgba(255, 255, 255, .9)',
+      color: color.messageText,
     };
   }
 
-  itemTitle(): StyleDef {
+  itemTitle(state: {
+    color: string;
+  }): StyleDef {
+    const color = this.theme.getModuleColor('Notification', state.color) as KitDefaultThemeParamsNotificationColor;
     return {
       fontSize: '1.2rem',
-      color: '#fff',
+      color: color.titleText,
     };
   }
 

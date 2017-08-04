@@ -14,6 +14,7 @@ export interface KitDefaultThemeParams {
   moduleInput: KitDefaultThemeParamsInput;
   moduleLoadingBar: KitDefaultThemeParamsLoadingBar;
   moduleMenu: KitDefaultThemeParamsMenu;
+  moduleNotification: KitDefaultThemeParamsNotification;
   moduleRadio: KitDefaultThemeParamsRadio;
   moduleSelect: KitDefaultThemeParamsSelect;
   moduleSpinner: KitDefaultThemeParamsSpinner;
@@ -58,13 +59,13 @@ export interface KitDefaultThemeParamsAccordion {
 }
 
 export interface KitDefaultThemeParamsAlert {
-  titleFontSize: string;
   colors: {
     info: KitDefaultThemeParamsAlertColor;
     success: KitDefaultThemeParamsAlertColor;
     warning: KitDefaultThemeParamsAlertColor;
     error: KitDefaultThemeParamsAlertColor;
   };
+  titleFontSize: string;
 }
 
 export interface KitDefaultThemeParamsAlertColor {
@@ -203,6 +204,23 @@ export interface KitDefaultThemeParamsMenu {
     separator: string;
   },
   titleFontSize: string;
+}
+
+export interface KitDefaultThemeParamsNotification {
+  colors: {
+    'default': KitDefaultThemeParamsNotificationColor;
+    primary: KitDefaultThemeParamsNotificationColor;
+    success: KitDefaultThemeParamsNotificationColor;
+    warning: KitDefaultThemeParamsNotificationColor;
+    error: KitDefaultThemeParamsNotificationColor;
+  };
+}
+
+export interface KitDefaultThemeParamsNotificationColor {
+  background: string;
+  border: string;
+  messageText: string;
+  titleText: string;
 }
 
 export interface KitDefaultThemeParamsRadio {
