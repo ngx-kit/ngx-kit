@@ -1,13 +1,16 @@
 import { ComponentRef, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
-import { KitNotificationHostConfig } from './meta';
+import { KitNotificationHostConfig, KitNotificationMessage } from './meta';
 
 @Injectable()
 export class KitNotificationService {
-  config: KitNotificationHostConfig = {
+  private _config$ = new BehaviorSubject<KitNotificationHostConfig>({
     position: 'top-right',
-  };
+    duration: 4000,
+  });
 
   private host: KitNotificationHostComponent;
 
@@ -18,9 +21,17 @@ export class KitNotificationService {
   constructor(private overlay: KitOverlayService) {
   }
 
-  open(message: string, title?: string) {
+  get config$(): Observable<KitNotificationHostConfig> {
+    return this._config$.asObservable();
+  }
+
+  config(config: Partial<KitNotificationHostConfig>) {
+    this._config$.next({...this._config$.value, ...config});
+  }
+
+  open(message: KitNotificationMessage) {
     this.mountHost();
-    this.host.open(message, title);
+    this.host.open(message);
   }
 
   private mountHost() {

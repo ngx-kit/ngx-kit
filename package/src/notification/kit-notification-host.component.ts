@@ -5,18 +5,18 @@ import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentNotificationHost } from '../core/meta/tokens';
 import { KitNotificationService } from './kit-notification.service';
-import { KitNotificationItem } from './meta';
+import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage } from './meta';
 
 @Component({
   selector: 'kit-notification-host,[kitNotificationHost]',
   template: `
     <kit-overlay-container [type]="'fixedSide'"
                            [opened]="true"
-                           [position]="overlayPosition">
-      <div [styler]="['wrapper', {position: overlayPosition}]">
-        <div *ngFor="let item of items" [@item]="overlayPosition" styler="item">
-          <div *ngIf="item.title" styler="itemTitle">{{ item.title }}</div>
-          <div styler="itemMessage">{{ item.message }}</div>
+                           [position]="hostConfig.position">
+      <div [styler]="['wrapper', {position: hostConfig.position}]">
+        <div *ngFor="let item of items" [@item]="hostConfig.position" styler="item">
+          <div *ngIf="item.message.title" styler="itemTitle">{{ item.message.title }}</div>
+          <div styler="itemMessage">{{ item.message.message }}</div>
         </div>
       </div>
     </kit-overlay-container>
@@ -72,7 +72,7 @@ import { KitNotificationItem } from './meta';
   ],
 })
 export class KitNotificationHostComponent {
-  readonly duration = 2000;
+  hostConfig: KitNotificationHostConfig;
 
   items: KitNotificationItem[] = [];
 
@@ -83,10 +83,7 @@ export class KitNotificationHostComponent {
               private core: KitCoreService,
               private notificationService: KitNotificationService) {
     this.styler.register(this.style);
-  }
-
-  get overlayPosition() {
-    return this.notificationService.config.position;
+    this.handleConfig();
   }
 
   close(__id: string) {
@@ -94,15 +91,20 @@ export class KitNotificationHostComponent {
     this.items.splice(index, 1);
   }
 
-  open(message: string, title?: string) {
+  handleConfig(): any {
+    this.notificationService.config$.subscribe(config => {
+      this.hostConfig = config;
+    });
+  }
+
+  open(message: KitNotificationMessage) {
     const __id = this.core.uuid();
     this.items.push({
       __id,
-      title: title || '',
       message,
     });
     setTimeout(() => {
       this.close(__id);
-    }, this.duration);
+    }, message.duration || this.hostConfig.duration);
   }
 }
