@@ -4,10 +4,33 @@
   <button [kitButton] (action)="openDefault()">Open default</button>
 </app-demo>
 
-<app-demo [content]="content" [id]="'demo-default'">
+<app-demo [content]="content" [id]="'demo-with-title'">
   <button [kitButton] (action)="openTitled()">Open default</button>
 </app-demo>
 
-<app-demo [content]="content" [id]="'demo-default'">
-  <button [kitButton] (action)="sitPositionAndOpen('top-right')">Set top-right and open</button>
+<app-demo [content]="content" [id]="'demo-config-side'">
+  <button [kitButton] (action)="setPositionAndOpen('top-right')">Set top-right and open</button>
+  <button [kitButton] (action)="setPositionAndOpen('bottom-right')">Set bottom-right and open</button>
+  <button [kitButton] (action)="setPositionAndOpen('bottom-left')">Set bottom-left and open</button>
+  <button [kitButton] (action)="setPositionAndOpen('top-left')">Set top-left and open</button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-config-duration'">
+  <button [kitButton] (action)="setDurationAndOpen(2000)">Set duration=2000 and open</button>
+  <button [kitButton] (action)="setDurationAndOpen(4000)">Set duration=4000 and open</button>
+  <button [kitButton] (action)="setDurationAndOpen(10000)">Set duration=10000 and open</button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-duration'">
+  <button [kitButton] (action)="openWithSpecificDuration(2000)">Open with duration=2000</button>
+  <button [kitButton] (action)="openWithSpecificDuration(4000)">Open with duration=4000</button>
+  <button [kitButton] (action)="openWithSpecificDuration(10000)">Open with duration=10000</button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-color'">
+  <button [kitButton] (action)="openWithColor('default')">Message with default color</button>
+  <button [kitButton] (action)="openWithColor('success')">Message with success color</button>
+  <button [kitButton] (action)="openWithColor('primary')">Message with primary color</button>
+  <button [kitButton] (action)="openWithColor('warning')">Message with warning color</button>
+  <button [kitButton] (action)="openWithColor('error')">Message with error color</button>
 </app-demo>

@@ -21,15 +21,28 @@ export class NotificationComponent implements OnInit {
   }
 
   openDefault() {
-    this.notificationService.open('Notification message');
+    this.notificationService.open({message: 'Notification message'});
   }
 
   openTitled() {
-    this.notificationService.open('Titled notification message', 'Message title');
+    this.notificationService.open({message: 'Titled notification message', title: 'Message title'});
   }
 
-  sitPositionAndOpen(position: KitCoreOverlayContainerPositionCorner) {
-    this.notificationService.config.position = position;
-    this.notificationService.open('Sided message');
+  openWithColor(color: string) {
+    this.notificationService.open({'message': 'Colored message', color});
+  }
+
+  openWithSpecificDuration(duration: number) {
+    this.notificationService.open({message: `Message with specific duration=${duration}`, duration});
+  }
+
+  setDurationAndOpen(duration: number) {
+    this.notificationService.config({duration});
+    this.notificationService.open({message: 'Just an another message'});
+  }
+
+  setPositionAndOpen(position: KitCoreOverlayContainerPositionCorner) {
+    this.notificationService.config({position});
+    this.notificationService.open({message: 'Sided message'});
   }
 }

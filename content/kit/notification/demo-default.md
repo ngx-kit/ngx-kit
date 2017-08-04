@@ -4,5 +4,11 @@ title: Default notification
 ---
 
 ```html
-NOTIF
+<button [kitButton] (action)="openDefault()">Open default</button>
+```
+
+```typescript
+openDefault() {
+  this.notificationService.open({message: 'Notification message'});
+}
 ```
