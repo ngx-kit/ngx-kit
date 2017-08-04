@@ -1,0 +1,13 @@
+<app-title [link]="'notification'">Notification</app-title>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <button [kitButton] (action)="openDefault()">Open default</button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <button [kitButton] (action)="openTitled()">Open default</button>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-default'">
+  <button [kitButton] (action)="sitPositionAndOpen('top-right')">Set top-right and open</button>
+</app-demo>

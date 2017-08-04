@@ -22,6 +22,7 @@ import { LoadingBarComponent } from './modules/loading-bar/loading-bar.component
 import { MathInputComponent } from './modules/math-input/math-input.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { ModalComponent } from './modules/modal/modal.component';
+import { NotificationComponent } from './modules/notification/notification.component';
 import { PaginationComponent } from './modules/pagination/pagination.component';
 import { PopoverComponent } from './modules/popover/popover.component';
 import { RadioComponent } from './modules/radio/radio.component';
@@ -45,34 +46,35 @@ import { TitleComponent } from './title/title.component';
   ],
   declarations: [
     KitComponent,
-    BreadcrumbComponent,
-    ButtonComponent,
     AccordionComponent,
     AlertComponent,
     AutoCompleteComponent,
     BadgeComponent,
+    BreadcrumbComponent,
+    ButtonComponent,
     CheckboxComponent,
     DatePickerComponent,
     DividerComponent,
     DropdownMenuComponent,
     FormComponent,
-    TitleComponent,
     InputComponent,
     LayoutComponent,
+    LoadingBarComponent,
     MathInputComponent,
     MenuComponent,
     ModalComponent,
-    RadioComponent,
-    SelectComponent,
-    TabsComponent,
-    TextareaComponent,
-    ToggleComponent,
-    TooltipComponent,
-    TagComponent,
+    NotificationComponent,
     PaginationComponent,
     PopoverComponent,
-    LoadingBarComponent,
+    RadioComponent,
+    SelectComponent,
     SpinnerComponent,
+    TabsComponent,
+    TagComponent,
+    TextareaComponent,
+    TitleComponent,
+    ToggleComponent,
+    TooltipComponent,
   ],
   providers: [
     KitLoadingBarService,

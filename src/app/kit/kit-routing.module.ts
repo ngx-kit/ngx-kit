@@ -30,6 +30,7 @@ import { TagComponent } from './modules/tag/tag.component';
 import { TextareaComponent } from './modules/textarea/textarea.component';
 import { ToggleComponent } from './modules/toggle/toggle.component';
 import { TooltipComponent } from './modules/tooltip/tooltip.component';
+import { NotificationComponent } from './modules/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -224,6 +225,16 @@ const routes: Routes = [
             component: ModalComponent,
             data: {
               content: 'kit/modal.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
+          },
+          {
+            path: 'notification',
+            component: NotificationComponent,
+            data: {
+              content: 'kit/notification.json',
             },
             resolve: {
               content: ContentResolverService,
