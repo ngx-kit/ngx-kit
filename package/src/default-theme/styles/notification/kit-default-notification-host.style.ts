@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
+import { KitCoreOverlayContainerPositionCorner } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
@@ -37,11 +38,26 @@ export class KitDefaultNotificationHostStyle implements KitComponentStyle {
     };
   }
 
-  wrapper(): StyleDef {
+  wrapper(state: {
+    position: KitCoreOverlayContainerPositionCorner;
+  }): StyleDef {
     return {
       display: 'flex',
-      flexDirection: 'column',
       alignItems: 'flex-end',
+      ...this.def.pick(state.position, {
+        'top-right': {
+          flexDirection: 'column',
+        },
+        'bottom-right': {
+          flexDirection: 'column-reverse',
+        },
+        'bottom-left': {
+          flexDirection: 'column-reverse',
+        },
+        'top-left': {
+          flexDirection: 'column',
+        },
+      }),
     };
   }
 }

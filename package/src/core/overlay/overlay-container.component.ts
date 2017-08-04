@@ -92,7 +92,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
    * Overlay types:
    * dropdown - for menus, auto-completes ets
    * side - for tooltips and popups, anchored to component
-   * center - for modals
+   * center - modals
    */
   @Input() type: KitCoreOverlayContainerType;
 

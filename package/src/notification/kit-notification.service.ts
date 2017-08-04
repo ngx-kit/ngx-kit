@@ -1,9 +1,14 @@
 import { ComponentRef, Injectable } from '@angular/core';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
+import { KitNotificationHostConfig } from './meta';
 
 @Injectable()
 export class KitNotificationService {
+  config: KitNotificationHostConfig = {
+    position: 'top-right',
+  };
+
   private host: KitNotificationHostComponent;
 
   private hostRef: ComponentRef<KitNotificationHostComponent>;

@@ -44,6 +44,18 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
               top: 0,
               right: 0,
             },
+            'bottom-right': {
+              bottom: 0,
+              right: 0,
+            },
+            'bottom-left': {
+              bottom: 0,
+              left: 0,
+            },
+            'top-left': {
+              top: 0,
+              left: 0,
+            },
           }),
         },
         dropdown: {},
