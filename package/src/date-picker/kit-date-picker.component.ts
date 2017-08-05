@@ -59,6 +59,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDatePicker) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-date-picker';
     this.styler.register(this.style);
   }
 

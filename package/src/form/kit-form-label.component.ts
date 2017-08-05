@@ -17,6 +17,7 @@ export class KitFormLabelComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentFormGroup) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-form-label';
     this.styler.register(this.style);
   }
 

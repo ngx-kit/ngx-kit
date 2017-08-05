@@ -54,6 +54,7 @@ export class KitToggleComponent implements ControlValueAccessor {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentToggle) private style: KitComponentStyle,
               private core: KitCoreService) {
+    this.styler.classPrefix = 'kit-toggle';
     this.styler.register(this.style);
     this.id = this.core.uuid();
   }

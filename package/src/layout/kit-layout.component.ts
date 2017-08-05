@@ -20,6 +20,7 @@ export class KitLayoutComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLayout) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-layout';
     this.styler.register(this.style);
   }
 

@@ -51,6 +51,7 @@ export class KitLoadingBarComponent implements OnInit, OnDestroy {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLoadingBar) private componentStyle: KitComponentStyle,
               private service: KitLoadingBarService) {
+    this.styler.classPrefix = 'kit-loading-bar';
     this.styler.register(this.componentStyle);
   }
 

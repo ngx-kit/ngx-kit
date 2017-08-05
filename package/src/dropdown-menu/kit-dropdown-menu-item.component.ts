@@ -19,6 +19,7 @@ export class KitDropdownMenuItemComponent implements OnInit {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDropdownMenuItem) private style: KitComponentStyle,
               @Optional() private menu: KitDropdownMenuComponent) {
+    this.styler.classPrefix = 'kit-dropdown-menu-item';
     this.styler.register(this.style);
   }
 

@@ -24,6 +24,7 @@ export class KitSpinnerComponent {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentSpinner) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-spinner';
     this.styler.register(this.style);
   }
 }

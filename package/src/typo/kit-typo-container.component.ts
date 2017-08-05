@@ -17,6 +17,7 @@ export class KitTypoContainerComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTypoContainer) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-typo-container';
     this.styler.register(this.style);
   }
 

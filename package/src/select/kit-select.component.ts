@@ -100,6 +100,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentSelect) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-select';
     this.styler.register(this.style);
   }
 

@@ -20,6 +20,7 @@ export class KitMenuGroupComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuGroup) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-menu-group';
     this.styler.register(this.style);
   }
 

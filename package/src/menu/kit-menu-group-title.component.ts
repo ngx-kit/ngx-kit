@@ -17,6 +17,7 @@ export class KitMenuGroupTitleComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuGroupTitle) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-menu-group-title';
     this.styler.register(this.style);
   }
 

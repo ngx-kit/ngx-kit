@@ -39,6 +39,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentButtonGroup) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-button-group';
     this.styler.register(this.style);
   }
 

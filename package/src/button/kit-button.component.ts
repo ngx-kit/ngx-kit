@@ -37,6 +37,7 @@ export class KitButtonComponent implements OnInit, OnChanges {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentButton) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-button';
     this.styler.register(this.style);
   }
 

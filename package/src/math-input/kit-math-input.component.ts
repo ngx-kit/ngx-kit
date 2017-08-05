@@ -44,6 +44,7 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMathInput) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-math-input';
     this.styler.register(this.style);
   }
 

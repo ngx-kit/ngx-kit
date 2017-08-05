@@ -17,6 +17,7 @@ export class KitLayoutFooterComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLayoutFooter) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-layout-footer';
     this.styler.register(this.style);
   }
 

@@ -63,6 +63,7 @@ export class KitMenuSubComponent implements OnInit {
               @Inject(forwardRef(() => KitMenuItemComponent)) private parentItem: KitMenuItemComponent,
               @SkipSelf() @Optional() @Inject(forwardRef(() => KitMenuSubComponent))
               private parentSub: KitMenuSubComponent) {
+    this.styler.classPrefix = 'kit-menu-sub';
     this.styler.register(this.style);
   }
 

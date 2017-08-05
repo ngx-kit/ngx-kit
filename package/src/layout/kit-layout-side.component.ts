@@ -17,6 +17,7 @@ export class KitLayoutSideComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLayoutSide) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-layout-side';
     this.styler.register(this.style);
   }
 

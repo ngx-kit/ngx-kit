@@ -39,6 +39,7 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenu) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-menu';
     this.styler.register(this.style);
   }
 

@@ -22,6 +22,7 @@ export class KitTagComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTag) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-tag';
     this.styler.register(this.style);
   }
 

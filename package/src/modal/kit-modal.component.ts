@@ -38,6 +38,7 @@ export class KitModalComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentModal) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-modal';
     this.styler.register(this.style);
   }
 

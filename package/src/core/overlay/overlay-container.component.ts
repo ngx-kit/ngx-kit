@@ -126,6 +126,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
               private zone: NgZone,
               private elementRef: ElementRef,
               @Inject(kitTheme) private theme: KitThemeService) {
+    this.styler.classPrefix = 'kit-overlay-container';
     this.styler.register(this.componentStyle);
   }
 

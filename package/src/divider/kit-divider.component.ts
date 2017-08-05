@@ -23,6 +23,7 @@ export class KitDividerComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentDivider) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-divider';
     this.styler.register(this.style);
   }
 

@@ -31,6 +31,7 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTabs) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-tabs';
     this.styler.register(this.style);
   }
 

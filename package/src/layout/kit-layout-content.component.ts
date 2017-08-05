@@ -17,6 +17,7 @@ export class KitLayoutContentComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentLayoutContent) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-layout-content';
     this.styler.register(this.style);
   }
 

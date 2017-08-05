@@ -34,6 +34,7 @@ export class KitTooltipViewComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentTooltipView) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-tooltip-view';
     this.styler.register(this.style);
   }
 

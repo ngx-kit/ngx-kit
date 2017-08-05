@@ -42,6 +42,7 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
               @Inject(forwardRef(() => KitMenuSubComponent)) @Optional() private sub: KitMenuSubComponent,
               private el: ElementRef) {
+    this.styler.classPrefix = 'kit-menu-item';
     this.styler.register(this.style);
   }
 

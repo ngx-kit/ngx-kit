@@ -90,6 +90,7 @@ export class KitNotificationHostComponent {
               @Inject(kitComponentNotificationHost) private componentStyle: KitComponentStyle,
               private core: KitCoreService,
               private notificationService: KitNotificationService) {
+    this.styler.classPrefix = 'kit-notification-host';
     this.styler.register(this.componentStyle);
     this.handleConfig();
   }

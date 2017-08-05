@@ -80,6 +80,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
               private renderer: Renderer2) {
+    this.styler.classPrefix = 'kit-auto-complete';
     this.styler.register(this.style);
   }
 

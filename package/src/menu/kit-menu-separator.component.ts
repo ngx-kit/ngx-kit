@@ -19,6 +19,7 @@ export class KitMenuSeparatorComponent implements OnInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentMenuSeparator) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-menu-separator';
     this.styler.register(this.style);
   }
 

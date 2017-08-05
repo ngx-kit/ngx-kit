@@ -39,6 +39,7 @@ export class KitInputComponent implements ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentInput) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-input';
     this.styler.register(this.style);
   }
 
