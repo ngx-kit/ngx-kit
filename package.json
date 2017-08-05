@@ -14,7 +14,8 @@
     "release": "npm run build && npm run publish",
     "test": "karma start ./karma.conf.js --browsers Firefox --single-run",
     "test:local": "karma start ./karma.conf.js",
-    "lint": "./node_modules/.bin/tslint -c tslint.json 'package/**/*.ts'"
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'package/**/*.ts'",
+    "dev": "webpack-dev-server --progress --config ./dev/webpack.playground.js"
   },
   "private": true,
   "dependencies": {},
@@ -31,9 +32,13 @@
     "@angular/router": "^4.3.1",
     "@ngx-kit/styler": "^1.0.0-beta.7",
     "@types/jasmine": "^2.5.53",
+    "@types/node": "^8.0.19",
+    "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.2",
     "codelyzer": "^3.1.2",
     "fs-extra": "^4.0.0",
+    "html-loader": "^0.5.0",
+    "html-webpack-plugin": "^2.30.1",
     "jasmine": "^2.7.0",
     "jasmine-core": "^2.7.0",
     "karma": "^1.7.0",
@@ -49,6 +54,7 @@
     "tslint": "^5.5.0",
     "typescript": "^2.4.2",
     "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
     "zone.js": "^0.8.14"
   }
 }
