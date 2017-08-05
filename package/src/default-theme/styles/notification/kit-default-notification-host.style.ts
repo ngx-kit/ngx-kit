@@ -54,19 +54,22 @@ export class KitDefaultNotificationHostStyle implements KitComponentStyle {
   }): StyleDef {
     return {
       display: 'flex',
-      alignItems: 'flex-end',
       ...this.def.pick(state.position, {
         'top-right': {
           flexDirection: 'column',
+          alignItems: 'flex-end',
         },
         'bottom-right': {
           flexDirection: 'column-reverse',
+          alignItems: 'flex-end',
         },
         'bottom-left': {
           flexDirection: 'column-reverse',
+          alignItems: 'flex-start',
         },
         'top-left': {
           flexDirection: 'column',
+          alignItems: 'flex-start',
         },
       }),
     };
