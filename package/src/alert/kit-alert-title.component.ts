@@ -15,6 +15,7 @@ import { kitComponentAlertTitle } from '../core/meta/tokens';
 export class KitAlertTitleComponent {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAlertTitle) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-title';
     this.styler.register(this.style);
   }
 

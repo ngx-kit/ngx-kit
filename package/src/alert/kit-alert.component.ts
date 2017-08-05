@@ -41,6 +41,7 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAlert) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-alert';
     this.styler.register(this.style);
   }
 

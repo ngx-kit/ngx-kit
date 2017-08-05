@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StylerModule } from '@ngx-kit/styler';
+import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/styler';
 import { KitAccordionModule } from '../accordion/kit-accordion.module';
 import { KitAlertModule } from '../alert/kit-alert.module';
 import { KitAutoCompleteModule } from '../auto-complete/kit-auto-complete.module';
@@ -80,7 +80,12 @@ const simpleModules = [
     ...simpleModules,
   ],
   declarations: [],
-  providers: [],
+  providers: [
+    {
+      provide: ClassGenStategy,
+      useClass: BemClassGenStrategy,
+    },
+  ],
   exports: [
     ...initableModules,
     ...simpleModules,

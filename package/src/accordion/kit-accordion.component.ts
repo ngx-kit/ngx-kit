@@ -24,6 +24,7 @@ export class KitAccordionComponent implements OnInit, AfterContentInit {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAccordion) private style: KitComponentStyle) {
+    this.styler.classPrefix = 'kit-accordion';
     this.styler.register(this.style);
   }
 
