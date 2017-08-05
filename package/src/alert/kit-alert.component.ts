@@ -18,7 +18,7 @@ import { KitAlertTitleComponent } from './kit-alert-title.component';
 @Component({
   selector: 'kit-alert,[kitAlert]',
   template: `
-    <button *ngIf="closable" (click)="close()" [styler]="['close', {color: color}]">
+    <button *ngIf="closable" (click)="closeAlert()" [styler]="['close', {color: color}]">
       <span *ngIf="!closeText; else closeElse">x</span>
       <ng-template #closeElse>{{ closeText }}</ng-template>
     </button>
@@ -31,7 +31,7 @@ import { KitAlertTitleComponent } from './kit-alert-title.component';
 export class KitAlertComponent implements OnChanges, AfterContentInit {
   @Input() closable: boolean;
 
-  @Output('close') closeEmitter = new EventEmitter<null>();
+  @Output('close') close = new EventEmitter<null>();
 
   @Input() closeText: string;
 
@@ -55,9 +55,9 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
     this.proxyState();
   }
 
-  close() {
+  closeAlert() {
     this.styler.host.applyState({closed: true});
-    this.closeEmitter.next(null);
+    this.close.next(null);
   }
 
   private proxyState() {

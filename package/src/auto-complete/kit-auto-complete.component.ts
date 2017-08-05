@@ -53,6 +53,10 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit {
+  activeResult: number = -1;
+
+  anchorRef: any;
+
   @Input() data: string[] | null = null;
 
   @Input() dataSourceFactory: KitDataSourceFactory | null = null;
@@ -66,8 +70,6 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   results: string[] = [];
 
   private _value: any;
-
-  private activeResult: number = -1;
 
   private changes$ = new Subject<number>();
 

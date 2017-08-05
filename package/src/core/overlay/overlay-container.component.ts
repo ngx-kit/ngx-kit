@@ -122,11 +122,11 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   };
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentOverlayContainer) private style: KitComponentStyle,
+              @Inject(kitComponentOverlayContainer) private componentStyle: KitComponentStyle,
               private zone: NgZone,
               private elementRef: ElementRef,
               @Inject(kitTheme) private theme: KitThemeService) {
-    this.styler.register(this.style);
+    this.styler.register(this.componentStyle);
   }
 
   get closeAnimationTimings(): string {
@@ -205,7 +205,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   private getEventPath(event: Event) {
     const path = [];
     let node = event.target;
-    while (node != document.body) {
+    while (node !== document.body) {
       path.push(node);
       node = node['parentNode'];
     }

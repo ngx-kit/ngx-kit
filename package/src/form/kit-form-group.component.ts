@@ -43,13 +43,13 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
 
   @ContentChild(FormControlName) controlNameDirective: FormControlName;
 
-  @Input() dirty: boolean = false;
+  @Input() dirty = false;
 
   @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
 
   @Input() kitFormGroup: any;
 
-  @Input() touched: boolean = false;
+  @Input() touched = false;
 
   private control: AbstractControl;
 

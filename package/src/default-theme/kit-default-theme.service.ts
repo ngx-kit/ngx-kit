@@ -48,7 +48,9 @@ export class KitDefaultThemeService implements KitThemeService {
   private extractParams<T>(paramsFactory: KitDefaultThemeParamsDef): T {
     const params: any = {};
     for (const key in paramsFactory) {
-      params[key] = {...paramsFactory[key]};
+      if (paramsFactory[key]) {
+        params[key] = {...paramsFactory[key]};
+      }
     }
     return params;
   }

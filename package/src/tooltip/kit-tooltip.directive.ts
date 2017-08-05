@@ -20,9 +20,9 @@ import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @HostBinding('class') hostClass: string;
 
-  @Input('kitTooltipPosition') position: KitCoreOverlayContainerPosition = 'top';
+  @Input('kitTooltipPosition') kitTooltipPosition: KitCoreOverlayContainerPosition = 'top';
 
-  @Input('kitTooltip') text: string;
+  @Input('kitTooltip') kitTooltip: string;
 
   private containerRef: ComponentRef<KitTooltipViewComponent>;
 
@@ -65,8 +65,8 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
   private proxyProps() {
     if (this.containerRef) {
       const instance = this.containerRef.instance;
-      instance.text = this.text;
-      instance.position = this.position;
+      instance.text = this.kitTooltip;
+      instance.position = this.kitTooltipPosition;
       instance.anchor = this.el.nativeElement;
     }
   }

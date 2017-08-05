@@ -14,8 +14,8 @@ export class KitModalService {
   }
 
   show<T extends DialogHandlers>(component: Type<T>): T {
-    let modalRef: ComponentRef<T> = this.overlay.host<T>(component);
-    let instance: T = modalRef.instance;
+    const modalRef: ComponentRef<T> = this.overlay.host<T>(component);
+    const instance: T = modalRef.instance;
     // subscribe to modal events
     // close event
     instance.close.subscribe(() => {

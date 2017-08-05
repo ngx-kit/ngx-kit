@@ -26,13 +26,13 @@ import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output 
 export class KitPaginationComponent implements OnInit, OnChanges {
   @Input() currentPage: number;
 
-  @Input() displayFirstLink: boolean = true;
+  @Input() displayFirstLink = true;
 
-  @Input() displayLastLink: boolean = true;
+  @Input() displayLastLink = true;
 
-  @Input() displayNextLink: boolean = true;
+  @Input() displayNextLink = true;
 
-  @Input() displayPrevLink: boolean = true;
+  @Input() displayPrevLink = true;
 
   @HostBinding('class') hostClass: string;
 

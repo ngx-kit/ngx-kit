@@ -5,13 +5,13 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitFormErrorComponent } from './kit-form-error.component';
 import { KitFormGroupComponent } from './kit-form-group.component';
 import { KitFormLabelComponent } from './kit-form-label.component';
-import { KitFormTouchComponent } from './kit-form-touch.directive';
+import { KitFormTouchDirective } from './kit-form-touch.directive';
 
 const exported = [
   KitFormErrorComponent,
   KitFormGroupComponent,
   KitFormLabelComponent,
-  KitFormTouchComponent,
+  KitFormTouchDirective,
 ];
 
 @NgModule({

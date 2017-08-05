@@ -83,7 +83,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   add(amount: any, unit: string): void {
-    let m = moment(this._date);
+    const m = moment(this._date);
     m.add(amount, unit);
     this._date = m;
     this.updateDatesGrid();
@@ -108,14 +108,14 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     }
     // calc grids
     this.datesGrid = [];
-    let cursor = moment(this._date);
+    const cursor = moment(this._date);
     cursor.startOf('month').startOf('week');
-    let end = moment(this._date);
+    const end = moment(this._date);
     end.endOf('month').endOf('week').add(1, 'day');
     while (!cursor.isSame(end, 'day')) {
       this.datesGrid.push({
         date: moment(cursor),
-        isOutside: cursor.month() != this._date.month(),
+        isOutside: cursor.month() !== this._date.month(),
         isActive: cursor.isSame(this._date, 'day'),
       });
       cursor.add(1, 'day');

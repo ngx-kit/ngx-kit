@@ -46,7 +46,7 @@ describe('Spinner/SpinnerComponent', () => {
 
 // Component with kit-spinner
 @Component({
-  selector: 'container',
+  selector: 'test-container',
   template: `
     <kit-spinner></kit-spinner>
   `,

@@ -71,6 +71,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitSelectComponent<T> implements ControlValueAccessor {
+  anchor: any;
+
   dropdownOpened = false;
 
   @Input() kitSelect: any;

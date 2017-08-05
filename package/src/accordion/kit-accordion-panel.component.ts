@@ -27,6 +27,7 @@ export class KitAccordionPanelComponent implements OnInit {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAccordionPanel) private style: KitComponentStyle) {
     this.styler.register(this.style);
+
   }
 
   ngOnInit() {

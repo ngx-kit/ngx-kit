@@ -81,8 +81,8 @@ describe('Alert/AlertComponent', () => {
     const message = 'text';
     container.message = message;
     fixture.detectChanges();
-    const alert = de.query(By.css('.alert'));
-    expect(alert.nativeElement.textContent.trim()).toEqual(message);
+    const alertDiv = de.query(By.css('.alert'));
+    expect(alertDiv.nativeElement.textContent.trim()).toEqual(message);
   });
   it('should pass text state', () => {
     const color = 'color';
@@ -131,7 +131,7 @@ describe('Alert/AlertComponent', () => {
 
 // Component with kit-alert
 @Component({
-  selector: 'container',
+  selector: 'test-container',
   template: `
     <kit-alert [color]="color"
                [closable]="closable"

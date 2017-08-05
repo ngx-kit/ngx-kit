@@ -54,17 +54,5 @@ export class KitPopoverComponent implements OnInit {
     const hostRect = target.getBoundingClientRect();
     this.styleLeft = hostRect.left;
     this.styleTop = hostRect.bottom;
-//    const position = target.
   }
-
-//  this.theme = {
-//  host: {
-//    base: {
-//      position: 'fixed',
-//      padding: 8,
-//      border: '1px solid #eeeeee',
-//      background: '#ffffff',
-//    },
-//  }
-//};
 }

@@ -41,7 +41,7 @@ describe('Core/AnchorDirective', () => {
 
 // Component with directive
 @Component({
-  selector: 'container',
+  selector: 'test-container',
   template: `
     <div [kitAnchor] #anchorRef="anchor" class="anchored" (hostClick)="clicks = true"></div>
   `,

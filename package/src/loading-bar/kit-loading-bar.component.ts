@@ -49,9 +49,9 @@ export class KitLoadingBarComponent implements OnInit, OnDestroy {
   triggerKey: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentLoadingBar) private style: KitComponentStyle,
+              @Inject(kitComponentLoadingBar) private componentStyle: KitComponentStyle,
               private service: KitLoadingBarService) {
-    this.styler.register(this.style);
+    this.styler.register(this.componentStyle);
   }
 
   ngOnDestroy() {
@@ -64,7 +64,7 @@ export class KitLoadingBarComponent implements OnInit, OnDestroy {
       if (this.loadTrigger.value !== 'start' && this.loadTrigger.value !== 'in-progress') {
         this.loadTrigger.next('start');
         setTimeout(() => {
-          if (this.loadTrigger.value == 'start') {
+          if (this.loadTrigger.value === 'start') {
             this.loadTrigger.next('in-progress');
           }
         }, 50);

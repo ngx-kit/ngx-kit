@@ -60,7 +60,7 @@ export class KitMathInputComponent implements ControlValueAccessor, AfterViewIni
     // parse input and set result
     const parsed = this._value ? MathParser.parse(this._value) : NaN;
     this._result = isNaN(parsed) ? null : parsed;
-    this.displayResult = this._result && this._value != this._result;
+    this.displayResult = this._result && this._value !== this._result;
     // emit
     this.changes$.next(this._result);
     this.touches$.next(true);

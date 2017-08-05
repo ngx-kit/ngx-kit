@@ -21,7 +21,7 @@ describe('Notification/NotificationHostComponent', () => {
   beforeEach(async(() =>
       TestBed.configureTestingModule({
         imports: [NoopAnimationsModule],
-        declarations: [StylerDirective, ContainerComponent, KitNotificationHostComponent, KitOverlayContainerMock],
+        declarations: [StylerDirective, ContainerComponent, KitNotificationHostComponent, KitOverlayContainerMockComponent],
         providers: [
           {
             provide: kitComponentNotificationHost,
@@ -82,7 +82,7 @@ describe('Notification/NotificationHostComponent', () => {
 });
 
 @Component({
-  selector: 'container',
+  selector: 'test-container',
   template: `
     <kit-notification-host></kit-notification-host>
   `,
@@ -149,7 +149,7 @@ class NotificationServiceMock {
     <ng-content></ng-content>
   `,
 })
-class KitOverlayContainerMock {
+class KitOverlayContainerMockComponent {
   @Input() opened: boolean;
 
   @Input() position: string;

@@ -87,10 +87,10 @@ export class KitNotificationHostComponent {
   @Input() kitNotificationHost: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentNotificationHost) private style: KitComponentStyle,
+              @Inject(kitComponentNotificationHost) private componentStyle: KitComponentStyle,
               private core: KitCoreService,
               private notificationService: KitNotificationService) {
-    this.styler.register(this.style);
+    this.styler.register(this.componentStyle);
     this.handleConfig();
   }
 
