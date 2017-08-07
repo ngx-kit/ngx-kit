@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { mergeDeepAll, StylerColorService, StylerService } from '@ngx-kit/styler';
 import { KitThemeService } from '../core/meta/theme';
+import { isObject } from '../core/util/is-object';
 import { KitDefaultThemeDefaultParams } from './default-params';
 import { KitDefaultThemeParams, KitDefaultThemeParamsDef } from './meta';
 
@@ -16,7 +17,7 @@ export class KitDefaultThemeService implements KitThemeService {
 
   constructor(private color: StylerColorService,
               private stylerService: StylerService) {
-    this._defaultParams = this.extractParams<KitDefaultThemeParams>(new KitDefaultThemeDefaultParams());
+    this._defaultParams = this.extractParams(new KitDefaultThemeDefaultParams());
     this.applyParams(new KitDefaultThemeDefaultParams());
   }
 
@@ -24,8 +25,8 @@ export class KitDefaultThemeService implements KitThemeService {
     return this._params;
   }
 
-  applyParams(paramsFactory: KitDefaultThemeParamsDef) {
-    this._params = this.mergeParams(this._defaultParams, this.extractParams<KitDefaultThemeParamsDef>(paramsFactory));
+  applyParams(params: KitDefaultThemeParamsDef) {
+    this._params = this.mergeParams(this._defaultParams, this.extractParams(params));
     this.stylerService.updateComponents();
   }
 
@@ -45,11 +46,16 @@ export class KitDefaultThemeService implements KitThemeService {
     }
   }
 
-  private extractParams<T>(paramsFactory: KitDefaultThemeParamsDef): T {
-    const params: any = {};
-    for (const key in paramsFactory) {
-      if (paramsFactory[key]) {
-        params[key] = {...paramsFactory[key]};
+  private extractParams(params: any, isColors = false) {
+    const extracted = {};
+    for (const key in params) {
+      if (params[key]) {
+        if (key === 'colors') {
+          isColors = true;
+        }
+        extracted[key] = isObject(params[key])
+            ? this.extractParams(params[key], isColors)
+            : params[key];
       }
     }
     return params;

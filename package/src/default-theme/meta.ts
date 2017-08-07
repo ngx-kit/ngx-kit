@@ -1,6 +1,5 @@
 export interface KitDefaultThemeParams {
   borders: KitDefaultThemeParamsBorders;
-  colors: KitDefaultThemeParamsColors;
   grid: KitDefaultThemeParamsGrid;
   moduleAccordion: KitDefaultThemeParamsAccordion;
   moduleAlert: KitDefaultThemeParamsAlert;
@@ -33,10 +32,6 @@ export interface KitDefaultThemeParamsBorders {
     l: number;
   };
   width: number;
-}
-
-export interface KitDefaultThemeParamsColors {
-  [key: string]: string;
 }
 
 export interface KitDefaultThemeParamsGrid {
@@ -267,7 +262,9 @@ export interface KitDefaultThemeParamsSelectColor {
 }
 
 export interface KitDefaultThemeParamsSpinner {
-  defaultColor: string;
+  colors: {
+    'default': string;
+  }
   duration: string;
   size: number;
   type: string;

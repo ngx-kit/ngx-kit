@@ -1,618 +1,533 @@
-import {
-  KitDefaultThemeParams,
-  KitDefaultThemeParamsAccordion,
-  KitDefaultThemeParamsAlert,
-  KitDefaultThemeParamsAutoComplete,
-  KitDefaultThemeParamsBadge,
-  KitDefaultThemeParamsButton,
-  KitDefaultThemeParamsCheckbox,
-  KitDefaultThemeParamsDropdownMenu,
-  KitDefaultThemeParamsForm,
-  KitDefaultThemeParamsInput,
-  KitDefaultThemeParamsLoadingBar,
-  KitDefaultThemeParamsMenu,
-  KitDefaultThemeParamsNotification,
-  KitDefaultThemeParamsRadio,
-  KitDefaultThemeParamsSelect,
-  KitDefaultThemeParamsSpinner,
-  KitDefaultThemeParamsTag,
-  KitDefaultThemeParamsTextarea,
-  KitDefaultThemeParamsToggle,
-  KitDefaultThemeParamsTypo,
-} from './meta';
+import { KitDefaultThemeParams, } from './meta';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
-  get borders() {
-    return {
-      radius: {
-        s: 2,
-        m: 6,
-        l: 12,
+  borders = {
+    radius: {
+      s: 2,
+      m: 6,
+      l: 12,
+    },
+    width: 1,
+  };
+
+  moduleAccordion = {
+    colors: {
+      border: '#e2e2e2',
+      title: {
+        background: '#efefef',
+        text: '#404040',
       },
-      width: 1,
+      content: {
+        background: '#fafafa',
+        text: '#404040',
+      },
+    },
+  };
+
+  moduleAlert = {
+    titleFontSize: '1.2em',
+    colors: {
+      info: {
+        background: '#92ccff',
+        border: '#0084ff',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#0071e2',
+        titleText: `rgba(0,0,0,.9)`,
+      },
+      success: {
+        background: '#a5e396',
+        border: '#2dc100',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#2bab00',
+        titleText: `rgba(0,0,0,.9)`,
+      },
+      warning: {
+        background: '#fff198',
+        border: '#ffb62f',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#e0a527',
+        titleText: `rgba(0,0,0,.9)`,
+      },
+      error: {
+        background: '#ffcdca',
+        border: '#ff5500',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#e14c00',
+        titleText: `rgba(0,0,0,.9)`,
+      },
+    },
+  };
+
+  moduleAutoComplete = {
+    colors: {
+      resultItem: {
+        base: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        hover: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        active: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+      },
+    },
+  };
+
+  moduleBadge = {
+    colors: {
+      'default': {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      success: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      warning: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      error: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+    },
+  };
+
+  moduleButton = {
+    colors: {
+      'default': {
+        base: {
+          background: '#dadada',
+          border: '#dadada',
+          text: '#404040',
+        },
+        hover: {
+          background: '#cacaca',
+          border: '#cacaca',
+          text: '#404040',
+        },
+        active: {
+          background: '#b0b0b0',
+          border: '#cacaca',
+          text: '#404040',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+      primary: {
+        base: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        hover: {
+          background: '#0071e2',
+          border: '#0071e2',
+          text: '#fff',
+        },
+        active: {
+          background: '#0066cb',
+          border: '#0066cb',
+          text: '#fff',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+      success: {
+        base: {
+          background: '#2dc100',
+          border: '#2dc100',
+          text: '#fff',
+        },
+        hover: {
+          background: '#2bab00',
+          border: '#2bab00',
+          text: '#fff',
+        },
+        active: {
+          background: '#259100',
+          border: '#259100',
+          text: '#fff',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+      warning: {
+        base: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        hover: {
+          background: '#0071e2',
+          border: '#0071e2',
+          text: '#fff',
+        },
+        active: {
+          background: '#0066cb',
+          border: '#0066cb',
+          text: '#fff',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+      error: {
+        base: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        hover: {
+          background: '#0071e2',
+          border: '#0071e2',
+          text: '#fff',
+        },
+        active: {
+          background: '#0066cb',
+          border: '#0066cb',
+          text: '#fff',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+    },
+  };
+
+  moduleCheckbox = {
+    colors: {
+      base: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+      },
+      checked: {
+        background: '#f4f4f4',
+        border: '#0084ff',
+        check: '#0084ff',
+      },
+    },
+  };
+
+  moduleDropdownMenu = {
+    colors: {
+      menu: {
+        border: '#e2e2e2',
+        background: '#fafafa',
+      },
+    },
+  };
+
+  moduleForm = {
+    colors: {
+      error: {
+        border: '#ff5500',
+        text: '#ff5500',
+      },
+    },
+  };
+
+  moduleInput = {
+    colors: {
+      base: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        text: '#585858',
+      },
+      hover: {
+        background: '#f4f4f4',
+        border: '#cacaca',
+        text: '#585858',
+      },
+      focus: {
+        background: '#f4f4f4',
+        border: '#0084ff',
+        text: '#404040',
+      },
+    },
+  };
+
+  moduleLoadingBar = {
+    colors: {
+      background: '#0066cb',
+      shadow: '#0084ff',
+    },
+  };
+
+  moduleMenu = {
+    titleFontSize: '.9rem',
+    colors: {
+      item: {
+        base: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#707070',
+        },
+        hover: {
+          background: 'transparent',
+          border: '#cacaca',
+          text: '#707070',
+        },
+        disabled: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#cacaca',
+        },
+      },
+      groupTitle: {
+        background: 'transparent',
+        text: '#8c8c8c',
+      },
+      separator: '#e2e2e2',
+    },
+  };
+
+  moduleNotification = {
+    colors: {
+      'default': {
+        background: '#404040',
+        border: '#404040',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+      primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+      success: {
+        background: '#2dc100',
+        border: '#2dc100',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+      warning: {
+        background: '#ffb62f',
+        border: '#ffb62f',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+      error: {
+        background: '#ff5500',
+        border: '#ff5500',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+    },
+  };
+
+  moduleRadio = {
+    colors: {
+      base: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+      },
+      hover: {
+        background: '#f4f4f4',
+        border: '#cacaca',
+      },
+      checked: {
+        background: '#f4f4f4',
+        border: '#0084ff',
+        dot: '#0084ff',
+      },
+    },
+  };
+
+  moduleSelect = {
+    colors: {
+      select: {
+        base: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+          text: '#585858',
+        },
+        hover: {
+          background: '#f4f4f4',
+          border: '#cacaca',
+          text: '#585858',
+        },
+        focus: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          text: '#404040',
+        },
+      },
+      option: {
+        base: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+          text: '#585858',
+        },
+        hover: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        selected: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+      },
+    },
+  };
+
+  moduleSpinner = {
+    duration: '1.5s',
+    size: 50,
+    type: 'spin-1',
+    colors: {
+      'default': '#0084ff',
     }
-  }
+  };
 
-  get colors() {
-    return {
-      white: '#fff',
-      lightBlue1: '#92ccff',
-      blue1: '#0084ff',
-      blue2: '#0071e2',
-      blue3: '#0066cb',
-      lightGreen1: '#a5e396',
-      green1: '#2dc100',
-      green2: '#2bab00',
-      green3: '#259100',
-      lightOrange1: '#fff198',
-      orange1: '#ffb62f',
-      orange2: '#e0a527',
-      orange3: '#d69714',
-      lightRed1: '#ffcdca',
-      red1: '#ff5500',
-      red2: '#e14c00',
-      red3: '#cb4000',
-      lightGrey1: '#fafafa',
-      lightGrey2: '#f4f4f4',
-      lightGrey3: '#efefef',
-      grey1: '#e2e2e2',
-      grey2: '#dadada',
-      grey3: '#cacaca',
-      grey4: '#b0b0b0',
-      grey5: '#8c8c8c',
-      grey6: '#707070',
-      grey7: '#585858',
-      grey8: '#404040',
-    };
-  }
-
-  get grid() {
-    return {
-      h: 8,
-      v: 8,
-    };
-  }
-
-  get moduleAccordion(): KitDefaultThemeParamsAccordion {
-    return {
-      colors: {
-        border: this.colors.grey1,
-        title: {
-          background: this.colors.lightGrey3,
-          text: this.colors.grey8,
-        },
-        content: {
-          background: this.colors.lightGrey1,
-          text: this.colors.grey8,
-        },
+  moduleTag = {
+    colors: {
+      'default': {
+        background: '#dadada',
+        border: '#dadada',
+        text: '#404040',
       },
-    };
-  }
-
-  get moduleAlert(): KitDefaultThemeParamsAlert {
-    return {
-      titleFontSize: '1.2em',
-      colors: {
-        info: {
-          background: this.colors.lightBlue1,
-          border: this.colors.blue1,
-          text: `rgba(0,0,0,.7)`,
-          closeText: this.colors.blue2,
-          titleText: `rgba(0,0,0,.9)`,
-        },
-        success: {
-          background: this.colors.lightGreen1,
-          border: this.colors.green1,
-          text: `rgba(0,0,0,.7)`,
-          closeText: this.colors.green2,
-          titleText: `rgba(0,0,0,.9)`,
-        },
-        warning: {
-          background: this.colors.lightOrange1,
-          border: this.colors.orange1,
-          text: `rgba(0,0,0,.7)`,
-          closeText: this.colors.orange2,
-          titleText: `rgba(0,0,0,.9)`,
-        },
-        error: {
-          background: this.colors.lightRed1,
-          border: this.colors.red1,
-          text: `rgba(0,0,0,.7)`,
-          closeText: this.colors.red2,
-          titleText: `rgba(0,0,0,.9)`,
-        },
+      primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
       },
-    };
-  }
-
-  get moduleAutoComplete(): KitDefaultThemeParamsAutoComplete {
-    return {
-      colors: {
-        resultItem: {
-          base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          hover: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          active: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-        },
+      success: {
+        background: '#dadada',
+        border: '#dadada',
+        text: '#404040',
       },
-    };
-  }
-
-  get moduleBadge(): KitDefaultThemeParamsBadge {
-    return {
-      colors: {
-        'default': {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
-        primary: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
-        success: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
-        warning: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
-        error: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
+      error: {
+        background: '#dadada',
+        border: '#dadada',
+        text: '#404040',
       },
-    };
-  }
-
-  get moduleButton(): KitDefaultThemeParamsButton {
-    const disabled = {
-      background: this.colors.grey5,
-      border: this.colors.grey5,
-      text: this.colors.grey6,
-    };
-    return {
-      colors: {
-        'default': {
-          base: {
-            background: this.colors.grey2,
-            border: this.colors.grey2,
-            text: this.colors.grey8,
-          },
-          hover: {
-            background: this.colors.grey3,
-            border: this.colors.grey3,
-            text: this.colors.grey8,
-          },
-          active: {
-            background: this.colors.grey4,
-            border: this.colors.grey3,
-            text: this.colors.grey8,
-          },
-          disabled,
-        },
-        primary: {
-          base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
-            text: this.colors.white,
-          },
-          active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
-            text: this.colors.white,
-          },
-          disabled,
-        },
-        success: {
-          base: {
-            background: this.colors.green1,
-            border: this.colors.green1,
-            text: this.colors.white,
-          },
-          hover: {
-            background: this.colors.green2,
-            border: this.colors.green2,
-            text: this.colors.white,
-          },
-          active: {
-            background: this.colors.green3,
-            border: this.colors.green3,
-            text: this.colors.white,
-          },
-          disabled,
-        },
-        warning: {
-          base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
-            text: this.colors.white,
-          },
-          active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
-            text: this.colors.white,
-          },
-          disabled,
-        },
-        error: {
-          base: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          hover: {
-            background: this.colors.blue2,
-            border: this.colors.blue2,
-            text: this.colors.white,
-          },
-          active: {
-            background: this.colors.blue3,
-            border: this.colors.blue3,
-            text: this.colors.white,
-          },
-          disabled,
-        },
+      warning: {
+        background: '#dadada',
+        border: '#dadada',
+        text: '#404040',
       },
-    };
-  }
+    },
+  };
 
-  get moduleCheckbox(): KitDefaultThemeParamsCheckbox {
-    return {
-      colors: {
+  moduleTextarea = {
+    colors: {
+      base: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        text: '#585858',
+      },
+      hover: {
+        background: '#f4f4f4',
+        border: '#cacaca',
+        text: '#585858',
+      },
+      focus: {
+        background: '#f4f4f4',
+        border: '#0084ff',
+        text: '#404040',
+      },
+    },
+  };
+
+  moduleToggle = {
+    colors: {
+      base: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        toggle: '#fff',
+      },
+      checked: {
+        background: '#0084ff',
+        border: '#0071e2',
+        toggle: '#fff',
+      },
+    },
+  };
+
+  moduleTypo = {
+    fontSize: '13px',
+    headingFontSizes: {
+      h1: '2.2rem',
+      h2: '1.6rem',
+      h3: '1.4rem',
+      h4: '1.1rem',
+      h5: '1rem',
+      h6: '.9rem',
+    },
+    colors: {
+      text: {
+        background: 'transparent',
+        text: '#404040',
+      },
+      link: {
         base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-        },
-        checked: {
-          background: this.colors.lightGrey2,
-          border: this.colors.blue1,
-          check: this.colors.blue1,
-        },
-      },
-    };
-  }
-
-  get moduleDatePicker() {
-    return {};
-  }
-
-  get moduleDropdownMenu(): KitDefaultThemeParamsDropdownMenu {
-    return {
-      colors: {
-        menu: {
-          border: this.colors.grey1,
-          background: this.colors.lightGrey1,
-        },
-      },
-    };
-  }
-
-  get moduleForm(): KitDefaultThemeParamsForm {
-    return {
-      colors: {
-        error: {
-          border: this.colors.red1,
-          text: this.colors.red1,
-        },
-      },
-    };
-  }
-
-  get moduleInput(): KitDefaultThemeParamsInput {
-    return {
-      colors: {
-        base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-          text: this.colors.grey7,
+          background: 'transparent',
+          text: '#0084ff',
         },
         hover: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey3,
-          text: this.colors.grey7,
+          background: 'transparent',
+          text: '#0071e2',
         },
         focus: {
-          background: this.colors.lightGrey2,
-          border: this.colors.blue1,
-          text: this.colors.grey8,
-        },
-      },
-    };
-  }
-
-  get moduleLoadingBar(): KitDefaultThemeParamsLoadingBar {
-    return {
-      colors: {
-        background: this.colors.blue3,
-        shadow: this.colors.blue1,
-      },
-    };
-  }
-
-  get moduleMenu(): KitDefaultThemeParamsMenu {
-    return {
-      titleFontSize: '.9rem',
-      colors: {
-        item: {
-          base: {
-            background: 'transparent',
-            border: 'transparent',
-            text: this.colors.grey6,
-          },
-          hover: {
-            background: 'transparent',
-            border: this.colors.grey3,
-            text: this.colors.grey6,
-          },
-          disabled: {
-            background: 'transparent',
-            border: 'transparent',
-            text: this.colors.grey3,
-          },
-        },
-        groupTitle: {
           background: 'transparent',
-          text: this.colors.grey5,
+          text: '#0071e2',
         },
-        separator: this.colors.grey1,
-      },
-    };
-  }
-
-  get moduleNotification(): KitDefaultThemeParamsNotification {
-    return {
-      colors: {
-        'default': {
-          background: this.colors.grey8,
-          border: this.colors.grey8,
-          titleText: this.colors.white,
-          messageText: this.colors.lightGrey2,
-        },
-        primary: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          titleText: this.colors.white,
-          messageText: this.colors.lightGrey2,
-        },
-        success: {
-          background: this.colors.green1,
-          border: this.colors.green1,
-          titleText: this.colors.white,
-          messageText: this.colors.lightGrey2,
-        },
-        warning: {
-          background: this.colors.orange1,
-          border: this.colors.orange1,
-          titleText: this.colors.white,
-          messageText: this.colors.lightGrey2,
-        },
-        error: {
-          background: this.colors.red1,
-          border: this.colors.red1,
-          titleText: this.colors.white,
-          messageText: this.colors.lightGrey2,
-        },
-      },
-    };
-  }
-
-  get moduleRadio(): KitDefaultThemeParamsRadio {
-    return {
-      colors: {
-        base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-        },
-        hover: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey3,
-        },
-        checked: {
-          background: this.colors.lightGrey2,
-          border: this.colors.blue1,
-          dot: this.colors.blue1,
-        },
-      },
-    };
-  }
-
-  get moduleSelect(): KitDefaultThemeParamsSelect {
-    return {
-      colors: {
-        select: {
-          base: {
-            background: this.colors.lightGrey2,
-            border: this.colors.grey1,
-            text: this.colors.grey7,
-          },
-          hover: {
-            background: this.colors.lightGrey2,
-            border: this.colors.grey3,
-            text: this.colors.grey7,
-          },
-          focus: {
-            background: this.colors.lightGrey2,
-            border: this.colors.blue1,
-            text: this.colors.grey8,
-          },
-        },
-        option: {
-          base: {
-            background: this.colors.lightGrey2,
-            border: this.colors.grey1,
-            text: this.colors.grey7,
-          },
-          hover: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-          selected: {
-            background: this.colors.blue1,
-            border: this.colors.blue1,
-            text: this.colors.white,
-          },
-        }
-      },
-    };
-  }
-
-  get moduleSpinner(): KitDefaultThemeParamsSpinner {
-    return {
-      duration: '1.5s',
-      size: 50,
-      type: 'spin-1',
-      defaultColor: this.colors.blue1,
-    };
-  }
-
-  get moduleTag(): KitDefaultThemeParamsTag {
-    return {
-      colors: {
-        'default': {
-          background: this.colors.grey2,
-          border: this.colors.grey2,
-          text: this.colors.grey8,
-        },
-        primary: {
-          background: this.colors.blue1,
-          border: this.colors.blue1,
-          text: this.colors.white,
-        },
-        success: {
-          background: this.colors.grey2,
-          border: this.colors.grey2,
-          text: this.colors.grey8,
-        },
-        error: {
-          background: this.colors.grey2,
-          border: this.colors.grey2,
-          text: this.colors.grey8,
-        },
-        warning: {
-          background: this.colors.grey2,
-          border: this.colors.grey2,
-          text: this.colors.grey8,
-        },
-      },
-    };
-  }
-
-  get moduleTextarea(): KitDefaultThemeParamsTextarea {
-    return {
-      colors: {
-        base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-          text: this.colors.grey7,
-        },
-        hover: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey3,
-          text: this.colors.grey7,
-        },
-        focus: {
-          background: this.colors.lightGrey2,
-          border: this.colors.blue1,
-          text: this.colors.grey8,
-        },
-      },
-    };
-  }
-
-  get moduleToggle(): KitDefaultThemeParamsToggle {
-    return {
-      colors: {
-        base: {
-          background: this.colors.lightGrey2,
-          border: this.colors.grey1,
-          toggle: this.colors.white,
-        },
-        checked: {
-          background: this.colors.blue1,
-          border: this.colors.blue2,
-          toggle: this.colors.white,
-        },
-      },
-    };
-  }
-
-  get moduleTypo(): KitDefaultThemeParamsTypo {
-    return {
-      fontSize: '13px',
-      headingFontSizes: {
-        h1: '2.2rem',
-        h2: '1.6rem',
-        h3: '1.4rem',
-        h4: '1.1rem',
-        h5: '1rem',
-        h6: '.9rem',
-      },
-      colors: {
-        text: {
+        visited: {
           background: 'transparent',
-          text: this.colors.grey8,
-        },
-        link: {
-          base: {
-            background: 'transparent',
-            text: this.colors.blue1,
-          },
-          hover: {
-            background: 'transparent',
-            text: this.colors.blue2,
-          },
-          focus: {
-            background: 'transparent',
-            text: this.colors.blue2,
-          },
-          visited: {
-            background: 'transparent',
-            text: this.colors.blue2,
-          },
+          text: '#0071e2',
         },
       },
-    };
-  }
+    },
+  };
 
-  get shadows() {
-    return {
-      element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
-      deep: '0 0 20px 0 rgba(50, 50, 50, 0.1)',
-      overlay: '0 0 6px 0 rgba(50, 50, 50, 0.1)',
-    };
-  }
+  grid = {
+    h: 8,
+    v: 8,
+  };
 
-  get transitions() {
-    return {
-      'default': 'all .3s',
-    };
-  }
+  moduleDatePicker = {};
+
+  shadows = {
+    element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
+    deep: '0 0 20px 0 rgba(50, 50, 50, 0.1)',
+    overlay: '0 0 6px 0 rgba(50, 50, 50, 0.1)',
+  };
+
+  transitions = {
+    'default': 'all .3s',
+  };
 }

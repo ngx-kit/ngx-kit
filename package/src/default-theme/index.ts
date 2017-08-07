@@ -2,6 +2,7 @@ export * from './default-params';
 export * from './kit-default-theme.module';
 export * from './kit-default-theme.service';
 export * from './meta';
+export * from './meta/params-schema';
 // styles
 export * from './styles/accordion/kit-default-accordion-panel.style';
 export * from './styles/accordion/kit-default-accordion.style';

@@ -37,7 +37,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
         border: '1px solid transparent',
         whiteSpace: 'nowrap',
         lineHeight: '1.42857',
-        borderRadius: '3px',
+        borderRadius: this.theme.params.borders.radius.s,
         userSelect: 'none',
         boxShadow: this.theme.params.shadows.element,
       },
