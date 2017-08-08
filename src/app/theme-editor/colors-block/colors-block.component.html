@@ -1,0 +1,9 @@
+<h4>Colors</h4>
+<div *ngFor="let color of colors">
+  <div>
+    <kit-input [ngModel]="color"
+               (ngModelChange)="changeHandler(color, $event)"></kit-input>
+    <button (click)="delete(color)">X</button>
+  </div>
+</div>
+<button (click)="add()">Add</button>

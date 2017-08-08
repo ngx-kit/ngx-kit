@@ -16,5 +16,6 @@ export class ButtonComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.content = data.content;
     });
+
   }
 }

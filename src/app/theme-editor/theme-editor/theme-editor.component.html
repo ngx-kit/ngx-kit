@@ -1,0 +1,20 @@
+<kit-layout styler="layout">
+  <kit-layout-side styler="side">
+    <button (click)="update()">update</button>
+    <form #form="ngForm">
+      <app-colors-block [colors]="colorsModel"
+                        (change)="changeColor(themeModel, $event)"></app-colors-block>
+      <app-block [schema]="schema"
+                 [themeModel]="themeModel"
+                 [colorsModel]="colorsModel"></app-block>
+    </form>
+    <button (click)="update()">update</button>
+    <hr>
+    {{ themeModel | json }}
+    <hr>
+    {{ colorsModel | json }}
+  </kit-layout-side>
+  <kit-layout-content>
+    <router-outlet></router-outlet>
+  </kit-layout-content>
+</kit-layout>

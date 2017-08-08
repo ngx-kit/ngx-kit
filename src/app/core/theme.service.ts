@@ -21,12 +21,12 @@ export class ThemeService {
       case 'default': {
         const preset = new KitDefaultThemeDefaultParams();
         this.params = {
-          sideWidth: 250,
-          contentColor: preset.colors.white,
-          headerColor: preset.colors.grey1,
-          sideColor: preset.colors.grey1,
-          footerColor: preset.colors.grey2,
-          logoColor: preset.colors.blue1,
+          sideWidth: 300,
+          contentColor: '#fff',
+          headerColor: '#eee',
+          sideColor: '#ddd',
+          footerColor: '#eee',
+          logoColor: '#09D7DE',
         };
         this.kitThemeService.applyParams(preset);
         break;
@@ -34,7 +34,7 @@ export class ThemeService {
       case 'dark': {
         const preset = new DarkPresetParams();
         this.params = {
-          sideWidth: 250,
+          sideWidth: 300,
           contentColor: preset.colors.dark3,
           headerColor: preset.colors.dark2,
           sideColor: preset.colors.dark2,

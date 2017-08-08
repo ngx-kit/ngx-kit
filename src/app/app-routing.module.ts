@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'kit',
     loadChildren: './kit/kit.module#KitModule',
   },
+  {
+    path: 'theme-editor',
+    loadChildren: './theme-editor/theme-editor.module#ThemeEditorModule',
+  },
 ];
 
 @NgModule({
