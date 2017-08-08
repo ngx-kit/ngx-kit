@@ -1,10 +1,14 @@
 ---
 route: kit/select
-title: Dropdown select
+title: Option template
 ---
 
 ```html
 <kit-select [type]="'dropdown'"
             [options]="options"
+            [optionTemplateRef]="optionTemplate"
             [(ngModel)]="selected"></kit-select>
+<ng-template #optionTemplate let-option>
+  {{ option | json }}
+</ng-template>
 ```

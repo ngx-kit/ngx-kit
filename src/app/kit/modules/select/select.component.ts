@@ -9,12 +9,26 @@ import { Content } from '../../../interfaces/content';
 export class SelectComponent implements OnInit {
   content: Content;
 
-  options = [
-    {id: '123'},
-    {id: '456'},
-    {id: '789'},
-    {id: 'abc'},
+  objOptions = [
+    {
+      id: '123',
+      text: '123-label',
+    },
+    {
+      id: '456',
+      text: '456-label',
+    },
+    {
+      id: '789',
+      text: '789-label',
+    },
+    {
+      id: 'abc',
+      text: 'abc-label',
+    },
   ];
+
+  options = ['123', '456', '789', 'abc'];
 
   selected = '123';
 

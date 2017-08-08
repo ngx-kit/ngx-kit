@@ -5,17 +5,10 @@ title: Default (native) select
 
 ```html
 <kit-select [options]="options"
-            [valueField]="'id'"
-            [labelFiled]="'id'"
             [(ngModel)]="selected"></kit-select>
 ```
 
 ```typescript
-options = [
-  {id: '123'},
-  {id: '456'},
-  {id: '789'},
-  {id: 'abc'},
-];
+options = ['123', '456', '789', 'abc'];
 selected = '123';
 ```

@@ -2,23 +2,34 @@
 
 <app-demo [content]="content" [id]="'demo-default'">
   <kit-select [options]="options"
-              [valueField]="'id'"
-              [labelFiled]="'id'"
               [(ngModel)]="selected"></kit-select>
 </app-demo>
 
 <app-demo [content]="content" [id]="'demo-dropdown'">
   <kit-select [type]="'dropdown'"
               [options]="options"
-              [valueField]="'id'"
-              [labelFiled]="'id'"
               [(ngModel)]="selected"></kit-select>
 </app-demo>
 
 <app-demo [content]="content" [id]="'demo-list'">
   <kit-select [type]="'list'"
               [options]="options"
-              [valueField]="'id'"
-              [labelFiled]="'id'"
               [(ngModel)]="selected"></kit-select>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-complex-options'">
+  <kit-select [options]="objOptions"
+              [valueField]="'id'"
+              [labelFiled]="'text'"
+              [(ngModel)]="selected"></kit-select>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-option-template'">
+  <kit-select [type]="'dropdown'"
+              [options]="options"
+              [optionTemplateRef]="optionTemplate"
+              [(ngModel)]="selected"></kit-select>
+  <ng-template #optionTemplate let-option>
+    {{ option | json }}
+  </ng-template>
 </app-demo>

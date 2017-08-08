@@ -26,6 +26,7 @@ export class ThemeEditorComponent implements OnInit {
     console.log('converted schema', this.schema);
     this.themeModel = new KitDefaultThemeDefaultParams();
     this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
+    console.log('colors model', this.colorsModel);
   }
 
   ngOnInit() {
