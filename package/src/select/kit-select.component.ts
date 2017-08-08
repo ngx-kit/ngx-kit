@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input } from '@angular/core';
+import { Component, forwardRef, Inject, Input, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -27,10 +27,17 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
         <select [styler]="'nativeSelect'"
                 [ngModel]="value"
                 (ngModelChange)="value = $event">
-          <option *ngFor="let option of options"
-                  [value]="option.value">
-            {{ option.label }}
-          </option>
+          <ng-container *ngIf="!optionTemplateRef">
+            <option *ngFor="let option of options"
+                    [value]="option.value">
+              {{ option.label }}
+            </option>
+          </ng-container>
+          <ng-container *ngIf="optionTemplateRef">
+            <ng-container *ngFor="let option of options">
+              <ng-container *ngTemplateOutlet="optionTemplateRef; context: {$implicit: option}"></ng-container>
+            </ng-container>
+          </ng-container>
         </select>
       </ng-container>
       <ng-container *ngSwitchCase="'dropdown'">
@@ -52,7 +59,10 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
             <div *ngFor="let option of options"
                  [styler]="['dropdownOption', {selected: option.value === value}]"
                  (click)="selectDropdownOption(option.value)">
-              {{ option.label }}
+              <ng-container *ngIf="!optionTemplateRef">{{ option.label }}</ng-container>
+              <ng-container *ngIf="optionTemplateRef">
+                <ng-container *ngTemplateOutlet="optionTemplateRef; context: {$implicit: option}"></ng-container>
+              </ng-container>
             </div>
           </div>
         </ng-template>
@@ -81,6 +91,8 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
   @Input() labelFiled = 'label';
 
   @Input() multi = false;
+
+  @Input() optionTemplateRef: TemplateRef<any>;
 
   options: KitSelectOption[] = [];
 
