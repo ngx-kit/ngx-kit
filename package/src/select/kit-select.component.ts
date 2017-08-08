@@ -4,6 +4,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentSelect } from '../core/meta/tokens';
+import { isObject } from '../core/util/is-object';
 import { KitSelectOption, KitSelectType } from './meta';
 
 export const KIT_SELECT_VALUE_ACCESSOR: any = {
@@ -107,8 +108,8 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
   @Input('options')
   set rawOptions(rawOptions: T[]) {
     this.options = rawOptions.map(o => ({
-      value: o[this.valueField],
-      label: o[this.labelFiled],
+      value: isObject(o) ? o[this.valueField] : o,
+      label: isObject(o) ? o[this.labelFiled] : o,
     }));
   }
 
