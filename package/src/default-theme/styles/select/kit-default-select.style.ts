@@ -19,6 +19,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
         background: params.moduleSelect.colors.option.base.background,
         color: params.moduleSelect.colors.option.base.text,
         padding: [params.grid.v / 2, params.grid.h],
+        cursor: 'default',
         $nest: {
           '&:not(:last-child)': {
             borderBottom: [1, 'solid', params.moduleSelect.colors.option.base.border],
