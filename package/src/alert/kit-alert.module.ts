@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitAlertTitleComponent } from './kit-alert-title.component';
 import { KitAlertComponent } from './kit-alert.component';
 
-const exported = [
+const exports = [
   KitAlertComponent,
   KitAlertTitleComponent,
 ];
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

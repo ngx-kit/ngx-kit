@@ -5,7 +5,7 @@ import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '../core/kit-core.module';
 import { KitCheckboxComponent } from './kit-checkbox.component';
 
-const exported = [
+const exports = [
   KitCheckboxComponent,
 ];
 
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

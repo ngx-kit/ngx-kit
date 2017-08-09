@@ -5,7 +5,7 @@ import { KitLayoutHeaderComponent } from './kit-layout-header.component';
 import { KitLayoutSideComponent } from './kit-layout-side.component';
 import { KitLayoutComponent } from './kit-layout.component';
 
-const exported = [
+const exports = [
   KitLayoutComponent,
   KitLayoutContentComponent,
   KitLayoutFooterComponent,
@@ -16,10 +16,10 @@ const exported = [
 @NgModule({
   imports: [],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

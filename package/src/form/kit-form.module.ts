@@ -7,7 +7,7 @@ import { KitFormGroupComponent } from './kit-form-group.component';
 import { KitFormLabelComponent } from './kit-form-label.component';
 import { KitFormTouchDirective } from './kit-form-touch.directive';
 
-const exported = [
+const exports = [
   KitFormErrorComponent,
   KitFormGroupComponent,
   KitFormLabelComponent,
@@ -21,10 +21,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

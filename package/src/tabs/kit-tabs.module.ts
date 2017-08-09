@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 import { KitTabsComponent } from './kit-tabs.component';
 
-const exported = [
+const exports = [
   KitTabsComponent,
   KitTabsPanelComponent,
 ];
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

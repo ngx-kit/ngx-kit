@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitButtonGroupComponent } from './kit-button-group.component';
 import { KitButtonComponent } from './kit-button.component';
 
-const exported = [
+const exports = [
   KitButtonComponent,
   KitButtonGroupComponent,
 ];
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

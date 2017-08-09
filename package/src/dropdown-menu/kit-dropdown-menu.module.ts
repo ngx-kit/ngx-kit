@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitDropdownMenuItemComponent } from './kit-dropdown-menu-item.component';
 import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
 
-const exported = [
+const exports = [
   KitDropdownMenuComponent,
   KitDropdownMenuItemComponent,
 ];
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

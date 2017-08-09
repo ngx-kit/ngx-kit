@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
 import { KitDatePickerComponent } from './kit-date-picker.component';
 
-const exported = [
+const exports = [
   KitDatePickerComponent,
 ];
 
@@ -13,10 +13,10 @@ const exported = [
     StylerModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

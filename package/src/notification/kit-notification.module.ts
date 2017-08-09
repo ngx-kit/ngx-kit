@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
 import { KitNotificationService } from './kit-notification.service';
 
-const entry = [
+const entries = [
   KitNotificationHostComponent,
 ];
 
@@ -17,10 +17,10 @@ const entry = [
   ],
   exports: [],
   declarations: [
-    ...entry,
+    ...entries,
   ],
   entryComponents: [
-    ...entry,
+    ...entries,
   ],
   providers: [],
 })

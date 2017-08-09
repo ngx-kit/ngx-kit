@@ -5,7 +5,7 @@ import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '../core/kit-core.module';
 import { KitRadioComponent } from './kit-radio.component';
 
-const exported = [
+const exports = [
   KitRadioComponent,
 ];
 
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

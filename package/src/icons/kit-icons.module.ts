@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { KitIconComponent } from './kit-icon.component';
 import { KitIconsRegistryService } from './kit-icons-registry.service';
 
-const exported = [
+const exports = [
   KitIconComponent,
 ];
 
@@ -15,10 +15,10 @@ const exported = [
     HttpModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

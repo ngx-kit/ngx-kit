@@ -5,10 +5,10 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 import { KitTooltipDirective } from './kit-tooltip.directive';
 
-const exported = [
+const exports = [
   KitTooltipDirective,
 ];
-const entry = [
+const entries = [
   KitTooltipViewComponent,
 ];
 
@@ -19,14 +19,14 @@ const entry = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
-    ...entry,
+    ...exports,
+    ...entries,
   ],
   providers: [],
-  entryComponents: entry,
+  entryComponents: entries,
 })
 export class KitTooltipModule {
 }

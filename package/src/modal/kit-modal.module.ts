@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitModalComponent } from './kit-modal.component';
 import { KitModalService } from './kit-modal.service';
 
-const external = [
+const exports = [
   KitModalComponent,
 ];
 
@@ -15,9 +15,9 @@ const external = [
     StylerModule,
     KitCoreModule,
   ],
-  exports: external,
+  exports: exports,
   declarations: [
-    ...external,
+    ...exports,
   ],
   providers: [
     KitModalService,

@@ -9,7 +9,7 @@ import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
 import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuComponent } from './kit-menu.component';
 
-const exported = [
+const exports = [
   KitMenuComponent,
   KitMenuGroupComponent,
   KitMenuGroupTitleComponent,
@@ -25,10 +25,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

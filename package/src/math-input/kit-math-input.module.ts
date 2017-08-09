@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitInputModule } from '../input/kit-input.module';
 import { KitMathInputComponent } from './kit-math-input.component';
 
-const exported = [
+const exports = [
   KitMathInputComponent,
 ];
 
@@ -17,10 +17,10 @@ const exported = [
     KitInputModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

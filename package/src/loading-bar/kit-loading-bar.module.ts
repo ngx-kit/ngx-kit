@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitLoadingBarComponent } from './kit-loading-bar.component';
 import { KitLoadingBarService } from './kit-loading-bar.service';
 
-const exported = [
+const exports = [
   KitLoadingBarComponent,
 ];
 
@@ -16,10 +16,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [
     KitLoadingBarService,

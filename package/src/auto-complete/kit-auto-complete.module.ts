@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitInputModule } from '../input/kit-input.module';
 import { KitAutoCompleteComponent } from './kit-auto-complete.component';
 
-const exported = [
+const exports = [
   KitAutoCompleteComponent,
 ];
 
@@ -17,10 +17,10 @@ const exported = [
     KitInputModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

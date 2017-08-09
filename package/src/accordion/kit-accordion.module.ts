@@ -5,7 +5,7 @@ import { KitCoreModule } from '../core/kit-core.module';
 import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 import { KitAccordionComponent } from './kit-accordion.component';
 
-const exported = [
+const exports = [
   KitAccordionComponent,
   KitAccordionPanelComponent,
 ];
@@ -17,10 +17,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })

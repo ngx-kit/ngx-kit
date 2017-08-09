@@ -8,12 +8,12 @@ import { KitOverlayContainerComponent } from './overlay/overlay-container.compon
 import { KitOverlayHostComponent } from './overlay/overlay-host.component';
 import { KitOverlayComponent } from './overlay/overlay.component';
 
-const exported = [
+const exports = [
   KitAnchorDirective,
   KitOverlayComponent,
   KitOverlayContainerComponent,
 ];
-const entry = [
+const entries = [
   KitOverlayHostComponent,
 ];
 
@@ -23,14 +23,14 @@ const entry = [
     StylerModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
-    ...entry,
+    ...exports,
+    ...entries,
   ],
   entryComponents: [
-    ...entry,
+    ...entries,
   ],
   providers: [],
 })

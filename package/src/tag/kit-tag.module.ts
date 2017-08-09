@@ -4,7 +4,7 @@ import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '../core/kit-core.module';
 import { KitTagComponent } from './kit-tag.component';
 
-const exported = [
+const exports = [
   KitTagComponent,
 ];
 
@@ -15,10 +15,10 @@ const exported = [
     KitCoreModule,
   ],
   exports: [
-    ...exported,
+    ...exports,
   ],
   declarations: [
-    ...exported,
+    ...exports,
   ],
   providers: [],
 })
