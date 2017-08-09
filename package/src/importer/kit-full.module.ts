@@ -7,6 +7,7 @@ import { KitBadgeModule } from '../badge/kit-badge.module';
 import { KitBreadcrumbModule } from '../breadcrumd/kit-breadcrumb.module';
 import { KitButtonModule } from '../button/kit-button.module';
 import { KitCheckboxModule } from '../checkbox/kit-checkbox.module';
+import { KitColorPickerModule } from '../color-picker/kit-color-picker.module';
 import { KitCoreModule } from '../core/kit-core.module';
 import { KitDatePickerModule } from '../date-picker/kit-date-picker.module';
 import { KitDefaultThemeModule } from '../default-theme/kit-default-theme.module';
@@ -47,6 +48,7 @@ const simpleModules = [
   KitBreadcrumbModule,
   KitButtonModule,
   KitCheckboxModule,
+  KitColorPickerModule,
   KitDatePickerModule,
   KitDividerModule,
   KitDropdownMenuModule,

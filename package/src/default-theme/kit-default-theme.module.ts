@@ -9,6 +9,8 @@ import {
   kitComponentButton,
   kitComponentButtonGroup,
   kitComponentCheckbox,
+  kitComponentColorPicker,
+  kitComponentColorPickerPopup,
   kitComponentDatePicker,
   kitComponentDivider,
   kitComponentDropdownMenu,
@@ -25,7 +27,8 @@ import {
   kitComponentLoadingBar,
   kitComponentMathInput,
   kitComponentMenu,
-  kitComponentMenuGroup, kitComponentMenuGroupTitle,
+  kitComponentMenuGroup,
+  kitComponentMenuGroupTitle,
   kitComponentMenuItem,
   kitComponentMenuSeparator,
   kitComponentMenuSub,
@@ -53,6 +56,8 @@ import { KitDefaultBadgeStyle } from './styles/badge/kit-default-badge.style';
 import { KitDefaultButtonGroupStyle } from './styles/button/kit-default-button-group.style';
 import { KitDefaultButtonStyle } from './styles/button/kit-default-button.style';
 import { KitDefaultCheckboxStyle } from './styles/checkbox/kit-default-checkbox.style';
+import { KitDefaultColorPickerPopupStyle } from './styles/color-picker/kit-default-color-picker-popup.style';
+import { KitDefaultColorPickerStyle } from './styles/color-picker/kit-default-color-picker.style';
 import { KitDefaultOverlayContainerStyle } from './styles/core/kit-default-overlay-container.style';
 import { KitDefaultDatePickerStyle } from './styles/date-picker/kit-default-date-picker.style';
 import { KitDefaultDividerStyle } from './styles/divider/kit-default-divider.style';
@@ -69,6 +74,7 @@ import { KitDefaultLayoutSideStyle } from './styles/layout/kit-default-layout-si
 import { KitDefaultLayoutStyle } from './styles/layout/kit-default-layout.style';
 import { KitDefaultLoadingBarStyle } from './styles/loading-bar/kit-default-loading-bar.style';
 import { KitDefaultMathInputStyle } from './styles/math-input/kit-default-math-input.style';
+import { KitDefaultMenuGroupTitleStyle } from './styles/menu/kit-default-menu-group-title.style';
 import { KitDefaultMenuGroupStyle } from './styles/menu/kit-default-menu-group.style';
 import { KitDefaultMenuItemStyle } from './styles/menu/kit-default-menu-item.style';
 import { KitDefaultMenuSeparatorStyle } from './styles/menu/kit-default-menu-separator.style';
@@ -85,7 +91,6 @@ import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 import { KitDefaultTypoContainerStyle } from './styles/typo/kit-default-typo-container.style';
-import { KitDefaultMenuGroupTitleStyle } from './styles/menu/kit-default-menu-group-title.style';
 
 @NgModule({
   imports: [],
@@ -138,6 +143,14 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentCheckbox,
           useClass: KitDefaultCheckboxStyle,
+        },
+        {
+          provide: kitComponentColorPicker,
+          useClass: KitDefaultColorPickerStyle,
+        },
+        {
+          provide: kitComponentColorPickerPopup,
+          useClass: KitDefaultColorPickerPopupStyle,
         },
         {
           provide: kitComponentDivider,
