@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -89,17 +90,20 @@ export class KitColorPickerBoxComponent implements OnInit {
   constructor(private styler: StylerComponent,
               @Inject(kitComponentColorPicker) private style: KitComponentStyle,
               private colorService: StylerColorService,
-              private el: ElementRef) {
+              private el: ElementRef,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-color-picker';
     this.styler.register(this.style);
     this.sliderDimMax = new SliderDimension(this.width, this.width, this.sbHeight, this.width);
     this.slider = new SliderPosition(0, 0, 0, 0);
+    this.setColorFromString(this.initialColor, false);
   }
 
   @Input()
   set color(color: string) {
     if (color !== this.outputColor) {
-      this.setColorFromString(color || this.initialColor, false);
+      this.setColorFromString(color, false);
+      this.cdr.detectChanges();
     }
   }
 
@@ -109,7 +113,6 @@ export class KitColorPickerBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-//    this.setColorFromString(this.initialColor);
   }
 
   setAlpha(val: {v: number, rg: number}) {

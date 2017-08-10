@@ -13,7 +13,6 @@ export function rgbaToHsva(rgba: RgbaColor | RgbColor): HsvaColor {
   const v: number = max;
   const d = max - min;
   s = max === 0 ? 0 : d / max;
-  console.log('s', s, 'max', max, 'd', d);
   if (max === min) {
     h = 0;
   } else {
