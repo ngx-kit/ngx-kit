@@ -1,9 +1,19 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  NgZone,
+  OnDestroy,
+  Output,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[kitColorPickerSlider]',
 })
-export class KitColorPickerSliderDirective {
+export class KitColorPickerSliderDirective implements OnDestroy {
   @Input() kitColorPickerSlider: any;
 
   @Output('newValue') newValue = new EventEmitter<any>();
@@ -14,15 +24,15 @@ export class KitColorPickerSliderDirective {
 
   @Input('slider') slider: string;
 
-  private listenerMove = (event: any) => {
-    this.move(event);
-  };
+  private listeners: Function[] = [];
 
-  private listenerStop = () => {
-    this.stop();
-  };
+  constructor(private el: ElementRef,
+              private zone: NgZone,
+              private renderer: Renderer2) {
+  }
 
-  constructor(private el: ElementRef) {
+  ngOnDestroy() {
+    this.destroyListeners();
   }
 
   getX(event: any): number {
@@ -63,21 +73,22 @@ export class KitColorPickerSliderDirective {
 
   start(event: any) {
     this.setCursor(event);
-    document.addEventListener('mousemove', this.listenerMove);
-    document.addEventListener('touchmove', this.listenerMove);
-    document.addEventListener('mouseup', this.listenerStop);
-    document.addEventListener('touchend', this.listenerStop);
+    this.listeners.push(this.renderer.listen('document', 'mousemove', this.move.bind(this)));
+    this.listeners.push(this.renderer.listen('document', 'touchmove', this.move.bind(this)));
+    this.listeners.push(this.renderer.listen('document', 'mouseup', this.destroyListeners.bind(this)));
+    this.listeners.push(this.renderer.listen('document', 'touchend', this.destroyListeners.bind(this)));
   }
 
   stop() {
-    document.removeEventListener('mousemove', this.listenerMove);
-    document.removeEventListener('touchmove', this.listenerMove);
-    document.removeEventListener('mouseup', this.listenerStop);
-    document.removeEventListener('touchend', this.listenerStop);
+    this.destroyListeners();
   }
 
   @HostListener('touchstart')
   touchstart($event: TouchEvent) {
     this.start($event);
+  }
+
+  private destroyListeners() {
+    this.listeners.forEach(l => l());
   }
 }
