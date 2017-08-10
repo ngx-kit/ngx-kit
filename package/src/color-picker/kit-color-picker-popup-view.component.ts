@@ -16,6 +16,7 @@ import { kitComponentColorPickerPopup } from '../core/meta/tokens';
                            [position]="'bottom'"
                            (outsideClick)="opened = false">
       <kit-color-picker
+          [debounce]="debounce"
           [color]="color"
           (colorChange)="colorChange.emit($event)"
           styler="popup"></kit-color-picker>
@@ -31,6 +32,8 @@ export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() color: string;
 
   @Output() colorChange = new EventEmitter<string>();
+
+  @Input() debounce: number;
 
   @Input() kitColorPickerPopupView: any;
 

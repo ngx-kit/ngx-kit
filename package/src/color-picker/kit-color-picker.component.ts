@@ -11,6 +11,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { StylerColorService, StylerComponent } from '@ngx-kit/styler';
+import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentColorPicker } from '../core/meta/tokens';
 import { Hsva, SliderDimension, SliderPosition } from './classes';
@@ -63,6 +65,8 @@ export class KitColorPickerComponent implements OnInit {
 
   cpAlphaChannel: string;
 
+  @Input() debounce: number;
+
   hueSliderColor: string;
 
   @Input() kitColorPicker: any;
@@ -78,6 +82,8 @@ export class KitColorPickerComponent implements OnInit {
   slider: SliderPosition;
 
   @Input() width = 200;
+
+  private debouncedValue = new Subject<string>();
 
   private hsva: Hsva;
 
@@ -113,6 +119,9 @@ export class KitColorPickerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.debouncedValue
+        .debounceTime(this.debounce)
+        .subscribe(this.colorChange);
   }
 
   setAlpha(val: {v: number, rg: number}) {
@@ -155,7 +164,11 @@ export class KitColorPickerComponent implements OnInit {
     // output color if changed and needed
     if (emit && this.outputColor !== color) {
       this.outputColor = color;
-      this.colorChange.emit(this.outputColor);
+      if (this.debounce === 0) {
+        this.colorChange.emit(this.outputColor);
+      } else {
+        this.debouncedValue.next(this.outputColor);
+      }
     }
   }
 }

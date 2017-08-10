@@ -27,6 +27,8 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
 
   @Output() colorChange = new EventEmitter<string>();
 
+  @Input() debounce: number;
+
   @HostBinding('class') hostClass: string;
 
   @Input() kitColorPickerPopup: string;
@@ -110,6 +112,7 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
       instance.position = this.kitColorPickerPopupPosition;
       instance.anchor = this.el.nativeElement;
       instance.color = this.color;
+      instance.debounce = this.debounce;
     }
   }
 
