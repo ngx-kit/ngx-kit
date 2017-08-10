@@ -8,31 +8,31 @@ import { kitComponentColorPickerPopup } from '../core/meta/tokens';
  * @todo add pointer
  */
 @Component({
-  selector: 'kit-color-picker-popup,[kitColorPickerPopup]',
+  selector: 'kit-color-picker-popup-view,[kitColorPickerPopupView]',
   template: `
     <kit-overlay-container [type]="'dropdown'"
                            [anchor]="anchor"
                            [opened]="opened"
                            [position]="'bottom'"
                            (outsideClick)="opened = false">
-      <kit-color-picker-box
+      <kit-color-picker
           [color]="color"
           (colorChange)="colorChange.emit($event)"
-          styler="popup"></kit-color-picker-box>
+          styler="popup"></kit-color-picker>
     </kit-overlay-container>
   `,
   viewProviders: [
     StylerComponent,
   ],
 })
-export class KitColorPickerPopupComponent implements OnInit {
+export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() anchor: HTMLElement;
 
   @Input() color: string;
 
   @Output() colorChange = new EventEmitter<string>();
 
-  @Input() kitColorPickerPopup: any;
+  @Input() kitColorPickerPopupView: any;
 
   @Input() opened = false;
 

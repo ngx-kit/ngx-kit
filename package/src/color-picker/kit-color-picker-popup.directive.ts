@@ -17,23 +17,23 @@ import {
 import { FormControl, FormControlName, NgModel } from '@angular/forms';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
-import { KitColorPickerPopupComponent } from './kit-color-picker-popup.component';
+import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.component';
 
 @Directive({
-  selector: '[kitColorPicker]',
+  selector: '[kitColorPickerPopup]',
 })
-export class KitColorPickerDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
+export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @Input() color: string;
 
   @Output() colorChange = new EventEmitter<string>();
 
   @HostBinding('class') hostClass: string;
 
-  @Input() kitColorPicker: string;
+  @Input() kitColorPickerPopup: string;
 
-  @Input() kitColorPickerPosition: KitCoreOverlayContainerPosition = 'top';
+  @Input() kitColorPickerPopupPosition: KitCoreOverlayContainerPosition = 'top';
 
-  private containerRef: ComponentRef<KitColorPickerPopupComponent>;
+  private containerRef: ComponentRef<KitColorPickerPopupViewComponent>;
 
   constructor(private overlay: KitOverlayService,
               private el: ElementRef,
@@ -43,7 +43,7 @@ export class KitColorPickerDirective implements OnInit, OnDestroy, OnChanges, Af
 
   ngAfterContentInit() {
     setTimeout(() => {
-      this.containerRef = this.overlay.host<KitColorPickerPopupComponent>(KitColorPickerPopupComponent);
+      this.containerRef = this.overlay.host<KitColorPickerPopupViewComponent>(KitColorPickerPopupViewComponent);
       this.handleOutputs(this.containerRef.instance);
       this.proxyProps();
     }, 1);
@@ -100,14 +100,14 @@ export class KitColorPickerDirective implements OnInit, OnDestroy, OnChanges, Af
     }
   }
 
-  private handleOutputs(instance: KitColorPickerPopupComponent) {
+  private handleOutputs(instance: KitColorPickerPopupViewComponent) {
     instance.colorChange.subscribe(this.colorChange);
   }
 
   private proxyProps() {
     if (this.containerRef) {
       const instance = this.containerRef.instance;
-      instance.position = this.kitColorPickerPosition;
+      instance.position = this.kitColorPickerPopupPosition;
       instance.anchor = this.el.nativeElement;
       instance.color = this.color;
     }

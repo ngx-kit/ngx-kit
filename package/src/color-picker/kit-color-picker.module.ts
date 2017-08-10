@@ -2,21 +2,21 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '../core/kit-core.module';
-import { KitColorPickerBoxComponent } from './kit-color-picker-box.component';
-import { KitColorPickerPopupComponent } from './kit-color-picker-popup.component';
+import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.component';
+import { KitColorPickerPopupDirective } from './kit-color-picker-popup.directive';
 import { KitColorPickerSliderDirective } from './kit-color-picker-slider.directive';
-import { KitColorPickerDirective } from './kit-color-picker.directive';
+import { KitColorPickerComponent } from './kit-color-picker.component';
 
 const locals = [
   KitColorPickerSliderDirective,
 ];
 const entries = [
-  KitColorPickerPopupComponent,
+  KitColorPickerPopupViewComponent,
 ];
 const exports = [
-  KitColorPickerBoxComponent,
+  KitColorPickerComponent,
   KitColorPickerSliderDirective,
-  KitColorPickerDirective,
+  KitColorPickerPopupDirective,
 ];
 
 @NgModule({

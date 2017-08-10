@@ -18,7 +18,7 @@ import { hsvaToHsla } from './utils/hsva-to-hsla';
 import { stringToHsva } from './utils/string-to-hsva';
 
 @Component({
-  selector: 'kit-color-picker-box,[kitColorPickerBox]',
+  selector: 'kit-color-picker,[kitColorPicker]',
   template: `
     <div [kitColorPickerSlider]
          [style.background-color]="hueSliderColor"
@@ -54,7 +54,7 @@ import { stringToHsva } from './utils/string-to-hsva';
     StylerComponent,
   ],
 })
-export class KitColorPickerBoxComponent implements OnInit {
+export class KitColorPickerComponent implements OnInit {
   @ViewChild('alphaSlider') alphaSlider: any;
 
   alphaSliderColor: string;
