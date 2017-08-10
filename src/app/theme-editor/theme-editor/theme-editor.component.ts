@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { KitDefaultThemeDefaultParams, paramsSchema } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
@@ -10,6 +10,7 @@ import { ThemeEditorStyle } from './theme-editor.style';
   selector: 'app-theme-editor',
   templateUrl: './theme-editor.component.html',
   viewProviders: [StylerModule.forComponent(ThemeEditorStyle)],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeEditorComponent implements OnInit {
   colorsModel: string[];
@@ -22,28 +23,32 @@ export class ThemeEditorComponent implements OnInit {
 
   constructor(private editor: EditorService) {
     this.schema = this.convertSchema(paramsSchema);
-    console.log('params schema', paramsSchema);
-    console.log('converted schema', this.schema);
     this.themeModel = new KitDefaultThemeDefaultParams();
     this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
-    console.log('colors model', this.colorsModel);
   }
 
   ngOnInit() {
   }
 
-  changeColor(model: any, p: [string, string]) {
-    Object.keys(model).forEach(key => {
-      if (isObject(model[key])) {
-        this.changeColor(model[key], p);
-      } else if (model[key] === p[0]) {
-        model[key] = p[1];
-      }
-    });
+  changeColor(p: [string, string]) {
+    // update colors set
+    this.colorsModel = [...this.colorsModel.map(c => c === p[0] ? p[1] : c)];
+    // update theme
+    this.changeThemeColor(this.themeModel, p[0], p[1]);
   }
 
   update() {
     this.editor.params = this.themeModel;
+  }
+
+  private changeThemeColor(model: any, prev: string, curr: string) {
+    Object.keys(model).forEach(key => {
+      if (isObject(model[key])) {
+        this.changeThemeColor(model[key], prev, curr);
+      } else if (model[key] === prev) {
+        model[key] = curr;
+      }
+    });
   }
 
   private convertSchema(schema) {

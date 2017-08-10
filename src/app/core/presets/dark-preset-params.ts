@@ -470,7 +470,9 @@ export class DarkPresetParams implements KitDefaultThemeParamsDef {
       duration: '1.5s',
       size: 50,
       type: 'spin-1',
-      defaultColor: this.colors.blue1,
+      colors: {
+        'default': this.colors.blue1,
+      },
     };
   }
 

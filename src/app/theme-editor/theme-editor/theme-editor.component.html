@@ -2,8 +2,10 @@
   <kit-layout-side styler="side">
     <button (click)="update()">update</button>
     <form #form="ngForm">
+      <h4>Colors</h4>
       <app-colors-block [colors]="colorsModel"
-                        (change)="changeColor(themeModel, $event)"></app-colors-block>
+                        (change)="changeColor($event)"></app-colors-block>
+      <h4>Params sections</h4>
       <app-block [schema]="schema"
                  [themeModel]="themeModel"
                  [colorsModel]="colorsModel"></app-block>

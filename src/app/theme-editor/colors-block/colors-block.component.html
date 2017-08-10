@@ -1,9 +1,12 @@
-<h4>Color</h4>
-<div *ngFor="let color of colors">
-  <div>
-    <kit-input [ngModel]="color"
-               (ngModelChange)="changeHandler(color, $event)"></kit-input>
-    <button (click)="delete(color)">X</button>
+<span *ngFor="let color of colors; trackBy: trackByFn">
+  <div [style.background]="color"
+       [kitColorPickerPopup]
+       [debounce]="300"
+       [color]="color"
+       (colorChange)="changeHandler(color, $event)"
+       styler="box">
+    {{ color }}
   </div>
-</div>
+  <button (click)="delete(color)">X</button>
+</span>
 <button (click)="add()">Add</button>

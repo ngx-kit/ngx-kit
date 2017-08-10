@@ -19,6 +19,7 @@ export class BlockStyle implements ComponentStyle {
 
   name(): StyleDef {
     return {
+      cursor: 'pointer',
       margin: [4, 0],
     }
   }
