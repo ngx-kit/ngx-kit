@@ -2,14 +2,14 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
+  forwardRef,
   HostBinding,
   Inject,
   Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerColorService, StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
@@ -18,6 +18,12 @@ import { kitComponentColorPicker } from '../core/meta/tokens';
 import { Hsva, SliderDimension, SliderPosition } from './classes';
 import { hsvaToHsla } from './utils/hsva-to-hsla';
 import { stringToHsva } from './utils/string-to-hsva';
+
+export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => KitColorPickerComponent),
+  multi: true,
+};
 
 @Component({
   selector: 'kit-color-picker,[kitColorPicker]',
@@ -52,16 +58,15 @@ import { stringToHsva } from './utils/string-to-hsva';
            styler="cursor"></div>
     </div>
   `,
+  providers: [KIT_COLOR_PICKER_VALUE_ACCESSOR],
   viewProviders: [
     StylerComponent,
   ],
 })
-export class KitColorPickerComponent implements OnInit {
+export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('alphaSlider') alphaSlider: any;
 
   alphaSliderColor: string;
-
-  @Output() colorChange = new EventEmitter<string>();
 
   cpAlphaChannel: string;
 
@@ -83,15 +88,22 @@ export class KitColorPickerComponent implements OnInit {
 
   @Input() width = 200;
 
+  private changes$ = new Subject<string>();
+
   private debouncedValue = new Subject<string>();
 
   private hsva: Hsva;
 
   private initialColor = '#ffffff';
 
+  // @todo do not change if disabled
+  private isDisabled = false;
+
   private outputColor: string;
 
   private sliderDimMax: SliderDimension;
+
+  private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentColorPicker) private style: KitComponentStyle,
@@ -105,23 +117,24 @@ export class KitColorPickerComponent implements OnInit {
     this.setColorFromString(this.initialColor, false);
   }
 
-  @Input()
-  set color(color: string) {
-    if (color !== this.outputColor) {
-      this.setColorFromString(color, false);
-      this.cdr.detectChanges();
-    }
-  }
-
   @HostBinding('style.width.px')
   get hostWidth() {
     return this.width;
   }
 
   ngOnInit() {
+    // proxy to value accessor
     this.debouncedValue
         .debounceTime(this.debounce)
-        .subscribe(this.colorChange);
+        .subscribe(this.changes$);
+  }
+
+  registerOnChange(fn: any) {
+    this.changes$.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any) {
+    this.touches$.subscribe(fn);
   }
 
   setAlpha(val: {v: number, rg: number}) {
@@ -137,6 +150,10 @@ export class KitColorPickerComponent implements OnInit {
     }
   }
 
+  setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
+  }
+
   setHue(val: {v: number, rg: number}) {
     this.hsva.h = val.v / val.rg;
     this.update();
@@ -146,6 +163,10 @@ export class KitColorPickerComponent implements OnInit {
     this.hsva.s = val.s / val.rgX;
     this.hsva.v = val.v / val.rgY;
     this.update();
+  }
+
+  touch() {
+    this.touches$.next(true);
   }
 
   update(emit: boolean = true) {
@@ -165,10 +186,17 @@ export class KitColorPickerComponent implements OnInit {
     if (emit && this.outputColor !== color) {
       this.outputColor = color;
       if (this.debounce === 0) {
-        this.colorChange.emit(this.outputColor);
+        this.changes$.next(this.outputColor);
       } else {
         this.debouncedValue.next(this.outputColor);
       }
+    }
+  }
+
+  writeValue(value: any) {
+    if (value !== this.outputColor) {
+      this.setColorFromString(value, false);
+      this.cdr.detectChanges();
     }
   }
 }

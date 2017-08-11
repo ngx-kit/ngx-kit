@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { StylerModule } from '@ngx-kit/styler';
 import { KitCoreModule } from '../core/kit-core.module';
 import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.component';
@@ -22,6 +23,7 @@ const exports = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     StylerModule,
     KitCoreModule,
   ],

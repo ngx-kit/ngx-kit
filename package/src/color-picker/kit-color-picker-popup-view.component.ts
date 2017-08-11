@@ -17,8 +17,8 @@ import { kitComponentColorPickerPopup } from '../core/meta/tokens';
                            (outsideClick)="opened = false">
       <kit-color-picker
           [debounce]="debounce"
-          [color]="color"
-          (colorChange)="colorChange.emit($event)"
+          [ngModel]="color"
+          (ngModelChange)="colorChange.emit($event)"
           styler="popup"></kit-color-picker>
     </kit-overlay-container>
   `,
