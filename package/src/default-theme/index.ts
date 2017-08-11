@@ -41,6 +41,7 @@ export * from './styles/modal/kit-default-modal.style';
 export * from './styles/notification/kit-default-notification-host.style';
 export * from './styles/spinner/kit-default-spinner.style';
 export * from './styles/radio/kit-default-radio.style';
+export * from './styles/radio/kit-default-radio-group.style';
 export * from './styles/select/kit-default-select.style';
 export * from './styles/tabs/kit-default-tabs.style';
 export * from './styles/tag/kit-default-tag.style';

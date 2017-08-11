@@ -39,6 +39,7 @@ export const kitComponentModal = new InjectionToken<KitComponentStyle>('kitCompo
 export const kitComponentNotificationHost = new InjectionToken<KitComponentStyle>('kitComponentNotificationHost');
 export const kitComponentOverlayContainer = new InjectionToken<KitComponentStyle>('kitComponentOverlayContainer');
 export const kitComponentRadio = new InjectionToken<KitComponentStyle>('kitComponentRadio');
+export const kitComponentRadioGroup = new InjectionToken<KitComponentStyle>('kitComponentRadioGroup');
 export const kitComponentSelect = new InjectionToken<KitComponentStyle>('kitComponentSelect');
 export const kitComponentSpinner = new InjectionToken<KitComponentStyle>('kitComponentSpinner');
 export const kitComponentTabs = new InjectionToken<KitComponentStyle>('kitComponentTabs');

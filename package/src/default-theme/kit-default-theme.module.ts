@@ -35,7 +35,7 @@ import {
   kitComponentModal,
   kitComponentNotificationHost,
   kitComponentOverlayContainer,
-  kitComponentRadio,
+  kitComponentRadio, kitComponentRadioGroup,
   kitComponentSelect,
   kitComponentSpinner,
   kitComponentTabs,
@@ -91,6 +91,7 @@ import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 import { KitDefaultTypoContainerStyle } from './styles/typo/kit-default-typo-container.style';
+import { KitDefaultRadioGroupStyle } from './styles/radio/kit-default-radio-group.style';
 
 @NgModule({
   imports: [],
@@ -251,6 +252,10 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentRadio,
           useClass: KitDefaultRadioStyle,
+        },
+        {
+          provide: kitComponentRadioGroup,
+          useClass: KitDefaultRadioGroupStyle,
         },
         {
           provide: kitComponentSelect,

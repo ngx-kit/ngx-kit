@@ -1,9 +1,10 @@
-import { Component, forwardRef, HostListener, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, HostListener, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitControl } from '../core/meta/control';
 import { kitComponentRadio } from '../core/meta/tokens';
 
 export const KIT_RADIO_VALUE_ACCESSOR: any = {
@@ -12,20 +13,17 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
-/**
- * @todo radio-group
- */
 @Component({
   selector: 'kit-radio,[kitRadio]',
   template: `
     <span styler="radio">
         <input [id]="id"
                [value]="value"
-               [ngModel]="checked ? value : null"
-               (ngModelChange)="checked = $event"
+               [ngModel]="value === state ? value : null"
+               (ngModelChange)="updateValue($event)"
                type="radio"
                styler="input">
-        <span [styler]="['view', {checked: checked, hover: hover}]"></span>
+        <span [styler]="['view', {checked: value === state, hover: hover}]"></span>
       </span>
     <label [attr.for]="id" styler="label">
       <ng-content></ng-content>
@@ -36,16 +34,16 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
     StylerComponent,
   ],
 })
-export class KitRadioComponent implements ControlValueAccessor {
+export class KitRadioComponent implements ControlValueAccessor, KitControl<any> {
   hover = false;
 
   id: string;
 
   @Input() kitRadio: any;
 
-  @Input() value: any;
+  state: any;
 
-  private _checked: any;
+  @Input() value: any;
 
   private changes$ = new Subject<number>();
 
@@ -56,22 +54,11 @@ export class KitRadioComponent implements ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentRadio) private style: KitComponentStyle,
-              private core: KitCoreService) {
+              private core: KitCoreService,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-radio';
     this.styler.register(this.style);
     this.id = this.core.uuid();
-  }
-
-  get checked(): any {
-    return this._checked;
-  }
-
-  set checked(value: any) {
-    this._checked = value === this.value;
-    if (this._checked) {
-      this.changes$.next(this.value);
-      this.touches$.next(true);
-    }
   }
 
   @HostListener('mouseenter')
@@ -96,7 +83,14 @@ export class KitRadioComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
+  updateValue(value: any) {
+    this.writeValue(value);
+    this.changes$.next(this.state);
+    this.touches$.next(true);
+  }
+
   writeValue(value: any) {
-    this._checked = this.value === value;
+    this.state = value;
+    this.cdr.markForCheck();
   }
 }

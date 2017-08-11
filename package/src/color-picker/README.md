@@ -23,7 +23,7 @@ https://ngx-kit.com/kit/modules/color-picker
 | --- | --- | --- |
 | *ngModelChange* | `Event<string>` | Color value changing |
 
-### '[kitColorPickerPopup]'
+### `[kitColorPickerPopup]`
 
 Directive automatically proxies value to host ngModel if needed.
 
