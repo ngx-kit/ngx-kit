@@ -1,0 +1,12 @@
+---
+route: kit/radio
+title: Radio group
+---
+
+```html
+<kit-radio-group [(ngModel)]="selected">
+  <kit-radio [value]="'first'">First</kit-radio>
+  <kit-radio [value]="'second'">Second</kit-radio>
+  <kit-radio [value]="'third'">Third</kit-radio>
+</kit-radio-group>
+```

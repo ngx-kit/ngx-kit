@@ -11,6 +11,20 @@ export class RadioComponent implements OnInit {
 
   content: Content;
 
+  options = [
+    {value: 'first', label: 'First'},
+    {value: 'second', label: 'Second'},
+    {value: 'third', label: 'Third'},
+  ];
+
+  simpleOptions = ['first', 'second', 'third'];
+
+  customOptions = [
+    {customValue: 'first', customLabel: 'First'},
+    {customValue: 'second', customLabel: 'Second'},
+    {customValue: 'third', customLabel: 'Third'},
+  ];
+
   constructor(private route: ActivatedRoute) {
   }
 

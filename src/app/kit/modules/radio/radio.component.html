@@ -6,3 +6,34 @@
   <kit-radio [value]="'third'" [(ngModel)]="selected">Third</kit-radio>
   <div>{{ selected }}</div>
 </app-demo>
+
+<app-demo [content]="content" [id]="'demo-group'">
+  <kit-radio-group [(ngModel)]="selected">
+    <kit-radio [value]="'first'">First</kit-radio>
+    <kit-radio [value]="'second'">Second</kit-radio>
+    <kit-radio [value]="'third'">Third</kit-radio>
+  </kit-radio-group>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-group-options'">
+  <kit-radio-group [(ngModel)]="selected" [options]="options"></kit-radio-group>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-group-simple-options'">
+  <kit-radio-group [(ngModel)]="selected" [options]="simpleOptions"></kit-radio-group>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-group-custom-options'">
+  <kit-radio-group [(ngModel)]="selected"
+                   [options]="customOptions"
+                   [valueField]="'customValue'"
+                   [labelField]="'customLabel'">
+  </kit-radio-group>
+</app-demo>
+
+<app-demo [content]="content" [id]="'demo-group-direction'">
+  <kit-radio-group [(ngModel)]="selected"
+                   [options]="options"
+                   [direction]="'vertical'">
+  </kit-radio-group>
+</app-demo>
