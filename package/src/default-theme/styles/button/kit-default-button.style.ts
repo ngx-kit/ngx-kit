@@ -4,6 +4,7 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { KitDefaultThemeParamsButtonColor } from '../../meta/params';
+import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitComponentStyle {
@@ -43,24 +44,16 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
       },
       this.def.toggle(state.disabled, {
         cursor: 'default',
-        background: color.disabled.background,
-        borderColor: color.disabled.border,
-        color: color.disabled.text,
+        ...applyColorSet(color.disabled),
       }, {
         cursor: 'pointer',
-        background: color.base.background,
-        borderColor: color.base.border,
-        color: color.base.text,
+        ...applyColorSet(color.base),
         $nest: {
           '&:hover': {
-            background: color.hover.background,
-            borderColor: color.hover.border,
-            color: color.hover.text,
+            ...applyColorSet(color.hover),
           },
           '&:active': {
-            background: color.active.background,
-            borderColor: color.active.border,
-            color: color.active.text,
+            ...applyColorSet(color.active),
           },
         },
       }),

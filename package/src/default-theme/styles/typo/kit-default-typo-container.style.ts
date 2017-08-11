@@ -3,6 +3,7 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultTypoContainerStyle implements KitComponentStyle {
@@ -12,25 +13,20 @@ export class KitDefaultTypoContainerStyle implements KitComponentStyle {
   host(): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleTypo.colors.text.background,
-      color: params.moduleTypo.colors.text.text,
       fontSize: params.moduleTypo.fontSize,
+      ...applyTypoColorSet(params.moduleTypo.colors.text),
       $nest: {
         '& a': {
-          color: params.moduleTypo.colors.link.base.text,
-          background: params.moduleTypo.colors.link.base.background,
+          ...applyTypoColorSet(params.moduleTypo.colors.link.base),
         },
         '& a:hover': {
-          color: params.moduleTypo.colors.link.hover.text,
-          background: params.moduleTypo.colors.link.hover.background,
+          ...applyTypoColorSet(params.moduleTypo.colors.link.hover),
         },
         '& a:focus': {
-          color: params.moduleTypo.colors.link.focus.text,
-          background: params.moduleTypo.colors.link.focus.background,
+          ...applyTypoColorSet(params.moduleTypo.colors.link.focus),
         },
         '& a:visited': {
-          color: params.moduleTypo.colors.link.visited.text,
-          background: params.moduleTypo.colors.link.visited.background,
+          ...applyTypoColorSet(params.moduleTypo.colors.link.visited),
         },
         '& h1': {
           fontSize: params.moduleTypo.headingFontSizes.h1,

@@ -3,6 +3,8 @@ import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultSelectStyle implements KitComponentStyle {
@@ -16,10 +18,9 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     const params = this.theme.params;
     return this.def.merge([
       {
-        background: params.moduleSelect.colors.option.base.background,
-        color: params.moduleSelect.colors.option.base.text,
         padding: [params.grid.v / 2, params.grid.h],
         cursor: 'default',
+        ...applyTypoColorSet(params.moduleSelect.colors.option.base),
         $nest: {
           '&:not(:last-child)': {
             borderBottom: [1, 'solid', params.moduleSelect.colors.option.base.border],
@@ -28,14 +29,12 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
       },
       this.def.toggle(state.selected, {
         borderColor: params.moduleSelect.colors.option.selected.border,
-        background: params.moduleSelect.colors.option.selected.background,
-        color: params.moduleSelect.colors.option.selected.text,
+        ...applyTypoColorSet(params.moduleSelect.colors.option.selected),
       }, {
         $nest: {
           '&:hover': {
-            background: params.moduleSelect.colors.option.hover.background,
             borderColor: params.moduleSelect.colors.option.hover.border,
-            color: params.moduleSelect.colors.option.hover.text,
+            ...applyTypoColorSet(params.moduleSelect.colors.option.hover),
           },
         },
       }),
@@ -54,27 +53,21 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   }): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleSelect.colors.select.base.background,
-      border: [params.borders.width, 'solid', params.moduleSelect.colors.select.base.border],
       borderRadius: params.borders.radius.s,
       boxSizing: 'border-box',
-      color: params.moduleSelect.colors.select.base.text,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
+      ...applyColorSet(params.moduleSelect.colors.select.base, params.borders.width),
       ...this.def.toggle(state.focus, {
-        background: params.moduleSelect.colors.select.focus.background,
-        borderColor: params.moduleSelect.colors.select.focus.border,
-        color: params.moduleSelect.colors.select.focus.text,
         transition: '0.2s',
         outline: 'none',
+        ...applyColorSet(params.moduleSelect.colors.select.focus, params.borders.width),
       }, {
         $nest: {
           '&:hover': {
-            background: params.moduleSelect.colors.select.hover.background,
-            borderColor: params.moduleSelect.colors.select.hover.border,
-            color: params.moduleSelect.colors.select.hover.text,
             outline: 'none',
+            ...applyColorSet(params.moduleSelect.colors.select.hover, params.borders.width),
           },
         },
       }),
@@ -88,27 +81,21 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   nativeSelect(): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleSelect.colors.select.base.background,
-      border: [params.borders.width, 'solid', params.moduleSelect.colors.select.base.border],
       borderRadius: params.borders.radius.s,
       boxSizing: 'border-box',
-      color: params.moduleSelect.colors.select.base.text,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
+      ...applyColorSet(params.moduleSelect.colors.select.base, params.borders.width),
       $nest: {
         '&:hover': {
-          background: params.moduleSelect.colors.select.hover.background,
-          borderColor: params.moduleSelect.colors.select.hover.border,
-          color: params.moduleSelect.colors.select.hover.text,
           outline: 'none',
+          ...applyColorSet(params.moduleSelect.colors.select.hover, params.borders.width),
         },
         '&:focus': {
-          background: params.moduleSelect.colors.select.focus.background,
-          borderColor: params.moduleSelect.colors.select.focus.border,
-          color: params.moduleSelect.colors.select.focus.text,
           transition: '0.2s',
           outline: 'none',
+          ...applyColorSet(params.moduleSelect.colors.select.focus, params.borders.width),
         },
       },
     };
@@ -117,23 +104,18 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   option(state: {selected: boolean}): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleSelect.colors.option.base.background,
-      border: [params.borders.width, 'solid', params.moduleSelect.colors.option.base.border],
       borderRadius: params.borders.radius.s,
       cursor: 'pointer',
       marginBottom: params.grid.v / 2,
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,
       transition: 'background 0.2s',
+      ...applyColorSet(params.moduleSelect.colors.option.base, params.borders.width),
       ...this.def.toggle(state.selected, {
-        background: params.moduleSelect.colors.option.selected.background,
-        borderColor: params.moduleSelect.colors.option.selected.border,
-        color: params.moduleSelect.colors.option.selected.text,
+        ...applyColorSet(params.moduleSelect.colors.option.selected, params.borders.width),
       }, {
         $nest: {
           '&:hover': {
-            background: params.moduleSelect.colors.option.hover.background,
-            borderColor: params.moduleSelect.colors.option.hover.border,
-            color: params.moduleSelect.colors.option.hover.text,
+            ...applyColorSet(params.moduleSelect.colors.option.hover, params.borders.width),
           },
         },
       }),

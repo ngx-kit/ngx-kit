@@ -3,6 +3,7 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultTextareaStyle implements KitComponentStyle {
@@ -16,26 +17,20 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
   textarea(): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleTextarea.colors.base.background,
-      border: [params.borders.width, 'solid', params.moduleTextarea.colors.base.border],
       borderRadius: params.borders.radius.s,
-      color: params.moduleTextarea.colors.base.text,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
+      ...applyColorSet(params.moduleTextarea.colors.base, params.borders.width),
       $nest: {
         '&:hover': {
-          background: params.moduleInput.colors.hover.background,
-          borderColor: params.moduleInput.colors.hover.border,
-          color: params.moduleInput.colors.hover.text,
           outline: 'none',
+          ...applyColorSet(params.moduleTextarea.colors.hover, params.borders.width),
         },
         '&:focus': {
-          background: params.moduleInput.colors.focus.background,
-          borderColor: params.moduleInput.colors.focus.border,
-          color: params.moduleInput.colors.focus.text,
           transition: '0.8s',
           outline: 'none',
+          ...applyColorSet(params.moduleTextarea.colors.focus, params.borders.width),
         },
       },
     };

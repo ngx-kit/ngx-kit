@@ -3,6 +3,7 @@ import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
@@ -13,18 +14,16 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
   content(): StyleDef {
     return {
       padding: [this.theme.params.grid.v * 2, this.theme.params.grid.h * 3],
-      backgroundColor: this.theme.params.moduleAccordion.colors.content.background,
-      color: this.theme.params.moduleAccordion.colors.content.text,
+      ...applyTypoColorSet(this.theme.params.moduleAccordion.colors.content),
     };
   }
 
   host(): StyleDef {
     return {
-      backgroundColor: this.theme.params.moduleAccordion.colors.title.background,
       border: [1, 'solid', this.theme.params.moduleAccordion.colors.border],
       borderBottomWidth: 0,
-      color: this.theme.params.moduleAccordion.colors.title.text,
       display: 'block',
+      ...applyTypoColorSet(this.theme.params.moduleAccordion.colors.title),
       $nest: {
         '&:last-child': {
           borderBottomWidth: 1,

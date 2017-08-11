@@ -109,11 +109,7 @@ export const paramsSchema = {
         background: 'color',
         border: 'color',
       },
-      popup: {
-        background: 'color',
-        border: 'color',
-        text: 'color',
-      },
+      popup: basicColorSet,
     },
     cursorSize: 'number',
     sliderHeight: 'number',

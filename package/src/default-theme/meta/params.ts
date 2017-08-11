@@ -1,3 +1,14 @@
+export interface ColorsSet {
+  background: string;
+  border: string;
+  text: string;
+}
+
+export interface TypoColorsSet {
+  background: string;
+  text: string;
+}
+
 export interface KitDefaultThemeParams {
   borders: KitDefaultThemeParamsBorders;
   grid: KitDefaultThemeParamsGrid;
@@ -42,14 +53,8 @@ export interface KitDefaultThemeParamsGrid {
 export interface KitDefaultThemeParamsAccordion {
   colors: {
     border: string;
-    title: {
-      background: string;
-      text: string;
-    };
-    content: {
-      background: string;
-      text: string;
-    }
+    title: TypoColorsSet;
+    content: TypoColorsSet;
   };
 }
 
@@ -74,29 +79,17 @@ export interface KitDefaultThemeParamsAlertColor {
 export interface KitDefaultThemeParamsAutoComplete {
   colors: {
     resultItem: {
-      base: KitDefaultThemeParamsAutoCompleteColor;
-      hover: KitDefaultThemeParamsAutoCompleteColor;
-      active: KitDefaultThemeParamsAutoCompleteColor;
+      base: ColorsSet;
+      hover: ColorsSet;
+      active: ColorsSet;
     }
   };
 }
 
-export interface KitDefaultThemeParamsAutoCompleteColor {
-  background: string;
-  border: string;
-  text: string;
-}
-
 export interface KitDefaultThemeParamsBadge {
   colors: {
-    [key: string]: KitDefaultThemeParamsBadgeColor;
+    [key: string]: ColorsSet;
   };
-}
-
-export interface KitDefaultThemeParamsBadgeColor {
-  background: string;
-  border: string;
-  text: string;
 }
 
 export interface KitDefaultThemeParamsButton {
@@ -106,16 +99,10 @@ export interface KitDefaultThemeParamsButton {
 }
 
 export interface KitDefaultThemeParamsButtonColor {
-  active: KitDefaultThemeParamsButtonColorState;
-  base: KitDefaultThemeParamsButtonColorState;
-  disabled: KitDefaultThemeParamsButtonColorState;
-  hover: KitDefaultThemeParamsButtonColorState;
-}
-
-export interface KitDefaultThemeParamsButtonColorState {
-  background: string;
-  border: string;
-  text: string;
+  active: ColorsSet;
+  base: ColorsSet;
+  disabled: ColorsSet;
+  hover: ColorsSet;
 }
 
 export interface KitDefaultThemeParamsCheckbox {
@@ -138,11 +125,7 @@ export interface KitDefaultThemeParamsColorPicker {
       background: string;
       border: string;
     };
-    popup: {
-      background: string;
-      border: string;
-      text: string;
-    };
+    popup: ColorsSet;
   };
   cursorSize: number;
   sliderHeight: number;
@@ -168,21 +151,9 @@ export interface KitDefaultThemeParamsForm {
 
 export interface KitDefaultThemeParamsInput {
   colors: {
-    base: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    hover: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    focus: {
-      background: string;
-      border: string;
-      text: string;
-    };
+    base: ColorsSet;
+    hover: ColorsSet;
+    focus: ColorsSet;
   };
 }
 
@@ -196,21 +167,9 @@ export interface KitDefaultThemeParamsLoadingBar {
 export interface KitDefaultThemeParamsMenu {
   colors: {
     item: {
-      base: {
-        background: string;
-        border: string;
-        text: string;
-      };
-      hover: {
-        background: string;
-        border: string;
-        text: string;
-      };
-      disabled: {
-        background: string;
-        border: string;
-        text: string;
-      };
+      base: ColorsSet;
+      hover: ColorsSet;
+      disabled: ColorsSet;
     };
     groupTitle: {
       background: string;
@@ -288,51 +247,19 @@ export interface KitDefaultThemeParamsSpinner {
 
 export interface KitDefaultThemeParamsTag {
   colors: {
-    'default': {
-      background: string;
-      border: string;
-      text: string;
-    };
-    primary: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    success: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    error: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    warning: {
-      background: string;
-      border: string;
-      text: string;
-    };
+    'default': ColorsSet;
+    primary: ColorsSet;
+    success: ColorsSet;
+    error: ColorsSet;
+    warning: ColorsSet;
   };
 }
 
 export interface KitDefaultThemeParamsTextarea {
   colors: {
-    base: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    hover: {
-      background: string;
-      border: string;
-      text: string;
-    };
-    focus: {
-      background: string;
-      border: string;
-      text: string;
-    };
+    base: ColorsSet;
+    hover: ColorsSet;
+    focus: ColorsSet;
   };
 }
 
@@ -353,27 +280,12 @@ export interface KitDefaultThemeParamsToggle {
 
 export interface KitDefaultThemeParamsTypo {
   colors: {
-    text: {
-      background: string;
-      text: string;
-    };
+    text: TypoColorsSet;
     link: {
-      base: {
-        background: string;
-        text: string;
-      };
-      hover: {
-        background: string;
-        text: string;
-      };
-      focus: {
-        background: string;
-        text: string;
-      };
-      visited: {
-        background: string;
-        text: string;
-      };
+      base: TypoColorsSet;
+      hover: TypoColorsSet;
+      focus: TypoColorsSet;
+      visited: TypoColorsSet;
     };
   };
   fontSize: string;

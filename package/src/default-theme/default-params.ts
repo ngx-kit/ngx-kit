@@ -67,9 +67,9 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     colors: {
       resultItem: {
         base: {
-          background: '#0084ff',
-          border: '#0084ff',
-          text: '#fff',
+          background: '#fafafa',
+          border: '#e2e2e2',
+          text: '#404040',
         },
         hover: {
           background: '#0084ff',

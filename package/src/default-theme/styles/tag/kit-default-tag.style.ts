@@ -3,6 +3,7 @@ import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultTagStyle implements KitComponentStyle {
@@ -21,15 +22,13 @@ export class KitDefaultTagStyle implements KitComponentStyle {
       height: 22,
       padding: [0, params.grid.h],
       borderRadius: params.borders.radius.s,
-      background: color.background,
-      color: color.text,
-      border: [1, 'solid', color.border],
       fontSize: 12,
       transition: 'all .3s cubic-bezier(.78,.14,.15,.86)',
       opacity: 1,
       marginRight: 8,
       cursor: 'pointer',
       whiteSpace: 'nowrap',
+      ...applyColorSet(color),
     };
   }
 }

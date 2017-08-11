@@ -4,6 +4,7 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { KitDefaultThemeParamsAlertColor } from '../../meta/params';
+import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultAlertStyle implements KitComponentStyle {
@@ -34,13 +35,11 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     const params = this.theme.params;
     const color = this.theme.getModuleColor('Alert', state.color) as KitDefaultThemeParamsAlertColor;
     return {
-      background: color.background,
-      border: [1, 'solid', color.border],
       borderRadius: params.borders.radius.s,
-      color: color.text,
       display: 'block',
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
+      ...applyColorSet(color),
       ...this.def.toggle(state.closed, {
         display: 'none',
       }),
