@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 sh.exe.stackdump
+/dev/playground/app/vc
