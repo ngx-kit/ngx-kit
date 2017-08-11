@@ -88,7 +88,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
 
   @Input() kitSelect: any;
 
-  @Input() labelFiled = 'label';
+  @Input() labelField = 'label';
 
   @Input() multi = false;
 
@@ -121,7 +121,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
   set rawOptions(rawOptions: T[]) {
     this.options = rawOptions.map(o => ({
       value: isObject(o) ? o[this.valueField] : o,
-      label: isObject(o) ? o[this.labelFiled] : o,
+      label: isObject(o) ? o[this.labelField] : o,
     }));
   }
 
