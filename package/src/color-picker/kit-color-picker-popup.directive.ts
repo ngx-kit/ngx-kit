@@ -33,6 +33,7 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
 
   @Input() kitColorPickerPopupDebounce: number;
 
+  // @todo its obsolete interface
   @Input() kitColorPickerPopupPosition: KitCoreOverlayContainerPosition = 'top';
 
   private containerRef: ComponentRef<KitColorPickerPopupViewComponent>;
