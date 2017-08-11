@@ -1,4 +1,4 @@
-import { KitDefaultThemeParams, } from './meta';
+import { KitDefaultThemeParams, KitDefaultThemeParamsColorPicker, } from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   borders = {
@@ -8,6 +8,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
       l: 12,
     },
     width: 1,
+  };
+
+  grid = {
+    h: 8,
+    v: 8,
   };
 
   moduleAccordion = {
@@ -239,6 +244,24 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
+  moduleColorPicker: KitDefaultThemeParamsColorPicker = {
+    colors: {
+      cursor: {
+        background: '#f4f4f4',
+        border: '#f4f4f4',
+      },
+      popup: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        text: '#404040',
+      },
+    },
+    cursorSize: 10,
+    sliderHeight: 16,
+  };
+
+  moduleDatePicker = {};
+
   moduleDropdownMenu = {
     colors: {
       menu: {
@@ -410,7 +433,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     type: 'spin-1',
     colors: {
       'default': '#0084ff',
-    }
+    },
   };
 
   moduleTag = {
@@ -513,13 +536,6 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
       },
     },
   };
-
-  grid = {
-    h: 8,
-    v: 8,
-  };
-
-  moduleDatePicker = {};
 
   shadows = {
     element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',

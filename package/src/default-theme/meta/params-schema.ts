@@ -103,6 +103,21 @@ export const paramsSchema = {
       checked: basicColorSet,
     },
   },
+  moduleColorPicker: {
+    colors: {
+      cursor: {
+        background: 'color',
+        border: 'color',
+      },
+      popup: {
+        background: 'color',
+        border: 'color',
+        text: 'color',
+      },
+    },
+    cursorSize: 'number',
+    sliderHeight: 'number',
+  },
   moduleDropdownMenu: {
     colors: {
       menu: {

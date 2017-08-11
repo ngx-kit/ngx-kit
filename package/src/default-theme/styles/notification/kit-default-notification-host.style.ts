@@ -4,7 +4,7 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { KitCoreOverlayContainerPositionCorner } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { KitDefaultThemeParamsNotificationColor } from '../../meta';
+import { KitDefaultThemeParamsNotificationColor } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultNotificationHostStyle implements KitComponentStyle {

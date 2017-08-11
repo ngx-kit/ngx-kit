@@ -14,54 +14,58 @@ export class KitDefaultColorPickerStyle implements KitComponentStyle {
   }
 
   alpha(): StyleDef {
+    const params = this.theme.params;
     return {
       backgroundSize: '100% 100%',
       backgroundImage: `url('${alphaImage}')`,
       border: 'none',
       cursor: 'pointer',
-      height: 16,
-      marginTop: 8,
+      height: params.moduleColorPicker.sliderHeight,
+      marginTop: params.grid.v,
       width: '100%',
     }
   }
 
   cursor(): StyleDef {
-    const dotSize = 10;
+    const params = this.theme.params;
     return {
       cursor: 'default',
-      height: 16,
+      height: params.moduleColorPicker.sliderHeight,
       position: 'relative',
-      width: 16,
-      padding: (16 - dotSize) / 2,
+      width: params.moduleColorPicker.sliderHeight,
+      padding: (params.moduleColorPicker.sliderHeight - params.moduleColorPicker.cursorSize) / 2,
       boxSizing: 'border-box',
       $nest: {
         '&:after': {
           content: '" "',
           display: 'block',
-          background: '#fff',
+          background: params.moduleColorPicker.colors.cursor.background,
+          border: [1, 'solid', params.moduleColorPicker.colors.cursor.border],
           borderRadius: '50%',
           boxShadow: '0 0 6px 0 rgba(0,0,0, .5)',
-          height: dotSize,
-          width: dotSize,
-        }
-      }
+          boxSizing: 'border-box',
+          height: params.moduleColorPicker.cursorSize,
+          width: params.moduleColorPicker.cursorSize,
+        },
+      },
     };
   }
 
   host(): StyleDef {
     return {
-      display: 'block'
+      display: 'block',
     };
   }
 
   hue(): StyleDef {
+    const params = this.theme.params;
     return {
       backgroundSize: '100% 100%',
       backgroundImage: `url('${hueImage}')`,
       border: 'none',
       cursor: 'pointer',
-      height: 16,
-      marginTop: 8,
+      height: params.moduleColorPicker.sliderHeight,
+      marginTop: params.grid.v,
       width: '100%',
     }
   }

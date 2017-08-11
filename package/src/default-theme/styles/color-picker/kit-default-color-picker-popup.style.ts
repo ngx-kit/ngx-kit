@@ -18,10 +18,11 @@ export class KitDefaultColorPickerPopupStyle implements KitComponentStyle {
     const params = this.theme.params;
     return {
       padding: [params.grid.v, params.grid.h],
-      background: '#fff',
-      border: [1, 'solid', '#eee'],
+      background: params.moduleColorPicker.colors.popup.background,
+      border: [1, 'solid', params.moduleColorPicker.colors.popup.border],
       boxShadow: params.shadows.deep,
       borderRadius: params.borders.radius.m,
+      color: params.moduleColorPicker.colors.popup.text,
     };
   }
 }

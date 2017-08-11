@@ -7,7 +7,7 @@ export interface KitDefaultThemeParams {
   moduleBadge: KitDefaultThemeParamsBadge;
   moduleButton: KitDefaultThemeParamsButton;
   moduleCheckbox: KitDefaultThemeParamsCheckbox;
-  moduleDatePicker: any;
+  moduleColorPicker: KitDefaultThemeParamsColorPicker;
   moduleDropdownMenu: KitDefaultThemeParamsDropdownMenu;
   moduleForm: KitDefaultThemeParamsForm;
   moduleInput: KitDefaultThemeParamsInput;
@@ -130,6 +130,22 @@ export interface KitDefaultThemeParamsCheckbox {
       check: string;
     };
   };
+}
+
+export interface KitDefaultThemeParamsColorPicker {
+  colors: {
+    cursor: {
+      background: string;
+      border: string;
+    };
+    popup: {
+      background: string;
+      border: string;
+      text: string;
+    };
+  };
+  cursorSize: number;
+  sliderHeight: number;
 }
 
 export interface KitDefaultThemeParamsDropdownMenu {

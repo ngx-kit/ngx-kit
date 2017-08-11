@@ -3,7 +3,7 @@ import { StyleDef, StylerDefService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { KitDefaultThemeParamsBadgeColor } from '../../meta';
+import { KitDefaultThemeParamsBadgeColor } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultBadgeStyle implements KitComponentStyle {

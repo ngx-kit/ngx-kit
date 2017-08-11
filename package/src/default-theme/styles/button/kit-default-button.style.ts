@@ -3,7 +3,7 @@ import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler'
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { KitDefaultThemeParamsButtonColor } from '../../meta';
+import { KitDefaultThemeParamsButtonColor } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitComponentStyle {

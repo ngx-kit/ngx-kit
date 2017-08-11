@@ -3,7 +3,7 @@ import { mergeDeepAll, StylerColorService, StylerService } from '@ngx-kit/styler
 import { KitThemeService } from '../core/meta/theme';
 import { isObject } from '../core/util/is-object';
 import { KitDefaultThemeDefaultParams } from './default-params';
-import { KitDefaultThemeParams, KitDefaultThemeParamsDef } from './meta';
+import { KitDefaultThemeParams, KitDefaultThemeParamsDef } from './meta/params';
 
 @Injectable()
 export class KitDefaultThemeService implements KitThemeService {
