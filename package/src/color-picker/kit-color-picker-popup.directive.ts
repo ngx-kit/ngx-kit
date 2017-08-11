@@ -23,15 +23,15 @@ import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.
   selector: '[kitColorPickerPopup]',
 })
 export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
-  @Input() color: string;
-
-  @Output() colorChange = new EventEmitter<string>();
-
-  @Input() debounce: number;
-
   @HostBinding('class') hostClass: string;
 
   @Input() kitColorPickerPopup: string;
+
+  @Input() kitColorPickerPopupColor: string;
+
+  @Output() kitColorPickerPopupColorChange = new EventEmitter<string>();
+
+  @Input() kitColorPickerPopupDebounce: number;
 
   @Input() kitColorPickerPopupPosition: KitCoreOverlayContainerPosition = 'top';
 
@@ -73,11 +73,11 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
     // @todo unsubscribe?
     if (this.model) {
       // to ngModel
-      this.colorChange.subscribe(this.model.update);
+      this.kitColorPickerPopupColorChange.subscribe(this.model.update);
       // from ngModel
       if (this.model.valueChanges) {
         this.model.valueChanges.subscribe((color: string) => {
-          this.color = color;
+          this.kitColorPickerPopupColor = color;
           this.proxyProps();
         });
       }
@@ -85,17 +85,17 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
     } else if (this.formControlDirective) {
       const control: FormControl = this.formControlDirective.control;
       // to formControl
-      this.colorChange.subscribe((color: string) => {
+      this.kitColorPickerPopupColorChange.subscribe((color: string) => {
         control.setValue(color);
       });
       // from formControl
       if (control.valueChanges) {
         // pass initial
-        this.color = control.value;
+        this.kitColorPickerPopupColor = control.value;
         this.proxyProps();
         // subscribe on changes
         control.valueChanges.subscribe((color: string) => {
-          this.color = color;
+          this.kitColorPickerPopupColor = color;
           this.proxyProps();
         });
       }
@@ -103,7 +103,7 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
   }
 
   private handleOutputs(instance: KitColorPickerPopupViewComponent) {
-    instance.colorChange.subscribe(this.colorChange);
+    instance.colorChange.subscribe(this.kitColorPickerPopupColorChange);
   }
 
   private proxyProps() {
@@ -111,8 +111,8 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
       const instance = this.containerRef.instance;
       instance.position = this.kitColorPickerPopupPosition;
       instance.anchor = this.el.nativeElement;
-      instance.color = this.color;
-      instance.debounce = this.debounce;
+      instance.color = this.kitColorPickerPopupColor;
+      instance.debounce = this.kitColorPickerPopupDebounce;
     }
   }
 
