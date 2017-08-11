@@ -6,7 +6,7 @@ title: Complex params
 ```html
 <kit-select [options]="objOptions"
             [valueField]="'id'"
-            [labelFiled]="'id'"
+            [labelField]="'id'"
             [(ngModel)]="selected"></kit-select>
 ```
 
