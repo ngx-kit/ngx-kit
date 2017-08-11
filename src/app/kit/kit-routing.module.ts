@@ -10,6 +10,7 @@ import { BadgeComponent } from './modules/badge/badge.component';
 import { BreadcrumbComponent } from './modules/breadcrumb/breadcrumb.component';
 import { ButtonComponent } from './modules/button/button.component';
 import { CheckboxComponent } from './modules/checkbox/checkbox.component';
+import { ColorPickerComponent } from './modules/color-picker/color-picker.component';
 import { DatePickerComponent } from './modules/date-picker/date-picker.component';
 import { DividerComponent } from './modules/divider/divider.component';
 import { DropdownMenuComponent } from './modules/dropdown-menu/dropdown-menu.component';
@@ -20,6 +21,7 @@ import { LoadingBarComponent } from './modules/loading-bar/loading-bar.component
 import { MathInputComponent } from './modules/math-input/math-input.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { ModalComponent } from './modules/modal/modal.component';
+import { NotificationComponent } from './modules/notification/notification.component';
 import { PaginationComponent } from './modules/pagination/pagination.component';
 import { PopoverComponent } from './modules/popover/popover.component';
 import { RadioComponent } from './modules/radio/radio.component';
@@ -30,7 +32,6 @@ import { TagComponent } from './modules/tag/tag.component';
 import { TextareaComponent } from './modules/textarea/textarea.component';
 import { ToggleComponent } from './modules/toggle/toggle.component';
 import { TooltipComponent } from './modules/tooltip/tooltip.component';
-import { NotificationComponent } from './modules/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -125,6 +126,16 @@ const routes: Routes = [
             component: CheckboxComponent,
             data: {
               content: 'kit/checkbox.json',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
+          },
+          {
+            path: 'color-picker',
+            component: ColorPickerComponent,
+            data: {
+              content: 'kit/color-picker.json',
             },
             resolve: {
               content: ContentResolverService,

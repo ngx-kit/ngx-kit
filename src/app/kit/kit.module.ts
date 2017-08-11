@@ -12,6 +12,7 @@ import { BadgeComponent } from './modules/badge/badge.component';
 import { BreadcrumbComponent } from './modules/breadcrumb/breadcrumb.component';
 import { ButtonComponent } from './modules/button/button.component';
 import { CheckboxComponent } from './modules/checkbox/checkbox.component';
+import { ColorPickerComponent } from './modules/color-picker/color-picker.component';
 import { DatePickerComponent } from './modules/date-picker/date-picker.component';
 import { DividerComponent } from './modules/divider/divider.component';
 import { DropdownMenuComponent } from './modules/dropdown-menu/dropdown-menu.component';
@@ -53,6 +54,7 @@ import { TitleComponent } from './title/title.component';
     BreadcrumbComponent,
     ButtonComponent,
     CheckboxComponent,
+    ColorPickerComponent,
     DatePickerComponent,
     DividerComponent,
     DropdownMenuComponent,
