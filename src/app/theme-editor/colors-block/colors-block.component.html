@@ -1,9 +1,9 @@
 <span *ngFor="let color of colors; trackBy: trackByFn">
   <div [style.background]="color"
        [kitColorPickerPopup]
-       [debounce]="300"
-       [color]="color"
-       (colorChange)="changeHandler(color, $event)"
+       [kitColorPickerPopupDebounce]="300"
+       [kitColorPickerPopupColor]="color"
+       (kitColorPickerPopupColorChange)="changeHandler(color, $event)"
        styler="box">
     {{ color }}
   </div>
