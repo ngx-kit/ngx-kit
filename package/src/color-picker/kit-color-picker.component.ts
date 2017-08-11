@@ -14,6 +14,7 @@ import { hsl, hsla, StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitControl } from '../core/meta/control';
 import { kitComponentColorPicker } from '../core/meta/tokens';
 import { Hsva, SliderDimension, SliderPosition } from './classes';
 import { hsvaToHsla } from './utils/hsva-to-hsla';
@@ -63,7 +64,7 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
     StylerComponent,
   ],
 })
-export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
+export class KitColorPickerComponent implements OnInit, ControlValueAccessor, KitControl<string> {
   @ViewChild('alphaSlider') alphaSlider: any;
 
   alphaSliderColor: string;
@@ -85,6 +86,8 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('sbSlider') sbSlider: any;
 
   slider: SliderPosition;
+
+  state: string;
 
   @Input() width = 200;
 
@@ -125,7 +128,9 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
     // proxy to value accessor
     this.debouncedValue
         .debounceTime(this.debounce)
-        .subscribe(this.changes$);
+        .subscribe(value => {
+          this.updateValue(value);
+        });
   }
 
   registerOnChange(fn: any) {
@@ -164,10 +169,6 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
     this.update();
   }
 
-  touch() {
-    this.touches$.next(true);
-  }
-
   update(emit: boolean = true) {
     // convert color
     const hslaValue = hsvaToHsla(this.hsva);
@@ -185,17 +186,24 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
     if (emit && this.outputColor !== color) {
       this.outputColor = color;
       if (this.debounce === 0) {
-        this.changes$.next(this.outputColor);
+        this.updateValue(this.outputColor);
       } else {
         this.debouncedValue.next(this.outputColor);
       }
     }
   }
 
-  writeValue(value: any) {
+  updateValue(value: string) {
+    this.writeValue(value);
+    this.changes$.next(this.outputColor);
+    this.touches$.next(true);
+  }
+
+  writeValue(value: string) {
+    this.state = value;
     if (value !== this.outputColor) {
       this.setColorFromString(value, false);
-      this.cdr.detectChanges();
     }
+    this.cdr.markForCheck();
   }
 }

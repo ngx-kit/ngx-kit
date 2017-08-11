@@ -12,6 +12,9 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * @todo implement KitControl
+ */
 @Component({
   selector: 'kit-date-picker,[kitDatePicker]',
   template: `

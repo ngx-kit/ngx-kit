@@ -13,6 +13,9 @@ export const KIT_MATH_INPUT_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * @todo implement KitControl
+ */
 @Component({
   selector: 'kit-math-input,[kitMathInput]',
   template: `

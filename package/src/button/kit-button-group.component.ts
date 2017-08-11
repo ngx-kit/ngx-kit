@@ -15,7 +15,7 @@ import { kitButtonGroupDirection } from './meta';
 import { KitButtonComponent } from './kit-button.component';
 
 /**
- * @todo VALUE_ACCESSOR
+ * @todo VALUE_ACCESSOR or move to kit-radio-group
  */
 @Component({
   selector: 'kit-button-group,[kit-button-group],[kitButtonGroup]',

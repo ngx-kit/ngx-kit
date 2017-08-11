@@ -1,8 +1,9 @@
-import { Component, forwardRef, Inject, Input, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Inject, Input, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitControl } from '../core/meta/control';
 import { kitComponentSelect } from '../core/meta/tokens';
 import { isObject } from '../core/util/is-object';
 import { KitSelectOption, KitSelectType } from './meta';
@@ -25,8 +26,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
     <ng-container [ngSwitch]="type">
       <ng-container *ngSwitchCase="'native'">
         <select [styler]="'nativeSelect'"
-                [ngModel]="value"
-                (ngModelChange)="value = $event">
+                [ngModel]="state"
+                (ngModelChange)="updateValue($event)">
           <ng-container *ngIf="!optionTemplateRef">
             <option *ngFor="let option of options"
                     [value]="option.value">
@@ -45,7 +46,10 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
              [styler]="['dropdownSelect', {focus: dropdownOpened}]"
              (click)="dropdownOpened = true"
              #anchor="anchor">
-          {{ selectedOption?.label }}
+          <ng-container *ngIf="!optionTemplateRef">{{ selectedOption?.label }}</ng-container>
+          <ng-container *ngIf="optionTemplateRef">
+            <ng-container *ngTemplateOutlet="optionTemplateRef; context: {$implicit: selectedOption}"></ng-container>
+          </ng-container>
         </div>
         <kit-overlay [anchor]="anchor"
                      [opened]="dropdownOpened"
@@ -57,7 +61,7 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
         <ng-template #contentRef>
           <div styler="dropdownOptions">
             <div *ngFor="let option of options"
-                 [styler]="['dropdownOption', {selected: option.value === value}]"
+                 [styler]="['dropdownOption', {selected: option.value === state}]"
                  (click)="selectDropdownOption(option.value)">
               <ng-container *ngIf="!optionTemplateRef">{{ option.label }}</ng-container>
               <ng-container *ngIf="optionTemplateRef">
@@ -69,8 +73,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
       </ng-container>
       <ng-container *ngSwitchCase="'list'">
         <div *ngFor="let option of options"
-             [styler]="['option', {selected: option.value === value}]"
-             (click)="value = option.value">
+             [styler]="['option', {selected: option.value === state}]"
+             (click)="updateValue(option.value)">
           {{ option.label }}
         </div>
       </ng-container>
@@ -81,7 +85,7 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
     StylerComponent,
   ],
 })
-export class KitSelectComponent<T> implements ControlValueAccessor {
+export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<any> {
   anchor: any;
 
   dropdownOpened = false;
@@ -98,11 +102,11 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
 
   selectedOption?: KitSelectOption;
 
+  state: any;
+
   @Input() type: KitSelectType = 'native';
 
   @Input() valueField = 'value';
-
-  private _value: any;
 
   private changes$ = new Subject<number>();
 
@@ -112,7 +116,8 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentSelect) private style: KitComponentStyle) {
+              @Inject(kitComponentSelect) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-select';
     this.styler.register(this.style);
   }
@@ -125,17 +130,6 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
     }));
   }
 
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
-    this._value = value;
-    this.selectedOption = this.options.find(o => o.value === value);
-    this.changes$.next(value);
-    this.touches$.next(true);
-  }
-
   registerOnChange(fn: any) {
     this.changes$.subscribe(fn);
   }
@@ -146,14 +140,22 @@ export class KitSelectComponent<T> implements ControlValueAccessor {
 
   selectDropdownOption(value: any) {
     this.dropdownOpened = false;
-    this.value = value;
+    this.updateValue(value);
   }
 
   setDisabledState(isDisabled: boolean) {
     this.isDisabled = isDisabled;
   }
 
+  updateValue(value: any) {
+    this.writeValue(value);
+    this.changes$.next(value);
+    this.touches$.next(true);
+  }
+
   writeValue(value: any) {
-    this.value = value;
+    this.state = value;
+    this.selectedOption = this.options.find(o => o.value === value);
+    this.cdr.markForCheck();
   }
 }

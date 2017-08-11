@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, forwardRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, forwardRef, Inject, Input, ViewChild, } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitControl } from '../core/meta/control';
 import { kitComponentAutoComplete } from '../core/meta/tokens';
 import { KitInputComponent } from '../input/kit-input.component';
 import { KitDataSourceFactory } from './meta';
@@ -41,7 +42,7 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
       <div styler="results">
         <div *ngFor="let result of results; let i = index"
              [styler]="['result', {active: i === activeResult}]"
-             (click)="pick(result)">
+             (click)="updateValue(result)">
           {{ result }}
         </div>
       </div>
@@ -52,7 +53,7 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
     StylerComponent,
   ],
 })
-export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit {
+export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit, KitControl<any> {
   activeResult: number = -1;
 
   anchorRef: any;
@@ -69,7 +70,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   results: string[] = [];
 
-  private _value: any;
+  state: any;
 
   private changes$ = new Subject<number>();
 
@@ -79,21 +80,9 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
-              private renderer: Renderer2) {
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-auto-complete';
     this.styler.register(this.style);
-  }
-
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
-    this._value = value;
-    this.input.writeValue(this._value);
-    // emit
-    this.changes$.next(this._value);
-    this.touches$.next(true);
   }
 
   ngAfterViewInit() {
@@ -125,7 +114,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     event.preventDefault();
     const value = this.results[this.activeResult];
     if (value) {
-      this.pick(value);
+      this.updateValue(value);
     }
   }
 
@@ -149,11 +138,6 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     }
   }
 
-  pick(value: string): void {
-    this.value = value;
-    this.clearResults();
-  }
-
   registerOnChange(fn: any) {
     this.changes$.subscribe(fn);
   }
@@ -167,9 +151,17 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     this.input.setDisabledState(this.isDisabled);
   }
 
+  updateValue(value: any) {
+    this.writeValue(value);
+    this.changes$.next(value);
+    this.touches$.next(true);
+    this.clearResults();
+  }
+
   writeValue(value: any) {
-    this.value = value;
-    this.input.writeValue(this.value);
+    this.state = value;
+    this.input.writeValue(value);
+    this.cdr.markForCheck();
   }
 
   private validateActiveResult() {

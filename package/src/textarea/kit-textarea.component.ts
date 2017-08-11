@@ -1,8 +1,9 @@
-import { Component, forwardRef, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitControl } from '../core/meta/control';
 import { kitComponentTextarea } from '../core/meta/tokens';
 
 export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
@@ -14,8 +15,8 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-textarea,[kitTextarea]',
   template: `
-    <textarea [ngModel]="value"
-              (ngModelChange)="value = $event"
+    <textarea [ngModel]="state"
+              (ngModelChange)="updateValue($event)"
               (blur)="touch()"
               styler="textarea"></textarea>
   `,
@@ -24,10 +25,10 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
     StylerComponent,
   ],
 })
-export class KitTextareaComponent implements ControlValueAccessor {
+export class KitTextareaComponent implements ControlValueAccessor, KitControl<any> {
   @Input() kitTextarea: any;
 
-  private _value: any;
+  state: any;
 
   private changes$ = new Subject<number>();
 
@@ -37,19 +38,10 @@ export class KitTextareaComponent implements ControlValueAccessor {
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentTextarea) private style: KitComponentStyle) {
+              @Inject(kitComponentTextarea) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-textarea';
     this.styler.register(this.style);
-  }
-
-  get value(): any {
-    return this._value;
-  }
-
-  set value(value: any) {
-    this._value = value;
-    this.changes$.next(value);
-    this.touches$.next(true);
   }
 
   registerOnChange(fn: any) {
@@ -68,7 +60,14 @@ export class KitTextareaComponent implements ControlValueAccessor {
     this.touches$.next(true);
   }
 
+  updateValue(value: any) {
+    this.writeValue(value);
+    this.changes$.next(value);
+    this.touches$.next(true);
+  }
+
   writeValue(value: any) {
-    this._value = value;
+    this.state = value;
+    this.cdr.markForCheck();
   }
 }
