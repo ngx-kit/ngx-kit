@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler';
+import { defMerge, defPick, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -8,9 +8,7 @@ import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultButtonStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              private color: StylerColorService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {
@@ -23,7 +21,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     link: boolean;
   }): StyleDef {
     const color = this.theme.getModuleColor('Button', state.color) as KitDefaultThemeParamsButtonColor;
-    const styles: StyleDef = this.def.merge([
+    const styles: StyleDef = defMerge([
       {
         position: 'relative',
         display: 'inline-block',
@@ -42,7 +40,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
         userSelect: 'none',
         boxShadow: this.theme.params.shadows.element,
       },
-      this.def.toggle(state.disabled, {
+      defToggle(state.disabled, {
         cursor: 'default',
         ...applyColorSet(color.disabled),
       }, {
@@ -57,7 +55,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       }),
-      this.def.pick(state.size, {
+      defPick(state.size, {
         xs: {
           padding: `${this.theme.params.grid.v / 8}px ${this.theme.params.grid.h / 2}px`,
           fontSize: '.8rem',
@@ -79,7 +77,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           fontSize: '1.6rem',
         },
       }, 'm'),
-//      this.def.toggle(state.link, {
+//      defToggle(state.link, {
 //        boxShadow: 'none',
 //        paddingLeft: 0,
 //        paddingRight: 0,
@@ -94,7 +92,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
 //          },
 //        },
 //      }),
-      this.def.pick(state.grouped, {
+      defPick(state.grouped, {
         horizontal: {
           borderRadius: 0,
           $nest: {
@@ -128,23 +126,24 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
           },
         },
       }),
-      this.def.toggle(state.loading, {
+      defToggle(state.loading, {
         cursor: 'default',
       }),
     ]);
-    if (state.selected) {
-      if ('background' in styles) {
-        styles.background = this.color.darken(.1, styles.background);
-      }
-    }
-    if (state.loading) {
-      if ('background' in styles) {
-        styles.background = this.color.lighten(.1, styles.background);
-      }
-      if ('color' in styles) {
-        styles.color = this.color.lighten(.1, styles.color as string);
-      }
-    }
+    // @todo restore and use values from params
+//    if (state.selected) {
+//      if ('background' in styles) {
+//        styles.background = darken(.1, styles.background);
+//      }
+//    }
+//    if (state.loading) {
+//      if ('background' in styles) {
+//        styles.background = lighten(.1, styles.background);
+//      }
+//      if ('color' in styles) {
+//        styles.color = lighten(.1, styles.color as string);
+//      }
+//    }
     return styles;
   }
 }

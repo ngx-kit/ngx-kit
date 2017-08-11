@@ -1,13 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defPick, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultMenuItemStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {
@@ -29,19 +28,19 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
       color: color.base.text,
       background: color.base.background,
       textDecoration: 'none',
-      ...this.def.toggle(state.root, {
+      ...defToggle(state.root, {
         // root items
-        ...this.def.pick(state.menuDirection, {
+        ...defPick(state.menuDirection, {
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
-            ...this.def.toggle(state.hover, {
+            ...defToggle(state.hover, {
               background: color.hover.background,
               borderBottom: [2, 'solid', color.hover.border],
               color: color.hover.text,
             }),
           },
           vertical: {
-            ...this.def.toggle(state.hover, {
+            ...defToggle(state.hover, {
               background: color.hover.background,
               color: color.hover.text,
             }),
@@ -49,10 +48,10 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
         }),
       }, {
         // sub items
-        ...this.def.toggle(state.hover, {}),
-        ...this.def.toggle(state.hasSubs, {}),
+        ...defToggle(state.hover, {}),
+        ...defToggle(state.hasSubs, {}),
       }),
-      ...this.def.toggle(state.disabled, {
+      ...defToggle(state.disabled, {
         background: color.hover.background,
         color: color.hover.text,
       }),

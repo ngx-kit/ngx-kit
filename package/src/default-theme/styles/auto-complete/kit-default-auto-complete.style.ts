@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -7,8 +7,7 @@ import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -34,7 +33,7 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
           borderColor: params.moduleAutoComplete.colors.resultItem.hover.border,
         },
       },
-      ...this.def.toggle(state.active, {
+      ...defToggle(state.active, {
         ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.active),
         borderColor: params.moduleAutoComplete.colors.resultItem.active.border,
       }),

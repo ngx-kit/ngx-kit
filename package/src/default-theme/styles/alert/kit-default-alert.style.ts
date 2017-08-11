@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -8,8 +8,7 @@ import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultAlertStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   close(state: {
@@ -40,7 +39,7 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
       ...applyColorSet(color),
-      ...this.def.toggle(state.closed, {
+      ...defToggle(state.closed, {
         display: 'none',
       }),
     };

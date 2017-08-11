@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { mergeDeepAll, StylerColorService, StylerService } from '@ngx-kit/styler';
+import { StylerService } from '@ngx-kit/styler';
 import { KitThemeService } from '../core/meta/theme';
 import { isObject } from '../core/util/is-object';
+import { mergeDeepAll } from '../core/util/merge-deep';
 import { KitDefaultThemeDefaultParams } from './default-params';
 import { KitDefaultThemeParams, KitDefaultThemeParamsDef } from './meta/params';
 
@@ -15,8 +16,7 @@ export class KitDefaultThemeService implements KitThemeService {
 
   private _params: KitDefaultThemeParams;
 
-  constructor(private color: StylerColorService,
-              private stylerService: StylerService) {
+  constructor(private stylerService: StylerService) {
     this._defaultParams = this.extractParams(new KitDefaultThemeDefaultParams());
     this.applyParams(new KitDefaultThemeDefaultParams());
   }

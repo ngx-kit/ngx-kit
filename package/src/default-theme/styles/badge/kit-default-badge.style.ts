@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defPick, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -7,8 +7,7 @@ import { ColorsSet } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultBadgeStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {
@@ -26,7 +25,7 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
       background: color.background,
       color: color.text,
       border: [1, 'solid', color.border],
-      ...this.def.pick(state.size, {
+      ...defPick(state.size, {
         s: {
           padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h / 2}px`,
           fontSize: '.8rem',

@@ -1,13 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultToggleStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -49,7 +48,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   view(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
-    return this.def.merge([
+    return defMerge([
       {
         background: params.moduleToggle.colors.base.background,
         border: [1, 'solid', params.moduleToggle.colors.base.border],
@@ -79,7 +78,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
           },
         },
       },
-      this.def.toggle(state.checked, {
+      defToggle(state.checked, {
         background: params.moduleToggle.colors.checked.background,
         borderColor: params.moduleToggle.colors.checked.border,
         $nest: {
@@ -100,7 +99,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
       display: 'block',
       marginLeft: 24,
       marginRight: 6,
-      ...this.def.toggle(state.checked, {
+      ...defToggle(state.checked, {
         marginLeft: 6,
         marginRight: 24,
       }),

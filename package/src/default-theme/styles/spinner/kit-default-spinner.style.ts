@@ -1,14 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { Style, StyleDef, StylerColorService, StylerDefService, StylerService } from '@ngx-kit/styler';
+import { defPick, Style, StyleDef, StylerService } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultSpinnerStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              private color: StylerColorService,
-              private stylerService: StylerService,
+  constructor(private stylerService: StylerService,
               @Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
@@ -38,7 +36,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
       verticalAlign: 'middle',
       pointerEvents: 'none',
       boxSizing: 'border-box',
-      ...this.def.pick(type, {
+      ...defPick(type, {
         'spin-1': () => ({
           border: [border, 'solid', 'transparent'],
           borderTopColor: color,

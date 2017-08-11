@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -7,8 +7,7 @@ import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultTagStyle implements KitComponentStyle {
-  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService,
-              private def: StylerDefService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {

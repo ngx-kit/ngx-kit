@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -8,15 +8,14 @@ import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultSelectStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   dropdownOption(state: {
     selected: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    return this.def.merge([
+    return defMerge([
       {
         padding: [params.grid.v / 2, params.grid.h],
         cursor: 'default',
@@ -27,7 +26,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
           },
         },
       },
-      this.def.toggle(state.selected, {
+      defToggle(state.selected, {
         borderColor: params.moduleSelect.colors.option.selected.border,
         ...applyTypoColorSet(params.moduleSelect.colors.option.selected),
       }, {
@@ -59,7 +58,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       ...applyColorSet(params.moduleSelect.colors.select.base, params.borders.width),
-      ...this.def.toggle(state.focus, {
+      ...defToggle(state.focus, {
         transition: '0.2s',
         outline: 'none',
         ...applyColorSet(params.moduleSelect.colors.select.focus, params.borders.width),
@@ -110,7 +109,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,
       transition: 'background 0.2s',
       ...applyColorSet(params.moduleSelect.colors.option.base, params.borders.width),
-      ...this.def.toggle(state.selected, {
+      ...defToggle(state.selected, {
         ...applyColorSet(params.moduleSelect.colors.option.selected, params.borders.width),
       }, {
         $nest: {

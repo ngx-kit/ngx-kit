@@ -1,13 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defPick, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultMenuSeparatorStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {parentDirection: 'vertical' | 'horizontal'}): StyleDef {
@@ -16,7 +15,7 @@ export class KitDefaultMenuSeparatorStyle implements KitComponentStyle {
       borderStyle: 'solid',
       borderColor: this.theme.params.moduleMenu.colors.separator,
       borderWidth: 0,
-      ...this.def.pick(state.parentDirection, {
+      ...defPick(state.parentDirection, {
         vertical: {
           borderBottomWidth: 1,
           margin: [this.theme.params.grid.h / 2, 0],

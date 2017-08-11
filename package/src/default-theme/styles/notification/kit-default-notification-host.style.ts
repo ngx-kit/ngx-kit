@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defPick, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { KitCoreOverlayContainerPositionCorner } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
@@ -8,8 +8,7 @@ import { KitDefaultThemeParamsNotificationColor } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultNotificationHostStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -54,7 +53,7 @@ export class KitDefaultNotificationHostStyle implements KitComponentStyle {
   }): StyleDef {
     return {
       display: 'flex',
-      ...this.def.pick(state.position, {
+      ...defPick(state.position, {
         'top-right': {
           flexDirection: 'column',
           alignItems: 'flex-end',

@@ -1,19 +1,18 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler';
+import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultDatePickerStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   date(state: {outside: boolean, active: boolean}): StyleDef {
     return {};
 //    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
-//    return this.def.merge([
+//    return defMerge([
 //      {
 //        border: [1, 'solid', color.border],
 //        boxSizing: 'border-box',
@@ -29,10 +28,10 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 //          },
 //        },
 //      },
-//      this.def.toggle(state.outside, {
+//      defToggle(state.outside, {
 //        opacity: .7,
 //      }),
-//      this.def.toggle(state.active, {
+//      defToggle(state.active, {
 //        background: this.theme.colorMod(.1, color.background),
 //        borderColor: this.theme.colorMod(.1, color.border),
 //        boxShadow: `0 0 7px 0 rgba(0, 0, 0, .2)`,
@@ -64,7 +63,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 //    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
 //    return {
 //      border: [1, 'solid', color.border],
-//      ...this.def.pick(state.type, {
+//      ...defPick(state.type, {
 //        change: {
 //          cursor: 'pointer',
 //          padding: '0 4px',
@@ -114,7 +113,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 //    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
 //    return {
 //      border: [1, 'solid', color.border],
-//      ...this.def.pick(state.type, {
+//      ...defPick(state.type, {
 //        change: {
 //          cursor: 'pointer',
 //          padding: '0 4px',

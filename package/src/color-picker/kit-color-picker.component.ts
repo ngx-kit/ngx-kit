@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { StylerColorService, StylerComponent } from '@ngx-kit/styler';
+import { hsl, hsla, StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
@@ -107,7 +107,6 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentColorPicker) private style: KitComponentStyle,
-              private colorService: StylerColorService,
               private el: ElementRef,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-color-picker';
@@ -171,14 +170,14 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor {
 
   update(emit: boolean = true) {
     // convert color
-    const hsla = hsvaToHsla(this.hsva);
+    const hslaValue = hsvaToHsla(this.hsva);
     // calc alpha slider background
-    this.alphaSliderColor = this.colorService.hsl(hsla);
+    this.alphaSliderColor = hsl(hslaValue);
     // calc sb slider background
     const hueHsla = hsvaToHsla({h: this.hsva.h, s: 1, v: 1, a: 1});
-    this.hueSliderColor = this.colorService.hsl(hueHsla);
+    this.hueSliderColor = hsl(hueHsla);
     // gen rgb/rgba color
-    const color = this.colorService.hsla(hsla);
+    const color = hsla(hslaValue);
     // recalc slider positions
     this.slider = new SliderPosition((this.hsva.h) * this.sliderDimMax.h - 8, this.hsva.s * this.sliderDimMax.s - 8,
         (1 - this.hsva.v) * this.sliderDimMax.v - 8, this.hsva.a * this.sliderDimMax.a - 8);

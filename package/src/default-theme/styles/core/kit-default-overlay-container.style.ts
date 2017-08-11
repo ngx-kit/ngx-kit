@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerColorService, StylerDefService } from '@ngx-kit/styler';
+import { defPick, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from '../../../core/meta/overlay';
 import { kitTheme } from '../../../core/meta/tokens';
@@ -7,9 +7,7 @@ import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              private color: StylerColorService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   holder(): StyleDef {
@@ -24,7 +22,7 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
     opened: boolean;
   }): StyleDef {
     return {
-      ...this.def.pick(state.type, {
+      ...defPick(state.type, {
         center: {
           position: 'fixed',
           top: 0,
@@ -39,7 +37,7 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
         fixedSide: {
           position: 'fixed',
           zIndex: 10000,
-          ...this.def.pick(state.position, {
+          ...defPick(state.position, {
             'top-right': {
               top: 0,
               right: 0,
@@ -61,7 +59,7 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
         dropdown: {},
         side: {},
       }),
-      ...this.def.toggle(!state.opened, {
+      ...defToggle(!state.opened, {
         display: 'none',
       }),
     };
@@ -74,7 +72,7 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
       right: 0,
       bottom: 0,
       left: 0,
-      background: this.color.rgba(0, 0, 0, .7),
+      background: 'rgba(0, 0, 0, .7)',
       zIndex: 10001,
     }
   }

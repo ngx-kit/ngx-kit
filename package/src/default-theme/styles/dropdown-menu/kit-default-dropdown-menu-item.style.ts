@@ -1,13 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef, StylerDefService } from '@ngx-kit/styler';
+import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 
 @Injectable()
 export class KitDefaultDropdownMenuItemStyle implements KitComponentStyle {
-  constructor(private def: StylerDefService,
-              @Inject(kitTheme) private theme: KitDefaultThemeService) {
+  constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
   host(state: {active: boolean}): StyleDef {
@@ -22,7 +21,7 @@ export class KitDefaultDropdownMenuItemStyle implements KitComponentStyle {
           background: '#f0f0f0',
         },
       },
-      ...this.def.toggle(state.active, {
+      ...defToggle(state.active, {
         background: '#f0f0f0',
       }),
     };
