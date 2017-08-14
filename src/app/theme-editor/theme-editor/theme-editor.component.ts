@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { KitDefaultThemeDefaultParams, KitModalComponent, paramsSchema } from '@ngx-kit/ngx-kit';
+import { KitDefaultThemeDefaultParams, KitDefaultThemeParams, KitModalComponent, paramsSchema } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
 import { isObject, isString } from 'util';
 import { EditorService } from '../editor.service';
@@ -20,6 +20,10 @@ export class ThemeEditorComponent implements OnInit {
   colorsModel: string[];
 
   form: FormGroup;
+
+  overviewBackgroundColor = '#fff';
+
+  overviewTextColor = '#333';
 
   schema: {name: string, schema: any}[];
 
@@ -43,12 +47,22 @@ export class ThemeEditorComponent implements OnInit {
   }
 
   getCode() {
-    this.code = JSON.stringify(this.themeModel);
+    this.code = JSON.stringify({
+      $meta: {
+        overviewBackgroundColor: this.overviewBackgroundColor,
+        overviewTextColor: this.overviewTextColor,
+      },
+      ...this.themeModel,
+    });
     this.codeModal.open();
   }
 
   setThemeFromCode() {
-    this.initThemeModel(JSON.parse(this.code));
+    const parsed = JSON.parse(this.code);
+    // @todo error handling
+    this.overviewBackgroundColor = parsed['$meta']['overviewBackgroundColor'];
+    this.overviewTextColor = parsed['$meta']['overviewTextColor'];
+    this.initThemeModel(parsed);
     this.update();
     this.setCodeModal.close();
   }
@@ -98,7 +112,7 @@ export class ThemeEditorComponent implements OnInit {
         .filter((item, pos, self) => self.indexOf(item) === pos);
   }
 
-  private initThemeModel(params: KitDefaultThemeDefaultParams) {
+  private initThemeModel(params: KitDefaultThemeParams) {
     this.themeModel = params;
     this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
   }

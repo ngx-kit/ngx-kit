@@ -8,11 +8,22 @@ export class ColorsBlockStyle implements ComponentStyle {
 
   box(): StyleDef {
     return {
-      color: '#fff',
       cursor: 'pointer',
-      display: 'inline-block',
-      padding: [1, 4],
-      textShadow: '2px 0 1px #555',
+      display: 'block',
+      $nest: {
+        '& input': {
+          background: 'transparent',
+          color: '#fff',
+          textShadow: '2px 0 1px #555',
+        },
+      },
+    };
+  }
+
+  holder(): StyleDef {
+    return {
+      display: 'flex',
+      flexDirection: 'row',
     };
   }
 

@@ -3,6 +3,25 @@
     <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="update()">Update</button>
     <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="getCode()">Get code</button>
     <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="setCodeModal.open()">Load code</button>
+    <div>
+      <h4>Overview params</h4>
+      <div>
+        Background color:
+        <kit-input [style.background]="overviewBackgroundColor"
+                   [kitColorPickerPopup]
+                   [(ngModel)]="overviewBackgroundColor"
+                   styler="overviewColorBox">
+        </kit-input>
+      </div>
+      <div>
+        Text color:<br>
+        <kit-input [style.background]="overviewTextColor"
+                   [kitColorPickerPopup]
+                   [(ngModel)]="overviewTextColor"
+                   styler="overviewColorBox">
+        </kit-input>
+      </div>
+    </div>
     <form #form="ngForm">
       <h4>Colors</h4>
       <app-colors-block [colors]="colorsModel"
@@ -12,15 +31,13 @@
                  [themeModel]="themeModel"
                  [colorsModel]="colorsModel"></app-block>
     </form>
-    <hr>
-    {{ themeModel | json }}
-    <hr>
-    {{ colorsModel | json }}
   </kit-layout-side>
-  <kit-layout-content styler="content">
-    <kit-typo-container styler="typoContainer">
+  <kit-layout-content [style.background]="overviewBackgroundColor"
+                      [style.color]="overviewTextColor"
+                      styler="content">
+    <div styler="container">
       <router-outlet></router-outlet>
-    </kit-typo-container>
+    </div>
   </kit-layout-content>
 </kit-layout>
 

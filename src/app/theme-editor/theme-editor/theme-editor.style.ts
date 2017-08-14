@@ -7,6 +7,13 @@ export class ThemeEditorStyle implements ComponentStyle {
   constructor(private theme: ThemeService) {
   }
 
+  container(): StyleDef {
+    return {
+      flexGrow: 1,
+      maxWidth: 1000,
+    };
+  }
+
   content(): StyleDef {
     return {
       padding: 16,
@@ -28,6 +35,20 @@ export class ThemeEditorStyle implements ComponentStyle {
     }
   }
 
+  overviewColorBox(): StyleDef {
+    return {
+      cursor: 'pointer',
+      display: 'block',
+      $nest: {
+        '& input': {
+          background: 'transparent',
+          color: '#fff',
+          textShadow: '2px 0 1px #555',
+        },
+      },
+    };
+  }
+
   side(): StyleDef {
     return {
       width: this.theme.params.sideWidth,
@@ -35,13 +56,6 @@ export class ThemeEditorStyle implements ComponentStyle {
       padding: 8,
       boxSizing: 'border-box',
       overflowY: 'scroll',
-    };
-  }
-
-  typoContainer(): StyleDef {
-    return {
-      flexGrow: 1,
-      maxWidth: 1000,
     };
   }
 }
