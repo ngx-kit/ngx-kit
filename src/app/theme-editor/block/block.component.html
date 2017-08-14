@@ -5,11 +5,9 @@
       <div *ngSwitchCase="'input'">
         <ng-container [ngSwitch]="block.input">
           <div *ngSwitchCase="'number'">
-            <input [(ngModel)]="themeModel[block.name]">
             <kit-input [(ngModel)]="themeModel[block.name]"></kit-input>
           </div>
           <div *ngSwitchCase="'string'">
-            <input [(ngModel)]="themeModel[block.name]">
             <kit-input [(ngModel)]="themeModel[block.name]"></kit-input>
           </div>
           <div *ngSwitchCase="'color'">

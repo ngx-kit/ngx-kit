@@ -37,4 +37,11 @@ export class ThemeEditorStyle implements ComponentStyle {
       overflowY: 'scroll',
     };
   }
+
+  typoContainer(): StyleDef {
+    return {
+      flexGrow: 1,
+      maxWidth: 1000,
+    };
+  }
 }

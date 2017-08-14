@@ -23,7 +23,9 @@ export class DemoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.file = this.content.find(f => f.meta.id === this.id);
+    if (this.content) {
+      this.file = this.content.find(f => f.meta.id === this.id);
+    }
   }
 
   ngOnInit() {

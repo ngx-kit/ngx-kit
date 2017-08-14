@@ -1,6 +1,8 @@
 <kit-layout styler="layout">
   <kit-layout-side styler="side">
-    <button (click)="update()">update</button>
+    <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="update()">Update</button>
+    <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="getCode()">Get code</button>
+    <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="setCodeModal.open()">Load code</button>
     <form #form="ngForm">
       <h4>Colors</h4>
       <app-colors-block [colors]="colorsModel"
@@ -10,13 +12,35 @@
                  [themeModel]="themeModel"
                  [colorsModel]="colorsModel"></app-block>
     </form>
-    <button (click)="update()">update</button>
     <hr>
     {{ themeModel | json }}
     <hr>
     {{ colorsModel | json }}
   </kit-layout-side>
-  <kit-layout-content>
-    <router-outlet></router-outlet>
+  <kit-layout-content styler="content">
+    <kit-typo-container styler="typoContainer">
+      <router-outlet></router-outlet>
+    </kit-typo-container>
   </kit-layout-content>
 </kit-layout>
+
+<kit-modal #codeModal>
+  <div header>Theme save</div>
+  <div [style.width.px]="500" content>
+    <kit-textarea [ngModel]="code"></kit-textarea>
+  </div>
+  <div footer>
+    <kit-button [color]="'primary'" (action)="codeModal.close()">Ok</kit-button>
+  </div>
+</kit-modal>
+
+<kit-modal #setCodeModal>
+  <div header>Theme setup</div>
+  <div [style.width.px]="500" content>
+    <kit-textarea [(ngModel)]="code"></kit-textarea>
+  </div>
+  <div footer>
+    <kit-button (action)="setCodeModal.close()">Cancel</kit-button>
+    <kit-button [color]="'primary'" (action)="setThemeFromCode()">Set</kit-button>
+  </div>
+</kit-modal>

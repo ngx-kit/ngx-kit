@@ -1,6 +1,6 @@
-import { AfterViewChecked, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { KitDefaultThemeDefaultParams, paramsSchema } from '@ngx-kit/ngx-kit';
+import { KitDefaultThemeDefaultParams, KitModalComponent, paramsSchema } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
 import { isObject, isString } from 'util';
 import { EditorService } from '../editor.service';
@@ -13,18 +13,23 @@ import { ThemeEditorStyle } from './theme-editor.style';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeEditorComponent implements OnInit {
+  code: string;
+
+  @ViewChild('codeModal') codeModal: KitModalComponent;
+
   colorsModel: string[];
 
   form: FormGroup;
 
   schema: {name: string, schema: any}[];
 
+  @ViewChild('setCodeModal') setCodeModal: KitModalComponent;
+
   themeModel: any;
 
   constructor(private editor: EditorService) {
     this.schema = this.convertSchema(paramsSchema);
-    this.themeModel = new KitDefaultThemeDefaultParams();
-    this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
+    this.initThemeModel(new KitDefaultThemeDefaultParams());
   }
 
   ngOnInit() {
@@ -35,6 +40,17 @@ export class ThemeEditorComponent implements OnInit {
     this.colorsModel = [...this.colorsModel.map(c => c === p[0] ? p[1] : c)];
     // update theme
     this.changeThemeColor(this.themeModel, p[0], p[1]);
+  }
+
+  getCode() {
+    this.code = JSON.stringify(this.themeModel);
+    this.codeModal.open();
+  }
+
+  setThemeFromCode() {
+    this.initThemeModel(JSON.parse(this.code));
+    this.update();
+    this.setCodeModal.close();
   }
 
   update() {
@@ -80,5 +96,10 @@ export class ThemeEditorComponent implements OnInit {
         }, [])
         // get uniq
         .filter((item, pos, self) => self.indexOf(item) === pos);
+  }
+
+  private initThemeModel(params: KitDefaultThemeDefaultParams) {
+    this.themeModel = params;
+    this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
   }
 }

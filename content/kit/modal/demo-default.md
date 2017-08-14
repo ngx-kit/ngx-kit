@@ -10,7 +10,7 @@ title: Default modal
   <div content [style.width.px]="400">Modal content</div>
   <div footer>
     <kit-button (action)="modal.opened = false">Cancel</kit-button>
-    <kit-button [color]="'brand'">Ok</kit-button>
+    <kit-button [color]="'primary'">Ok</kit-button>
   </div>
 </kit-modal>
 ```

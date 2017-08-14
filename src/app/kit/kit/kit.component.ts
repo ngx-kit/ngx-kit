@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
+import { Content } from '../../interfaces/content';
 import { KitStyle } from './kit.style';
 
 @Component({
@@ -10,9 +12,16 @@ import { KitStyle } from './kit.style';
   ],
 })
 export class KitComponent implements OnInit {
-  constructor(private styler: StylerComponent) {
+  content: Content;
+  module = 'string';
+
+  constructor(private styler: StylerComponent,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.content = data.content;
+    });
   }
 }

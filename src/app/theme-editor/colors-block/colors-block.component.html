@@ -1,4 +1,4 @@
-<span *ngFor="let color of colors; trackBy: trackByFn">
+<div *ngFor="let color of colors; trackBy: trackByFn">
   <div [style.background]="color"
        [kitColorPickerPopup]
        [kitColorPickerPopupDebounce]="300"
@@ -8,5 +8,5 @@
     {{ color }}
   </div>
   <button (click)="delete(color)">X</button>
-</span>
+</div>
 <button (click)="add()">Add</button>

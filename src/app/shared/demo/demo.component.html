@@ -1,8 +1,8 @@
-<h2>{{ file.meta.title }}</h2>
+<h2 *ngIf="content">{{ file.meta.title }}</h2>
 <div styler="demo">
   <ng-content></ng-content>
 </div>
-<div styler="content">
+<div *ngIf="content" styler="content">
   <div [innerHtml]="file.body" styler="body"></div>
   <a href="https://github.com/ngx-kit/website/edit/master/{{ file.file }}" styler="edit">Edit</a>
 </div>

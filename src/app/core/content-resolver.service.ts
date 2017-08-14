@@ -16,7 +16,6 @@ export class ContentResolverService implements Resolve<Content> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Content> {
     const data = route.data;
-    console.log('!resolve data', data);
     if (data['content']) {
       return this.http.get(`/content/${data['content']}`)
           .map(res => res.json())
@@ -25,8 +24,7 @@ export class ContentResolverService implements Resolve<Content> {
               file.body = this.mdRender.render(file.body);
               return file;
             });
-          })
-          .do(c => console.log('TRNSL', c));
+          });
     } else {
       alert(404);
     }

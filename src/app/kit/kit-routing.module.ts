@@ -3,35 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../core/content-resolver.service';
 import { ContentComponent } from '../shared/content/content.component';
 import { KitComponent } from './kit/kit.component';
-import { AccordionComponent } from './modules/accordion/accordion.component';
-import { AlertComponent } from './modules/alert/alert.component';
-import { AutoCompleteComponent } from './modules/auto-complete/auto-complete.component';
-import { BadgeComponent } from './modules/badge/badge.component';
-import { BreadcrumbComponent } from './modules/breadcrumb/breadcrumb.component';
-import { ButtonComponent } from './modules/button/button.component';
-import { CheckboxComponent } from './modules/checkbox/checkbox.component';
-import { ColorPickerComponent } from './modules/color-picker/color-picker.component';
-import { DatePickerComponent } from './modules/date-picker/date-picker.component';
-import { DividerComponent } from './modules/divider/divider.component';
-import { DropdownMenuComponent } from './modules/dropdown-menu/dropdown-menu.component';
-import { FormComponent } from './modules/form/form.component';
-import { InputComponent } from './modules/input/input.component';
-import { LayoutComponent } from './modules/layout/layout.component';
-import { LoadingBarComponent } from './modules/loading-bar/loading-bar.component';
-import { MathInputComponent } from './modules/math-input/math-input.component';
-import { MenuComponent } from './modules/menu/menu.component';
-import { ModalComponent } from './modules/modal/modal.component';
-import { NotificationComponent } from './modules/notification/notification.component';
-import { PaginationComponent } from './modules/pagination/pagination.component';
-import { PopoverComponent } from './modules/popover/popover.component';
-import { RadioComponent } from './modules/radio/radio.component';
-import { SelectComponent } from './modules/select/select.component';
-import { SpinnerComponent } from './modules/spinner/spinner.component';
-import { TabsComponent } from './modules/tabs/tabs.component';
-import { TagComponent } from './modules/tag/tag.component';
-import { TextareaComponent } from './modules/textarea/textarea.component';
-import { ToggleComponent } from './modules/toggle/toggle.component';
-import { TooltipComponent } from './modules/tooltip/tooltip.component';
+import { ModuleComponent } from './module/module.component';
 
 const routes: Routes = [
   {
@@ -63,8 +35,9 @@ const routes: Routes = [
         children: [
           {
             path: 'accordion',
-            component: AccordionComponent,
+            component: ModuleComponent,
             data: {
+              module: 'accordion',
               content: 'kit/accordion.json',
             },
             resolve: {
@@ -73,8 +46,9 @@ const routes: Routes = [
           },
           {
             path: 'alert',
-            component: AlertComponent,
+            component: ModuleComponent,
             data: {
+              module: 'alert',
               content: 'kit/alert.json',
             },
             resolve: {
@@ -83,8 +57,9 @@ const routes: Routes = [
           },
           {
             path: 'auto-complete',
-            component: AutoCompleteComponent,
+            component: ModuleComponent,
             data: {
+              module: 'auto-complete',
               content: 'kit/auto-complete.json',
             },
             resolve: {
@@ -93,8 +68,9 @@ const routes: Routes = [
           },
           {
             path: 'badge',
-            component: BadgeComponent,
+            component: ModuleComponent,
             data: {
+              module: 'badge',
               content: 'kit/badge.json',
             },
             resolve: {
@@ -103,8 +79,9 @@ const routes: Routes = [
           },
           {
             path: 'breadcrumb',
-            component: BreadcrumbComponent,
+            component: ModuleComponent,
             data: {
+              module: 'breadcrumb',
               content: 'kit/breadcrumb.json',
             },
             resolve: {
@@ -113,8 +90,9 @@ const routes: Routes = [
           },
           {
             path: 'button',
-            component: ButtonComponent,
+            component: ModuleComponent,
             data: {
+              module: 'button',
               content: 'kit/button.json',
             },
             resolve: {
@@ -123,8 +101,9 @@ const routes: Routes = [
           },
           {
             path: 'checkbox',
-            component: CheckboxComponent,
+            component: ModuleComponent,
             data: {
+              module: 'checkbox',
               content: 'kit/checkbox.json',
             },
             resolve: {
@@ -133,8 +112,9 @@ const routes: Routes = [
           },
           {
             path: 'color-picker',
-            component: ColorPickerComponent,
+            component: ModuleComponent,
             data: {
+              module: 'color-picker',
               content: 'kit/color-picker.json',
             },
             resolve: {
@@ -143,8 +123,9 @@ const routes: Routes = [
           },
           {
             path: 'date-picker',
-            component: DatePickerComponent,
+            component: ModuleComponent,
             data: {
+              module: 'date-picker',
               content: 'kit/date-picker.json',
             },
             resolve: {
@@ -153,8 +134,9 @@ const routes: Routes = [
           },
           {
             path: 'divider',
-            component: DividerComponent,
+            component: ModuleComponent,
             data: {
+              module: 'divider',
               content: 'kit/divider.json',
             },
             resolve: {
@@ -163,8 +145,9 @@ const routes: Routes = [
           },
           {
             path: 'dropdown-menu',
-            component: DropdownMenuComponent,
+            component: ModuleComponent,
             data: {
+              module: 'dropdown-menu',
               content: 'kit/dropdown-menu.json',
             },
             resolve: {
@@ -173,8 +156,9 @@ const routes: Routes = [
           },
           {
             path: 'form',
-            component: FormComponent,
+            component: ModuleComponent,
             data: {
+              module: 'form',
               content: 'kit/form.json',
             },
             resolve: {
@@ -183,8 +167,9 @@ const routes: Routes = [
           },
           {
             path: 'input',
-            component: InputComponent,
+            component: ModuleComponent,
             data: {
+              module: 'input',
               content: 'kit/input.json',
             },
             resolve: {
@@ -193,8 +178,9 @@ const routes: Routes = [
           },
           {
             path: 'layout',
-            component: LayoutComponent,
+            component: ModuleComponent,
             data: {
+              module: 'layout',
               content: 'kit/layout.json',
             },
             resolve: {
@@ -203,8 +189,9 @@ const routes: Routes = [
           },
           {
             path: 'loading-bar',
-            component: LoadingBarComponent,
+            component: ModuleComponent,
             data: {
+              module: 'loading-bar',
               content: 'kit/loading-bar.json',
             },
             resolve: {
@@ -213,8 +200,9 @@ const routes: Routes = [
           },
           {
             path: 'math-input',
-            component: MathInputComponent,
+            component: ModuleComponent,
             data: {
+              module: 'math-input',
               content: 'kit/math-input.json',
             },
             resolve: {
@@ -223,8 +211,9 @@ const routes: Routes = [
           },
           {
             path: 'menu',
-            component: MenuComponent,
+            component: ModuleComponent,
             data: {
+              module: 'menu',
               content: 'kit/menu.json',
             },
             resolve: {
@@ -233,8 +222,9 @@ const routes: Routes = [
           },
           {
             path: 'modal',
-            component: ModalComponent,
+            component: ModuleComponent,
             data: {
+              module: 'modal',
               content: 'kit/modal.json',
             },
             resolve: {
@@ -243,8 +233,9 @@ const routes: Routes = [
           },
           {
             path: 'notification',
-            component: NotificationComponent,
+            component: ModuleComponent,
             data: {
+              module: 'notification',
               content: 'kit/notification.json',
             },
             resolve: {
@@ -253,8 +244,9 @@ const routes: Routes = [
           },
           {
             path: 'pagination',
-            component: PaginationComponent,
+            component: ModuleComponent,
             data: {
+              module: 'pagination',
               content: 'kit/pagination.json',
             },
             resolve: {
@@ -263,8 +255,9 @@ const routes: Routes = [
           },
           {
             path: 'popover',
-            component: PopoverComponent,
+            component: ModuleComponent,
             data: {
+              module: 'popover',
               content: 'kit/popover.json',
             },
             resolve: {
@@ -273,8 +266,9 @@ const routes: Routes = [
           },
           {
             path: 'radio',
-            component: RadioComponent,
+            component: ModuleComponent,
             data: {
+              module: 'radio',
               content: 'kit/radio.json',
             },
             resolve: {
@@ -283,8 +277,9 @@ const routes: Routes = [
           },
           {
             path: 'select',
-            component: SelectComponent,
+            component: ModuleComponent,
             data: {
+              module: 'select',
               content: 'kit/select.json',
             },
             resolve: {
@@ -293,8 +288,9 @@ const routes: Routes = [
           },
           {
             path: 'spinner',
-            component: SpinnerComponent,
+            component: ModuleComponent,
             data: {
+              module: 'spinner',
               content: 'kit/spinner.json',
             },
             resolve: {
@@ -303,8 +299,9 @@ const routes: Routes = [
           },
           {
             path: 'tabs',
-            component: TabsComponent,
+            component: ModuleComponent,
             data: {
+              module: 'tabs',
               content: 'kit/tabs.json',
             },
             resolve: {
@@ -313,8 +310,9 @@ const routes: Routes = [
           },
           {
             path: 'tag',
-            component: TagComponent,
+            component: ModuleComponent,
             data: {
+              module: 'tag',
               content: 'kit/tag.json',
             },
             resolve: {
@@ -323,8 +321,9 @@ const routes: Routes = [
           },
           {
             path: 'textarea',
-            component: TextareaComponent,
+            component: ModuleComponent,
             data: {
+              module: 'textarea',
               content: 'kit/textarea.json',
             },
             resolve: {
@@ -333,8 +332,9 @@ const routes: Routes = [
           },
           {
             path: 'toggle',
-            component: ToggleComponent,
+            component: ModuleComponent,
             data: {
+              module: 'toggle',
               content: 'kit/toggle.json',
             },
             resolve: {
@@ -343,8 +343,9 @@ const routes: Routes = [
           },
           {
             path: 'tooltip',
-            component: TooltipComponent,
+            component: ModuleComponent,
             data: {
+              module: 'tooltip',
               content: 'kit/tooltip.json',
             },
             resolve: {
