@@ -1,20 +1,12 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  NgZone,
-  OnDestroy,
-  Output,
-  Renderer2,
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, Renderer2, } from '@angular/core';
 
 @Directive({
   selector: '[kitColorPickerSlider]',
 })
 export class KitColorPickerSliderDirective implements OnDestroy {
   @Input() kitColorPickerSlider: any;
+
+  @Output() mouseUp = new EventEmitter<any>();
 
   @Output('newValue') newValue = new EventEmitter<any>();
 
@@ -27,7 +19,6 @@ export class KitColorPickerSliderDirective implements OnDestroy {
   private listeners: Function[] = [];
 
   constructor(private el: ElementRef,
-              private zone: NgZone,
               private renderer: Renderer2) {
   }
 
@@ -79,10 +70,6 @@ export class KitColorPickerSliderDirective implements OnDestroy {
     this.listeners.push(this.renderer.listen('document', 'touchend', this.destroyListeners.bind(this)));
   }
 
-  stop() {
-    this.destroyListeners();
-  }
-
   @HostListener('touchstart')
   touchstart($event: TouchEvent) {
     this.start($event);
@@ -90,5 +77,6 @@ export class KitColorPickerSliderDirective implements OnDestroy {
 
   private destroyListeners() {
     this.listeners.forEach(l => l());
+    this.mouseUp.emit();
   }
 }

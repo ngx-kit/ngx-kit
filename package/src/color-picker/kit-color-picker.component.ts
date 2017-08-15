@@ -2,11 +2,13 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   forwardRef,
   HostBinding,
   Inject,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -33,9 +35,10 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
          [style.background-color]="hueSliderColor"
          [rgX]="1"
          [rgY]="1"
-         (newValue)="setSaturationAndBrightness($event)"
-         #sbSlider
          [style.height.px]="sbHeight"
+         (newValue)="setSaturationAndBrightness($event)"
+         (mouseUp)="sliderMouseUp.emit()"
+         #sbSlider
          styler="saturation">
       <div [style.left.px]="slider.s"
            [style.top.px]="slider.v"
@@ -44,6 +47,7 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
     <div [kitColorPickerSlider]
          [rgX]="1"
          (newValue)="setHue($event)"
+         (mouseUp)="sliderMouseUp.emit()"
          styler="hue">
       <div [style.left.px]="slider.h"
            styler="cursor"></div>
@@ -53,6 +57,7 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
          [style.background-color]="alphaSliderColor"
          [rgX]="1"
          (newValue)="setAlpha($event)"
+         (mouseUp)="sliderMouseUp.emit()"
          styler="alpha"
          #alphaSlider>
       <div [style.left.px]="slider.a"
@@ -86,6 +91,8 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
   @ViewChild('sbSlider') sbSlider: any;
 
   slider: SliderPosition;
+
+  @Output() sliderMouseUp = new EventEmitter<any>();
 
   state: string;
 

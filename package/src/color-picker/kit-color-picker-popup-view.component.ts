@@ -19,6 +19,7 @@ import { kitComponentColorPickerPopup } from '../core/meta/tokens';
           [debounce]="debounce"
           [ngModel]="color"
           (ngModelChange)="colorChange.emit($event)"
+          (sliderMouseUp)="sliderMouseUp.emit()"
           styler="popup"></kit-color-picker>
     </kit-overlay-container>
   `,
@@ -40,6 +41,8 @@ export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() opened = false;
 
   @Input() position: KitCoreOverlayContainerPosition;
+
+  @Output() sliderMouseUp = new EventEmitter<any>();
 
   @Input() text: string;
 

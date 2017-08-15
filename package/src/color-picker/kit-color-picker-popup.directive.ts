@@ -36,6 +36,8 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
   // @todo its obsolete interface
   @Input() kitColorPickerPopupPosition: KitCoreOverlayContainerPosition = 'top';
 
+  @Output() kitColorPickerPopupSliderMouseUp = new EventEmitter<any>();
+
   private containerRef: ComponentRef<KitColorPickerPopupViewComponent>;
 
   constructor(private overlay: KitOverlayService,
@@ -105,6 +107,7 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
 
   private handleOutputs(instance: KitColorPickerPopupViewComponent) {
     instance.colorChange.subscribe(this.kitColorPickerPopupColorChange);
+    instance.sliderMouseUp.subscribe(this.kitColorPickerPopupSliderMouseUp);
   }
 
   private proxyProps() {

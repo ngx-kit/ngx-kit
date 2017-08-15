@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/styler';
 import { KitAccordionModule } from '../accordion/kit-accordion.module';
 import { KitAlertModule } from '../alert/kit-alert.module';
