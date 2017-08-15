@@ -1,11 +1,11 @@
-<div *ngFor="let color of colors; trackBy: trackByFn" styler="holder">
+<div *ngFor="let color of colors; trackBy: trackByFn; let i = index" styler="holder">
   <kit-input [style.background]="color"
-         [kitColorPickerPopup]
-         [kitColorPickerPopupDebounce]="300"
-         [ngModel]="color"
-         (ngModelChange)="changeHandler(color, $event)"
-         styler="box">
+             [kitColorPickerPopup]
+             [ngModel]="color"
+             (ngModelChange)="changeHandler(i, $event)"
+             (kitColorPickerPopupSliderMouseUp)="submitChange(i)"
+             styler="box">
   </kit-input>
-  <button (click)="delete(color)">X</button>
+  <button (click)="deleteHandler(color)">X</button>
 </div>
 <button (click)="add()">Add</button>

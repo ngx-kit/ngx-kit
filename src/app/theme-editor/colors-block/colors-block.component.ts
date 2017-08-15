@@ -1,13 +1,4 @@
-import {
-  AfterViewChecked,
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, } from '@angular/core';
 import { KitCoreService } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
 import { ColorsBlockStyle } from './colors-block.style';
@@ -23,9 +14,23 @@ import { ColorsBlockStyle } from './colors-block.style';
 export class ColorsBlockComponent implements OnInit, OnChanges {
   @Output() change = new EventEmitter();
 
-  @Input() colors: string[];
+  @Output() delete = new EventEmitter<string>();
+
+  private _colors: string[];
+
+  private _inputColors: string[];
 
   constructor(private kitCore: KitCoreService) {
+  }
+
+  get colors() {
+    return this._colors;
+  }
+
+  @Input()
+  set colors(colors: string[]) {
+    this._colors = [...colors];
+    this._inputColors = [...colors];
   }
 
   ngOnChanges() {
@@ -35,16 +40,25 @@ export class ColorsBlockComponent implements OnInit, OnChanges {
   }
 
   add() {
-    this.colors.push('#fff');
+    this._colors.push('');
   }
 
-  changeHandler(prev: string, curr: string) {
-    this.change.emit([prev, curr]);
+  changeHandler(index: number, curr: string) {
+    this._colors[index] = curr;
   }
 
-  delete(color: string) {
+  deleteHandler(color: string) {
     if (confirm('Delete color?')) {
-      this.colors.splice(this.colors.indexOf(color), 1);
+      this.delete.emit(color);
+    }
+  }
+
+  submitChange(index: number) {
+    const currColor = this._colors[index];
+    if (this._inputColors.filter(c => c === currColor).length > 0) {
+      alert('Color already exists!');
+    } else {
+      this.change.emit([this._inputColors[index], currColor]);
     }
   }
 

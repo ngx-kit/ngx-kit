@@ -53,9 +53,25 @@ export class ThemeEditorStyle implements ComponentStyle {
     return {
       width: this.theme.params.sideWidth,
       background: this.theme.params.sideColor,
-      padding: 8,
       boxSizing: 'border-box',
-      overflowY: 'scroll',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
     };
+  }
+
+  sideActions(): StyleDef {
+    return {
+      padding: 8,
+    };
+  }
+
+  sideForm(): StyleDef {
+    return {
+      display: 'block',
+      flexGrow: 1,
+      overflowY: 'auto',
+      padding: 8,
+    }
   }
 }
