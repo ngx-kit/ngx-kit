@@ -66,8 +66,8 @@ export class KitColorPickerSliderDirective implements OnDestroy {
     this.setCursor(event);
     this.listeners.push(this.renderer.listen('document', 'mousemove', this.move.bind(this)));
     this.listeners.push(this.renderer.listen('document', 'touchmove', this.move.bind(this)));
-    this.listeners.push(this.renderer.listen('document', 'mouseup', this.destroyListeners.bind(this)));
-    this.listeners.push(this.renderer.listen('document', 'touchend', this.destroyListeners.bind(this)));
+    this.listeners.push(this.renderer.listen('document', 'mouseup', this.end.bind(this)));
+    this.listeners.push(this.renderer.listen('document', 'touchend', this.end.bind(this)));
   }
 
   @HostListener('touchstart')
@@ -77,6 +77,10 @@ export class KitColorPickerSliderDirective implements OnDestroy {
 
   private destroyListeners() {
     this.listeners.forEach(l => l());
+  }
+
+  private end() {
     this.mouseUp.emit();
+    this.destroyListeners();
   }
 }
