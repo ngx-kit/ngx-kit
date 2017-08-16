@@ -53,12 +53,19 @@ export class ColorsBlockComponent implements OnInit, OnChanges {
     }
   }
 
+  isSync(index): boolean {
+    return this._inputColors[index] === this._colors[index];
+  }
+
   submitChange(index: number) {
     const currColor = this._colors[index];
-    if (this._inputColors.filter(c => c === currColor).length > 0) {
-      alert('Color already exists!');
-    } else {
-      this.change.emit([this._inputColors[index], currColor]);
+    if (currColor) {
+      if (this._inputColors[index] === this._colors[index]) {
+      } else if (this._inputColors.filter(c => c === currColor).length > 0) {
+        alert('Color already exists!');
+      } else {
+        this.change.emit([this._inputColors[index], currColor]);
+      }
     }
   }
 

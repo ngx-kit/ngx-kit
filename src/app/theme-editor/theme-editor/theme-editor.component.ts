@@ -40,14 +40,16 @@ export class ThemeEditorComponent implements OnInit {
   }
 
   changeColor(p: [string, string]) {
-    if (p[0] !== '') {
-      // update colors set
-      this.colorsModel = [...this.colorsModel.map(c => c === p[0] ? p[1] : c)];
-      // update theme
-      this.changeThemeColor(this.themeModel, p[0], p[1]);
-    } else {
-      // add color to set
-      this.colorsModel = [...this.colorsModel, p[1]];
+    if (p[1]) {
+      if (p[0]) {
+        // update colors set
+        this.colorsModel = [...this.colorsModel.map(c => c === p[0] ? p[1] : c)];
+        // update theme
+        this.changeThemeColor(this.themeModel, p[0], p[1]);
+      } else {
+        // add color to set
+        this.colorsModel = [...this.colorsModel, p[1]];
+      }
     }
   }
 
