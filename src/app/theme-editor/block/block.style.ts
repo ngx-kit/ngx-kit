@@ -17,6 +17,13 @@ export class BlockStyle implements ComponentStyle {
     };
   }
 
+  opened(): StyleDef {
+    return {
+      padding: [8, 0],
+      background: 'rgba(0,0,0,.1)',
+    };
+  }
+
   name(): StyleDef {
     return {
       cursor: 'pointer',

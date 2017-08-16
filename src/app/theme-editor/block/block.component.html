@@ -1,6 +1,6 @@
 <div *ngFor="let block of schema">
   <h4 (click)="active = block.name" styler="name">{{ block.name }}</h4>
-  <ng-container *ngIf="block.name === active">
+  <div *ngIf="block.name === active" styler="opened">
     <ng-container [ngSwitch]="block.type">
       <div *ngSwitchCase="'input'">
         <ng-container [ngSwitch]="block.input">
@@ -32,5 +32,5 @@
         </app-block>
       </div>
     </ng-container>
-  </ng-container>
+  </div>
 </div>
