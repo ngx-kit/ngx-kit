@@ -21,12 +21,12 @@ export class KitDefaultButtonGroupStyle implements KitComponentStyle {
               borderRadius: 0,
             },
             '& > *:first-child': {
-              borderBottomLeftRadius: params.borders.radius.s,
-              borderTopLeftRadius: params.borders.radius.s,
+              borderBottomLeftRadius: params.borders.radius,
+              borderTopLeftRadius: params.borders.radius,
             },
             '& > *:last-child': {
-              borderBottomRightRadius: params.borders.radius.s,
-              borderTopRightRadius: params.borders.radius.s,
+              borderBottomRightRadius: params.borders.radius,
+              borderTopRightRadius: params.borders.radius,
             },
           },
         },
@@ -37,12 +37,12 @@ export class KitDefaultButtonGroupStyle implements KitComponentStyle {
               borderRadius: 0,
             },
             '& > *:first-child': {
-              borderTopLeftRadius: params.borders.radius.s,
-              borderTopRightRadius: params.borders.radius.s,
+              borderTopLeftRadius: params.borders.radius,
+              borderTopRightRadius: params.borders.radius,
             },
             '& > *:last-child': {
-              borderBottomLeftRadius: params.borders.radius.s,
-              borderBottomRightRadius: params.borders.radius.s,
+              borderBottomLeftRadius: params.borders.radius,
+              borderBottomRightRadius: params.borders.radius,
             },
           },
         },

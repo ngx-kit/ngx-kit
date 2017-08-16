@@ -20,7 +20,7 @@ export class KitDefaultTagStyle implements KitComponentStyle {
       lineHeight: 20,
       height: 22,
       padding: [0, params.grid.h],
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       fontSize: 12,
       transition: 'all .3s cubic-bezier(.78,.14,.15,.86)',
       opacity: 1,

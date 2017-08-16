@@ -17,7 +17,7 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
   textarea(): StyleDef {
     const params = this.theme.params;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],

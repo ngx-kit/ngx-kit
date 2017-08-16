@@ -2,11 +2,7 @@ import { KitDefaultThemeParams, KitDefaultThemeParamsColorPicker, } from './meta
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   borders = {
-    radius: {
-      s: 2,
-      m: 6,
-      l: 12,
-    },
+    radius: 2,
     width: 1,
   };
 

@@ -37,11 +37,7 @@ export interface KitDefaultThemeParams {
 }
 
 export interface KitDefaultThemeParamsBorders {
-  radius: {
-    s: number;
-    m: number;
-    l: number;
-  };
+  radius: number;
   width: number;
 }
 

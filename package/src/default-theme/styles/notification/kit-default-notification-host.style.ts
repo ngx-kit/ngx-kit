@@ -24,7 +24,7 @@ export class KitDefaultNotificationHostStyle implements KitComponentStyle {
       margin: [params.grid.v, params.grid.h],
       padding: [params.grid.v, params.grid.h],
       background: color.background,
-      borderRadius: params.borders.radius.m,
+      borderRadius: params.borders.radius,
       border: [1, 'solid', color.border],
     };
   }

@@ -52,7 +52,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   }): StyleDef {
     const params = this.theme.params;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       boxSizing: 'border-box',
       transition: 'background 0.2s',
       width: '100%',
@@ -80,7 +80,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   nativeSelect(): StyleDef {
     const params = this.theme.params;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       boxSizing: 'border-box',
       transition: 'background 0.2s',
       width: '100%',
@@ -103,7 +103,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   option(state: {selected: boolean}): StyleDef {
     const params = this.theme.params;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       cursor: 'pointer',
       marginBottom: params.grid.v / 2,
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,

@@ -30,11 +30,7 @@ export const paramsSchema = {
     v: 'number',
   },
   borders: {
-    radius: {
-      s: 'number',
-      m: 'number',
-      l: 'number',
-    },
+    radius: 'number',
     width: 'number',
   },
   shadows: {

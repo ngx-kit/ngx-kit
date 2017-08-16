@@ -60,7 +60,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       height: 14,
       background: this.theme.params.moduleCheckbox.colors.base.background,
       border: [1, 'solid', this.theme.params.moduleCheckbox.colors.base.border],
-      borderRadius: this.theme.params.borders.radius.s,
+      borderRadius: this.theme.params.borders.radius,
       transition: this.theme.params.transitions.default,
       ...defToggle(state.checked, {
         backgroundColor: this.theme.params.moduleCheckbox.colors.checked.background,

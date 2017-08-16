@@ -17,7 +17,7 @@ export class KitDefaultInputStyle implements KitComponentStyle {
   input(): StyleDef {
     const params = this.theme.params;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       boxSizing: 'border-box',
       transition: 'background 0.2s',
       width: '100%',

@@ -34,7 +34,7 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     const params = this.theme.params;
     const color = this.theme.getModuleColor('Alert', state.color) as KitDefaultThemeParamsAlertColor;
     return {
-      borderRadius: params.borders.radius.s,
+      borderRadius: params.borders.radius,
       display: 'block',
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
