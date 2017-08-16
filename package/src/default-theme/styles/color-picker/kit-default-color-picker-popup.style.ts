@@ -20,7 +20,7 @@ export class KitDefaultColorPickerPopupStyle implements KitComponentStyle {
       padding: [params.grid.v, params.grid.h],
       boxShadow: params.shadows.deep,
       borderRadius: params.borders.radius,
-      ...applyColorSet(params.moduleColorPicker.colors.popup),
+      ...applyColorSet(params.moduleColorPicker.colors.popup, params.borders.width),
     };
   }
 }

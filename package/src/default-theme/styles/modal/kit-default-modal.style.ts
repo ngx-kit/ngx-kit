@@ -14,11 +14,9 @@ export class KitDefaultModalStyle implements KitComponentStyle {
   }
 
   modal(): StyleDef {
+    const params = this.theme.params;
     return {
-      background: '#ffffff',
-      borderRadius: '4px',
-      boxShadow: '0 10px 70px rgba(0, 0, 0, .4)',
-      color: '#444444',
+      boxShadow: params.shadows.deep,
       zIndex: 99999,
     };
   }

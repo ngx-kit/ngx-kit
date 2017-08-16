@@ -39,7 +39,7 @@ export class KitDefaultColorPickerStyle implements KitComponentStyle {
           content: '" "',
           display: 'block',
           background: params.moduleColorPicker.colors.cursor.background,
-          border: [1, 'solid', params.moduleColorPicker.colors.cursor.border],
+          border: [params.borders.width, 'solid', params.moduleColorPicker.colors.cursor.border],
           borderRadius: '50%',
           boxShadow: '0 0 6px 0 rgba(0,0,0, .5)',
           boxSizing: 'border-box',

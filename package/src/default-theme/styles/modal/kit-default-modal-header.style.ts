@@ -3,6 +3,7 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultModalHeaderStyle implements KitComponentStyle {
@@ -10,13 +11,16 @@ export class KitDefaultModalHeaderStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
+    const params = this.theme.params;
     return {
       display: 'block',
-      padding: '16px 32px',
-      fontSize: '1.4rem',
+      padding: [params.grid.v * 2, params.grid.h * 4],
+      fontSize: '1.3rem',
       fontWeight: 600,
-      borderBottom: '1px solid #e0e0e0',
-      borderRadius: '4px 4px 0 0',
+      borderTopLeftRadius: params.borders.radius * 2,
+      borderTopRightRadius: params.borders.radius * 2,
+      borderBottom: [params.borders.width, 'solid', params.moduleModal.colors.footer.border],
+      ...applyTypoColorSet(params.moduleModal.colors.header),
     };
   }
 }

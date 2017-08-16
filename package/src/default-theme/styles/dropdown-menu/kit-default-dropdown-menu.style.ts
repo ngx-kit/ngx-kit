@@ -16,8 +16,7 @@ export class KitDefaultDropdownMenuStyle implements KitComponentStyle {
   menu(): StyleDef {
     const params = this.theme.params;
     return {
-      background: params.moduleDropdownMenu.colors.menu.background,
-      border: [1, 'solid', params.moduleDropdownMenu.colors.menu.border],
+      border: [params.borders.width, 'solid', params.moduleDropdownMenu.colors.menu.border],
       borderRadius: '3px',
       boxShadow: params.shadows.deep,
       marginTop: params.grid.v / 4,

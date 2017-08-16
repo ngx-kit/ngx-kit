@@ -14,6 +14,7 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
     color: string,
     size: 's' | 'm' | 'l',
   }): StyleDef {
+    const params = this.theme.params;
     const color = this.theme.getModuleColor('Badge', state.color) as ColorsSet;
     return {
       borderRadius: '1rem',
@@ -24,7 +25,7 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
       lineHeight: '1',
       background: color.background,
       color: color.text,
-      border: [1, 'solid', color.border],
+      border: [params.borders.width, 'solid', color.border],
       ...defPick(state.size, {
         s: {
           padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h / 2}px`,

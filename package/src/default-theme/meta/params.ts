@@ -24,13 +24,16 @@ export interface KitDefaultThemeParams {
   moduleInput: KitDefaultThemeParamsInput;
   moduleLoadingBar: KitDefaultThemeParamsLoadingBar;
   moduleMenu: KitDefaultThemeParamsMenu;
+  moduleModal: KitDefaultThemeParamsModal;
   moduleNotification: KitDefaultThemeParamsNotification;
   moduleRadio: KitDefaultThemeParamsRadio;
   moduleSelect: KitDefaultThemeParamsSelect;
   moduleSpinner: KitDefaultThemeParamsSpinner;
+  moduleTabs: KitDefaultThemeParamsTabs,
   moduleTag: KitDefaultThemeParamsTag;
   moduleTextarea: KitDefaultThemeParamsTextarea;
   moduleToggle: KitDefaultThemeParamsToggle;
+  moduleTooltip: KitDefaultThemeParamsTooltip;
   moduleTypo: KitDefaultThemeParamsTypo;
   shadows: KitDefaultThemeParamsShadows;
   transitions: KitDefaultThemeParamsTransitions;
@@ -130,8 +133,12 @@ export interface KitDefaultThemeParamsColorPicker {
 export interface KitDefaultThemeParamsDropdownMenu {
   colors: {
     menu: {
-      background: string;
       border: string;
+    };
+    item: {
+      base: ColorsSet;
+      hover: ColorsSet;
+      active: ColorsSet;
     };
   };
 }
@@ -167,13 +174,22 @@ export interface KitDefaultThemeParamsMenu {
       hover: ColorsSet;
       disabled: ColorsSet;
     };
-    groupTitle: {
-      background: string;
-      text: string;
-    };
+    groupTitle: TypoColorsSet;
     separator: string;
+    sub: {
+      background: string;
+      border: string;
+    }
   },
   titleFontSize: string;
+}
+
+export interface KitDefaultThemeParamsModal {
+  colors: {
+    header: ColorsSet;
+    body: TypoColorsSet;
+    footer: ColorsSet;
+  },
 }
 
 export interface KitDefaultThemeParamsNotification {
@@ -251,6 +267,17 @@ export interface KitDefaultThemeParamsTag {
   };
 }
 
+export interface KitDefaultThemeParamsTabs {
+  colors: {
+    nav: {
+      base: ColorsSet;
+      hover: ColorsSet;
+      active: ColorsSet;
+    };
+    panel: ColorsSet;
+  };
+}
+
 export interface KitDefaultThemeParamsTextarea {
   colors: {
     base: ColorsSet;
@@ -271,6 +298,12 @@ export interface KitDefaultThemeParamsToggle {
       border: string;
       toggle: string;
     };
+  };
+}
+
+export interface KitDefaultThemeParamsTooltip {
+  colors: {
+    tooltip: ColorsSet;
   };
 }
 

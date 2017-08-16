@@ -20,6 +20,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     loading: boolean;
     link: boolean;
   }): StyleDef {
+    const params = this.theme.params;
     const color = this.theme.getModuleColor('Button', state.color) as KitDefaultThemeParamsButtonColor;
     const styles: StyleDef = defMerge([
       {
@@ -42,16 +43,16 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
       },
       defToggle(state.disabled, {
         cursor: 'default',
-        ...applyColorSet(color.disabled),
+        ...applyColorSet(color.disabled, params.borders.width),
       }, {
         cursor: 'pointer',
-        ...applyColorSet(color.base),
+        ...applyColorSet(color.base, params.borders.width),
         $nest: {
           '&:hover': {
-            ...applyColorSet(color.hover),
+            ...applyColorSet(color.hover, params.borders.width),
           },
           '&:active': {
-            ...applyColorSet(color.active),
+            ...applyColorSet(color.active, params.borders.width),
           },
         },
       }),

@@ -27,7 +27,7 @@ export class KitDefaultTagStyle implements KitComponentStyle {
       marginRight: 8,
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-      ...applyColorSet(color),
+      ...applyColorSet(color, params.borders.width),
     };
   }
 }

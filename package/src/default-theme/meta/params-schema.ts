@@ -20,7 +20,7 @@ const notificationColor = {
   titleText: 'color',
   messageText: 'color',
 };
-const typoColor = {
+const typoColorSet = {
   background: 'color',
   text: 'color',
 };
@@ -114,7 +114,11 @@ export const paramsSchema = {
     colors: {
       menu: {
         border: 'color',
-        background: 'color',
+      },
+      item: {
+        base: basicColorSet,
+        hover: basicColorSet,
+        active: basicColorSet,
       },
     },
   },
@@ -147,11 +151,19 @@ export const paramsSchema = {
         hover: basicColorSet,
         disabled: basicColorSet,
       },
-      groupTitle: {
-        background: 'color',
-        text: 'color',
-      },
+      groupTitle: typoColorSet,
       separator: 'color',
+      sub: {
+        background: 'color',
+        border: 'color',
+      },
+    },
+  },
+  moduleModal: {
+    colors: {
+      header: basicColorSet,
+      body: typoColorSet,
+      footer: basicColorSet,
     },
   },
   moduleNotification: {
@@ -202,6 +214,16 @@ export const paramsSchema = {
       'default': 'color',
     },
   },
+  moduleTabs: {
+    colors: {
+      nav: {
+        base: basicColorSet,
+        hover: basicColorSet,
+        active: basicColorSet,
+      },
+      panel: basicColorSet,
+    },
+  },
   moduleTag: {
     colors: {
       'default': basicColorSet,
@@ -232,6 +254,11 @@ export const paramsSchema = {
       },
     },
   },
+  moduleTooltip: {
+    colors: {
+      tooltip: basicColorSet,
+    },
+  },
   moduleTypo: {
     fontSize: 'string',
     headingFontSizes: {
@@ -243,12 +270,12 @@ export const paramsSchema = {
       h6: 'string',
     },
     colors: {
-      text: typoColor,
+      text: typoColorSet,
       link: {
-        base: typoColor,
-        hover: typoColor,
-        focus: typoColor,
-        visited: typoColor,
+        base: typoColorSet,
+        hover: typoColorSet,
+        focus: typoColorSet,
+        visited: typoColorSet,
       },
     },
   },

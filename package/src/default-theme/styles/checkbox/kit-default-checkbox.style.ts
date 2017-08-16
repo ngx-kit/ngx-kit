@@ -51,6 +51,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
   view(state: {
     checked: boolean,
   }): StyleDef {
+    const params = this.theme.params;
     return {
       position: 'relative',
       top: 0,
@@ -59,7 +60,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       width: 14,
       height: 14,
       background: this.theme.params.moduleCheckbox.colors.base.background,
-      border: [1, 'solid', this.theme.params.moduleCheckbox.colors.base.border],
+      border: [params.borders.width, 'solid', this.theme.params.moduleCheckbox.colors.base.border],
       borderRadius: this.theme.params.borders.radius,
       transition: this.theme.params.transitions.default,
       ...defToggle(state.checked, {

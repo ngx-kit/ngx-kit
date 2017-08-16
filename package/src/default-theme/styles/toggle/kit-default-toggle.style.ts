@@ -51,11 +51,11 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
     return defMerge([
       {
         background: params.moduleToggle.colors.base.background,
-        border: [1, 'solid', params.moduleToggle.colors.base.border],
+        border: [params.borders.width, 'solid', params.moduleToggle.colors.base.border],
         position: 'relative',
         display: 'inline-block',
         boxSizing: 'border-box',
-        height: 22,
+        height: 22 + params.borders.width,
         width: 44,
         lineHeight: 20,
         verticalAlign: 'middle',
@@ -93,8 +93,9 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
   }
 
   viewInner(state: {checked: boolean}): StyleDef {
+    const params = this.theme.params;
     return {
-      color: '#fff',
+      color: params.moduleToggle.colors.base.background,
       fontSize: '12px',
       display: 'block',
       marginLeft: 24,

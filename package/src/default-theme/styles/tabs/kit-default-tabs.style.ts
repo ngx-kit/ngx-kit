@@ -3,6 +3,7 @@ import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultTabsStyle implements KitComponentStyle {
@@ -15,7 +16,6 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
 
   nav(): StyleDef {
     return {
-      borderBottom: [1, 'solid', '#d9d9d9'],
       display: 'flex',
       flexDirection: 'row',
       listStyle: 'none',
@@ -25,10 +25,9 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   }
 
   panel(): StyleDef {
+    const params = this.theme.params;
     return {
-      borderBottom: [1, 'solid', '#d9d9d9'],
-      borderRight: [1, 'solid', '#d9d9d9'],
-      borderLeft: [1, 'solid', '#d9d9d9'],
+      border: [params.borders.width, 'solid', params.moduleTabs.colors.panel.border],
       paddingTop: this.theme.params.grid.h * 2,
       paddingBottom: this.theme.params.grid.h * 2,
       paddingLeft: this.theme.params.grid.v * 2,
@@ -36,17 +35,27 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   }
 
   tab(state: {active: boolean}): StyleDef {
+    const params = this.theme.params;
     return {
       cursor: 'pointer',
       userSelect: 'none',
-      padding: '8px',
+      padding: [params.grid.v, params.grid.h],
+      border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.base.border],
+      borderBottom: 0,
+      ...applyTypoColorSet(params.moduleTabs.colors.nav.base),
+      $nest: {
+        '&:hover': {
+          background: params.moduleTabs.colors.nav.active.background,
+          border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.hover.border],
+          borderBottom: 0,
+        },
+      },
       ...defToggle(state.active, {
-        background: '#ffffff',
-        borderTop: [1, 'solid', '#d9d9d9'],
-        borderRight: [1, 'solid', '#d9d9d9'],
-        borderLeft: [1, 'solid', '#d9d9d9'],
-        marginBottom: -1,
+        background: params.moduleTabs.colors.nav.active.background,
+        border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.active.border],
+        borderBottom: 0,
+        marginBottom: -params.borders.width,
       }),
-    }
+    };
   }
 }

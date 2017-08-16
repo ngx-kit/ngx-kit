@@ -3,6 +3,7 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultTooltipViewStyle implements KitComponentStyle {
@@ -14,11 +15,11 @@ export class KitDefaultTooltipViewStyle implements KitComponentStyle {
   }
 
   tooltip(): StyleDef {
+    const params = this.theme.params;
     return {
-      background: 'rgba(0,0,0,.5)',
-      color: '#ffffff',
-      borderRadius: '2px',
-      padding: '4px 8px',
+      borderRadius: params.borders.radius,
+      padding: [params.grid.v / 2, params.grid.h],
+      ...applyColorSet(params.moduleTooltip.colors.tooltip),
     };
   }
 }

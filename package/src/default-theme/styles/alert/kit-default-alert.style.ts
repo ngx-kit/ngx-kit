@@ -38,7 +38,7 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
       display: 'block',
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
-      ...applyColorSet(color),
+      ...applyColorSet(color, params.borders.width),
       ...defToggle(state.closed, {
         display: 'none',
       }),

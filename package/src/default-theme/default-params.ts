@@ -262,7 +262,23 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     colors: {
       menu: {
         border: '#e2e2e2',
-        background: '#fafafa',
+      },
+      item: {
+        base: {
+          background: '#fafafa',
+          border: '#eee',
+          text: '#404040',
+        },
+        hover: {
+          background: '#f0f0f0',
+          border: '#eee',
+          text: '#404040',
+        },
+        active: {
+          background: '#f0f0f0',
+          border: '#eee',
+          text: '#404040',
+        },
       },
     },
   };
@@ -328,6 +344,29 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         text: '#8c8c8c',
       },
       separator: '#e2e2e2',
+      sub: {
+        background: '#fff',
+        border: '#e9e9e9',
+      },
+    },
+  };
+
+  moduleModal = {
+    colors: {
+      header: {
+        background: '#d6eeff',
+        border: '#e2e2e2',
+        text: '#707070',
+      },
+      body: {
+        background: '#fff',
+        text: '#404040',
+      },
+      footer: {
+        background: '#fff',
+        border: '#e2e2e2',
+        text: '#707070',
+      },
     },
   };
 
@@ -432,6 +471,33 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
+  moduleTabs = {
+    colors: {
+      nav: {
+        base: {
+          background: '#fff',
+          border: '#d9d9d9',
+          text: '#404040',
+        },
+        hover: {
+          background: '#e2e2e2',
+          border: '#d9d9d9',
+          text: '#404040',
+        },
+        active: {
+          background: '#dadada',
+          border: '#d9d9d9',
+          text: '#404040',
+        },
+      },
+      panel: {
+        background: '#fff',
+        border: '#d9d9d9',
+        text: '#404040',
+      },
+    },
+  };
+
   moduleTag = {
     colors: {
       'default': {
@@ -493,6 +559,16 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         background: '#0084ff',
         border: '#0071e2',
         toggle: '#fff',
+      },
+    },
+  };
+
+  moduleTooltip = {
+    colors: {
+      tooltip: {
+        background: 'rgba(0,0,0,.6)',
+        border: 'rgba(0,0,0,.65)',
+        text: '#fff',
       },
     },
   };

@@ -14,9 +14,10 @@ export class KitDefaultMenuSubStyle implements KitComponentStyle {
   }
 
   menu(state: {position: 'bottom' | 'right'}): StyleDef {
+    const params = this.theme.params;
     return {
-      backgroundColor: '#ffffff',
-      border: [1, 'solid', '#e9e9e9'],
+      backgroundColor: params.moduleMenu.colors.sub.background,
+      border: [params.borders.width, 'solid', params.moduleMenu.colors.sub.border],
       display: 'block',
       ...defPick(state.position, {
         right: {

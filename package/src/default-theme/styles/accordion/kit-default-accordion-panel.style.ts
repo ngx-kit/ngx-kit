@@ -18,14 +18,21 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
+    const params = this.theme.params;
     return {
-      border: [1, 'solid', this.theme.params.moduleAccordion.colors.border],
+      border: [params.borders.width, 'solid', this.theme.params.moduleAccordion.colors.border],
       borderBottomWidth: 0,
       display: 'block',
       ...applyTypoColorSet(this.theme.params.moduleAccordion.colors.title),
       $nest: {
+        '&:first-child': {
+          borderTopLeftRadius: params.borders.radius,
+          borderTopRightRadius: params.borders.radius,
+        },
         '&:last-child': {
-          borderBottomWidth: 1,
+          borderBottomWidth: params.borders.width,
+          borderBottomRightRadius: params.borders.radius,
+          borderBottomLeftRadius: params.borders.radius,
         },
       },
     };
