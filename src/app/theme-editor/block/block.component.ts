@@ -30,4 +30,8 @@ export class BlockComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   }
+
+  setNumberModel(name: string, value: string) {
+    this.themeModel[name] = parseInt(value);
+  }
 }
