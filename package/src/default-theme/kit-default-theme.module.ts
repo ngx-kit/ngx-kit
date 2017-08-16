@@ -33,9 +33,13 @@ import {
   kitComponentMenuSeparator,
   kitComponentMenuSub,
   kitComponentModal,
+  kitComponentModalBody,
+  kitComponentModalFooter,
+  kitComponentModalHeader,
   kitComponentNotificationHost,
   kitComponentOverlayContainer,
-  kitComponentRadio, kitComponentRadioGroup,
+  kitComponentRadio,
+  kitComponentRadioGroup,
   kitComponentSelect,
   kitComponentSpinner,
   kitComponentTabs,
@@ -80,8 +84,12 @@ import { KitDefaultMenuItemStyle } from './styles/menu/kit-default-menu-item.sty
 import { KitDefaultMenuSeparatorStyle } from './styles/menu/kit-default-menu-separator.style';
 import { KitDefaultMenuSubStyle } from './styles/menu/kit-default-menu-sub.style';
 import { KitDefaultMenuStyle } from './styles/menu/kit-default-menu.style';
+import { KitDefaultModalBodyStyle } from './styles/modal/kit-default-modal-body.style';
+import { KitDefaultModalFooterStyle } from './styles/modal/kit-default-modal-footer.style';
+import { KitDefaultModalHeaderStyle } from './styles/modal/kit-default-modal-header.style';
 import { KitDefaultModalStyle } from './styles/modal/kit-default-modal.style';
 import { KitDefaultNotificationHostStyle } from './styles/notification/kit-default-notification-host.style';
+import { KitDefaultRadioGroupStyle } from './styles/radio/kit-default-radio-group.style';
 import { KitDefaultRadioStyle } from './styles/radio/kit-default-radio.style';
 import { KitDefaultSelectStyle } from './styles/select/kit-default-select.style';
 import { KitDefaultSpinnerStyle } from './styles/spinner/kit-default-spinner.style';
@@ -91,7 +99,6 @@ import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 import { KitDefaultTypoContainerStyle } from './styles/typo/kit-default-typo-container.style';
-import { KitDefaultRadioGroupStyle } from './styles/radio/kit-default-radio-group.style';
 
 @NgModule({
   imports: [],
@@ -240,6 +247,18 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentModal,
           useClass: KitDefaultModalStyle,
+        },
+        {
+          provide: kitComponentModalBody,
+          useClass: KitDefaultModalBodyStyle,
+        },
+        {
+          provide: kitComponentModalFooter,
+          useClass: KitDefaultModalFooterStyle,
+        },
+        {
+          provide: kitComponentModalHeader,
+          useClass: KitDefaultModalHeaderStyle,
         },
         {
           provide: kitComponentNotificationHost,

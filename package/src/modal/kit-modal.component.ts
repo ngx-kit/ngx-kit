@@ -13,15 +13,7 @@ import { kitComponentModal } from '../core/meta/tokens';
                  (outsideClick)="close()"></kit-overlay>
     <ng-template #modalRef>
       <div styler="modal">
-        <div styler="header">
-          <ng-content select="[header]"></ng-content>
-        </div>
-        <div styler="content">
-          <ng-content select="[content]"></ng-content>
-        </div>
-        <div styler="footer">
-          <ng-content select="[footer]"></ng-content>
-        </div>
+        <ng-content></ng-content>
       </div>
     </ng-template>
   `,
