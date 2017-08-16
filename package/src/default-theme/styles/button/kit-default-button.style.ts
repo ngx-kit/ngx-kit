@@ -58,23 +58,23 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
       defPick(state.size, {
         xs: {
           padding: `${this.theme.params.grid.v / 8}px ${this.theme.params.grid.h / 2}px`,
-          fontSize: '.8rem',
+          fontSize: '.75rem',
         },
         s: {
           padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
-          fontSize: '1rem',
+          fontSize: '.9rem',
         },
         m: {
           padding: `${this.theme.params.grid.v / 2}px ${this.theme.params.grid.h * 1.5}px`,
-          fontSize: '1.1rem',
+          fontSize: '1rem',
         },
         l: {
           padding: `${this.theme.params.grid.v}px ${this.theme.params.grid.h * 2.5}px`,
-          fontSize: '1.3rem',
+          fontSize: '1.15rem',
         },
         xl: {
           padding: `${this.theme.params.grid.v * 2}px ${this.theme.params.grid.h * 4}px`,
-          fontSize: '1.6rem',
+          fontSize: '1.5rem',
         },
       }, 'm'),
 //      defToggle(state.link, {
