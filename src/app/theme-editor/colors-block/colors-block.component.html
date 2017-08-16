@@ -6,6 +6,7 @@
              (kitColorPickerPopupSliderMouseUp)="submitChange(i)"
              styler="box">
   </kit-input>
+  <button *ngIf="!isSync(i)" (click)="submitChange(i)">V</button>
   <button (click)="deleteHandler(color)">X</button>
 </div>
 <button (click)="add()">Add</button>
