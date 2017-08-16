@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', Arial;
-  font-size: 14px;
+  font-family: 'Lato', Arial;
+  /*font-size: 14px;*/
 }
 
 button, input, textarea, select {
-  font-family: 'Montserrat', Arial;
+  font-family: 'Lato', Arial;
 }
 
 table {

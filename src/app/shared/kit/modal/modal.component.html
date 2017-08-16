@@ -3,11 +3,11 @@
 <app-demo [content]="content" [id]="'demo-default'">
   <kit-button [color]="'primary'" (click)="modal.opened = true">Open modal!</kit-button>
   <kit-modal #modal>
-    <div header>Modal header</div>
-    <div content [style.width.px]="400">Modal content</div>
-    <div footer>
+    <kit-modal-header>Modal header</kit-modal-header>
+    <kit-modal-body>Modal body</kit-modal-body>
+    <kit-modal-footer>
       <kit-button (action)="modal.opened = false">Cancel</kit-button>
       <kit-button [color]="'primary'">Ok</kit-button>
-    </div>
+    </kit-modal-footer>
   </kit-modal>
 </app-demo>
