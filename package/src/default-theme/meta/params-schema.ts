@@ -117,7 +117,7 @@ export const paramsSchema = {
   moduleDatePicker: {
     colors: {
       picker: typoColorSet,
-      weekday: basicColorSet,
+      weekday: typoColorSet,
       date: {
         base: basicColorSet,
         hover: basicColorSet,

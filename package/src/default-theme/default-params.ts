@@ -264,7 +264,6 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
       },
       weekday: {
         background: 'transparent',
-        border: 'transparent',
         text: '#404040',
       },
       date: {
@@ -639,7 +638,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   };
 
   moduleTypo = {
-    fontSize: '13px',
+    fontSize: '14px',
     headingFontSizes: {
       h1: '2.2rem',
       h2: '1.6rem',

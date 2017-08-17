@@ -135,7 +135,7 @@ export interface KitDefaultThemeParamsColorPicker {
 export interface KitDefaultThemeParamsDatePicker {
   colors: {
     picker: TypoColorsSet;
-    weekday: ColorsSet;
+    weekday: TypoColorsSet;
     date: {
       base: ColorsSet;
       hover: ColorsSet;

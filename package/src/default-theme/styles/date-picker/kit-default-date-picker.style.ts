@@ -19,7 +19,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         cursor: 'pointer',
         flexShrink: 0,
         textAlign: 'center',
-        transition: 'background .2s',
+        transition: 'all .2s',
         width: '100%',
         borderRadius: params.borders.radius,
         padding: params.moduleDatePicker.datePadding,
@@ -96,6 +96,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         '& th': {
           border: 0,
           textAlign: 'center',
+          padding: params.moduleDatePicker.dateCellPadding,
         },
         '& td': {
           border: 0,
@@ -109,9 +110,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   weekday(): StyleDef {
     const params = this.theme.params;
     return {
-      padding: [params.grid.v / 2, params.grid.h / 2],
-      textAlign: 'center',
-      ...applyColorSet(params.moduleDatePicker.colors.weekday),
+      ...applyTypoColorSet(params.moduleDatePicker.colors.weekday),
     };
   }
 }

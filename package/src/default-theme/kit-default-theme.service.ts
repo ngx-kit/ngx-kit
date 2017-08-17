@@ -46,6 +46,10 @@ export class KitDefaultThemeService implements KitThemeService {
     }
   }
 
+  mergeParams(left: KitDefaultThemeParams, right: KitDefaultThemeParamsDef): KitDefaultThemeParams {
+    return mergeDeepAll([{}, left, right]);
+  }
+
   private extractParams(params: any, isColors = false) {
     const extracted = {};
     for (const key in params) {
@@ -59,9 +63,5 @@ export class KitDefaultThemeService implements KitThemeService {
       }
     }
     return params;
-  }
-
-  private mergeParams(left: KitDefaultThemeParams, right: KitDefaultThemeParamsDef): KitDefaultThemeParams {
-    return mergeDeepAll([{}, left, right]);
   }
 }
