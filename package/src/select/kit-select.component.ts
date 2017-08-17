@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, forwardRef, Inject, Input, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Inject,
+  Input,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -14,12 +23,6 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
-/**
- * @todo multi
- * @todo type=dropdown
- * @todo options = isArray (value=label)
- * @todo option output template
- */
 @Component({
   selector: 'kit-select,[kitSelect]',
   template: `
@@ -27,6 +30,13 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
       <ng-container *ngSwitchCase="'native'">
         <select [styler]="'nativeSelect'"
                 [ngModel]="state"
+                [attr.accesskey]="accesskey"
+                [attr.autofocus]="autofocus"
+                [attr.multiple]="multiple"
+                [attr.size]="size"
+                [attr.tabindex]="tabindex"
+                (blur)="onBlur($event)"
+                (focus)="onFocus($event)"
                 (ngModelChange)="updateValue($event)">
           <ng-container *ngIf="!optionTemplateRef">
             <option *ngFor="let option of options"
@@ -91,15 +101,23 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<any> {
+  @Input() accesskey: string;
+
   anchor: any;
 
+  @Input() autofocus: boolean;
+
+  @Output() blur = new EventEmitter<FocusEvent>();
+
   dropdownOpened = false;
+
+  @Output() focus = new EventEmitter<FocusEvent>();
 
   @Input() kitSelect: any;
 
   @Input() labelField = 'label';
 
-  @Input() multi = false;
+  @Input() multiple: boolean;
 
   @Input() optionTemplateRef: TemplateRef<any>;
 
@@ -107,7 +125,11 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
 
   selectedOption?: KitSelectOption;
 
+  @Input() size: boolean;
+
   state: any;
+
+  @Input() tabindex: boolean;
 
   @Input() type: KitSelectType = 'native';
 
@@ -133,6 +155,15 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
       value: isObject(o) ? o[this.valueField] : o,
       label: isObject(o) ? o[this.labelField] : o,
     }));
+  }
+
+  onBlur(event: FocusEvent) {
+    this.blur.next(event);
+    this.touches$.next(true);
+  }
+
+  onFocus(event: FocusEvent) {
+    this.focus.next(event);
   }
 
   registerOnChange(fn: any) {
