@@ -10,23 +10,27 @@ https://ngx-kit.com/kit/modules/radio
 
 #### Inputs
 
+Implements `ControlValueAccessor`.
+
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *ngModel* | `any` | null | Radio value model |
+| *accesskey* | `string` | | Native attribute |
+| *autofocus* | `boolean` | | Native attribute |
+| *tabindex* | `number` | | Native attribute |
+| *value* | `any` | | Radio value |
 
 #### Outputs
 
-| Event | Type | Description |
-| --- | --- | --- |
-| *ngModelChange* | `Event<any>` | Radio value changing |
+Supports all native html events. 
 
 ### `<kit-radio-group>,[kitRadioGroup]`
+
+Implements `ControlValueAccessor`.
 
 #### Inputs
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *ngModel* | `any` | null | Radio value model |
 | *options* | `any[]` | null | |
 | *valueField* | `string` | `value` | |
 | *labelField* | `string` | `label` | |
@@ -36,4 +40,3 @@ https://ngx-kit.com/kit/modules/radio
 
 | Event | Type | Description |
 | --- | --- | --- |
-| *ngModelChange* | `Event<any>` | Radio value changing |

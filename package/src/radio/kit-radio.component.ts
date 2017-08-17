@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, forwardRef, HostListener, Inject, Input } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  HostListener,
+  Inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -20,7 +29,12 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
         <input [id]="id"
                [value]="value"
                [ngModel]="value === state ? value : null"
+               [attr.accesskey]="accesskey"
+               [attr.autofocus]="autofocus"
+               [attr.tabindex]="tabindex"
                (ngModelChange)="updateValue($event)"
+               (blur)="onBlur($event)"
+               (focus)="onFocus($event)"
                type="radio"
                styler="input">
         <span [styler]="['view', {checked: value === state, hover: hover}]"></span>
@@ -35,6 +49,14 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitRadioComponent implements ControlValueAccessor, KitControl<any> {
+  @Input() accesskey: string;
+
+  @Input() autofocus: boolean;
+
+  @Output() blur = new EventEmitter<FocusEvent>();
+
+  @Output() focus = new EventEmitter<FocusEvent>();
+
   hover = false;
 
   id: string;
@@ -42,6 +64,8 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
   @Input() kitRadio: any;
 
   state: any;
+
+  @Input() tabindex: number;
 
   @Input() value: any;
 
@@ -69,6 +93,15 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
   @HostListener('mouseleave')
   mouseleave() {
     this.hover = false;
+  }
+
+  onBlur(event: FocusEvent) {
+    this.blur.next(event);
+    this.touches$.next(true);
+  }
+
+  onFocus(event: FocusEvent) {
+    this.focus.next(event);
   }
 
   registerOnChange(fn: any) {
