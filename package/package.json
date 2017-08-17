@@ -4,7 +4,7 @@
   "description": "ngx-kit - angular components",
   "main": "./bundle/ngx-kit.umd.js",
   "module": "./module/ngx-kit.js",
-  "types": "./ngx-kit.d.ts",
+  "typings": "./ngx-kit.d.ts",
   "author": "Sasha Novik",
   "license": "MIT",
   "repository": {
@@ -15,7 +15,6 @@
     "@angular/animations": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER",
     "@angular/common": "0.0.0-ANGULAR-PLACEHOLDER",
-    "@ngx-kit/core": "0.0.0-PLACEHOLDER",
     "@angular/platform-browser": "0.0.0-ANGULAR-PLACEHOLDER"
   },
   "dependencies": {

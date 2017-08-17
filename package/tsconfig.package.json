@@ -7,7 +7,7 @@
     "strictMetadataEmit": true,
     "annotateForClosureCompiler": true,
     "flatModuleOutFile": "ngx-kit.js",
-    "flatModuleId": "ngx-kit"
+    "flatModuleId": "@ngx-kit/ngx-kit"
   },
   "files": [
     "./public_api.ts"

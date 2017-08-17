@@ -31,6 +31,7 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
       paddingTop: this.theme.params.grid.h * 2,
       paddingBottom: this.theme.params.grid.h * 2,
       paddingLeft: this.theme.params.grid.v * 2,
+      ...applyTypoColorSet(params.moduleTabs.colors.panel),
     };
   }
 
@@ -45,7 +46,7 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
       ...applyTypoColorSet(params.moduleTabs.colors.nav.base),
       $nest: {
         '&:hover': {
-          background: params.moduleTabs.colors.nav.active.background,
+          background: params.moduleTabs.colors.nav.hover.background,
           border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.hover.border],
           borderBottom: 0,
         },
