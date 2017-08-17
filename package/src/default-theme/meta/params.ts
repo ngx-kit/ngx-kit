@@ -177,6 +177,7 @@ export interface KitDefaultThemeParamsLoadingBar {
 
 export interface KitDefaultThemeParamsMenu {
   colors: {
+    menu: ColorsSet,
     item: {
       base: ColorsSet;
       hover: ColorsSet;
@@ -187,8 +188,13 @@ export interface KitDefaultThemeParamsMenu {
     sub: {
       background: string;
       border: string;
-    }
-  },
+    };
+    subItem: {
+      base: ColorsSet;
+      hover: ColorsSet;
+      disabled: ColorsSet;
+    };
+  };
   titleFontSize: string;
 }
 
@@ -197,7 +203,7 @@ export interface KitDefaultThemeParamsModal {
     header: ColorsSet;
     body: TypoColorsSet;
     footer: ColorsSet;
-  },
+  };
 }
 
 export interface KitDefaultThemeParamsNotification {

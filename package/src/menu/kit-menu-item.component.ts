@@ -78,10 +78,6 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
             this.closeSub();
           }
         });
-//    this.mouseLeave$
-//        .debounceTime(200)
-//        .filter(() => !this.hover)
-//        .subscribe(() => this.closeSub());
   }
 
   hasHoveredChildren(): boolean {

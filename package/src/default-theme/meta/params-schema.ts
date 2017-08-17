@@ -152,6 +152,7 @@ export const paramsSchema = {
   moduleMenu: {
     titleFontSize: 'string',
     colors: {
+      menu: basicColorSet,
       item: {
         base: basicColorSet,
         hover: basicColorSet,
@@ -162,6 +163,11 @@ export const paramsSchema = {
       sub: {
         background: 'color',
         border: 'color',
+      },
+      subItem: {
+        base: basicColorSet,
+        hover: basicColorSet,
+        disabled: basicColorSet,
       },
     },
   },

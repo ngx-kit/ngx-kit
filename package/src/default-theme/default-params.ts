@@ -329,6 +329,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   moduleMenu = {
     titleFontSize: '.9rem',
     colors: {
+      menu: {
+        background: 'transparent',
+        border: 'rgba(0,0,0,.1)',
+        text: '#404040',
+      },
       item: {
         base: {
           background: 'transparent',
@@ -337,7 +342,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         },
         hover: {
           background: 'transparent',
-          border: '#cacaca',
+          border: 'rgba(0,0,0,.1)',
           text: '#707070',
         },
         disabled: {
@@ -354,6 +359,23 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
       sub: {
         background: '#fff',
         border: '#e9e9e9',
+      },
+      subItem: {
+        base: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#707070',
+        },
+        hover: {
+          background: 'transparent',
+          border: 'rgba(0,0,0,.1)',
+          text: '#707070',
+        },
+        disabled: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#cacaca',
+        },
       },
     },
   };
