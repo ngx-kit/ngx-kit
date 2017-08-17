@@ -96,7 +96,11 @@ export const paramsSchema = {
         background: 'color',
         border: 'color',
       },
-      checked: basicColorSet,
+      checked: {
+        background: 'color',
+        border: 'color',
+        check: 'color',
+      },
     },
   },
   moduleColorPicker: {
