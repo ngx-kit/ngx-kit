@@ -62,7 +62,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
       borderRadius: '50%',
       transition: params.transitions.default,
       ...defToggle(state.checked, {
-        borderColor: params.moduleRadio.colors.checked.background,
+        borderColor: params.moduleRadio.colors.checked.border,
         $nest: {
           '&:after': {
             position: 'absolute',

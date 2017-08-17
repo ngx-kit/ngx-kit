@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -19,7 +19,12 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
     <span styler="checkbox">
         <input [id]="id"
                [ngModel]="state"
+               [attr.accesskey]="accesskey"
+               [attr.autofocus]="autofocus"
+               [attr.tabindex]="tabindex"
                (ngModelChange)="updateValue($event)"
+               (blur)="onBlur($event)"
+               (focus)="onFocus($event)"
                type="checkbox"
                styler="input">
         <span [styler]="['view', {checked: !!state}]"></span>
@@ -34,11 +39,23 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitCheckboxComponent implements ControlValueAccessor, KitControl<any> {
+  @Input() accesskey: string;
+
+  @Input() autofocus: boolean;
+
+  @Output() blur = new EventEmitter<FocusEvent>();
+
+  @Output() focus = new EventEmitter<FocusEvent>();
+
   id: string;
 
   @Input() kitCheckbox: any;
 
+  @Input() readonly: boolean;
+
   state: any;
+
+  @Input() tabindex: number;
 
   private changes$ = new Subject<number>();
 
@@ -56,6 +73,15 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
     this.id = this.core.uuid();
   }
 
+  onBlur(event: FocusEvent) {
+    this.blur.next(event);
+    this.touches$.next(true);
+  }
+
+  onFocus(event: FocusEvent) {
+    this.focus.next(event);
+  }
+
   registerOnChange(fn: any) {
     this.changes$.subscribe(fn);
   }
@@ -69,9 +95,11 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   }
 
   updateValue(value: any) {
-    this.writeValue(value);
-    this.changes$.next(value);
-    this.touches$.next(true);
+    if (!this.readonly) {
+      this.writeValue(value);
+      this.changes$.next(value);
+      this.touches$.next(true);
+    }
   }
 
   writeValue(value: any) {
