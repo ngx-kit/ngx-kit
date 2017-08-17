@@ -269,6 +269,7 @@ export interface KitDefaultThemeParamsSelect {
       hover: KitDefaultThemeParamsSelectColor;
       selected: KitDefaultThemeParamsSelectColor;
     };
+    options: ColorsSet;
   };
 }
 

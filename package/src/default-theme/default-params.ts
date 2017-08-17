@@ -523,6 +523,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           text: '#fff',
         },
       },
+      options: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        text: '#585858',
+      },
     },
   };
 

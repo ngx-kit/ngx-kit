@@ -43,7 +43,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
   dropdownOptions(): StyleDef {
     const params = this.theme.params;
     return {
-      border: [params.borders.width, 'solid', params.moduleSelect.colors.select.base.border],
+      ...applyColorSet(params.moduleSelect.colors.options, params.borders.width),
     };
   }
 

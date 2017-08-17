@@ -234,6 +234,7 @@ export const paramsSchema = {
         hover: basicColorSet,
         selected: basicColorSet,
       },
+      options: basicColorSet,
     },
   },
   moduleSpinner: {
