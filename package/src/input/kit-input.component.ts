@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
 import { kitComponentInput } from '../core/meta/tokens';
+import { KitInputType } from './meta';
 
 export const KIT_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -17,8 +18,16 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   template: `
     <input [ngModel]="state"
            (ngModelChange)="updateValue($event)"
-           (blur)="touch()"
-           type="text"
+           [attr.accesskey]="accesskey"
+           [attr.autocomplete]="autocomplete"
+           [attr.autofocus]="autofocus"
+           [attr.maxlength]="maxlength"
+           [attr.placeholder]="placeholder"
+           [attr.readonly]="readonly"
+           [attr.tabindex]="tabindex"
+           [attr.type]="type"
+           (blur)="onBlur($event)"
+           (focus)="onFocus($event)"
            styler="input">
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
@@ -27,9 +36,29 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitInputComponent implements ControlValueAccessor, KitControl<any> {
+  @Input() accesskey: string;
+
+  @Input() autocomplete: boolean;
+
+  @Input() autofocus: boolean;
+
+  @Output() blur = new EventEmitter<FocusEvent>();
+
+  @Output() focus = new EventEmitter<FocusEvent>();
+
   @Input() kitInput: any;
 
+  @Input() maxlength: number;
+
+  @Input() placeholder: string;
+
+  @Input() readonly: boolean;
+
   state: any;
+
+  @Input() tabindex: number;
+
+  @Input() type: KitInputType = 'text';
 
   private changes$ = new Subject<number>();
 
@@ -45,6 +74,15 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
     this.styler.register(this.style);
   }
 
+  onBlur(event: FocusEvent) {
+    this.blur.next(event);
+    this.touches$.next(true);
+  }
+
+  onFocus(event: FocusEvent) {
+    this.focus.next(event);
+  }
+
   registerOnChange(fn: any) {
     this.changes$.subscribe(fn);
   }
@@ -55,10 +93,6 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
 
   setDisabledState(isDisabled: boolean) {
     this.isDisabled = isDisabled;
-  }
-
-  touch() {
-    this.touches$.next(true);
   }
 
   updateValue(value: any) {

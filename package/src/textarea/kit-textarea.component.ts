@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
 import { kitComponentTextarea } from '../core/meta/tokens';
-import { TextareaWrap } from './meta';
+import { KitTextareaWrap } from './meta';
 
 export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -58,7 +58,7 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
 
   @Input() tabindex: number;
 
-  @Input() wrap: TextareaWrap = 'off';
+  @Input() wrap: KitTextareaWrap = 'off';
 
   private changes$ = new Subject<number>();
 

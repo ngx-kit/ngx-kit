@@ -1,1 +1,1 @@
-export type TextareaWrap = 'soft' | 'hard' | 'off';
+export type KitTextareaWrap = 'soft' | 'hard' | 'off';

@@ -14,14 +14,14 @@ Implements `ControlValueAccessor`.
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *accesskey* | `string` | | |
-| *autofocus* | `boolean` | | |
-| *maxlength* | `number` | | |
-| *placeholder* | `string` | | |
-| *readonly* | `boolean` | | |
-| *rows* | `number` | | |
-| *tabindex* | `number` | | |
-| *wrap* | `soft, hard, off` | `off` | |
+| *accesskey* | `string` | | Native attribute |
+| *autofocus* | `boolean` | | Native attribute |
+| *maxlength* | `number` | | Native attribute |
+| *placeholder* | `string` | | Native attribute |
+| *readonly* | `boolean` | | Native attribute |
+| *rows* | `number` | | Native attribute |
+| *tabindex* | `number` | | Native attribute |
+| *wrap* | `soft, hard, off` | `off` | Native attribute |
 
 #### Outputs
 
