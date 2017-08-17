@@ -60,14 +60,19 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
                      (outsideClick)="dropdownOpened = false"></kit-overlay>
         <ng-template #contentRef>
           <div styler="dropdownOptions">
-            <div *ngFor="let option of options"
-                 [styler]="['dropdownOption', {selected: option.value === state}]"
-                 (click)="selectDropdownOption(option.value)">
-              <ng-container *ngIf="!optionTemplateRef">{{ option.label }}</ng-container>
-              <ng-container *ngIf="optionTemplateRef">
+            <ng-container *ngIf="!optionTemplateRef">
+              <div *ngFor="let option of options"
+                   [styler]="['dropdownOption', {selected: option.value === state}]"
+                   (click)="selectDropdownOption(option.value)">
+                {{ option.label }}
+              </div>
+            </ng-container>
+            <ng-container *ngIf="optionTemplateRef">
+              <div *ngFor="let option of options"
+                   (click)="selectDropdownOption(option.value)">
                 <ng-container *ngTemplateOutlet="optionTemplateRef; context: {$implicit: option}"></ng-container>
-              </ng-container>
-            </div>
+              </div>
+            </ng-container>
           </div>
         </ng-template>
       </ng-container>
