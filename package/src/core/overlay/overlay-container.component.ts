@@ -144,6 +144,8 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
     if (opened) {
       this.styler.host.applyState({opened: true});
       this.initListeners();
+    } else {
+      this.removeListeners();
     }
     this.overlayTrigger = opened ? 'opened' : 'closed';
     this.holderTrigger = opened
@@ -155,7 +157,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   ngAfterViewChecked() {
-    this.reposition();
   }
 
   ngAfterViewInit() {
@@ -215,6 +216,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   private repositionDropdown() {
     const rect: ClientRect = this.anchor.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
     this.zone.run(() => {
       switch (this.position) {
         case 'top':
@@ -224,6 +226,8 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
             left: `${Math.round(rect.left)}px`,
             transform: 'translateY(-100%)',
             width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+            maxHeight: `${rect.top - 16}px`,
+            overflowY: 'auto',
           };
           break;
         case 'bottom':
@@ -232,6 +236,8 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
             top: `${Math.round(rect.top + this.anchor.offsetHeight)}px`,
             left: `${Math.round(rect.left)}px`,
             width: this.widthType === 'full' ? `${Math.round(this.anchor.offsetWidth)}px` : null,
+            maxHeight: `${windowHeight - rect.bottom - 16}px`,
+            overflowY: 'auto',
           };
           break;
         case 'left':
