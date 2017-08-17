@@ -110,6 +110,12 @@ export const paramsSchema = {
     cursorSize: 'number',
     sliderHeight: 'number',
   },
+  moduleDivider: {
+    colors: {
+      topLine: 'color',
+      bottomLine: 'color',
+    },
+  },
   moduleDropdownMenu: {
     colors: {
       menu: {

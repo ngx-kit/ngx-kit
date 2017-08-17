@@ -10,25 +10,28 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
+    const params = this.theme.params;
     return {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      padding: '16px 0',
+      padding: [params.grid.h * 2, 0],
     };
   }
 
   line(): StyleDef {
+    const params = this.theme.params;
     return {
       flexGrow: 1,
-      borderTop: '1px solid rgba(34,36,38,.15)',
-      borderBottom: '1px solid rgba(255,255,255,.1)',
+      borderTop: [params.borders.width, 'solid', params.moduleDivider.colors.topLine],
+      borderBottom: [params.borders.width, 'solid', params.moduleDivider.colors.bottomLine],
     };
   }
 
   text(): StyleDef {
+    const params = this.theme.params;
     return {
-      padding: '0 16px',
+      padding: [0, params.grid.h * 2],
       $nest: {
         '&:empty': {
           display: 'none',

@@ -19,6 +19,7 @@ export interface KitDefaultThemeParams {
   moduleButton: KitDefaultThemeParamsButton;
   moduleCheckbox: KitDefaultThemeParamsCheckbox;
   moduleColorPicker: KitDefaultThemeParamsColorPicker;
+  moduleDivider: KitDefaultThemeParamsDivider;
   moduleDropdownMenu: KitDefaultThemeParamsDropdownMenu;
   moduleForm: KitDefaultThemeParamsForm;
   moduleInput: KitDefaultThemeParamsInput;
@@ -128,6 +129,13 @@ export interface KitDefaultThemeParamsColorPicker {
   };
   cursorSize: number;
   sliderHeight: number;
+}
+
+export interface KitDefaultThemeParamsDivider {
+  colors: {
+    topLine: string;
+    bottomLine: string;
+  };
 }
 
 export interface KitDefaultThemeParamsDropdownMenu {

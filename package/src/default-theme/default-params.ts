@@ -258,6 +258,13 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
 
   moduleDatePicker = {};
 
+  moduleDivider = {
+    colors: {
+      topLine: 'rgba(34,36,38,.15)',
+      bottomLine: '1px solid rgba(255,255,255,.1)',
+    },
+  };
+
   moduleDropdownMenu = {
     colors: {
       menu: {
