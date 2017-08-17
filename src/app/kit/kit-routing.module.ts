@@ -21,14 +21,20 @@ const routes: Routes = [
         },
       },
       {
-        path: 'getting-started',
-        component: ContentComponent,
-        data: {
-          content: 'kit/getting-started.json',
-        },
-        resolve: {
-          content: ContentResolverService,
-        },
+        path: 'docs',
+        children: [
+          {
+            path: 'importing',
+            component: ContentComponent,
+            data: {
+              content: 'kit/docs/importing.json',
+              id: 'importing',
+            },
+            resolve: {
+              content: ContentResolverService,
+            },
+          },
+        ],
       },
       {
         path: 'modules',

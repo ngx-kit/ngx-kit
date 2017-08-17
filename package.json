@@ -11,9 +11,7 @@
     "e2e": "ng e2e",
     "content": "node ./content.js",
     "serve-aot": "ng serve --aot",
-    "uni:build:prod": "ng build --prod",
-    "uni:build:ngc": "ngc",
-    "uni:build:webpack": "webpack",
+    "uni:build": "ng build --prod --app 1",
     "uni:serve": "ts-node src/server.ts",
     "uni": "npm run uni:build:prod && npm run uni:build:ngc && npm run uni:serve"
   },

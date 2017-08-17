@@ -1,6 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { KitDefaultThemeDefaultParams, KitDefaultThemeParams, KitModalComponent, paramsSchema } from '@ngx-kit/ngx-kit';
+import {
+  KitDefaultThemeDefaultParams,
+  KitDefaultThemeParams,
+  KitDefaultThemeService,
+  KitModalComponent,
+  kitTheme,
+  paramsSchema,
+} from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
 import { isObject, isString } from 'util';
 import { EditorService } from '../editor.service';
@@ -31,7 +38,8 @@ export class ThemeEditorComponent implements OnInit {
 
   themeModel: any;
 
-  constructor(private editor: EditorService) {
+  constructor(private editor: EditorService,
+              @Inject(kitTheme) private themeService: KitDefaultThemeService) {
     this.schema = this.convertSchema(paramsSchema);
     this.initThemeModel(new KitDefaultThemeDefaultParams());
   }
@@ -128,7 +136,7 @@ export class ThemeEditorComponent implements OnInit {
   }
 
   private initThemeModel(params: KitDefaultThemeParams) {
-    this.themeModel = params;
+    this.themeModel = this.themeService.mergeParams(new KitDefaultThemeDefaultParams(), params);
     this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
   }
 }

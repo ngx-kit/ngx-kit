@@ -11,12 +11,15 @@ import { Content } from '../../interfaces/content';
 export class ContentComponent implements OnInit {
   content: Observable<Content>;
 
+  id = 'index';
+
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.content = data.content;
+      this.id = data.id || this.id;
     });
   }
 }

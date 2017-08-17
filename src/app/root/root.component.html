@@ -3,10 +3,9 @@
   <kit-layout-header styler="header">
     <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
-      <a [kitMenuItem] [routerLink]="['/kit']">ngx-kit (alpha)</a>
-      <a [kitMenuItem] [routerLink]="['/theme-editor']">theme editor</a>
-      <a [kitMenuItem] [routerLink]="['/styler']">styler (beta)</a>
-      <a [kitMenuItem] [routerLink]="['/store']">store (alpha)</a>
+      <a [kitMenuItem] [routerLink]="['/kit']">ngx-kit</a>
+      <a [kitMenuItem] [routerLink]="['/theme-editor']">default-theme editor</a>
+      <a [kitMenuItem] href="https://github.com/ngx-kit/styler" target="_blank">styler</a>
     </kit-menu>
     <div styler="themeButton">
       <kit-button [kitAnchor] #dropdownRef="anchor">Pick a preset</kit-button>

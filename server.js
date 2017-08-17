@@ -6,7 +6,7 @@ var renderModuleFactory = require('@angular/platform-server').renderModuleFactor
 
 // Import the AOT compiled factory for your AppServerModule.
 // This import will change with the hash of your built server bundle.
-var AppServerModuleNgFactory = require('./dist-server/main.cab98e5d571876116656.bundle').AppServerModuleNgFactory;
+var AppServerModuleNgFactory = require('./dist-server/main.d6255eab1805c41df9b2.bundle').AppServerModuleNgFactory;
 
 // Load the index.html file.
 var index = require('fs').readFileSync('./src/index.html', 'utf8');

@@ -3,39 +3,57 @@ route: kit/overview
 title: Overview
 ---
 
-Intro text
+## Features
+
+* Wide set of Angular UI components
+* CSSinJS styling (fallback to classes)
+* [Default-theme online customizer](/theme-editor)
+* AOT-support
+* `platform-server` support
+* Free and open-source
+* Setup via NPM
+
+## Installation
+
+Install dependencies:
+
+`npm install @ngx-kit/styler @ngx-kit/ngx-kit moment --save`
+
+Import components to the root module of the application:
 
 ```typescript
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Http } from '@angular/http';
-import { MdRenderService } from '@nvxme/ngx-md-render';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
 
-@Injectable()
-export class ContentResolverService implements Resolve<any> {
-
-  constructor(private http: Http,
-              private mdRender: MdRenderService) {
-  }
-
-  resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<any> {
-    const data = route.data;
-    console.log('!resolve data', data);
-    if (data['content']) {
-      return this.http.get(`/content/${data['content']}`)
-          .map(res => res.text())
-          .map(body => {
-            console.log('postBody', body);
-            return this.mdRender.render(body);
-          });
-    } else {
-      alert(404);
-    }
-  }
-
+@NgModule({
+  ...
+  imports: [
+    ...
+    KitFullForRootModule,
+  ],
+  ...
+})
+export class AppModule {
 }
-
 ```
+
+Add `moment` to `.angular-cli.json`:
+
+```json
+...
+"scripts": [
+  "../node_modules/moment/moment.js"
+],
+```
+
+[More info about importing](/utils/importer)
+
+## Usage
+
+```html
+<kit-date-picker [ngModel]="date"></kit-date-picker>
+```
+
+## Links
+
+* [github](https://github.com/ngx-kit)
+* [discord](https://discord.gg/66Tt9WT)
