@@ -11,7 +11,9 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {};
+    return {
+      display: 'block',
+    };
   }
 
   textarea(): StyleDef {
@@ -21,6 +23,7 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
+      boxSizing: 'border-box',
       ...applyColorSet(params.moduleTextarea.colors.base, params.borders.width),
       $nest: {
         '&:hover': {
