@@ -4,7 +4,7 @@ title: Default date-picker
 ---
 
 ```html
-<kit-date-picker [(ngModel)]="date"></kit-date-picker>
+<kit-date-picker [style.width.px]="300" [(ngModel)]="date"></kit-date-picker>
 ```
 
 ```typescript

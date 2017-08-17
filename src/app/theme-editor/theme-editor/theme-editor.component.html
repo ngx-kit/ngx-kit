@@ -45,22 +45,22 @@
 </kit-layout>
 
 <kit-modal #codeModal>
-  <div header>Theme save</div>
-  <div [style.width.px]="500" content>
+  <kit-modal-header>Theme save</kit-modal-header>
+  <kit-modal-body [style.width.px]="500">
     <kit-textarea [ngModel]="code"></kit-textarea>
-  </div>
-  <div footer>
+  </kit-modal-body>
+  <kit-modal-footer>
     <kit-button [color]="'primary'" (action)="codeModal.close()">Ok</kit-button>
-  </div>
+  </kit-modal-footer>
 </kit-modal>
 
 <kit-modal #setCodeModal>
-  <div header>Theme setup</div>
-  <div [style.width.px]="500" content>
+  <kit-modal-header>Theme setup</kit-modal-header>
+  <kit-modal-body [style.width.px]="500">
     <kit-textarea [(ngModel)]="code"></kit-textarea>
-  </div>
-  <div footer>
+  </kit-modal-body>
+  <kit-modal-footer>
     <kit-button (action)="setCodeModal.close()">Cancel</kit-button>
     <kit-button [color]="'primary'" (action)="setThemeFromCode()">Set</kit-button>
-  </div>
+  </kit-modal-footer>
 </kit-modal>
