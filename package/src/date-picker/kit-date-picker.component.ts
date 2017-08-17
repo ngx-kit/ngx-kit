@@ -18,26 +18,30 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-date-picker,[kitDatePicker]',
   template: `
-    <div styler="years">
-      <div [styler]="['year', {type: 'change'}]" (click)="add(-1, 'year')">&larr;</div>
-      <div [styler]="['year', {type: 'current'}]">{{ date?.year() }}</div>
-      <div [styler]="['year', {type: 'change'}]" (click)="add(1, 'year')">&rarr;</div>
+    <div styler="head">
+      <button [kitButton] [size]="headButtonSize" (click)="add(-1, 'year')" styler="headButton">&lArr;</button>
+      <button [kitButton] [size]="headButtonSize" (click)="add(-1, 'month')" styler="headButton">&larr;</button>
+      <div styler="headTitle">{{ date?.format('MMMM YYYY') }}</div>
+      <button [kitButton] [size]="headButtonSize" (click)="add(1, 'month')" styler="headButton">&rarr;</button>
+      <button [kitButton] [size]="headButtonSize" (click)="add(1, 'year')" styler="headButton">&rArr;</button>
     </div>
-    <div styler="months">
-      <div [styler]="['month', {type: 'change'}]" (click)="add(-1, 'month')">&larr;</div>
-      <div [styler]="['month', {type: 'current'}]">{{ date?.format('MMMM') }}</div>
-      <div [styler]="['month', {type: 'change'}]" (click)="add(1, 'month')">&rarr;</div>
-    </div>
-    <div styler="weekdays">
-      <div styler="weekday" *ngFor="let weekday of weekdays">{{ weekday }}</div>
-    </div>
-    <div styler="dates">
-      <div *ngFor="let item of datesGrid"
-           [styler]="['date', {active: item.isActive, outside: item.isOutside}]"
-           (mouseup)="date = item.date">
-        {{ item.date.date() }}
-      </div>
-    </div>
+    <table styler="table">
+      <thead>
+      <tr>
+        <th styler="weekday" *ngFor="let weekday of weekdays">{{ weekday }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let line of datesGrid">
+        <td *ngFor="let item of line">
+          <button [styler]="['date', {active: item.isActive, outside: item.isOutside}]"
+                  (mouseup)="date = item.date">
+            {{ item.date.date() }}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   `,
   providers: [KIT_DATE_PICKER_VALUE_ACCESSOR],
   viewProviders: [
@@ -45,9 +49,11 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
-  datesGrid: {date: any, isActive: boolean, isOutside: boolean}[] = [];
+  datesGrid: {date: any, isActive: boolean, isOutside: boolean}[][] = [];
 
   @Input() kitDatePicker: any;
+
+  @Input() headButtonSize = 'xs';
 
   weekdays: any;
 
@@ -116,13 +122,18 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
     cursor.startOf('month').startOf('week');
     const end = moment(this._date);
     end.endOf('month').endOf('week').add(1, 'day');
+    let line = [];
     while (!cursor.isSame(end, 'day')) {
-      this.datesGrid.push({
+      line.push({
         date: moment(cursor),
         isOutside: cursor.month() !== this._date.month(),
         isActive: cursor.isSame(this._date, 'day'),
       });
       cursor.add(1, 'day');
+      if (line.length === 7) {
+        this.datesGrid.push(line);
+        line = [];
+      }
     }
   }
 

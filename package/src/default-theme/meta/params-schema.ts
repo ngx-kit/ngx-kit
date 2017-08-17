@@ -110,6 +110,20 @@ export const paramsSchema = {
     cursorSize: 'number',
     sliderHeight: 'number',
   },
+  moduleDatePicker: {
+    colors: {
+      picker: typoColorSet,
+      weekday: basicColorSet,
+      date: {
+        base: basicColorSet,
+        hover: basicColorSet,
+        active: basicColorSet,
+        outside: basicColorSet,
+      },
+    },
+    dateCellPadding: 'number',
+    datePadding: 'number',
+  },
   moduleDivider: {
     colors: {
       topLine: 'color',

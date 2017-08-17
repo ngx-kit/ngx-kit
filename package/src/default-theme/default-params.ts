@@ -256,7 +256,43 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     sliderHeight: 16,
   };
 
-  moduleDatePicker = {};
+  moduleDatePicker = {
+    colors: {
+      picker: {
+        background: 'transparent',
+        text: '#404040',
+      },
+      weekday: {
+        background: 'transparent',
+        border: 'transparent',
+        text: '#404040',
+      },
+      date: {
+        base: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#404040',
+        },
+        hover: {
+          background: '#cacaca',
+          border: '#cacaca',
+          text: '#404040',
+        },
+        active: {
+          background: '#b0b0b0',
+          border: '#b0b0b0',
+          text: '#404040',
+        },
+        outside: {
+          background: 'transparent',
+          border: 'transparent',
+          text: '#8c8c8c',
+        },
+      },
+    },
+    dateCellPadding: 4,
+    datePadding: 0,
+  };
 
   moduleDivider = {
     colors: {

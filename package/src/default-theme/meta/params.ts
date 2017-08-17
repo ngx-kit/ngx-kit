@@ -19,6 +19,7 @@ export interface KitDefaultThemeParams {
   moduleButton: KitDefaultThemeParamsButton;
   moduleCheckbox: KitDefaultThemeParamsCheckbox;
   moduleColorPicker: KitDefaultThemeParamsColorPicker;
+  moduleDatePicker: KitDefaultThemeParamsDatePicker;
   moduleDivider: KitDefaultThemeParamsDivider;
   moduleDropdownMenu: KitDefaultThemeParamsDropdownMenu;
   moduleForm: KitDefaultThemeParamsForm;
@@ -129,6 +130,21 @@ export interface KitDefaultThemeParamsColorPicker {
   };
   cursorSize: number;
   sliderHeight: number;
+}
+
+export interface KitDefaultThemeParamsDatePicker {
+  colors: {
+    picker: TypoColorsSet;
+    weekday: ColorsSet;
+    date: {
+      base: ColorsSet;
+      hover: ColorsSet;
+      active: ColorsSet;
+      outside: ColorsSet;
+    };
+  };
+  dateCellPadding: number;
+  datePadding: number;
 }
 
 export interface KitDefaultThemeParamsDivider {

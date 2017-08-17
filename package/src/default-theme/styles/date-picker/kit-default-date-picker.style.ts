@@ -1,8 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef } from '@ngx-kit/styler';
+import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
+import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultDatePickerStyle implements KitComponentStyle {
@@ -10,40 +12,38 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   date(state: {outside: boolean, active: boolean}): StyleDef {
-    return {};
-//    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
-//    return defMerge([
-//      {
-//        border: [1, 'solid', color.border],
-//        boxSizing: 'border-box',
-//        cursor: 'pointer',
-//        flexShrink: 0,
-//        padding: 4,
-//        textAlign: 'center',
-//        transition: 'background .2s',
-//        width: '14.28574%',
-//        $nest: {
-//          '&:hover': {
-//            background: this.theme.colorMod(.04, color.background),
-//          },
-//        },
-//      },
-//      defToggle(state.outside, {
-//        opacity: .7,
-//      }),
-//      defToggle(state.active, {
-//        background: this.theme.colorMod(.1, color.background),
-//        borderColor: this.theme.colorMod(.1, color.border),
-//        boxShadow: `0 0 7px 0 rgba(0, 0, 0, .2)`,
-//        cursor: 'default',
-//        fontWeight: 600,
-//        $nest: {
-//          '&:hover': {
-//            background: this.theme.colorMod(.1, color.background),
-//          },
-//        },
-//      }),
-//    ]);
+    const params = this.theme.params;
+    return defMerge([
+      {
+        boxSizing: 'border-box',
+        cursor: 'pointer',
+        flexShrink: 0,
+        textAlign: 'center',
+        transition: 'background .2s',
+        width: '100%',
+        borderRadius: params.borders.radius,
+        padding: params.moduleDatePicker.datePadding,
+      },
+      ...applyColorSet(params.moduleDatePicker.colors.date.base),
+      defToggle(state.outside, {
+        ...applyColorSet(params.moduleDatePicker.colors.date.outside),
+      }),
+      defToggle(state.active, {
+        boxShadow: params.shadows.element,
+        cursor: 'default',
+        fontWeight: 600,
+        ...applyColorSet(params.moduleDatePicker.colors.date.active),
+        $nest: {
+          '&:hover': {},
+        },
+      }, {
+        $nest: {
+          '&:hover': {
+            ...applyColorSet(params.moduleDatePicker.colors.date.hover),
+          },
+        },
+      }),
+    ]);
   }
 
   dates(): StyleDef {
@@ -54,85 +54,64 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
     };
   }
 
-  host(): StyleDef {
-    return {};
-  }
-
-  month(state: {type: 'change' | 'current'}): StyleDef {
-    return {};
-//    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
-//    return {
-//      border: [1, 'solid', color.border],
-//      ...defPick(state.type, {
-//        change: {
-//          cursor: 'pointer',
-//          padding: '0 4px',
-//        },
-//        current: {
-//          flexGrow: 1,
-//          fontWeight: 600,
-//          fontSize: '1.15rem',
-//          textAlign: 'center',
-//        },
-//      }),
-//    };
-  }
-
-  months(): StyleDef {
+  head(): StyleDef {
+    const params = this.theme.params;
     return {
       display: 'flex',
       flexDirection: 'row',
-      lineHeight: 30,
+      padding: [params.grid.v, params.grid.h],
+    };
+  }
+
+  headButton(): StyleDef {
+    const params = this.theme.params;
+    return {
+      margin: [0, params.grid.h / 2],
+    };
+  }
+
+  headTitle(): StyleDef {
+    return {
+      flexGrow: 1,
+      textAlign: 'center',
+    };
+  }
+
+  host(): StyleDef {
+    const params = this.theme.params;
+    return {
+      display: 'block',
+      ...applyTypoColorSet(params.moduleDatePicker.colors.picker),
+    };
+  }
+
+  table(): StyleDef {
+    const params = this.theme.params;
+    return {
+      border: 0,
+      $nest: {
+        '& tr': {
+          border: 0,
+        },
+        '& th': {
+          border: 0,
+          textAlign: 'center',
+        },
+        '& td': {
+          border: 0,
+          textAlign: 'center',
+          padding: params.moduleDatePicker.dateCellPadding,
+        },
+      },
     };
   }
 
   weekday(): StyleDef {
-    return {};
-//    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
-//    return {
-//      border: [1, 'solid', color.border],
-//      boxSizing: 'border-box',
-//      cursor: 'pointer',
-//      flexShrink: 0,
-//      padding: 4,
-//      textAlign: 'center',
-//      transition: 'background .2s',
-//      width: '14.28574%',
-//    };
-  }
-
-  weekdays(): StyleDef {
+    const params = this.theme.params;
     return {
-      display: 'flex',
-      flexDirection: 'row',
-    };
-  }
-
-  year(state: {type: 'change' | 'current'}): StyleDef {
-    return {};
-//    const text = this.theme.getColor(this.theme.params.modules.datePicker.text);
-//    return {
-//      border: [1, 'solid', color.border],
-//      ...defPick(state.type, {
-//        change: {
-//          cursor: 'pointer',
-//          padding: '0 4px',
-//        },
-//        current: {
-//          flexGrow: 1,
-//          fontWeight: 600,
-//          fontSize: '1.15rem',
-//          textAlign: 'center',
-//        },
-//      }),
-//    }
-  }
-
-  years(): StyleDef {
-    return {
-      display: 'flex',
-      flexDirection: 'row',
-      lineHeight: 30,
+      padding: [params.grid.v / 2, params.grid.h / 2],
+      textAlign: 'center',
+      ...applyColorSet(params.moduleDatePicker.colors.weekday),
     };
   }
 }
