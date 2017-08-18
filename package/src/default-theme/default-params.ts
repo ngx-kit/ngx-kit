@@ -8,7 +8,9 @@ import {
   KitDefaultThemeParamsInput,
   KitDefaultThemeParamsNotification,
   KitDefaultThemeParamsRadio,
-  KitDefaultThemeParamsTag, KitDefaultThemeParamsTextarea,
+  KitDefaultThemeParamsSelect,
+  KitDefaultThemeParamsTag,
+  KitDefaultThemeParamsTextarea,
 } from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
@@ -622,7 +624,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleSelect = {
+  moduleSelect: KitDefaultThemeParamsSelect = {
     colors: {
       select: {
         base: {
@@ -640,6 +642,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           border: '#0084ff',
           text: '#404040',
         },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+          text: '#585858',
+        },
       },
       option: {
         base: {
@@ -656,6 +663,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           background: '#0084ff',
           border: '#0084ff',
           text: '#fff',
+        },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+          text: '#585858',
         },
       },
       options: {

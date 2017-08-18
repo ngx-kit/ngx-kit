@@ -77,7 +77,9 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     return {};
   }
 
-  nativeSelect(): StyleDef {
+  nativeSelect(state: {
+    disabled: boolean;
+  }): StyleDef {
     const params = this.theme.params;
     return {
       borderRadius: params.borders.radius,
@@ -85,18 +87,22 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
       transition: 'background 0.2s',
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
-      ...applyColorSet(params.moduleSelect.colors.select.base, params.borders.width),
-      $nest: {
-        '&:hover': {
-          outline: 'none',
-          ...applyColorSet(params.moduleSelect.colors.select.hover, params.borders.width),
+      ...defToggle(state.disabled, {
+        ...applyColorSet(params.moduleSelect.colors.select.disabled, params.borders.width),
+      }, {
+        ...applyColorSet(params.moduleSelect.colors.select.base, params.borders.width),
+        $nest: {
+          '&:hover': {
+            outline: 'none',
+            ...applyColorSet(params.moduleSelect.colors.select.hover, params.borders.width),
+          },
+          '&:focus': {
+            transition: '0.2s',
+            outline: 'none',
+            ...applyColorSet(params.moduleSelect.colors.select.focus, params.borders.width),
+          },
         },
-        '&:focus': {
-          transition: '0.2s',
-          outline: 'none',
-          ...applyColorSet(params.moduleSelect.colors.select.focus, params.borders.width),
-        },
-      },
+      }),
     };
   }
 

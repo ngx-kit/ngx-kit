@@ -28,13 +28,14 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   template: `
     <ng-container [ngSwitch]="type">
       <ng-container *ngSwitchCase="'native'">
-        <select [styler]="'nativeSelect'"
+        <select [styler]="['nativeSelect', {disabled: disabled}]"
                 [ngModel]="state"
                 [attr.accesskey]="accesskey"
                 [attr.autofocus]="autofocus"
                 [attr.multiple]="multiple"
                 [attr.size]="size"
                 [attr.tabindex]="tabindex"
+                [disabled]="disabled"
                 (blur)="onBlur($event)"
                 (focus)="onFocus($event)"
                 (ngModelChange)="updateValue($event)">
@@ -109,6 +110,8 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
 
   @Output() blur = new EventEmitter<FocusEvent>();
 
+  @Input() disabled: boolean;
+
   dropdownOpened = false;
 
   @Output() focus = new EventEmitter<FocusEvent>();
@@ -136,9 +139,6 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
   @Input() valueField = 'value';
 
   private changes$ = new Subject<number>();
-
-  // @todo do not change if disabled
-  private isDisabled = false;
 
   private touches$ = new Subject<boolean>();
 
@@ -180,7 +180,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
   }
 
   setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 
   updateValue(value: any) {

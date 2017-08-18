@@ -248,11 +248,13 @@ export interface KitDefaultThemeParamsSelect {
       base: KitDefaultThemeParamsSelectColor;
       hover: KitDefaultThemeParamsSelectColor;
       focus: KitDefaultThemeParamsSelectColor;
+      disabled: KitDefaultThemeParamsSelectColor;
     };
     option: {
       base: KitDefaultThemeParamsSelectColor;
       hover: KitDefaultThemeParamsSelectColor;
       selected: KitDefaultThemeParamsSelectColor;
+      disabled: KitDefaultThemeParamsSelectColor;
     };
     options: ColorsSet;
   };

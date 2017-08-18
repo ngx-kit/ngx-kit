@@ -207,11 +207,13 @@ export const paramsSchema = {
         base: basicColorSet,
         hover: basicColorSet,
         focus: basicColorSet,
+        disabled: basicColorSet,
       },
       option: {
         base: basicColorSet,
         hover: basicColorSet,
         selected: basicColorSet,
+        disabled: basicColorSet,
       },
       options: basicColorSet,
     },
