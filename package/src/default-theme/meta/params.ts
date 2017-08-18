@@ -101,15 +101,15 @@ export interface KitDefaultThemeParamsButtonColor {
 
 export interface KitDefaultThemeParamsCheckbox {
   colors: {
-    base: {
+    nonChecked: {[key in 'base' | 'hover' | 'focus' | 'disabled' | 'readonly']: {
       background: string;
       border: string;
-    };
-    checked: {
+    }}
+    checked: {[key in 'base' | 'hover' | 'focus' | 'disabled' | 'readonly']: {
       background: string;
       border: string;
       check: string;
-    };
+    }}
   };
 }
 

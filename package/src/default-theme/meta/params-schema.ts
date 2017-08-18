@@ -8,9 +8,9 @@ const typoColorSet = {
   text: 'color',
 };
 const defaultColors = ['default', 'primary', 'info', 'success', 'warning', 'error'];
-function colorize(set: string[], colorSchema: any) {
-  return set.reduce((prev, curr) => {
-    prev[curr] = colorSchema;
+function extract(keys: string[], schema: any) {
+  return keys.reduce((prev, curr) => {
+    prev[curr] = schema;
     return prev;
   }, {});
 }
@@ -46,7 +46,7 @@ export const paramsSchema = {
   },
   moduleAlert: {
     titleFontSize: 'string',
-    colors: colorize(defaultColors, {
+    colors: extract(defaultColors, {
       ...basicColorSet,
       closeText: 'color',
       titleText: 'color',
@@ -62,10 +62,10 @@ export const paramsSchema = {
     },
   },
   moduleBadge: {
-    colors: colorize(defaultColors, basicColorSet),
+    colors: extract(defaultColors, basicColorSet),
   },
   moduleButton: {
-    colors: colorize(defaultColors, {
+    colors: extract(defaultColors, {
       base: basicColorSet,
       hover: basicColorSet,
       active: basicColorSet,
@@ -74,15 +74,15 @@ export const paramsSchema = {
   },
   moduleCheckbox: {
     colors: {
-      base: {
+      nonChecked: extract(['base', 'hover', 'focus', 'disabled', 'readonly'], {
         background: 'color',
         border: 'color',
-      },
-      checked: {
+      }),
+      checked: extract(['base', 'hover', 'focus', 'disabled', 'readonly'], {
         background: 'color',
         border: 'color',
         check: 'color',
-      },
+      }),
     },
   },
   moduleColorPicker: {
@@ -181,7 +181,7 @@ export const paramsSchema = {
     },
   },
   moduleNotification: {
-    colors: colorize(defaultColors, {
+    colors: extract(defaultColors, {
       background: 'color',
       border: 'color',
       titleText: 'color',
@@ -239,7 +239,7 @@ export const paramsSchema = {
     },
   },
   moduleTag: {
-    colors: colorize(defaultColors, basicColorSet),
+    colors: extract(defaultColors, basicColorSet),
   },
   moduleTextarea: {
     colors: {

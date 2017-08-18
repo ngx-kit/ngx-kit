@@ -3,8 +3,11 @@ import {
   KitDefaultThemeParamsAlert,
   KitDefaultThemeParamsBadge,
   KitDefaultThemeParamsButton,
-  KitDefaultThemeParamsColorPicker, KitDefaultThemeParamsInput,
-  KitDefaultThemeParamsNotification, KitDefaultThemeParamsTag,
+  KitDefaultThemeParamsCheckbox,
+  KitDefaultThemeParamsColorPicker,
+  KitDefaultThemeParamsInput,
+  KitDefaultThemeParamsNotification,
+  KitDefaultThemeParamsTag,
 } from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
@@ -274,16 +277,56 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleCheckbox = {
+  moduleCheckbox: KitDefaultThemeParamsCheckbox = {
     colors: {
-      base: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
+      nonChecked: {
+        base: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        hover: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        focus: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        readonly: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
       },
       checked: {
-        background: '#f4f4f4',
-        border: '#0084ff',
-        check: '#0084ff',
+        base: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          check: '#0084ff',
+        },
+        hover: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          check: '#0084ff',
+        },
+        focus: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          check: '#0084ff',
+        },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          check: '#0084ff',
+        },
+        readonly: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          check: '#0084ff',
+        },
       },
     },
   };

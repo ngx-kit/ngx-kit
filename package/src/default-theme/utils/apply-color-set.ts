@@ -11,7 +11,7 @@ export function applyColorSet(set: ColorsSet,
                               borderSide = BORDER_ALL,
                               borderStyle = 'solid'): any {
   return {
-    backgroundColor: set.background,
+    background: set.background,
     color: set.text,
     ...defToggle(borderSide === BORDER_ALL, {
       border: [borderWidth, borderStyle, set.border],

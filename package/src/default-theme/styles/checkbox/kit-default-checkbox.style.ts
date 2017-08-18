@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -38,6 +38,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       right: 0,
       width: '100%',
       height: '100%',
+      margin: 0,
     };
   }
 
@@ -50,6 +51,10 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
 
   view(state: {
     checked: boolean,
+    hover: boolean,
+    focus: boolean,
+    disabled: boolean,
+    readonly: boolean,
   }): StyleDef {
     const params = this.theme.params;
     return {
@@ -59,30 +64,116 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
       display: 'block',
       width: 14,
       height: 14,
-      background: this.theme.params.moduleCheckbox.colors.base.background,
-      border: [params.borders.width, 'solid', this.theme.params.moduleCheckbox.colors.base.border],
       borderRadius: this.theme.params.borders.radius,
       transition: this.theme.params.transitions.default,
-      ...defToggle(state.checked, {
-        backgroundColor: this.theme.params.moduleCheckbox.colors.checked.background,
-        borderColor: this.theme.params.moduleCheckbox.colors.checked.border,
-        $nest: {
-          '&:after': {
-            transform: 'rotate(45deg) scale(1)',
-            position: 'absolute',
-            left: 4,
-            top: 1,
-            display: 'table',
-            width: 5,
-            height: 8,
-            border: [2, 'solid', this.theme.params.moduleCheckbox.colors.checked.check],
-            borderTop: 0,
-            borderLeft: 0,
-            content: '" "',
-            transition: 'all .2s cubic-bezier(.12,.4,.29,1.46) .1s',
-          },
-        },
-      }),
+      ...defToggle(state.checked,
+          defMerge([
+            {
+              $nest: {
+                '&::after': {
+                  transform: 'rotate(45deg) scale(1)',
+                  position: 'absolute',
+                  left: 4,
+                  top: 1,
+                  display: 'table',
+                  width: 5,
+                  height: 8,
+                  borderTopWidth: 0,
+                  borderRightWidth: 2,
+                  borderBottomWidth: 2,
+                  borderLeftWidth: 0,
+                  borderStyle: 'solid',
+                  content: '" "',
+                  transition: 'all .2s cubic-bezier(.12,.4,.29,1.46) .1s',
+                },
+              },
+            },
+            defToggle(state.disabled,
+                // checked && disabled
+                {
+                  ...applyColors(params.moduleCheckbox.colors.checked.disabled, params.borders.width),
+                  $nest: {
+                    '&::after': {
+                      borderColor: params.moduleCheckbox.colors.checked.disabled.check,
+                    },
+                  },
+                },
+                {
+                  // checked
+                  ...applyColors(params.moduleCheckbox.colors.checked.base, params.borders.width),
+                  $nest: {
+                    '&::after': {
+                      borderColor: params.moduleCheckbox.colors.checked.base.check,
+                    },
+                  },
+                  // checked && hover
+                  ...defToggle(state.hover, {
+                    ...applyColors(params.moduleCheckbox.colors.checked.hover, params.borders.width),
+                    $nest: {
+                      '&::after': {
+                        borderColor: params.moduleCheckbox.colors.checked.hover.check,
+                      },
+                    },
+                  }),
+                  // checked && focus
+                  ...defToggle(state.focus, {
+                    ...applyColors(params.moduleCheckbox.colors.checked.focus, params.borders.width),
+                    $nest: {
+                      '&::after': {
+                        borderColor: params.moduleCheckbox.colors.checked.focus.check,
+                      },
+                    },
+                  }),
+                  ...defToggle(state.readonly, {
+                    // checked && readonly
+                    ...applyColors(params.moduleCheckbox.colors.checked.readonly, params.borders.width),
+                    $nest: {
+                      '&::after': {
+                        borderColor: params.moduleCheckbox.colors.checked.readonly.check,
+                      },
+                    },
+                  }),
+                }),
+          ]),
+          defToggle(state.disabled,
+              // non-checked && disabled
+              applyColors(params.moduleCheckbox.colors.nonChecked.disabled, params.borders.width),
+              {
+                // non-checked
+                ...applyColors(params.moduleCheckbox.colors.nonChecked.base, params.borders.width),
+                $nest: {
+                  '&:hover': {
+                    // non-checked && hover
+                    ...applyColors(params.moduleCheckbox.colors.nonChecked.hover, params.borders.width),
+                  },
+                  '&:focus': {
+                    // non-checked && focus
+                    ...applyColors(params.moduleCheckbox.colors.nonChecked.focus, params.borders.width),
+                  },
+                },
+                ...defToggle(state.readonly,
+                    // non-checked && readonly
+                    applyColors(params.moduleCheckbox.colors.nonChecked.readonly, params.borders.width)),
+              }),
+      ),
     };
+  }
+}
+
+function applyChecked(set: {border: string, background: string, check: string}, borderWidth: number) {
+  return {
+    background: set.background,
+    border: [borderWidth, 'solid', set.border],
+    $nest: {
+      '&:after': {
+        borderColor: set.check,
+      },
+    },
+  };
+}
+function applyColors(set: {border: string, background: string}, borderWidth: number) {
+  return {
+    background: set.background,
+    border: [borderWidth, 'solid', set.border],
   }
 }

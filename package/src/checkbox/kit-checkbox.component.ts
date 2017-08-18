@@ -22,12 +22,16 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
                [attr.accesskey]="accesskey"
                [attr.autofocus]="autofocus"
                [attr.tabindex]="tabindex"
+               [disabled]="disabled"
                (ngModelChange)="updateValue($event)"
                (blur)="onBlur($event)"
                (focus)="onFocus($event)"
+               (mouseenter)="onMouseenter($event)"
+               (mouseleave)="onMouseleave($event)"
                type="checkbox"
                styler="input">
-        <span [styler]="['view', {checked: !!state}]"></span>
+        <span [styler]="['view', {checked: !!state, disabled: disabled, readonly: readonly, focus: focusState, hover: hoverState}]">
+        </span>
       </span>
     <label [attr.for]="id" styler="label">
       <ng-content></ng-content>
@@ -45,7 +49,13 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
 
   @Output() blur = new EventEmitter<FocusEvent>();
 
+  @Input() disabled: boolean;
+
   @Output() focus = new EventEmitter<FocusEvent>();
+
+  focusState: boolean;
+
+  hoverState: boolean;
 
   id: string;
 
@@ -58,9 +68,6 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   @Input() tabindex: number;
 
   private changes$ = new Subject<number>();
-
-  // @todo do not change if disabled
-  private isDisabled = false;
 
   private touches$ = new Subject<boolean>();
 
@@ -76,10 +83,20 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   onBlur(event: FocusEvent) {
     this.blur.next(event);
     this.touches$.next(true);
+    this.focusState = false;
   }
 
   onFocus(event: FocusEvent) {
     this.focus.next(event);
+    this.focusState = true;
+  }
+
+  onMouseenter() {
+    this.hoverState = true;
+  }
+
+  onMouseleave() {
+    this.hoverState = false;
   }
 
   registerOnChange(fn: any) {
@@ -91,7 +108,7 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   }
 
   setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 
   updateValue(value: any) {
