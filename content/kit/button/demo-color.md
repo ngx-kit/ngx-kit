@@ -4,7 +4,9 @@ title: Button color
 ---
 
 ```html
-<button [kitButton] [color]="'primary'">Brand color</button>
+<button [kitButton] [color]="'default'">Default color</button>
+<button [kitButton] [color]="'primary'">Primary color</button>
+<button [kitButton] [color]="'info'">Info color</button>
 <button [kitButton] [color]="'success'">Success color</button>
 <button [kitButton] [color]="'warning'">Warning color</button>
 <button [kitButton] [color]="'error'">Error color</button>

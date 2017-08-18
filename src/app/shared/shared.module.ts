@@ -21,7 +21,6 @@ import { FormComponent } from './kit/form/form.component';
 import { InputComponent } from './kit/input/input.component';
 import { LayoutComponent } from './kit/layout/layout.component';
 import { LoadingBarComponent } from './kit/loading-bar/loading-bar.component';
-import { MathInputComponent } from './kit/math-input/math-input.component';
 import { MenuComponent } from './kit/menu/menu.component';
 import { ModalComponent } from './kit/modal/modal.component';
 import { NotificationComponent } from './kit/notification/notification.component';
@@ -59,7 +58,6 @@ const modulesExported = [
   InputComponent,
   LayoutComponent,
   LoadingBarComponent,
-  MathInputComponent,
   MenuComponent,
   ModalComponent,
   NotificationComponent,

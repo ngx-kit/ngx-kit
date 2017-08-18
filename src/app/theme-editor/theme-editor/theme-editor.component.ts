@@ -40,6 +40,7 @@ export class ThemeEditorComponent implements OnInit {
 
   constructor(private editor: EditorService,
               @Inject(kitTheme) private themeService: KitDefaultThemeService) {
+    console.log('schema', paramsSchema);
     this.schema = this.convertSchema(paramsSchema);
     this.initThemeModel(new KitDefaultThemeDefaultParams());
   }

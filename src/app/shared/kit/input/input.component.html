@@ -4,3 +4,8 @@
   <kit-input [(ngModel)]="value"></kit-input>
   {{ value }}
 </app-demo>
+
+<app-demo [content]="content" [id]="'demo-math'">
+  <kit-input [(ngModel)]="value" [type]="'math'"></kit-input>
+  {{ value }}
+</app-demo>

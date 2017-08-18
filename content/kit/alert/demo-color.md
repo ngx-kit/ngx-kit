@@ -4,7 +4,9 @@ title: Alert color
 ---
 
 ```html
-<kit-alert [color]="'info'">Info (default) message text</kit-alert>
+<kit-alert [color]="'default'">Default message text</kit-alert>
+<kit-alert [color]="'primary'">Primary message text</kit-alert>
+<kit-alert [color]="'info'">Info message text</kit-alert>
 <kit-alert [color]="'success'">Success message text</kit-alert>
 <kit-alert [color]="'warning'">Warning message text</kit-alert>
 <kit-alert [color]="'error'">Error message text</kit-alert>

@@ -15,14 +15,14 @@
           <div *ngSwitchCase="'color'">
             <kit-select [(ngModel)]="themeModel[block.name]"
                         [options]="colorsModel"
-                        [optionTemplateRef]="optionTemplate"></kit-select>
+                        [optionTemplateRef]="optionTemplate"
+                        [type]="'dropdown'"></kit-select>
             <ng-template #optionTemplate let-option>
-              <option [value]="option.value"
-                      [style.color]="'#fff'"
-                      [style.textShadow]="'1px 1px 2px black'"
-                      [style.background]="option.value">
-                {{ option.label }}
-              </option>
+              <div [style.color]="'#fff'"
+                   [style.textShadow]="'1px 1px 2px black'"
+                   [style.background]="option?.value">
+                {{ option?.label }}
+              </div>
             </ng-template>
           </div>
         </ng-container>

@@ -49,6 +49,8 @@ Add `moment` to `.angular-cli.json`:
 
 ## Usage
 
+For example date-picker:
+
 ```html
 <kit-date-picker [ngModel]="date"></kit-date-picker>
 ```

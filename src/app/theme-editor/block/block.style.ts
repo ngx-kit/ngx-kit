@@ -13,7 +13,8 @@ export class BlockStyle implements ComponentStyle {
   inner(): StyleDef {
     return {
       display: 'block',
-      paddingLeft: 16,
+      padding: [8, 4, 8, 8],
+      background: 'rgba(0,0,0,.09)',
     };
   }
 

@@ -26,7 +26,9 @@ export class RootStyle implements ComponentStyle {
   }
 
   host(): StyleDef {
-    return {};
+    return {
+      color: this.theme.params.textColor,
+    };
   }
 
   logo(): StyleDef {
@@ -50,6 +52,8 @@ export class RootStyle implements ComponentStyle {
 
   themeButton(): StyleDef {
     return {
+      display: 'flex',
+      alignItems: 'center',
       padding: [0, this.kitThemeService.params.grid.h * 2],
     }
   }
