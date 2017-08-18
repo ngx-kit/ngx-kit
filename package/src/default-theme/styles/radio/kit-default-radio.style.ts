@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -48,7 +48,12 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
     };
   }
 
-  view(state: {checked: boolean, hover: boolean}): StyleDef {
+  view(state: {
+    checked: boolean;
+    hover: boolean;
+    focus: boolean;
+    disabled: boolean;
+  }): StyleDef {
     const params = this.theme.params;
     return {
       position: 'relative',
@@ -57,31 +62,65 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
       display: 'block',
       width: 14,
       height: 14,
-      background: params.moduleRadio.colors.base.background,
-      border: [params.borders.width, 'solid', params.moduleRadio.colors.base.border],
       borderRadius: '50%',
       transition: params.transitions.default,
-      ...defToggle(state.checked, {
-        borderColor: params.moduleRadio.colors.checked.border,
-        $nest: {
-          '&:after': {
-            position: 'absolute',
-            left: 4,
-            top: 4,
-            display: 'table',
-            width: 6,
-            height: 6,
-            backgroundColor: params.moduleRadio.colors.checked.dot,
-            border: 0,
-            borderRadius: '50%',
-            content: '" "',
-          },
-        },
-      }),
-      ...defToggle(state.hover, {
-        background: params.moduleRadio.colors.checked.background,
-        borderColor: params.moduleRadio.colors.checked.border,
-      }),
+      ...defToggle(state.checked, defMerge([
+            {
+              $nest: {
+                '&:after': {
+                  position: 'absolute',
+                  left: 4,
+                  top: 4,
+                  display: 'table',
+                  width: 6,
+                  height: 6,
+                  border: 0,
+                  borderRadius: '50%',
+                  content: '" "',
+                },
+              },
+            },
+            defToggle(state.disabled,
+                // checked && disabled
+                applyChecked(params.moduleRadio.colors.checked.base, params.borders.width),
+                {
+                  // checked
+                  ...applyChecked(params.moduleRadio.colors.checked.base, params.borders.width),
+                  // checked && hover
+                  ...defToggle(state.hover, applyChecked(params.moduleRadio.colors.checked.hover, params.borders.width)),
+                  // checked && focus
+                  ...defToggle(state.focus, applyChecked(params.moduleRadio.colors.checked.focus, params.borders.width)),
+                }),
+          ]),
+          defToggle(state.disabled,
+              // non-checked && disabled
+              applyNonChecked(params.moduleRadio.colors.nonChecked.disabled, params.borders.width),
+              {
+                // non-checked
+                ...applyNonChecked(params.moduleRadio.colors.nonChecked.base, params.borders.width),
+                /// non-checked && hover
+                ...defToggle(state.hover, applyNonChecked(params.moduleRadio.colors.nonChecked.hover, params.borders.width)),
+                // non-checked && focus
+                ...defToggle(state.focus, applyNonChecked(params.moduleRadio.colors.nonChecked.focus, params.borders.width)),
+              })),
     }
+  }
+}
+
+function applyChecked(set: {border: string, background: string, dot: string}, borderWidth: number) {
+  return {
+    background: set.background,
+    border: [borderWidth, 'solid', set.border],
+    $nest: {
+      '&::after': {
+        backgroundColor: set.dot,
+      },
+    },
+  };
+}
+function applyNonChecked(set: {border: string, background: string}, borderWidth: number) {
+  return {
+    background: set.background,
+    border: [borderWidth, 'solid', set.border],
   }
 }

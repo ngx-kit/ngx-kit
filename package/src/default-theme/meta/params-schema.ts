@@ -190,19 +190,15 @@ export const paramsSchema = {
   },
   moduleRadio: {
     colors: {
-      base: {
+      nonChecked: extract(['base', 'hover', 'focus', 'disabled'], {
         background: 'color',
         border: 'color',
-      },
-      hover: {
-        background: 'color',
-        border: 'color',
-      },
-      checked: {
+      }),
+      checked: extract(['base', 'hover', 'focus', 'disabled'], {
         background: 'color',
         border: 'color',
         dot: 'color',
-      },
+      }),
     },
   },
   moduleSelect: {

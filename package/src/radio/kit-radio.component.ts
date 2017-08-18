@@ -32,12 +32,13 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
                [attr.accesskey]="accesskey"
                [attr.autofocus]="autofocus"
                [attr.tabindex]="tabindex"
+               [disabled]="disabled"
                (ngModelChange)="updateValue($event)"
                (blur)="onBlur($event)"
                (focus)="onFocus($event)"
                type="radio"
                styler="input">
-        <span [styler]="['view', {checked: value === state, hover: hover}]"></span>
+        <span [styler]="['view', {checked: value === state, disabled: disabled, focus: focusState, hover: hoverState}]"></span>
       </span>
     <label [attr.for]="id" styler="label">
       <ng-content></ng-content>
@@ -55,9 +56,13 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
 
   @Output() blur = new EventEmitter<FocusEvent>();
 
+  @Input() disabled: boolean;
+
   @Output() focus = new EventEmitter<FocusEvent>();
 
-  hover = false;
+  focusState: boolean;
+
+  hoverState = false;
 
   id: string;
 
@@ -70,9 +75,6 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
   @Input() value: any;
 
   private changes$ = new Subject<number>();
-
-  // @todo do not change if disabled
-  private isDisabled = false;
 
   private touches$ = new Subject<boolean>();
 
@@ -87,21 +89,23 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
 
   @HostListener('mouseenter')
   mouseenter() {
-    this.hover = true;
+    this.hoverState = true;
   }
 
   @HostListener('mouseleave')
   mouseleave() {
-    this.hover = false;
+    this.hoverState = false;
   }
 
   onBlur(event: FocusEvent) {
     this.blur.next(event);
     this.touches$.next(true);
+    this.focusState = false;
   }
 
   onFocus(event: FocusEvent) {
     this.focus.next(event);
+    this.focusState = true;
   }
 
   registerOnChange(fn: any) {
@@ -113,7 +117,7 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
   }
 
   setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 
   updateValue(value: any) {

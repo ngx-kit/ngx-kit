@@ -104,12 +104,12 @@ export interface KitDefaultThemeParamsCheckbox {
     nonChecked: {[key in 'base' | 'hover' | 'focus' | 'disabled' | 'readonly']: {
       background: string;
       border: string;
-    }}
+    }};
     checked: {[key in 'base' | 'hover' | 'focus' | 'disabled' | 'readonly']: {
       background: string;
       border: string;
       check: string;
-    }}
+    }};
   };
 }
 
@@ -230,19 +230,15 @@ export interface KitDefaultThemeParamsNotificationColor {
 
 export interface KitDefaultThemeParamsRadio {
   colors: {
-    base: {
+    nonChecked: {[key in 'base' | 'hover' | 'focus' | 'disabled']: {
       background: string;
       border: string;
-    };
-    hover: {
-      background: string;
-      border: string;
-    };
-    checked: {
+    }};
+    checked: {[key in 'base' | 'hover' | 'focus' | 'disabled']: {
       background: string;
       border: string;
       dot: string;
-    };
+    }};
   };
 }
 

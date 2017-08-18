@@ -16,6 +16,7 @@ Implements `ControlValueAccessor`.
 | --- | --- | --- | --- |
 | *accesskey* | `string` | | Native attribute |
 | *autofocus* | `boolean` | | Native attribute |
+| *disabled* | `boolean` | | Disabled |
 | *tabindex* | `number` | | Native attribute |
 | *value* | `any` | | Radio value |
 

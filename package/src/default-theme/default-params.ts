@@ -7,6 +7,7 @@ import {
   KitDefaultThemeParamsColorPicker,
   KitDefaultThemeParamsInput,
   KitDefaultThemeParamsNotification,
+  KitDefaultThemeParamsRadio,
   KitDefaultThemeParamsTag,
 } from './meta/params';
 
@@ -576,20 +577,47 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleRadio = {
+  moduleRadio: KitDefaultThemeParamsRadio = {
     colors: {
-      base: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
-      },
-      hover: {
-        background: '#f4f4f4',
-        border: '#cacaca',
+      nonChecked: {
+        base: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        hover: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        focus: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#e2e2e2',
+        },
       },
       checked: {
-        background: '#f4f4f4',
-        border: '#0084ff',
-        dot: '#0084ff',
+        base: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          dot: '#0084ff',
+        },
+        hover: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          dot: '#0084ff',
+        },
+        focus: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          dot: '#0084ff',
+        },
+        disabled: {
+          background: '#f4f4f4',
+          border: '#0084ff',
+          dot: '#0084ff',
+        },
       },
     },
   };
