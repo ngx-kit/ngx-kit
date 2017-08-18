@@ -1,39 +1,57 @@
 import {
   KitDefaultThemeParams,
+  KitDefaultThemeParamsAccordion,
   KitDefaultThemeParamsAlert,
+  KitDefaultThemeParamsAutoComplete,
   KitDefaultThemeParamsBadge,
+  KitDefaultThemeParamsBorders,
   KitDefaultThemeParamsButton,
   KitDefaultThemeParamsCheckbox,
   KitDefaultThemeParamsColorPicker,
+  KitDefaultThemeParamsDatePicker,
+  KitDefaultThemeParamsDivider,
+  KitDefaultThemeParamsDropdownMenu,
+  KitDefaultThemeParamsForm,
+  KitDefaultThemeParamsGrid,
   KitDefaultThemeParamsInput,
+  KitDefaultThemeParamsLoadingBar,
+  KitDefaultThemeParamsMenu,
+  KitDefaultThemeParamsModal,
   KitDefaultThemeParamsNotification,
   KitDefaultThemeParamsRadio,
   KitDefaultThemeParamsSelect,
+  KitDefaultThemeParamsShadows,
+  KitDefaultThemeParamsSpinner,
+  KitDefaultThemeParamsTabs,
   KitDefaultThemeParamsTag,
   KitDefaultThemeParamsTextarea,
+  KitDefaultThemeParamsToggle,
+  KitDefaultThemeParamsTooltip,
+  KitDefaultThemeParamsTransitions,
+  KitDefaultThemeParamsTypo,
 } from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
-  borders = {
+  borders: KitDefaultThemeParamsBorders = {
     radius: 2,
     width: 1,
   };
 
-  grid = {
+  grid: KitDefaultThemeParamsGrid = {
     h: 8,
     v: 8,
   };
 
-  moduleAccordion = {
+  moduleAccordion: KitDefaultThemeParamsAccordion = {
     colors: {
-      border: '#e2e2e2',
+      border: '#ccc',
       title: {
-        background: '#efefef',
-        text: '#404040',
+        background: '#f2f2f2',
+        text: '#373a3c',
       },
       content: {
-        background: '#fafafa',
-        text: '#404040',
+        background: '#fff',
+        text: '#373a3c',
       },
     },
   };
@@ -42,67 +60,67 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     titleFontSize: '1.2em',
     colors: {
       'default': {
-        background: '#92ccff',
-        border: '#0084ff',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#0071e2',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#fff',
+        border: '#ccc',
+        text: '#373a3c',
+        closeText: '#373a3c',
+        titleText: '#373a3c',
       },
       primary: {
-        background: '#92ccff',
-        border: '#0084ff',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#0071e2',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#B2DCF6',
+        border: '#186ba0',
+        text: '#373a3c',
+        closeText: '#186ba0',
+        titleText: '#373a3c',
       },
       info: {
-        background: '#92ccff',
-        border: '#0084ff',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#0071e2',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#cde4f2',
+        border: '#31b0d5',
+        text: '#373a3c',
+        closeText: '#31b0d5',
+        titleText: '#373a3c',
       },
       success: {
-        background: '#a5e396',
-        border: '#2dc100',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#2bab00',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#b2e3b2',
+        border: '#449d44',
+        text: '#373a3c',
+        closeText: '#449d44',
+        titleText: '#449d44',
       },
       warning: {
-        background: '#fff198',
-        border: '#ffb62f',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#e0a527',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#ffdcab',
+        border: '#ec971f',
+        text: '#373a3c',
+        closeText: '#ec971f',
+        titleText: '#ec971f',
       },
       error: {
-        background: '#ffcdca',
-        border: '#ff5500',
-        text: `rgba(0,0,0,.7)`,
-        closeText: '#e14c00',
-        titleText: `rgba(0,0,0,.9)`,
+        background: '#f5918e',
+        border: '#c9302c',
+        text: '#373a3c',
+        closeText: '#c9302c',
+        titleText: '#c9302c',
       },
     },
   };
 
-  moduleAutoComplete = {
+  moduleAutoComplete: KitDefaultThemeParamsAutoComplete = {
     colors: {
       resultItem: {
         base: {
-          background: '#fafafa',
-          border: '#e2e2e2',
-          text: '#404040',
+          background: '#fff',
+          border: '#d6d6d6',
+          text: '#373a3c',
         },
         hover: {
-          background: '#0084ff',
-          border: '#0084ff',
-          text: '#fff',
+          background: '#f2f2f2',
+          border: '#c0c0c0',
+          text: '#373a3c',
         },
         active: {
-          background: '#0084ff',
-          border: '#0084ff',
-          text: '#fff',
+          background: '#2399e5',
+          border: '#2399e5',
+          text: '#373a3c',
         },
       },
     },
@@ -110,34 +128,34 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
 
   moduleBadge: KitDefaultThemeParamsBadge = {
     colors: {
-      'default': {
-        background: '#0084ff',
-        border: '#0084ff',
+      default: {
+        background: '#ccc',
+        border: '#ccc',
         text: '#fff',
       },
       primary: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#2399e5',
+        border: '#2399e5',
         text: '#fff',
       },
       info: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#5bc0de',
+        border: '#5bc0de',
         text: '#fff',
       },
       success: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#5cb85c',
+        border: '#5cb85c',
         text: '#fff',
       },
       warning: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#f0ad4e',
+        border: '#f0ad4e',
         text: '#fff',
       },
       error: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#d9534f',
+        border: '#d9534f',
         text: '#fff',
       },
     },
@@ -145,136 +163,136 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
 
   moduleButton: KitDefaultThemeParamsButton = {
     colors: {
-      'default': {
+      default: {
         base: {
-          background: '#dadada',
-          border: '#dadada',
-          text: '#404040',
+          background: '#fff',
+          border: '#ccc',
+          text: '#373a3c',
         },
         hover: {
-          background: '#cacaca',
-          border: '#cacaca',
-          text: '#404040',
+          background: '#f2f2f2',
+          border: '#ccc',
+          text: '#373a3c',
         },
         active: {
-          background: '#b0b0b0',
-          border: '#cacaca',
-          text: '#404040',
+          background: '#e6e6e6',
+          border: '#ccc',
+          text: '#373a3c',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#e6e6e6',
+          border: '#e6e6e6',
+          text: '#fff',
         },
       },
       primary: {
         base: {
-          background: '#0084ff',
-          border: '#0084ff',
+          background: '#2399e5',
+          border: '#2399e5',
           text: '#fff',
         },
         hover: {
-          background: '#0071e2',
-          border: '#0071e2',
+          background: '#1f89ce',
+          border: '#1f89ce',
           text: '#fff',
         },
         active: {
-          background: '#0066cb',
-          border: '#0066cb',
+          background: '#186ba0',
+          border: '#186ba0',
           text: '#fff',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#B2DCF6',
+          border: '#B2DCF6',
+          text: '#fff',
         },
       },
       info: {
         base: {
-          background: '#0084ff',
-          border: '#0084ff',
+          background: '#5bc0de',
+          border: '#5bc0de',
           text: '#fff',
         },
         hover: {
-          background: '#0071e2',
-          border: '#0071e2',
+          background: '#46b8da',
+          border: '#46b8da',
           text: '#fff',
         },
         active: {
-          background: '#0066cb',
-          border: '#0066cb',
+          background: '#31b0d5',
+          border: '#31b0d5',
           text: '#fff',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#cde4f2',
+          border: '#cde4f2',
+          text: '#fff',
         },
       },
       success: {
         base: {
-          background: '#2dc100',
-          border: '#2dc100',
+          background: '#5cb85c',
+          border: '#5cb85c',
           text: '#fff',
         },
         hover: {
-          background: '#2bab00',
-          border: '#2bab00',
+          background: '#4cae4c',
+          border: '#4cae4c',
           text: '#fff',
         },
         active: {
-          background: '#259100',
-          border: '#259100',
+          background: '#449d44',
+          border: '#449d44',
           text: '#fff',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#b2e3b2',
+          border: '#b2e3b2',
+          text: '#fff',
         },
       },
       warning: {
         base: {
-          background: '#0084ff',
-          border: '#0084ff',
+          background: '#f0ad4e',
+          border: '#f0ad4e',
           text: '#fff',
         },
         hover: {
-          background: '#0071e2',
-          border: '#0071e2',
+          background: '#eea236',
+          border: '#eea236',
           text: '#fff',
         },
         active: {
-          background: '#0066cb',
-          border: '#0066cb',
+          background: '#ec971f',
+          border: '#ec971f',
           text: '#fff',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#ffdcab',
+          border: '#ffdcab',
+          text: '#fff',
         },
       },
       error: {
         base: {
-          background: '#0084ff',
-          border: '#0084ff',
+          background: '#d9534f',
+          border: '#d9534f',
           text: '#fff',
         },
         hover: {
-          background: '#0071e2',
-          border: '#0071e2',
+          background: '#d43f3a',
+          border: '#d43f3a',
           text: '#fff',
         },
         active: {
-          background: '#0066cb',
-          border: '#0066cb',
+          background: '#c9302c',
+          border: '#c9302c',
           text: '#fff',
         },
         disabled: {
-          background: '#8c8c8c',
-          border: '#8c8c8c',
-          text: '#707070',
+          background: '#f5918e',
+          border: '#f5918e',
+          text: '#fff',
         },
       },
     },
@@ -284,51 +302,51 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     colors: {
       nonChecked: {
         base: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#ccc',
         },
         hover: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#2399e5',
         },
         focus: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#2399e5',
         },
         disabled: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#e6e6e6',
+          border: '#ccc',
         },
         readonly: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#ccc',
         },
       },
       checked: {
         base: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          check: '#0084ff',
+          background: '#fff',
+          border: '#2399e5',
+          check: '#2399e5',
         },
         hover: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          check: '#0084ff',
+          background: '#fff',
+          border: '#1f89ce',
+          check: '#1f89ce',
         },
         focus: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          check: '#0084ff',
+          background: '#fff',
+          border: '#186ba0',
+          check: '#186ba0',
         },
         disabled: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          check: '#0084ff',
+          background: '#fff',
+          border: '#B2DCF6',
+          check: '#B2DCF6',
         },
         readonly: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          check: '#0084ff',
+          background: '#fff',
+          border: '#2399e5',
+          check: '#2399e5',
         },
       },
     },
@@ -350,80 +368,80 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     sliderHeight: 16,
   };
 
-  moduleDatePicker = {
+  moduleDatePicker: KitDefaultThemeParamsDatePicker = {
     colors: {
       picker: {
-        background: 'transparent',
-        text: '#404040',
+        background: '#fff',
+        text: '#373a3c',
       },
       weekday: {
-        background: 'transparent',
-        text: '#404040',
+        background: '#F6F8FA',
+        text: '#373a3c',
       },
       date: {
         base: {
           background: 'transparent',
           border: 'transparent',
-          text: '#404040',
+          text: '#373a3c',
         },
         hover: {
-          background: '#cacaca',
-          border: '#cacaca',
-          text: '#404040',
+          background: '#EEEEEE',
+          border: 'transparent',
+          text: '#373a3c',
         },
         active: {
-          background: '#b0b0b0',
-          border: '#b0b0b0',
-          text: '#404040',
+          background: '#D6D6D6',
+          border: 'transparent',
+          text: '#373a3c',
         },
         outside: {
           background: 'transparent',
           border: 'transparent',
-          text: '#8c8c8c',
+          text: '#ccc',
         },
       },
     },
-    dateCellPadding: 4,
-    datePadding: 0,
+    dateCellPadding: 2,
+    datePadding: 4,
   };
 
-  moduleDivider = {
+  moduleDivider: KitDefaultThemeParamsDivider = {
     colors: {
-      topLine: 'rgba(34,36,38,.15)',
-      bottomLine: '1px solid rgba(255,255,255,.1)',
+      topLine: '#2399e5',
+      bottomLine: '#1f89ce',
     },
   };
 
-  moduleDropdownMenu = {
+  moduleDropdownMenu: KitDefaultThemeParamsDropdownMenu = {
     colors: {
       menu: {
-        border: '#e2e2e2',
+        border: '#ccc',
       },
       item: {
         base: {
-          background: '#fafafa',
-          border: '#eee',
-          text: '#404040',
+          background: '#fff',
+          border: 'transparent',
+          text: '#373a3c',
         },
         hover: {
-          background: '#f0f0f0',
-          border: '#eee',
-          text: '#404040',
+          background: '#EEEEEE',
+          border: 'transparent',
+          text: '#373a3c',
         },
         active: {
-          background: '#f0f0f0',
-          border: '#eee',
-          text: '#404040',
+          background: '#186ba0',
+          border: 'transparent',
+          text: '#fff',
         },
       },
     },
   };
 
-  moduleForm = {
+  moduleForm: KitDefaultThemeParamsForm = {
     colors: {
       error: {
-        border: '#ff5500',
-        text: '#ff5500',
+        border: '#c9302c',
+        text: '#c9302c',
       },
     },
   };
@@ -431,24 +449,24 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   moduleInput: KitDefaultThemeParamsInput = {
     colors: {
       base: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
-        text: '#585858',
+        background: '#fff',
+        border: '#d6d6d6',
+        text: '#373a3c',
       },
       hover: {
-        background: '#f4f4f4',
-        border: '#cacaca',
-        text: '#585858',
+        background: '#fff',
+        border: '#c0c0c0',
+        text: '#373a3c',
       },
       focus: {
-        background: '#f4f4f4',
-        border: '#0084ff',
-        text: '#404040',
+        background: '#fff',
+        border: '#1f89ce',
+        text: '#373a3c',
       },
       disabled: {
-        background: '#e2e2e2',
-        border: '#cacaca',
-        text: '#707070',
+        background: '#e6e6e6',
+        border: '#d6d6d6',
+        text: '#c0c0c0',
       },
       readonly: {
         background: '#f4f4f4',
@@ -458,57 +476,57 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleLoadingBar = {
+  moduleLoadingBar: KitDefaultThemeParamsLoadingBar = {
     colors: {
-      background: '#0066cb',
-      shadow: '#0084ff',
+      background: '#2399e5',
+      shadow: '#1f89ce',
     },
   };
 
-  moduleMenu = {
+  moduleMenu: KitDefaultThemeParamsMenu = {
     titleFontSize: '.9rem',
     colors: {
       menu: {
         background: 'transparent',
-        border: 'rgba(0,0,0,.1)',
-        text: '#404040',
+        border: 'transparent',
+        text: '#373a3c',
       },
       item: {
         base: {
           background: 'transparent',
           border: 'transparent',
-          text: '#707070',
+          text: '#373a3c',
         },
         hover: {
-          background: 'transparent',
-          border: 'rgba(0,0,0,.1)',
-          text: '#707070',
+          background: '#e6e6e6',
+          border: 'transparent',
+          text: '#373a3c',
         },
         disabled: {
           background: 'transparent',
           border: 'transparent',
-          text: '#cacaca',
+          text: '#ccc',
         },
       },
       groupTitle: {
         background: 'transparent',
-        text: '#8c8c8c',
+        text: '#949494',
       },
-      separator: '#e2e2e2',
+      separator: '#ccc',
       sub: {
         background: '#fff',
-        border: '#e9e9e9',
+        border: '#ccc',
       },
       subItem: {
         base: {
           background: 'transparent',
           border: 'transparent',
-          text: '#707070',
+          text: '#373a3c',
         },
         hover: {
-          background: 'transparent',
-          border: 'rgba(0,0,0,.1)',
-          text: '#707070',
+          background: '#ccc',
+          border: 'transparent',
+          text: '#373a3c',
         },
         disabled: {
           background: 'transparent',
@@ -519,21 +537,21 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleModal = {
+  moduleModal: KitDefaultThemeParamsModal = {
     colors: {
       header: {
-        background: '#d6eeff',
-        border: '#e2e2e2',
-        text: '#707070',
+        background: '#B2DCF6',
+        border: '#ccc',
+        text: '#373a3c',
       },
       body: {
         background: '#fff',
-        text: '#404040',
+        text: '#373a3c',
       },
       footer: {
         background: '#fff',
-        border: '#e2e2e2',
-        text: '#707070',
+        border: '#ccc',
+        text: '#373a3c',
       },
     },
   };
@@ -541,40 +559,40 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   moduleNotification: KitDefaultThemeParamsNotification = {
     colors: {
       'default': {
-        background: '#404040',
-        border: '#404040',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#373a3c',
+        border: '#373a3c',
+        titleText: '#ccc',
+        messageText: '#fff',
       },
       primary: {
-        background: '#0084ff',
-        border: '#0084ff',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#2399e5',
+        border: '#2399e5',
+        titleText: '#373a3c',
+        messageText: '#fff',
       },
       info: {
-        background: '#0084ff',
-        border: '#0084ff',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#5bc0de',
+        border: '#5bc0de',
+        titleText: '#373a3c',
+        messageText: '#fff',
       },
       success: {
-        background: '#2dc100',
-        border: '#2dc100',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#5cb85c',
+        border: '#5cb85c',
+        titleText: '#373a3c',
+        messageText: '#fff',
       },
       warning: {
-        background: '#ffb62f',
-        border: '#ffb62f',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#f0ad4e',
+        border: '#f0ad4e',
+        titleText: '#373a3c',
+        messageText: '#fff',
       },
       error: {
-        background: '#ff5500',
-        border: '#ff5500',
-        titleText: '#fff',
-        messageText: '#f4f4f4',
+        background: '#d9534f',
+        border: '#d9534f',
+        titleText: '#373a3c',
+        messageText: '#fff',
       },
     },
   };
@@ -583,20 +601,20 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     colors: {
       nonChecked: {
         base: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#ccc',
         },
         hover: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#2399e5',
         },
         focus: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#fff',
+          border: '#2399e5',
         },
         disabled: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
+          background: '#e6e6e6',
+          border: '#ccc',
         },
       },
       checked: {
@@ -611,14 +629,14 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
           dot: '#0084ff',
         },
         focus: {
-          background: '#f4f4f4',
+          background: '#fff',
           border: '#0084ff',
           dot: '#0084ff',
         },
         disabled: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          dot: '#0084ff',
+          background: '#fff',
+          border: '#cde4f2',
+          dot: '#cde4f2',
         },
       },
     },
@@ -628,39 +646,39 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     colors: {
       select: {
         base: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
-          text: '#585858',
+          background: '#fff',
+          border: '#d6d6d6',
+          text: '#373a3c',
         },
         hover: {
-          background: '#f4f4f4',
-          border: '#cacaca',
-          text: '#585858',
+          background: '#fff',
+          border: '#c0c0c0',
+          text: '#373a3c',
         },
         focus: {
-          background: '#f4f4f4',
-          border: '#0084ff',
-          text: '#404040',
+          background: '#fff',
+          border: '#1f89ce',
+          text: '#373a3c',
         },
         disabled: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
-          text: '#585858',
+          background: '#e6e6e6',
+          border: '#d6d6d6',
+          text: '#373a3c',
         },
       },
       option: {
         base: {
-          background: '#f4f4f4',
-          border: '#e2e2e2',
-          text: '#585858',
+          background: '#fff',
+          border: '#e6e6e6',
+          text: '#373a3c',
         },
         hover: {
-          background: '#0084ff',
-          border: '#0084ff',
-          text: '#fff',
+          background: '#f2f2f2',
+          border: '#ccc',
+          text: '#373a3c',
         },
         selected: {
-          background: '#0084ff',
+          background: '#2399e5',
           border: '#0084ff',
           text: '#fff',
         },
@@ -671,45 +689,45 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         },
       },
       options: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
-        text: '#585858',
+        background: '#fff',
+        border: '#e6e6e6',
+        text: '#373a3c',
       },
     },
   };
 
-  moduleSpinner = {
+  moduleSpinner: KitDefaultThemeParamsSpinner = {
     duration: '1.5s',
     size: 50,
     type: 'spin-1',
     colors: {
-      'default': '#0084ff',
+      'default': '#2399e5',
     },
   };
 
-  moduleTabs = {
+  moduleTabs: KitDefaultThemeParamsTabs = {
     colors: {
       nav: {
         base: {
           background: '#fff',
-          border: '#d9d9d9',
-          text: '#404040',
+          border: '#fff',
+          text: '#373a3c',
         },
         hover: {
-          background: '#e2e2e2',
-          border: '#d9d9d9',
-          text: '#404040',
+          background: '#f2f2f2',
+          border: '#ccc',
+          text: '#373a3c',
         },
         active: {
-          background: '#dadada',
-          border: '#d9d9d9',
-          text: '#404040',
+          background: '#e6e6e6',
+          border: '#ccc',
+          text: '#373a3c',
         },
       },
       panel: {
         background: '#fff',
-        border: '#d9d9d9',
-        text: '#404040',
+        border: '#ccc',
+        text: '#373a3c',
       },
     },
   };
@@ -717,34 +735,34 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   moduleTag: KitDefaultThemeParamsTag = {
     colors: {
       'default': {
-        background: '#dadada',
-        border: '#dadada',
-        text: '#404040',
+        background: '#ccc',
+        border: '#ccc',
+        text: '#fff',
       },
       primary: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#2399e5',
+        border: '#2399e5',
         text: '#fff',
       },
       info: {
-        background: '#0084ff',
-        border: '#0084ff',
+        background: '#5bc0de',
+        border: '#5bc0de',
         text: '#fff',
       },
       success: {
-        background: '#dadada',
-        border: '#dadada',
-        text: '#404040',
+        background: '#5cb85c',
+        border: '#5cb85c',
+        text: '#fff',
       },
       error: {
-        background: '#dadada',
-        border: '#dadada',
-        text: '#404040',
+        background: '#d9534f',
+        border: '#d9534f',
+        text: '#fff',
       },
       warning: {
-        background: '#dadada',
-        border: '#dadada',
-        text: '#404040',
+        background: '#f0ad4e',
+        border: '#f0ad4e',
+        text: '#fff',
       },
     },
   };
@@ -752,59 +770,59 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   moduleTextarea: KitDefaultThemeParamsTextarea = {
     colors: {
       base: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
-        text: '#585858',
+        background: '#fff',
+        border: '#d6d6d6',
+        text: '#373a3c',
       },
       hover: {
-        background: '#f4f4f4',
-        border: '#cacaca',
-        text: '#585858',
+        background: '#fff',
+        border: '#c0c0c0',
+        text: '#373a3c',
       },
       focus: {
-        background: '#f4f4f4',
-        border: '#0084ff',
-        text: '#404040',
+        background: '#fff',
+        border: '#1f89ce',
+        text: '#373a3c',
       },
       disabled: {
-        background: '#e2e2e2',
-        border: '#cacaca',
-        text: '#707070',
+        background: '#e6e6e6',
+        border: '#d6d6d6',
+        text: '#c0c0c0',
       },
       readonly: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
-        text: '#585858',
+        background: '#fff',
+        border: '#d6d6d6',
+        text: '#373a3c',
       },
     },
   };
 
-  moduleToggle = {
+  moduleToggle: KitDefaultThemeParamsToggle = {
     colors: {
       base: {
-        background: '#f4f4f4',
-        border: '#e2e2e2',
+        background: '#ccc',
+        border: '#ccc',
         toggle: '#fff',
       },
       checked: {
-        background: '#0084ff',
-        border: '#0071e2',
+        background: '#2399e5',
+        border: '#2399e5',
         toggle: '#fff',
       },
     },
   };
 
-  moduleTooltip = {
+  moduleTooltip: KitDefaultThemeParamsTooltip = {
     colors: {
       tooltip: {
-        background: 'rgba(0,0,0,.6)',
-        border: 'rgba(0,0,0,.65)',
-        text: '#fff',
+        background: '#ccc',
+        border: '#ccc',
+        text: '#373a3c',
       },
     },
   };
 
-  moduleTypo = {
+  moduleTypo: KitDefaultThemeParamsTypo = {
     fontSize: '14px',
     headingFontSizes: {
       h1: '2.2rem',
@@ -840,13 +858,13 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  shadows = {
+  shadows: KitDefaultThemeParamsShadows = {
     element: '0 0 2px 0 rgba(50, 50, 50, 0.1)',
     deep: '0 0 20px 0 rgba(50, 50, 50, 0.1)',
     overlay: '0 0 6px 0 rgba(50, 50, 50, 0.1)',
   };
 
-  transitions = {
+  transitions: KitDefaultThemeParamsTransitions = {
     'default': 'all .3s',
   };
 }
