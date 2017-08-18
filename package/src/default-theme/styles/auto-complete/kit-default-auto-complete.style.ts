@@ -32,6 +32,14 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
           ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.hover),
           borderColor: params.moduleAutoComplete.colors.resultItem.hover.border,
         },
+        '&:first-child': {
+          borderTopLeftRadius: params.borders.radius,
+          borderTopRightRadius: params.borders.radius,
+        },
+        '&:last-child': {
+          borderBottomLeftRadius: params.borders.radius,
+          borderBottomRightRadius: params.borders.radius,
+        },
       },
       ...defToggle(state.active, {
         ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.active),
@@ -41,8 +49,10 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
   }
 
   results(): StyleDef {
+    const params = this.theme.params;
     return {
       boxShadow: this.theme.params.shadows.deep,
+      borderRadius: params.borders.radius,
     };
   }
 }

@@ -42,6 +42,8 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
       userSelect: 'none',
       padding: [params.grid.v, params.grid.h],
       border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.base.border],
+      borderTopLeftRadius: params.borders.radius,
+      borderTopRightRadius: params.borders.radius,
       borderBottom: 0,
       ...applyTypoColorSet(params.moduleTabs.colors.nav.base),
       $nest: {

@@ -72,6 +72,14 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
           '&:hover': {
             ...applyColorSet(subItemColor.hover, params.borders.width, BORDER_BOTTOM),
           },
+          '&:first-child': {
+            borderTopLeftRadius: params.borders.radius,
+            borderTopRightRadius: params.borders.radius,
+          },
+          '&:last-child': {
+            borderBottomLeftRadius: params.borders.radius,
+            borderBottomRightRadius: params.borders.radius,
+          },
         },
         ...defToggle(state.hasSubs, {}),
       }),

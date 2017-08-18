@@ -18,6 +18,7 @@ export class KitDefaultMenuSubStyle implements KitComponentStyle {
     return {
       backgroundColor: params.moduleMenu.colors.sub.background,
       border: [params.borders.width, 'solid', params.moduleMenu.colors.sub.border],
+      borderRadius: params.borders.radius,
       display: 'block',
       ...defPick(state.position, {
         right: {
