@@ -9,6 +9,8 @@ export interface TypoColorsSet {
   text: string;
 }
 
+export type DefaultColors = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+
 export interface KitDefaultThemeParams {
   borders: KitDefaultThemeParamsBorders;
   grid: KitDefaultThemeParamsGrid;
@@ -60,12 +62,7 @@ export interface KitDefaultThemeParamsAccordion {
 }
 
 export interface KitDefaultThemeParamsAlert {
-  colors: {
-    info: KitDefaultThemeParamsAlertColor;
-    success: KitDefaultThemeParamsAlertColor;
-    warning: KitDefaultThemeParamsAlertColor;
-    error: KitDefaultThemeParamsAlertColor;
-  };
+  colors: {[key in DefaultColors]: KitDefaultThemeParamsAlertColor};
   titleFontSize: string;
 }
 
@@ -88,15 +85,11 @@ export interface KitDefaultThemeParamsAutoComplete {
 }
 
 export interface KitDefaultThemeParamsBadge {
-  colors: {
-    [key: string]: ColorsSet;
-  };
+  colors: {[key in DefaultColors]: ColorsSet};
 }
 
 export interface KitDefaultThemeParamsButton {
-  colors: {
-    [key: string]: KitDefaultThemeParamsButtonColor;
-  };
+  colors: {[key in DefaultColors]: KitDefaultThemeParamsButtonColor};
 }
 
 export interface KitDefaultThemeParamsButtonColor {
@@ -223,13 +216,7 @@ export interface KitDefaultThemeParamsModal {
 }
 
 export interface KitDefaultThemeParamsNotification {
-  colors: {
-    'default': KitDefaultThemeParamsNotificationColor;
-    primary: KitDefaultThemeParamsNotificationColor;
-    success: KitDefaultThemeParamsNotificationColor;
-    warning: KitDefaultThemeParamsNotificationColor;
-    error: KitDefaultThemeParamsNotificationColor;
-  };
+  colors: {[key in DefaultColors]: KitDefaultThemeParamsNotificationColor};
 }
 
 export interface KitDefaultThemeParamsNotificationColor {
@@ -289,13 +276,7 @@ export interface KitDefaultThemeParamsSpinner {
 }
 
 export interface KitDefaultThemeParamsTag {
-  colors: {
-    'default': ColorsSet;
-    primary: ColorsSet;
-    success: ColorsSet;
-    error: ColorsSet;
-    warning: ColorsSet;
-  };
+  colors: {[key in DefaultColors]: ColorsSet};
 }
 
 export interface KitDefaultThemeParamsTabs {

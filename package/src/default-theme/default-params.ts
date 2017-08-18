@@ -1,4 +1,11 @@
-import { KitDefaultThemeParams, KitDefaultThemeParamsColorPicker, } from './meta/params';
+import {
+  KitDefaultThemeParams,
+  KitDefaultThemeParamsAlert,
+  KitDefaultThemeParamsBadge,
+  KitDefaultThemeParamsButton,
+  KitDefaultThemeParamsColorPicker,
+  KitDefaultThemeParamsNotification, KitDefaultThemeParamsTag,
+} from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   borders = {
@@ -25,9 +32,23 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleAlert = {
+  moduleAlert: KitDefaultThemeParamsAlert = {
     titleFontSize: '1.2em',
     colors: {
+      'default': {
+        background: '#92ccff',
+        border: '#0084ff',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#0071e2',
+        titleText: `rgba(0,0,0,.9)`,
+      },
+      primary: {
+        background: '#92ccff',
+        border: '#0084ff',
+        text: `rgba(0,0,0,.7)`,
+        closeText: '#0071e2',
+        titleText: `rgba(0,0,0,.9)`,
+      },
       info: {
         background: '#92ccff',
         border: '#0084ff',
@@ -81,7 +102,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleBadge = {
+  moduleBadge: KitDefaultThemeParamsBadge = {
     colors: {
       'default': {
         background: '#0084ff',
@@ -89,6 +110,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         text: '#fff',
       },
       primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      info: {
         background: '#0084ff',
         border: '#0084ff',
         text: '#fff',
@@ -111,7 +137,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleButton = {
+  moduleButton: KitDefaultThemeParamsButton = {
     colors: {
       'default': {
         base: {
@@ -136,6 +162,28 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         },
       },
       primary: {
+        base: {
+          background: '#0084ff',
+          border: '#0084ff',
+          text: '#fff',
+        },
+        hover: {
+          background: '#0071e2',
+          border: '#0071e2',
+          text: '#fff',
+        },
+        active: {
+          background: '#0066cb',
+          border: '#0066cb',
+          text: '#fff',
+        },
+        disabled: {
+          background: '#8c8c8c',
+          border: '#8c8c8c',
+          text: '#707070',
+        },
+      },
+      info: {
         base: {
           background: '#0084ff',
           border: '#0084ff',
@@ -434,7 +482,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleNotification = {
+  moduleNotification: KitDefaultThemeParamsNotification = {
     colors: {
       'default': {
         background: '#404040',
@@ -443,6 +491,12 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         messageText: '#f4f4f4',
       },
       primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        titleText: '#fff',
+        messageText: '#f4f4f4',
+      },
+      info: {
         background: '#0084ff',
         border: '#0084ff',
         titleText: '#fff',
@@ -567,7 +621,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleTag = {
+  moduleTag: KitDefaultThemeParamsTag = {
     colors: {
       'default': {
         background: '#dadada',
@@ -575,6 +629,11 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         text: '#404040',
       },
       primary: {
+        background: '#0084ff',
+        border: '#0084ff',
+        text: '#fff',
+      },
+      info: {
         background: '#0084ff',
         border: '#0084ff',
         text: '#fff',

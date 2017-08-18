@@ -3,27 +3,17 @@ const basicColorSet = {
   border: 'color',
   text: 'color',
 };
-const buttonColor = {
-  base: basicColorSet,
-  hover: basicColorSet,
-  active: basicColorSet,
-  disabled: basicColorSet,
-};
-const alertColor = {
-  ...basicColorSet,
-  closeText: 'color',
-  titleText: 'color',
-};
-const notificationColor = {
-  background: 'color',
-  border: 'color',
-  titleText: 'color',
-  messageText: 'color',
-};
 const typoColorSet = {
   background: 'color',
   text: 'color',
 };
+const defaultColors = ['default', 'primary', 'info', 'success', 'warning', 'error'];
+function colorize(set: string[], colorSchema: any) {
+  return set.reduce((prev, curr) => {
+    prev[curr] = colorSchema;
+    return prev;
+  }, {});
+}
 export const paramsSchema = {
   grid: {
     h: 'number',
@@ -56,12 +46,11 @@ export const paramsSchema = {
   },
   moduleAlert: {
     titleFontSize: 'string',
-    colors: {
-      info: alertColor,
-      success: alertColor,
-      warning: alertColor,
-      error: alertColor,
-    },
+    colors: colorize(defaultColors, {
+      ...basicColorSet,
+      closeText: 'color',
+      titleText: 'color',
+    }),
   },
   moduleAutoComplete: {
     colors: {
@@ -73,22 +62,15 @@ export const paramsSchema = {
     },
   },
   moduleBadge: {
-    colors: {
-      'default': basicColorSet,
-      primary: basicColorSet,
-      success: basicColorSet,
-      warning: basicColorSet,
-      error: basicColorSet,
-    },
+    colors: colorize(defaultColors, basicColorSet),
   },
   moduleButton: {
-    colors: {
-      'default': buttonColor,
-      primary: buttonColor,
-      success: buttonColor,
-      warning: buttonColor,
-      error: buttonColor,
-    },
+    colors: colorize(defaultColors, {
+      base: basicColorSet,
+      hover: basicColorSet,
+      active: basicColorSet,
+      disabled: basicColorSet,
+    }),
   },
   moduleCheckbox: {
     colors: {
@@ -197,13 +179,12 @@ export const paramsSchema = {
     },
   },
   moduleNotification: {
-    colors: {
-      'default': notificationColor,
-      primary: notificationColor,
-      success: notificationColor,
-      warning: notificationColor,
-      error: notificationColor,
-    },
+    colors: colorize(defaultColors, {
+      background: 'color',
+      border: 'color',
+      titleText: 'color',
+      messageText: 'color',
+    }),
   },
   moduleRadio: {
     colors: {
@@ -256,13 +237,7 @@ export const paramsSchema = {
     },
   },
   moduleTag: {
-    colors: {
-      'default': basicColorSet,
-      primary: basicColorSet,
-      success: basicColorSet,
-      warning: basicColorSet,
-      error: basicColorSet,
-    },
+    colors: colorize(defaultColors, basicColorSet),
   },
   moduleTextarea: {
     colors: {
