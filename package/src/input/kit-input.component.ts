@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
 import { kitComponentInput } from '../core/meta/tokens';
+import { MathParser } from './math-parser';
 import { KitInputType } from './meta';
 
 export const KIT_INPUT_VALUE_ACCESSOR: any = {
@@ -16,7 +17,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'kit-input,[kitInput]',
   template: `
-    <input [ngModel]="state"
+    <input [ngModel]="viewState"
            (ngModelChange)="updateValue($event)"
            [attr.accesskey]="accesskey"
            [attr.autocomplete]="autocomplete"
@@ -63,6 +64,8 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
 
   @Input() type: KitInputType = 'text';
 
+  viewState: any;
+
   private changes$ = new Subject<number>();
 
   private touches$ = new Subject<boolean>();
@@ -96,13 +99,23 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
   }
 
   updateValue(value: any) {
-    this.writeValue(value);
-    this.changes$.next(value);
+    if (this.type === 'math') {
+      this.calcValue(value);
+    } else {
+      this.writeValue(value);
+    }
+    this.changes$.next(this.state);
     this.touches$.next(true);
   }
 
   writeValue(value: any) {
     this.state = value;
+    this.viewState = value;
     this.cdr.markForCheck();
+  }
+
+  private calcValue(value: string) {
+    const parsed = value ? MathParser.parse(value) : NaN;
+    this.state = isNaN(parsed) ? null : parsed;
   }
 }

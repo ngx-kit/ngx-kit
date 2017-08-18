@@ -22,7 +22,9 @@ Implements `ControlValueAccessor`.
 | *placeholder* | `string` | | Native attribute |
 | *readonly* | `boolean` | | Native attribute |
 | *tabindex* | `number` | | Native attribute |
-| *type* | `text, password, number, color, date, time, search, month, week` | `text` | Native attribute |
+| *type* | `text, password, number, color, date, time, search, month, week, math` | `text` | Type |
+
+Extra type `math`: automatically parse and evaluate basic math expressions.
 
 #### Outputs
 
