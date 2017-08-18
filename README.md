@@ -4,35 +4,35 @@
 
 # ngx-kit
 
-**Package is not released, aprx release August 18.**
-
 Angular 4 UI-kit with a powerful customizing engine which uses CSSinJS styling.
 
-Currently in a deep beta!
+Currently in beta, use carefully!
 
 ## Let's look
 
-* Default theme
-* Default theme: dark preset
+[ngx-kit website](https://ngx-kit.com)
 
 ## Modules
 
 * [accordion](./package/src/accordion)
+* [alert](./package/src/alert)
 * [auto-complete](./package/src/auto-complete)
 * [badge](./package/src/badge)
 * [breadcrumd](./package/src/breadcrumd)
 * [button](package/src/button)
+* [checkbox](./package/src/checkbox)
+* [color-picker](./package/src/color-picker)
 * [core](./package/src/core)
 * [date-picker](./package/src/date-picker)
-* [checkbox](./package/src/checkbox)
 * [default-theme](./package/src/default-theme)
 * [divider](./package/src/divider)
 * [dropdown-menu](./package/src/dropdown-menu)
 * [form](./package/src/form)
 * [icons](./package/src/icons)
+* [importer](./package/src/importer)
 * [input](./package/src/input)
 * [layout](./package/src/layout)
-* [math-input](./package/src/math-input)
+* [loading-bar](./package/src/loading-bar)
 * [menu](./package/src/menu)
 * [modal](./package/src/modal)
 * [pagination](./package/src/pagination)
@@ -44,3 +44,4 @@ Currently in a deep beta!
 * [textarea](./package/src/textarea)
 * [toggle](./package/src/toggle)
 * [tooltip](./package/src/tooltip)
+* [typo](./package/src/typo)
