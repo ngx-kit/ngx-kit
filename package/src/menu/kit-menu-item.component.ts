@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   ElementRef,
@@ -7,6 +8,7 @@ import {
   HostListener,
   Inject,
   Input,
+  OnChanges,
   OnInit,
   Optional,
   QueryList,
@@ -28,12 +30,16 @@ import { KitMenuComponent } from './kit-menu.component';
     StylerComponent,
   ],
 })
-export class KitMenuItemComponent implements OnInit, AfterContentInit {
-  @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: true}) items: QueryList<KitMenuItemComponent>;
+export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit {
+  @Input() disabled: boolean;
+
+  @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: true})
+  items: QueryList<KitMenuItemComponent>;
 
   @Input() kitMenuItem: any;
 
-  @ContentChildren(forwardRef(() => KitMenuSubComponent), {descendants: false}) subs: QueryList<KitMenuSubComponent>;
+  @ContentChildren(forwardRef(() => KitMenuSubComponent), {descendants: false})
+  subs: QueryList<KitMenuSubComponent>;
 
   private _hover = false;
 
@@ -41,14 +47,10 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
               @Inject(kitComponentMenuItem) private style: KitComponentStyle,
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
               @Inject(forwardRef(() => KitMenuSubComponent)) @Optional() private sub: KitMenuSubComponent,
-              private el: ElementRef) {
+              private el: ElementRef,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-menu-item';
     this.styler.register(this.style);
-  }
-
-  @Input()
-  set disabled(disabled: boolean) {
-    this.styler.host.applyState({disabled});
   }
 
   get hover() {
@@ -65,6 +67,12 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
       menuDirection: this.menu.direction,
       root: !this.sub,
       hasSubs: this.subs && this.subs.length > 0,
+    });
+  }
+
+  ngOnChanges() {
+    this.styler.host.applyState({
+      disabled: this.disabled,
     });
   }
 
@@ -104,11 +112,12 @@ export class KitMenuItemComponent implements OnInit, AfterContentInit {
   private closeSub() {
     if (this.subs && this.subs.first) {
       this.subs.first.close();
+      this.cdr.markForCheck();
     }
   }
 
   private openSub() {
-    if (this.subs && this.subs.first) {
+    if (this.subs && this.subs.first && !this.disabled) {
       this.subs.first.open();
     }
   }

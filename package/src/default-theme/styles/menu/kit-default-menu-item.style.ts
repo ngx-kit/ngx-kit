@@ -37,15 +37,16 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
             padding: [params.grid.v, params.grid.h * 2],
             marginBottom: -params.borders.width,
             ...defToggle(state.disabled, {
+              cursor: 'default',
               ...applyColorSet(itemColor.disabled, params.borders.width, BORDER_BOTTOM),
             }, {
               ...applyColorSet(itemColor.base, params.borders.width, BORDER_BOTTOM),
-            }),
-            $nest: {
-              '&:hover': {
-                ...applyColorSet(itemColor.hover, params.borders.width, BORDER_BOTTOM),
+              $nest: {
+                '&:hover': {
+                  ...applyColorSet(itemColor.hover, params.borders.width, BORDER_BOTTOM),
+                },
               },
-            },
+            }),
           },
           vertical: {
             marginRight: -params.borders.width,
@@ -53,35 +54,36 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               ...applyColorSet(itemColor.disabled, params.borders.width, BORDER_RIGHT),
             }, {
               ...applyColorSet(itemColor.base, params.borders.width, BORDER_RIGHT),
-            }),
-            $nest: {
-              '&:hover': {
-                ...applyColorSet(itemColor.hover, params.borders.width, BORDER_RIGHT),
+              $nest: {
+                '&:hover': {
+                  ...applyColorSet(itemColor.hover, params.borders.width, BORDER_RIGHT),
+                },
               },
-            },
+            }),
           },
         }),
       }, {
         // sub items
         ...defToggle(state.disabled, {
+          cursor: 'default',
           ...applyColorSet(subItemColor.disabled, params.borders.width, BORDER_BOTTOM),
         }, {
           ...applyColorSet(subItemColor.base, params.borders.width, BORDER_BOTTOM),
+          $nest: {
+            '&:hover': {
+              ...applyColorSet(subItemColor.hover, params.borders.width, BORDER_BOTTOM),
+            },
+            '&:first-child': {
+              borderTopLeftRadius: params.borders.radius,
+              borderTopRightRadius: params.borders.radius,
+            },
+            '&:last-child': {
+              borderBottomLeftRadius: params.borders.radius,
+              borderBottomRightRadius: params.borders.radius,
+            },
+          },
+          ...defToggle(state.hasSubs, {}),
         }),
-        $nest: {
-          '&:hover': {
-            ...applyColorSet(subItemColor.hover, params.borders.width, BORDER_BOTTOM),
-          },
-          '&:first-child': {
-            borderTopLeftRadius: params.borders.radius,
-            borderTopRightRadius: params.borders.radius,
-          },
-          '&:last-child': {
-            borderBottomLeftRadius: params.borders.radius,
-            borderBottomRightRadius: params.borders.radius,
-          },
-        },
-        ...defToggle(state.hasSubs, {}),
       }),
     };
   }
