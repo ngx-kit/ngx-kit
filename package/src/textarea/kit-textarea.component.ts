@@ -25,10 +25,12 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
               [attr.readonly]="readonly"
               [attr.tabindex]="tabindex"
               [attr.wrap]="wrap"
+              [disabled]="disabled"
               (ngModelChange)="updateValue($event)"
               (blur)="onBlur($event)"
               (focus)="onFocus($event)"
-              styler="textarea"></textarea>
+              [styler]="['textarea', {disabled: disabled, readonly: readonly}]">
+    </textarea>
   `,
   providers: [KIT_TEXTAREA_VALUE_ACCESSOR],
   viewProviders: [
@@ -41,6 +43,8 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
   @Input() autofocus: boolean;
 
   @Output() blur = new EventEmitter<FocusEvent>();
+
+  @Input() disabled: boolean;
 
   @Output() focus = new EventEmitter<FocusEvent>();
 
@@ -61,9 +65,6 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
   @Input() wrap: KitTextareaWrap = 'off';
 
   private changes$ = new Subject<number>();
-
-  // @todo do not change if disabled
-  private isDisabled = false;
 
   private touches$ = new Subject<boolean>();
 
@@ -92,7 +93,7 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
   }
 
   setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 
   updateValue(value: any) {

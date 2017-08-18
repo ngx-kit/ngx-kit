@@ -242,6 +242,8 @@ export const paramsSchema = {
       base: basicColorSet,
       hover: basicColorSet,
       focus: basicColorSet,
+      disabled: basicColorSet,
+      readonly: basicColorSet,
     },
   },
   moduleToggle: {

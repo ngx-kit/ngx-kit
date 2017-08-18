@@ -293,6 +293,8 @@ export interface KitDefaultThemeParamsTextarea {
     base: ColorsSet;
     hover: ColorsSet;
     focus: ColorsSet;
+    readonly: ColorsSet;
+    disabled: ColorsSet;
   };
 }
 

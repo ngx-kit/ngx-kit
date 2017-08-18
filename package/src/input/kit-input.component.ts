@@ -30,7 +30,6 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
            (blur)="onBlur($event)"
            (focus)="onFocus($event)"
            [styler]="['input', {disabled: disabled, readonly: readonly}]">
-    {{ disabled | json }}
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [

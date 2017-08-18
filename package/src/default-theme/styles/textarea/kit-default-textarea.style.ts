@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef } from '@ngx-kit/styler';
+import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -16,7 +16,10 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
     };
   }
 
-  textarea(): StyleDef {
+  textarea(state: {
+    disabled: boolean;
+    readonly: boolean;
+  }): StyleDef {
     const params = this.theme.params;
     return {
       borderRadius: params.borders.radius,
@@ -24,18 +27,25 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       boxSizing: 'border-box',
-      ...applyColorSet(params.moduleTextarea.colors.base, params.borders.width),
-      $nest: {
-        '&:hover': {
-          outline: 'none',
-          ...applyColorSet(params.moduleTextarea.colors.hover, params.borders.width),
+      ...defToggle(state.disabled, {
+        ...applyColorSet(params.moduleTextarea.colors.disabled, params.borders.width),
+      }, {
+        ...applyColorSet(params.moduleTextarea.colors.base, params.borders.width),
+        $nest: {
+          '&:hover': {
+            outline: 'none',
+            ...applyColorSet(params.moduleTextarea.colors.hover, params.borders.width),
+          },
+          '&:focus': {
+            transition: '0.2s',
+            outline: 'none',
+            ...applyColorSet(params.moduleTextarea.colors.focus, params.borders.width),
+          },
         },
-        '&:focus': {
-          transition: '0.8s',
-          outline: 'none',
-          ...applyColorSet(params.moduleTextarea.colors.focus, params.borders.width),
-        },
-      },
+        ...defToggle(state.readonly, {
+          ...applyColorSet(params.moduleTextarea.colors.readonly, params.borders.width),
+        }),
+      }),
     };
   }
 }
