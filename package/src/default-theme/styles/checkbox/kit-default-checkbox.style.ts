@@ -50,11 +50,11 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
   }
 
   view(state: {
-    checked: boolean,
-    hover: boolean,
-    focus: boolean,
-    disabled: boolean,
-    readonly: boolean,
+    checked: boolean;
+    hover: boolean;
+    focus: boolean;
+    disabled: boolean;
+    readonly: boolean;
   }): StyleDef {
     const params = this.theme.params;
     return {
@@ -90,70 +90,30 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
             },
             defToggle(state.disabled,
                 // checked && disabled
-                {
-                  ...applyColors(params.moduleCheckbox.colors.checked.disabled, params.borders.width),
-                  $nest: {
-                    '&::after': {
-                      borderColor: params.moduleCheckbox.colors.checked.disabled.check,
-                    },
-                  },
-                },
+                applyChecked(params.moduleCheckbox.colors.checked.disabled, params.borders.width),
                 {
                   // checked
-                  ...applyColors(params.moduleCheckbox.colors.checked.base, params.borders.width),
-                  $nest: {
-                    '&::after': {
-                      borderColor: params.moduleCheckbox.colors.checked.base.check,
-                    },
-                  },
+                  ...applyChecked(params.moduleCheckbox.colors.checked.base, params.borders.width),
                   // checked && hover
-                  ...defToggle(state.hover, {
-                    ...applyColors(params.moduleCheckbox.colors.checked.hover, params.borders.width),
-                    $nest: {
-                      '&::after': {
-                        borderColor: params.moduleCheckbox.colors.checked.hover.check,
-                      },
-                    },
-                  }),
+                  ...defToggle(state.hover, applyChecked(params.moduleCheckbox.colors.checked.hover, params.borders.width)),
                   // checked && focus
-                  ...defToggle(state.focus, {
-                    ...applyColors(params.moduleCheckbox.colors.checked.focus, params.borders.width),
-                    $nest: {
-                      '&::after': {
-                        borderColor: params.moduleCheckbox.colors.checked.focus.check,
-                      },
-                    },
-                  }),
-                  ...defToggle(state.readonly, {
-                    // checked && readonly
-                    ...applyColors(params.moduleCheckbox.colors.checked.readonly, params.borders.width),
-                    $nest: {
-                      '&::after': {
-                        borderColor: params.moduleCheckbox.colors.checked.readonly.check,
-                      },
-                    },
-                  }),
+                  ...defToggle(state.focus, applyChecked(params.moduleCheckbox.colors.checked.focus, params.borders.width)),
+                  // checked && readonly
+                  ...defToggle(state.readonly, applyChecked(params.moduleCheckbox.colors.checked.readonly, params.borders.width)),
                 }),
           ]),
           defToggle(state.disabled,
               // non-checked && disabled
-              applyColors(params.moduleCheckbox.colors.nonChecked.disabled, params.borders.width),
+              applyNonChecked(params.moduleCheckbox.colors.nonChecked.disabled, params.borders.width),
               {
                 // non-checked
-                ...applyColors(params.moduleCheckbox.colors.nonChecked.base, params.borders.width),
-                $nest: {
-                  '&:hover': {
-                    // non-checked && hover
-                    ...applyColors(params.moduleCheckbox.colors.nonChecked.hover, params.borders.width),
-                  },
-                  '&:focus': {
-                    // non-checked && focus
-                    ...applyColors(params.moduleCheckbox.colors.nonChecked.focus, params.borders.width),
-                  },
-                },
-                ...defToggle(state.readonly,
-                    // non-checked && readonly
-                    applyColors(params.moduleCheckbox.colors.nonChecked.readonly, params.borders.width)),
+                ...applyNonChecked(params.moduleCheckbox.colors.nonChecked.base, params.borders.width),
+                /// non-checked && hover
+                ...defToggle(state.hover, applyNonChecked(params.moduleCheckbox.colors.nonChecked.hover, params.borders.width)),
+                // non-checked && focus
+                ...defToggle(state.focus, applyNonChecked(params.moduleCheckbox.colors.nonChecked.focus, params.borders.width)),
+                // non-checked && readonly
+                ...defToggle(state.readonly, applyNonChecked(params.moduleCheckbox.colors.nonChecked.readonly, params.borders.width)),
               }),
       ),
     };
@@ -165,13 +125,13 @@ function applyChecked(set: {border: string, background: string, check: string}, 
     background: set.background,
     border: [borderWidth, 'solid', set.border],
     $nest: {
-      '&:after': {
+      '&::after': {
         borderColor: set.check,
       },
     },
   };
 }
-function applyColors(set: {border: string, background: string}, borderWidth: number) {
+function applyNonChecked(set: {border: string, background: string}, borderWidth: number) {
   return {
     background: set.background,
     border: [borderWidth, 'solid', set.border],

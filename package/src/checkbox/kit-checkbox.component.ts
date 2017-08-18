@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  HostListener,
+  Inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -26,8 +35,6 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
                (ngModelChange)="updateValue($event)"
                (blur)="onBlur($event)"
                (focus)="onFocus($event)"
-               (mouseenter)="onMouseenter($event)"
-               (mouseleave)="onMouseleave($event)"
                type="checkbox"
                styler="input">
         <span [styler]="['view', {checked: !!state, disabled: disabled, readonly: readonly, focus: focusState, hover: hoverState}]">
@@ -80,6 +87,16 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
     this.id = this.core.uuid();
   }
 
+  @HostListener('mouseenter')
+  mouseenter() {
+    this.hoverState = true;
+  }
+
+  @HostListener('mouseleave')
+  mouseleave() {
+    this.hoverState = false;
+  }
+
   onBlur(event: FocusEvent) {
     this.blur.next(event);
     this.touches$.next(true);
@@ -89,14 +106,6 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   onFocus(event: FocusEvent) {
     this.focus.next(event);
     this.focusState = true;
-  }
-
-  onMouseenter() {
-    this.hoverState = true;
-  }
-
-  onMouseleave() {
-    this.hoverState = false;
   }
 
   registerOnChange(fn: any) {
