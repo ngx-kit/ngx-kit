@@ -25,10 +25,12 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
            [attr.placeholder]="placeholder"
            [attr.readonly]="readonly"
            [attr.tabindex]="tabindex"
+           [disabled]="disabled"
            [attr.type]="type"
            (blur)="onBlur($event)"
            (focus)="onFocus($event)"
-           styler="input">
+           [styler]="['input', {disabled: disabled, readonly: readonly}]">
+    {{ disabled | json }}
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [
@@ -43,6 +45,8 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
   @Input() autofocus: boolean;
 
   @Output() blur = new EventEmitter<FocusEvent>();
+
+  @Input() disabled: boolean;
 
   @Output() focus = new EventEmitter<FocusEvent>();
 
@@ -61,9 +65,6 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
   @Input() type: KitInputType = 'text';
 
   private changes$ = new Subject<number>();
-
-  // @todo do not change if disabled
-  private isDisabled = false;
 
   private touches$ = new Subject<boolean>();
 
@@ -92,7 +93,7 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
   }
 
   setDisabledState(isDisabled: boolean) {
-    this.isDisabled = isDisabled;
+    this.disabled = isDisabled;
   }
 
   updateValue(value: any) {

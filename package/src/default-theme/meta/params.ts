@@ -174,6 +174,8 @@ export interface KitDefaultThemeParamsInput {
     base: ColorsSet;
     hover: ColorsSet;
     focus: ColorsSet;
+    readonly: ColorsSet;
+    disabled: ColorsSet;
   };
 }
 

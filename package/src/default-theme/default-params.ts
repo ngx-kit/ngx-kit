@@ -3,7 +3,7 @@ import {
   KitDefaultThemeParamsAlert,
   KitDefaultThemeParamsBadge,
   KitDefaultThemeParamsButton,
-  KitDefaultThemeParamsColorPicker,
+  KitDefaultThemeParamsColorPicker, KitDefaultThemeParamsInput,
   KitDefaultThemeParamsNotification, KitDefaultThemeParamsTag,
 } from './meta/params';
 
@@ -382,7 +382,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
     },
   };
 
-  moduleInput = {
+  moduleInput: KitDefaultThemeParamsInput = {
     colors: {
       base: {
         background: '#f4f4f4',
@@ -398,6 +398,16 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         background: '#f4f4f4',
         border: '#0084ff',
         text: '#404040',
+      },
+      disabled: {
+        background: '#e2e2e2',
+        border: '#cacaca',
+        text: '#707070',
+      },
+      readonly: {
+        background: '#f4f4f4',
+        border: '#e2e2e2',
+        text: '#585858',
       },
     },
   };
