@@ -5,8 +5,13 @@
   "main": "./bundle/ngx-kit.umd.js",
   "module": "./module/ngx-kit.js",
   "typings": "./ngx-kit.d.ts",
-  "author": "Sasha Novik",
+  "author": {
+    "name": "Sasha Novik",
+    "email": "alex@nvx.me",
+    "url": "https://nvx.me/"
+  },
   "license": "MIT",
+  "homepage": "https://ngx-kit.com",
   "repository": {
     "url": "https://github.com/ngx-kit/ngx-kit.git",
     "type": "git"
