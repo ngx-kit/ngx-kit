@@ -7,5 +7,9 @@ import { Content } from '../../../interfaces/content';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertComponent {
+  closableDemoIsOpen = true;
+
+  closeTextDemoIsOpen = true;
+
   @Input() content: Content;
 }
