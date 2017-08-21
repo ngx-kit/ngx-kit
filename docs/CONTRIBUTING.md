@@ -58,6 +58,7 @@ Just as in the subject, use the imperative, present tense: "change" not "changed
 
 The footer should contain any information about Breaking Changes and is also the place to reference GitHub issues that this commit Closes.
 
-Breaking Changes should start with the word BREAKING CHANGE: with a space or two newlines. The rest of the commit message is then used for this.
+* "Closes #ID"
+* "PR Close #ID"
 
-A detailed explanation can be found in this document.
+Breaking Changes should start with the word BREAKING CHANGE: with a space or two newlines. The rest of the commit message is then used for this.
