@@ -4,8 +4,8 @@ title: Spinner color
 ---
 
 ```html
-<kit-spinner [color]="'green1'"></kit-spinner>
-<kit-spinner [color]="'orange1'"></kit-spinner>
-<kit-spinner [color]="'red1'"></kit-spinner>
-<kit-spinner [color]="'grey6'"></kit-spinner>
+<kit-spinner [color]="'green'"></kit-spinner>
+<kit-spinner [color]="'orange'"></kit-spinner>
+<kit-spinner [color]="'red'"></kit-spinner>
+<kit-spinner [color]="'grey'"></kit-spinner>
 ```
