@@ -37,6 +37,10 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
 
   @Input() color: string;
 
+  @Input() isOpen = true;
+
+  @Output() isOpenChange = new EventEmitter<boolean>();
+
   @ContentChildren(forwardRef(() => KitAlertTitleComponent)) titles: QueryList<KitAlertTitleComponent>;
 
   constructor(private styler: StylerComponent,
@@ -52,6 +56,7 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
   ngOnChanges() {
     this.styler.host.applyState({
       color: this.color,
+      closed: !this.isOpen,
     });
     this.proxyState();
   }
@@ -59,6 +64,7 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
   closeAlert() {
     this.styler.host.applyState({closed: true});
     this.close.next(null);
+    this.isOpenChange.next(false);
   }
 
   private proxyState() {
