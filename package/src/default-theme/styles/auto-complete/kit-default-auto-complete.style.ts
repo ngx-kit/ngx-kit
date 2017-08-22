@@ -3,7 +3,7 @@ import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
+import { applyColorSet, BORDER_BOTTOM } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
@@ -22,15 +22,14 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
 
   result(state: {active: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs.options;
     return {
-      borderBottom: [1, 'solid', params.moduleAutoComplete.colors.resultItem.base.border],
       cursor: 'pointer',
       padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
-      ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.base),
+      ...applyColorSet(colors.base, params.borders.width, BORDER_BOTTOM),
       $nest: {
         '&:hover': {
-          ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.hover),
-          borderColor: params.moduleAutoComplete.colors.resultItem.hover.border,
+          ...applyColorSet(colors.hover, params.borders.width, BORDER_BOTTOM),
         },
         '&:first-child': {
           borderTopLeftRadius: params.borders.radius,
@@ -42,8 +41,7 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
         },
       },
       ...defToggle(state.active, {
-        ...applyTypoColorSet(params.moduleAutoComplete.colors.resultItem.active),
-        borderColor: params.moduleAutoComplete.colors.resultItem.active.border,
+        ...applyColorSet(colors.selected, params.borders.width, BORDER_BOTTOM),
       }),
     };
   }

@@ -12,21 +12,22 @@ export class KitDefaultTypoContainerStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.typo;
     return {
       fontSize: params.moduleTypo.fontSize,
-      ...applyTypoColorSet(params.moduleTypo.colors.text),
+      ...applyTypoColorSet(colors.text),
       $nest: {
         '& a': {
-          ...applyTypoColorSet(params.moduleTypo.colors.link.base),
+          ...applyTypoColorSet(colors.link.base),
         },
         '& a:hover': {
-          ...applyTypoColorSet(params.moduleTypo.colors.link.hover),
+          ...applyTypoColorSet(colors.link.hover),
         },
         '& a:focus': {
-          ...applyTypoColorSet(params.moduleTypo.colors.link.focus),
+          ...applyTypoColorSet(colors.link.focus),
         },
         '& a:visited': {
-          ...applyTypoColorSet(params.moduleTypo.colors.link.visited),
+          ...applyTypoColorSet(colors.link.visited),
         },
         '& h1': {
           fontSize: params.moduleTypo.headingFontSizes.h1,

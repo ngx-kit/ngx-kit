@@ -12,11 +12,12 @@ export class KitDefaultMenuGroupTitleStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.menus;
     return {
       display: 'block',
       fontSize: params.moduleMenu.titleFontSize,
       padding: [0, params.grid.h, params.grid.v / 2],
-      ...applyTypoColorSet(params.moduleMenu.colors.groupTitle),
+      ...applyTypoColorSet(colors.groupTitle),
     };
   }
 }

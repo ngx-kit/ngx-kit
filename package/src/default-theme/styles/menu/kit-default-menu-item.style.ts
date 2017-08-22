@@ -18,8 +18,9 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     hasSubs: boolean,
   }): StyleDef {
     const params = this.theme.params;
-    const itemColor = params.moduleMenu.colors.item;
-    const subItemColor = params.moduleMenu.colors.subItem;
+    const colors = params.colors.menus;
+    const itemColor = colors.item;
+    const subItemColor = colors.subItem;
     return {
       display: 'flex',
       alignItems: 'center',
@@ -33,6 +34,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
       ...defToggle(state.root, {
         // root items
         ...defPick(state.menuDirection, {
+          // root && horizontal
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
             marginBottom: -params.borders.width,
@@ -48,7 +50,9 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               },
             }),
           },
+          // root & vertical
           vertical: {
+            borderRadius: params.borders.radius,
             marginRight: -params.borders.width,
             ...defToggle(state.disabled, {
               ...applyColorSet(itemColor.disabled, params.borders.width, BORDER_RIGHT),

@@ -30,22 +30,6 @@ export class KitDefaultThemeService implements KitThemeService {
     this.stylerService.updateComponents();
   }
 
-  getModuleColor(module: string, colorIndex: string | null) {
-    const moduleColors = this._params[`module${module}`].colors;
-    if (!moduleColors) {
-      throw new Error(`"module${module}.colors" not found in params!`);
-    }
-    if (colorIndex) {
-      const color = moduleColors[colorIndex];
-      if (!color) {
-        throw new Error(`Color "${colorIndex}" not found in module "${module}"!`);
-      }
-      return color;
-    } else {
-      return moduleColors[Object.keys(moduleColors)[0]];
-    }
-  }
-
   mergeParams(left: KitDefaultThemeParams, right: KitDefaultThemeParamsDef): KitDefaultThemeParams {
     return mergeDeepAll([{}, left, right]);
   }

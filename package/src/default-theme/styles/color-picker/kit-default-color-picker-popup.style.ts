@@ -16,11 +16,12 @@ export class KitDefaultColorPickerPopupStyle implements KitComponentStyle {
 
   popup(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.modals;
     return {
       padding: [params.grid.v, params.grid.h],
       boxShadow: params.shadows.deep,
       borderRadius: params.borders.radius,
-      ...applyColorSet(params.moduleColorPicker.colors.popup, params.borders.width),
+      ...applyColorSet(colors.modal, params.borders.width),
     };
   }
 }

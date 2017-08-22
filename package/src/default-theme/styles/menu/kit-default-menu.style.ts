@@ -12,17 +12,18 @@ export class KitDefaultMenuStyle implements KitComponentStyle {
 
   host(state: {direction: 'horizontal' | 'vertical'}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.menus;
     return {
       display: 'flex',
       justifyContent: 'flex-start',
       ...defPick(state.direction, {
         horizontal: {
           flexDirection: 'row',
-          ...applyColorSet(params.moduleMenu.colors.menu, params.borders.width, BORDER_BOTTOM),
+          ...applyColorSet(colors.menu, params.borders.width, BORDER_BOTTOM),
         },
         vertical: {
           flexDirection: 'column',
-          ...applyColorSet(params.moduleMenu.colors.menu, params.borders.width, BORDER_RIGHT),
+          ...applyColorSet(colors.menu, params.borders.width, BORDER_RIGHT),
         },
       }, 'horizontal'),
     };

@@ -48,10 +48,11 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   view(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs;
     return defMerge([
       {
-        background: params.moduleToggle.colors.base.background,
-        border: [params.borders.width, 'solid', params.moduleToggle.colors.base.border],
+        background: colors.base.background,
+        border: [params.borders.width, 'solid', colors.base.border],
         position: 'relative',
         display: 'inline-block',
         boxSizing: 'border-box',
@@ -71,7 +72,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
             left: 1,
             top: 1,
             borderRadius: 18,
-            background: params.moduleToggle.colors.base.toggle,
+            background: colors.base.border,
             content: '" "',
             cursor: 'pointer',
             transition: 'all .3s,width .3s',
@@ -79,13 +80,13 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
         },
       },
       defToggle(state.checked, {
-        background: params.moduleToggle.colors.checked.background,
-        borderColor: params.moduleToggle.colors.checked.border,
+        background: colors.checked.background,
+        borderColor: colors.checked.border,
         $nest: {
           '&:after': {
             left: '100%',
             marginLeft: -19,
-            background: params.moduleToggle.colors.checked.toggle,
+            background: colors.checked.border,
           },
         },
       }),
@@ -94,8 +95,9 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   viewInner(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs;
     return {
-      color: params.moduleToggle.colors.base.background,
+      color: colors.base.background,
       fontSize: '12px',
       display: 'block',
       marginLeft: 24,
