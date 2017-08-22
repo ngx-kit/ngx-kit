@@ -4,7 +4,6 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { applyColorSet } from '../../utils/apply-color-set';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultDatePickerStyle implements KitComponentStyle {
@@ -13,6 +12,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 
   date(state: {outside: boolean, active: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.swatches.default;
     return defMerge([
       {
         boxSizing: 'border-box',
@@ -24,23 +24,19 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         borderRadius: params.borders.radius,
         padding: params.moduleDatePicker.datePadding,
       },
-      ...applyColorSet(params.moduleDatePicker.colors.date.base),
       defToggle(state.outside, {
-        ...applyColorSet(params.moduleDatePicker.colors.date.outside),
+        opacity: .6,
       }),
       defToggle(state.active, {
         boxShadow: params.shadows.element,
         cursor: 'default',
         fontWeight: 600,
-        ...applyColorSet(params.moduleDatePicker.colors.date.active),
         $nest: {
           '&:hover': {},
         },
       }, {
         $nest: {
-          '&:hover': {
-            ...applyColorSet(params.moduleDatePicker.colors.date.hover),
-          },
+          '&:hover': {},
         },
       }),
     ]);
@@ -79,9 +75,10 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.modals;
     return {
       display: 'block',
-      ...applyTypoColorSet(params.moduleDatePicker.colors.picker),
+      ...applyColorSet(colors.modal),
     };
   }
 
@@ -109,8 +106,6 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 
   weekday(): StyleDef {
     const params = this.theme.params;
-    return {
-      ...applyTypoColorSet(params.moduleDatePicker.colors.weekday),
-    };
+    return {};
   }
 }

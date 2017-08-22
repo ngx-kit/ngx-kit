@@ -21,6 +21,7 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
     readonly: boolean;
   }): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
       transition: 'background 0.2s',
@@ -28,22 +29,22 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
       padding: [params.grid.v / 2, params.grid.h],
       boxSizing: 'border-box',
       ...defToggle(state.disabled, {
-        ...applyColorSet(params.moduleTextarea.colors.disabled, params.borders.width),
+        ...applyColorSet(colors.disabled, params.borders.width),
       }, {
-        ...applyColorSet(params.moduleTextarea.colors.base, params.borders.width),
+        ...applyColorSet(colors.base, params.borders.width),
         $nest: {
           '&:hover': {
             outline: 'none',
-            ...applyColorSet(params.moduleTextarea.colors.hover, params.borders.width),
+            ...applyColorSet(colors.hover, params.borders.width),
           },
           '&:focus': {
             transition: '0.2s',
             outline: 'none',
-            ...applyColorSet(params.moduleTextarea.colors.focus, params.borders.width),
+            ...applyColorSet(colors.focus, params.borders.width),
           },
         },
         ...defToggle(state.readonly, {
-          ...applyColorSet(params.moduleTextarea.colors.readonly, params.borders.width),
+          ...applyColorSet(colors.readonly, params.borders.width),
         }),
       }),
     };

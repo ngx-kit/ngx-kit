@@ -3,7 +3,7 @@ import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { KitDefaultThemeParamsAlertColor } from '../../meta/params';
+import { Swatch } from '../../meta/params';
 import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
@@ -15,11 +15,11 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     color: string;
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getModuleColor('Alert', state.color) as KitDefaultThemeParamsAlertColor;
+    const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       background: 'transparent',
       border: 0,
-      color: color.closeText,
+      color: color.base,
       cursor: 'pointer',
       float: 'right',
       margin: 0,
@@ -32,13 +32,17 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     closed: boolean,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getModuleColor('Alert', state.color) as KitDefaultThemeParamsAlertColor;
+    const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       borderRadius: params.borders.radius,
       display: 'block',
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
-      ...applyColorSet(color, params.borders.width),
+      ...applyColorSet({
+        background: color.light,
+        border: color.base,
+        text: color.lightText,
+      }, params.borders.width),
       ...defToggle(state.closed, {
         display: 'none',
       }),

@@ -3,7 +3,7 @@ import { defMerge, defPick, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { KitDefaultThemeParamsButtonColor } from '../../meta/params';
+import { Swatch } from '../../meta/params';
 import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     link: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getModuleColor('Button', state.color) as KitDefaultThemeParamsButtonColor;
+    const color: Swatch = params.colors.swatches[state.color || 'default'];
     const styles: StyleDef = defMerge([
       {
         position: 'relative',
@@ -43,16 +43,32 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
       },
       defToggle(state.disabled, {
         cursor: 'default',
-        ...applyColorSet(color.disabled, params.borders.width),
+        ...applyColorSet({
+          background: color.light,
+          border: color.light,
+          text: color.disabledText,
+        }, params.borders.width),
       }, {
         cursor: 'pointer',
-        ...applyColorSet(color.base, params.borders.width),
+        ...applyColorSet({
+          background: color.base,
+          border: color.base,
+          text: color.baseText,
+        }, params.borders.width),
         $nest: {
           '&:hover': {
-            ...applyColorSet(color.hover, params.borders.width),
+            ...applyColorSet({
+              background: color.hover,
+              border: color.hover,
+              text: color.baseText,
+            }, params.borders.width),
           },
           '&:active': {
-            ...applyColorSet(color.active, params.borders.width),
+            ...applyColorSet({
+              background: color.active,
+              border: color.active,
+              text: color.baseText,
+            }, params.borders.width),
           },
         },
       }),

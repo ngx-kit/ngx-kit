@@ -3,6 +3,7 @@ import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { ColorsSet } from '../../meta/params';
 
 @Injectable()
 export class KitDefaultRadioStyle implements KitComponentStyle {
@@ -55,6 +56,7 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
     disabled: boolean;
   }): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs;
     return {
       position: 'relative',
       top: 0,
@@ -82,38 +84,38 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
             },
             defToggle(state.disabled,
                 // checked && disabled
-                applyChecked(params.moduleRadio.colors.checked.base, params.borders.width),
+                applyChecked(colors.disabled, params.borders.width),
                 {
                   // checked
-                  ...applyChecked(params.moduleRadio.colors.checked.base, params.borders.width),
+                  ...applyChecked(colors.checked, params.borders.width),
                   // checked && hover
-                  ...defToggle(state.hover, applyChecked(params.moduleRadio.colors.checked.hover, params.borders.width)),
+                  ...defToggle(state.hover, applyChecked(colors.hover, params.borders.width)),
                   // checked && focus
-                  ...defToggle(state.focus, applyChecked(params.moduleRadio.colors.checked.focus, params.borders.width)),
+                  ...defToggle(state.focus, applyChecked(colors.focus, params.borders.width)),
                 }),
           ]),
           defToggle(state.disabled,
               // non-checked && disabled
-              applyNonChecked(params.moduleRadio.colors.nonChecked.disabled, params.borders.width),
+              applyNonChecked(colors.disabled, params.borders.width),
               {
                 // non-checked
-                ...applyNonChecked(params.moduleRadio.colors.nonChecked.base, params.borders.width),
+                ...applyNonChecked(colors.base, params.borders.width),
                 /// non-checked && hover
-                ...defToggle(state.hover, applyNonChecked(params.moduleRadio.colors.nonChecked.hover, params.borders.width)),
+                ...defToggle(state.hover, applyNonChecked(colors.hover, params.borders.width)),
                 // non-checked && focus
-                ...defToggle(state.focus, applyNonChecked(params.moduleRadio.colors.nonChecked.focus, params.borders.width)),
+                ...defToggle(state.focus, applyNonChecked(colors.focus, params.borders.width)),
               })),
     }
   }
 }
 
-function applyChecked(set: {border: string, background: string, dot: string}, borderWidth: number) {
+function applyChecked(set: ColorsSet, borderWidth: number) {
   return {
     background: set.background,
     border: [borderWidth, 'solid', set.border],
     $nest: {
       '&::after': {
-        backgroundColor: set.dot,
+        backgroundColor: set.border,
       },
     },
   };

@@ -34,7 +34,9 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
       <tbody>
       <tr *ngFor="let line of datesGrid">
         <td *ngFor="let item of line">
-          <button [styler]="['date', {active: item.isActive, outside: item.isOutside}]"
+          <button [kitButton]
+                  [color]="item.isActive ? 'primary' : 'default'"
+                  [styler]="['date', {active: item.isActive, outside: item.isOutside}]"
                   (mouseup)="date = item.date">
             {{ item.date.date() }}
           </button>
@@ -51,9 +53,9 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
 export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   datesGrid: {date: any, isActive: boolean, isOutside: boolean}[][] = [];
 
-  @Input() kitDatePicker: any;
-
   @Input() headButtonSize = 'xs';
+
+  @Input() kitDatePicker: any;
 
   weekdays: any;
 

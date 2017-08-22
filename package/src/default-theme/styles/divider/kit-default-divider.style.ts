@@ -21,10 +21,10 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
 
   line(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.typo;
     return {
       flexGrow: 1,
-      borderTop: [params.borders.width, 'solid', params.moduleDivider.colors.topLine],
-      borderBottom: [params.borders.width, 'solid', params.moduleDivider.colors.bottomLine],
+      borderBottom: [params.borders.width, 'solid', colors.text],
     };
   }
 

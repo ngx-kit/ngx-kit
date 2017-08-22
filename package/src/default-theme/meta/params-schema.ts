@@ -23,141 +23,31 @@ export const paramsSchema = {
     radius: 'number',
     width: 'number',
   },
-  shadows: {
-    element: 'string',
-    deep: 'string',
-    overlay: 'string',
-  },
-  transitions: {
-    'default': 'string',
-  },
-  moduleAccordion: {
-    colors: {
-      border: 'color',
-      title: {
-        background: 'color',
-        text: 'color',
-      },
-      content: {
-        background: 'color',
-        text: 'color',
-      },
-    },
-  },
-  moduleAlert: {
-    titleFontSize: 'string',
-    colors: extract(defaultColors, {
-      ...basicColorSet,
-      closeText: 'color',
-      titleText: 'color',
-    }),
-  },
-  moduleAutoComplete: {
-    colors: {
-      resultItem: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-      },
-    },
-  },
-  moduleBadge: {
-    colors: extract(defaultColors, basicColorSet),
-  },
-  moduleButton: {
-    colors: extract(defaultColors, {
-      base: basicColorSet,
-      hover: basicColorSet,
-      active: basicColorSet,
-      disabled: basicColorSet,
-    }),
-  },
-  moduleCheckbox: {
-    colors: {
-      nonChecked: extract(['base', 'hover', 'focus', 'disabled', 'readonly'], {
-        background: 'color',
-        border: 'color',
-      }),
-      checked: extract(['base', 'hover', 'focus', 'disabled', 'readonly'], {
-        background: 'color',
-        border: 'color',
-        check: 'color',
-      }),
-    },
-  },
-  moduleColorPicker: {
-    colors: {
-      cursor: {
-        background: 'color',
-        border: 'color',
-      },
-      popup: basicColorSet,
-    },
-    cursorSize: 'number',
-    sliderHeight: 'number',
-  },
-  moduleDatePicker: {
-    colors: {
-      picker: typoColorSet,
-      weekday: typoColorSet,
-      date: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-        outside: basicColorSet,
-      },
-    },
-    dateCellPadding: 'number',
-    datePadding: 'number',
-  },
-  moduleDivider: {
-    colors: {
-      topLine: 'color',
-      bottomLine: 'color',
-    },
-  },
-  moduleDropdownMenu: {
-    colors: {
-      menu: {
-        border: 'color',
-      },
-      item: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-      },
-    },
-  },
-  moduleForm: {
-    colors: {
-      error: {
-        border: 'color',
-        text: 'color',
-      },
-    },
-  },
-  moduleInput: {
-    colors: {
+  colors: {
+    inputs: {
       base: basicColorSet,
       hover: basicColorSet,
       focus: basicColorSet,
-      disabled: basicColorSet,
       readonly: basicColorSet,
+      disabled: basicColorSet,
+      checked: basicColorSet,
+      options: {
+        base: basicColorSet,
+        hover: basicColorSet,
+        selected: basicColorSet,
+        disabled: basicColorSet,
+      },
     },
-  },
-  moduleLoadingBar: {
-    colors: {
-      background: 'color',
+    loaders: {
+      base: 'color',
       shadow: 'color',
     },
-  },
-  moduleMenu: {
-    titleFontSize: 'string',
-    colors: {
+    menus: {
       menu: basicColorSet,
       item: {
         base: basicColorSet,
         hover: basicColorSet,
+        active: basicColorSet,
         disabled: basicColorSet,
       },
       groupTitle: typoColorSet,
@@ -169,103 +59,71 @@ export const paramsSchema = {
       subItem: {
         base: basicColorSet,
         hover: basicColorSet,
+        active: basicColorSet,
         disabled: basicColorSet,
       },
     },
-  },
-  moduleModal: {
-    colors: {
-      header: basicColorSet,
-      body: typoColorSet,
-      footer: basicColorSet,
+    modals: {
+      modal: basicColorSet,
     },
-  },
-  moduleNotification: {
-    colors: extract(defaultColors, {
-      background: 'color',
+    panels: {
       border: 'color',
-      titleText: 'color',
-      messageText: 'color',
-    }),
-  },
-  moduleRadio: {
-    colors: {
-      nonChecked: extract(['base', 'hover', 'focus', 'disabled'], {
-        background: 'color',
-        border: 'color',
-      }),
-      checked: extract(['base', 'hover', 'focus', 'disabled'], {
-        background: 'color',
-        border: 'color',
-        dot: 'color',
+      content: typoColorSet,
+      title: {
+        base: typoColorSet,
+        hover: typoColorSet,
+        active: typoColorSet,
+      },
+    },
+    swatches: {
+      ...extract(defaultColors, {
+        active: 'color',
+        base: 'color',
+        baseText: 'color',
+        disabledText: 'color',
+        hover: 'color',
+        light: 'color',
+        lightText: 'color',
+        overlay: 'color',
+        overlayText: 'color',
       }),
     },
-  },
-  moduleSelect: {
-    colors: {
-      select: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        focus: basicColorSet,
-        disabled: basicColorSet,
+    typo: {
+      text: typoColorSet,
+      link: {
+        base: typoColorSet,
+        hover: typoColorSet,
+        focus: typoColorSet,
+        visited: typoColorSet,
       },
-      option: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        selected: basicColorSet,
-        disabled: basicColorSet,
-      },
-      options: basicColorSet,
     },
+  },
+  shadows: {
+    element: 'string',
+    deep: 'string',
+    overlay: 'string',
+  },
+  transitions: {
+    'default': 'string',
+  },
+  moduleAlert: {
+    titleFontSize: 'string',
+  },
+  moduleColorPicker: {
+    cursorSize: 'number',
+    sliderHeight: 'number',
+  },
+  moduleDatePicker: {
+    dateCellPadding: 'number',
+    datePadding: 'number',
+  },
+  moduleMenu: {
+    titleFontSize: 'string',
   },
   moduleSpinner: {
     duration: 'string',
     size: 'number',
     type: 'string',
-    colors: {
-      'default': 'color',
-    },
-  },
-  moduleTabs: {
-    colors: {
-      nav: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-      },
-      panel: basicColorSet,
-    },
-  },
-  moduleTag: {
-    colors: extract(defaultColors, basicColorSet),
-  },
-  moduleTextarea: {
-    colors: {
-      base: basicColorSet,
-      hover: basicColorSet,
-      focus: basicColorSet,
-      disabled: basicColorSet,
-      readonly: basicColorSet,
-    },
-  },
-  moduleToggle: {
-    colors: {
-      base: {
-        background: 'color',
-        border: 'color',
-        toggle: 'color',
-      },
-      checked: {
-        background: 'color',
-        border: 'color',
-        toggle: 'color',
-      },
-    },
-  },
-  moduleTooltip: {
-    colors: {
-      tooltip: basicColorSet,
-    },
   },
   moduleTypo: {
     fontSize: 'string',
@@ -276,15 +134,6 @@ export const paramsSchema = {
       h4: 'string',
       h5: 'string',
       h6: 'string',
-    },
-    colors: {
-      text: typoColorSet,
-      link: {
-        base: typoColorSet,
-        hover: typoColorSet,
-        focus: typoColorSet,
-        visited: typoColorSet,
-      },
     },
   },
 };

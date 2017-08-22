@@ -3,7 +3,6 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultModalHeaderStyle implements KitComponentStyle {
@@ -12,6 +11,7 @@ export class KitDefaultModalHeaderStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.modals;
     return {
       display: 'block',
       padding: [params.grid.v * 2, params.grid.h * 4],
@@ -19,8 +19,7 @@ export class KitDefaultModalHeaderStyle implements KitComponentStyle {
       fontWeight: 600,
       borderTopLeftRadius: params.borders.radius * 2,
       borderTopRightRadius: params.borders.radius * 2,
-      borderBottom: [params.borders.width, 'solid', params.moduleModal.colors.footer.border],
-      ...applyTypoColorSet(params.moduleModal.colors.header),
+      borderBottom: [params.borders.width, 'solid', colors.modal.border],
     };
   }
 }

@@ -11,10 +11,11 @@ export class KitDefaultFormGroupStyle implements KitComponentStyle {
 
   host(state: {error: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.swatches.error;
     return {
       display: 'block',
       ...defToggle(state.error, {
-        border: [params.borders.width, 'solid', params.moduleForm.colors.error.border],
+        border: [params.borders.width, 'solid', colors.base],
       }),
     };
   }

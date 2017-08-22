@@ -3,6 +3,7 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { Swatch } from '../../meta/params';
 import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
@@ -14,7 +15,7 @@ export class KitDefaultTagStyle implements KitComponentStyle {
     color: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = this.theme.getModuleColor('Tag', state.color);
+    const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       display: 'inline-block',
       lineHeight: 20,
@@ -27,7 +28,11 @@ export class KitDefaultTagStyle implements KitComponentStyle {
       marginRight: 8,
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-      ...applyColorSet(color, params.borders.width),
+      ...applyColorSet({
+        background: color.base,
+        border: color.base,
+        text: color.baseText,
+      }, params.borders.width),
     };
   }
 }

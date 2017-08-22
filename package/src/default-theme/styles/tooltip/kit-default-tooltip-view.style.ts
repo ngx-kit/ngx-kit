@@ -16,10 +16,15 @@ export class KitDefaultTooltipViewStyle implements KitComponentStyle {
 
   tooltip(): StyleDef {
     const params = this.theme.params;
+    const color = params.colors.swatches.default;
     return {
       borderRadius: params.borders.radius,
       padding: [params.grid.v / 2, params.grid.h],
-      ...applyColorSet(params.moduleTooltip.colors.tooltip),
+      ...applyColorSet({
+        background: color.overlay,
+        border: color.overlay,
+        text: color.overlayText,
+      }),
     };
   }
 }

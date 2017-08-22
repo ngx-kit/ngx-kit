@@ -3,6 +3,7 @@ import { defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
+import { applyColorSet } from '../../utils/apply-color-set';
 import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
@@ -26,36 +27,38 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
 
   panel(): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.panels;
     return {
-      border: [params.borders.width, 'solid', params.moduleTabs.colors.panel.border],
       paddingTop: this.theme.params.grid.h * 2,
       paddingBottom: this.theme.params.grid.h * 2,
       paddingLeft: this.theme.params.grid.v * 2,
-      ...applyTypoColorSet(params.moduleTabs.colors.panel),
+      ...applyColorSet({...colors.content, border: colors.border}, params.borders.width),
     };
   }
 
   tab(state: {active: boolean}): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.panels;
     return {
       cursor: 'pointer',
       userSelect: 'none',
       padding: [params.grid.v, params.grid.h],
-      border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.base.border],
       borderTopLeftRadius: params.borders.radius,
       borderTopRightRadius: params.borders.radius,
-      borderBottom: 0,
-      ...applyTypoColorSet(params.moduleTabs.colors.nav.base),
+      borderLeft: [params.borders.width, 'solid', colors.border],
+      borderTop: [params.borders.width, 'solid', colors.border],
+      ...applyTypoColorSet(colors.title.base),
       $nest: {
         '&:hover': {
-          background: params.moduleTabs.colors.nav.hover.background,
-          border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.hover.border],
+          ...applyTypoColorSet(colors.title.hover),
           borderBottom: 0,
+        },
+        '&:last-child': {
+          borderRight: [params.borders.width, 'solid', colors.border],
         },
       },
       ...defToggle(state.active, {
-        background: params.moduleTabs.colors.nav.active.background,
-        border: [params.borders.width, 'solid', params.moduleTabs.colors.nav.active.border],
+        ...applyTypoColorSet(colors.title.active),
         borderBottom: 0,
         marginBottom: -params.borders.width,
       }),

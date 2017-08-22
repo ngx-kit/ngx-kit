@@ -19,6 +19,7 @@ export class KitDefaultInputStyle implements KitComponentStyle {
     readonly: boolean;
   }): StyleDef {
     const params = this.theme.params;
+    const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
       boxSizing: 'border-box',
@@ -26,22 +27,22 @@ export class KitDefaultInputStyle implements KitComponentStyle {
       width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       ...defToggle(state.disabled, {
-        ...applyColorSet(params.moduleInput.colors.disabled, params.borders.width),
+        ...applyColorSet(colors.disabled, params.borders.width),
       }, {
-        ...applyColorSet(params.moduleInput.colors.base, params.borders.width),
+        ...applyColorSet(colors.base, params.borders.width),
         $nest: {
           '&:hover': {
             outline: 'none',
-            ...applyColorSet(params.moduleInput.colors.hover, params.borders.width),
+            ...applyColorSet(colors.hover, params.borders.width),
           },
           '&:focus': {
             transition: '0.2s',
             outline: 'none',
-            ...applyColorSet(params.moduleInput.colors.focus, params.borders.width),
+            ...applyColorSet(colors.focus, params.borders.width),
           },
         },
         ...defToggle(state.readonly, {
-          ...applyColorSet(params.moduleInput.colors.readonly, params.borders.width),
+          ...applyColorSet(colors.readonly, params.borders.width),
         }),
       }),
     };
