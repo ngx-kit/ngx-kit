@@ -24,8 +24,6 @@ export class ThemeEditorComponent implements OnInit {
 
   @ViewChild('codeModal') codeModal: KitModalComponent;
 
-  colorsModel: string[];
-
   form: FormGroup;
 
   overviewBackgroundColor = '#fff';
@@ -48,27 +46,6 @@ export class ThemeEditorComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeColor(p: [string, string]) {
-    if (p[1]) {
-      if (p[0]) {
-        // update colors set
-        this.colorsModel = [...this.colorsModel.map(c => c === p[0] ? p[1] : c)];
-        // update theme
-        this.changeThemeColor(this.themeModel, p[0], p[1]);
-      } else {
-        // add color to set
-        this.colorsModel = [...this.colorsModel, p[1]];
-      }
-    }
-  }
-
-  deleteColor(color: string) {
-    if (color !== '') {
-      this.colorsModel = this.colorsModel.filter(c => c !== color);
-      console.log('del cm', this.colorsModel);
-      this.changeThemeColor(this.themeModel, color, '');
-    }
-  }
 
   getCode() {
     this.code = JSON.stringify({
@@ -95,16 +72,6 @@ export class ThemeEditorComponent implements OnInit {
     this.editor.params = this.themeModel;
   }
 
-  private changeThemeColor(model: any, prev: string, curr: string) {
-    Object.keys(model).forEach(key => {
-      if (isObject(model[key])) {
-        this.changeThemeColor(model[key], prev, curr);
-      } else if (model[key] === prev) {
-        model[key] = curr;
-      }
-    });
-  }
-
   private convertSchema(schema) {
     return Object.keys(schema).map(key => {
       return isString(schema[key])
@@ -121,23 +88,7 @@ export class ThemeEditorComponent implements OnInit {
     });
   }
 
-  private extractColors(themeModel: any, inColors = false) {
-    return Object.keys(themeModel)
-        // collect colors
-        .reduce((colors: string[], key: string) => {
-          return [
-            ...colors,
-            ...isObject(themeModel[key])
-                ? this.extractColors(themeModel[key], inColors || key === 'colors')
-                : [...inColors ? themeModel[key] : []],
-          ];
-        }, [])
-        // get uniq
-        .filter((item, pos, self) => self.indexOf(item) === pos);
-  }
-
   private initThemeModel(params: KitDefaultThemeParams) {
     this.themeModel = this.themeService.mergeParams(new KitDefaultThemeDefaultParams(), params);
-    this.colorsModel = this.extractColors(this.themeModel).sort((x, y) => x > y ? 1 : -1);
   }
 }

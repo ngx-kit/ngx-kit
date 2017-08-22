@@ -24,4 +24,18 @@ export class BlockStyle implements ComponentStyle {
       margin: [4, 0],
     }
   }
+
+  box(): StyleDef {
+    return {
+      cursor: 'pointer',
+      display: 'block',
+      $nest: {
+        '& input': {
+          background: 'transparent',
+          color: '#fff',
+          textShadow: '2px 0 1px #555',
+        },
+      },
+    };
+  }
 }
