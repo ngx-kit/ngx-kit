@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defPick, StyleDef } from '@ngx-kit/styler';
+import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitRadioGroupDirection } from '../../../radio/meta';
@@ -11,14 +11,6 @@ export class KitDefaultRadioGroupStyle implements KitComponentStyle {
   }
 
   host(state: {direction: KitRadioGroupDirection}): StyleDef {
-    return {
-      ...defPick(state.direction, {
-        horizontal: {},
-        vertical: {
-          display: 'flex',
-          flexDirection: 'column',
-        },
-      }),
-    };
+    return {};
   }
 }

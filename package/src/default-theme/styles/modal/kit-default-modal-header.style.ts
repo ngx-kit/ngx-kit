@@ -13,7 +13,6 @@ export class KitDefaultModalHeaderStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.modals;
     return {
-      display: 'block',
       padding: [params.grid.v * 2, params.grid.h * 4],
       fontSize: '1.3rem',
       fontWeight: 600,

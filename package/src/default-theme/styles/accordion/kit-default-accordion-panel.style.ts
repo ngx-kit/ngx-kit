@@ -23,7 +23,6 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
     const params = this.theme.params;
     return {
       borderBottomWidth: 0,
-      display: 'block',
       $nest: {
         '&:first-child': {
           borderTopLeftRadius: params.borders.radius,
@@ -42,11 +41,9 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.panels;
     return {
-      cursor: 'pointer',
       height: params.grid.v * 4,
       lineHeight: params.grid.h * 4,
       paddingLeft: params.grid.v * 3,
-      userSelect: 'none',
       ...applyColorSet({...colors.title.base, border: colors.border}, params.borders.width, BORDER_TOP),
       ...defToggle(state.active, {
         ...applyColorSet({...colors.title.active, border: colors.border}, params.borders.width, BORDER_TOP),

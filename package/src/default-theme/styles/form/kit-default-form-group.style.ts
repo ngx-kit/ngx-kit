@@ -13,7 +13,6 @@ export class KitDefaultFormGroupStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.swatches.error;
     return {
-      display: 'block',
       ...defToggle(state.error, {
         border: [params.borders.width, 'solid', colors.base],
       }),

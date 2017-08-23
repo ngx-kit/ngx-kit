@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -13,11 +13,7 @@ export class KitDefaultFormErrorStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.swatches.error;
     return {
-      display: 'none',
       color: colors.base,
-      ...defToggle(state.visible, {
-        display: 'block',
-      }),
     };
   }
 }

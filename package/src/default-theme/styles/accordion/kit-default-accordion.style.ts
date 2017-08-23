@@ -13,7 +13,6 @@ export class KitDefaultAccordionStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.panels;
     return {
-      display: 'block',
       border: [params.borders.width, 'solid', colors.border],
       borderTop: 0,
     };

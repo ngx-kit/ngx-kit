@@ -13,7 +13,6 @@ export class KitDefaultModalFooterStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.modals;
     return {
-      display: 'block',
       borderBottomRightRadius: params.borders.radius * 2,
       borderBottomLeftRadius: params.borders.radius * 2,
       padding: [params.grid.v * 2, params.grid.h * 4],

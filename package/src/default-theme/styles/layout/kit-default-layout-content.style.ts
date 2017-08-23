@@ -10,10 +10,6 @@ export class KitDefaultLayoutContentStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {
-      display: 'flex',
-      flexGrow: 1,
-      overflow: 'auto',
-    };
+    return {};
   }
 }

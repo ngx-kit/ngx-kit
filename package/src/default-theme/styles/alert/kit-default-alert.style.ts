@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -20,8 +20,6 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
       background: 'transparent',
       border: 0,
       color: color.base,
-      cursor: 'pointer',
-      float: 'right',
       margin: 0,
       padding: 0,
     };
@@ -35,7 +33,6 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       borderRadius: params.borders.radius,
-      display: 'block',
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
       ...applyColorSet({
@@ -43,9 +40,6 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
         border: color.base,
         text: color.lightText,
       }, params.borders.width),
-      ...defToggle(state.closed, {
-        display: 'none',
-      }),
     };
   }
 }

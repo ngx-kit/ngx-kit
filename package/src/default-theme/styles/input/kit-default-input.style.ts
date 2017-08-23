@@ -22,9 +22,7 @@ export class KitDefaultInputStyle implements KitComponentStyle {
     const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
-      boxSizing: 'border-box',
       transition: 'background 0.2s',
-      width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       ...defToggle(state.disabled, {
         ...applyColorSet(colors.disabled, params.borders.width),

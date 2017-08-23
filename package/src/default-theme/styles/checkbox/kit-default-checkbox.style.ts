@@ -11,15 +11,7 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
   }
 
   checkbox(): StyleDef {
-    return {
-      whiteSpace: 'nowrap',
-      cursor: 'pointer',
-      outline: 'none',
-      display: 'inline-block',
-      lineHeight: 1,
-      position: 'relative',
-      verticalAlign: 'text-bottom',
-    };
+    return {};
   }
 
   host(): StyleDef {
@@ -27,27 +19,11 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
   }
 
   input(): StyleDef {
-    return {
-      position: 'absolute',
-      left: 0,
-      zIndex: 1,
-      cursor: 'pointer',
-      opacity: 0,
-      filter: 'alpha(opacity=0)',
-      top: 0,
-      bottom: 0,
-      right: 0,
-      width: '100%',
-      height: '100%',
-      margin: 0,
-    };
+    return {};
   }
 
   label(): StyleDef {
-    return {
-      cursor: 'pointer',
-      userSelect: 'none',
-    };
+    return {};
   }
 
   view(state: {
@@ -60,12 +36,6 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.inputs;
     return {
-      position: 'relative',
-      top: 0,
-      left: 0,
-      display: 'block',
-      width: 14,
-      height: 14,
       borderRadius: this.theme.params.borders.radius,
       transition: this.theme.params.transitions.default,
       ...defToggle(state.checked,
@@ -73,19 +43,6 @@ export class KitDefaultCheckboxStyle implements KitComponentStyle {
             {
               $nest: {
                 '&::after': {
-                  transform: 'rotate(45deg) scale(1)',
-                  position: 'absolute',
-                  left: 4,
-                  top: 1,
-                  display: 'table',
-                  width: 5,
-                  height: 8,
-                  borderTopWidth: 0,
-                  borderRightWidth: 2,
-                  borderBottomWidth: 2,
-                  borderLeftWidth: 0,
-                  borderStyle: 'solid',
-                  content: '" "',
                   transition: 'all .2s cubic-bezier(.12,.4,.29,1.46) .1s',
                 },
               },

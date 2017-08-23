@@ -21,43 +21,6 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       borderRadius: '1rem',
-      fontWeight: 'normal',
-      minWidth: '1px',
-      textAlign: 'center',
-      lineHeight: '1',
-      ...defPick(state.position, {
-        inline: {
-          display: 'inline-block',
-        },
-        'top-right': {
-          display: 'block',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          transform: 'translate(50%, -50%)',
-        },
-        'bottom-right': {
-          display: 'block',
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          transform: 'translate(50%, 50%)',
-        },
-        'bottom-left': {
-          display: 'block',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          transform: 'translate(-50%, 50%)',
-        },
-        'top-left': {
-          display: 'block',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          transform: 'translate(-50%, -50%)',
-        },
-      }, 'inline'),
       ...applyColorSet({
         background: color.base,
         border: color.base,

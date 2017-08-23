@@ -12,9 +12,6 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
   host(): StyleDef {
     const params = this.theme.params;
     return {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
       padding: [params.grid.h * 2, 0],
     };
   }
@@ -23,7 +20,6 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.typo;
     return {
-      flexGrow: 1,
       borderBottom: [params.borders.width, 'solid', colors.text],
     };
   }
@@ -32,11 +28,6 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
     const params = this.theme.params;
     return {
       padding: [0, params.grid.h * 2],
-      $nest: {
-        '&:empty': {
-          display: 'none',
-        },
-      },
     };
   }
 }

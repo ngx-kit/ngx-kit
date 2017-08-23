@@ -10,8 +10,6 @@ export class KitDefaultLayoutFooterStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {
-      flex: '0 0 auto',
-    };
+    return {};
   }
 }

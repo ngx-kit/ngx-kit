@@ -19,7 +19,6 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     return defMerge([
       {
         padding: [params.grid.v / 2, params.grid.h],
-        cursor: 'default',
         ...applyTypoColorSet(colors.base),
         $nest: {
           '&:not(:last-child)': {
@@ -54,9 +53,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
-      boxSizing: 'border-box',
       transition: 'background 0.2s',
-      width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       ...applyColorSet(colors.base, params.borders.width),
       ...defToggle(state.focus, {
@@ -85,9 +82,7 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
-      boxSizing: 'border-box',
       transition: 'background 0.2s',
-      width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
       ...defToggle(state.disabled, {
         ...applyColorSet(colors.disabled, params.borders.width),
@@ -113,7 +108,6 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     const colors = params.colors.inputs.options;
     return {
       borderRadius: params.borders.radius,
-      cursor: 'pointer',
       marginBottom: params.grid.v / 2,
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,
       transition: 'background 0.2s',

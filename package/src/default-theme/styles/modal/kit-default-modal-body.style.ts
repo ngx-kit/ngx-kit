@@ -12,7 +12,6 @@ export class KitDefaultModalBodyStyle implements KitComponentStyle {
   host(): StyleDef {
     const params = this.theme.params;
     return {
-      display: 'block',
       padding: [params.grid.v * 2, params.grid.h * 4, params.grid.v * 4],
     };
   }
