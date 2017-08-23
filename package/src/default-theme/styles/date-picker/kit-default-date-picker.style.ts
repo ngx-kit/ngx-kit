@@ -15,12 +15,8 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
     const colors = params.colors.swatches.default;
     return defMerge([
       {
-        boxSizing: 'border-box',
-        cursor: 'pointer',
-        flexShrink: 0,
         textAlign: 'center',
         transition: 'all .2s',
-        width: '100%',
         borderRadius: params.borders.radius,
         padding: params.moduleDatePicker.datePadding,
       },
@@ -29,7 +25,6 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
       }),
       defToggle(state.active, {
         boxShadow: params.shadows.element,
-        cursor: 'default',
         fontWeight: 600,
         $nest: {
           '&:hover': {},
@@ -43,18 +38,12 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   dates(): StyleDef {
-    return {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    };
+    return {};
   }
 
   head(): StyleDef {
     const params = this.theme.params;
     return {
-      display: 'flex',
-      flexDirection: 'row',
       padding: [params.grid.v, params.grid.h],
     };
   }
@@ -77,7 +66,6 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.modals;
     return {
-      display: 'block',
       ...applyColorSet(colors.modal),
     };
   }
@@ -105,7 +93,6 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
   }
 
   weekday(): StyleDef {
-    const params = this.theme.params;
     return {};
   }
 }

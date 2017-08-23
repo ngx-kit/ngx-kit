@@ -10,8 +10,6 @@ export class KitDefaultLayoutHeaderStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {
-      flex: '0 0 auto',
-    };
+    return {};
   }
 }

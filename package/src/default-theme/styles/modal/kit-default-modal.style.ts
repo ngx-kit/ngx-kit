@@ -19,7 +19,6 @@ export class KitDefaultModalStyle implements KitComponentStyle {
     const colors = params.colors.modals;
     return {
       boxShadow: params.shadows.deep,
-      zIndex: 99999,
       ...applyColorSet(colors.modal),
     };
   }

@@ -16,19 +16,12 @@ export class KitDefaultLoadingBarStyle implements KitComponentStyle {
       background: colors.base,
       boxShadow: `-7px 2px 11px 0 ${colors.shadow}`,
       height: 4,
-      width: '100%',
     }
   }
 
   host(): StyleDef {
     return {
       height: 15,
-      left: 0,
-      position: 'absolute',
-      right: 0,
-      top: 0,
-      zIndex: 1,
-      overflow: 'hidden',
     };
   }
 }

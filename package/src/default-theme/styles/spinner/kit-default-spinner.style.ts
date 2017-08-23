@@ -11,9 +11,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {
-      display: 'inline-block',
-    };
+    return {};
   }
 
   spinner(state: {
@@ -28,13 +26,8 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
     const border = Math.round(size / 5);
     const type = state.type || params.moduleSpinner.type;
     return {
-      display: 'inline-block',
       width: size,
       height: size,
-      color: 'inherit',
-      verticalAlign: 'middle',
-      pointerEvents: 'none',
-      boxSizing: 'border-box',
       ...defPick(type, {
         'spin-1': () => ({
           border: [border, 'solid', 'transparent'],

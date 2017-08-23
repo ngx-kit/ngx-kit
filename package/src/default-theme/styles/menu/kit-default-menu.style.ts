@@ -14,15 +14,11 @@ export class KitDefaultMenuStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.menus;
     return {
-      display: 'flex',
-      justifyContent: 'flex-start',
       ...defPick(state.direction, {
         horizontal: {
-          flexDirection: 'row',
           ...applyColorSet(colors.menu, params.borders.width, BORDER_BOTTOM),
         },
         vertical: {
-          flexDirection: 'column',
           ...applyColorSet(colors.menu, params.borders.width, BORDER_RIGHT),
         },
       }, 'horizontal'),

@@ -117,190 +117,237 @@ export class KitDefaultThemeModule {
         {
           provide: kitComponentAccordion,
           useClass: KitDefaultAccordionStyle,
+          multi: true,
         },
         {
           provide: kitComponentAccordionPanel,
           useClass: KitDefaultAccordionPanelStyle,
+          multi: true,
         },
         {
           provide: kitComponentAlert,
           useClass: KitDefaultAlertStyle,
+          multi: true,
         },
         {
           provide: kitComponentAlertTitle,
           useClass: KitDefaultAlertTitleStyle,
+          multi: true,
         },
         {
           provide: kitComponentAutoComplete,
           useClass: KitDefaultAutoCompleteStyle,
+          multi: true,
         },
         {
           provide: kitComponentBadge,
           useClass: KitDefaultBadgeStyle,
+          multi: true,
         },
         {
           provide: kitComponentButton,
           useClass: KitDefaultButtonStyle,
+          multi: true,
         },
         {
           provide: kitComponentButtonGroup,
           useClass: KitDefaultButtonGroupStyle,
+          multi: true,
         },
         {
           provide: kitComponentCheckbox,
           useClass: KitDefaultCheckboxStyle,
+          multi: true,
         },
         {
           provide: kitComponentColorPicker,
           useClass: KitDefaultColorPickerStyle,
+          multi: true,
         },
         {
           provide: kitComponentColorPickerPopup,
           useClass: KitDefaultColorPickerPopupStyle,
+          multi: true,
         },
         {
           provide: kitComponentDivider,
           useClass: KitDefaultDividerStyle,
+          multi: true,
         },
         {
           provide: kitComponentDropdownMenu,
           useClass: KitDefaultDropdownMenuStyle,
+          multi: true,
         },
         {
           provide: kitComponentDropdownMenuItem,
           useClass: KitDefaultDropdownMenuItemStyle,
+          multi: true,
         },
         {
           provide: kitComponentDatePicker,
           useClass: KitDefaultDatePickerStyle,
+          multi: true,
         },
         {
           provide: kitComponentFormError,
           useClass: KitDefaultFormErrorStyle,
+          multi: true,
         },
         {
           provide: kitComponentFormGroup,
           useClass: KitDefaultFormGroupStyle,
+          multi: true,
         },
         {
           provide: kitComponentFormLabel,
           useClass: KitDefaultFormLabelStyle,
+          multi: true,
         },
         {
           provide: kitComponentInput,
           useClass: KitDefaultInputStyle,
+          multi: true,
         },
         {
           provide: kitComponentLayout,
           useClass: KitDefaultLayoutStyle,
+          multi: true,
         },
         {
           provide: kitComponentLayoutContent,
           useClass: KitDefaultLayoutContentStyle,
+          multi: true,
         },
         {
           provide: kitComponentLayoutFooter,
           useClass: KitDefaultLayoutFooterStyle,
+          multi: true,
         },
         {
           provide: kitComponentLayoutHeader,
           useClass: KitDefaultLayoutHeaderStyle,
+          multi: true,
         },
         {
           provide: kitComponentLayoutSide,
           useClass: KitDefaultLayoutSideStyle,
+          multi: true,
         },
         {
           provide: kitComponentLoadingBar,
           useClass: KitDefaultLoadingBarStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenu,
           useClass: KitDefaultMenuStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenuGroup,
           useClass: KitDefaultMenuGroupStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenuGroupTitle,
           useClass: KitDefaultMenuGroupTitleStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenuItem,
           useClass: KitDefaultMenuItemStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenuSeparator,
           useClass: KitDefaultMenuSeparatorStyle,
+          multi: true,
         },
         {
           provide: kitComponentMenuSub,
           useClass: KitDefaultMenuSubStyle,
+          multi: true,
         },
         {
           provide: kitComponentModal,
           useClass: KitDefaultModalStyle,
+          multi: true,
         },
         {
           provide: kitComponentModalBody,
           useClass: KitDefaultModalBodyStyle,
+          multi: true,
         },
         {
           provide: kitComponentModalFooter,
           useClass: KitDefaultModalFooterStyle,
+          multi: true,
         },
         {
           provide: kitComponentModalHeader,
           useClass: KitDefaultModalHeaderStyle,
+          multi: true,
         },
         {
           provide: kitComponentNotificationHost,
           useClass: KitDefaultNotificationHostStyle,
+          multi: true,
         },
         {
           provide: kitComponentOverlayContainer,
           useClass: KitDefaultOverlayContainerStyle,
+          multi: true,
         },
         {
           provide: kitComponentRadio,
           useClass: KitDefaultRadioStyle,
+          multi: true,
         },
         {
           provide: kitComponentRadioGroup,
           useClass: KitDefaultRadioGroupStyle,
+          multi: true,
         },
         {
           provide: kitComponentSelect,
           useClass: KitDefaultSelectStyle,
+          multi: true,
         },
         {
           provide: kitComponentSpinner,
           useClass: KitDefaultSpinnerStyle,
+          multi: true,
         },
         {
           provide: kitComponentTabs,
           useClass: KitDefaultTabsStyle,
+          multi: true,
         },
         {
           provide: kitComponentTag,
           useClass: KitDefaultTagStyle,
+          multi: true,
         },
         {
           provide: kitComponentTextarea,
           useClass: KitDefaultTextareaStyle,
+          multi: true,
         },
         {
           provide: kitComponentToggle,
           useClass: KitDefaultToggleStyle,
+          multi: true,
         },
         {
           provide: kitComponentTooltipView,
           useClass: KitDefaultTooltipViewStyle,
+          multi: true,
         },
         {
           provide: kitComponentTypoContainer,
           useClass: KitDefaultTypoContainerStyle,
+          multi: true,
         },
       ],
     };

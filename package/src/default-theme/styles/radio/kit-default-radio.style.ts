@@ -15,38 +15,15 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
   }
 
   input(): StyleDef {
-    return {
-      position: 'absolute',
-      left: 0,
-      zIndex: 1,
-      cursor: 'pointer',
-      opacity: 0,
-      filter: 'alpha(opacity=0)',
-      top: 0,
-      bottom: 0,
-      right: 0,
-      width: '100%',
-      height: '100%',
-    };
+    return {};
   }
 
   label(): StyleDef {
-    return {
-      cursor: 'pointer',
-      userSelect: 'none',
-    };
+    return {};
   }
 
   radio(): StyleDef {
-    return {
-      whiteSpace: 'nowrap',
-      cursor: 'pointer',
-      outline: 'none',
-      display: 'inline-block',
-      lineHeight: 1,
-      position: 'relative',
-      verticalAlign: 'text-bottom',
-    };
+    return {};
   }
 
   view(state: {
@@ -58,30 +35,8 @@ export class KitDefaultRadioStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.inputs;
     return {
-      position: 'relative',
-      top: 0,
-      left: 0,
-      display: 'block',
-      width: 14,
-      height: 14,
-      borderRadius: '50%',
       transition: params.transitions.default,
       ...defToggle(state.checked, defMerge([
-            {
-              $nest: {
-                '&:after': {
-                  position: 'absolute',
-                  left: 4,
-                  top: 4,
-                  display: 'table',
-                  width: 6,
-                  height: 6,
-                  border: 0,
-                  borderRadius: '50%',
-                  content: '" "',
-                },
-              },
-            },
             defToggle(state.disabled,
                 // checked && disabled
                 applyChecked(colors.disabled, params.borders.width),

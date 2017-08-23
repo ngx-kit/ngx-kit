@@ -20,7 +20,6 @@ export class KitDefaultMenuSubStyle implements KitComponentStyle {
       backgroundColor: colors.sub.background,
       border: [params.borders.width, 'solid', colors.sub.border],
       borderRadius: params.borders.radius,
-      display: 'block',
       ...defPick(state.position, {
         right: {
           marginLeft: this.theme.params.grid.h / 2,

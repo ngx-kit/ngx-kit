@@ -11,9 +11,7 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
   }
 
   host(): StyleDef {
-    return {
-      display: 'block',
-    };
+    return {};
   }
 
   textarea(state: {
@@ -25,9 +23,7 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
     return {
       borderRadius: params.borders.radius,
       transition: 'background 0.2s',
-      width: '100%',
       padding: [params.grid.v / 2, params.grid.h],
-      boxSizing: 'border-box',
       ...defToggle(state.disabled, {
         ...applyColorSet(colors.disabled, params.borders.width),
       }, {

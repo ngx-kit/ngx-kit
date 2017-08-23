@@ -17,7 +17,6 @@ export class KitDefaultTagStyle implements KitComponentStyle {
     const params = this.theme.params;
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
-      display: 'inline-block',
       lineHeight: 20,
       height: 22,
       padding: [0, params.grid.h],
@@ -26,8 +25,6 @@ export class KitDefaultTagStyle implements KitComponentStyle {
       transition: 'all .3s cubic-bezier(.78,.14,.15,.86)',
       opacity: 1,
       marginRight: 8,
-      cursor: 'pointer',
-      whiteSpace: 'nowrap',
       ...applyColorSet({
         background: color.base,
         border: color.base,

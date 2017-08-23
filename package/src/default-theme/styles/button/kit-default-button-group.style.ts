@@ -12,10 +12,8 @@ export class KitDefaultButtonGroupStyle implements KitComponentStyle {
   host(state: {direction: any}): StyleDef {
     const params = this.theme.params;
     return {
-      display: 'inline-flex',
       ...defPick(state.direction, {
         horizontal: {
-          flexDirection: 'row',
           $nest: {
             '& > *': {
               borderRadius: 0,
@@ -31,7 +29,6 @@ export class KitDefaultButtonGroupStyle implements KitComponentStyle {
           },
         },
         vertical: {
-          flexDirection: 'column',
           $nest: {
             '& > *': {
               borderRadius: 0,

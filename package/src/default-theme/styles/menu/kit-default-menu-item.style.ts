@@ -22,15 +22,10 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     const itemColor = colors.item;
     const subItemColor = colors.subItem;
     return {
-      display: 'flex',
-      alignItems: 'center',
       borderBottom: [2, 'solid', itemColor.base.border],
-      cursor: 'pointer',
-      userSelect: 'none',
       padding: [params.grid.v / 2, params.grid.h],
       color: itemColor.base.text,
       background: itemColor.base.background,
-      textDecoration: 'none',
       ...defToggle(state.root, {
         // root items
         ...defPick(state.menuDirection, {

@@ -4,7 +4,6 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { applyColorSet, BORDER_BOTTOM } from '../../utils/apply-color-set';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultDropdownMenuItemStyle implements KitComponentStyle {
@@ -15,8 +14,6 @@ export class KitDefaultDropdownMenuItemStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.menus;
     return {
-      cursor: 'pointer',
-      display: 'block',
       padding: [params.grid.v / 1.5, params.grid.h * 1.5],
       ...applyColorSet(colors.subItem.base, params.borders.width, BORDER_BOTTOM),
       $nest: {

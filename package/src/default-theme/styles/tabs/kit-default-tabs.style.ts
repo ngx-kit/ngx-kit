@@ -16,13 +16,7 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   }
 
   nav(): StyleDef {
-    return {
-      display: 'flex',
-      flexDirection: 'row',
-      listStyle: 'none',
-      margin: 0,
-      padding: 0,
-    };
+    return {};
   }
 
   panel(): StyleDef {
@@ -40,8 +34,6 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
     const params = this.theme.params;
     const colors = params.colors.panels;
     return {
-      cursor: 'pointer',
-      userSelect: 'none',
       padding: [params.grid.v, params.grid.h],
       borderTopLeftRadius: params.borders.radius,
       borderTopRightRadius: params.borders.radius,

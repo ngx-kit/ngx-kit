@@ -15,16 +15,13 @@ export class KitDefaultAutoCompleteStyle implements KitComponentStyle {
   }
 
   input(): StyleDef {
-    return {
-      display: 'block',
-    };
+    return {};
   };
 
   result(state: {active: boolean}): StyleDef {
     const params = this.theme.params;
     const colors = params.colors.inputs.options;
     return {
-      cursor: 'pointer',
       padding: `${this.theme.params.grid.v / 4}px ${this.theme.params.grid.h}px`,
       ...applyColorSet(colors.base, params.borders.width, BORDER_BOTTOM),
       $nest: {

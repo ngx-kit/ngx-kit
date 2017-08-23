@@ -24,21 +24,8 @@ export class KitDefaultButtonStyle implements KitComponentStyle {
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     const styles: StyleDef = defMerge([
       {
-        position: 'relative',
-        display: 'inline-block',
-        boxSizing: 'border-box',
-        textDecoration: 'none',
-        marginBottom: 0,
-        fontWeight: 400,
-        textAlign: 'center',
-        verticalAlign: 'middle',
-        cursor: 'pointer',
-        backgroundImage: 'none',
         border: '1px solid transparent',
-        whiteSpace: 'nowrap',
-        lineHeight: '1.42857',
         borderRadius: this.theme.params.borders.radius,
-        userSelect: 'none',
         boxShadow: this.theme.params.shadows.element,
       },
       defToggle(state.disabled, {
