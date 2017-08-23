@@ -3,7 +3,6 @@ import {
   ComponentRef,
   Directive,
   ElementRef,
-  HostBinding,
   HostListener,
   Input,
   OnChanges,
@@ -18,11 +17,11 @@ import { KitTooltipViewComponent } from './kit-tooltip-view.component';
   selector: '[kitTooltip]',
 })
 export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
-  @HostBinding('class') hostClass: string;
+  @Input() kitTooltip: string;
 
-  @Input('kitTooltipPosition') kitTooltipPosition: KitCoreOverlayContainerPosition = 'top';
+  @Input() kitTooltipColor: string;
 
-  @Input('kitTooltip') kitTooltip: string;
+  @Input() kitTooltipPosition: KitCoreOverlayContainerPosition = 'top';
 
   private containerRef: ComponentRef<KitTooltipViewComponent>;
 
@@ -68,6 +67,7 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
       instance.text = this.kitTooltip;
       instance.position = this.kitTooltipPosition;
       instance.anchor = this.el.nativeElement;
+      instance.color = this.kitTooltipColor;
     }
   }
 

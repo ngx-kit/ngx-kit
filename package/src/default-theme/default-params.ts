@@ -186,7 +186,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         light: '#B2DCF6',
         lightText: '#1f89ce',
         disabledText: '#9abad4',
-        overlay: 'rgba(0,0,0,.8)',
+        overlay: '#186ba0',
         overlayText: '#fff',
       },
       'info': {
@@ -197,7 +197,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         light: '#cde4f2',
         lightText: '#44b0d1',
         disabledText: '#cbcbcb',
-        overlay: 'rgba(0,0,0,.8)',
+        overlay: '#31b0d5',
         overlayText: '#fff',
       },
       'success': {
@@ -208,7 +208,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         light: '#b2e3b2',
         lightText: '#469a46',
         disabledText: '#cbcbcb',
-        overlay: 'rgba(0,0,0,.8)',
+        overlay: '#449d44',
         overlayText: '#fff',
       },
       'warning': {
@@ -219,7 +219,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         light: '#ffdcab',
         lightText: '#d18e35',
         disabledText: '#cbcbcb',
-        overlay: 'rgba(0,0,0,.8)',
+        overlay: '#ec971f',
         overlayText: '#fff',
       },
       'error': {
@@ -230,7 +230,7 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
         light: '#f5918e',
         lightText: '#cf3e39',
         disabledText: '#cbcbcb',
-        overlay: 'rgba(0,0,0,.8)',
+        overlay: '#c9302c',
         overlayText: '#fff',
       },
     },
