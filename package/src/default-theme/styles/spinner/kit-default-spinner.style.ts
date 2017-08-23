@@ -19,11 +19,10 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
   spinner(state: {
     size: number,
     duration: string,
-    color: string,
     type: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = state.color || params.colors.loaders.base;
+    const color = params.colors.loaders.base;
     const duration = state.duration || params.moduleSpinner.duration;
     const size = state.size || params.moduleSpinner.size;
     const border = Math.round(size / 5);

@@ -12,7 +12,6 @@ https://ngx-kit.com/kit/modules/spinner
 
 | Property | Type | Description |
 | --- | --- | --- | --- |
-| *color* | `string` | Color |
 | *size* | `number` | Size in pixels |
 | *duration* | `string` | Animation cycle duration (e.g. `'1s'`) |
 | *type* | `string` | Shape (from theme) |

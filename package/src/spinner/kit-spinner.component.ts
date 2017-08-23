@@ -6,14 +6,12 @@ import { kitComponentSpinner } from '../core/meta/tokens';
 @Component({
   selector: 'kit-spinner,[kitSpinner]',
   template: `
-    <div [styler]="['spinner', {size: size, color: color, duration: duration, type: type}]"></div>`,
+    <div [styler]="['spinner', {size: size, duration: duration, type: type}]"></div>`,
   viewProviders: [
     StylerComponent,
   ],
 })
 export class KitSpinnerComponent {
-  @Input() color: string;
-
   @Input() duration: string;
 
   @Input() kitSpinner: any;
