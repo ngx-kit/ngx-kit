@@ -1,7 +1,8 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentBadge } from '../core/meta/tokens';
+import { KitBadgePosition } from './meta';
 
 /**
  * @todo overflowCount - max count
@@ -16,10 +17,16 @@ import { kitComponentBadge } from '../core/meta/tokens';
     StylerComponent,
   ],
 })
-export class KitBadgeComponent implements OnInit {
+export class KitBadgeComponent implements OnInit, OnChanges {
+  @Input() color: string;
+
   @Input() count: number;
 
   @Input() kitBadge: any;
+
+  @Input() position: KitBadgePosition = 'inline';
+
+  @Input() size: string;
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentBadge) private style: KitComponentStyle) {
@@ -27,14 +34,12 @@ export class KitBadgeComponent implements OnInit {
     this.styler.register(this.style);
   }
 
-  @Input()
-  set color(color: string) {
-    this.styler.host.applyState({color});
-  };
-
-  @Input()
-  set size(size: string) {
-    this.styler.host.applyState({size});
+  ngOnChanges() {
+    this.styler.host.applyState({
+      color: this.color,
+      size: this.size,
+      position: this.position,
+    });
   }
 
   ngOnInit() {

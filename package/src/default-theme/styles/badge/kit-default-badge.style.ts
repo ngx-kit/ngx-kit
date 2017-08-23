@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { defPick, StyleDef } from '@ngx-kit/styler';
+import { KitBadgePosition } from '../../../badge/meta';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -14,16 +15,49 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
   host(state: {
     color: string,
     size: 's' | 'm' | 'l',
+    position: KitBadgePosition,
   }): StyleDef {
     const params = this.theme.params;
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     return {
       borderRadius: '1rem',
-      display: 'inline-block',
       fontWeight: 'normal',
       minWidth: '1px',
       textAlign: 'center',
       lineHeight: '1',
+      ...defPick(state.position, {
+        inline: {
+          display: 'inline-block',
+        },
+        'top-right': {
+          display: 'block',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          transform: 'translate(50%, -50%)',
+        },
+        'bottom-right': {
+          display: 'block',
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          transform: 'translate(50%, 50%)',
+        },
+        'bottom-left': {
+          display: 'block',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          transform: 'translate(-50%, 50%)',
+        },
+        'top-left': {
+          display: 'block',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          transform: 'translate(-50%, -50%)',
+        },
+      }, 'inline'),
       ...applyColorSet({
         background: color.base,
         border: color.base,
