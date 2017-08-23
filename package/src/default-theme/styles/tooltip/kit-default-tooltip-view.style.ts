@@ -14,9 +14,11 @@ export class KitDefaultTooltipViewStyle implements KitComponentStyle {
     return {};
   }
 
-  tooltip(): StyleDef {
+  tooltip(state: {
+    color: string,
+  }): StyleDef {
     const params = this.theme.params;
-    const color = params.colors.swatches.default;
+    const color = params.colors.swatches[state.color || 'default'];
     return {
       borderRadius: params.borders.radius,
       padding: [params.grid.v / 2, params.grid.h],

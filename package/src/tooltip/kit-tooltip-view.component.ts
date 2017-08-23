@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
@@ -14,15 +14,17 @@ import { kitComponentTooltipView } from '../core/meta/tokens';
                            [anchor]="anchor"
                            [opened]="opened"
                            [position]="position">
-      <div styler="tooltip">{{ text }}</div>
+      <div [styler]="['tooltip', {color: color}]">{{ text }}</div>
     </kit-overlay-container>
   `,
   viewProviders: [
     StylerComponent,
   ],
 })
-export class KitTooltipViewComponent implements OnInit {
+export class KitTooltipViewComponent {
   @Input() anchor: HTMLElement;
+
+  @Input() color: string;
 
   @Input() kitTooltipView: any;
 
@@ -36,8 +38,5 @@ export class KitTooltipViewComponent implements OnInit {
               @Inject(kitComponentTooltipView) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-tooltip-view';
     this.styler.register(this.style);
-  }
-
-  ngOnInit() {
   }
 }
