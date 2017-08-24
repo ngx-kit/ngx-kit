@@ -4,6 +4,7 @@ export * from './meta/component';
 export * from './meta/overlay';
 export * from './meta/theme';
 export * from './meta/tokens';
+export * from './meta/styles/index';
 export * from './overlay/anchor.directive';
 export * from './overlay/kit-overlay.service';
 export * from './overlay/overlay.component';

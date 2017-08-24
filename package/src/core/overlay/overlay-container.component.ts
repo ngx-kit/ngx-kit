@@ -11,7 +11,7 @@ import {
   NgZone,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, Optional,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -125,17 +125,17 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
               @Inject(kitComponentOverlayContainer) private componentStyle: KitComponentStyle,
               private zone: NgZone,
               private elementRef: ElementRef,
-              @Inject(kitTheme) private theme: KitThemeService) {
+              @Optional() @Inject(kitTheme) private theme: KitThemeService) {
     this.styler.classPrefix = 'kit-overlay-container';
     this.styler.register(this.componentStyle);
   }
 
   get closeAnimationTimings(): string {
-    return this.theme.overlayCloseAnimationTimings;
+    return this.theme ? this.theme.overlayCloseAnimationTimings : '0s';
   }
 
   get openAnimationTimings(): string {
-    return this.theme.overlayOpenAnimationTimings;
+    return this.theme ? this.theme.overlayOpenAnimationTimings : '0s';
   }
 
   @Input()

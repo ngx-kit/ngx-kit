@@ -1,1 +1,1 @@
-export type kitButtonGroupDirection = 'horizontal' | 'vertical';
+export type KitButtonGroupDirection = 'horizontal' | 'vertical';

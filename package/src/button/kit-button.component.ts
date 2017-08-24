@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostListener, Inject, Input, OnChanges, OnInit
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentButton } from '../core/meta/tokens';
-import { kitButtonGroupDirection } from './meta';
+import { KitButtonGroupDirection } from './meta';
 
 // @todo proxy enter listener to (action)
 @Component({
@@ -21,7 +21,7 @@ export class KitButtonComponent implements OnInit, OnChanges {
 
   @Input() disabled: boolean;
 
-  @Input() grouped: kitButtonGroupDirection;
+  @Input() grouped: KitButtonGroupDirection;
 
   @Input() kitButton: any;
 

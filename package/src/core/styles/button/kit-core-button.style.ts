@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { StyleDef } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../../meta/component';
+import { KitButtonStyle } from '../../meta/styles/button-styles';
 
 @Injectable()
-export class KitCoreButtonStyle implements KitComponentStyle {
+export class KitCoreButtonStyle implements KitButtonStyle {
   host(): StyleDef {
     return {
       position: 'relative',
