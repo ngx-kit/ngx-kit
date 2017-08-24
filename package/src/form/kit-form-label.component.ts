@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentFormGroup } from '../core/meta/tokens';
+import { kitFormGroupStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-form-label,[kitFormLabel]',
@@ -16,7 +16,7 @@ export class KitFormLabelComponent implements OnInit {
   @Input() kitFormLabel: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentFormGroup) private style: KitComponentStyle) {
+              @Inject(kitFormGroupStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-form-label';
     this.styler.register(this.style);
   }

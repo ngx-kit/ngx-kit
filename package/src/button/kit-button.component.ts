@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, Inject, Input, OnChanges, OnInit, Output, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentButton } from '../core/meta/tokens';
+import { kitButtonStyle } from '../core/meta/tokens';
 import { KitButtonGroupDirection } from './meta';
 
 // @todo proxy enter listener to (action)
@@ -36,7 +36,7 @@ export class KitButtonComponent implements OnInit, OnChanges {
   @Input() size: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentButton) private style: KitComponentStyle) {
+              @Inject(kitButtonStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-button';
     this.styler.register(this.style);
   }

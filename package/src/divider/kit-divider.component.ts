@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentDivider } from '../core/meta/tokens';
+import { kitDividerStyle } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
 
 /**
@@ -22,7 +22,7 @@ export class KitDividerComponent implements OnInit {
   @Input() kitDivider: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentDivider) private style: KitComponentStyle) {
+              @Inject(kitDividerStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-divider';
     this.styler.register(this.style);
   }

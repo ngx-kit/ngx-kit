@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentToggle } from '../core/meta/tokens';
+import { kitToggleStyle } from '../core/meta/tokens';
 
 export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -53,7 +53,7 @@ export class KitToggleComponent implements ControlValueAccessor, KitControl<any>
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentToggle) private style: KitComponentStyle,
+              @Inject(kitToggleStyle) private style: KitComponentStyle,
               private core: KitCoreService,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-toggle';

@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentModalFooter } from '../core/meta/tokens';
+import { kitModalFooterStyle } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
 
 @Component({
@@ -16,7 +16,7 @@ export class KitModalFooterComponent implements OnInit {
   @Input() kitModalFooter: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentModalFooter) private style: KitComponentStyle) {
+              @Inject(kitModalFooterStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-modal-footer';
     this.styler.register(this.style);
   }

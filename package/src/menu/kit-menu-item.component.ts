@@ -17,7 +17,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/filter';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentMenuItem } from '../core/meta/tokens';
+import { kitMenuItemStyle } from '../core/meta/tokens';
 import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuComponent } from './kit-menu.component';
 
@@ -44,7 +44,7 @@ export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit
   private _hover = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMenuItem) private style: KitComponentStyle,
+              @Inject(kitMenuItemStyle) private style: KitComponentStyle,
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
               @Inject(forwardRef(() => KitMenuSubComponent)) @Optional() private sub: KitMenuSubComponent,
               private el: ElementRef,

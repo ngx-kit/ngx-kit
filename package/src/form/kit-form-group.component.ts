@@ -18,7 +18,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentFormGroup } from '../core/meta/tokens';
+import { kitFormGroupStyle } from '../core/meta/tokens';
 import { KitFormErrorComponent } from './kit-form-error.component';
 
 /**
@@ -60,7 +60,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   private touched$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentFormGroup) private style: KitComponentStyle,
+              @Inject(kitFormGroupStyle) private style: KitComponentStyle,
               @Optional() private form: FormGroupDirective) {
     this.styler.classPrefix = 'kit-form-group';
     this.styler.register(this.style);

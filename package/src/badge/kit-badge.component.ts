@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentBadge } from '../core/meta/tokens';
+import { kitBadgeStyle } from '../core/meta/tokens';
 import { KitBadgePosition } from './meta';
 
 /**
@@ -29,7 +29,7 @@ export class KitBadgeComponent implements OnInit, OnChanges {
   @Input() size: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentBadge) private style: KitComponentStyle) {
+              @Inject(kitBadgeStyle) private style: KitComponentStyle) {
     console.log('badge style', this.style);
     this.styler.classPrefix = 'kit-badge';
     this.styler.register(this.style);

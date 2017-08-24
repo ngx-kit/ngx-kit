@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentFormError } from '../core/meta/tokens';
+import { kitFormErrorStyle } from '../core/meta/tokens';
 import { KitFormGroupComponent } from './kit-form-group.component';
 
 /**
@@ -26,7 +26,7 @@ export class KitFormErrorComponent implements OnInit, AfterViewInit {
   @Input() validator: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentFormError) private style: KitComponentStyle,
+              @Inject(kitFormErrorStyle) private style: KitComponentStyle,
               private formGroup: KitFormGroupComponent) {
     this.styler.classPrefix = 'kit-form-error';
     this.styler.register(this.style);

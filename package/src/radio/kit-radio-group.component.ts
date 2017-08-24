@@ -15,7 +15,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentRadioGroup } from '../core/meta/tokens';
+import { kitRadioGroupStyle } from '../core/meta/tokens';
 import { isObject } from '../core/util/is-object';
 import { KitRadioComponent } from './kit-radio.component';
 import { KitRadioGroupDirection, KitRadioGroupOption } from './meta';
@@ -75,7 +75,7 @@ export class KitRadioGroupComponent<T> implements ControlValueAccessor, AfterCon
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentRadioGroup) private style: KitComponentStyle,
+              @Inject(kitRadioGroupStyle) private style: KitComponentStyle,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-radio-group';
     this.styler.register(this.style);

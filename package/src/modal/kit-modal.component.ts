@@ -1,7 +1,7 @@
 import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentModal } from '../core/meta/tokens';
+import { kitModalStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-modal,[kitModal]',
@@ -29,7 +29,7 @@ export class KitModalComponent implements OnInit {
   @Input() opened = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentModal) private style: KitComponentStyle) {
+              @Inject(kitModalStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-modal';
     this.styler.register(this.style);
   }

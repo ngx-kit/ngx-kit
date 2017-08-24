@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentAutoComplete } from '../core/meta/tokens';
+import { kitAutoCompleteStyle } from '../core/meta/tokens';
 import { KitInputComponent } from '../input/kit-input.component';
 import { KitDataSourceFactory } from './meta';
 
@@ -79,7 +79,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAutoComplete) private style: KitComponentStyle,
+              @Inject(kitAutoCompleteStyle) private style: KitComponentStyle,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-auto-complete';
     this.styler.register(this.style);

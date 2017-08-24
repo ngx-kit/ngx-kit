@@ -13,7 +13,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentSelect } from '../core/meta/tokens';
+import { kitSelectStyle } from '../core/meta/tokens';
 import { isObject } from '../core/util/is-object';
 import { KitSelectOption, KitSelectType } from './meta';
 
@@ -143,7 +143,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentSelect) private style: KitComponentStyle,
+              @Inject(kitSelectStyle) private style: KitComponentStyle,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-select';
     this.styler.register(this.style);

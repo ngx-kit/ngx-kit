@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
-import { kitComponentColorPickerPopup } from '../core/meta/tokens';
+import { kitColorPickerPopupStyle } from '../core/meta/tokens';
 
 /**
  * @todo add pointer
@@ -47,7 +47,7 @@ export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() text: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentColorPickerPopup) private style: KitComponentStyle) {
+              @Inject(kitColorPickerPopupStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-color-picker-popup';
     this.styler.register(this.style);
   }

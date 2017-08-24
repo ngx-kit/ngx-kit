@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentButtonGroup } from '../core/meta/tokens';
+import { kitButtonGroupStyle } from '../core/meta/tokens';
 import { KitButtonGroupDirection } from './meta';
 import { KitButtonComponent } from './kit-button.component';
 
@@ -38,7 +38,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
   private _direction: KitButtonGroupDirection = 'horizontal';
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentButtonGroup) private style: KitComponentStyle) {
+              @Inject(kitButtonGroupStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-button-group';
     this.styler.register(this.style);
   }

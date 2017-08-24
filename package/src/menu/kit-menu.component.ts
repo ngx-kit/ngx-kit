@@ -11,7 +11,7 @@ import {
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentMenu } from '../core/meta/tokens';
+import { kitMenuStyle } from '../core/meta/tokens';
 import { KitMenuSeparatorComponent } from './kit-menu-separator.component';
 import { KitMenuSubComponent } from './kit-menu-sub.component';
 import { KitMenuDirection } from './meta';
@@ -38,7 +38,7 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
   private _direction: KitMenuDirection = 'horizontal';
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMenu) private style: KitComponentStyle) {
+              @Inject(kitMenuStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-menu';
     this.styler.register(this.style);
   }

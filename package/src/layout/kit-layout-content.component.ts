@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentLayoutContent } from '../core/meta/tokens';
+import { kitLayoutContentStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-layout-content,[kitLayoutContent]',
@@ -19,7 +19,7 @@ export class KitLayoutContentComponent implements OnInit {
   @Input() scrollTopOnRouting = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentLayoutContent) private style: KitComponentStyle,
+              @Inject(kitLayoutContentStyle) private style: KitComponentStyle,
               private router: Router,
               private el: ElementRef) {
     this.styler.classPrefix = 'kit-layout-content';

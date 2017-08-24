@@ -4,7 +4,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentLoadingBar } from '../core/meta/tokens';
+import { kitLoadingBarStyle } from '../core/meta/tokens';
 import { KitLoadingBarService } from './kit-loading-bar.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class KitLoadingBarComponent implements OnInit, OnDestroy {
   triggerKey: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentLoadingBar) private componentStyle: KitComponentStyle,
+              @Inject(kitLoadingBarStyle) private componentStyle: KitComponentStyle,
               private service: KitLoadingBarService) {
     this.styler.classPrefix = 'kit-loading-bar';
     this.styler.register(this.componentStyle);

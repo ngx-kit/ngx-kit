@@ -14,7 +14,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentCheckbox } from '../core/meta/tokens';
+import { kitCheckboxStyle } from '../core/meta/tokens';
 
 export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -79,7 +79,7 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentCheckbox) private style: KitComponentStyle,
+              @Inject(kitCheckboxStyle) private style: KitComponentStyle,
               private core: KitCoreService,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-checkbox';

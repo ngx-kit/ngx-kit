@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentMenuSeparator } from '../core/meta/tokens';
+import { kitMenuSeparatorStyle } from '../core/meta/tokens';
 import { KitMenuDirection } from './meta';
 
 @Component({
@@ -18,7 +18,7 @@ export class KitMenuSeparatorComponent implements OnInit {
   private _parentDirection: KitMenuDirection = 'vertical';
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMenuSeparator) private style: KitComponentStyle) {
+              @Inject(kitMenuSeparatorStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-menu-separator';
     this.styler.register(this.style);
   }

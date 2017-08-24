@@ -4,7 +4,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentTextarea } from '../core/meta/tokens';
+import { kitTextareaStyle } from '../core/meta/tokens';
 import { KitTextareaWrap } from './meta';
 
 export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
@@ -69,7 +69,7 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentTextarea) private style: KitComponentStyle,
+              @Inject(kitTextareaStyle) private style: KitComponentStyle,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-textarea';
     this.styler.register(this.style);

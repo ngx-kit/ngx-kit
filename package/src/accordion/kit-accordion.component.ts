@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ContentChildren, Inject, Input, OnInit, QueryList, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentAccordion } from '../core/meta/tokens';
+import { kitAccordionStyle } from '../core/meta/tokens';
 import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class KitAccordionComponent implements OnInit, AfterContentInit {
   @ContentChildren(KitAccordionPanelComponent) panels: QueryList<KitAccordionPanelComponent>;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAccordion) private style: KitComponentStyle) {
+              @Inject(kitAccordionStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-accordion';
     this.styler.register(this.style);
   }

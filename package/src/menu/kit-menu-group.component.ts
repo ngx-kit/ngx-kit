@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentMenuGroup } from '../core/meta/tokens';
+import { kitMenuGroupStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-menu-group,[kitMenuGroup]',
@@ -19,7 +19,7 @@ export class KitMenuGroupComponent implements OnInit {
   @Input() kitMenuGroup: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMenuGroup) private style: KitComponentStyle) {
+              @Inject(kitMenuGroupStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-menu-group';
     this.styler.register(this.style);
   }
