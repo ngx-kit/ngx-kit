@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentAccordionPanel } from '../core/meta/tokens';
+import { kitAccordionPanelStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-accordion-panel,[kitAccordionPanel]',
@@ -25,7 +25,7 @@ export class KitAccordionPanelComponent implements OnInit {
   @Input() title: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAccordionPanel) private style: KitComponentStyle) {
+              @Inject(kitAccordionPanelStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-accordion-panel';
     this.styler.register(this.style);
   }

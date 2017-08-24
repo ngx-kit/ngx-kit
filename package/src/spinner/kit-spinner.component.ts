@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentSpinner } from '../core/meta/tokens';
+import { kitSpinnerStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-spinner,[kitSpinner]',
@@ -21,7 +21,7 @@ export class KitSpinnerComponent {
   @Input() type: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentSpinner) private style: KitComponentStyle) {
+              @Inject(kitSpinnerStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-spinner';
     this.styler.register(this.style);
   }

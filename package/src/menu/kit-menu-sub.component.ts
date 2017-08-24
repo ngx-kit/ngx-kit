@@ -13,7 +13,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/filter';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentMenuSub } from '../core/meta/tokens';
+import { kitMenuSubStyle } from '../core/meta/tokens';
 import { KitMenuItemComponent } from './kit-menu-item.component';
 import { KitMenuComponent } from './kit-menu.component';
 import { KitMenuDirection } from './meta';
@@ -58,7 +58,7 @@ export class KitMenuSubComponent implements OnInit {
   private _opened = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentMenuSub) private style: KitComponentStyle,
+              @Inject(kitMenuSubStyle) private style: KitComponentStyle,
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
               @Inject(forwardRef(() => KitMenuItemComponent)) private parentItem: KitMenuItemComponent,
               @SkipSelf() @Optional() @Inject(forwardRef(() => KitMenuSubComponent))

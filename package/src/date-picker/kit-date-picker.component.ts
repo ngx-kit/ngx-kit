@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentDatePicker } from '../core/meta/tokens';
+import { kitDatePickerStyle } from '../core/meta/tokens';
 
 declare const moment: any;
 export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
@@ -69,7 +69,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentDatePicker) private style: KitComponentStyle) {
+              @Inject(kitDatePickerStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-date-picker';
     this.styler.register(this.style);
   }

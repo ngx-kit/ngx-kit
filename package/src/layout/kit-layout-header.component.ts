@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentLayoutHeader } from '../core/meta/tokens';
+import { kitLayoutHeaderStyle } from '../core/meta/tokens';
 
 @Component({
   selector: 'kit-layout-header,[kitLayoutHeader]',
@@ -16,7 +16,7 @@ export class KitLayoutHeaderComponent implements OnInit {
   @Input() kitLayoutHeader: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentLayoutHeader) private style: KitComponentStyle) {
+              @Inject(kitLayoutHeaderStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-layout-header';
     this.styler.register(this.style);
   }

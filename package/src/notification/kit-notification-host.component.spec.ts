@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StylerComponent } from '@ngx-kit/styler';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { KitCoreService } from '../core/kit-core.service';
-import { kitComponentNotificationHost } from '../core/meta/tokens';
+import { kitNotificationHostStyle } from '../core/meta/tokens';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
 import { KitNotificationService } from './kit-notification.service';
 import { KitNotificationHostConfig } from './meta';
@@ -24,7 +24,7 @@ describe('Notification/NotificationHostComponent', () => {
         declarations: [StylerDirective, ContainerComponent, KitNotificationHostComponent, KitOverlayContainerMockComponent],
         providers: [
           {
-            provide: kitComponentNotificationHost,
+            provide: kitNotificationHostStyle,
             useClass: StyleMock,
           },
           {

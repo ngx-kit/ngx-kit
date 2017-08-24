@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentTag } from '../core/meta/tokens';
+import { kitTagStyle } from '../core/meta/tokens';
 
 /**
  * @todo <tag-group>
@@ -21,7 +21,7 @@ export class KitTagComponent implements OnInit {
   @Input() kitTag: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentTag) private style: KitComponentStyle) {
+              @Inject(kitTagStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-tag';
     this.styler.register(this.style);
   }

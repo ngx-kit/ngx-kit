@@ -17,7 +17,7 @@ import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentColorPicker } from '../core/meta/tokens';
+import { kitColorPickerStyle } from '../core/meta/tokens';
 import { Hsva, SliderDimension, SliderPosition } from './classes';
 import { hsvaToHsla } from './utils/hsva-to-hsla';
 import { stringToHsva } from './utils/string-to-hsva';
@@ -116,7 +116,7 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentColorPicker) private style: KitComponentStyle,
+              @Inject(kitColorPickerStyle) private style: KitComponentStyle,
               private el: ElementRef,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-color-picker';

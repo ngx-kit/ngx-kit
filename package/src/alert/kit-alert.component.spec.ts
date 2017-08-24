@@ -3,7 +3,7 @@ import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
-import { kitComponentAlert, kitComponentAlertTitle } from '../core/meta/tokens';
+import { kitAlertStyle, kitAlertTitleStyle } from '../core/meta/tokens';
 import { KitAlertTitleComponent } from './kit-alert-title.component';
 import { KitAlertComponent } from './kit-alert.component';
 
@@ -22,11 +22,11 @@ describe('Alert/AlertComponent', () => {
         declarations: [StylerDirective, ContainerComponent, KitAlertComponent, KitAlertTitleComponent],
         providers: [
           {
-            provide: kitComponentAlert,
+            provide: kitAlertStyle,
             useClass: StyleMock,
           },
           {
-            provide: kitComponentAlertTitle,
+            provide: kitAlertTitleStyle,
             useClass: StyleMock,
           },
           {

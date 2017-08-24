@@ -4,7 +4,7 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
-import { kitComponentInput } from '../core/meta/tokens';
+import { kitInputStyle } from '../core/meta/tokens';
 import { MathParser } from './math-parser';
 import { KitInputType } from './meta';
 
@@ -71,7 +71,7 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
   private touches$ = new Subject<boolean>();
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentInput) private style: KitComponentStyle,
+              @Inject(kitInputStyle) private style: KitComponentStyle,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-input';
     this.styler.register(this.style);

@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ContentChildren, Inject, Input, OnInit, QueryList, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentTabs } from '../core/meta/tokens';
+import { kitTabsStyle } from '../core/meta/tokens';
 import { KitTabsPanelComponent } from './kit-tabs-panel.component';
 
 @Component({
@@ -30,7 +30,7 @@ export class KitTabsComponent implements OnInit, AfterContentInit {
   @ContentChildren(KitTabsPanelComponent) tabs: QueryList<KitTabsPanelComponent>;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentTabs) private style: KitComponentStyle) {
+              @Inject(kitTabsStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-tabs';
     this.styler.register(this.style);
   }

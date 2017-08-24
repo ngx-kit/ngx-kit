@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentModalHeader } from '../core/meta/tokens';
+import { kitModalHeaderStyle } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
 
 @Component({
@@ -16,7 +16,7 @@ export class KitModalHeaderComponent implements OnInit {
   @Input() kitModalHeader: any;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentModalHeader) private style: KitComponentStyle) {
+              @Inject(kitModalHeaderStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-modal-header';
     this.styler.register(this.style);
   }

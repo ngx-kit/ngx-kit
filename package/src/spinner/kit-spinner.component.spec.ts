@@ -1,7 +1,7 @@
 import { Component, DebugElement, Directive, Injectable, Input, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StylerComponent } from '@ngx-kit/styler';
-import { kitComponentSpinner } from '../core/meta/tokens';
+import { kitSpinnerStyle } from '../core/meta/tokens';
 import { KitSpinnerComponent } from './kit-spinner.component';
 
 describe('Spinner/SpinnerComponent', () => {
@@ -15,7 +15,7 @@ describe('Spinner/SpinnerComponent', () => {
         declarations: [StylerDirective, ContainerComponent, KitSpinnerComponent],
         providers: [
           {
-            provide: kitComponentSpinner,
+            provide: kitSpinnerStyle,
             useClass: StyleMock,
           },
         ],

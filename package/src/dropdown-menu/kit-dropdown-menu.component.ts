@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentDropdownMenu } from '../core/meta/tokens';
+import { kitDropdownMenuStyle } from '../core/meta/tokens';
 import { KitAnchorDirective } from '../core/overlay/anchor.directive';
 
 /**
@@ -37,7 +37,7 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
   opened = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentDropdownMenu) private style: KitComponentStyle) {
+              @Inject(kitDropdownMenuStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-dropdown-menu';
     this.styler.register(this.style);
   }

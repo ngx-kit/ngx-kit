@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { kitComponentAlert } from '../core/meta/tokens';
+import { kitAlertStyle } from '../core/meta/tokens';
 import { KitAlertTitleComponent } from './kit-alert-title.component';
 
 @Component({
@@ -44,7 +44,7 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
   @ContentChildren(forwardRef(() => KitAlertTitleComponent)) titles: QueryList<KitAlertTitleComponent>;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentAlert) private style: KitComponentStyle) {
+              @Inject(kitAlertStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-alert';
     this.styler.register(this.style);
   }

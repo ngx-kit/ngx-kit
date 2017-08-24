@@ -23,7 +23,7 @@ import {
   KitCoreOverlayContainerWidthType,
 } from '../meta/overlay';
 import { KitThemeService } from '../meta/theme';
-import { kitComponentOverlayContainer, kitTheme } from '../meta/tokens';
+import { kitOverlayContainerStyle, kitTheme } from '../meta/tokens';
 
 /**
  * @todo click close
@@ -122,7 +122,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   };
 
   constructor(private styler: StylerComponent,
-              @Inject(kitComponentOverlayContainer) private componentStyle: KitComponentStyle,
+              @Inject(kitOverlayContainerStyle) private componentStyle: KitComponentStyle,
               private zone: NgZone,
               private elementRef: ElementRef,
               @Optional() @Inject(kitTheme) private theme: KitThemeService) {
