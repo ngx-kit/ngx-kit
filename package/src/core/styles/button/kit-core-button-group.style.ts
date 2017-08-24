@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { defPick, StyleDef } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../../meta/component';
+import { KitButtonGroupDirection } from '../../../button/meta';
+import { KitButtonGroupStyle } from '../../meta/styles/button-styles';
 
 @Injectable()
-export class KitCoreButtonGroupStyle implements KitComponentStyle {
-  host(state: {direction: any}): StyleDef {
+export class KitCoreButtonGroupStyle implements KitButtonGroupStyle {
+  host(state: {direction: KitButtonGroupDirection}): StyleDef {
     return {
       display: 'inline-flex',
       ...defPick(state.direction, {

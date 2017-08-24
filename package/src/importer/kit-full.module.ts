@@ -37,7 +37,6 @@ import { KitTypoModule } from '../typo/kit-typo.module';
 const initableModules = [
   StylerModule,
   KitCoreModule,
-  KitDefaultThemeModule,
   KitNotificationModule,
 ];
 const simpleModules = [
@@ -76,7 +75,6 @@ const simpleModules = [
   imports: [
     StylerModule.forRoot(),
     KitCoreModule.forRoot(),
-    KitDefaultThemeModule.forRoot(),
     KitNotificationModule.forRoot(),
     ...simpleModules,
   ],

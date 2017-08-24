@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { defMerge, defPick, defToggle, StyleDef } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../../../core/meta/component';
+import { KitButtonStyle } from '../../../core/meta/styles/button-styles';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { Swatch } from '../../meta/params';
 import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
-export class KitDefaultButtonStyle implements KitComponentStyle {
+export class KitDefaultButtonStyle implements KitButtonStyle {
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 

@@ -11,7 +11,7 @@ import {
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitComponentButtonGroup } from '../core/meta/tokens';
-import { kitButtonGroupDirection } from './meta';
+import { KitButtonGroupDirection } from './meta';
 import { KitButtonComponent } from './kit-button.component';
 
 /**
@@ -35,7 +35,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
 
   @Input() selectable = false;
 
-  private _direction: kitButtonGroupDirection = 'horizontal';
+  private _direction: KitButtonGroupDirection = 'horizontal';
 
   constructor(private styler: StylerComponent,
               @Inject(kitComponentButtonGroup) private style: KitComponentStyle) {
@@ -44,7 +44,7 @@ export class KitButtonGroupComponent implements OnInit, AfterContentInit {
   }
 
   @Input()
-  set direction(direction: kitButtonGroupDirection) {
+  set direction(direction: KitButtonGroupDirection) {
     this._direction = direction;
     this.styler.host.applyState({direction});
     this.proxyToButtons();
