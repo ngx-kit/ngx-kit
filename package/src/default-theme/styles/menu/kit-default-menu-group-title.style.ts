@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef } from '@ngx-kit/styler';
+import { opacify, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultMenuGroupTitleStyle implements KitComponentStyle {
@@ -12,11 +11,10 @@ export class KitDefaultMenuGroupTitleStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.menus;
     return {
-      fontSize: params.moduleMenu.titleFontSize,
+      fontSize: '.9rem',
       padding: [0, params.grid.h, params.grid.v / 2],
-      ...applyTypoColorSet(colors.groupTitle),
+      color: opacify(-.2, params.colors.invert),
     };
   }
 }

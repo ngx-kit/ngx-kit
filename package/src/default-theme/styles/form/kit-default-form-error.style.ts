@@ -11,9 +11,8 @@ export class KitDefaultFormErrorStyle implements KitComponentStyle {
 
   host(state: {visible: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.swatches.error;
     return {
-      color: colors.base,
+      color: params.colors.swatches.error.base,
     };
   }
 }

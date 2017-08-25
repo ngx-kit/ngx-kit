@@ -4,6 +4,7 @@ import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { applyColorSet } from '../../utils/apply-color-set';
+import { genInputDisabled, genInputHoverBorder } from '../../utils/inputs';
 
 @Injectable()
 export class KitDefaultTextareaStyle implements KitComponentStyle {
@@ -19,29 +20,36 @@ export class KitDefaultTextareaStyle implements KitComponentStyle {
     readonly: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
-      transition: 'background 0.2s',
+      transition: params.transitions.default,
       padding: [params.grid.v / 2, params.grid.h],
+      boxShadow: params.shadows.element,
       ...defToggle(state.disabled, {
-        ...applyColorSet(colors.disabled, params.borders.width),
+        ...applyColorSet(
+            genInputDisabled(params.colors.background, params.colors.invert, params.colors.input),
+            params.borders.width,
+        ),
       }, {
-        ...applyColorSet(colors.base, params.borders.width),
+        ...applyColorSet({
+          background: params.colors.background,
+          border: params.colors.input,
+          text: params.colors.invert,
+        }, params.borders.width),
         $nest: {
           '&:hover': {
             outline: 'none',
-            ...applyColorSet(colors.hover, params.borders.width),
+            borderColor: genInputHoverBorder(params.colors.input, params.colors.invert),
           },
           '&:focus': {
-            transition: '0.2s',
             outline: 'none',
-            ...applyColorSet(colors.focus, params.borders.width),
+            borderColor: params.colors.swatches.primary.base,
+          },
+          '&:active': {
+            outline: 'none',
+            borderColor: params.colors.swatches.primary.base,
           },
         },
-        ...defToggle(state.readonly, {
-          ...applyColorSet(colors.readonly, params.borders.width),
-        }),
       }),
     };
   }

@@ -1,10 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { defToggle, mix, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet } from '../../utils/apply-color-set';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
+import { applyColorSet, BORDER_BOTTOM, BORDER_LEFT, BORDER_RIGHT } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultTabsStyle implements KitComponentStyle {
@@ -16,43 +15,39 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   }
 
   nav(): StyleDef {
-    return {};
+    const params = this.theme.params;
+    return {
+      background: params.colors.border,
+      color: params.colors.invert,
+    };
   }
 
   panel(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.panels;
     return {
       paddingTop: this.theme.params.grid.h * 2,
       paddingBottom: this.theme.params.grid.h * 2,
       paddingLeft: this.theme.params.grid.v * 2,
-      ...applyColorSet({...colors.content, border: colors.border}, params.borders.width),
+      ...applyColorSet({
+        background: params.colors.background,
+        border: params.colors.border,
+        text: params.colors.invert,
+      }, params.borders.width, BORDER_RIGHT | BORDER_BOTTOM | BORDER_LEFT),
     };
   }
 
   tab(state: {active: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.panels;
     return {
       padding: [params.grid.v, params.grid.h],
-      borderTopLeftRadius: params.borders.radius,
-      borderTopRightRadius: params.borders.radius,
-      borderLeft: [params.borders.width, 'solid', colors.border],
-      borderTop: [params.borders.width, 'solid', colors.border],
-      ...applyTypoColorSet(colors.title.base),
+      borderBottom: [params.borders.width, 'solid', params.colors.border],
       $nest: {
         '&:hover': {
-          ...applyTypoColorSet(colors.title.hover),
-          borderBottom: 0,
-        },
-        '&:last-child': {
-          borderRight: [params.borders.width, 'solid', colors.border],
+          background: mix(.95, params.colors.border, params.colors.invert),
         },
       },
       ...defToggle(state.active, {
-        ...applyTypoColorSet(colors.title.active),
-        borderBottom: 0,
-        marginBottom: -params.borders.width,
+        borderBottomColor: params.colors.swatches.primary.base,
       }),
     };
   }

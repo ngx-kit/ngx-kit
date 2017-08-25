@@ -3,7 +3,6 @@ import { defMerge, defToggle, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultDatePickerStyle implements KitComponentStyle {
@@ -12,13 +11,12 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 
   date(state: {outside: boolean, active: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.swatches.default;
     return defMerge([
       {
         textAlign: 'center',
         transition: 'all .2s',
         borderRadius: params.borders.radius,
-        padding: params.moduleDatePicker.datePadding,
+        padding: 4,
       },
       defToggle(state.outside, {
         opacity: .6,
@@ -64,10 +62,7 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.modals;
-    return {
-      ...applyColorSet(colors.modal),
-    };
+    return {};
   }
 
   table(): StyleDef {
@@ -81,12 +76,12 @@ export class KitDefaultDatePickerStyle implements KitComponentStyle {
         '& th': {
           border: 0,
           textAlign: 'center',
-          padding: params.moduleDatePicker.dateCellPadding,
+          padding: 2,
         },
         '& td': {
           border: 0,
           textAlign: 'center',
-          padding: params.moduleDatePicker.dateCellPadding,
+          padding: 2,
         },
       },
     };

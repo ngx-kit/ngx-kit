@@ -11,9 +11,8 @@ export class KitDefaultAccordionStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.panels;
     return {
-      border: [params.borders.width, 'solid', colors.border],
+      border: [params.borders.width, 'solid', params.colors.border],
       borderTop: 0,
     };
   }

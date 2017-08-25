@@ -20,7 +20,7 @@ export class KitDefaultSpinnerStyle implements KitComponentStyle {
     type: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color = params.colors.loaders.base;
+    const color = params.colors.swatches.primary.base;
     const duration = state.duration || params.moduleSpinner.duration;
     const size = state.size || params.moduleSpinner.size;
     const border = Math.round(size / 5);

@@ -5,6 +5,8 @@ import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
 import { applyColorSet } from '../../utils/apply-color-set';
 import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
+import { genInputDisabled, genInputHoverBorder } from '../../utils/inputs';
+import { genMenuItemHover } from '../../utils/menus';
 
 @Injectable()
 export class KitDefaultSelectStyle implements KitComponentStyle {
@@ -15,23 +17,27 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     selected: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs.options;
     return defMerge([
       {
         padding: [params.grid.v / 2, params.grid.h],
-        ...applyTypoColorSet(colors.base),
+        background: params.colors.background,
+        color: params.colors.invert,
         $nest: {
           '&:not(:last-child)': {
-            borderBottom: [params.borders.width, 'solid', colors.base.border],
+            borderBottom: [params.borders.width, 'solid', params.colors.border],
           },
         },
       },
       defToggle(state.selected, {
-        ...applyColorSet(colors.selected, params.borders.width),
+        ...applyColorSet({
+          background: params.colors.swatches.primary.base,
+          border: params.colors.swatches.primary.base,
+          text: params.colors.swatches.primary.invert,
+        }, params.borders.width),
       }, {
         $nest: {
           '&:hover': {
-            ...applyColorSet(colors.hover, params.borders.width),
+            ...applyTypoColorSet(genMenuItemHover(params.colors)),
           },
         },
       }),
@@ -40,31 +46,35 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
 
   dropdownOptions(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
     return {
-      ...applyColorSet(colors.base, params.borders.width),
+      background: params.colors.background,
+      border: params.colors.border,
     };
   }
 
   dropdownSelect(state: {
     focus: boolean;
+    disabled: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
       transition: 'background 0.2s',
       padding: [params.grid.v / 2, params.grid.h],
-      ...applyColorSet(colors.base, params.borders.width),
-      ...defToggle(state.focus, {
-        transition: '0.2s',
-        outline: 'none',
-        ...applyColorSet(colors.focus, params.borders.width),
-      }, {
+      boxShadow: params.shadows.element,
+      ...defToggle(state.disabled, {}, {
+        ...applyColorSet({
+          background: params.colors.background,
+          border: params.colors.input,
+          text: params.colors.invert,
+        }, params.borders.width),
+        ...defToggle(state.focus, {
+          borderColor: params.colors.swatches.primary.base,
+        }),
         $nest: {
           '&:hover': {
             outline: 'none',
-            ...applyColorSet(colors.hover, params.borders.width),
+            borderColor: genInputHoverBorder(params.colors.input, params.colors.invert),
           },
         },
       }),
@@ -79,24 +89,34 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
     disabled: boolean;
   }): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
     return {
       borderRadius: params.borders.radius,
       transition: 'background 0.2s',
       padding: [params.grid.v / 2, params.grid.h],
+      boxShadow: params.shadows.element,
       ...defToggle(state.disabled, {
-        ...applyColorSet(colors.disabled, params.borders.width),
+        ...applyColorSet(
+            genInputDisabled(params.colors.background, params.colors.invert, params.colors.input),
+            params.borders.width,
+        ),
       }, {
-        ...applyColorSet(colors.base, params.borders.width),
+        ...applyColorSet({
+          background: params.colors.background,
+          border: params.colors.input,
+          text: params.colors.invert,
+        }, params.borders.width),
         $nest: {
           '&:hover': {
             outline: 'none',
-            ...applyColorSet(colors.hover, params.borders.width),
+            borderColor: genInputHoverBorder(params.colors.input, params.colors.invert),
           },
           '&:focus': {
-            transition: '0.2s',
             outline: 'none',
-            ...applyColorSet(colors.focus, params.borders.width),
+            borderColor: params.colors.swatches.primary.base,
+          },
+          '&:active': {
+            outline: 'none',
+            borderColor: params.colors.swatches.primary.base,
           },
         },
       }),
@@ -105,19 +125,26 @@ export class KitDefaultSelectStyle implements KitComponentStyle {
 
   option(state: {selected: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs.options;
     return {
       borderRadius: params.borders.radius,
       marginBottom: params.grid.v / 2,
       padding: `${params.grid.v / 2}px ${params.grid.h}px`,
       transition: 'background 0.2s',
-      ...applyColorSet(colors.base, params.borders.width),
+      ...applyColorSet({
+        background: params.colors.background,
+        border: params.colors.border,
+        text: params.colors.invert,
+      }, params.borders.width),
       ...defToggle(state.selected, {
-        ...applyColorSet(colors.selected, params.borders.width),
+        ...applyColorSet({
+          background: params.colors.swatches.primary.base,
+          border: params.colors.swatches.primary.base,
+          text: params.colors.swatches.primary.invert,
+        }, params.borders.width),
       }, {
         $nest: {
           '&:hover': {
-            ...applyColorSet(colors.hover, params.borders.width),
+            ...applyColorSet(genMenuItemHover(params.colors), params.borders.width),
           },
         },
       }),

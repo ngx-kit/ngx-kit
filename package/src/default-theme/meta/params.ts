@@ -10,15 +10,8 @@ export interface TypoColorsSet {
 }
 
 export interface Swatch {
-  active: string;
   base: string;
-  baseText: string;
-  disabledText: string;
-  hover: string;
-  light: string;
-  lightText: string;
-  overlay: string;
-  overlayText: string;
+  invert: string;
 }
 
 export type DefaultColors = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
@@ -27,10 +20,6 @@ export interface KitDefaultThemeParams {
   borders: KitDefaultThemeParamsBorders;
   colors: KitDefaultThemeParamsColors;
   grid: KitDefaultThemeParamsGrid;
-  moduleAlert: KitDefaultThemeParamsAlert;
-  moduleColorPicker: KitDefaultThemeParamsColorPicker;
-  moduleDatePicker: KitDefaultThemeParamsDatePicker;
-  moduleMenu: KitDefaultThemeParamsMenu;
   moduleSpinner: KitDefaultThemeParamsSpinner;
   moduleTypo: KitDefaultThemeParamsTypo;
   shadows: KitDefaultThemeParamsShadows;
@@ -38,67 +27,11 @@ export interface KitDefaultThemeParams {
 }
 
 export interface KitDefaultThemeParamsColors {
-  inputs: {
-    base: ColorsSet;
-    hover: ColorsSet;
-    focus: ColorsSet;
-    readonly: ColorsSet;
-    disabled: ColorsSet;
-    checked: ColorsSet;
-    options: {
-      base: ColorsSet;
-      hover: ColorsSet;
-      selected: ColorsSet;
-      disabled: ColorsSet;
-    }
-  };
-  loaders: {
-    base: string;
-    shadow: string;
-  };
-  menus: {
-    menu: ColorsSet,
-    item: {
-      base: ColorsSet;
-      hover: ColorsSet;
-      active: ColorsSet;
-      disabled: ColorsSet;
-    };
-    groupTitle: TypoColorsSet;
-    separator: string;
-    sub: {
-      background: string;
-      border: string;
-    };
-    subItem: {
-      base: ColorsSet;
-      hover: ColorsSet;
-      active: ColorsSet;
-      disabled: ColorsSet;
-    };
-  },
-  modals: {
-    modal: ColorsSet;
-  }
-  panels: {
-    border: string;
-    content: TypoColorsSet;
-    title: {
-      base: TypoColorsSet,
-      hover: TypoColorsSet,
-      active: TypoColorsSet,
-    };
-  };
+  background: string;
+  border: string;
+  input: string,
+  invert: string;
   swatches: {[key in DefaultColors]: Swatch};
-  typo: {
-    text: TypoColorsSet;
-    link: {
-      base: TypoColorsSet;
-      hover: TypoColorsSet;
-      focus: TypoColorsSet;
-      visited: TypoColorsSet;
-    };
-  }
 }
 
 export interface KitDefaultThemeParamsBorders {
@@ -109,24 +42,6 @@ export interface KitDefaultThemeParamsBorders {
 export interface KitDefaultThemeParamsGrid {
   h: number;
   v: number;
-}
-
-export interface KitDefaultThemeParamsAlert {
-  titleFontSize: string;
-}
-
-export interface KitDefaultThemeParamsColorPicker {
-  cursorSize: number;
-  sliderHeight: number;
-}
-
-export interface KitDefaultThemeParamsDatePicker {
-  dateCellPadding: number;
-  datePadding: number;
-}
-
-export interface KitDefaultThemeParamsMenu {
-  titleFontSize: string;
 }
 
 export interface KitDefaultThemeParamsSpinner {

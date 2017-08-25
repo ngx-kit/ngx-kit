@@ -3,7 +3,6 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultColorPickerPopupStyle implements KitComponentStyle {
@@ -16,12 +15,11 @@ export class KitDefaultColorPickerPopupStyle implements KitComponentStyle {
 
   popup(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.modals;
     return {
       padding: [params.grid.v, params.grid.h],
-      boxShadow: params.shadows.deep,
-      borderRadius: params.borders.radius,
-      ...applyColorSet(colors.modal, params.borders.width),
+      background: params.colors.background,
+      color: params.colors.invert,
+      border: [params.borders.width, 'solid', params.colors.border],
     };
   }
 }

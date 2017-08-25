@@ -27,26 +27,25 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   view(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
     return defMerge([
       {
-        background: colors.base.background,
-        border: [params.borders.width, 'solid', colors.base.border],
+        background: params.colors.background,
+        border: [params.borders.width, 'solid', params.colors.input],
         height: 22 + params.borders.width,
         transition: params.transitions.default,
         $nest: {
           '&:after': {
-            background: colors.base.border,
+            background: params.colors.input,
             transition: 'all .3s,width .3s',
           },
         },
       },
       defToggle(state.checked, {
-        background: colors.checked.background,
-        borderColor: colors.checked.border,
+        background: params.colors.swatches.primary.base,
+        borderColor: params.colors.swatches.primary.base,
         $nest: {
           '&:after': {
-            background: colors.checked.border,
+            background: params.colors.background,
           },
         },
       }),
@@ -55,9 +54,6 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
 
   viewInner(state: {checked: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.inputs;
-    return {
-      color: colors.base.background,
-    };
+    return {};
   }
 }

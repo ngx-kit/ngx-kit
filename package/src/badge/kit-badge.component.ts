@@ -30,7 +30,6 @@ export class KitBadgeComponent implements OnInit, OnChanges {
 
   constructor(private styler: StylerComponent,
               @Inject(kitBadgeStyle) private style: KitComponentStyle) {
-    console.log('badge style', this.style);
     this.styler.classPrefix = 'kit-badge';
     this.styler.register(this.style);
   }

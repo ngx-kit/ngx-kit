@@ -15,18 +15,13 @@ export class KitDefaultMenuSubStyle implements KitComponentStyle {
 
   menu(state: {position: 'bottom' | 'right'}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.menus;
     return {
-      backgroundColor: colors.sub.background,
-      border: [params.borders.width, 'solid', colors.sub.border],
       borderRadius: params.borders.radius,
+      background: params.colors.background,
+      border: [params.borders.width, 'solid', params.colors.border],
       ...defPick(state.position, {
-        right: {
-          marginLeft: this.theme.params.grid.h / 2,
-        },
-        bottom: {
-          marginTop: this.theme.params.grid.v / 2,
-        },
+        right: {},
+        bottom: {},
       }),
     };
   }

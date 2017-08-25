@@ -3,7 +3,6 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultModalStyle implements KitComponentStyle {
@@ -16,10 +15,9 @@ export class KitDefaultModalStyle implements KitComponentStyle {
 
   modal(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.modals;
     return {
-      boxShadow: params.shadows.deep,
-      ...applyColorSet(colors.modal),
+      background: params.colors.background,
+      color: params.colors.invert,
     };
   }
 }

@@ -14,7 +14,7 @@ export class KitDefaultAlertTitleStyle implements KitComponentStyle {
   }): StyleDef {
     const params = this.theme.params;
     return {
-      fontSize: params.moduleAlert.titleFontSize,
+      fontSize: '1.2em',
       margin: [params.grid.v / 2, 0, params.grid.v],
     };
   }

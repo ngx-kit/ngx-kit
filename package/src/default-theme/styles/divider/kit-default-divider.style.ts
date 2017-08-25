@@ -18,9 +18,8 @@ export class KitDefaultDividerStyle implements KitComponentStyle {
 
   line(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.typo;
     return {
-      borderBottom: [params.borders.width, 'solid', colors.text],
+      borderBottom: [params.borders.width, 'solid', params.colors.border],
     };
   }
 

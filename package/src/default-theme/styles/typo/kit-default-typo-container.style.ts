@@ -3,7 +3,6 @@ import { StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyTypoColorSet } from '../../utils/apply-typo-color-set';
 
 @Injectable()
 export class KitDefaultTypoContainerStyle implements KitComponentStyle {
@@ -12,22 +11,22 @@ export class KitDefaultTypoContainerStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.typo;
+//    const colors = params.colors.typo;
     return {
       fontSize: params.moduleTypo.fontSize,
-      ...applyTypoColorSet(colors.text),
+//      ...applyTypoColorSet(colors.text),
       $nest: {
         '& a': {
-          ...applyTypoColorSet(colors.link.base),
+//          ...applyTypoColorSet(colors.link.base),
         },
         '& a:hover': {
-          ...applyTypoColorSet(colors.link.hover),
+//          ...applyTypoColorSet(colors.link.hover),
         },
         '& a:focus': {
-          ...applyTypoColorSet(colors.link.focus),
+//          ...applyTypoColorSet(colors.link.focus),
         },
         '& a:visited': {
-          ...applyTypoColorSet(colors.link.visited),
+//          ...applyTypoColorSet(colors.link.visited),
         },
         '& h1': {
           fontSize: params.moduleTypo.headingFontSizes.h1,

@@ -24,7 +24,7 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
       ...applyColorSet({
         background: color.base,
         border: color.base,
-        text: color.baseText,
+        text: color.invert,
       }, params.borders.width),
       ...defPick(state.size, {
         s: {

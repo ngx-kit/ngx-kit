@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defMerge, defPick, defToggle, StyleDef } from '@ngx-kit/styler';
+import { darken, defMerge, defPick, defToggle, mix, opacify, StyleDef } from '@ngx-kit/styler';
 import { KitButtonStyle } from '../../../core/meta/styles/button-styles';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -31,30 +31,37 @@ export class KitDefaultButtonStyle implements KitButtonStyle {
       defToggle(state.disabled, {
         cursor: 'default',
         ...applyColorSet({
-          background: color.light,
-          border: color.light,
-          text: color.disabledText,
+          background: mix(.5, color.base, params.colors.background),
+          border: mix(.5, color.base, params.colors.background),
+          text: opacify(-.4, color.invert),
         }, params.borders.width),
       }, {
         cursor: 'pointer',
         ...applyColorSet({
           background: color.base,
           border: color.base,
-          text: color.baseText,
+          text: color.invert,
         }, params.borders.width),
         $nest: {
           '&:hover': {
             ...applyColorSet({
-              background: color.hover,
-              border: color.hover,
-              text: color.baseText,
+              background: darken(.05, color.base),
+              border: darken(.05, color.base),
+              text: color.invert,
+            }, params.borders.width),
+          },
+          '&:focus': {
+            ...applyColorSet({
+              background: darken(.1, color.base),
+              border: darken(.1, color.base),
+              text: color.invert,
             }, params.borders.width),
           },
           '&:active': {
             ...applyColorSet({
-              background: color.active,
-              border: color.active,
-              text: color.baseText,
+              background: darken(.1, color.base),
+              border: darken(.1, color.base),
+              text: color.invert,
             }, params.borders.width),
           },
         },

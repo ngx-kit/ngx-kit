@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { defPick, defToggle, StyleDef } from '@ngx-kit/styler';
+import { defPick, defToggle, opacify, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet, BORDER_BOTTOM, BORDER_RIGHT } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultMenuItemStyle implements KitComponentStyle {
@@ -18,14 +17,9 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     hasSubs: boolean,
   }): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.menus;
-    const itemColor = colors.item;
-    const subItemColor = colors.subItem;
     return {
-      borderBottom: [2, 'solid', itemColor.base.border],
       padding: [params.grid.v / 2, params.grid.h],
-      color: itemColor.base.text,
-      background: itemColor.base.background,
+      color: params.colors.invert,
       ...defToggle(state.root, {
         // root items
         ...defPick(state.menuDirection, {
@@ -35,12 +29,11 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
             marginBottom: -params.borders.width,
             ...defToggle(state.disabled, {
               cursor: 'default',
-              ...applyColorSet(itemColor.disabled, params.borders.width, BORDER_BOTTOM),
+              color: opacify(-.4, params.colors.invert),
             }, {
-              ...applyColorSet(itemColor.base, params.borders.width, BORDER_BOTTOM),
               $nest: {
                 '&:hover': {
-                  ...applyColorSet(itemColor.hover, params.borders.width, BORDER_BOTTOM),
+                  background: params.colors.border,
                 },
               },
             }),
@@ -48,14 +41,10 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
           // root & vertical
           vertical: {
             borderRadius: params.borders.radius,
-            marginRight: -params.borders.width,
-            ...defToggle(state.disabled, {
-              ...applyColorSet(itemColor.disabled, params.borders.width, BORDER_RIGHT),
-            }, {
-              ...applyColorSet(itemColor.base, params.borders.width, BORDER_RIGHT),
+            ...defToggle(state.disabled, {}, {
               $nest: {
                 '&:hover': {
-                  ...applyColorSet(itemColor.hover, params.borders.width, BORDER_RIGHT),
+                  background: params.colors.border,
                 },
               },
             }),
@@ -65,12 +54,10 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
         // sub items
         ...defToggle(state.disabled, {
           cursor: 'default',
-          ...applyColorSet(subItemColor.disabled, params.borders.width, BORDER_BOTTOM),
         }, {
-          ...applyColorSet(subItemColor.base, params.borders.width, BORDER_BOTTOM),
           $nest: {
             '&:hover': {
-              ...applyColorSet(subItemColor.hover, params.borders.width, BORDER_BOTTOM),
+              background: params.colors.border,
             },
             '&:first-child': {
               borderTopLeftRadius: params.borders.radius,

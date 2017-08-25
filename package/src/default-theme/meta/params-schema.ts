@@ -24,78 +24,15 @@ export const paramsSchema = {
     width: 'number',
   },
   colors: {
-    inputs: {
-      base: basicColorSet,
-      hover: basicColorSet,
-      focus: basicColorSet,
-      readonly: basicColorSet,
-      disabled: basicColorSet,
-      checked: basicColorSet,
-      options: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        selected: basicColorSet,
-        disabled: basicColorSet,
-      },
-    },
-    loaders: {
-      base: 'color',
-      shadow: 'color',
-    },
-    menus: {
-      menu: basicColorSet,
-      item: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-        disabled: basicColorSet,
-      },
-      groupTitle: typoColorSet,
-      separator: 'color',
-      sub: {
-        background: 'color',
-        border: 'color',
-      },
-      subItem: {
-        base: basicColorSet,
-        hover: basicColorSet,
-        active: basicColorSet,
-        disabled: basicColorSet,
-      },
-    },
-    modals: {
-      modal: basicColorSet,
-    },
-    panels: {
-      border: 'color',
-      content: typoColorSet,
-      title: {
-        base: typoColorSet,
-        hover: typoColorSet,
-        active: typoColorSet,
-      },
-    },
+    background: 'color',
+    invert: 'color',
+    border: 'color',
+    input: 'color',
     swatches: {
       ...extract(defaultColors, {
-        active: 'color',
         base: 'color',
-        baseText: 'color',
-        disabledText: 'color',
-        hover: 'color',
-        light: 'color',
-        lightText: 'color',
-        overlay: 'color',
-        overlayText: 'color',
+        invert: 'color',
       }),
-    },
-    typo: {
-      text: typoColorSet,
-      link: {
-        base: typoColorSet,
-        hover: typoColorSet,
-        focus: typoColorSet,
-        visited: typoColorSet,
-      },
     },
   },
   shadows: {
@@ -105,20 +42,6 @@ export const paramsSchema = {
   },
   transitions: {
     'default': 'string',
-  },
-  moduleAlert: {
-    titleFontSize: 'string',
-  },
-  moduleColorPicker: {
-    cursorSize: 'number',
-    sliderHeight: 'number',
-  },
-  moduleDatePicker: {
-    dateCellPadding: 'number',
-    datePadding: 'number',
-  },
-  moduleMenu: {
-    titleFontSize: 'string',
   },
   moduleSpinner: {
     duration: 'string',

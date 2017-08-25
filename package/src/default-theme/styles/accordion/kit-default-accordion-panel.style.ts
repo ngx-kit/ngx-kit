@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { defToggle, StyleDef } from '@ngx-kit/styler';
+import { defToggle, mix, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
-import { applyColorSet, BORDER_TOP } from '../../utils/apply-color-set';
 
 @Injectable()
 export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
@@ -12,45 +11,31 @@ export class KitDefaultAccordionPanelStyle implements KitComponentStyle {
 
   content(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.panels;
     return {
       padding: [params.grid.v * 2, params.grid.h * 3],
-      ...applyColorSet({...colors.content, border: colors.border}, params.borders.width, BORDER_TOP),
+      background: params.colors.background,
+      color: params.colors.invert,
     };
   }
 
   host(): StyleDef {
-    const params = this.theme.params;
-    return {
-      borderBottomWidth: 0,
-      $nest: {
-        '&:first-child': {
-          borderTopLeftRadius: params.borders.radius,
-          borderTopRightRadius: params.borders.radius,
-        },
-        '&:last-child': {
-          borderBottomWidth: params.borders.width,
-          borderBottomRightRadius: params.borders.radius,
-          borderBottomLeftRadius: params.borders.radius,
-        },
-      },
-    };
+    return {};
   }
 
   title(state: {active: boolean}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.panels;
     return {
       height: params.grid.v * 4,
       lineHeight: params.grid.h * 4,
       paddingLeft: params.grid.v * 3,
-      ...applyColorSet({...colors.title.base, border: colors.border}, params.borders.width, BORDER_TOP),
+      background: params.colors.border,
+      color: params.colors.invert,
       ...defToggle(state.active, {
-        ...applyColorSet({...colors.title.active, border: colors.border}, params.borders.width, BORDER_TOP),
+        background: mix(.9, params.colors.border, params.colors.invert),
       }, {
         $nest: {
           '&:hover': {
-            ...applyColorSet({...colors.title.hover, border: colors.border}, params.borders.width, BORDER_TOP),
+            background: mix(.95, params.colors.border, params.colors.invert),
           },
         },
       }),

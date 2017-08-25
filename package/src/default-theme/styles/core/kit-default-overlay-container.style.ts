@@ -11,7 +11,11 @@ export class KitDefaultOverlayContainerStyle implements KitComponentStyle {
   }
 
   holder(): StyleDef {
-    return {}
+    const params = this.theme.params;
+    return {
+      boxShadow: params.shadows.overlay,
+      borderRadius: params.borders.radius,
+    };
   }
 
   host(state: {

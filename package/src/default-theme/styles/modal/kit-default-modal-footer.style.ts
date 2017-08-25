@@ -11,13 +11,12 @@ export class KitDefaultModalFooterStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.modals;
     return {
       borderBottomRightRadius: params.borders.radius * 2,
       borderBottomLeftRadius: params.borders.radius * 2,
       padding: [params.grid.v * 2, params.grid.h * 4],
       textAlign: 'right',
-      borderTop: [params.borders.width, 'solid', colors.modal.border],
+      borderTop: [params.borders.width, 'solid', params.colors.border],
     };
   }
 }

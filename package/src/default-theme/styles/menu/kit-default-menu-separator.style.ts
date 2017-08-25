@@ -11,9 +11,8 @@ export class KitDefaultMenuSeparatorStyle implements KitComponentStyle {
 
   host(state: {parentDirection: 'vertical' | 'horizontal'}): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.menus;
     return {
-      borderColor: colors.separator,
+      borderColor: params.colors.border,
       ...defPick(state.parentDirection, {
         vertical: {
           margin: [this.theme.params.grid.h / 2, 0],

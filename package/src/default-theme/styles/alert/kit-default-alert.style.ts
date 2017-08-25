@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StyleDef } from '@ngx-kit/styler';
+import { mix, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -36,9 +36,9 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
       margin: [params.grid.v, 0],
       padding: [params.grid.v, params.grid.h * 2],
       ...applyColorSet({
-        background: color.light,
-        border: color.base,
-        text: color.lightText,
+        background: mix(.7, color.base, params.colors.background),
+        border: mix(.85, color.base, params.colors.background),
+        text: mix(.2, color.base, params.colors.invert),
       }, params.borders.width),
     };
   }

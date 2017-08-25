@@ -11,14 +11,13 @@ export class KitDefaultModalHeaderStyle implements KitComponentStyle {
 
   host(): StyleDef {
     const params = this.theme.params;
-    const colors = params.colors.modals;
     return {
       padding: [params.grid.v * 2, params.grid.h * 4],
       fontSize: '1.3rem',
       fontWeight: 600,
       borderTopLeftRadius: params.borders.radius * 2,
       borderTopRightRadius: params.borders.radius * 2,
-      borderBottom: [params.borders.width, 'solid', colors.modal.border],
+      borderBottom: [params.borders.width, 'solid', params.colors.border],
     };
   }
 }
