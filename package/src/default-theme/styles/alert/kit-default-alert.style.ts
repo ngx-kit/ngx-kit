@@ -19,7 +19,7 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
     return {
       background: 'transparent',
       border: 0,
-      color: color.base,
+      color: mix(.1, color.base, params.colors.invert),
       margin: 0,
       padding: 0,
     };
