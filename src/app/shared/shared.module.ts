@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { KitFullModule } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
-import { ContentOutputComponent } from './content-output/content-output.component';
+import { PostComponent } from './post/post.component';
 import { ContentComponent } from './content/content.component';
 import { DemoComponent } from './demo/demo.component';
 import { AccordionComponent } from './kit/accordion/accordion.component';
@@ -31,11 +31,13 @@ import { TagComponent } from './kit/tag/tag.component';
 import { TextareaComponent } from './kit/textarea/textarea.component';
 import { ToggleComponent } from './kit/toggle/toggle.component';
 import { TooltipComponent } from './kit/tooltip/tooltip.component';
+import { AccordionDemoDefaultComponent } from './kit2/accordion/accordion-demo-default/accordion-demo-default.component';
+import { AccordionDemoMultipleComponent } from './kit2/accordion/accordion-demo-multiple/accordion-demo-multiple.component';
 import { TitleComponent } from './title/title.component';
 
 const exported = [
   ContentComponent,
-  ContentOutputComponent,
+  PostComponent,
   DemoComponent,
   TitleComponent,
 ];
@@ -66,6 +68,10 @@ const modulesExported = [
   ToggleComponent,
   TooltipComponent,
 ];
+const kit2 = [
+  AccordionDemoDefaultComponent,
+  AccordionDemoMultipleComponent,
+];
 
 @NgModule({
   imports: [
@@ -78,10 +84,12 @@ const modulesExported = [
   declarations: [
     ...exported,
     ...modulesExported,
+    ...kit2,
   ],
   exports: [
     ...exported,
     ...modulesExported,
+    ...kit2,
   ],
 })
 export class SharedModule {

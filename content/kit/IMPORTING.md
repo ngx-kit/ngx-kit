@@ -1,5 +1,4 @@
 ---
-route: kit/docs/importing
 title: Importing
 ---
 

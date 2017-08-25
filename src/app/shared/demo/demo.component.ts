@@ -1,33 +1,36 @@
-import { Component, ElementRef, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-import { Content, ContentFile } from '../../interfaces/content';
+import { MdRenderService } from '@nvxme/ngx-md-render';
+import { highlightAuto } from 'highlight.js';
+import { ContentComponent } from '../../interfaces/content';
 import { DemoStyle } from './demo.style';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css'],
   viewProviders: [
     StylerModule.forComponent(DemoStyle),
   ],
 })
-export class DemoComponent implements OnInit, OnChanges {
-  @Input() content: Content;
+export class DemoComponent implements OnChanges {
+  code: {[key: string]: string} = {};
 
-  file: ContentFile;
+  add = false;
 
-  @Input() id: string;
+  @Input() content: ContentComponent;
+
+  readme: string;
 
   constructor(private styler: StylerComponent,
-              private el: ElementRef) {
+              private el: ElementRef,
+              private md: MdRenderService) {
   }
 
   ngOnChanges() {
-    if (this.content) {
-      this.file = this.content.find(f => f.meta.id === this.id);
-    }
-  }
-
-  ngOnInit() {
+    this.readme = this.md.render(this.content.readme);
+    this.code = this.content.code.reduce((prev, file) => ({
+      ...prev,
+      [file.file]: highlightAuto(file.content, [file.language]).value,
+    }), {});
   }
 }

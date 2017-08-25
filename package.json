@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "content": "node ./content.js",
+    "content": "node ./content_posts && node ./content_components",
     "serve-aot": "ng serve --aot",
     "uni:build": "ng build --prod --app 1",
     "uni:serve": "ts-node src/server.ts",

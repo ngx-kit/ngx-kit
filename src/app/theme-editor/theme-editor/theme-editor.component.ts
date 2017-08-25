@@ -41,6 +41,7 @@ export class ThemeEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.update();
   }
 
   getCode() {

@@ -1,8 +1,21 @@
-<h2 *ngIf="content">{{ file.meta.title }}</h2>
+<h2 *ngIf="content">{{ content.meta.title }}</h2>
 <div styler="demo">
   <ng-content></ng-content>
 </div>
-<div *ngIf="content" styler="content">
-  <div [innerHtml]="file.body" styler="body"></div>
-  <a href="https://github.com/ngx-kit/website/edit/master/{{ file.file }}" styler="edit">Edit</a>
+<div *ngIf="readme"
+     [innerHtml]="readme"
+     styler="readme"></div>
+
+<h4>Sources</h4>
+
+<div styler="code">
+  <kit-tabs>
+    <kit-tabs-panel *ngFor="let file of content.code"
+                    [title]="file.file">
+      <pre><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
+                 [innerHtml]="code[file.file]">
+      </code></pre>
+      <a href="#">Edit</a>
+    </kit-tabs-panel>
+  </kit-tabs>
 </div>

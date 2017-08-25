@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Content } from '../../interfaces/content';
+import { ContentService } from '../../core/content.service';
+import { ContentComponents, ContentPosts } from '../../interfaces/content';
 
 @Component({
   selector: 'app-kit-module',
   templateUrl: './module.component.html',
 })
 export class ModuleComponent implements OnInit {
-  content: Content;
+  components: ContentComponents;
 
   module: string;
 
-  constructor(private route: ActivatedRoute) {
+  posts: ContentPosts;
+
+  constructor(private route: ActivatedRoute,
+              private content: ContentService) {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.content = data.content;
-      this.module = data.module;
+    this.route.params.subscribe(params => {
+      this.module = params.module;
     });
+    this.content.posts$.subscribe(posts => this.posts = posts);
+    this.content.components$.subscribe(components => this.components = components);
   }
 }
