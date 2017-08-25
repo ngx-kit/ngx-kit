@@ -4,9 +4,7 @@ import {
   KitDefaultThemeParamsColors,
   KitDefaultThemeParamsGrid,
   KitDefaultThemeParamsShadows,
-  KitDefaultThemeParamsSpinner,
   KitDefaultThemeParamsTransitions,
-  KitDefaultThemeParamsTypo,
 } from './meta/params';
 
 export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
@@ -51,24 +49,6 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   grid: KitDefaultThemeParamsGrid = {
     h: 8,
     v: 8,
-  };
-
-  moduleSpinner: KitDefaultThemeParamsSpinner = {
-    duration: '1.5s',
-    size: 50,
-    type: 'spin-1',
-  };
-
-  moduleTypo: KitDefaultThemeParamsTypo = {
-    fontSize: '14px',
-    headingFontSizes: {
-      h1: '2.2rem',
-      h2: '1.6rem',
-      h3: '1.4rem',
-      h4: '1.1rem',
-      h5: '1rem',
-      h6: '.9rem',
-    },
   };
 
   shadows: KitDefaultThemeParamsShadows = {

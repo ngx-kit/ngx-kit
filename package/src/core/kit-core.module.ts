@@ -15,18 +15,12 @@ import {
   kitColorPickerStyle,
   kitColorPickerPopupStyle,
   kitDatePickerStyle,
-  kitDividerStyle,
   kitDropdownMenuStyle,
   kitDropdownMenuItemStyle,
   kitFormErrorStyle,
   kitFormGroupStyle,
   kitFormLabelStyle,
   kitInputStyle,
-  kitLayoutStyle,
-  kitLayoutContentStyle,
-  kitLayoutFooterStyle,
-  kitLayoutHeaderStyle,
-  kitLayoutSideStyle,
   kitLoadingBarStyle,
   kitMenuStyle,
   kitMenuGroupStyle,
@@ -43,13 +37,11 @@ import {
   kitRadioStyle,
   kitRadioGroupStyle,
   kitSelectStyle,
-  kitSpinnerStyle,
   kitTabsStyle,
   kitTagStyle,
   kitTextareaStyle,
   kitToggleStyle,
   kitTooltipViewStyle,
-  kitTypoContainerStyle,
 } from './meta/tokens';
 import { KitAnchorDirective } from './overlay/anchor.directive';
 import { KitOverlayService } from './overlay/kit-overlay.service';
@@ -68,18 +60,12 @@ import { KitCoreColorPickerPopupStyle } from './styles/color-picker/kit-core-col
 import { KitCoreColorPickerStyle } from './styles/color-picker/kit-core-color-picker.style';
 import { KitCoreOverlayContainerStyle } from './styles/core/kit-core-overlay-container.style';
 import { KitCoreDatePickerStyle } from './styles/date-picker/kit-core-date-picker.style';
-import { KitCoreDividerStyle } from './styles/divider/kit-core-divider.style';
 import { KitCoreDropdownMenuItemStyle } from './styles/dropdown-menu/kit-core-dropdown-menu-item.style';
 import { KitCoreDropdownMenuStyle } from './styles/dropdown-menu/kit-core-dropdown-menu.style';
 import { KitCoreFormErrorStyle } from './styles/form/kit-core-form-error.style';
 import { KitCoreFormGroupStyle } from './styles/form/kit-core-form-group.style';
 import { KitCoreFormLabelStyle } from './styles/form/kit-core-form-label.style';
 import { KitCoreInputStyle } from './styles/input/kit-core-input.style';
-import { KitCoreLayoutContentStyle } from './styles/layout/kit-core-layout-content.style';
-import { KitCoreLayoutFooterStyle } from './styles/layout/kit-core-layout-footer.style';
-import { KitCoreLayoutHeaderStyle } from './styles/layout/kit-core-layout-header.style';
-import { KitCoreLayoutSideStyle } from './styles/layout/kit-core-layout-side.style';
-import { KitCoreLayoutStyle } from './styles/layout/kit-core-layout.style';
 import { KitCoreLoadingBarStyle } from './styles/loading-bar/kit-core-loading-bar.style';
 import { KitCoreMenuGroupTitleStyle } from './styles/menu/kit-core-menu-group-title.style';
 import { KitCoreMenuGroupStyle } from './styles/menu/kit-core-menu-group.style';
@@ -95,13 +81,11 @@ import { KitCoreNotificationHostStyle } from './styles/notification/kit-core-not
 import { KitCoreRadioGroupStyle } from './styles/radio/kit-core-radio-group.style';
 import { KitCoreRadioStyle } from './styles/radio/kit-core-radio.style';
 import { KitCoreSelectStyle } from './styles/select/kit-core-select.style';
-import { KitCoreSpinnerStyle } from './styles/spinner/kit-core-spinner.style';
 import { KitCoreTabsStyle } from './styles/tabs/kit-core-tabs.style';
 import { KitCoreTagStyle } from './styles/tag/kit-core-tag.style';
 import { KitCoreTextareaStyle } from './styles/textarea/kit-core-textarea.style';
 import { KitCoreToggleStyle } from './styles/toggle/kit-core-toggle.style';
 import { KitCoreTooltipViewStyle } from './styles/tooltip/kit-core-tooltip-view.style';
-import { KitCoreTypoContainerStyle } from './styles/typo/kit-core-typo-container.style';
 
 const exports = [
   KitAnchorDirective,
@@ -193,11 +177,6 @@ export class KitCoreModule {
           multi: true,
         },
         {
-          provide: kitDividerStyle,
-          useClass: KitCoreDividerStyle,
-          multi: true,
-        },
-        {
           provide: kitDropdownMenuStyle,
           useClass: KitCoreDropdownMenuStyle,
           multi: true,
@@ -230,31 +209,6 @@ export class KitCoreModule {
         {
           provide: kitInputStyle,
           useClass: KitCoreInputStyle,
-          multi: true,
-        },
-        {
-          provide: kitLayoutStyle,
-          useClass: KitCoreLayoutStyle,
-          multi: true,
-        },
-        {
-          provide: kitLayoutContentStyle,
-          useClass: KitCoreLayoutContentStyle,
-          multi: true,
-        },
-        {
-          provide: kitLayoutFooterStyle,
-          useClass: KitCoreLayoutFooterStyle,
-          multi: true,
-        },
-        {
-          provide: kitLayoutHeaderStyle,
-          useClass: KitCoreLayoutHeaderStyle,
-          multi: true,
-        },
-        {
-          provide: kitLayoutSideStyle,
-          useClass: KitCoreLayoutSideStyle,
           multi: true,
         },
         {
@@ -338,11 +292,6 @@ export class KitCoreModule {
           multi: true,
         },
         {
-          provide: kitSpinnerStyle,
-          useClass: KitCoreSpinnerStyle,
-          multi: true,
-        },
-        {
           provide: kitTabsStyle,
           useClass: KitCoreTabsStyle,
           multi: true,
@@ -365,11 +314,6 @@ export class KitCoreModule {
         {
           provide: kitTooltipViewStyle,
           useClass: KitCoreTooltipViewStyle,
-          multi: true,
-        },
-        {
-          provide: kitTypoContainerStyle,
-          useClass: KitCoreTypoContainerStyle,
           multi: true,
         },
       ],

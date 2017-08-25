@@ -20,8 +20,6 @@ export interface KitDefaultThemeParams {
   borders: KitDefaultThemeParamsBorders;
   colors: KitDefaultThemeParamsColors;
   grid: KitDefaultThemeParamsGrid;
-  moduleSpinner: KitDefaultThemeParamsSpinner;
-  moduleTypo: KitDefaultThemeParamsTypo;
   shadows: KitDefaultThemeParamsShadows;
   transitions: KitDefaultThemeParamsTransitions;
 }
@@ -42,24 +40,6 @@ export interface KitDefaultThemeParamsBorders {
 export interface KitDefaultThemeParamsGrid {
   h: number;
   v: number;
-}
-
-export interface KitDefaultThemeParamsSpinner {
-  duration: string;
-  size: number;
-  type: string;
-}
-
-export interface KitDefaultThemeParamsTypo {
-  fontSize: string;
-  headingFontSizes: {
-    h1: string;
-    h2: string;
-    h3: string;
-    h4: string;
-    h5: string;
-    h6: string;
-  };
 }
 
 export interface KitDefaultThemeParamsShadows {
