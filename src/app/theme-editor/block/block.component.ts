@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, TemplateRef, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { BlockStyle } from './block.style';
 
@@ -10,6 +19,8 @@ import { BlockStyle } from './block.style';
 })
 export class BlockComponent implements OnInit, OnChanges {
   active: string;
+
+  @Output() change = new EventEmitter<any>();
 
   @Input() closable = 0;
 

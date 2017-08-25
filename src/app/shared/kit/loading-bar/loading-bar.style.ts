@@ -1,10 +1,9 @@
-import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
+import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
 
 @Injectable()
 export class LoadingBarStyle implements ComponentStyle {
-  constructor(@Inject(kitTheme) private kitThemeService: KitDefaultThemeService) {
+  constructor() {
   }
 
   holder(): StyleDef {
@@ -12,7 +11,7 @@ export class LoadingBarStyle implements ComponentStyle {
       position: 'relative',
       background: '#eee',
       height: 50,
-      marginBottom: this.kitThemeService.params.grid.v * 2,
+      marginBottom: 16,
     };
   }
 

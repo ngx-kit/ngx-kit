@@ -1,4 +1,4 @@
-<div *ngFor="let block of schema">
+<div *ngFor="let block of schema" styler="block">
   <h4 (click)="active = block.name" styler="name">{{ block.name }}</h4>
   <ng-container *ngIf="closable <= 2 || block.name === active">
     <ng-container [ngSwitch]="block.type">
@@ -7,15 +7,19 @@
           <div *ngSwitchCase="'number'">
             <kit-input [ngModel]="themeModel[block.name]"
                        (ngModelChange)="setNumberModel(block.name, $event)"
+                       (ngModelChange)="change.emit()"
             ></kit-input>
           </div>
           <div *ngSwitchCase="'string'">
-            <kit-input [(ngModel)]="themeModel[block.name]"></kit-input>
+            <kit-input [(ngModel)]="themeModel[block.name]"
+                       (ngModelChange)="change.emit()"></kit-input>
           </div>
           <div *ngSwitchCase="'color'">
             <kit-input [style.background]="themeModel[block.name]"
                        [kitColorPickerPopup]
+                       [kitColorPickerPopupDebounce]="300"
                        [(ngModel)]="themeModel[block.name]"
+                       (ngModelChange)="change.emit()"
                        styler="box">
             </kit-input>
           </div>
@@ -24,7 +28,8 @@
       <div *ngSwitchCase="'block'" styler="inner">
         <app-block [schema]="block.schema"
                    [themeModel]="themeModel[block.name]"
-                   [closable]="depth(block.schema)">
+                   [closable]="depth(block.schema)"
+                   (change)="change.emit()">
         </app-block>
       </div>
     </ng-container>

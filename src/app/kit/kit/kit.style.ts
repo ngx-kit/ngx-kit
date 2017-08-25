@@ -7,34 +7,21 @@ export class KitStyle implements ComponentStyle {
   constructor(private theme: ThemeService) {
   }
 
-  content(): StyleDef {
+  layoutContent(): StyleDef {
     return {
       padding: 16,
       justifyContent: 'center',
       background: this.theme.params.contentColor,
+      overflowY: 'auto',
     }
   }
 
-  host(): StyleDef {
+  layoutSide(): StyleDef {
     return {
-      display: 'flex',
-      flexGrow: 1,
-    };
-  }
-
-  layout(): StyleDef {
-    return {
-      flexGrow: 1,
-    }
-  }
-
-  side(): StyleDef {
-    return {
-      width: this.theme.params.sideWidth,
       background: this.theme.params.sideColor,
       padding: 8,
       boxSizing: 'border-box',
-      overflowY: 'scroll',
+      overflowY: 'auto',
     };
   }
 

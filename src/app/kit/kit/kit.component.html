@@ -1,5 +1,5 @@
-<kit-layout styler="layout">
-  <kit-layout-side styler="side">
+<div styler="layoutRow">
+  <div styler="layoutSide">
     <kit-menu [direction]="'vertical'">
       <a [kitMenuItem] [routerLink]="['']">Overview</a>
       <kit-menu-group>
@@ -17,20 +17,17 @@
         <a [kitMenuItem] [routerLink]="['modules/checkbox']">Checkbox</a>
         <a [kitMenuItem] [routerLink]="['modules/color-picker']">Color-picker</a>
         <a [kitMenuItem] [routerLink]="['modules/date-picker']">Date-picker</a>
-        <a [kitMenuItem] [routerLink]="['modules/divider']">Divider</a>
         <a [kitMenuItem] [routerLink]="['modules/dropdown-menu']">Dropdown-menu</a>
         <a [kitMenuItem] [routerLink]="['modules/form']">Form</a>
         <a [kitMenuItem] [routerLink]="['modules/input']">Input</a>
-        <a [kitMenuItem] [routerLink]="['modules/layout']">Layout</a>
         <a [kitMenuItem] [routerLink]="['modules/loading-bar']">Loading-bar</a>
         <a [kitMenuItem] [routerLink]="['modules/menu']">Menu</a>
         <a [kitMenuItem] [routerLink]="['modules/modal']">Modal</a>
         <a [kitMenuItem] [routerLink]="['modules/notification']">Notification</a>
-        <a [kitMenuItem] [routerLink]="['modules/pagination']">Pagination</a>
-        <a [kitMenuItem] [routerLink]="['modules/popover']">Popover</a>
+        <!--<a [kitMenuItem] [routerLink]="['modules/pagination']">Pagination</a>-->
+        <!--<a [kitMenuItem] [routerLink]="['modules/popover']">Popover</a>-->
         <a [kitMenuItem] [routerLink]="['modules/radio']">Radio</a>
         <a [kitMenuItem] [routerLink]="['modules/select']">Select</a>
-        <a [kitMenuItem] [routerLink]="['modules/spinner']">Spinner</a>
         <a [kitMenuItem] [routerLink]="['modules/tabs']">Tabs</a>
         <a [kitMenuItem] [routerLink]="['modules/tag']">Tag</a>
         <a [kitMenuItem] [routerLink]="['modules/textarea']">Textarea</a>
@@ -43,10 +40,10 @@
       <a [kitMenuItem] href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
       <a [kitMenuItem] href="https://discord.gg/66Tt9WT" target="_blank">Discord</a>
     </kit-menu>
-  </kit-layout-side>
-  <kit-layout-content [scrollTopOnRouting]="true" styler="content">
-    <kit-typo-container styler="typoContainer">
+  </div>
+  <div styler="layoutContent">
+    <div styler="layoutContentWrapper">
       <router-outlet></router-outlet>
-    </kit-typo-container>
-  </kit-layout-content>
-</kit-layout>
+    </div>
+  </div>
+</div>

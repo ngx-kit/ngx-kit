@@ -139,17 +139,6 @@ const routes: Routes = [
             },
           },
           {
-            path: 'divider',
-            component: ModuleComponent,
-            data: {
-              module: 'divider',
-              content: 'kit/divider.json',
-            },
-            resolve: {
-              content: ContentResolverService,
-            },
-          },
-          {
             path: 'dropdown-menu',
             component: ModuleComponent,
             data: {
@@ -177,17 +166,6 @@ const routes: Routes = [
             data: {
               module: 'input',
               content: 'kit/input.json',
-            },
-            resolve: {
-              content: ContentResolverService,
-            },
-          },
-          {
-            path: 'layout',
-            component: ModuleComponent,
-            data: {
-              module: 'layout',
-              content: 'kit/layout.json',
             },
             resolve: {
               content: ContentResolverService,
@@ -287,17 +265,6 @@ const routes: Routes = [
             data: {
               module: 'select',
               content: 'kit/select.json',
-            },
-            resolve: {
-              content: ContentResolverService,
-            },
-          },
-          {
-            path: 'spinner',
-            component: ModuleComponent,
-            data: {
-              module: 'spinner',
-              content: 'kit/spinner.json',
             },
             resolve: {
               content: ContentResolverService,

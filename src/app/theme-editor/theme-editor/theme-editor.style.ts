@@ -7,32 +7,29 @@ export class ThemeEditorStyle implements ComponentStyle {
   constructor(private theme: ThemeService) {
   }
 
-  container(): StyleDef {
-    return {
-      flexGrow: 1,
-      maxWidth: 1000,
-    };
-  }
-
-  content(): StyleDef {
+  layoutContent(): StyleDef {
     return {
       padding: 16,
       justifyContent: 'center',
       background: this.theme.params.contentColor,
+      overflowY: 'auto',
     }
   }
 
-  host(): StyleDef {
+  layoutSide(): StyleDef {
     return {
-      display: 'flex',
-      flexGrow: 1,
+      background: this.theme.params.sideColor,
+      padding: 8,
+      boxSizing: 'border-box',
+      overflowY: 'auto',
     };
   }
 
-  layout(): StyleDef {
+  typoContainer(): StyleDef {
     return {
       flexGrow: 1,
-    }
+      maxWidth: 1000,
+    };
   }
 
   overviewColorBox(): StyleDef {
@@ -46,17 +43,6 @@ export class ThemeEditorStyle implements ComponentStyle {
           textShadow: '2px 0 1px #555',
         },
       },
-    };
-  }
-
-  side(): StyleDef {
-    return {
-      width: this.theme.params.sideWidth,
-      background: this.theme.params.sideColor,
-      boxSizing: 'border-box',
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
     };
   }
 

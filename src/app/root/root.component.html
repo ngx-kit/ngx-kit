@@ -1,6 +1,6 @@
 <kit-loading-bar></kit-loading-bar>
-<kit-layout [fullscreen]="true" [ngClass]="hljsTheme">
-  <kit-layout-header styler="header">
+<div styler="layoutFull">
+  <div styler="layoutHeader">
     <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
       <a [kitMenuItem] [routerLink]="['/kit']">ngx-kit</a>
@@ -15,13 +15,13 @@
         <kit-dropdown-menu-item (click)="applyTheme('light2')">light2</kit-dropdown-menu-item>
       </kit-dropdown-menu>
     </div>
-  </kit-layout-header>
-  <kit-layout-content>
+  </div>
+  <div [ngClass]="hljsTheme" styler="layoutContent">
     <router-outlet></router-outlet>
-  </kit-layout-content>
-  <kit-layout-footer styler="footer">
+  </div>
+  <div styler="layoutFooter">
     <div>
       Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
     </div>
-  </kit-layout-footer>
-</kit-layout>
+  </div>
+</div>

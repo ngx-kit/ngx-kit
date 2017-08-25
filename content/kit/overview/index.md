@@ -22,13 +22,14 @@ Install dependencies:
 Import components to the root module of the application:
 
 ```typescript
-import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
+import { KitDefaultThemeModule, KitFullForRootModule } from '@ngx-kit/ngx-kit';
 
 @NgModule({
   ...
   imports: [
     ...
     KitFullForRootModule,
+    KitDefaultThemeModule.forRoot(),
   ],
   ...
 })

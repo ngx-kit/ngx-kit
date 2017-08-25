@@ -1,12 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
+import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
 import { ThemeService } from '../core/theme.service';
 
 @Injectable()
 export class RootStyle implements ComponentStyle {
-  constructor(private theme: ThemeService,
-              @Inject(kitTheme) private kitThemeService: KitDefaultThemeService) {
+  constructor(private theme: ThemeService) {
   }
 
   footer(): StyleDef {
@@ -54,7 +52,7 @@ export class RootStyle implements ComponentStyle {
     return {
       display: 'flex',
       alignItems: 'center',
-      padding: [0, this.kitThemeService.params.grid.h * 2],
+      padding: [0, 16],
     }
   }
 }
