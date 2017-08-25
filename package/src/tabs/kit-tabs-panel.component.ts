@@ -1,11 +1,11 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'kit-tabs-panel,[kitTabsPanel]',
   template: `
-    <div *ngIf="active">
+    <ng-template>
       <ng-content></ng-content>
-    </div>
+    </ng-template>
   `,
 })
 export class KitTabsPanelComponent implements OnInit {
@@ -14,6 +14,8 @@ export class KitTabsPanelComponent implements OnInit {
   @HostBinding('class') hostClass: string;
 
   @Input() kitTabsPanel: any;
+
+  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 
   @Input() title: string;
 
