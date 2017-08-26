@@ -27,6 +27,9 @@ export class DemoComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    if (!this.content) {
+      throw new Error('Content is not passed!');
+    }
     this.readme = this.md.render(this.content.readme);
     this.code = this.content.code.reduce((prev, file) => ({
       ...prev,

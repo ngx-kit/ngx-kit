@@ -1,1 +1,0 @@
-[{"file":"content/kit/math-input/demo-default.md","meta":{"route":"kit/math-input","title":"Default math-input","id":"demo-default"},"body":"\nCalc math expressions, e.g `10+20*30`.\n\n```html\n<kit-math-input [(ngModel)]=\"value\"></kit-math-input>\n```\n\n```typescript\nvalue: number;\n```\n"}]

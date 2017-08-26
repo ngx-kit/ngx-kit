@@ -1,1 +1,0 @@
-[{"file":"content/kit/checkbox/demo-default.md","meta":{"route":"kit/checkbox","title":"Default accordion","id":"demo-default"},"body":"\n```html\n<kit-checkbox [(ngModel)]=\"checked\">Checkbox</kit-checkbox>\n<span *ngIf=\"checked\">is checked</span>\n```\n\n```typescript\nchecked: boolean;\n```\n"}]

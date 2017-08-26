@@ -7,6 +7,10 @@ import { EditorService } from '../../editor.service';
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent implements OnInit {
+  inputValue = 'some value';
+
+  radioSelected = 'first';
+
   constructor(private editor: EditorService,
               @Inject(kitTheme) private kitThemeService: KitDefaultThemeService) {
   }

@@ -8,4 +8,247 @@
       <app-kit-accordion-demo-multiple></app-kit-accordion-demo-multiple>
     </app-demo>
   </ng-container>
+  <ng-container *ngSwitchCase="'alert'">
+    <app-post [post]="posts['ALERT']"></app-post>
+    <app-demo [content]="components['alert-demo-default']">
+      <app-kit-alert-demo-default></app-kit-alert-demo-default>
+    </app-demo>
+    <app-demo [content]="components['alert-demo-color']">
+      <app-kit-alert-demo-color></app-kit-alert-demo-color>
+    </app-demo>
+    <app-demo [content]="components['alert-demo-closable']">
+      <app-kit-alert-demo-closable></app-kit-alert-demo-closable>
+    </app-demo>
+    <app-demo [content]="components['alert-demo-close-text']">
+      <app-kit-alert-demo-close-text></app-kit-alert-demo-close-text>
+    </app-demo>
+    <app-demo [content]="components['alert-demo-title']">
+      <app-kit-alert-demo-title></app-kit-alert-demo-title>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'auto-complete'">
+    <app-post [post]="posts['AUTO_COMPLETE']"></app-post>
+    <app-demo [content]="components['auto-complete-demo-default']">
+      <app-kit-auto-complete-demo-default></app-kit-auto-complete-demo-default>
+    </app-demo>
+    <app-demo [content]="components['auto-complete-demo-data-factory']">
+      <app-kit-auto-complete-demo-data-factory></app-kit-auto-complete-demo-data-factory>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'badge'">
+    <app-post [post]="posts['BADGE']"></app-post>
+    <app-demo [content]="components['badge-demo-default']">
+      <app-kit-badge-demo-default></app-kit-badge-demo-default>
+    </app-demo>
+    <app-demo [content]="components['badge-demo-color']">
+      <app-kit-badge-demo-color></app-kit-badge-demo-color>
+    </app-demo>
+    <app-demo [content]="components['badge-demo-size']">
+      <app-kit-badge-demo-size></app-kit-badge-demo-size>
+    </app-demo>
+    <app-demo [content]="components['badge-demo-position']">
+      <app-kit-badge-demo-position></app-kit-badge-demo-position>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'button'">
+    <app-post [post]="posts['BUTTON']"></app-post>
+    <app-demo [content]="components['button-demo-default']">
+      <app-kit-button-demo-default></app-kit-button-demo-default>
+    </app-demo>
+    <app-demo [content]="components['button-demo-color']">
+      <app-kit-button-demo-color></app-kit-button-demo-color>
+    </app-demo>
+    <app-demo [content]="components['button-demo-size']">
+      <app-kit-button-demo-size></app-kit-button-demo-size>
+    </app-demo>
+    <app-demo [content]="components['button-demo-disabled']">
+      <app-kit-button-demo-disabled></app-kit-button-demo-disabled>
+    </app-demo>
+    <app-demo [content]="components['button-group-demo-default']">
+      <app-kit-button-group-demo-default></app-kit-button-group-demo-default>
+    </app-demo>
+    <app-demo [content]="components['button-group-demo-vertical']">
+      <app-kit-button-group-demo-vertical></app-kit-button-group-demo-vertical>
+    </app-demo>
+    <app-demo [content]="components['button-group-demo-selectable']">
+      <app-kit-button-group-demo-selectable></app-kit-button-group-demo-selectable>
+    </app-demo>
+    <app-demo [content]="components['button-group-demo-multiple']">
+      <app-kit-button-group-demo-multiple></app-kit-button-group-demo-multiple>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'checkbox'">
+    <app-post [post]="posts['CHECKBOX']"></app-post>
+    <app-demo [content]="components['checkbox-demo-default']">
+      <app-kit-checkbox-demo-default></app-kit-checkbox-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'color-picker'">
+    <app-post [post]="posts['COLOR_PICKER']"></app-post>
+    <app-demo [content]="components['color-picker-demo-default']">
+      <app-kit-color-picker-demo-default></app-kit-color-picker-demo-default>
+    </app-demo>
+    <app-demo [content]="components['color-picker-demo-popup']">
+      <app-kit-color-picker-demo-popup></app-kit-color-picker-demo-popup>
+    </app-demo>
+    <app-demo [content]="components['color-picker-demo-popup2']">
+      <app-kit-color-picker-demo-popup2></app-kit-color-picker-demo-popup2>
+    </app-demo>
+    <app-demo [content]="components['color-picker-demo-debounce']">
+      <app-kit-color-picker-demo-debounce></app-kit-color-picker-demo-debounce>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'date-picker'">
+    <app-post [post]="posts['DATE_PICKER']"></app-post>
+    <app-demo [content]="components['date-picker-demo-default']">
+      <app-kit-date-picker-demo-default></app-kit-date-picker-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'dropdown-menu'">
+    <app-post [post]="posts['DROPDOWN_MENU']"></app-post>
+    <app-demo [content]="components['dropdown-menu-demo-default']">
+      <app-kit-dropdown-menu-demo-default></app-kit-dropdown-menu-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'form'">
+    <app-post [post]="posts['FORM']"></app-post>
+    <app-demo [content]="components['form-demo-default']">
+      <app-kit-form-demo-default></app-kit-form-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'input'">
+    <app-post [post]="posts['INPUT']"></app-post>
+    <app-demo [content]="components['input-demo-default']">
+      <app-kit-input-demo-default></app-kit-input-demo-default>
+    </app-demo>
+    <app-demo [content]="components['input-demo-math']">
+      <app-kit-input-demo-math></app-kit-input-demo-math>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'loading-bar'">
+    <app-post [post]="posts['LOADING_BAR']"></app-post>
+    <app-demo [content]="components['loading-bar-demo-default']">
+      <app-kit-loading-bar-demo-default></app-kit-loading-bar-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'menu'">
+    <app-post [post]="posts['MENU']"></app-post>
+    <app-demo [content]="components['menu-demo-default']">
+      <app-kit-menu-demo-default></app-kit-menu-demo-default>
+    </app-demo>
+    <app-demo [content]="components['menu-demo-vertical']">
+      <app-kit-menu-demo-vertical></app-kit-menu-demo-vertical>
+    </app-demo>
+    <app-demo [content]="components['menu-demo-multi-sub']">
+      <app-kit-menu-demo-multi-sub></app-kit-menu-demo-multi-sub>
+    </app-demo>
+    <app-demo [content]="components['menu-demo-organized']">
+      <app-kit-menu-demo-organized></app-kit-menu-demo-organized>
+    </app-demo>
+    <app-demo [content]="components['menu-demo-disabled']">
+      <app-kit-menu-demo-disabled></app-kit-menu-demo-disabled>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'modal'">
+    <app-post [post]="posts['MODAL']"></app-post>
+    <app-demo [content]="components['modal-demo-default']">
+      <app-kit-modal-demo-default></app-kit-modal-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'notification'">
+    <app-post [post]="posts['NOTIFICATION']"></app-post>
+    <app-demo [content]="components['notification-demo-default']">
+      <app-kit-notification-demo-default></app-kit-notification-demo-default>
+    </app-demo>
+    <app-demo [content]="components['notification-demo-with-title']">
+      <app-kit-notification-demo-with-title></app-kit-notification-demo-with-title>
+    </app-demo>
+    <app-demo [content]="components['notification-demo-config-side']">
+      <app-kit-notification-demo-config-side></app-kit-notification-demo-config-side>
+    </app-demo>
+    <app-demo [content]="components['notification-demo-duration']">
+      <app-kit-notification-demo-duration></app-kit-notification-demo-duration>
+    </app-demo>
+    <app-demo [content]="components['notification-demo-config-duration']">
+      <app-kit-notification-demo-config-duration></app-kit-notification-demo-config-duration>
+    </app-demo>
+    <app-demo [content]="components['notification-demo-color']">
+      <app-kit-notification-demo-color></app-kit-notification-demo-color>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'radio'">
+    <app-post [post]="posts['RADIO']"></app-post>
+    <app-demo [content]="components['radio-demo-default']">
+      <app-kit-radio-demo-default></app-kit-radio-demo-default>
+    </app-demo>
+    <app-demo [content]="components['radio-group-demo-default']">
+      <app-kit-radio-group-demo-default></app-kit-radio-group-demo-default>
+    </app-demo>
+    <app-demo [content]="components['radio-group-demo-options']">
+      <app-kit-radio-group-demo-options></app-kit-radio-group-demo-options>
+    </app-demo>
+    <app-demo [content]="components['radio-group-demo-simple-options']">
+      <app-kit-radio-group-demo-simple-options></app-kit-radio-group-demo-simple-options>
+    </app-demo>
+    <app-demo [content]="components['radio-group-demo-custom-options']">
+      <app-kit-radio-group-demo-custom-options></app-kit-radio-group-demo-custom-options>
+    </app-demo>
+    <app-demo [content]="components['radio-group-demo-direction']">
+      <app-kit-radio-group-demo-direction></app-kit-radio-group-demo-direction>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'select'">
+    <app-post [post]="posts['SELECT']"></app-post>
+    <app-demo [content]="components['select-demo-default']">
+      <app-kit-select-demo-default></app-kit-select-demo-default>
+    </app-demo>
+    <app-demo [content]="components['select-demo-dropdown']">
+      <app-kit-select-demo-dropdown></app-kit-select-demo-dropdown>
+    </app-demo>
+    <app-demo [content]="components['select-demo-list']">
+      <app-kit-select-demo-list></app-kit-select-demo-list>
+    </app-demo>
+    <app-demo [content]="components['select-demo-custom-options']">
+      <app-kit-select-demo-custom-options></app-kit-select-demo-custom-options>
+    </app-demo>
+    <app-demo [content]="components['select-demo-option-template']">
+      <app-kit-select-demo-option-template></app-kit-select-demo-option-template>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'tabs'">
+    <app-post [post]="posts['TABS']"></app-post>
+    <app-demo [content]="components['tabs-demo-default']">
+      <app-kit-tabs-demo-default></app-kit-tabs-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'tag'">
+    <app-post [post]="posts['TAG']"></app-post>
+    <app-demo [content]="components['tag-demo-default']">
+      <app-kit-tag-demo-default></app-kit-tag-demo-default>
+    </app-demo>
+    <app-demo [content]="components['tag-demo-color']">
+      <app-kit-tag-demo-color></app-kit-tag-demo-color>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'textarea'">
+    <app-post [post]="posts['TEXTAREA']"></app-post>
+    <app-demo [content]="components['textarea-demo-default']">
+      <app-kit-textarea-demo-default></app-kit-textarea-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'toggle'">
+    <app-post [post]="posts['TOGGLE']"></app-post>
+    <app-demo [content]="components['toggle-demo-default']">
+      <app-kit-toggle-demo-default></app-kit-toggle-demo-default>
+    </app-demo>
+  </ng-container>
+  <ng-container *ngSwitchCase="'tooltip'">
+    <app-post [post]="posts['TOOLTIP']"></app-post>
+    <app-demo [content]="components['tooltip-demo-default']">
+      <app-kit-tooltip-demo-default></app-kit-tooltip-demo-default>
+    </app-demo>
+    <app-demo [content]="components['tooltip-demo-position']">
+      <app-kit-tooltip-demo-position></app-kit-tooltip-demo-position>
+    </app-demo>
+  </ng-container>
 </ng-container>
