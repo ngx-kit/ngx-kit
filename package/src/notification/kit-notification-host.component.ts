@@ -1,9 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Inject, Input, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitNotificationHostStyle } from '../core/meta/tokens';
+import { uuid } from '../core/util/uuid';
 import { KitNotificationService } from './kit-notification.service';
 import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage } from './meta';
 
@@ -88,7 +88,6 @@ export class KitNotificationHostComponent {
 
   constructor(private styler: StylerComponent,
               @Inject(kitNotificationHostStyle) private componentStyle: KitComponentStyle,
-              private core: KitCoreService,
               private notificationService: KitNotificationService) {
     this.styler.classPrefix = 'kit-notification-host';
     this.styler.register(this.componentStyle);
@@ -109,7 +108,7 @@ export class KitNotificationHostComponent {
   }
 
   open(message: KitNotificationMessage) {
-    const __id = this.core.uuid();
+    const __id = uuid();
     this.items.push({
       __id,
       message,

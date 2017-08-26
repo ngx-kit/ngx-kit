@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angula
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
-import { KitCoreService } from '../core/kit-core.service';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
 import { kitToggleStyle } from '../core/meta/tokens';
+import { uuid } from '../core/util/uuid';
 
 export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -54,11 +54,10 @@ export class KitToggleComponent implements ControlValueAccessor, KitControl<any>
 
   constructor(private styler: StylerComponent,
               @Inject(kitToggleStyle) private style: KitComponentStyle,
-              private core: KitCoreService,
               private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-toggle';
     this.styler.register(this.style);
-    this.id = this.core.uuid();
+    this.id = uuid();
   }
 
   registerOnChange(fn: any) {

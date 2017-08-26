@@ -1,41 +1,40 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
-import { KitCoreService } from './kit-core.service';
 import {
-  kitAccordionStyle,
   kitAccordionPanelStyle,
+  kitAccordionStyle,
   kitAlertStyle,
   kitAlertTitleStyle,
   kitAutoCompleteStyle,
   kitBadgeStyle,
-  kitButtonStyle,
   kitButtonGroupStyle,
+  kitButtonStyle,
   kitCheckboxStyle,
-  kitColorPickerStyle,
   kitColorPickerPopupStyle,
+  kitColorPickerStyle,
   kitDatePickerStyle,
-  kitDropdownMenuStyle,
   kitDropdownMenuItemStyle,
+  kitDropdownMenuStyle,
   kitFormErrorStyle,
   kitFormGroupStyle,
   kitFormLabelStyle,
   kitInputStyle,
   kitLoadingBarStyle,
-  kitMenuStyle,
   kitMenuGroupStyle,
   kitMenuGroupTitleStyle,
   kitMenuItemStyle,
   kitMenuSeparatorStyle,
+  kitMenuStyle,
   kitMenuSubStyle,
-  kitModalStyle,
   kitModalBodyStyle,
   kitModalFooterStyle,
   kitModalHeaderStyle,
+  kitModalStyle,
   kitNotificationHostStyle,
   kitOverlayContainerStyle,
-  kitRadioStyle,
   kitRadioGroupStyle,
+  kitRadioStyle,
   kitSelectStyle,
   kitTabsStyle,
   kitTagStyle,
@@ -118,7 +117,6 @@ export class KitCoreModule {
     return {
       ngModule: KitCoreModule,
       providers: [
-        KitCoreService,
         KitOverlayService,
         // styles
         {
