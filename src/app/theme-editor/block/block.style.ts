@@ -6,6 +6,24 @@ export class BlockStyle implements ComponentStyle {
   constructor() {
   }
 
+  block(): StyleDef {
+    return {};
+  }
+
+  box(): StyleDef {
+    return {
+      cursor: 'pointer',
+      display: 'block',
+      $nest: {
+        '& input': {
+          background: 'transparent',
+          color: '#fff',
+          textShadow: '2px 0 1px #555',
+        },
+      },
+    };
+  }
+
   host(): StyleDef {
     return {};
   }
@@ -13,7 +31,9 @@ export class BlockStyle implements ComponentStyle {
   inner(): StyleDef {
     return {
       display: 'block',
-      paddingLeft: 16,
+      padding: [8, 2, 8, 4],
+      borderBottom: [1, 'solid', '#bbb'],
+      background: 'rgba(0,0,0,.07)'
     };
   }
 

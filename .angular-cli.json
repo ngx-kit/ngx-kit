@@ -12,8 +12,8 @@
         "favicon.ico",
         {
           "glob": "**/*",
-          "input": "../content/compiled",
-          "output": "./content/"
+          "input": "../content_dist/",
+          "output": "./content_dist/"
         }
       ],
       "index": "index.html",

@@ -1,1 +1,0 @@
-[{"file":"content/kit/input/demo-default.md","meta":{"route":"kit/input","title":"Default input","id":"demo-default"},"body":"\n```html\n<kit-input [(ngModel)]=\"value\"></kit-input>\n{{ value }}\n```\n\n```typescript\nvalue: string;\n```\n"}]

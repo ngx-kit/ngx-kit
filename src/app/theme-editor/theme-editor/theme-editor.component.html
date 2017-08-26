@@ -1,66 +1,44 @@
-<kit-layout styler="layout">
-  <kit-layout-side styler="side">
+<div styler="layoutRow">
+  <div styler="layoutSide">
     <div styler="sideActions">
-      <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="update()">Update</button>
       <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="getCode()">Get code</button>
       <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="setCodeModal.open()">Load code</button>
     </div>
     <div styler="sideForm">
-      <h4>Overview params</h4>
-      <div>
-        Background color:
-        <kit-input [style.background]="overviewBackgroundColor"
-                   [kitColorPickerPopup]
-                   [(ngModel)]="overviewBackgroundColor"
-                   styler="overviewColorBox">
-        </kit-input>
-      </div>
-      <div>
-        Text color:<br>
-        <kit-input [style.background]="overviewTextColor"
-                   [kitColorPickerPopup]
-                   [(ngModel)]="overviewTextColor"
-                   styler="overviewColorBox">
-        </kit-input>
-      </div>
-      <form #form="ngForm">
-        <h4>Colors</h4>
-        <app-colors-block [colors]="colorsModel"
-                          (change)="changeColor($event)"
-                          (delete)="deleteColor($event)"></app-colors-block>
-        <h4>Params sections</h4>
+      <form>
         <app-block [schema]="schema"
                    [themeModel]="themeModel"
-                   [colorsModel]="colorsModel"></app-block>
+                   [closable]="3"
+                   (change)="update()"></app-block>
       </form>
     </div>
-  </kit-layout-side>
-  <kit-layout-content [style.background]="overviewBackgroundColor"
-                      [style.color]="overviewTextColor"
-                      styler="content">
-    <div styler="container">
+  </div>
+  <div [style.background]="themeModel.colors.background"
+       [style.color]="themeModel.colors.invert"
+       styler="layoutContent">
+    <div styler="layoutContentWrapper">
       <router-outlet></router-outlet>
     </div>
-  </kit-layout-content>
-</kit-layout>
+  </div>
+</div>
 
 <kit-modal #codeModal>
-  <div header>Theme save</div>
-  <div [style.width.px]="500" content>
+  <kit-modal-header>Theme save</kit-modal-header>
+  <kit-modal-body [style.width.px]="500">
     <kit-textarea [ngModel]="code"></kit-textarea>
-  </div>
-  <div footer>
+  </kit-modal-body>
+  <kit-modal-footer>
     <kit-button [color]="'primary'" (action)="codeModal.close()">Ok</kit-button>
-  </div>
+  </kit-modal-footer>
 </kit-modal>
 
 <kit-modal #setCodeModal>
-  <div header>Theme setup</div>
-  <div [style.width.px]="500" content>
+  <kit-modal-header>Theme setup</kit-modal-header>
+  <kit-modal-body [style.width.px]="500">
     <kit-textarea [(ngModel)]="code"></kit-textarea>
-  </div>
-  <div footer>
+  </kit-modal-body>
+  <kit-modal-footer>
     <kit-button (action)="setCodeModal.close()">Cancel</kit-button>
     <kit-button [color]="'primary'" (action)="setThemeFromCode()">Set</kit-button>
-  </div>
+  </kit-modal-footer>
 </kit-modal>

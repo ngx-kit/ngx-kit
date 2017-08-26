@@ -1,0 +1,3 @@
+---
+title: Notification with title
+---

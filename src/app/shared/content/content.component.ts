@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Content } from '../../interfaces/content';
+import { ContentService } from '../../core/content.service';
+import { ContentPost } from '../../interfaces/content';
 
 @Component({
   selector: 'app-kit-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  content: Observable<Content>;
+  post: ContentPost;
 
-  constructor(private route: ActivatedRoute) {
+  postId: string;
+
+  constructor(private route: ActivatedRoute,
+              private content: ContentService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.content = data.content;
+      this.postId = data.post;
     });
+    this.content.posts$
+        .map(posts => posts[this.postId])
+        .subscribe(post => this.post = post);
   }
 }

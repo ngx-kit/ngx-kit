@@ -1,1 +1,0 @@
-[{"file":"content/kit/date-picker/demo-default.md","meta":{"route":"kit/date-picker","title":"Default date-picker","id":"demo-default"},"body":"\n```html\n<kit-date-picker [(ngModel)]=\"date\"></kit-date-picker>\n```\n\n```typescript\ndate = '2017-08-18';\n```\n"}]

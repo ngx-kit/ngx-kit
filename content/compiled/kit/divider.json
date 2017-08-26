@@ -1,1 +1,0 @@
-[{"file":"content/kit/divider/demo-default.md","meta":{"route":"kit/divider","title":"Default divider","id":"demo-default"},"body":"\n```html\n<kit-divider></kit-divider>\n```\n"},{"file":"content/kit/divider/demo-with-text.md","meta":{"route":"kit/divider","title":"Divider with text","id":"demo-with-text"},"body":"\n```html\n<kit-divider>divider text</kit-divider>\n```\n"}]

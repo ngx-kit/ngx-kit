@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
 import { ThemeService } from '../core/theme.service';
+import { LayoutStyle } from '../shared/layout/layout.style';
 import { RootStyle } from './root.style';
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
   viewProviders: [
+    StylerModule.forComponent(LayoutStyle),
     StylerModule.forComponent(RootStyle),
   ],
 })

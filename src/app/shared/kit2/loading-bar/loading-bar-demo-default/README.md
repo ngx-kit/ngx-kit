@@ -1,0 +1,3 @@
+---
+title: Default loading-bar
+---

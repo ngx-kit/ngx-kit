@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, TemplateRef, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { BlockStyle } from './block.style';
 
@@ -11,7 +20,9 @@ import { BlockStyle } from './block.style';
 export class BlockComponent implements OnInit, OnChanges {
   active: string;
 
-  @Input() colorsModel: string[];
+  @Output() change = new EventEmitter<any>();
+
+  @Input() closable = 0;
 
   optionTemplate: TemplateRef<any>;
 
@@ -29,6 +40,21 @@ export class BlockComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+  }
+
+  depth(block) {
+    let level = 1;
+    let key;
+    for (key in block) {
+      if (!block.hasOwnProperty(key)) {
+        continue
+      }
+      if (typeof block[key] === 'object') {
+        const depth = this.depth(block[key]) + 1;
+        level = Math.max(depth, level);
+      }
+    }
+    return level;
   }
 
   setNumberModel(name: string, value: string) {
