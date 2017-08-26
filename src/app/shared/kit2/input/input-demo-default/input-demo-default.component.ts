@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './input-demo-default.component.html',
 })
 export class InputDemoDefaultComponent {
+  value = '';
 }
