@@ -33,7 +33,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
             }, {
               $nest: {
                 '&:hover': {
-                  background: params.colors.border,
+                  background: opacify(-.5, params.colors.border),
                 },
               },
             }),
@@ -44,7 +44,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
             ...defToggle(state.disabled, {}, {
               $nest: {
                 '&:hover': {
-                  background: params.colors.border,
+                  background: opacify(-.5, params.colors.border),
                 },
               },
             }),
@@ -57,7 +57,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
         }, {
           $nest: {
             '&:hover': {
-              background: params.colors.border,
+              background: opacify(-.5, params.colors.border),
             },
             '&:first-child': {
               borderTopLeftRadius: params.borders.radius,

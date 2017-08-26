@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { defPick, StyleDef } from '@ngx-kit/styler';
+import { defPick, opacify, StyleDef } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../../../core/meta/component';
 import { kitTheme } from '../../../core/meta/tokens';
 import { KitDefaultThemeService } from '../../kit-default-theme.service';
@@ -14,7 +14,7 @@ export class KitDefaultMenuStyle implements KitComponentStyle {
     return {
       ...defPick(state.direction, {
         horizontal: {
-          borderBottom: [params.borders.width, 'solid', params.colors.border],
+          borderBottom: [params.borders.width, 'solid', opacify(-.5, params.colors.border)],
         },
         vertical: {},
       }, 'horizontal'),
