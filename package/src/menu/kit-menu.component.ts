@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentInit, ChangeDetectionStrategy,
   Component,
   ContentChildren,
   forwardRef,
@@ -24,6 +24,7 @@ import { KitMenuDirection } from './meta';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuComponent implements OnInit, AfterContentInit {
   checkLeave$ = new Subject<any>();

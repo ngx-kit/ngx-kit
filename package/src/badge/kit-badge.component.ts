@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitBadgeStyle } from '../core/meta/tokens';
@@ -16,6 +16,7 @@ import { KitBadgePosition } from './meta';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitBadgeComponent implements OnInit, OnChanges {
   @Input() color: string;

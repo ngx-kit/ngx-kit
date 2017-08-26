@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Inject, Input, } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitNotificationHostStyle } from '../core/meta/tokens';
@@ -32,6 +32,7 @@ import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage 
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('item', [
       state('top-right', style({
@@ -88,7 +89,8 @@ export class KitNotificationHostComponent {
 
   constructor(private styler: StylerComponent,
               @Inject(kitNotificationHostStyle) private componentStyle: KitComponentStyle,
-              private notificationService: KitNotificationService) {
+              private notificationService: KitNotificationService,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-notification-host';
     this.styler.register(this.componentStyle);
     this.handleConfig();
@@ -113,6 +115,7 @@ export class KitNotificationHostComponent {
       __id,
       message,
     });
+    this.cdr.markForCheck();
     setTimeout(() => {
       this.close(__id);
     }, message.duration || this.hostConfig.duration);

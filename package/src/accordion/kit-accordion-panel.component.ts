@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitAccordionPanelStyle } from '../core/meta/tokens';
@@ -14,6 +14,7 @@ import { kitAccordionPanelStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAccordionPanelComponent implements OnInit {
   @Output() activate = new EventEmitter<boolean>();

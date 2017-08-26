@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitAlertTitleStyle } from '../core/meta/tokens';
@@ -11,6 +11,7 @@ import { kitAlertTitleStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAlertTitleComponent {
   constructor(private styler: StylerComponent,

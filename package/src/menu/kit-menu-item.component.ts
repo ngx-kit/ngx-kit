@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentInit, ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
@@ -29,6 +29,7 @@ import { KitMenuComponent } from './kit-menu.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit {
   @Input() disabled: boolean;

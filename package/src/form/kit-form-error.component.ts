@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitFormErrorStyle } from '../core/meta/tokens';
@@ -15,6 +15,7 @@ import { KitFormGroupComponent } from './kit-form-group.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitFormErrorComponent implements OnInit, AfterViewInit {
   @Input() dirty: boolean | null = null;

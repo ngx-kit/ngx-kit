@@ -1,4 +1,7 @@
-import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnChanges, OnInit,
+  Renderer2,
+} from '@angular/core';
 import { KitIconsRegistryService } from './kit-icons-registry.service';
 
 @Component({
@@ -6,6 +9,7 @@ import { KitIconsRegistryService } from './kit-icons-registry.service';
   template: `
     <ng-content></ng-content>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitIconComponent implements OnInit, OnChanges {
   @Input() color: string;

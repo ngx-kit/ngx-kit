@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitMenuGroupStyle } from '../core/meta/tokens';
@@ -14,6 +14,7 @@ import { kitMenuGroupStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuGroupComponent implements OnInit {
   @Input() kitMenuGroup: any;

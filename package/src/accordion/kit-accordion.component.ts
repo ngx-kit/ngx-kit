@@ -1,4 +1,13 @@
-import { AfterContentInit, Component, ContentChildren, Inject, Input, OnInit, QueryList, } from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitAccordionStyle } from '../core/meta/tokens';
@@ -12,6 +21,7 @@ import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAccordionComponent implements OnInit, AfterContentInit {
   @Input() firstActivate = true;

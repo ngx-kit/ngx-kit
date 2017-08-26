@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitMenuSeparatorStyle } from '../core/meta/tokens';
@@ -11,6 +11,7 @@ import { KitMenuDirection } from './meta';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuSeparatorComponent implements OnInit {
   @Input() kitMenuSeparator: any;

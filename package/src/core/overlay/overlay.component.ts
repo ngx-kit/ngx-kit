@@ -1,5 +1,7 @@
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ComponentRef,
   EventEmitter,
@@ -17,6 +19,7 @@ import { KitOverlayHostComponent } from './overlay-host.component';
 @Component({
   selector: 'kit-overlay,[kitOverlay]',
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterContentInit {
   @Input() anchor: KitAnchorDirective | Element;
@@ -45,7 +48,8 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
 
   private hostRef: ComponentRef<KitOverlayHostComponent>;
 
-  constructor(private overlayService: KitOverlayService) {
+  constructor(private overlayService: KitOverlayService,
+              private cdr: ChangeDetectorRef) {
   }
 
   ngAfterContentInit() {
@@ -106,7 +110,8 @@ export class KitOverlayComponent implements OnInit, OnChanges, OnDestroy, AfterC
       instance.position = this.position;
       instance.type = this.type;
       instance.widthType = this.widthType;
-      // @todo run CD
+      // init change detection
+      instance.cdrCheck();
     }
   }
 }

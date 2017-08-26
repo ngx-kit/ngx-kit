@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
@@ -20,6 +20,7 @@ import { kitTooltipViewStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitTooltipViewComponent {
   @Input() anchor: HTMLElement;
@@ -35,8 +36,13 @@ export class KitTooltipViewComponent {
   @Input() text: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitTooltipViewStyle) private style: KitComponentStyle) {
+              @Inject(kitTooltipViewStyle) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-tooltip-view';
     this.styler.register(this.style);
+  }
+
+  cdrCheck() {
+    this.cdr.markForCheck();
   }
 }

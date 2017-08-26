@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -48,6 +49,7 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitCheckboxComponent implements ControlValueAccessor, KitControl<any> {
   @Input() accesskey: string;

@@ -1,4 +1,7 @@
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -36,6 +39,7 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitTextareaComponent implements ControlValueAccessor, KitControl<any> {
   @Input() accesskey: string;

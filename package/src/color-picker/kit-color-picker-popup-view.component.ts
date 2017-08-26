@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
@@ -26,6 +26,7 @@ import { kitColorPickerPopupStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() anchor: HTMLElement;

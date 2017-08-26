@@ -1,4 +1,7 @@
-import { Component, EventEmitter, HostListener, Inject, Input, OnChanges, OnInit, Output, } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, HostListener, Inject, Input, OnChanges, OnInit,
+  Output,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitButtonStyle } from '../core/meta/tokens';
@@ -13,6 +16,7 @@ import { KitButtonGroupDirection } from './meta';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitButtonComponent implements OnInit, OnChanges {
   @Output() action = new EventEmitter<any>();

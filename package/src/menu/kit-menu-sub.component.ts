@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   forwardRef,
@@ -42,6 +44,7 @@ import { KitMenuDirection } from './meta';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuSubComponent implements OnInit {
   @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false})
@@ -62,7 +65,8 @@ export class KitMenuSubComponent implements OnInit {
               @Inject(forwardRef(() => KitMenuComponent)) private menu: KitMenuComponent,
               @Inject(forwardRef(() => KitMenuItemComponent)) private parentItem: KitMenuItemComponent,
               @SkipSelf() @Optional() @Inject(forwardRef(() => KitMenuSubComponent))
-              private parentSub: KitMenuSubComponent) {
+              private parentSub: KitMenuSubComponent,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-menu-sub';
     this.styler.register(this.style);
   }
@@ -91,6 +95,7 @@ export class KitMenuSubComponent implements OnInit {
 
   close() {
     this._opened = false;
+    this.cdr.markForCheck();
   }
 
   containerMouseEnter() {
@@ -112,5 +117,6 @@ export class KitMenuSubComponent implements OnInit {
 
   open() {
     this._opened = true;
+    this.cdr.markForCheck();
   }
 }

@@ -1,4 +1,7 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef, Directive, ElementRef, EventEmitter, HostListener, Input, OnInit,
+  Output,
+} from '@angular/core';
 
 @Directive({
   selector: '[kitAnchor]',
@@ -9,7 +12,8 @@ export class KitAnchorDirective implements OnInit {
 
   @Input() kitAnchor: any;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef,
+              private cdr: ChangeDetectorRef) {
   }
 
   get nativeEl() {

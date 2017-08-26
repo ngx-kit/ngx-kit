@@ -1,4 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, forwardRef, Inject, Input, ViewChild, } from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inject, Input,
+  ViewChild,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import 'rxjs/add/operator/debounceTime';
@@ -52,6 +55,7 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit, KitControl<any> {
   activeResult = -1;

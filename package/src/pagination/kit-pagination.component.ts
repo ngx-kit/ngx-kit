@@ -1,4 +1,7 @@
-import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnChanges, OnInit,
+  Output,
+} from '@angular/core';
 
 /**
  * @todo use button-group for styling
@@ -22,6 +25,7 @@ import { Component, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output 
             (click)="pageChange.emit(totalPages)">Last
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitPaginationComponent implements OnInit, OnChanges {
   @Input() currentPage: number;

@@ -2,7 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import {
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit,
+  AfterViewInit, ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -49,6 +49,7 @@ import { kitOverlayContainerStyle, kitTheme } from '../meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('overlay', [
       state('closed', style({opacity: 0})),

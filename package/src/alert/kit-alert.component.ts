@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentInit, ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
@@ -27,6 +27,7 @@ import { KitAlertTitleComponent } from './kit-alert-title.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAlertComponent implements OnChanges, AfterContentInit {
   @Input() closable: boolean;

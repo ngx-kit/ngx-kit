@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentInit, ChangeDetectionStrategy,
   Component,
   ContentChildren,
   forwardRef,
@@ -25,6 +25,7 @@ import { KitButtonComponent } from './kit-button.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitButtonGroupComponent implements OnInit, AfterContentInit {
   @ContentChildren(forwardRef(() => KitButtonComponent)) buttons: QueryList<KitButtonComponent>;

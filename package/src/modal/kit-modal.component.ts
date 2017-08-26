@@ -1,4 +1,12 @@
-import { Component, HostBinding, Inject, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitModalStyle } from '../core/meta/tokens';
@@ -20,6 +28,7 @@ import { kitModalStyle } from '../core/meta/tokens';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalComponent implements OnInit {
   @HostBinding('class') hostClass: string;
@@ -29,7 +38,8 @@ export class KitModalComponent implements OnInit {
   @Input() opened = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitModalStyle) private style: KitComponentStyle) {
+              @Inject(kitModalStyle) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-modal';
     this.styler.register(this.style);
   }
@@ -39,9 +49,11 @@ export class KitModalComponent implements OnInit {
 
   close() {
     this.opened = false;
+    this.cdr.markForCheck();
   }
 
   open() {
     this.opened = true;
+    this.cdr.markForCheck();
   }
 }

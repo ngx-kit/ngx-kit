@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'kit-tabs-panel,[kitTabsPanel]',
@@ -7,6 +7,7 @@ import { Component, HostBinding, Input, OnInit, TemplateRef, ViewChild } from '@
       <ng-content></ng-content>
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitTabsPanelComponent implements OnInit {
   @Input() active: boolean;

@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentInit, ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
@@ -49,6 +49,7 @@ export const KIT_RADIO_GROUP_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitRadioGroupComponent<T> implements ControlValueAccessor, AfterContentInit, KitControl<any>, OnChanges {
   @Input() direction: KitRadioGroupDirection = 'horizontal';

@@ -1,8 +1,8 @@
-import { Component, HostListener, Inject, Input, OnInit, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject, Input, OnInit, Optional } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
-import { kitDropdownMenuItemStyle } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
+import { kitDropdownMenuItemStyle } from '../core/meta/tokens';
+import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
 
 @Component({
   selector: 'kit-dropdown-menu-item,[kitDropdownMenuItem]',
@@ -12,6 +12,7 @@ import { KitComponentStyle } from '../core/meta/component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitDropdownMenuItemComponent implements OnInit {
   @Input() kitDropdownMenuItem: any;

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 /**
  * @todo add and implement position param
@@ -11,6 +11,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   template: `
     <ng-content></ng-content>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitPopoverComponent implements OnInit {
   @HostBinding('class') hostClass: string;

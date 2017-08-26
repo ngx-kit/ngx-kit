@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
@@ -37,6 +37,7 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitToggleComponent implements ControlValueAccessor, KitControl<any> {
   id: string;

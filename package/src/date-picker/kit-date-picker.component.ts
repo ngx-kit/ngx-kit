@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
 import * as moment from 'moment';
@@ -49,6 +49,7 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   datesGrid: {date: any, isActive: boolean, isOutside: boolean}[][] = [];

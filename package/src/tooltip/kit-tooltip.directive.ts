@@ -59,6 +59,7 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
 
   private hide() {
     this.containerRef.instance.opened = false;
+    this.containerRef.instance.cdrCheck();
   }
 
   private proxyProps() {
@@ -68,10 +69,12 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
       instance.position = this.kitTooltipPosition;
       instance.anchor = this.el.nativeElement;
       instance.color = this.kitTooltipColor;
+      instance.cdrCheck();
     }
   }
 
   private show() {
     this.containerRef.instance.opened = true;
+    this.containerRef.instance.cdrCheck();
   }
 }

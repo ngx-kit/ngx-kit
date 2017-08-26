@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChild,
   ContentChildren,
@@ -37,6 +38,7 @@ import { KitFormErrorComponent } from './kit-form-error.component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
   @ContentChild(FormControlDirective) controlDirective: FormControlDirective;

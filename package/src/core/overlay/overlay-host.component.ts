@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import {
   KitCoreOverlayContainerPosition,
@@ -29,6 +37,7 @@ import {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitOverlayHostComponent implements OnInit {
   @Input() anchor: HTMLElement;
@@ -55,9 +64,13 @@ export class KitOverlayHostComponent implements OnInit {
 
   @Input() widthType: KitCoreOverlayContainerWidthType;
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+  }
+
+  cdrCheck() {
+    this.cdr.markForCheck();
   }
 }

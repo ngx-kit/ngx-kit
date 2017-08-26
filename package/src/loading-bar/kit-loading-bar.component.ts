@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Inject, Input, OnDestroy, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnDestroy, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,6 +15,7 @@ import { KitLoadingBarService } from './kit-loading-bar.service';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('load', [
       state('none', style({

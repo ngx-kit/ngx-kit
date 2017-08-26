@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnInit, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { kitModalHeaderStyle } from '../core/meta/tokens';
 import { KitComponentStyle } from '../core/meta/component';
@@ -11,6 +11,7 @@ import { KitComponentStyle } from '../core/meta/component';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalHeaderComponent implements OnInit {
   @Input() kitModalHeader: any;

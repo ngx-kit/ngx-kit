@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -100,6 +101,7 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<any> {
   @Input() accesskey: string;

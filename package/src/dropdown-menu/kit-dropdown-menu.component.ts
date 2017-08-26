@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitDropdownMenuStyle } from '../core/meta/tokens';
@@ -26,6 +36,7 @@ import { KitAnchorDirective } from '../core/overlay/anchor.directive';
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitDropdownMenuComponent implements OnInit, OnChanges {
   @Input() anchor: KitAnchorDirective;
@@ -37,7 +48,8 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
   opened = false;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitDropdownMenuStyle) private style: KitComponentStyle) {
+              @Inject(kitDropdownMenuStyle) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-dropdown-menu';
     this.styler.register(this.style);
   }
@@ -57,5 +69,6 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
 
   toggle() {
     this.opened = !this.opened;
+    this.cdr.markForCheck();
   }
 }

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -68,6 +69,7 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
   viewProviders: [
     StylerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitColorPickerComponent implements OnInit, ControlValueAccessor, KitControl<string> {
   @ViewChild('alphaSlider') alphaSlider: any;
