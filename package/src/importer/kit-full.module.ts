@@ -4,7 +4,6 @@ import { KitAccordionModule } from '../accordion/kit-accordion.module';
 import { KitAlertModule } from '../alert/kit-alert.module';
 import { KitAutoCompleteModule } from '../auto-complete/kit-auto-complete.module';
 import { KitBadgeModule } from '../badge/kit-badge.module';
-import { KitBreadcrumbModule } from '../breadcrumd/kit-breadcrumb.module';
 import { KitButtonModule } from '../button/kit-button.module';
 import { KitCheckboxModule } from '../checkbox/kit-checkbox.module';
 import { KitColorPickerModule } from '../color-picker/kit-color-picker.module';
@@ -38,7 +37,6 @@ const simpleModules = [
   KitAlertModule,
   KitAutoCompleteModule,
   KitBadgeModule,
-  KitBreadcrumbModule,
   KitButtonModule,
   KitCheckboxModule,
   KitColorPickerModule,
