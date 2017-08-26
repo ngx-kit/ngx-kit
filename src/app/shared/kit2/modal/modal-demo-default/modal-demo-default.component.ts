@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './modal-demo-default.component.html',
 })
 export class ModalDemoDefaultComponent {
+  opened = false;
 }

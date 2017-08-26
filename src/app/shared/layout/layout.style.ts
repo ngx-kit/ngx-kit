@@ -36,7 +36,7 @@ export class LayoutStyle {
       height: 50,
       flexShrink: 0,
       lineHeight: 50,
-      background: this.theme.params.headerColor,
+      background: this.theme.params.footerColor,
     };
   }
 

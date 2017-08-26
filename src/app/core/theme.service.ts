@@ -25,7 +25,7 @@ export class ThemeService {
         this.params = {
           sideWidth: 300,
           contentColor: '#fff',
-          headerColor: '#eee',
+          headerColor: '#09D7DE',
           sideColor: '#ddd',
           footerColor: '#eee',
           logoColor: '#09D7DE',

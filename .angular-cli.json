@@ -28,9 +28,7 @@
         "./assets/default.scss",
         "./assets/dark.scss"
       ],
-      "scripts": [
-        "../node_modules/moment/moment.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

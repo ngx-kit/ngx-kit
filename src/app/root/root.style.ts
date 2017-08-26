@@ -7,22 +7,6 @@ export class RootStyle implements ComponentStyle {
   constructor(private theme: ThemeService) {
   }
 
-  footer(): StyleDef {
-    return {
-      background: this.theme.params.footerColor,
-      padding: 16,
-    };
-  }
-
-  header(): StyleDef {
-    return {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      background: this.theme.params.headerColor,
-    };
-  }
-
   host(): StyleDef {
     return {
       color: this.theme.params.textColor,

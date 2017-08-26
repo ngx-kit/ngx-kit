@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import {
   KitDefaultThemeDefaultParams,
   KitDefaultThemeParams,
   KitDefaultThemeService,
-  KitModalComponent,
   kitTheme,
   paramsSchema,
 } from '@ngx-kit/ngx-kit';
@@ -25,11 +24,11 @@ import { ThemeEditorStyle } from './theme-editor.style';
 export class ThemeEditorComponent implements OnInit {
   code: string;
 
-  @ViewChild('codeModal') codeModal: KitModalComponent;
+  getCodeModalOpened = false;
 
   schema: {name: string, schema: any}[];
 
-  @ViewChild('setCodeModal') setCodeModal: KitModalComponent;
+  setCodeModalOpened = false;
 
   themeModel: any;
 
@@ -46,7 +45,7 @@ export class ThemeEditorComponent implements OnInit {
 
   getCode() {
     this.code = JSON.stringify(this.themeModel);
-    this.codeModal.open();
+    this.getCodeModalOpened = true;
   }
 
   setThemeFromCode() {
@@ -54,7 +53,7 @@ export class ThemeEditorComponent implements OnInit {
     // @todo error handling
     this.initThemeModel(parsed);
     this.update();
-    this.setCodeModal.close();
+    this.setCodeModalOpened = false;
   }
 
   update() {

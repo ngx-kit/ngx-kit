@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './input-demo-math.component.html',
 })
 export class InputDemoMathComponent {
+  value = null;
 }

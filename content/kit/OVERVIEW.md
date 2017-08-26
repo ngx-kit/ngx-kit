@@ -36,23 +36,14 @@ export class AppModule {
 }
 ```
 
-Add `moment` to `.angular-cli.json`:
-
-```json
-...
-"scripts": [
-  "../node_modules/moment/moment.js"
-],
-```
-
-[More info about importing](/utils/importer)
+[More info about importing](/docs/importing)
 
 ## Usage
 
 For example date-picker:
 
 ```html
-<kit-date-picker [ngModel]="date"></kit-date-picker>
+<kit-date-picker [(ngModel)]="date"></kit-date-picker>
 ```
 
 ## Links

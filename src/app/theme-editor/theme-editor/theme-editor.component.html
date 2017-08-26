@@ -2,7 +2,7 @@
   <div styler="layoutSide">
     <div styler="sideActions">
       <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="getCode()">Get code</button>
-      <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="setCodeModal.open()">Load code</button>
+      <button [kitButton] [color]="'primary'" [size]="'xs'" (action)="setCodeModalOpened = true">Load code</button>
     </div>
     <div styler="sideForm">
       <form>
@@ -22,23 +22,23 @@
   </div>
 </div>
 
-<kit-modal #codeModal>
+<kit-modal [opened]="getCodeModalOpened">
   <kit-modal-header>Theme save</kit-modal-header>
   <kit-modal-body [style.width.px]="500">
     <kit-textarea [ngModel]="code"></kit-textarea>
   </kit-modal-body>
   <kit-modal-footer>
-    <kit-button [color]="'primary'" (action)="codeModal.close()">Ok</kit-button>
+    <kit-button [color]="'primary'" (action)="getCodeModalOpened = false">Ok</kit-button>
   </kit-modal-footer>
 </kit-modal>
 
-<kit-modal #setCodeModal>
+<kit-modal [opened]="setCodeModalOpened">
   <kit-modal-header>Theme setup</kit-modal-header>
   <kit-modal-body [style.width.px]="500">
     <kit-textarea [(ngModel)]="code"></kit-textarea>
   </kit-modal-body>
   <kit-modal-footer>
-    <kit-button (action)="setCodeModal.close()">Cancel</kit-button>
+    <kit-button (action)="setCodeModalOpened = false">Cancel</kit-button>
     <kit-button [color]="'primary'" (action)="setThemeFromCode()">Set</kit-button>
   </kit-modal-footer>
 </kit-modal>
