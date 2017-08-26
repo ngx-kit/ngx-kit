@@ -3,7 +3,6 @@ import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StylerComponent } from '@ngx-kit/styler';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { KitCoreService } from '../core/kit-core.service';
 import { kitNotificationHostStyle } from '../core/meta/tokens';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
 import { KitNotificationService } from './kit-notification.service';
@@ -34,10 +33,6 @@ describe('Notification/NotificationHostComponent', () => {
           {
             provide: KitNotificationService,
             useClass: NotificationServiceMock,
-          },
-          {
-            provide: KitCoreService,
-            useClass: KitCoreServiceMock,
           },
         ],
       }).overrideComponent(KitNotificationHostComponent, {
@@ -155,11 +150,4 @@ class KitOverlayContainerMockComponent {
   @Input() position: string;
 
   @Input() type: string;
-}
-
-@Injectable()
-class KitCoreServiceMock {
-  uuid() {
-    return '123';
-  }
 }
