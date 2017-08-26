@@ -1,11 +1,11 @@
 import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StylerComponent } from '@ngx-kit/styler';
+import * as moment from 'moment';
 import { Subject } from 'rxjs/Subject';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitDatePickerStyle } from '../core/meta/tokens';
 
-declare const moment: any;
 export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => KitDatePickerComponent),
@@ -95,7 +95,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   add(amount: any, unit: string): void {
-    const m = moment(this._date);
+    const m = (<any>moment).default(this._date);
     m.add(amount, unit);
     this._date = m;
     this.updateDatesGrid();
@@ -116,18 +116,18 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   updateDatesGrid() {
     // set today if empty or invalid
     if (!this._date || !this._date.isValid()) {
-      this._date = moment();
+      this._date = (<any>moment).default();
     }
     // calc grids
     this.datesGrid = [];
-    const cursor = moment(this._date);
+    const cursor = (<any>moment).default(this._date);
     cursor.startOf('month').startOf('week');
-    const end = moment(this._date);
+    const end = (<any>moment).default(this._date);
     end.endOf('month').endOf('week').add(1, 'day');
     let line = [];
     while (!cursor.isSame(end, 'day')) {
       line.push({
-        date: moment(cursor),
+        date: (<any>moment).default(cursor),
         isOutside: cursor.month() !== this._date.month(),
         isActive: cursor.isSame(this._date, 'day'),
       });
@@ -140,7 +140,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this._date = moment(value);
+    this._date = (<any>moment).default(value);
     this.updateDatesGrid();
   }
 }

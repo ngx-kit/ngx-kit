@@ -9,6 +9,7 @@ module.exports = {
   "@angular/platform-browser/animations": "ng.platform-browser.animations",
   "@angular/router": "ng.router",
   "@ngx-kit/styler": "styler",
+  "moment": "moment",
   "rxjs/add/observable/combineLatest": "Rx.add",
   "rxjs/add/observable/of": "Rx.add",
   "rxjs/add/operator/do": "Rx.add",
