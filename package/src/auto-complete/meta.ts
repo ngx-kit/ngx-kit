@@ -1,3 +1,3 @@
 import { Observable } from 'rxjs/Observable';
 
-export type KitDataSourceFactory = (value: string) => Observable<string[]>;
+export type KitDataFactory = (value: string) => Observable<string[]>;

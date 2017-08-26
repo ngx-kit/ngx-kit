@@ -15,5 +15,5 @@ Implements `ControlValueAccessor`.
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
 | *data* | `string[]` | `` | |
-| *dataSourceFactory* | `KitDataSourceFactory` | `` | Function for receiving data `(input: string) => Observable<string[]>` |
+| *dataFactory* | `KitDataFactory` | `` | Function for receiving data `(input: string) => Observable<string[]>` |
 | *debounce* | `number` | `500` | |

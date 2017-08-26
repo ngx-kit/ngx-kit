@@ -8,7 +8,7 @@ import { KitComponentStyle } from '../core/meta/component';
 import { KitControl } from '../core/meta/control';
 import { kitAutoCompleteStyle } from '../core/meta/tokens';
 import { KitInputComponent } from '../input/kit-input.component';
-import { KitDataSourceFactory } from './meta';
+import { KitDataFactory } from './meta';
 
 export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -54,13 +54,13 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitAutoCompleteComponent implements ControlValueAccessor, AfterViewInit, KitControl<any> {
-  activeResult: number = -1;
+  activeResult = -1;
 
   anchorRef: any;
 
   @Input() data: string[] | null = null;
 
-  @Input() dataSourceFactory: KitDataSourceFactory | null = null;
+  @Input() dataFactory: KitDataFactory | null = null;
 
   @Input() debounce = 500;
 
@@ -89,11 +89,11 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
     this.input.registerOnTouched(this.touches$);
     if (this.data !== null) {
       this.input.registerOnChange(this.handleDataSearch.bind(this));
-    } else if (this.dataSourceFactory !== null) {
+    } else if (this.dataFactory !== null) {
       const changes$ = new Subject<any>();
       this.input.registerOnChange(changes$);
       changes$.debounceTime(this.debounce)
-          .switchMap(this.dataSourceFactory)
+          .switchMap(this.dataFactory)
           .subscribe(res => {
             this.results = res;
             this.validateActiveResult();
