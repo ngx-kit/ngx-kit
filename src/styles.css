@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.gstatic.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD9V_2ngZ8dMf8fLgjYEouxg.woff2');
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Lato', Arial;
+  font-family: 'Source Code Pro', Arial;
   /*font-size: 14px;*/
 }
 
 button, input, textarea, select {
-  font-family: 'Lato', Arial;
+  font-family: 'Source Code Pro', Arial;
 }
 
 table {
@@ -37,4 +37,124 @@ table td {
 pre {
   margin: 0;
   padding: 0;
+}
+
+.app [styler="layoutSide"] {
+  width: 240px;
+  background: #2a2d33;
+  color: #aeaeb0;
+  padding: 32px 0;
+}
+
+.app [styler="layoutHeader"] {
+  height: 80px;
+  background: #ffffff;
+}
+
+.app [styler="logo"] {
+  width: 240px;
+  background: #51d2b7;
+  color: #ffffff;
+  line-height: 80px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.app [styler="layoutContent"] {
+  background: #f7f7f7;
+  padding: 0;
+  color: #5b616b;
+}
+
+.app [styler="layoutContentWrapper"] {
+  max-width: 100%;
+  padding: 24px 64px;
+}
+
+.kit-menu-item.kit-menu-item_menuDirection_vertical.kit-menu-item_root {
+  color: #aeaeb0;
+}
+
+kit-menu-group-title.kit-menu-group-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #7f8083;
+}
+
+.kit-menu-item.kit-menu-item_menuDirection_vertical.kit-menu-item_root {
+  padding: 8px 0 8px 16px;
+}
+
+.kit-menu-item.kit-menu-item_menuDirection_vertical.kit-menu-item_root:hover {
+  background: #656c7e;
+  color: #ffffff;
+  border-radius: 0;
+}
+.kit-menu-item.kit-menu-item_menuDirection_vertical.kit-menu-item_root:focus {
+  background: #656c7e;
+}
+
+kit-menu-group.kit-menu-group {
+  padding: 16px 0 0 0;
+}
+
+.kit-menu-group-title {
+  padding: 8px 16px;
+}
+
+.app [styler="items"] {
+  padding: 0;
+}
+
+.app app-demo {
+  background: #ffffff;
+  border: 1px solid #d0d6e2;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.app app-demo h2 {
+  margin: 0;
+  padding: 16px 32px;
+  background: #d5dae6;
+}
+
+.app app-demo h4 {
+  padding: 0 16px;
+}
+
+.app [styler="demo"] {
+  padding: 32px 56px;
+}
+
+.app [styler="code"] {
+  padding: 32px 56px;
+}
+
+.app [styler="panel"] {
+  padding-right: 16px;
+}
+
+.html.language-html.hljs {
+  background: #f8f9fb;
+}
+
+.kit-menu {
+  text-transform: capitalize;
+  justify-content: flex-end;
+}
+
+.kit-menu-item.kit-menu-item_menuDirection_horizontal.kit-menu-item_root:hover {
+  background: #fafafa;
+  border-bottom: 2px solid #51D2B7;
+
+}
+.kit-menu-item.kit-menu-item_menuDirection_horizontal.kit-menu-item_root:active {
+  background: #fafafa;
+  border-bottom: 2px solid #51D2B7;
+}
+.kit-menu-item.kit-menu-item_menuDirection_horizontal.kit-menu-item_root:focus {
+  background: #fafafa;
+  border-bottom: 2px solid #51D2B7;
 }
