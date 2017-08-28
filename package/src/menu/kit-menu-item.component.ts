@@ -1,5 +1,6 @@
 import {
-  AfterContentInit, ChangeDetectionStrategy,
+  AfterContentInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
@@ -63,9 +64,8 @@ export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit
   }
 
   ngAfterContentInit() {
-    // apply styler states
+    this.applyMenuState();
     this.styler.host.applyState({
-      menuDirection: this.menu.direction,
       root: !this.sub,
       hasSubs: this.subs && this.subs.length > 0,
     });
@@ -87,6 +87,10 @@ export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit
             this.closeSub();
           }
         });
+    // handle menu changes
+    this.menu.changes$.subscribe(() => {
+      this.applyMenuState();
+    });
   }
 
   hasHoveredChildren(): boolean {
@@ -108,6 +112,13 @@ export class KitMenuItemComponent implements OnInit, OnChanges, AfterContentInit
   mouseleave() {
     this._hover = false;
     this.menu.checkLeave$.next();
+  }
+
+  private applyMenuState() {
+    this.styler.host.applyState({
+      menuDirection: this.menu.direction,
+      inverted: this.menu.inverted,
+    });
   }
 
   private closeSub() {

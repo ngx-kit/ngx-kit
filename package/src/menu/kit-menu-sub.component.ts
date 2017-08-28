@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -18,7 +19,6 @@ import { KitComponentStyle } from '../core/meta/component';
 import { kitMenuSubStyle } from '../core/meta/tokens';
 import { KitMenuItemComponent } from './kit-menu-item.component';
 import { KitMenuComponent } from './kit-menu.component';
-import { KitMenuDirection } from './meta';
 
 /**
  * @todo separator inside group
@@ -46,7 +46,7 @@ import { KitMenuDirection } from './meta';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitMenuSubComponent implements OnInit {
+export class KitMenuSubComponent implements OnInit, AfterContentInit {
   @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false})
   items: QueryList<KitMenuItemComponent>;
 
@@ -55,8 +55,6 @@ export class KitMenuSubComponent implements OnInit {
   overlayPosition = 'bottom';
 
   private _hover = false;
-
-  private _menuDirection: KitMenuDirection;
 
   private _opened = false;
 
@@ -79,18 +77,18 @@ export class KitMenuSubComponent implements OnInit {
     return this._hover || this.hasHoveredChildren();
   }
 
-  @Input()
-  set menuDirection(direction: KitMenuDirection) {
-    this._menuDirection = direction;
-    this.overlayPosition = this._menuDirection === 'horizontal' && !this.parentSub ? 'bottom' : 'right';
-  }
-
   get opened() {
     return this._opened;
   }
 
+  ngAfterContentInit() {
+    this.applyMenuState();
+  }
+
   ngOnInit() {
-    this._menuDirection = this.parentSub ? 'vertical' : 'horizontal';
+    this.menu.changes$.subscribe(() => {
+      this.applyMenuState();
+    });
   }
 
   close() {
@@ -118,5 +116,9 @@ export class KitMenuSubComponent implements OnInit {
   open() {
     this._opened = true;
     this.cdr.markForCheck();
+  }
+
+  private applyMenuState() {
+    this.overlayPosition = this.menu.direction === 'horizontal' && !this.parentSub ? 'bottom' : 'right';
   }
 }

@@ -15,11 +15,13 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     hover: boolean,
     root: boolean,
     hasSubs: boolean,
+    inverted: boolean,
   }): StyleDef {
     const params = this.theme.params;
+    const textColor = state.inverted ? params.colors.background : params.colors.invert;
     return {
       padding: [params.grid.v / 2, params.grid.h],
-      color: params.colors.invert,
+      color: textColor,
       ...defToggle(state.root, {
         // root items
         ...defPick(state.menuDirection, {
@@ -27,13 +29,15 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
             marginBottom: -params.borders.width,
+            borderBottom: [params.borders.width, 'solid', 'transparent'],
             ...defToggle(state.disabled, {
               cursor: 'default',
-              color: opacify(-.4, params.colors.invert),
+              color: opacify(-.4, textColor),
             }, {
               $nest: {
                 '&:hover': {
                   background: opacify(-.5, params.colors.border),
+                  borderColor: params.colors.swatches.primary.base,
                 },
               },
             }),

@@ -1,10 +1,12 @@
 import {
-  AfterContentInit, ChangeDetectionStrategy,
+  AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChildren,
   forwardRef,
   Inject,
   Input,
+  OnChanges,
   OnInit,
   QueryList,
 } from '@angular/core';
@@ -26,8 +28,12 @@ import { KitMenuDirection } from './meta';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitMenuComponent implements OnInit, AfterContentInit {
+export class KitMenuComponent implements OnInit, OnChanges, AfterContentInit {
+  changes$ = new Subject<null>();
+
   checkLeave$ = new Subject<any>();
+
+  @Input() inverted = false;
 
   @Input() kitMenu: any;
 
@@ -52,31 +58,15 @@ export class KitMenuComponent implements OnInit, AfterContentInit {
   set direction(direction: KitMenuDirection) {
     this._direction = direction;
     this.styler.host.applyState({direction});
-    this.proxyDirectionToSubs();
-    this.proxyDirectionToSeparators();
   }
 
   ngAfterContentInit() {
-    this.proxyDirectionToSubs();
-    this.proxyDirectionToSeparators();
+  }
+
+  ngOnChanges() {
+    this.changes$.next();
   }
 
   ngOnInit() {
-  }
-
-  private proxyDirectionToSeparators() {
-    if (this.separators) {
-      this.separators.forEach(separator => {
-        separator.parentDirection = this._direction;
-      });
-    }
-  }
-
-  private proxyDirectionToSubs() {
-    if (this.subs) {
-      this.subs.forEach(sub => {
-        sub.menuDirection = this._direction;
-      });
-    }
   }
 }

@@ -11,13 +11,11 @@ export class KitDefaultMenuGroupStyle implements KitComponentStyle {
 
   host(): StyleDef {
     return {
-      padding: [this.theme.params.grid.v, 0, this.theme.params.grid.v, this.theme.params.grid.h],
+      padding: [this.theme.params.grid.v, 0],
     };
   }
 
   items(): StyleDef {
-    return {
-      paddingLeft: this.theme.params.grid.h * 2,
-    };
+    return {};
   }
 }

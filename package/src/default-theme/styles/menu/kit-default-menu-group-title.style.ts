@@ -9,12 +9,16 @@ export class KitDefaultMenuGroupTitleStyle implements KitComponentStyle {
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(): StyleDef {
+  host(state: {
+    inverted: boolean;
+  }): StyleDef {
     const params = this.theme.params;
     return {
       fontSize: '.9rem',
       padding: [0, params.grid.h, params.grid.v / 2],
-      color: opacify(-.2, params.colors.invert),
+      color: opacify(-.4, state.inverted ? params.colors.background : params.colors.invert),
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
     };
   }
 }
