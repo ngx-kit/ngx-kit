@@ -1,13 +1,11 @@
-<h2 *ngIf="content">{{ content.meta.title }}</h2>
-<div styler="demo">
-  <ng-content></ng-content>
-</div>
+<h2 *ngIf="content"
+    styler="title">{{ content.meta.title }}</h2>
 <div *ngIf="readme"
      [innerHtml]="readme"
      styler="readme"></div>
-
-<h4>Demo sources</h4>
-
+<div styler="demo">
+  <ng-content></ng-content>
+</div>
 <div styler="code">
   <kit-tabs>
     <kit-tabs-panel *ngFor="let file of content.code"

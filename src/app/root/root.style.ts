@@ -16,12 +16,15 @@ export class RootStyle implements ComponentStyle {
   logo(): StyleDef {
     return {
       width: this.theme.params.sideWidth,
-      padding: 16,
+      padding: 0,
       background: this.theme.params.logoColor,
       color: '#fff',
       textDecoration: 'none',
       fontWeight: 600,
       boxSizing: 'border-box',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      lineHeight: 80,
     };
   }
 

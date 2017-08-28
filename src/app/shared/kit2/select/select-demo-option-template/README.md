@@ -1,3 +1,3 @@
 ---
-title: Default select
+title: Option template
 ---

@@ -3,25 +3,21 @@
   <div styler="layoutHeader">
     <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
-      <a [kitMenuItem] [routerLink]="['/kit']">ngx-kit</a>
-      <a [kitMenuItem] [routerLink]="['/theme-editor']">default-theme editor</a>
-      <a [kitMenuItem] href="https://github.com/ngx-kit/styler" target="_blank">styler</a>
+      <a [kitMenuItem] [routerLink]="['/kit']">Ngx-kit</a>
+      <a [kitMenuItem] [routerLink]="['/theme-editor']">Default-theme editor</a>
+      <a [kitMenuItem] href="https://github.com/ngx-kit/styler" target="_blank">Styler</a>
     </kit-menu>
     <div styler="themeButton">
-      <!--<kit-button [kitAnchor] #dropdownRef="anchor">Pick a preset</kit-button>-->
-      <!--<kit-dropdown-menu [anchor]="dropdownRef">-->
-        <!--<kit-dropdown-menu-item (click)="applyTheme('default')">default</kit-dropdown-menu-item>-->
-        <!--<kit-dropdown-menu-item (click)="applyTheme('dark')">dark</kit-dropdown-menu-item>-->
-        <!--<kit-dropdown-menu-item (click)="applyTheme('light2')">light2</kit-dropdown-menu-item>-->
-      <!--</kit-dropdown-menu>-->
+      <kit-button [kitAnchor] #dropdownRef="anchor">Pick a preset</kit-button>
+      <kit-dropdown-menu [anchor]="dropdownRef">
+        <kit-dropdown-menu-item (click)="applyTheme('default')">default</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('dark')">dark</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('light2')">light2</kit-dropdown-menu-item>
+        <kit-dropdown-menu-item (click)="applyTheme('sunset')">sunset</kit-dropdown-menu-item>
+      </kit-dropdown-menu>
     </div>
   </div>
   <div [ngClass]="hljsTheme" styler="layoutContent">
     <router-outlet></router-outlet>
-  </div>
-  <div styler="layoutFooter">
-    <div>
-      Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
-    </div>
   </div>
 </div>

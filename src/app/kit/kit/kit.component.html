@@ -1,6 +1,6 @@
 <div styler="layoutRow">
   <div styler="layoutSide">
-    <kit-menu [direction]="'vertical'">
+    <kit-menu [direction]="'vertical'" [inverted]="sideMenuInverted">
       <a [kitMenuItem] [routerLink]="['']">Overview</a>
       <kit-menu-group>
         <kit-menu-group-title>Docs</kit-menu-group-title>
@@ -33,16 +33,21 @@
         <a [kitMenuItem] [routerLink]="['modules/toggle']">Toggle</a>
         <a [kitMenuItem] [routerLink]="['modules/tooltip']">Tooltip</a>
       </kit-menu-group>
-      <kit-menu-separator></kit-menu-separator>
-      <a [kitMenuItem] href="https://github.com/ngx-kit/ngx-kit/releases" target="_blank">Changelog</a>
-      <kit-menu-separator></kit-menu-separator>
-      <a [kitMenuItem] href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
-      <a [kitMenuItem] href="https://discord.gg/66Tt9WT" target="_blank">Discord</a>
     </kit-menu>
   </div>
   <div styler="layoutContent">
     <div styler="layoutContentWrapper">
       <router-outlet></router-outlet>
+    </div>
+    <div styler="layoutFooter">
+      <div>
+        Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
+      </div>
+      <div>
+        <a href="https://github.com/ngx-kit/ngx-kit/releases" target="_blank">Changelog</a>
+        <a href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
+        <a href="https://discord.gg/66Tt9WT" target="_blank">Discord</a>
+      </div>
     </div>
   </div>
 </div>

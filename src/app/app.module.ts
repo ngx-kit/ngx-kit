@@ -7,7 +7,6 @@ import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { RootComponent } from './root/root.component';
-import { BemClassGenStrategy, ClassGenStategy } from '@ngx-kit/styler';
 
 @NgModule({
   imports: [
@@ -23,12 +22,7 @@ import { BemClassGenStrategy, ClassGenStategy } from '@ngx-kit/styler';
   declarations: [
     RootComponent,
   ],
-  providers: [
-    {
-      provide: ClassGenStategy,
-      useClass: BemClassGenStrategy,
-    }
-  ],
+  providers: [],
   bootstrap: [RootComponent],
 })
 export class AppModule {

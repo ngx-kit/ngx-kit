@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
 import { StyleDef } from '@ngx-kit/styler';
 import { ThemeService } from '../../core/theme.service';
 
 @Injectable()
 export class LayoutStyle {
-  constructor(private theme: ThemeService) {
+  constructor(private theme: ThemeService,
+              @Inject(kitTheme) private defTheme: KitDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -20,20 +22,22 @@ export class LayoutStyle {
     return {
       display: 'flex',
       flexGrow: 1,
+      flexDirection: 'column',
       overflow: 'hidden',
     };
   }
 
   layoutContentWrapper(): StyleDef {
+    const params = this.defTheme.params;
     return {
-      maxWidth: 1000,
       flexGrow: 1,
+      padding: [0, params.grid.v * 8],
     };
   }
 
   layoutFooter(): StyleDef {
     return {
-      height: 50,
+      display: 'block',
       flexShrink: 0,
       lineHeight: 50,
       background: this.theme.params.footerColor,
@@ -57,7 +61,7 @@ export class LayoutStyle {
       display: 'flex',
       flexDirection: 'row',
       flexShrink: 0,
-      height: 50,
+      height: 80,
       background: this.theme.params.headerColor,
     };
   }
@@ -72,9 +76,13 @@ export class LayoutStyle {
   }
 
   layoutSide(): StyleDef {
+    const params = this.defTheme.params;
     return {
       width: this.theme.params.sideWidth,
+      padding: [params.grid.v * 2, params.grid.h],
       overflow: 'hidden',
+      fontSize: '.95rem',
+      color: params.colors.background,
     };
   }
 }
