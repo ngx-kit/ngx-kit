@@ -105,6 +105,7 @@ export class KitNotificationHostComponent implements KitCoreOverlayComponent {
     const index = this.items.findIndex(i => i.__id === __id);
     if (index !== -1) {
       this.items.splice(index, 1);
+      this.cdr.markForCheck();
     }
   }
 
