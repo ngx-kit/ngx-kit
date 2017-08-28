@@ -14,9 +14,9 @@ export class KitDefaultThemeDefaultParams implements KitDefaultThemeParams {
   };
 
   colors: KitDefaultThemeParamsColors = {
-    background: '#ffffff',
-    invert: '#404040',
-    border: '#eeeeee',
+    background: '#f7f7f7',
+    invert: '#4a505a',
+    border: '#d5dae6',
     input: '#d6d6d6',
     swatches: {
       'default': {
