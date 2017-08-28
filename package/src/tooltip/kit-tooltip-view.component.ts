@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
+import { KitCoreOverlayComponent, KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { kitTooltipViewStyle } from '../core/meta/tokens';
 
 /**
@@ -22,7 +22,7 @@ import { kitTooltipViewStyle } from '../core/meta/tokens';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitTooltipViewComponent {
+export class KitTooltipViewComponent implements KitCoreOverlayComponent {
   @Input() anchor: HTMLElement;
 
   @Input() color: string;

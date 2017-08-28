@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
+import { KitCoreOverlayComponent } from '../core/meta/overlay';
 import { kitNotificationHostStyle } from '../core/meta/tokens';
 import { uuid } from '../core/util/uuid';
 import { KitNotificationService } from './kit-notification.service';
@@ -80,7 +81,7 @@ import { KitNotificationHostConfig, KitNotificationItem, KitNotificationMessage 
     ]),
   ],
 })
-export class KitNotificationHostComponent {
+export class KitNotificationHostComponent implements KitCoreOverlayComponent {
   hostConfig: KitNotificationHostConfig;
 
   items: KitNotificationItem[] = [];
@@ -94,6 +95,10 @@ export class KitNotificationHostComponent {
     this.styler.classPrefix = 'kit-notification-host';
     this.styler.register(this.componentStyle);
     this.handleConfig();
+  }
+
+  cdrCheck() {
+    this.cdr.markForCheck();
   }
 
   close(__id: string) {

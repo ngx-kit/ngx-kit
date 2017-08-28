@@ -117,10 +117,12 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
       instance.anchor = this.el.nativeElement;
       instance.color = this.kitColorPickerPopupColor;
       instance.debounce = this.kitColorPickerPopupDebounce;
+      instance.cdrCheck();
     }
   }
 
   private show() {
     this.containerRef.instance.opened = true;
+    this.containerRef.instance.cdrCheck();
   }
 }

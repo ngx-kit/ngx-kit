@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
-import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
+import { KitCoreOverlayComponent, KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { kitColorPickerPopupStyle } from '../core/meta/tokens';
 
 /**
@@ -28,7 +37,7 @@ import { kitColorPickerPopupStyle } from '../core/meta/tokens';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitColorPickerPopupViewComponent implements OnInit {
+export class KitColorPickerPopupViewComponent implements OnInit, KitCoreOverlayComponent {
   @Input() anchor: HTMLElement;
 
   @Input() color: string;
@@ -48,11 +57,16 @@ export class KitColorPickerPopupViewComponent implements OnInit {
   @Input() text: string;
 
   constructor(private styler: StylerComponent,
-              @Inject(kitColorPickerPopupStyle) private style: KitComponentStyle) {
+              @Inject(kitColorPickerPopupStyle) private style: KitComponentStyle,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-color-picker-popup';
     this.styler.register(this.style);
   }
 
   ngOnInit() {
+  }
+
+  cdrCheck() {
+    this.cdr.markForCheck();
   }
 }

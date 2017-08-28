@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import {
+  KitCoreOverlayComponent,
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitCoreOverlayContainerWidthType,
@@ -39,7 +40,7 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitOverlayHostComponent implements OnInit {
+export class KitOverlayHostComponent implements OnInit, KitCoreOverlayComponent {
   @Input() anchor: HTMLElement;
 
   @Input() component: any;

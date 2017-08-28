@@ -7,6 +7,7 @@ import {
   Injector,
   Type,
 } from '@angular/core';
+import { KitCoreOverlayComponent } from '../meta/overlay';
 
 @Injectable()
 export class KitOverlayService {
@@ -17,7 +18,7 @@ export class KitOverlayService {
               private injector: Injector) {
   }
 
-  host<T>(component: Type<T>): ComponentRef<T> {
+  host<T extends KitCoreOverlayComponent>(component: Type<T>): ComponentRef<T> {
     this.detectRoot();
     const factory = this.resolver.resolveComponentFactory(component);
     const componentRef = factory.create(this.injector);
