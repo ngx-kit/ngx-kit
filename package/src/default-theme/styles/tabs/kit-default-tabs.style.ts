@@ -25,9 +25,7 @@ export class KitDefaultTabsStyle implements KitComponentStyle {
   panel(): StyleDef {
     const params = this.theme.params;
     return {
-      paddingTop: this.theme.params.grid.h * 2,
-      paddingBottom: this.theme.params.grid.h * 2,
-      paddingLeft: this.theme.params.grid.v * 2,
+      padding: [this.theme.params.grid.v * 2, this.theme.params.grid.h * 2],
       ...applyColorSet({
         background: params.colors.background,
         border: params.colors.border,
