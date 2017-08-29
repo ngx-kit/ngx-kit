@@ -3,10 +3,17 @@
   <div styler="layoutHeader">
     <a [routerLink]="['/kit']" styler="logo">ngx-kit</a>
     <kit-menu styler="menu">
-      <a [kitMenuItem] [routerLink]="['/kit']">Ngx-kit</a>
-      <a [kitMenuItem] [routerLink]="['/theme-editor']">Default-theme editor</a>
+      <a [kitMenuItem] [activeExact]="false" [routerLink]="['/kit']">Ngx-kit</a>
+      <a [kitMenuItem] [activeExact]="false" [routerLink]="['/theme-editor']">Default-theme editor</a>
       <a [kitMenuItem] href="https://github.com/ngx-kit/styler" target="_blank">Styler</a>
     </kit-menu>
+    <div styler="githubStar">
+      <a class="github-button"
+         href="https://github.com/ngx-kit/ngx-kit"
+         data-size="large"
+         data-show-count="true"
+         aria-label="Star ngx-kit/ngx-kit on GitHub">Star</a>
+    </div>
     <div styler="themeButton">
       <kit-button [kitAnchor] #dropdownRef="anchor">Pick a preset</kit-button>
       <kit-dropdown-menu [anchor]="dropdownRef">

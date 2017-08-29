@@ -83,6 +83,11 @@ export class LayoutStyle {
       overflow: 'hidden',
       fontSize: '.95rem',
       color: params.colors.background,
+      $media: [
+        [{maxWidth: 600}, {
+          display: 'none',
+        }],
+      ],
     };
   }
 }

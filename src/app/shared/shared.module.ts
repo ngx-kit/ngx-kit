@@ -65,6 +65,7 @@ import { TagDemoColorComponent } from './kit2/tag/tag-demo-color/tag-demo-color.
 import { TagDemoDefaultComponent } from './kit2/tag/tag-demo-default/tag-demo-default.component';
 import { TextareaDemoDefaultComponent } from './kit2/textarea/textarea-demo-default/textarea-demo-default.component';
 import { ToggleDemoDefaultComponent } from './kit2/toggle/toggle-demo-default/toggle-demo-default.component';
+import { TooltipDemoColorComponent } from './kit2/tooltip/tooltip-demo-color/tooltip-demo-color.component';
 import { TooltipDemoDefaultComponent } from './kit2/tooltip/tooltip-demo-default/tooltip-demo-default.component';
 import { TooltipDemoPositionComponent } from './kit2/tooltip/tooltip-demo-position/tooltip-demo-position.component';
 import { PostComponent } from './post/post.component';
@@ -137,6 +138,7 @@ const kit2 = [
   TagDemoColorComponent,
   TextareaDemoDefaultComponent,
   ToggleDemoDefaultComponent,
+  TooltipDemoColorComponent,
   TooltipDemoDefaultComponent,
   TooltipDemoPositionComponent,
 ];

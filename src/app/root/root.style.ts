@@ -7,6 +7,13 @@ export class RootStyle implements ComponentStyle {
   constructor(private theme: ThemeService) {
   }
 
+  githubStar(): StyleDef {
+    return {
+      display: 'flex',
+      alignItems: 'center',
+    };
+  }
+
   host(): StyleDef {
     return {
       color: this.theme.params.textColor,

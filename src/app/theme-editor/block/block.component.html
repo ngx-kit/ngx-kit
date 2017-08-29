@@ -16,8 +16,7 @@
           </div>
           <div *ngSwitchCase="'color'">
             <kit-input [style.background]="themeModel[block.name]"
-                       [kitColorPickerPopup]
-                       [kitColorPickerPopupDebounce]="300"
+                       [kitColorPickerPopup]="{debounce: 300}"
                        [(ngModel)]="themeModel[block.name]"
                        (ngModelChange)="change.emit()"
                        styler="box">
