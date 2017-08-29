@@ -12,7 +12,6 @@ https://ngx-kit.com/kit/modules/tooltip
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *kitTooltipColor* | `string` | | Color based on theme |
-| *kitTooltipPosition* | `top, right, bottom, left` | | |
+| *kitTooltipOptions* | `KitTooltipOptions` | | [KitTooltipOptions](/meta.ts) |
 
 #### Outputs

@@ -11,7 +11,9 @@ import {
 } from '@angular/core';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
+import { Partial } from '../core/util/partial';
 import { KitTooltipViewComponent } from './kit-tooltip-view.component';
+import { KitTooltipOptions } from './meta';
 
 @Directive({
   selector: '[kitTooltip]',
@@ -19,11 +21,13 @@ import { KitTooltipViewComponent } from './kit-tooltip-view.component';
 export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @Input() kitTooltip: string;
 
-  @Input() kitTooltipColor: string;
+  @Input('kitTooltipOptions') options: Partial<KitTooltipOptions>;
 
-  @Input() kitTooltipPosition: KitCoreOverlayContainerPosition = 'top';
+  private color: string;
 
   private containerRef: ComponentRef<KitTooltipViewComponent>;
+
+  private position: KitCoreOverlayContainerPosition = 'top';
 
   constructor(private overlay: KitOverlayService,
               private el: ElementRef) {
@@ -37,6 +41,8 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
   }
 
   ngOnChanges() {
+    this.setColor();
+    this.setPosition();
     this.proxyProps();
   }
 
@@ -66,10 +72,22 @@ export class KitTooltipDirective implements OnInit, OnDestroy, OnChanges, AfterC
     if (this.containerRef) {
       const instance = this.containerRef.instance;
       instance.text = this.kitTooltip;
-      instance.position = this.kitTooltipPosition;
+      instance.position = this.position;
       instance.anchor = this.el.nativeElement;
-      instance.color = this.kitTooltipColor;
+      instance.color = this.color;
       instance.cdrCheck();
+    }
+  }
+
+  private setColor() {
+    if (this.options && this.options.color) {
+      this.color = this.options.color;
+    }
+  }
+
+  private setPosition() {
+    if (this.options && this.options.position) {
+      this.position = this.options.position;
     }
   }
 
