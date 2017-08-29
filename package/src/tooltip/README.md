@@ -12,6 +12,6 @@ https://ngx-kit.com/kit/modules/tooltip
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *kitTooltipOptions* | `KitTooltipOptions` | | [KitTooltipOptions](/meta.ts) |
+| *kitTooltipOptions* | `KitTooltipOptions` | | [KitTooltipOptions](./meta.ts) |
 
 #### Outputs
