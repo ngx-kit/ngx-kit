@@ -9,12 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        {
-          "glob": "**/*",
-          "input": "../content_dist/",
-          "output": "./content_dist/"
-        }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -41,12 +36,7 @@
       "outDir": "dist-server",
       "assets": [
         "assets",
-        "favicon.ico",
-        {
-          "glob": "**/*",
-          "input": "../content/compiled",
-          "output": "./content/"
-        }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.server.ts",

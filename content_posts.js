@@ -23,7 +23,7 @@ walker.on('errors', function(root, nodeStatsArray, next) {
 });
 
 walker.on('end', function() {
-  fs.outputFile(path.resolve('content_dist/posts.json'), JSON.stringify(posts), function(err) {
+  fs.outputFile(path.resolve('src/assets/content/posts.json'), JSON.stringify(posts), function(err) {
     if (err) {
       return console.log(err);
     }

@@ -42,4 +42,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/content_dist
+/src/assets/content

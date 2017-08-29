@@ -15,7 +15,7 @@ export class ContentPostsResolverService implements Resolve<ContentComponents> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<ContentComponents> {
-    return this.http.get(`/content_dist/posts.json`)
+    return this.http.get(`/assets/content/posts.json`)
         .map(res => res.json())
         .do(posts => this.content.posts$.next(posts));
   }

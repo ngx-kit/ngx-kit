@@ -34,7 +34,7 @@ walker.on('errors', function(root, nodeStatsArray, next) {
 });
 
 walker.on('end', function() {
-  fs.outputFile(path.resolve('content_dist/components.json'), JSON.stringify(components), function(err) {
+  fs.outputFile(path.resolve('src/assets/content/components.json'), JSON.stringify(components), function(err) {
     if (err) {
       return console.log(err);
     }
