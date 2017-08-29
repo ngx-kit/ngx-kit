@@ -31,8 +31,8 @@ Directive automatically proxies value to host ngModel if needed.
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
+| *kitColorPickerPopup* | `KitColorPickerPopupOptions` | | [KitColorPickerPopupOptions](./meta.ts) |
 | *kitColorPickerPopupColor* | `string` | null | Color value model |
-| *kitColorPickerPopupColorDebounce* | `number` | null | Debounce before value output |
 
 #### Outputs
 

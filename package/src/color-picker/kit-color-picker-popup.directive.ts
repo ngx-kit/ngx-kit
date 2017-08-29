@@ -17,7 +17,9 @@ import {
 import { FormControl, FormControlName, NgModel } from '@angular/forms';
 import { KitCoreOverlayContainerPosition } from '../core/meta/overlay';
 import { KitOverlayService } from '../core/overlay/kit-overlay.service';
+import { Partial } from '../core/util/partial';
 import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.component';
+import { KitColorPickerPopupOptions } from './meta';
 
 @Directive({
   selector: '[kitColorPickerPopup]',
@@ -25,20 +27,19 @@ import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.
 export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @HostBinding('class') hostClass: string;
 
-  @Input() kitColorPickerPopup: string;
-
   @Input() kitColorPickerPopupColor: string;
 
   @Output() kitColorPickerPopupColorChange = new EventEmitter<string>();
 
-  @Input() kitColorPickerPopupDebounce: number;
-
-  // @todo its obsolete interface
-  @Input() kitColorPickerPopupPosition: KitCoreOverlayContainerPosition = 'top';
-
   @Output() kitColorPickerPopupSliderMouseUp = new EventEmitter<any>();
 
+  @Input('kitColorPickerPopup') options: Partial<KitColorPickerPopupOptions>;
+
   private containerRef: ComponentRef<KitColorPickerPopupViewComponent>;
+
+  private debounce: number;
+
+  private position: KitCoreOverlayContainerPosition = 'top';
 
   constructor(private overlay: KitOverlayService,
               private el: ElementRef,
@@ -55,6 +56,8 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
   }
 
   ngOnChanges() {
+    this.setDebounce();
+    this.setPosition();
     this.proxyProps();
   }
 
@@ -113,11 +116,23 @@ export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChange
   private proxyProps() {
     if (this.containerRef) {
       const instance = this.containerRef.instance;
-      instance.position = this.kitColorPickerPopupPosition;
+      instance.position = this.position;
       instance.anchor = this.el.nativeElement;
       instance.color = this.kitColorPickerPopupColor;
-      instance.debounce = this.kitColorPickerPopupDebounce;
+      instance.debounce = this.debounce;
       instance.cdrCheck();
+    }
+  }
+
+  private setDebounce() {
+    if (this.options && this.options.debounce !== undefined) {
+      this.debounce = this.options.debounce;
+    }
+  }
+
+  private setPosition() {
+    if (this.options && this.options.position) {
+      this.position = this.options.position;
     }
   }
 
