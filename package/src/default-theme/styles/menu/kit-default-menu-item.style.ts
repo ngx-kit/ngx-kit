@@ -16,6 +16,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
     root: boolean,
     hasSubs: boolean,
     inverted: boolean,
+    active: boolean,
   }): StyleDef {
     const params = this.theme.params;
     const textColor = state.inverted ? params.colors.background : params.colors.invert;
@@ -34,23 +35,32 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               cursor: 'default',
               color: opacify(-.4, textColor),
             }, {
-              $nest: {
-                '&:hover': {
-                  background: opacify(-.5, params.colors.border),
-                  borderColor: params.colors.swatches.primary.base,
+              ...defToggle(state.active, {
+                background: opacify(-.5, params.colors.border),
+                borderColor: params.colors.swatches.primary.base,
+              }, {
+                $nest: {
+                  '&:hover': {
+                    background: opacify(-.75, params.colors.border),
+                    borderColor: params.colors.swatches.primary.base,
+                  },
                 },
-              },
+              }),
             }),
           },
           // root & vertical
           vertical: {
             borderRadius: params.borders.radius,
             ...defToggle(state.disabled, {}, {
-              $nest: {
-                '&:hover': {
-                  background: opacify(-.5, params.colors.border),
+              ...defToggle(state.active, {
+                background: opacify(-.5, params.colors.border),
+              }, {
+                $nest: {
+                  '&:hover': {
+                    background: opacify(-.75, params.colors.border),
+                  },
                 },
-              },
+              }),
             }),
           },
         }),
