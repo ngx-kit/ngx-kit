@@ -1,5 +1,11 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Inject,
+  Input,
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -31,9 +37,10 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
            [attr.tabindex]="tabindex"
            [disabled]="disabled"
            [attr.type]="type"
+           [styler]="'input'"
+           [stylerState]="{disabled: disabled, readonly: readonly}"
            (blur)="onBlur($event)"
-           (focus)="onFocus($event)"
-           [styler]="['input', {disabled: disabled, readonly: readonly}]">
+           (focus)="onFocus($event)">
   `,
   providers: [KIT_INPUT_VALUE_ACCESSOR],
   viewProviders: [

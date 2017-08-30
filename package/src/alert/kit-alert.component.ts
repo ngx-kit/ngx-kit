@@ -18,7 +18,7 @@ import { KitAlertTitleComponent } from './kit-alert-title.component';
 @Component({
   selector: 'kit-alert,[kitAlert]',
   template: `
-    <button *ngIf="closable" (click)="closeAlert()" [styler]="['close', {color: color}]">
+    <button *ngIf="closable" (click)="closeAlert()" [styler]="'close'" [stylerState]="{color: color}">
       <span *ngIf="!closeText; else closeElse">x</span>
       <ng-template #closeElse>{{ closeText }}</ng-template>
     </button>

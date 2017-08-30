@@ -36,7 +36,8 @@ import { KitMenuComponent } from './kit-menu.component';
                  (containerMouseEnter)="containerMouseEnter()"
                  (containerMouseLeave)="containerMouseLeave()"></kit-overlay>
     <ng-template #contentRef>
-      <div [styler]="['menu', {position: overlayPosition}]">
+      <div [styler]="'menu'"
+           [stylerState]="{position: overlayPosition}">
         <ng-content></ng-content>
       </div>
     </ng-template>

@@ -29,7 +29,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   template: `
     <ng-container [ngSwitch]="type">
       <ng-container *ngSwitchCase="'native'">
-        <select [styler]="['nativeSelect', {disabled: disabled}]"
+        <select [styler]="'nativeSelect'"
+                [stylerState]="{disabled: disabled}"
                 [ngModel]="state"
                 [attr.accesskey]="accesskey"
                 [attr.autofocus]="autofocus"
@@ -55,7 +56,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
       </ng-container>
       <ng-container *ngSwitchCase="'dropdown'">
         <div [kitAnchor]
-             [styler]="['dropdownSelect', {focus: dropdownOpened}]"
+             [styler]="'dropdownSelect'"
+             [stylerState]="{focus: dropdownOpened}"
              (click)="dropdownOpened = true"
              #anchor="anchor">
           <ng-container *ngIf="!optionTemplateRef">{{ selectedOption?.label }}</ng-container>
@@ -74,7 +76,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
           <div styler="dropdownOptions">
             <ng-container *ngIf="!optionTemplateRef">
               <div *ngFor="let option of options"
-                   [styler]="['dropdownOption', {selected: option.value === state}]"
+                   [styler]="'dropdownOption'"
+                   [stylerState]="{selected: option.value === state}"
                    (click)="selectDropdownOption(option.value)">
                 {{ option.label }}
               </div>
@@ -90,7 +93,8 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
       </ng-container>
       <ng-container *ngSwitchCase="'list'">
         <div *ngFor="let option of options"
-             [styler]="['option', {selected: option.value === state}]"
+             [styler]="'option'"
+             [stylerState]="{selected: option.value === state}"
              (click)="updateValue(option.value)">
           {{ option.label }}
         </div>

@@ -14,7 +14,9 @@ import { kitTooltipViewStyle } from '../core/meta/tokens';
                            [anchor]="anchor"
                            [opened]="opened"
                            [position]="position">
-      <div [styler]="['tooltip', {color: color}]">{{ text }}</div>
+      <div [styler]="'tooltip'"
+           [stylerState]="{color: color}">{{ text }}
+      </div>
     </kit-overlay-container>
   `,
   viewProviders: [

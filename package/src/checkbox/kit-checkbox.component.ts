@@ -38,7 +38,8 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
                (focus)="onFocus($event)"
                type="checkbox"
                styler="input">
-        <span [styler]="['view', {checked: !!state, disabled: disabled, readonly: readonly, focus: focusState, hover: hoverState}]">
+        <span [styler]="'view'"
+              [stylerState]="{checked: !!state, disabled: disabled, readonly: readonly, focus: focusState, hover: hoverState}">
         </span>
       </span>
     <label [attr.for]="id" styler="label">

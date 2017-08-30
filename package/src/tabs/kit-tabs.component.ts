@@ -22,7 +22,8 @@ import { KitTabsPanelComponent } from './kit-tabs-panel.component';
   template: `
     <ul styler="nav">
       <li *ngFor="let tab of tabs; let index = index"
-          [styler]="['tab', {active: index === active}]"
+          [styler]="'tab'"
+          [stylerState]="{active: index === active}"
           (click)="setActive(index)">
         {{ tab.title }}
       </li>

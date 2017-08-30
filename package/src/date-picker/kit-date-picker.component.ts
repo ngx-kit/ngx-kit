@@ -36,7 +36,8 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
         <td *ngFor="let item of line">
           <button [kitButton]
                   [color]="item.isActive ? 'primary' : 'default'"
-                  [styler]="['date', {active: item.isActive, outside: item.isOutside}]"
+                  [styler]="'date'"
+                  [stylerState]="{active: item.isActive, outside: item.isOutside}"
                   (mouseup)="date = item.date">
             {{ item.date.date() }}
           </button>

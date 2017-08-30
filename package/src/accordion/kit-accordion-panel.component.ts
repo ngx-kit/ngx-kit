@@ -6,7 +6,9 @@ import { kitAccordionPanelStyle } from '../core/meta/tokens';
 @Component({
   selector: 'kit-accordion-panel,[kitAccordionPanel]',
   template: `
-    <div [styler]="['title', {active: active}]" (click)="activateClick()">{{ title }}</div>
+    <div [styler]="'title'"
+         [stylerState]="{active: active}"
+         (click)="activateClick()">{{ title }}</div>
     <div *ngIf="active" styler="content">
       <ng-content></ng-content>
     </div>

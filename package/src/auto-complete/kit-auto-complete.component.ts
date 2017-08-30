@@ -44,7 +44,8 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
     <ng-template #resultsRef>
       <div styler="results">
         <div *ngFor="let result of results; let i = index"
-             [styler]="['result', {active: i === activeResult}]"
+             [styler]="'result'"
+             [stylerState]="{active: i === activeResult}"
              (click)="updateValue(result)">
           {{ result }}
         </div>

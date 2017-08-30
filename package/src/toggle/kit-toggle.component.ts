@@ -25,8 +25,10 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
                (ngModelChange)="updateValue($event)"
                type="checkbox"
                styler="input">
-        <span [styler]="['view', {checked: !!state}]">
-          <span [styler]="['viewInner', {checked: !!state}]"></span>
+        <span [styler]="'view'"
+              [stylerState]="{checked: !!state}">
+          <span [styler]="'viewInner'"
+                [stylerState]="{checked: !!state}"></span>
         </span>
       </span>
     <label [attr.for]="id" styler="label">

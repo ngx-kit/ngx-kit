@@ -38,7 +38,8 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
                (focus)="onFocus($event)"
                type="radio"
                styler="input">
-        <span [styler]="['view', {checked: value === state, disabled: disabled, focus: focusState, hover: hoverState}]"></span>
+        <span [styler]="'view'"
+              [stylerState]="{checked: value === state, disabled: disabled, focus: focusState, hover: hoverState}"></span>
       </span>
     <label [attr.for]="id" styler="label">
       <ng-content></ng-content>

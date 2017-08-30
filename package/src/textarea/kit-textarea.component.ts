@@ -1,5 +1,11 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Inject, Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Inject,
+  Input,
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -29,10 +35,11 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
               [attr.tabindex]="tabindex"
               [attr.wrap]="wrap"
               [disabled]="disabled"
+              [styler]="'textarea'"
+              [stylerState]="{disabled: disabled, readonly: readonly}"
               (ngModelChange)="updateValue($event)"
               (blur)="onBlur($event)"
-              (focus)="onFocus($event)"
-              [styler]="['textarea', {disabled: disabled, readonly: readonly}]">
+              (focus)="onFocus($event)">
     </textarea>
   `,
   providers: [KIT_TEXTAREA_VALUE_ACCESSOR],
