@@ -26,11 +26,4 @@ export class KitStyle implements ComponentStyle {
       overflowY: 'auto',
     };
   }
-
-  typoContainer(): StyleDef {
-    return {
-      flexGrow: 1,
-      maxWidth: 1000,
-    };
-  }
 }

@@ -1,22 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { ContentComponents } from '../interfaces/content';
+import { ContentPosts } from '../interfaces/content';
 import { ContentService } from './content.service';
 
 @Injectable()
-export class ContentPostsResolverService implements Resolve<ContentComponents> {
-  constructor(private http: Http,
+export class ContentPostsResolverService implements Resolve<ContentPosts> {
+  constructor(private http: HttpClient,
               private content: ContentService) {
   }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<ContentComponents> {
-    return this.http.get(`/assets/content/posts.json`)
-        .map(res => res.json())
+          state: RouterStateSnapshot): Observable<ContentPosts> {
+    return this.http.get<ContentPosts>(`/assets/content/posts.json`)
         .do(posts => this.content.posts$.next(posts));
   }
 }

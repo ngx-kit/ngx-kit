@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
-import { ComponentStyle, mix, StyleDef } from '@ngx-kit/styler';
+import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
 
 @Injectable()
 export class DemoStyle implements ComponentStyle {
@@ -8,7 +8,8 @@ export class DemoStyle implements ComponentStyle {
   }
 
   code(): StyleDef {
-    return {};
+    return {
+    };
   }
 
   demo(): StyleDef {
@@ -22,8 +23,10 @@ export class DemoStyle implements ComponentStyle {
     const params = this.defTheme.params;
     return {
       display: 'block',
-      border: [params.borders.width, 'solid', mix(.8, params.colors.border, params.colors.invert)],
-      margin: [32, 0],
+      margin: [params.grid.v * 8, 0],
+      boxShadow: `0 0 20px ${params.colors.border}`,
+      borderRadius: 4,
+      overflow: 'hidden',
       $nest: {
         '& .kit-tabs__panel': {
           border: 0,

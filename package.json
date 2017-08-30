@@ -28,7 +28,7 @@
     "@angular/platform-server": "^4.3.4",
     "@angular/router": "^4.3.4",
     "@ngx-kit/ngx-kit": "^1.0.0-beta.2",
-    "@ngx-kit/styler": "^1.0.0-beta.11",
+    "@ngx-kit/styler": "^1.0.0-beta.12",
     "@nvxme/ngx-md-render": "^1.0.0-alpha.4",
     "core-js": "^2.5.0",
     "enhanced-resolve": "^3.3.0",

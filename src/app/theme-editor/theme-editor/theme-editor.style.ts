@@ -10,7 +10,6 @@ export class ThemeEditorStyle implements ComponentStyle {
   layoutContent(): StyleDef {
     return {
       padding: 16,
-      justifyContent: 'center',
       background: this.theme.params.contentColor,
       overflowY: 'auto',
     }
