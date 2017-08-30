@@ -1,7 +1,7 @@
 {
   "version": "1.0.0-beta.2",
   "vendors": {
-    "styler": "^1.0.0-beta.11",
+    "styler": "^1.0.0-beta.12",
     "angular": "^4.3.0",
     "typescript": "^2.4.0",
     "moment": "^2.18.1"
