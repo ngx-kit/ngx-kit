@@ -29,20 +29,16 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
           // root && horizontal
           horizontal: {
             padding: [params.grid.v, params.grid.h * 2],
-            marginBottom: -params.borders.width,
-            borderBottom: [params.borders.width, 'solid', 'transparent'],
             ...defToggle(state.disabled, {
               cursor: 'default',
               color: opacify(-.4, textColor),
             }, {
               ...defToggle(state.active, {
                 background: opacify(-.5, params.colors.border),
-                borderColor: params.colors.swatches.primary.base,
               }, {
                 $nest: {
                   '&:hover': {
                     background: opacify(-.75, params.colors.border),
-                    borderColor: params.colors.swatches.primary.base,
                   },
                 },
               }),
