@@ -19,53 +19,101 @@ export class KitDefaultButtonStyle implements KitButtonStyle {
     disabled: boolean;
     loading: boolean;
     link: boolean;
+    inverted: boolean;
+    outlined: boolean;
   }): StyleDef {
     const params = this.theme.params;
     const color: Swatch = params.colors.swatches[state.color || 'default'];
     const styles: StyleDef = defMerge([
       {
-        border: '1px solid transparent',
         borderRadius: this.theme.params.borders.radius,
         boxShadow: this.theme.params.shadows.element,
       },
-      defToggle(state.disabled, {
-        cursor: 'default',
-        ...applyColorSet({
-          background: mix(.5, color.base, params.colors.background),
-          border: mix(.5, color.base, params.colors.background),
-          text: opacify(-.4, color.invert),
-        }, params.borders.width),
-      }, {
-        cursor: 'pointer',
-        ...applyColorSet({
-          background: color.base,
-          border: color.base,
-          text: color.invert,
-        }, params.borders.width),
-        $nest: {
-          '&:hover': {
-            ...applyColorSet({
-              background: darken(.05, color.base),
-              border: darken(.05, color.base),
-              text: color.invert,
-            }, params.borders.width),
-          },
-          '&:focus': {
-            ...applyColorSet({
-              background: darken(.1, color.base),
-              border: darken(.1, color.base),
-              text: color.invert,
-            }, params.borders.width),
-          },
-          '&:active': {
-            ...applyColorSet({
-              background: darken(.1, color.base),
-              border: darken(.1, color.base),
-              text: color.invert,
-            }, params.borders.width),
-          },
-        },
-      }),
+      defToggle(state.outlined,
+          defToggle(state.disabled,
+              // outlined disabled
+              {
+                ...applyColorSet({
+                  background: mix(.5, color.base, params.colors.background),
+                  border: mix(.5, color.base, params.colors.background),
+                  text: opacify(-.4, color.invert),
+                }, params.borders.width),
+              }, defToggle(state.inverted,
+                  // outlined inverted
+                  {},
+                  // outlined
+                  {
+                    ...applyColorSet({
+                      background: params.colors.background,
+                      border: color.base,
+                      text: color.base,
+                    }, params.borders.width),
+                    $nest: {
+                      '&:hover': {
+                        ...applyColorSet({
+                          background: mix(.95, params.colors.background, params.colors.invert),
+                          border: mix(.95, color.base, params.colors.invert),
+                          text: color.base,
+                        }, params.borders.width),
+                      },
+                      '&:focus': {
+                        ...applyColorSet({
+                          background: mix(.9, params.colors.background, params.colors.invert),
+                          border: mix(.9, color.base, params.colors.invert),
+                          text: color.base,
+                        }, params.borders.width),
+                      },
+                      '&:active': {
+                        ...applyColorSet({
+                          background: mix(.9, params.colors.background, params.colors.invert),
+                          border: mix(.9, color.base, params.colors.invert),
+                          text: color.base,
+                        }, params.borders.width),
+                      },
+                    },
+                  })),
+          defToggle(state.disabled,
+              // default disabled
+              {
+                ...applyColorSet({
+                  background: mix(.5, color.base, params.colors.background),
+                  border: mix(.5, color.base, params.colors.background),
+                  text: opacify(-.4, color.invert),
+                }, params.borders.width),
+              }, defToggle(state.inverted,
+                  // default inverted
+                  {},
+                  // default
+                  {
+                    ...applyColorSet({
+                      background: color.base,
+                      border: color.base,
+                      text: color.invert,
+                    }, params.borders.width),
+                    $nest: {
+                      '&:hover': {
+                        ...applyColorSet({
+                          background: mix(.95, color.base, params.colors.invert),
+                          border: mix(.95, color.base, params.colors.invert),
+                          text: color.invert,
+                        }, params.borders.width),
+                      },
+                      '&:focus': {
+                        ...applyColorSet({
+                          background: mix(.9, color.base, params.colors.invert),
+                          border: mix(.9, color.base, params.colors.invert),
+                          text: color.invert,
+                        }, params.borders.width),
+                      },
+                      '&:active': {
+                        ...applyColorSet({
+                          background: mix(.9, color.base, params.colors.invert),
+                          border: mix(.9, color.base, params.colors.invert),
+                          text: color.invert,
+                        }, params.borders.width),
+                      },
+                    },
+                  }))),
       defPick(state.size, {
         xs: {
           padding: `${this.theme.params.grid.v / 8}px ${this.theme.params.grid.h / 2}px`,
