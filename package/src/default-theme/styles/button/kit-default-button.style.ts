@@ -40,32 +40,38 @@ export class KitDefaultButtonStyle implements KitButtonStyle {
                 }, params.borders.width),
               }, defToggle(state.inverted,
                   // outlined inverted
-                  {},
+                  {
+                    ...applyColorSet({
+                      background: 'transparent',
+                      border: params.colors.background,
+                      text: params.colors.background,
+                    }, params.borders.width),
+                  },
                   // outlined
                   {
                     ...applyColorSet({
-                      background: params.colors.background,
+                      background: 'transparent',
                       border: color.base,
                       text: color.base,
                     }, params.borders.width),
                     $nest: {
                       '&:hover': {
                         ...applyColorSet({
-                          background: mix(.95, params.colors.background, params.colors.invert),
+                          background: opacify(-.95, params.colors.invert),
                           border: mix(.95, color.base, params.colors.invert),
                           text: color.base,
                         }, params.borders.width),
                       },
                       '&:focus': {
                         ...applyColorSet({
-                          background: mix(.9, params.colors.background, params.colors.invert),
+                          background: opacify(-.9, params.colors.invert),
                           border: mix(.9, color.base, params.colors.invert),
                           text: color.base,
                         }, params.borders.width),
                       },
                       '&:active': {
                         ...applyColorSet({
-                          background: mix(.9, params.colors.background, params.colors.invert),
+                          background: opacify(-.9, params.colors.invert),
                           border: mix(.9, color.base, params.colors.invert),
                           text: color.base,
                         }, params.borders.width),
@@ -82,7 +88,13 @@ export class KitDefaultButtonStyle implements KitButtonStyle {
                 }, params.borders.width),
               }, defToggle(state.inverted,
                   // default inverted
-                  {},
+                  {
+                    ...applyColorSet({
+                      background: params.colors.background,
+                      border: params.colors.background,
+                      text: color.base,
+                    }, params.borders.width),
+                  },
                   // default
                   {
                     ...applyColorSet({
