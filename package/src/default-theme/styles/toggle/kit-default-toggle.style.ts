@@ -31,7 +31,7 @@ export class KitDefaultToggleStyle implements KitComponentStyle {
       {
         background: params.colors.background,
         border: [params.borders.width, 'solid', params.colors.input],
-        height: 22 + params.borders.width,
+        height: 20 + params.borders.width * 2,
         transition: params.transitions.default,
         $nest: {
           '&:after': {
