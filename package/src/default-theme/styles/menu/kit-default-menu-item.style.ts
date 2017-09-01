@@ -38,7 +38,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               }, {
                 $nest: {
                   '&:hover': {
-                    background: opacify(-.75, params.colors.border),
+                    background: opacify(-.6, params.colors.border),
                   },
                 },
               }),
@@ -53,12 +53,15 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               }, {
                 $nest: {
                   '&:hover': {
-                    background: opacify(-.75, params.colors.border),
+                    background: opacify(-.6, params.colors.border),
                   },
                 },
               }),
             }),
           },
+        }),
+        ...defToggle(state.hasSubs && state.hover, {
+          background: opacify(-.75, params.colors.border),
         }),
       }, {
         // sub items
@@ -67,7 +70,7 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
         }, {
           $nest: {
             '&:hover': {
-              background: opacify(-.5, params.colors.border),
+              background: opacify(-.6, params.colors.border),
             },
             '&:first-child': {
               borderTopLeftRadius: params.borders.radius,
@@ -78,7 +81,9 @@ export class KitDefaultMenuItemStyle implements KitComponentStyle {
               borderBottomRightRadius: params.borders.radius,
             },
           },
-          ...defToggle(state.hasSubs, {}),
+          ...defToggle(state.hasSubs && state.hover, {
+            background: opacify(-.75, params.colors.border),
+          }),
         }),
       }),
     };
