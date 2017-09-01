@@ -55,8 +55,8 @@ export class KitAccordionComponent implements OnInit, AfterContentInit {
   }
 
   private subscribeOnActivations() {
-    this.panels.forEach(p => p.activate.subscribe(() => {
-      if (!this.multiple) {
+    this.panels.forEach(p => p.activate.subscribe((activate: boolean) => {
+      if (!this.multiple && activate) {
         this.panels.filter(pa => pa !== p).forEach(pb => {
           pb.active = false;
         });
