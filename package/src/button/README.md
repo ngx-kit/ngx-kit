@@ -12,9 +12,6 @@ https://ngx-kit.com/kit/modules/button
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| *color* | `string` | in-theme | Button color |
-| *size* | `string` | in-theme | Button size |
-| *link* | `boolean` | `false` | Link like view |
 | *disabled* | `boolean` | `false` | In a disabled state does not raise click event |
 | *loading* | `boolean` | `false` | Show progress and prevent actions |
 | *selected* | `boolean` | `false` | |

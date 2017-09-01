@@ -41,6 +41,8 @@ import {
   kitToggleStyle,
   kitTooltipViewStyle,
 } from '../core/meta/tokens';
+import { KitButtonExtenderDirective } from './extenders/kit-button-extender.directive';
+import { KitColorPickerExtenderDirective } from './extenders/kit-color-picker-extender.directive';
 import { KitDefaultThemeService } from './kit-default-theme.service';
 import { KitDefaultAccordionPanelStyle } from './styles/accordion/kit-default-accordion-panel.style';
 import { KitDefaultAccordionStyle } from './styles/accordion/kit-default-accordion.style';
@@ -82,10 +84,19 @@ import { KitDefaultTextareaStyle } from './styles/textarea/kit-default-textarea.
 import { KitDefaultToggleStyle } from './styles/toggle/kit-default-toggle.style';
 import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip-view.style';
 
+const extenders = [
+  KitButtonExtenderDirective,
+  KitColorPickerExtenderDirective,
+];
+
 @NgModule({
   imports: [],
-  exports: [],
-  declarations: [],
+  exports: [
+    ...extenders,
+  ],
+  declarations: [
+    ...extenders,
+  ],
   providers: [],
 })
 export class KitDefaultThemeModule {

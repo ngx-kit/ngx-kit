@@ -1,9 +1,16 @@
 import {
-  ChangeDetectionStrategy, Component, EventEmitter, HostListener, Inject, Input, OnChanges, OnInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostListener,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
   Output,
 } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../core/meta/component';
+import { KitComponent, KitComponentStyle } from '../core/meta/component';
 import { kitButtonStyle } from '../core/meta/tokens';
 import { KitButtonGroupDirection } from './meta';
 
@@ -18,10 +25,8 @@ import { KitButtonGroupDirection } from './meta';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitButtonComponent implements OnInit, OnChanges {
+export class KitButtonComponent implements KitComponent, OnInit, OnChanges {
   @Output() action = new EventEmitter<any>();
-
-  @Input() color: string;
 
   @Input() disabled: boolean;
 
@@ -29,17 +34,15 @@ export class KitButtonComponent implements OnInit, OnChanges {
 
   @Input() kitButton: any;
 
-  @Input() link: boolean;
-
   @Input() loading: boolean;
 
   @Input() selected: boolean;
 
   @Output() selectedChanged = new EventEmitter<boolean>();
 
-  @Input() size: string;
+  @Input() params: any;
 
-  constructor(private styler: StylerComponent,
+  constructor(public readonly styler: StylerComponent,
               @Inject(kitButtonStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-button';
     this.styler.register(this.style);
@@ -47,13 +50,10 @@ export class KitButtonComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.styler.host.state = {
-      color: this.color,
       disabled: this.disabled,
       grouped: this.grouped,
-      link: this.link,
       loading: this.loading,
       selected: this.selected,
-      size: this.size,
     };
   }
 

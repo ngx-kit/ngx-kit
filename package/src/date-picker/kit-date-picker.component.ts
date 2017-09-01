@@ -19,11 +19,11 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
   selector: 'kit-date-picker,[kitDatePicker]',
   template: `
     <div styler="head">
-      <button [kitButton] [size]="headButtonSize" (click)="add(-1, 'year')" styler="headButton">&lArr;</button>
-      <button [kitButton] [size]="headButtonSize" (click)="add(-1, 'month')" styler="headButton">&larr;</button>
+      <button [kitButton] (click)="add(-1, 'year')" styler="headButton">&lArr;</button>
+      <button [kitButton] (click)="add(-1, 'month')" styler="headButton">&larr;</button>
       <div styler="headTitle">{{ date?.format('MMMM YYYY') }}</div>
-      <button [kitButton] [size]="headButtonSize" (click)="add(1, 'month')" styler="headButton">&rarr;</button>
-      <button [kitButton] [size]="headButtonSize" (click)="add(1, 'year')" styler="headButton">&rArr;</button>
+      <button [kitButton] (click)="add(1, 'month')" styler="headButton">&rarr;</button>
+      <button [kitButton] (click)="add(1, 'year')" styler="headButton">&rArr;</button>
     </div>
     <table styler="table">
       <thead>
@@ -35,7 +35,6 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
       <tr *ngFor="let line of datesGrid">
         <td *ngFor="let item of line">
           <button [kitButton]
-                  [color]="item.isActive ? 'primary' : 'default'"
                   [styler]="'date'"
                   [stylerState]="{active: item.isActive, outside: item.isOutside}"
                   (mouseup)="date = item.date">

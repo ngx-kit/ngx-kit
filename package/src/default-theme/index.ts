@@ -1,3 +1,4 @@
+export * from './extenders/kit-button-extender.directive';
 export * from './default-params';
 export * from './kit-default-theme.module';
 export * from './kit-default-theme.service';
