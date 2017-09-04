@@ -5,13 +5,13 @@ import { KitButtonComponent } from '../../button/kit-button.component';
   selector: 'kit-button,[kitButton]',
 })
 export class KitButtonExtenderDirective implements OnChanges {
-  @Input() inverted: boolean;
+  @Input() color = 'default';
 
-  @Input() outlined: boolean;
+  @Input() inverted = false;
 
-  @Input() color: string;
+  @Input() outlined = false;
 
-  @Input() size: string;
+  @Input() size = 'm';
 
   constructor(@Self() private button: KitButtonComponent) {
   }

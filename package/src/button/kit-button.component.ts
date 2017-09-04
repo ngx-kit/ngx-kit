@@ -13,8 +13,11 @@ import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponent, KitComponentStyle } from '../core/meta/component';
 import { kitButtonStyle } from '../core/meta/tokens';
 import { KitButtonGroupDirection } from './meta';
-
 // @todo proxy enter listener to (action)
+// @todo press enter handler
+/**
+ * Some info about button and so on.
+ */
 @Component({
   selector: 'kit-button,[kitButton]',
   template: `
@@ -26,21 +29,28 @@ import { KitButtonGroupDirection } from './meta';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitButtonComponent implements KitComponent, OnInit, OnChanges {
-  @Output() action = new EventEmitter<any>();
+  /**
+   * Emits when button was submitted.
+   * By default: click or press enter in focus state.
+   */
+  @Output() action = new EventEmitter<Event>();
 
   @Input() disabled: boolean;
 
   @Input() grouped: KitButtonGroupDirection;
 
-  @Input() kitButton: any;
+  @Input() kitButton: null;
 
   @Input() loading: boolean;
 
+  @Input() params: any;
+
+  /**
+   * Selected state in kit-button-group.
+   */
   @Input() selected: boolean;
 
   @Output() selectedChanged = new EventEmitter<boolean>();
-
-  @Input() params: any;
 
   constructor(public readonly styler: StylerComponent,
               @Inject(kitButtonStyle) private style: KitComponentStyle) {
@@ -60,9 +70,16 @@ export class KitButtonComponent implements KitComponent, OnInit, OnChanges {
   ngOnInit() {
   }
 
+  /**
+   * Listen to mouse clicks on element.
+   *
+   * Here some experiments
+   *
+   * Here some additional info https://ngx-kit.com
+   */
   @HostListener('click')
   clickListener(event: MouseEvent) {
-    if (!this.loading) {
+    if (!this.loading && !this.disabled) {
       this.action.emit(event);
     }
   }
