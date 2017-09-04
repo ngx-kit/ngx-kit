@@ -8,14 +8,16 @@ export class DemoStyle implements ComponentStyle {
   }
 
   code(): StyleDef {
-    return {
-    };
+    return {};
   }
 
-  demo(): StyleDef {
+  demo(state: {
+    inverted: boolean;
+  }): StyleDef {
     const params = this.defTheme.params;
     return {
       padding: [params.grid.v * 4, params.grid.h * 4],
+      background: state.inverted ? params.colors.invert : 'transparent',
     };
   }
 

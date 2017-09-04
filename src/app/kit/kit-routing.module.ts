@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContentApiResolverService } from '../core/content-api-resolver.service';
 import { ContentComponentsResolverService } from '../core/content-components-resolver.service';
 import { ContentPostsResolverService } from '../core/content-posts-resolver.service';
 import { ContentComponent } from '../shared/content/content.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
     resolve: {
       components: ContentComponentsResolverService,
       posts: ContentPostsResolverService,
+      api: ContentApiResolverService,
     },
     children: [
       {

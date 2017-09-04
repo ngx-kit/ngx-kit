@@ -14,6 +14,35 @@ export interface ContentComponents {
   [key: string]: ContentComponent;
 }
 
+export interface ContentApi {
+  Date;
+  files: ComponentApi[];
+  version: string;
+}
+
+export interface ComponentApi {
+  class: string;
+  module: string;
+  inputs: ComponentApiInput[];
+  outputs: ComponentApiOutput[];
+  selector: string;
+  doc: string;
+  type: 'Component' | 'Directive';
+}
+
+export interface ComponentApiInput {
+  default: any;
+  doc: string;
+  name: string;
+  type: any;
+}
+
+export interface ComponentApiOutput {
+  doc: string;
+  name: string;
+  type: any;
+}
+
 export interface ContentPost {
   content: string;
   meta: {

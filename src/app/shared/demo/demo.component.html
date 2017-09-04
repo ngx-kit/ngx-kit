@@ -1,9 +1,9 @@
-<h2 *ngIf="content"
-    styler="title">{{ content.meta.title }}</h2>
+<h3 *ngIf="content"
+    styler="title">{{ content.meta.title }}</h3>
 <div *ngIf="readme"
      [innerHtml]="readme"
      styler="readme"></div>
-<div styler="demo">
+<div styler="demo" [stylerState]="{inverted: inverted}">
   <ng-content></ng-content>
 </div>
 <div styler="code">

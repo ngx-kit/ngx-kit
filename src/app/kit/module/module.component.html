@@ -1,6 +1,11 @@
 <ng-container [ngSwitch]="module">
+
   <ng-container *ngSwitchCase="'accordion'">
     <app-post [post]="posts['ACCORDION']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitAccordionComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitAccordionPanelComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['accordion-demo-default']">
       <app-kit-accordion-demo-default></app-kit-accordion-demo-default>
     </app-demo>
@@ -8,8 +13,13 @@
       <app-kit-accordion-demo-multiple></app-kit-accordion-demo-multiple>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'alert'">
     <app-post [post]="posts['ALERT']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitAlertComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitAlertTitleComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['alert-demo-default']">
       <app-kit-alert-demo-default></app-kit-alert-demo-default>
     </app-demo>
@@ -26,8 +36,12 @@
       <app-kit-alert-demo-title></app-kit-alert-demo-title>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'auto-complete'">
     <app-post [post]="posts['AUTO_COMPLETE']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitAutoCompleteComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['auto-complete-demo-default']">
       <app-kit-auto-complete-demo-default></app-kit-auto-complete-demo-default>
     </app-demo>
@@ -35,8 +49,12 @@
       <app-kit-auto-complete-demo-data-factory></app-kit-auto-complete-demo-data-factory>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'badge'">
     <app-post [post]="posts['BADGE']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitBadgeComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['badge-demo-default']">
       <app-kit-badge-demo-default></app-kit-badge-demo-default>
     </app-demo>
@@ -50,8 +68,13 @@
       <app-kit-badge-demo-position></app-kit-badge-demo-position>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'button'">
     <app-post [post]="posts['BUTTON']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitButtonComponent'" [extenderClassName]="'KitButtonExtenderDirective'"></app-kit-api>
+    <app-kit-api [className]="'KitButtonGroupComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['button-demo-default']">
       <app-kit-button-demo-default></app-kit-button-demo-default>
     </app-demo>
@@ -63,6 +86,15 @@
     </app-demo>
     <app-demo [content]="components['button-demo-disabled']">
       <app-kit-button-demo-disabled></app-kit-button-demo-disabled>
+    </app-demo>
+    <app-demo [content]="components['button-demo-outlined']">
+      <app-kit-button-demo-outlined></app-kit-button-demo-outlined>
+    </app-demo>
+    <app-demo [content]="components['button-demo-inverted']" [inverted]="true">
+      <app-kit-button-demo-inverted></app-kit-button-demo-inverted>
+    </app-demo>
+    <app-demo [content]="components['button-demo-inverted-outlined']" [inverted]="true">
+      <app-kit-button-demo-inverted-outlined></app-kit-button-demo-inverted-outlined>
     </app-demo>
     <app-demo [content]="components['button-group-demo-default']">
       <app-kit-button-group-demo-default></app-kit-button-group-demo-default>
@@ -77,14 +109,23 @@
       <app-kit-button-group-demo-multiple></app-kit-button-group-demo-multiple>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'checkbox'">
     <app-post [post]="posts['CHECKBOX']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitCheckboxComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['checkbox-demo-default']">
       <app-kit-checkbox-demo-default></app-kit-checkbox-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'color-picker'">
     <app-post [post]="posts['COLOR_PICKER']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitColorPickerComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitColorPickerPopupDirective'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['color-picker-demo-default']">
       <app-kit-color-picker-demo-default></app-kit-color-picker-demo-default>
     </app-demo>
@@ -98,26 +139,46 @@
       <app-kit-color-picker-demo-debounce></app-kit-color-picker-demo-debounce>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'date-picker'">
     <app-post [post]="posts['DATE_PICKER']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitDatePickerComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['date-picker-demo-default']">
       <app-kit-date-picker-demo-default></app-kit-date-picker-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'dropdown-menu'">
     <app-post [post]="posts['DROPDOWN_MENU']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitDropdownMenuComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitDropdownMenuItemComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['dropdown-menu-demo-default']">
       <app-kit-dropdown-menu-demo-default></app-kit-dropdown-menu-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'form'">
     <app-post [post]="posts['FORM']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitFormGroupComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitFormLabelComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitFormErrorComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitFormTouchDirective'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['form-demo-default']">
       <app-kit-form-demo-default></app-kit-form-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'input'">
     <app-post [post]="posts['INPUT']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitInputComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['input-demo-default']">
       <app-kit-input-demo-default></app-kit-input-demo-default>
     </app-demo>
@@ -125,14 +186,27 @@
       <app-kit-input-demo-math></app-kit-input-demo-math>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'loading-bar'">
     <app-post [post]="posts['LOADING_BAR']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitLoadingBarComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['loading-bar-demo-default']">
       <app-kit-loading-bar-demo-default></app-kit-loading-bar-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'menu'">
     <app-post [post]="posts['MENU']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitMenuComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitMenuItemComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitMenuGroupComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitMenuGroupTitleComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitMenuSubComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitMenuSeparatorComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['menu-demo-default']">
       <app-kit-menu-demo-default></app-kit-menu-demo-default>
     </app-demo>
@@ -149,14 +223,24 @@
       <app-kit-menu-demo-disabled></app-kit-menu-demo-disabled>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'modal'">
     <app-post [post]="posts['MODAL']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitModalComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitModalHeaderComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitModalBodyComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitModalFooterComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['modal-demo-default']">
       <app-kit-modal-demo-default></app-kit-modal-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'notification'">
     <app-post [post]="posts['NOTIFICATION']"></app-post>
+    <h2>API</h2>
+    <h2>Demos</h2>
     <app-demo [content]="components['notification-demo-default']">
       <app-kit-notification-demo-default></app-kit-notification-demo-default>
     </app-demo>
@@ -176,8 +260,13 @@
       <app-kit-notification-demo-color></app-kit-notification-demo-color>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'radio'">
     <app-post [post]="posts['RADIO']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitRadioComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitRadioGroupComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['radio-demo-default']">
       <app-kit-radio-demo-default></app-kit-radio-demo-default>
     </app-demo>
@@ -197,8 +286,12 @@
       <app-kit-radio-group-demo-direction></app-kit-radio-group-demo-direction>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'select'">
     <app-post [post]="posts['SELECT']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitSelectComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['select-demo-default']">
       <app-kit-select-demo-default></app-kit-select-demo-default>
     </app-demo>
@@ -215,14 +308,23 @@
       <app-kit-select-demo-option-template></app-kit-select-demo-option-template>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'tabs'">
     <app-post [post]="posts['TABS']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitTabsComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitTabsPanelComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['tabs-demo-default']">
       <app-kit-tabs-demo-default></app-kit-tabs-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'tag'">
     <app-post [post]="posts['TAG']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitTagComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['tag-demo-default']">
       <app-kit-tag-demo-default></app-kit-tag-demo-default>
     </app-demo>
@@ -230,20 +332,32 @@
       <app-kit-tag-demo-color></app-kit-tag-demo-color>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'textarea'">
     <app-post [post]="posts['TEXTAREA']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitTextareaComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['textarea-demo-default']">
       <app-kit-textarea-demo-default></app-kit-textarea-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'toggle'">
     <app-post [post]="posts['TOGGLE']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitToggleComponent'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['toggle-demo-default']">
       <app-kit-toggle-demo-default></app-kit-toggle-demo-default>
     </app-demo>
   </ng-container>
+
   <ng-container *ngSwitchCase="'tooltip'">
     <app-post [post]="posts['TOOLTIP']"></app-post>
+    <h2>API</h2>
+    <app-kit-api [className]="'KitTooltipDirective'"></app-kit-api>
+    <h2>Demos</h2>
     <app-demo [content]="components['tooltip-demo-default']">
       <app-kit-tooltip-demo-default></app-kit-tooltip-demo-default>
     </app-demo>
@@ -254,4 +368,5 @@
       <app-kit-tooltip-demo-color></app-kit-tooltip-demo-color>
     </app-demo>
   </ng-container>
+
 </ng-container>

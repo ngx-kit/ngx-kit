@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { KitFullModule } from '@ngx-kit/ngx-kit';
+import { KitDefaultThemeModule, KitFullModule } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
+import { ApiComponent } from './api/api.component';
 import { ContentComponent } from './content/content.component';
 import { DemoComponent } from './demo/demo.component';
 import { AccordionDemoDefaultComponent } from './kit2/accordion/accordion-demo-default/accordion-demo-default.component';
@@ -21,6 +22,9 @@ import { BadgeDemoSizeComponent } from './kit2/badge/badge-demo-size/badge-demo-
 import { ButtonDemoColorComponent } from './kit2/button/button-demo-color/button-demo-color.component';
 import { ButtonDemoDefaultComponent } from './kit2/button/button-demo-default/button-demo-default.component';
 import { ButtonDemoDisabledComponent } from './kit2/button/button-demo-disabled/button-demo-disabled.component';
+import { ButtonDemoInvertedOutlinedComponent } from './kit2/button/button-demo-inverted-outlined/button-demo-inverted-outlined.component';
+import { ButtonDemoInvertedComponent } from './kit2/button/button-demo-inverted/button-demo-inverted.component';
+import { ButtonDemoOutlinedComponent } from './kit2/button/button-demo-outlined/button-demo-outlined.component';
 import { ButtonDemoSizeComponent } from './kit2/button/button-demo-size/button-demo-size.component';
 import { ButtonGroupDemoDefaultComponent } from './kit2/button/button-group-demo-default/button-group-demo-default.component';
 import { ButtonGroupDemoMultipleComponent } from './kit2/button/button-group-demo-multiple/button-group-demo-multiple.component';
@@ -76,6 +80,7 @@ const exported = [
   PostComponent,
   DemoComponent,
   TitleComponent,
+  ApiComponent,
 ];
 const kit2 = [
   AccordionDemoDefaultComponent,
@@ -95,6 +100,9 @@ const kit2 = [
   ButtonDemoColorComponent,
   ButtonDemoSizeComponent,
   ButtonDemoDisabledComponent,
+  ButtonDemoInvertedComponent,
+  ButtonDemoInvertedOutlinedComponent,
+  ButtonDemoOutlinedComponent,
   ButtonGroupDemoDefaultComponent,
   ButtonGroupDemoVerticalComponent,
   ButtonGroupDemoSelectableComponent,
@@ -150,6 +158,7 @@ const kit2 = [
     ReactiveFormsModule,
     StylerModule,
     KitFullModule,
+    KitDefaultThemeModule,
   ],
   declarations: [
     ...exported,

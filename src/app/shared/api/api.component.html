@@ -1,0 +1,52 @@
+<h3 styler="head">
+  <code>{{ selector }}</code>
+</h3>
+<ng-container *ngFor="let api of apis">
+  <div *ngIf="api.doc" [innerHtml]="api.doc"></div>
+</ng-container>
+<ng-container *ngIf="hasInputs">
+  <h4>Inputs</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Module</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let api of apis">
+      <tr *ngFor="let input of api.inputs">
+        <td>{{ input.name }}</td>
+        <td>{{ api.module }}</td>
+        <td><code>{{ input.type }}</code></td>
+        <td><code>{{ input.default }}</code></td>
+        <td [innerHtml]="input.doc" styler="paramDoc"></td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</ng-container>
+<ng-container *ngIf="hasOutputs">
+  <h4>Outputs</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let api of apis">
+      <tr *ngFor="let output of api.outputs">
+        <td>{{ output.name }}</td>
+        <td><code>{{ output.type }}</code></td>
+        <td [innerHtml]="output.doc" styler="paramDoc"></td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</ng-container>

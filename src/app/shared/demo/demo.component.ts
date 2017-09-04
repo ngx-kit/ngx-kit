@@ -13,11 +13,13 @@ import { DemoStyle } from './demo.style';
   ],
 })
 export class DemoComponent implements OnChanges {
-  code: {[key: string]: string} = {};
-
   add = false;
 
+  code: {[key: string]: string} = {};
+
   @Input() content: ContentComponent;
+
+  @Input() inverted: boolean;
 
   readme: string;
 

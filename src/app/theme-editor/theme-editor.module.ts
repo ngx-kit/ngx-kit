@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { KitFullModule, } from '@ngx-kit/ngx-kit';
+import { KitDefaultThemeModule, KitFullModule, } from '@ngx-kit/ngx-kit';
 import { SharedModule } from '../shared/shared.module';
 import { BlockComponent } from './block/block.component';
 import { EditorService } from './editor.service';
@@ -17,6 +17,7 @@ import { ThemeEditorComponent } from './theme-editor/theme-editor.component';
     SharedModule,
     ThemeEditorRoutingModule,
     KitFullModule,
+    KitDefaultThemeModule,
     OverviewModule,
   ],
   declarations: [

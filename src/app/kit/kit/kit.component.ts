@@ -15,8 +15,6 @@ import { KitStyle } from './kit.style';
   ],
 })
 export class KitComponent implements OnInit {
-  content: Content;
-
   module = 'string';
 
   constructor(private styler: StylerComponent,
@@ -30,7 +28,7 @@ export class KitComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.content = data.content;
+      console.log('data', data);
     });
   }
 }
