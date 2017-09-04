@@ -46,7 +46,7 @@ export class KitColorPickerPopupViewComponent implements OnInit, KitCoreOverlayC
 
   @Input() debounce: number;
 
-  @Input() kitColorPickerPopupView: any;
+  @Input() kitColorPickerPopupView: null;
 
   @Input() opened = false;
 

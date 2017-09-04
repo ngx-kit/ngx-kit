@@ -19,7 +19,7 @@ import { kitTagStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitTagComponent implements OnInit {
-  @Input() kitTag: any;
+  @Input() kitTag: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitTagStyle) private style: KitComponentStyle) {

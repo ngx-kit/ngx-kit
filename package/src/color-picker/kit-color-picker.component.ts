@@ -82,7 +82,7 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
 
   hueSliderColor: string;
 
-  @Input() kitColorPicker: any;
+  @Input() kitColorPicker: null;
 
   /**
    * Saturation/brightness field height.

@@ -41,7 +41,7 @@ import { KitLoadingBarService } from './kit-loading-bar.service';
   ],
 })
 export class KitLoadingBarComponent implements OnInit, OnDestroy {
-  @Input() kitLoadingBar: any;
+  @Input() kitLoadingBar: null;
 
   loadTrigger = new BehaviorSubject<string>('none');
 

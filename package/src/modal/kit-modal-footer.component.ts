@@ -14,7 +14,7 @@ import { KitComponentStyle } from '../core/meta/component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalFooterComponent implements OnInit {
-  @Input() kitModalFooter: any;
+  @Input() kitModalFooter: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitModalFooterStyle) private style: KitComponentStyle) {

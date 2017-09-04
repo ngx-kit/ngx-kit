@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
 import { KitComponentStyle } from '../core/meta/component';
 import { kitAlertTitleStyle } from '../core/meta/tokens';
@@ -14,6 +14,8 @@ import { kitAlertTitleStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAlertTitleComponent {
+  @Input() kitAlertTitle: null;
+
   constructor(private styler: StylerComponent,
               @Inject(kitAlertTitleStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-title';

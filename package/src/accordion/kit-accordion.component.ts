@@ -26,7 +26,7 @@ import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
 export class KitAccordionComponent implements OnInit, AfterContentInit {
   @Input() firstActivate = true;
 
-  @Input() kitAccordion: any;
+  @Input() kitAccordion: null;
 
   @Input() multiple = false;
 

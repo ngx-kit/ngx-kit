@@ -43,7 +43,7 @@ export class KitTabsComponent implements OnInit, AfterContentInit, AfterContentC
 
   @Input() firstActivate = true;
 
-  @Input() kitTabs: any;
+  @Input() kitTabs: null;
 
   panelRef: TemplateRef<any> | null;
 

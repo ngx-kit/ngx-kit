@@ -31,7 +31,7 @@ import { kitAccordionPanelStyle } from '../core/meta/tokens';
 export class KitAccordionPanelComponent implements OnInit {
   @Output() activate = new EventEmitter<boolean>();
 
-  @Input() kitAccordionPanel: any;
+  @Input() kitAccordionPanel: null;
 
   @Input() title: string;
 

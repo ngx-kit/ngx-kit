@@ -23,7 +23,7 @@ import { KitMenuComponent } from './kit-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuGroupTitleComponent implements OnInit, AfterContentInit {
-  @Input() kitMenuGroupTitle: any;
+  @Input() kitMenuGroupTitle: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitMenuGroupTitleStyle) private style: KitComponentStyle,

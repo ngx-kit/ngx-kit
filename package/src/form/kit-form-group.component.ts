@@ -49,7 +49,7 @@ export class KitFormGroupComponent implements OnInit, AfterViewInit, DoCheck {
 
   @ContentChildren(forwardRef(() => KitFormErrorComponent)) errors: QueryList<KitFormErrorComponent>;
 
-  @Input() kitFormGroup: any;
+  @Input() kitFormGroup: null;
 
   @Input() touched = false;
 

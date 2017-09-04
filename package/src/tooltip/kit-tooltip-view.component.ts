@@ -29,7 +29,7 @@ export class KitTooltipViewComponent implements KitCoreOverlayComponent {
 
   @Input() color: string;
 
-  @Input() kitTooltipView: any;
+  @Input() kitTooltipView: null;
 
   @Input() opened = false;
 

@@ -33,7 +33,7 @@ import { kitModalStyle } from '../core/meta/tokens';
 export class KitModalComponent implements OnInit {
   @HostBinding('class') hostClass: string;
 
-  @Input() kitModal: any;
+  @Input() kitModal: null;
 
   @Input() opened = false;
 

@@ -15,7 +15,7 @@ import { KitDropdownMenuComponent } from './kit-dropdown-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitDropdownMenuItemComponent implements OnInit {
-  @Input() kitDropdownMenuItem: any;
+  @Input() kitDropdownMenuItem: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitDropdownMenuItemStyle) private style: KitComponentStyle,

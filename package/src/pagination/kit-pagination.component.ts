@@ -40,7 +40,7 @@ export class KitPaginationComponent implements OnInit, OnChanges {
 
   @HostBinding('class') hostClass: string;
 
-  @Input() kitPagination: any;
+  @Input() kitPagination: null;
 
   @Output() pageChange = new EventEmitter<number>();
 

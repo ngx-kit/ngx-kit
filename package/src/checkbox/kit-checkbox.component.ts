@@ -69,7 +69,7 @@ export class KitCheckboxComponent implements ControlValueAccessor, KitControl<an
 
   id: string;
 
-  @Input() kitCheckbox: any;
+  @Input() kitCheckbox: null;
 
   @Input() readonly: boolean;
 

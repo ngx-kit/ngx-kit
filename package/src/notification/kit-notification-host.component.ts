@@ -90,7 +90,7 @@ export class KitNotificationHostComponent implements KitCoreOverlayComponent {
 
   items: KitNotificationItem[] = [];
 
-  @Input() kitNotificationHost: any;
+  @Input() kitNotificationHost: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitNotificationHostStyle) private componentStyle: KitComponentStyle,

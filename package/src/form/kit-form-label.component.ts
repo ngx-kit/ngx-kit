@@ -14,7 +14,7 @@ import { kitFormGroupStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitFormLabelComponent implements OnInit {
-  @Input() kitFormLabel: any;
+  @Input() kitFormLabel: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitFormGroupStyle) private style: KitComponentStyle) {

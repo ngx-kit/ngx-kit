@@ -17,7 +17,7 @@ import { kitMenuGroupStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuGroupComponent implements OnInit {
-  @Input() kitMenuGroup: any;
+  @Input() kitMenuGroup: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitMenuGroupStyle) private style: KitComponentStyle) {

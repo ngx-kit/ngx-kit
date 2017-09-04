@@ -1,5 +1,6 @@
 import {
-  AfterContentInit, ChangeDetectionStrategy,
+  AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
@@ -41,6 +42,8 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
   @Input() isOpen = true;
 
   @Output() isOpenChange = new EventEmitter<boolean>();
+
+  @Input() kitAlert: null;
 
   @ContentChildren(forwardRef(() => KitAlertTitleComponent)) titles: QueryList<KitAlertTitleComponent>;
 

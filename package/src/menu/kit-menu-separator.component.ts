@@ -22,7 +22,7 @@ import { KitMenuComponent } from './kit-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitMenuSeparatorComponent implements OnInit, AfterContentInit {
-  @Input() kitMenuSeparator: any;
+  @Input() kitMenuSeparator: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitMenuSeparatorStyle) private style: KitComponentStyle,

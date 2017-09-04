@@ -35,7 +35,7 @@ export class KitMenuComponent implements OnInit, OnChanges, AfterContentInit {
 
   @Input() inverted = false;
 
-  @Input() kitMenu: any;
+  @Input() kitMenu: null;
 
   @ContentChildren(forwardRef(() => KitMenuSeparatorComponent), {descendants: false})
   separators: QueryList<KitMenuSeparatorComponent>;

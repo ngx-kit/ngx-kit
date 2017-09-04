@@ -14,7 +14,7 @@ export class KitTabsPanelComponent implements OnInit {
 
   @HostBinding('class') hostClass: string;
 
-  @Input() kitTabsPanel: any;
+  @Input() kitTabsPanel: null;
 
   @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 

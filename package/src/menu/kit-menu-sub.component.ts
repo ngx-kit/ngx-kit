@@ -51,7 +51,7 @@ export class KitMenuSubComponent implements OnInit, AfterContentInit {
   @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: false})
   items: QueryList<KitMenuItemComponent>;
 
-  @Input() kitMenuSub: any;
+  @Input() kitMenuSub: null;
 
   overlayPosition = 'bottom';
 

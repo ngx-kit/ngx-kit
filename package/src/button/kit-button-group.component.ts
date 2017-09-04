@@ -30,7 +30,7 @@ import { KitButtonComponent } from './kit-button.component';
 export class KitButtonGroupComponent implements OnInit, AfterContentInit {
   @ContentChildren(forwardRef(() => KitButtonComponent)) buttons: QueryList<KitButtonComponent>;
 
-  @Input() kitButtonGroup: any;
+  @Input() kitButtonGroup: null;
 
   @Input() multiple = false;
 

@@ -71,7 +71,7 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   @ViewChild(forwardRef(() => KitInputComponent)) input: KitInputComponent;
 
-  @Input() kitAutoComplete: any;
+  @Input() kitAutoComplete: null;
 
   results: string[] = [];
 

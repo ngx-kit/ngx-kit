@@ -67,7 +67,7 @@ export class KitRadioComponent implements ControlValueAccessor, KitControl<any> 
 
   id: string;
 
-  @Input() kitRadio: any;
+  @Input() kitRadio: null;
 
   state: any;
 

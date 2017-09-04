@@ -5,7 +5,7 @@ import { FormGroupDirective } from '@angular/forms';
   selector: '[kitFormTouch]',
 })
 export class KitFormTouchDirective implements OnInit {
-  @Input() kitFormTouch: any;
+  @Input() kitFormTouch: null;
 
   constructor(private formGroupDirective: FormGroupDirective) {
   }

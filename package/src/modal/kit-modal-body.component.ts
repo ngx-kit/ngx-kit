@@ -14,7 +14,7 @@ import { kitModalBodyStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalBodyComponent implements OnInit {
-  @Input() kitModalBody: any;
+  @Input() kitModalBody: null;
 
   constructor(private styler: StylerComponent,
               @Inject(kitModalBodyStyle) private style: KitComponentStyle) {

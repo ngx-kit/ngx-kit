@@ -44,7 +44,7 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
 export class KitToggleComponent implements ControlValueAccessor, KitControl<any> {
   id: string;
 
-  @Input() kitToggle: any;
+  @Input() kitToggle: null;
 
   state: any;
 

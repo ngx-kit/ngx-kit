@@ -23,7 +23,7 @@ export class KitBadgeComponent implements OnInit, OnChanges {
 
   @Input() count: number;
 
-  @Input() kitBadge: any;
+  @Input() kitBadge: null;
 
   @Input() position: KitBadgePosition = 'inline';
 

@@ -43,7 +43,7 @@ export class KitMenuItemComponent implements OnInit, OnChanges, OnDestroy, After
   @ContentChildren(forwardRef(() => KitMenuItemComponent), {descendants: true})
   items: QueryList<KitMenuItemComponent>;
 
-  @Input() kitMenuItem: any;
+  @Input() kitMenuItem: null;
 
   @ContentChildren(RouterLink, {descendants: true}) links: QueryList<RouterLink>;
 

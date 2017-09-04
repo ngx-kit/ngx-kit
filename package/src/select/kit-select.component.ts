@@ -122,7 +122,7 @@ export class KitSelectComponent<T> implements ControlValueAccessor, KitControl<a
 
   @Output() focus = new EventEmitter<FocusEvent>();
 
-  @Input() kitSelect: any;
+  @Input() kitSelect: null;
 
   @Input() labelField = 'label';
 

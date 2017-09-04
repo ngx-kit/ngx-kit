@@ -61,7 +61,7 @@ export class KitInputComponent implements ControlValueAccessor, KitControl<any> 
 
   @Output() focus = new EventEmitter<FocusEvent>();
 
-  @Input() kitInput: any;
+  @Input() kitInput: null;
 
   @Input() maxlength: number;
 

@@ -56,7 +56,7 @@ export class KitRadioGroupComponent<T> implements ControlValueAccessor, AfterCon
 
   hover = false;
 
-  @Input() kitRadioGroup: any;
+  @Input() kitRadioGroup: null;
 
   @Input() labelField = 'label';
 

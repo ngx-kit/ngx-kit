@@ -59,7 +59,7 @@ export class KitTextareaComponent implements ControlValueAccessor, KitControl<an
 
   @Output() focus = new EventEmitter<FocusEvent>();
 
-  @Input() kitTextarea: any;
+  @Input() kitTextarea: null;
 
   @Input() maxlength: number;
 

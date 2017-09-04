@@ -16,7 +16,7 @@ export class KitIconComponent implements OnInit, OnChanges {
 
   @HostBinding('class') hostClass: string;
 
-  @Input() kitIcon: any;
+  @Input() kitIcon: null;
 
   @Input() name: string;
 

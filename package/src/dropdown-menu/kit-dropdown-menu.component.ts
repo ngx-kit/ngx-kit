@@ -43,7 +43,7 @@ export class KitDropdownMenuComponent implements OnInit, OnChanges {
 
   @Output() itemClick = new EventEmitter<MouseEvent>();
 
-  @Input() kitDropdownMenu: any;
+  @Input() kitDropdownMenu: null;
 
   opened = false;
 

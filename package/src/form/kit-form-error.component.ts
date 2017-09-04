@@ -20,7 +20,7 @@ import { KitFormGroupComponent } from './kit-form-group.component';
 export class KitFormErrorComponent implements OnInit, AfterViewInit {
   @Input() dirty: boolean | null = null;
 
-  @Input() kitFormError: any;
+  @Input() kitFormError: null;
 
   @Input() touched: boolean | null = null;
 

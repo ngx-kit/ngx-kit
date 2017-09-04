@@ -56,7 +56,7 @@ export class KitDatePickerComponent implements OnInit, ControlValueAccessor {
 
   @Input() headButtonSize = 'xs';
 
-  @Input() kitDatePicker: any;
+  @Input() kitDatePicker: null;
 
   weekdays: any;
 
