@@ -197,7 +197,9 @@ function getTypeFromValueNode(node) {
 function getTypeFromTypeNode(node) {
   switch (node.kind) {
     case ts.SyntaxKind.TypeReference:
-      return node.typeName.text;
+      return node.typeArguments
+          ? [node.typeName.text, node.typeArguments.map(arg => getTypeFromTypeNode(arg))]
+          : node.typeName.text;
       break;
     default:
       return getKindNameById(node.kind);
