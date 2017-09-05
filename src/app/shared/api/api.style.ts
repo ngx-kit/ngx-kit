@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
+import { Inject, Injectable } from '@angular/core';
+import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
+import { ComponentStyle, mix, StyleDef } from '@ngx-kit/styler';
 
 @Injectable()
 export class ApiStyle implements ComponentStyle {
-  constructor() {
+  constructor(@Inject(kitTheme) private defTheme: KitDefaultThemeService) {
   }
 
   head(): StyleDef {
@@ -17,6 +18,15 @@ export class ApiStyle implements ComponentStyle {
     return {
       display: 'block',
       marginBottom: 32,
+    };
+  }
+
+  methodCode(): StyleDef {
+    const params = this.defTheme.params;
+    return {
+      background: mix(.9, params.colors.background, params.colors.invert),
+      padding: [params.grid.v, params.grid.h],
+      borderRadius: params.borders.radius,
     };
   }
 

@@ -174,6 +174,11 @@
     </app-demo>
   </ng-container>
 
+  <ng-container *ngSwitchCase="'icons'">
+    <h2>API</h2>
+    <app-kit-api [className]="'KitIconsRegistryService'"></app-kit-api>
+  </ng-container>
+
   <ng-container *ngSwitchCase="'input'">
     <app-post [post]="posts['INPUT']"></app-post>
     <h2>API</h2>
@@ -191,6 +196,7 @@
     <app-post [post]="posts['LOADING_BAR']"></app-post>
     <h2>API</h2>
     <app-kit-api [className]="'KitLoadingBarComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitLoadingBarService'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['loading-bar-demo-default']">
       <app-kit-loading-bar-demo-default></app-kit-loading-bar-demo-default>
@@ -231,6 +237,7 @@
     <app-kit-api [className]="'KitModalHeaderComponent'"></app-kit-api>
     <app-kit-api [className]="'KitModalBodyComponent'"></app-kit-api>
     <app-kit-api [className]="'KitModalFooterComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitModalService'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['modal-demo-default']">
       <app-kit-modal-demo-default></app-kit-modal-demo-default>
@@ -240,6 +247,7 @@
   <ng-container *ngSwitchCase="'notification'">
     <app-post [post]="posts['NOTIFICATION']"></app-post>
     <h2>API</h2>
+    <app-kit-api [className]="'KitNotificationService'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['notification-demo-default']">
       <app-kit-notification-demo-default></app-kit-notification-demo-default>

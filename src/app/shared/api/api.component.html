@@ -1,8 +1,9 @@
 <h3 styler="head">
-  <code>{{ selector }}</code>
+  <code *ngIf="type === 'Component' || type === 'Directive'">{{ selector }}</code>
+  <code *ngIf="type === 'Injectable'">{{ this.className }}</code>
 </h3>
 <ng-container *ngFor="let api of apis">
-  <div *ngIf="api.doc" [innerHtml]="api.doc"></div>
+  <div *ngIf="api.doc.comment" [innerHtml]="api.doc.comment"></div>
 </ng-container>
 <ng-container *ngIf="hasInputs">
   <h4>Inputs</h4>
@@ -21,9 +22,9 @@
       <tr *ngFor="let input of api.inputs">
         <td>{{ input.name }}</td>
         <td>{{ api.module }}</td>
-        <td><code>{{ input.type }}</code></td>
+        <td><code>{{ input.type | json }}</code></td>
         <td><code>{{ input.default }}</code></td>
-        <td [innerHtml]="input.doc" styler="paramDoc"></td>
+        <td [innerHtml]="input.doc.comment" styler="paramDoc"></td>
       </tr>
     </ng-container>
     </tbody>
@@ -44,9 +45,28 @@
       <tr *ngFor="let output of api.outputs">
         <td>{{ output.name }}</td>
         <td><code>{{ output.type }}</code></td>
-        <td [innerHtml]="output.doc" styler="paramDoc"></td>
+        <td [innerHtml]="output.doc.comment" styler="paramDoc"></td>
       </tr>
     </ng-container>
+    </tbody>
+  </table>
+</ng-container>
+<ng-container *ngIf="methods.length > 0">
+  <h4>Methods</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Interface</th>
+      <th>Module</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let method of methods">
+      <td><code>{{ method.code }}</code></td>
+      <td>{{ method.module }}</td>
+      <td [innerHtml]="method.doc.comment" styler="paramDoc"></td>
+    </tr>
     </tbody>
   </table>
 </ng-container>

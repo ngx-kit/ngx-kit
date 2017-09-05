@@ -22,25 +22,45 @@ export interface ContentApi {
 
 export interface ComponentApi {
   class: string;
-  module: string;
+  doc: ComponentApiDoc;
   inputs: ComponentApiInput[];
+  methods: ComponentApiMethod[];
+  module: string;
   outputs: ComponentApiOutput[];
   selector: string;
-  doc: string;
-  type: 'Component' | 'Directive';
+  type: 'Component' | 'Directive' | 'Injectable';
 }
 
 export interface ComponentApiInput {
   default: any;
-  doc: string;
+  doc: ComponentApiDoc;
   name: string;
   type: any;
 }
 
 export interface ComponentApiOutput {
-  doc: string;
+  doc: ComponentApiDoc;
   name: string;
   type: any;
+}
+
+export interface ComponentApiMethod {
+  doc: ComponentApiDoc;
+  name: string;
+  params: {
+    name: string;
+    type: any;
+  }[];
+  type: any;
+  typeParameters: string[];
+}
+
+export interface ComponentApiDoc {
+  comment: string;
+  tags: {
+    name: string;
+    comment: string;
+  }[];
 }
 
 export interface ContentPost {
