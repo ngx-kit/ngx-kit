@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../core/meta/component';
+import { KitComponent, KitComponentStyle } from '../core/meta/component';
 import { kitTagStyle } from '../core/meta/tokens';
 
 /**
  * @todo <tag-group>
  * @todo [closable]
- * @todo colors presets
  */
 @Component({
   selector: 'kit-tag,[kitTag]',
@@ -18,19 +17,14 @@ import { kitTagStyle } from '../core/meta/tokens';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitTagComponent implements OnInit {
+export class KitTagComponent implements KitComponent, OnInit {
   @Input() kitTag: null;
 
-  constructor(private styler: StylerComponent,
+  constructor(public readonly styler: StylerComponent,
               @Inject(kitTagStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-tag';
     this.styler.register(this.style);
   }
-
-  @Input()
-  set color(color: string) {
-    this.styler.host.applyState({color});
-  };
 
   ngOnInit() {
   }

@@ -11,11 +11,11 @@ export class KitDefaultTagStyle implements KitComponentStyle {
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(state: {
+  host(state: {}, cs: {
     color: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color: Swatch = params.colors.swatches[state.color || 'default'];
+    const color: Swatch = params.colors.swatches[cs.color || 'default'];
     return {
       lineHeight: 20,
       height: 22,

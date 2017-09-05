@@ -45,6 +45,7 @@ import { KitAlertExtenderDirective } from './extenders/kit-alert-extender.direct
 import { KitBadgeExtenderDirective } from './extenders/kit-badge-extender.directive';
 import { KitButtonExtenderDirective } from './extenders/kit-button-extender.directive';
 import { KitColorPickerExtenderDirective } from './extenders/kit-color-picker-extender.directive';
+import { KitTagExtenderDirective } from './extenders/kit-tag-extender.directive';
 import { KitDefaultThemeService } from './kit-default-theme.service';
 import { KitDefaultAccordionPanelStyle } from './styles/accordion/kit-default-accordion-panel.style';
 import { KitDefaultAccordionStyle } from './styles/accordion/kit-default-accordion.style';
@@ -91,6 +92,7 @@ const extenders = [
   KitBadgeExtenderDirective,
   KitButtonExtenderDirective,
   KitColorPickerExtenderDirective,
+  KitTagExtenderDirective,
 ];
 
 @NgModule({
