@@ -20,9 +20,9 @@
     <tbody>
     <ng-container *ngFor="let api of apis">
       <tr *ngFor="let input of api.inputs">
-        <td>{{ input.name }}</td>
+        <td><code>{{ input.name }}</code></td>
         <td>{{ api.module }}</td>
-        <td><code>{{ input.type | json }}</code></td>
+        <td><code>{{ input.type }}</code></td>
         <td><code>{{ input.default }}</code></td>
         <td [innerHtml]="input.doc.comment" styler="paramDoc"></td>
       </tr>
@@ -43,7 +43,7 @@
     <tbody>
     <ng-container *ngFor="let api of apis">
       <tr *ngFor="let output of api.outputs">
-        <td>{{ output.name }}</td>
+        <td><code>{{ output.name }}</code></td>
         <td><code>{{ output.type }}</code></td>
         <td [innerHtml]="output.doc.comment" styler="paramDoc"></td>
       </tr>

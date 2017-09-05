@@ -25,7 +25,7 @@ export class DemoStyle implements ComponentStyle {
     const params = this.defTheme.params;
     return {
       display: 'block',
-      margin: [params.grid.v * 8, 0],
+      marginBottom: params.grid.v * 8,
       boxShadow: `0 0 20px ${params.colors.border}`,
       borderRadius: 4,
       overflow: 'hidden',

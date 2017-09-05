@@ -17,7 +17,7 @@
   <ng-container *ngSwitchCase="'alert'">
     <app-post [post]="posts['ALERT']"></app-post>
     <h2>API</h2>
-    <app-kit-api [className]="'KitAlertComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitAlertComponent'" [extenderClassName]="'KitAlertExtenderDirective'"></app-kit-api>
     <app-kit-api [className]="'KitAlertTitleComponent'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['alert-demo-default']">
@@ -53,7 +53,7 @@
   <ng-container *ngSwitchCase="'badge'">
     <app-post [post]="posts['BADGE']"></app-post>
     <h2>API</h2>
-    <app-kit-api [className]="'KitBadgeComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitBadgeComponent'" [extenderClassName]="'KitBadgeExtenderDirective'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['badge-demo-default']">
       <app-kit-badge-demo-default></app-kit-badge-demo-default>
@@ -331,7 +331,7 @@
   <ng-container *ngSwitchCase="'tag'">
     <app-post [post]="posts['TAG']"></app-post>
     <h2>API</h2>
-    <app-kit-api [className]="'KitTagComponent'"></app-kit-api>
+    <app-kit-api [className]="'KitTagComponent'" [extenderClassName]="'KitTagExtenderDirective'"></app-kit-api>
     <h2>Demos</h2>
     <app-demo [content]="components['tag-demo-default']">
       <app-kit-tag-demo-default></app-kit-tag-demo-default>

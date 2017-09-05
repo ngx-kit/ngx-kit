@@ -36,11 +36,13 @@ export class LayoutStyle {
   }
 
   layoutFooter(): StyleDef {
+    const params = this.defTheme.params;
     return {
       display: 'block',
       flexShrink: 0,
-      lineHeight: 50,
       background: this.theme.params.footerColor,
+      padding: [params.grid.v * 4, params.grid.h * 8],
+      textAlign: 'right',
     };
   }
 
