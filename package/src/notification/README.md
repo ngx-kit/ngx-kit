@@ -1,7 +1,5 @@
 # notification
 
-## Demos
-
 https://ngx-kit.com/kit/modules/notification
 
 ## Global config

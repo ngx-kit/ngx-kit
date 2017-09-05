@@ -24,10 +24,16 @@ import { KitAccordionPanelComponent } from './kit-accordion-panel.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAccordionComponent implements OnInit, AfterContentInit {
+  /**
+   * Automatically open first panel.
+   */
   @Input() firstActivate = true;
 
   @Input() kitAccordion: null;
 
+  /**
+   * Allow few panels open at a time.
+   */
   @Input() multiple = false;
 
   @ContentChildren(KitAccordionPanelComponent) panels: QueryList<KitAccordionPanelComponent>;

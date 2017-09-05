@@ -6,7 +6,7 @@ const walk = require('walk');
 const releaseConfig = require('./release.config.json');
 const files = [];
 
-// genFile('./package/src/modal/kit-modal.service.ts');
+// genFile('./package/src/accordion/kit-accordion-panel.component.ts');
 
 walker = walk.walk('./package/src');
 
@@ -160,14 +160,23 @@ function getDecoratorName(node) {
       return node.parent.name.text;
     } else if (node.parent.kind === ts.SyntaxKind.MethodDeclaration) {
       return node.parent.name.text;
+    } else if (node.parent.kind === ts.SyntaxKind.SetAccessor) {
+      return node.parent.name.text;
     }
   }
 }
 
 function getInputDecoratorType(node) {
-  if (node.parent.type) {
-    return getTypeFromTypeNode(node.parent.type);
+  const parent = node.parent;
+  const kind = getKindNameById(node.parent.kind);
+  if (node.parent.kind === ts.SyntaxKind.SetAccessor) {
+    // const typeKind = getKindNameById(node.parent.type.kind);
+    return getTypeFromTypeNode(node.parent.parameters[0].type);
   } else {
+    if (node.parent.type) {
+      return getTypeFromTypeNode(node.parent.type);
+    } else {
+    }
   }
 }
 
@@ -206,7 +215,6 @@ function getKindNameById(id) {
 }
 
 function getTypeFromTypeNode(node) {
-  const kindName = getKindNameById(node.kind);
   switch (node.kind) {
     case ts.SyntaxKind.TypeReference:
       return node.typeArguments

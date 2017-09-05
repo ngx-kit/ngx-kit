@@ -23,6 +23,9 @@ export const KIT_CHECKBOX_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ */
 @Component({
   selector: 'kit-checkbox,[kitCheckbox]',
   template: `

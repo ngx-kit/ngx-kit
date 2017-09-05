@@ -20,6 +20,8 @@ export const KIT_AUTO_COMPLETE_VALUE_ACCESSOR: any = {
 };
 
 /**
+ * Implements `ControlValueAccessor`.
+ *
  * @todo convert all data rows to string
  * @todo dataSource pending loader
  * @todo cancel pending request
@@ -65,6 +67,9 @@ export class KitAutoCompleteComponent implements ControlValueAccessor, AfterView
 
   @Input() data: string[] | null = null;
 
+  /**
+   * Function for receiving data `(input: string) => Observable<string[]>`
+   */
   @Input() dataFactory: KitDataFactory | null = null;
 
   @Input() debounce = 500;

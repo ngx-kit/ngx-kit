@@ -22,6 +22,9 @@ export const KIT_TEXTAREA_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ */
 @Component({
   selector: 'kit-textarea,[kitTextarea]',
   template: `

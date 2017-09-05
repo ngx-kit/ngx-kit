@@ -22,6 +22,9 @@ export const KIT_RADIO_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ */
 @Component({
   selector: 'kit-radio,[kitRadio]',
   template: `

@@ -5,6 +5,27 @@ import { KitOverlayService } from '../core/overlay/kit-overlay.service';
 import { KitNotificationHostComponent } from './kit-notification-host.component';
 import { KitNotificationHostConfig, KitNotificationMessage } from './meta';
 
+/**
+ *
+ *  ## Global config
+ *
+ *  ```typescript
+ *  constructor(private notificationService: KitNotificationService) {
+ *   this.notificationService.config({
+ *     duration: 4000,
+ *     position: 'top-right',
+ *   });
+ * }
+ *  ```
+ *
+ *  ## Open notification
+ *
+ *  ```typescript
+ *  constructor(private notificationService: KitNotificationService) {
+ *   this.notificationService.open({message: 'Notification message'});
+ * }
+ *  ```
+ */
 @Injectable()
 export class KitNotificationService {
   private _config$ = new BehaviorSubject<KitNotificationHostConfig>({
@@ -21,15 +42,17 @@ export class KitNotificationService {
   constructor(private overlay: KitOverlayService) {
   }
 
-  /**
-   * @publicApi
-   */
   get config$(): Observable<KitNotificationHostConfig> {
     return this._config$.asObservable();
   }
 
   /**
    * Configure notification service.
+   *
+   * | Property | Type | Default | Description |
+   * | --- | --- | --- | --- |
+   * | *duration* | `number` | `4000` | How long to display a notification |
+   * | *position* | `string` | `'top-right'` | Where to stack notifications |
    *
    * @publicApi
    */
@@ -39,6 +62,13 @@ export class KitNotificationService {
 
   /**
    * Display notification message.
+   *
+   * | Property | Type | Default | Description |
+   * | --- | --- | --- | --- |
+   * | *message* | `string` | *required | |
+   * | *title* | `string` | *optional | |
+   * | *duration* | `number` | *optional | |
+   * | *color* | `number` | *optional | |
    *
    * @publicApi
    */

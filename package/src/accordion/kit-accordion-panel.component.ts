@@ -29,6 +29,9 @@ import { kitAccordionPanelStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAccordionPanelComponent implements OnInit {
+  /**
+   * Active changing.
+   */
   @Output() activate = new EventEmitter<boolean>();
 
   @Input() kitAccordionPanel: null;
@@ -48,6 +51,9 @@ export class KitAccordionPanelComponent implements OnInit {
     return this._active;
   }
 
+  /**
+   * Is opened.
+   */
   @Input()
   set active(active: boolean) {
     this._active = active;

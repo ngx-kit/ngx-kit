@@ -29,6 +29,9 @@ export const KIT_COLOR_PICKER_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ */
 @Component({
   selector: 'kit-color-picker,[kitColorPicker]',
   template: `
@@ -78,6 +81,9 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
 
   cpAlphaChannel: string;
 
+  /**
+   * Debounce before value output.
+   */
   @Input() debounce: number;
 
   hueSliderColor: string;
@@ -86,7 +92,6 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
 
   /**
    * Saturation/brightness field height.
-   * @type {number}
    */
   @Input() sbHeight = 100;
 
@@ -98,6 +103,9 @@ export class KitColorPickerComponent implements OnInit, ControlValueAccessor, Ki
 
   state: string;
 
+  /**
+   * Component width.
+   */
   @Input() width = 200;
 
   private changes$ = new Subject<string>();

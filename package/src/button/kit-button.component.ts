@@ -15,9 +15,6 @@ import { kitButtonStyle } from '../core/meta/tokens';
 import { KitButtonGroupDirection } from './meta';
 // @todo proxy enter listener to (action)
 // @todo press enter handler
-/**
- * Some info about button and so on.
- */
 @Component({
   selector: 'kit-button,[kitButton]',
   template: `
@@ -35,12 +32,18 @@ export class KitButtonComponent implements KitComponent, OnInit, OnChanges {
    */
   @Output() action = new EventEmitter<Event>();
 
+  /**
+   * In a disabled state does not raise click event.
+   */
   @Input() disabled: boolean;
 
   @Input() grouped: KitButtonGroupDirection;
 
   @Input() kitButton: null;
 
+  /**
+   * Show progress and prevent actions.
+   */
   @Input() loading: boolean;
 
   @Input() params: any;

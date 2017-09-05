@@ -24,6 +24,9 @@ export const KIT_SELECT_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ */
 @Component({
   selector: 'kit-select,[kitSelect]',
   template: `

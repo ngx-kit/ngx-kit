@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { KitIcon, KitIconCached } from './meta';
 
 /**
+ *
  * ## Usage
  *
  * ### Register icons

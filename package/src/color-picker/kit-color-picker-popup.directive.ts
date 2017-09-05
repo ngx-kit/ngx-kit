@@ -21,14 +21,23 @@ import { Partial } from '../core/util/partial';
 import { KitColorPickerPopupViewComponent } from './kit-color-picker-popup-view.component';
 import { KitColorPickerPopupOptions } from './meta';
 
+/**
+ * Directive automatically proxies value to host ngModel if needed.
+ */
 @Directive({
   selector: '[kitColorPickerPopup]',
 })
 export class KitColorPickerPopupDirective implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   @HostBinding('class') hostClass: string;
 
+  /**
+   * Color value model.
+   */
   @Input() kitColorPickerPopupColor: string;
 
+  /**
+   * Color value changing.
+   */
   @Output() kitColorPickerPopupColorChange = new EventEmitter<string>();
 
   @Output() kitColorPickerPopupSliderMouseUp = new EventEmitter<any>();

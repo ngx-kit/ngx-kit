@@ -13,6 +13,8 @@ export const KIT_DATE_PICKER_VALUE_ACCESSOR: any = {
 };
 
 /**
+ * Implements `ControlValueAccessor`.
+ *
  * @todo implement KitControl
  */
 @Component({

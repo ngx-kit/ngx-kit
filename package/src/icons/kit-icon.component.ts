@@ -1,5 +1,11 @@
 import {
-  ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnChanges, OnInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit,
   Renderer2,
 } from '@angular/core';
 import { KitIconsRegistryService } from './kit-icons-registry.service';
@@ -12,14 +18,23 @@ import { KitIconsRegistryService } from './kit-icons-registry.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitIconComponent implements OnInit, OnChanges {
+  /**
+   * Svg fill color.
+   */
   @Input() color: string;
 
   @HostBinding('class') hostClass: string;
 
   @Input() kitIcon: null;
 
+  /**
+   * Name in the registry.
+   */
   @Input() name: string;
 
+  /**
+   * Size in pixels.
+   */
   @Input() size = 24;
 
   private setSvg = (svg: SVGElement) => {

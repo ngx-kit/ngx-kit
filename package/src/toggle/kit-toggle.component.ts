@@ -14,6 +14,8 @@ export const KIT_TOGGLE_VALUE_ACCESSOR: any = {
 };
 
 /**
+ * Implements `ControlValueAccessor`.
+ *
  * @todo checkbox-group
  */
 @Component({

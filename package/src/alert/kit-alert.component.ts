@@ -27,14 +27,26 @@ import { kitAlertStyle } from '../core/meta/tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAlertComponent implements KitComponent, OnChanges, AfterContentInit {
+  /**
+   * Display closing link that hides alert.
+   */
   @Input() closable: boolean;
 
+  /**
+   * Alert close.
+   */
   @Output('close') close = new EventEmitter<null>();
 
+  /**
+   * Closing link text.
+   */
   @Input() closeText: string;
 
   @Input() isOpen = true;
 
+  /**
+   * Open state changes (including close event).
+   */
   @Output() isOpenChange = new EventEmitter<boolean>();
 
   @Input() kitAlert: null;

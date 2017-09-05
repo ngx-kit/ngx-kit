@@ -19,10 +19,16 @@ import { KitBadgePosition } from './meta';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitBadgeComponent implements KitComponent, OnInit, OnChanges {
+  /**
+   * Number displayed on badge.
+   */
   @Input() count: number;
 
   @Input() kitBadge: null;
 
+  /**
+   * If use corner position, do not forget to set relative position to parent.
+   */
   @Input() position: KitBadgePosition = 'inline';
 
   @Input() size: string;

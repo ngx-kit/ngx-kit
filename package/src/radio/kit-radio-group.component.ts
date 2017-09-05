@@ -27,6 +27,8 @@ export const KIT_RADIO_GROUP_VALUE_ACCESSOR: any = {
 };
 
 /**
+ * Implements `ControlValueAccessor`.
+ *
  * @todo [vertical]
  * @todo [options]
  */

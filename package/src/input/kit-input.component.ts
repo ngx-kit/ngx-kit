@@ -23,6 +23,11 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Implements `ControlValueAccessor`.
+ *
+ * Extra type `math`: automatically parse and evaluate basic math expressions.
+ */
 @Component({
   selector: 'kit-input,[kitInput]',
   template: `
