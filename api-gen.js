@@ -6,7 +6,7 @@ const walk = require('walk');
 const releaseConfig = require('./release.config.json');
 const files = [];
 
-// debugFile('./package/src/default-theme/extenders/kit-button-extender.directive.ts');
+// genFile('./package/src/default-theme/extenders/kit-button-extender.directive.ts');
 
 walker = walk.walk('./package/src');
 
@@ -179,34 +179,20 @@ function getKindNameById(id) {
   return ts.SyntaxKind[id];
 }
 
-function getTypeFromValueNode(node) {
-  switch (node.kind) {
-    case ts.SyntaxKind.NewExpression:
-      return [
-        node.expression.text,
-        node.typeArguments
-            ? node.typeArguments.map(arg => getTypeFromTypeNode(arg))
-            : '',
-      ];
-      break;
-    default:
-      return getKindNameById(node.kind);
-  }
-}
-
 function getTypeFromTypeNode(node) {
+  const kindName = getKindNameById(node.kind);
   switch (node.kind) {
     case ts.SyntaxKind.TypeReference:
       return node.typeArguments
-          ? [node.typeName.text, node.typeArguments.map(arg => getTypeFromTypeNode(arg))]
+          ? {
+            type: node.typeName.text,
+            args: node.typeArguments.map(arg => getTypeFromTypeNode(arg))
+          }
           : node.typeName.text;
       break;
+    case ts.SyntaxKind.UnionType:
+      return node.types.map(t => getTypeFromTypeNode(t));
     default:
       return getKindNameById(node.kind);
   }
-}
-
-function debugFile(fileName) {
-  const sourceFile = ts.createSourceFile(fileName, fs.readFileSync(path.resolve(fileName), {encoding: 'utf8'}), ts.ScriptTarget.Latest, false);
-  fs.outputFile(path.resolve('./api-gen.debug'), JSON.stringify(sourceFile));
 }
