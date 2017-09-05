@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
 import { StylerComponent } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../core/meta/component';
+import { KitComponent, KitComponentStyle } from '../core/meta/component';
 import { kitBadgeStyle } from '../core/meta/tokens';
 import { KitBadgePosition } from './meta';
 
@@ -18,9 +18,7 @@ import { KitBadgePosition } from './meta';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitBadgeComponent implements OnInit, OnChanges {
-  @Input() color: string;
-
+export class KitBadgeComponent implements KitComponent, OnInit, OnChanges {
   @Input() count: number;
 
   @Input() kitBadge: null;
@@ -29,7 +27,7 @@ export class KitBadgeComponent implements OnInit, OnChanges {
 
   @Input() size: string;
 
-  constructor(private styler: StylerComponent,
+  constructor(public readonly styler: StylerComponent,
               @Inject(kitBadgeStyle) private style: KitComponentStyle) {
     this.styler.classPrefix = 'kit-badge';
     this.styler.register(this.style);
@@ -37,7 +35,6 @@ export class KitBadgeComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.styler.host.applyState({
-      color: this.color,
       size: this.size,
       position: this.position,
     });

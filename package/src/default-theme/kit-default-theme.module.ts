@@ -42,6 +42,7 @@ import {
   kitTooltipViewStyle,
 } from '../core/meta/tokens';
 import { KitAlertExtenderDirective } from './extenders/kit-alert-extender.directive';
+import { KitBadgeExtenderDirective } from './extenders/kit-badge-extender.directive';
 import { KitButtonExtenderDirective } from './extenders/kit-button-extender.directive';
 import { KitColorPickerExtenderDirective } from './extenders/kit-color-picker-extender.directive';
 import { KitDefaultThemeService } from './kit-default-theme.service';
@@ -87,6 +88,7 @@ import { KitDefaultTooltipViewStyle } from './styles/tooltip/kit-default-tooltip
 
 const extenders = [
   KitAlertExtenderDirective,
+  KitBadgeExtenderDirective,
   KitButtonExtenderDirective,
   KitColorPickerExtenderDirective,
 ];

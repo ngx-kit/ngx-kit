@@ -13,12 +13,13 @@ export class KitDefaultBadgeStyle implements KitComponentStyle {
   }
 
   host(state: {
-    color: string,
     size: 's' | 'm' | 'l',
     position: KitBadgePosition,
+  }, cs: {
+    color: string,
   }): StyleDef {
     const params = this.theme.params;
-    const color: Swatch = params.colors.swatches[state.color || 'default'];
+    const color: Swatch = params.colors.swatches[cs.color || 'default'];
     return {
       borderRadius: '1rem',
       ...applyColorSet({
