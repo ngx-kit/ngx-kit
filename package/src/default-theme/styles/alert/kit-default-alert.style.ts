@@ -11,11 +11,11 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  close(state: {
+  close(state: {}, cs: {
     color: string;
   }): StyleDef {
     const params = this.theme.params;
-    const color: Swatch = params.colors.swatches[state.color || 'default'];
+    const color: Swatch = params.colors.swatches[cs.color || 'default'];
     return {
       background: 'transparent',
       border: 0,
@@ -26,11 +26,12 @@ export class KitDefaultAlertStyle implements KitComponentStyle {
   }
 
   host(state: {
-    color: string,
     closed: boolean,
+  }, cs: {
+    color: string;
   }): StyleDef {
     const params = this.theme.params;
-    const color: Swatch = params.colors.swatches[state.color || 'default'];
+    const color: Swatch = params.colors.swatches[cs.color || 'default'];
     return {
       borderRadius: params.borders.radius,
       margin: [params.grid.v, 0],

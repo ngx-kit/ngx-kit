@@ -9,9 +9,7 @@ export class KitDefaultAlertTitleStyle implements KitComponentStyle {
   constructor(@Inject(kitTheme) private theme: KitDefaultThemeService) {
   }
 
-  host(state: {
-    color: string;
-  }): StyleDef {
+  host(): StyleDef {
     const params = this.theme.params;
     return {
       fontSize: '1.2em',
