@@ -128,6 +128,7 @@ class StyleMock {
 })
 export class StylerDirective {
   @Input() styler: any;
+  @Input() stylerState: any;
 }
 
 @Injectable()

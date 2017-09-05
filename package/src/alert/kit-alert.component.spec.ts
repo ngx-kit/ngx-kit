@@ -84,12 +84,6 @@ describe('Alert/AlertComponent', () => {
     const alertDiv = de.query(By.css('.alert'));
     expect(alertDiv.nativeElement.textContent.trim()).toEqual(message);
   });
-  it('should pass text state', () => {
-    const color = 'color';
-    container.color = color;
-    fixture.detectChanges();
-    expect(styler.host.state.color).toEqual(color);
-  });
   it('should display closing link', () => {
     container.closable = true;
     fixture.detectChanges();
@@ -121,26 +115,19 @@ describe('Alert/AlertComponent', () => {
     const closingLink = de.query(By.css('button'));
     closingLink.nativeElement.click();
   });
-  it('should proxy text state to title', () => {
-    const color = 'color';
-    container.color = color;
-    fixture.detectChanges();
-    expect(stylerForTitle.host.state.color).toEqual(color);
-  });
 });
 
 // Component with kit-alert
 @Component({
   selector: 'test-container',
   template: `
-    <kit-alert [color]="color"
-               [closable]="closable"
+    <kit-alert [closable]="closable"
                [closeText]="closeText"
                (close)="closeEvent.next($event)"
                class="alert">
       {{ message }}
     </kit-alert>
-    <kit-alert [color]="color">
+    <kit-alert>
       <kit-alert-title></kit-alert-title>
     </kit-alert>
   `,
@@ -152,8 +139,6 @@ class ContainerComponent {
 
   closeText = '';
 
-  color = '';
-
   message = '';
 }
 
@@ -161,7 +146,6 @@ class ContainerComponent {
 class StylerMock {
   host = {
     state: {
-      color: '',
       closed: false,
     },
     applyState: (state: any) => {
