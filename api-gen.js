@@ -6,13 +6,15 @@ const walk = require('walk');
 const releaseConfig = require('./release.config.json');
 const files = [];
 
-// genFile('./package/src/default-theme/extenders/kit-button-extender.directive.ts');
+// genFile('./package/src/modal/kit-modal.service.ts');
 
 walker = walk.walk('./package/src');
 
 walker.on('file', function(root, fileStats, next) {
   const module = root.split('\\')[1];
-  if (fileStats.name.indexOf('.component.ts') !== -1 || fileStats.name.indexOf('.directive.ts') !== -1) {
+  if (fileStats.name.indexOf('.component.ts') !== -1
+      || fileStats.name.indexOf('.directive.ts') !== -1
+      || fileStats.name.indexOf('.service.ts') !== -1) {
     const file = genFile(path.resolve(root, fileStats.name));
     file['module'] = module;
     files.push(file);
@@ -43,9 +45,10 @@ function genFile(fileName) {
     class: '',
     type: '',
     selector: '',
-    doc: '',
+    doc: null,
     inputs: [],
     outputs: [],
+    methods: [],
   };
   ts.forEachChild(sourceFile, readNodeWrapper('', data, null));
   return data;
@@ -62,6 +65,21 @@ function readNodeWrapper(level, data, parent) {
       case ts.SyntaxKind.PropertyDeclaration:
         if (node.jsDoc) {
           ts.forEach(node.jsDoc, readNodeWrapper(level + '--', data, 'class'));
+        }
+        break;
+      case ts.SyntaxKind.MethodDeclaration:
+        if (!node.modifiers || node.modifiers
+                .findIndex(m =>
+                    m.kind === ts.SyntaxKind.PrivateKeyword ||
+                    m.kind === ts.SyntaxKind.ProtectedKeyword) === -1) {
+          const method = {
+            name: node.name.text,
+            typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,
+            type: node.type ? getTypeFromTypeNode(node.type) : undefined,
+            params: getMethodParams(node),
+            doc: getDoc(node),
+          };
+          data.methods.push(method);
         }
         break;
       case ts.SyntaxKind.Decorator:
@@ -113,7 +131,15 @@ function getDoc(node) {
   if (node.jsDoc) {
     ts.forEach(node.jsDoc, (node) => {
       if (node.kind === ts.SyntaxKind.JSDocComment) {
-        doc = node.comment;
+        doc = {
+          comment: node.comment,
+          tags: node.tags
+              ? node.tags.map(t => ({
+                name: t.tagName.text,
+                comment: t.comment,
+              }))
+              : [],
+        };
       }
     });
   }
@@ -195,4 +221,11 @@ function getTypeFromTypeNode(node) {
     default:
       return getKindNameById(node.kind);
   }
+}
+
+function getMethodParams(node) {
+  return node.parameters.map(p => ({
+    name: p.name.text,
+    type: getTypeFromTypeNode(p.type),
+  }));
 }

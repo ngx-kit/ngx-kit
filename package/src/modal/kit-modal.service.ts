@@ -9,10 +9,20 @@ export class KitModalService {
   constructor(private overlay: KitOverlayService) {
   }
 
-  hide() {
+  /**
+   * Hide displayed modal.
+   *
+   * @publicApi
+   */
+  hide(): void {
     this.dialogRef.destroy();
   }
 
+  /**
+   * Show modal by component class.
+   *
+   * @publicApi
+   */
   show<T extends DialogHandlers>(component: Type<T>): T {
     const modalRef: ComponentRef<T> = this.overlay.host<T>(component);
     const instance: T = modalRef.instance;

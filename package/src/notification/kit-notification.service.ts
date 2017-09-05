@@ -21,14 +21,27 @@ export class KitNotificationService {
   constructor(private overlay: KitOverlayService) {
   }
 
+  /**
+   * @publicApi
+   */
   get config$(): Observable<KitNotificationHostConfig> {
     return this._config$.asObservable();
   }
 
+  /**
+   * Configure notification service.
+   *
+   * @publicApi
+   */
   config(config: Partial<KitNotificationHostConfig>) {
     this._config$.next({...this._config$.value, ...config});
   }
 
+  /**
+   * Display notification message.
+   *
+   * @publicApi
+   */
   open(message: KitNotificationMessage) {
     this.mountHost();
     this.host.open(message);

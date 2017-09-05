@@ -19,10 +19,20 @@ export class KitLoadingBarService {
     });
   }
 
+  /**
+   * Finish loading animation.
+   *
+   * @publicApi
+   */
   end(key: string) {
     this.ends.next(key);
   }
 
+  /**
+   * Start loading animation.
+   *
+   * @publicApi
+   */
   start(key: string) {
     this.starts.next(key);
   }
