@@ -2,28 +2,26 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import {
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit, ChangeDetectionStrategy,
+  AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
-  Inject,
   Input,
   NgZone,
   OnChanges,
   OnDestroy,
-  OnInit, Optional,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { StylerComponent } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../meta/component';
+import { StylerComponent, StylerModule } from '@ngx-kit/styler';
+import { KitCoreOverlayContainerStyle } from './kit-overlay-container.style';
 import {
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitCoreOverlayContainerWidthType,
-} from '../meta/overlay';
-import { KitThemeService } from '../meta/theme';
-import { kitOverlayContainerStyle, kitTheme } from '../meta/tokens';
+} from './meta';
 
 /**
  * @todo click close
@@ -47,7 +45,7 @@ import { kitOverlayContainerStyle, kitTheme } from '../meta/tokens';
     </div>
   `,
   viewProviders: [
-    StylerComponent,
+    StylerModule.forComponent(KitCoreOverlayContainerStyle),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
@@ -123,20 +121,17 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   };
 
   constructor(private styler: StylerComponent,
-              @Inject(kitOverlayContainerStyle) private componentStyle: KitComponentStyle,
               private zone: NgZone,
-              private elementRef: ElementRef,
-              @Optional() @Inject(kitTheme) private theme: KitThemeService) {
+              private elementRef: ElementRef) {
     this.styler.classPrefix = 'kit-overlay-container';
-    this.styler.register(this.componentStyle);
   }
 
   get closeAnimationTimings(): string {
-    return this.theme ? this.theme.overlayCloseAnimationTimings : '0s';
+    return '150ms cubic-bezier(0.4, 0.0, 1, 1)';
   }
 
   get openAnimationTimings(): string {
-    return this.theme ? this.theme.overlayOpenAnimationTimings : '0s';
+    return '150ms cubic-bezier(0.0, 0.0, 0.2, 1)';
   }
 
   @Input()

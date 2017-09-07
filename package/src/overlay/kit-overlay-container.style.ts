@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { defPick, defToggle, StyleDef } from '@ngx-kit/styler';
-import { KitComponentStyle } from '../../meta/component';
-import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from '../../meta/overlay';
+import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from './meta';
 
 @Injectable()
-export class KitCoreOverlayContainerStyle implements KitComponentStyle {
+export class KitCoreOverlayContainerStyle {
   holder(): StyleDef {
     return {
       zIndex: 10002,

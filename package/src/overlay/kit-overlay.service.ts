@@ -7,7 +7,7 @@ import {
   Injector,
   Type,
 } from '@angular/core';
-import { KitCoreOverlayComponent } from '../meta/overlay';
+import { KitCoreOverlayComponent } from './meta';
 
 @Injectable()
 export class KitOverlayService {

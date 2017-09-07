@@ -13,7 +13,7 @@ import {
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitCoreOverlayContainerWidthType,
-} from '../meta/overlay';
+} from './meta';
 
 @Component({
   selector: 'kit-overlay-host,[kitOverlayHost]',
@@ -28,7 +28,7 @@ import {
                            (mouseenter)="containerMouseEnter.emit()"
                            (mouseleave)="containerMouseLeave.emit()">
       <div *ngIf="component">
-        <ng-container *ngTemplateOutlet="component"></ng-container>
+        <ng-container *ngComponentOutlet="component"></ng-container>
       </div>
       <div *ngIf="template">
         <ng-container *ngTemplateOutlet="template"></ng-container>

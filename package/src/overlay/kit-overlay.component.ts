@@ -11,10 +11,10 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerWidthType } from '../meta/overlay';
-import { KitAnchorDirective } from './anchor.directive';
+import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerWidthType } from './meta';
+import { KitAnchorDirective } from './kit-anchor.directive';
 import { KitOverlayService } from './kit-overlay.service';
-import { KitOverlayHostComponent } from './overlay-host.component';
+import { KitOverlayHostComponent } from './kit-overlay-host.component';
 
 @Component({
   selector: 'kit-overlay,[kitOverlay]',
