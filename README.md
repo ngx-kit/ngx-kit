@@ -4,7 +4,7 @@
 
 # ngx-kit
 
-Angular 4 UI-kit with a powerful customizing engine which uses CSSinJS styling.
+Set of low-level components for creating your own Angular UI kit.
 
 Currently in beta, use carefully!
 

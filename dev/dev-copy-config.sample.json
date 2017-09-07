@@ -1,3 +1,5 @@
 {
-  "path": "PATH/node_modules/@ngx-kit/ngx-kit"
+  "paths": [
+    "PATH/node_modules/@ngx-kit/ngx-kit"
+  ]
 }
