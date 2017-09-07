@@ -1,18 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
-import { KitCoreModule } from '../core/kit-core.module';
-import { KitTagComponent } from './kit-tag.component';
+import { KitMultiOutletDirective } from './kit-multi-outlet.directive';
 
 const exports = [
-  KitTagComponent,
+  KitMultiOutletDirective,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     StylerModule,
-    KitCoreModule,
   ],
   exports: [
     ...exports,
@@ -20,7 +18,8 @@ const exports = [
   declarations: [
     ...exports,
   ],
+  entryComponents: [],
   providers: [],
 })
-export class KitTagModule {
+export class KitCommonModule {
 }
