@@ -1,3 +1,4 @@
+export * from './is-array';
 export * from './is-defined';
 export * from './is-mergable';
 export * from './is-object';

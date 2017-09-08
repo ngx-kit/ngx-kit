@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, TemplateRef } from '@angular/core';
-import { StylerComponent } from '@ngx-kit/styler';
 import { KitCoreOverlayComponent, KitCoreOverlayContainerPosition } from '../overlay/meta';
 import { isString } from '../util/is-string';
 
@@ -17,9 +16,6 @@ import { isString } from '../util/is-string';
       </ng-container>
     </kit-overlay-container>
   `,
-  viewProviders: [
-    StylerComponent,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitPopupViewComponent implements KitCoreOverlayComponent, OnChanges {
