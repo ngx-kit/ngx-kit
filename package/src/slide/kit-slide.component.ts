@@ -7,12 +7,17 @@ import {
   HostListener,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Optional,
 } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
+import { uuid } from '../util/uuid';
 import { KitSlideHostComponent } from './kit-slide-host.component';
 import { KitSlideStyle } from './kit-slide.style';
+import { KitSlideAnimation } from './meta';
 
 /**
  * @todo add "none" animation
@@ -68,12 +73,18 @@ import { KitSlideStyle } from './kit-slide.style';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitSlideComponent implements OnChanges, OnInit {
+export class KitSlideComponent implements OnChanges, OnInit, OnDestroy {
   animated = false;
+
+  id = uuid();
 
   @Input() kitSlide: null;
 
   leaving = false;
+
+  @HostBinding('@slide') slideTrigger: any;
+
+  private destroy$ = new Subject();
 
   constructor(private styler: StylerComponent,
               @Optional() private host: KitSlideHostComponent,
@@ -81,20 +92,22 @@ export class KitSlideComponent implements OnChanges, OnInit {
     styler.classPrefix = 'kit-slide';
   }
 
-  @HostBinding('@slide')
-  get slideTrigger() {
-    return {
-      value: this.host ? this.host.animation : 'slide-right',
-      params: {
-        timings: '250ms cubic-bezier(0.0, 0.0, 0.2, 1)',
-      },
-    }
+  ngOnChanges() {
+    this.bindSlideTrigger();
   }
 
-  ngOnChanges() {
+  ngOnDestroy() {
+    this.destroy$.next();
   }
 
   ngOnInit() {
+    if (this.host) {
+      this.host.animation$
+          .takeUntil(this.destroy$)
+          .subscribe(a => {
+            this.bindSlideTrigger(a);
+          });
+    }
   }
 
   @HostListener('@slide.done')
@@ -117,5 +130,14 @@ export class KitSlideComponent implements OnChanges, OnInit {
       animated: this.animated,
       leaving: this.leaving,
     });
+  }
+
+  private bindSlideTrigger(animation: KitSlideAnimation = 'slide-right') {
+    this.slideTrigger = {
+      value: animation,
+      params: {
+        timings: '250ms cubic-bezier(0.0, 0.0, 0.2, 1)',
+      },
+    }
   }
 }

@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { KitSlideHostStyle } from './kit-slide-host.style';
 import { KitSlideAnimation } from './meta';
 
@@ -16,6 +25,8 @@ import { KitSlideAnimation } from './meta';
 export class KitSlideHostComponent implements OnChanges, OnInit {
   @Input() animation: KitSlideAnimation = 'slide-right';
 
+  animation$ = new BehaviorSubject<KitSlideAnimation>(this.animation);
+
   @Input() kitSlideHost: null;
 
   constructor(private styler: StylerComponent,
@@ -23,7 +34,10 @@ export class KitSlideHostComponent implements OnChanges, OnInit {
     styler.classPrefix = 'kit-slide-host';
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['animation']) {
+      this.animation$.next(this.animation);
+    }
   }
 
   ngOnInit() {
