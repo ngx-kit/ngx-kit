@@ -1,6 +1,7 @@
 export * from './src/collapse/index';
 export * from './src/common/index';
 export * from './src/icons/index';
+export * from './src/forms/index';
 export * from './src/overlay/index';
 export * from './src/popup/index';
 export * from './src/slide/index';

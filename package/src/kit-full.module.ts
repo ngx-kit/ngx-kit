@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/styler';
 import { KitCollapseModule } from './collapse/kit-collapse.module';
 import { KitCommonModule } from './common/kit-common.module';
+import { KitFormsModule } from './forms/kit-forms.module';
 import { KitIconsModule } from './icons/kit-icons.module';
 import { KitOverlayModule } from './overlay/kit-overlay.module';
 import { KitPopupModule } from './popup/kit-popup.module';
@@ -14,6 +15,7 @@ const initableModules = [
 const simpleModules = [
   KitCollapseModule,
   KitCommonModule,
+  KitFormsModule,
   KitOverlayModule,
   KitPopupModule,
   KitSlideModule,

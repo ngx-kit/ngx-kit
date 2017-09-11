@@ -1,4 +1,4 @@
-import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationEvent, query, stagger, state, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -42,8 +42,8 @@ import { KitSlideAnimation } from './meta';
         animate('{{timings}}'),
       ]),
       transition('void => slide-right', [
-        style({transform: 'translateX(-100%)'}),
-        animate('{{timings}}'),
+        query('div', style({opacity: 0}), {optional: true}),
+        query('div', stagger(350, animate(450, style({opacity: 1}))), {optional: true}),
       ]),
       transition('void => slide-bottom', [
         style({transform: 'translateY(-100%)'}),
