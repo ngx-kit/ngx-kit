@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, TemplateRef } from '@angular/core';
 import { KitCoreOverlayComponent, KitCoreOverlayContainerPosition } from '../overlay/meta';
 import { isString } from '../util/is-string';
+import { KitPopupType } from './meta';
 
 @Component({
   selector: 'kit-popup-simple-view',
   template: `
     <kit-overlay-container *ngIf="opened"
-                           [type]="'side'"
+                           [type]="type"
                            [anchor]="anchor"
                            [opened]="true"
                            [position]="position">
@@ -26,6 +27,8 @@ export class KitPopupViewComponent implements KitCoreOverlayComponent, OnChanges
   @Input() opened = false;
 
   @Input() position: KitCoreOverlayContainerPosition;
+
+  @Input() type: KitPopupType;
 
   @Input() view: string | TemplateRef<any> | any;
 

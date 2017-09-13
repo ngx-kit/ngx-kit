@@ -13,15 +13,17 @@ import {
 import { KitOverlayService } from '../overlay/kit-overlay.service';
 import { KitCoreOverlayContainerPosition } from '../overlay/meta';
 import { KitPopupViewComponent } from './kit-popup-view.component';
-import { KitPopupTrigger } from './meta';
+import { KitPopupTrigger, KitPopupType } from './meta';
 
 @Directive({
   selector: '[kitPopup]',
 })
 export class KitPopupDirective implements OnInit, OnChanges, OnDestroy, AfterContentInit {
-  @Input() position: KitCoreOverlayContainerPosition;
+  @Input() position: KitCoreOverlayContainerPosition = 'top';
 
   @Input() trigger: KitPopupTrigger = 'click';
+
+  @Input() type: KitPopupType = 'side';
 
   @Input('kitPopup') view: any;
 
@@ -93,6 +95,7 @@ export class KitPopupDirective implements OnInit, OnChanges, OnDestroy, AfterCon
       instance.view = this.view;
       instance.viewParams = this.viewParams;
       instance.position = this.position;
+      instance.type = this.type;
       instance.opened = this.opened;
       instance.ngOnChanges();
     }
