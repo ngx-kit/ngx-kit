@@ -1,35 +1,28 @@
-import {
-  ApplicationRef,
-  ComponentFactoryResolver,
-  ComponentRef,
-  EmbeddedViewRef,
-  Injectable,
-  Injector,
-  Type,
-} from '@angular/core';
-import { KitCoreOverlayComponent } from './meta';
+import { ComponentFactoryResolver, ComponentRef, Injectable, TemplateRef, Type, ViewRef, } from '@angular/core';
+import { KitOverlayHostComponent } from './kit-overlay-host.component';
 
 @Injectable()
 export class KitOverlayService {
-  private rootRef: ComponentRef<any>;
+  private host: KitOverlayHostComponent;
 
-  constructor(private resolver: ComponentFactoryResolver,
-              private applicationRef: ApplicationRef,
-              private injector: Injector) {
+  hostComponent<T>(component: Type<T>): ComponentRef<T> {
+    this.checkHost();
+    const injector = this.host.vcr.parentInjector;
+    const componentFactory = injector.get(ComponentFactoryResolver).resolveComponentFactory(component);
+    return this.host.vcr.createComponent(componentFactory, this.host.vcr.length, injector);
   }
 
-  host<T extends KitCoreOverlayComponent>(component: Type<T>): ComponentRef<T> {
-    this.detectRoot();
-    const factory = this.resolver.resolveComponentFactory(component);
-    const componentRef = factory.create(this.injector);
-    this.applicationRef.attachView(componentRef.hostView);
-    (this.rootRef.hostView as EmbeddedViewRef<any>).rootNodes[0].appendChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]);
-    return componentRef;
+  hostTemplate(templateRef: TemplateRef<any>, context: any): ViewRef {
+    return this.host.vcr.createEmbeddedView(templateRef, context);
   }
 
-  private detectRoot() {
-    if (!this.rootRef) {
-      this.rootRef = this.applicationRef['_rootComponents'][0];
+  registerHost(host: KitOverlayHostComponent) {
+    this.host = host;
+  }
+
+  private checkHost() {
+    if (!this.host) {
+      throw new Error(`Pls add <kit-overlay-host></kit-overlay-host> to the app!`);
     }
   }
 }

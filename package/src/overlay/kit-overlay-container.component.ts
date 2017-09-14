@@ -1,12 +1,14 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, query, state, style, transition, trigger } from '@angular/animations';
 import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   NgZone,
   OnChanges,
@@ -33,11 +35,11 @@ import {
   selector: 'kit-overlay-container,[kitOverlayContainer]',
   template: `
     <div *ngIf="overlay"
-         [@overlay]="{value: overlayTrigger, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
+         [@overlay]="{value: animation, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
          styler="overlay">
     </div>
     <div [ngStyle]="holderStyle"
-         [@holder]="{value: holderTrigger, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
+         [@holder]="{value: animation, params: {openTimings: openAnimationTimings, closeTimings: closeAnimationTimings}}"
          (@holder.done)="holderTriggerDone()"
          #holder
          styler="holder">
@@ -49,6 +51,11 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
+    trigger('host', [
+      transition('* => void', [
+        query('@*', animateChild()),
+      ]),
+    ]),
     trigger('overlay', [
       state('closed', style({opacity: 0})),
       state('opened', style({opacity: 1})),
@@ -56,25 +63,30 @@ import {
       transition('* => opened', animate('{{openTimings}}')),
     ]),
     trigger('holder', [
-      state('modalClosed', style({transform: 'scale(0)'})),
-      state('anchorClosed', style({opacity: 0})),
-      state('modalOpened', style({transform: 'scale(1)'})),
-      state('anchorOpened', style({opacity: 1})),
-      transition('* => modalClosed', animate('{{closeTimings}}')),
-      transition('* => anchorClosed', animate('{{closeTimings}}')),
-      transition('* => modalOpened', animate('{{openTimings}}')),
-      transition('* => anchorOpened', animate('{{openTimings}}')),
+      state('pop', style({transform: 'scale(1)'})),
+      state('fade', style({opacity: 1})),
+      transition('void => fade', [
+        style({opacity: 0}),
+        animate('150ms'),
+      ]),
+      transition('fade => void', [
+        animate('150ms', style({opacity: 0})),
+      ]),
     ]),
   ],
 })
 export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit {
   @Input() anchor: HTMLElement;
 
+  animation = 'fade';
+
   @ViewChild('holder') holderElement: ElementRef;
 
   holderStyle = {};
 
   holderTrigger = 'modalClosed';
+
+  @HostBinding('@host') hostAnimation = true;
 
   @Input() kitOverlayContainer: any;
 
@@ -122,18 +134,23 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   constructor(private styler: StylerComponent,
               private zone: NgZone,
-              private elementRef: ElementRef) {
+              private elementRef: ElementRef,
+              private cdr: ChangeDetectorRef) {
     this.styler.classPrefix = 'kit-overlay-container';
   }
 
   get closeAnimationTimings(): string {
-    return '150ms cubic-bezier(0.4, 0.0, 1, 1)';
+    return '150ms';
   }
 
   get openAnimationTimings(): string {
-    return '150ms cubic-bezier(0.0, 0.0, 0.2, 1)';
+    return '150ms';
   }
 
+  /**
+   * @todo remove this param, "void" is enough
+   * @param {boolean} opened
+   */
   @Input()
   set opened(opened: boolean) {
     this._opened = opened;
@@ -156,7 +173,9 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   ngAfterViewInit() {
-    this.reposition();
+    setTimeout(() => {
+      this.reposition();
+    }, 1);
   }
 
   ngOnChanges() {
@@ -168,6 +187,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   ngOnDestroy() {
+    console.log('overlay-container on destroy');
     this.removeListeners();
   }
 
@@ -175,6 +195,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   holderTriggerDone() {
+    console.log('holderTriggerDone');
     if (!this._opened) {
       this.styler.host.applyState({opened: false});
       this.removeListeners();
@@ -258,6 +279,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   private repositionSide() {
     const rect: ClientRect = this.anchor.getBoundingClientRect();
+    console.log('reposition side', this.anchor, rect);
     this.zone.run(() => {
       switch (this.position) {
         case 'top':
@@ -295,6 +317,7 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
         default:
           throw new Error('In development!');
       }
+      this.cdr.markForCheck();
     });
   }
 }

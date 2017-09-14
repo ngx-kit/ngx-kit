@@ -1,77 +1,16 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { StylerComponent } from '@ngx-kit/styler';
-import {
-  KitCoreOverlayComponent,
-  KitCoreOverlayContainerPosition,
-  KitCoreOverlayContainerType,
-  KitCoreOverlayContainerWidthType,
-} from './meta';
+import { ChangeDetectionStrategy, Component, Input, ViewContainerRef, } from '@angular/core';
+import { KitOverlayService } from './kit-overlay.service';
 
 @Component({
   selector: 'kit-overlay-host,[kitOverlayHost]',
-  template: `
-    <kit-overlay-container [overlay]="overlay"
-                           [anchor]="anchor"
-                           [type]="type"
-                           [opened]="opened"
-                           [position]="position"
-                           [widthType]="widthType"
-                           (outsideClick)="outsideClick.emit($event)"
-                           (mouseenter)="containerMouseEnter.emit()"
-                           (mouseleave)="containerMouseLeave.emit()">
-      <div *ngIf="component">
-        <ng-container *ngComponentOutlet="component"></ng-container>
-      </div>
-      <div *ngIf="template">
-        <ng-container *ngTemplateOutlet="template"></ng-container>
-      </div>
-    </kit-overlay-container>
-  `,
-  viewProviders: [
-    StylerComponent,
-  ],
+  template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitOverlayHostComponent implements OnInit, KitCoreOverlayComponent {
-  @Input() anchor: HTMLElement;
+export class KitOverlayHostComponent {
+  @Input() kitOverlayHost: void;
 
-  @Input() component: any;
-
-  @Output() containerMouseEnter = new EventEmitter<any>();
-
-  @Output() containerMouseLeave = new EventEmitter<any>();
-
-  @Input() kitOverlayHost: any;
-
-  @Input() opened: boolean;
-
-  @Output() outsideClick = new EventEmitter<any>();
-
-  @Input() overlay: boolean;
-
-  @Input() position: KitCoreOverlayContainerPosition;
-
-  @Input() template: any;
-
-  @Input() type: KitCoreOverlayContainerType;
-
-  @Input() widthType: KitCoreOverlayContainerWidthType;
-
-  constructor(private cdr: ChangeDetectorRef) {
-  }
-
-  ngOnInit() {
-  }
-
-  cdrCheck() {
-    this.cdr.markForCheck();
+  constructor(public vcr: ViewContainerRef,
+              private service: KitOverlayService) {
+    this.service.registerHost(this);
   }
 }

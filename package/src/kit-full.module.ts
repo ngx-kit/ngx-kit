@@ -5,7 +5,6 @@ import { KitCommonModule } from './common/kit-common.module';
 import { KitFormsModule } from './forms/kit-forms.module';
 import { KitIconsModule } from './icons/kit-icons.module';
 import { KitOverlayModule } from './overlay/kit-overlay.module';
-import { KitPopupModule } from './popup/kit-popup.module';
 import { KitSlideModule } from './slide/kit-slide.module';
 
 const initableModules = [
@@ -17,7 +16,6 @@ const simpleModules = [
   KitCommonModule,
   KitFormsModule,
   KitOverlayModule,
-  KitPopupModule,
   KitSlideModule,
 ];
 
