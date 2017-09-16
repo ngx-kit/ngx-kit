@@ -1,3 +1,8 @@
+---
+title: Contributing
+apiOrder: 100
+---
+
 # Contributing to ngx-kit
 
 ## Commit Message Guidelines
