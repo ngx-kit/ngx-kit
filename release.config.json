@@ -1,5 +1,4 @@
 {
-  "version": "1.0.0-beta.3",
   "vendors": {
     "styler": "^1.0.0-beta.13",
     "angular": "^4.3.0",
