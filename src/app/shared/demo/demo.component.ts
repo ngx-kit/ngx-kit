@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { ContentComponent } from '../../interfaces/content';
+import { demoComponentsRef } from '../../demo/ui-default-src/demo';
 import { DemoStyle } from './demo.style';
 
 @Component({
@@ -15,9 +15,11 @@ import { DemoStyle } from './demo.style';
 export class DemoComponent implements OnChanges {
   add = false;
 
+  class: any;
+
   code: {[key: string]: string} = {};
 
-  @Input() content: ContentComponent;
+  @Input() demo: any;
 
   @Input() inverted: boolean;
 
@@ -29,11 +31,12 @@ export class DemoComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (!this.content) {
-      throw new Error('Content is not passed!');
+    if (!this.demo) {
+      throw new Error('Demo is not passed!');
     }
-    this.readme = this.md.render(this.content.readme);
-    this.code = this.content.code.reduce((prev, file) => ({
+    this.class = demoComponentsRef[this.demo.class];
+    this.readme = this.md.render(this.demo.readme);
+    this.code = this.demo.code.reduce((prev, file) => ({
       ...prev,
       [file.file]: highlightAuto(file.content, [file.language]).value,
     }), {});

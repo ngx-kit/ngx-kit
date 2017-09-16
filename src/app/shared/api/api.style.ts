@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
 import { ComponentStyle, mix, StyleDef } from '@ngx-kit/styler';
+import { UiDefaultThemeService } from '@ngx-kit/ui-default';
 
 @Injectable()
 export class ApiStyle implements ComponentStyle {
-  constructor(@Inject(kitTheme) private defTheme: KitDefaultThemeService) {
+  constructor(private defTheme: UiDefaultThemeService) {
   }
 
   head(): StyleDef {

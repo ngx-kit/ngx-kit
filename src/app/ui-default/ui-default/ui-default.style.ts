@@ -4,7 +4,7 @@ import { UiDefaultThemeService } from '@ngx-kit/ui-default';
 import { ThemeService } from '../../core/theme.service';
 
 @Injectable()
-export class KitStyle implements ComponentStyle {
+export class UiDefaultStyle implements ComponentStyle {
   constructor(private theme: ThemeService,
               private defTheme: UiDefaultThemeService) {
   }
@@ -39,7 +39,7 @@ export class KitStyle implements ComponentStyle {
     return {
       width: this.theme.params.sideWidth,
       padding: 0,
-      background: 'linear-gradient(135deg, #0FD8DF 0%, #0fbac1 100%)',
+      background: 'linear-gradient(135deg, #2B6DB7 0%,#155096 100%)',
       color: '#fff',
       textDecoration: 'none',
       fontWeight: 600,

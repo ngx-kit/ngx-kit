@@ -1,3 +1,0 @@
----
-title: Default date-picker
----

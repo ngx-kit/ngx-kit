@@ -1,3 +1,0 @@
----
-title: Default radio-group
----

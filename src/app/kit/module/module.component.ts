@@ -22,7 +22,5 @@ export class ModuleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.module = params.module;
     });
-    this.content.posts$.subscribe(posts => this.posts = posts);
-    this.content.components$.subscribe(components => this.components = components);
   }
 }

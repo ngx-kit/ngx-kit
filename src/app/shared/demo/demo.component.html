@@ -1,19 +1,18 @@
-<h3 *ngIf="content"
-    styler="title">{{ content.meta.title }}</h3>
+<h3 styler="title">{{ demo.meta.title }}</h3>
 <div *ngIf="readme"
      [innerHtml]="readme"
      styler="readme"></div>
 <div styler="demo" [stylerState]="{inverted: inverted}">
-  <ng-content></ng-content>
+  <ng-container *ngComponentOutlet="class"></ng-container>
 </div>
 <div styler="code">
-  <kit-tabs>
-    <kit-tabs-panel *ngFor="let file of content.code"
-                    [title]="file.file">
+  <ui-tabs>
+    <ui-tabs-panel *ngFor="let file of demo.code"
+                   [title]="file.file">
       <pre><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
                  [innerHtml]="code[file.file]">
       </code></pre>
       <a href="#">Edit</a>
-    </kit-tabs-panel>
-  </kit-tabs>
+    </ui-tabs-panel>
+  </ui-tabs>
 </div>

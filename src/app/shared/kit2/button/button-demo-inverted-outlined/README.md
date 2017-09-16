@@ -1,3 +1,0 @@
----
-title: Inverted outlined button
----

@@ -1,3 +1,0 @@
----
-title: Radio-group direction
----

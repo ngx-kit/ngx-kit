@@ -1,25 +1,14 @@
-@font-face {
-  font-family: 'Interface';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Interface'), local('Interface-Regular'), url(/assets/Interface-Regular.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Interface';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Interface'), local('Interface-Medium'), url(/assets/Interface-Medium.woff2) format('woff2');
-}
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Interface', Arial;
-  font-size: 13px;
+  font-family: 'Lato', Arial;
+  font-size: 14px;
 }
 
 button, input, textarea, select {
-  font-family: 'Interface', Arial;
+  font-family: 'Lato', Arial;
 }
 
 table {

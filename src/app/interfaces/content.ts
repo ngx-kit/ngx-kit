@@ -59,7 +59,7 @@ export interface ComponentApiDoc {
   comment: string;
   tags: {
     name: string;
-    comment: string;
+    value: string;
   }[];
 }
 

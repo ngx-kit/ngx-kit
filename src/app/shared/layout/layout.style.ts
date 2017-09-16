@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
+import { Injectable } from '@angular/core';
 import { StyleDef } from '@ngx-kit/styler';
+import { UiDefaultThemeService } from '@ngx-kit/ui-default';
 import { ThemeService } from '../../core/theme.service';
 
 @Injectable()
 export class LayoutStyle {
   constructor(private theme: ThemeService,
-              @Inject(kitTheme) private defTheme: KitDefaultThemeService) {
+              private defTheme: UiDefaultThemeService) {
   }
 
   host(): StyleDef {
@@ -31,7 +31,8 @@ export class LayoutStyle {
     const params = this.defTheme.params;
     return {
       flexGrow: 1,
-      padding: [0, params.grid.v * 8],
+      padding: [params.grid.h * 2, params.grid.v * 8],
+//      boxShadow: 'inset 0px 0px 39px -10px rgba(0,0,0,.1)',
     };
   }
 
@@ -43,6 +44,8 @@ export class LayoutStyle {
       background: this.theme.params.footerColor,
       padding: [params.grid.v * 4, params.grid.h * 8],
       textAlign: 'right',
+      boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.1)',
+      zIndex: 2,
     };
   }
 
@@ -65,6 +68,8 @@ export class LayoutStyle {
       flexShrink: 0,
       height: 80,
       background: this.theme.params.headerColor,
+      boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.1)',
+      zIndex: 2,
     };
   }
 
@@ -85,6 +90,7 @@ export class LayoutStyle {
       overflow: 'hidden',
       fontSize: '.95rem',
       color: params.colors.background,
+      flexShrink: 0,
       $media: [
         [{maxWidth: 600}, {
           display: 'none',

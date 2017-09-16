@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ContentApi, ContentComponents, ContentPosts } from '../interfaces/content';
 
 @Injectable()
 export class ContentService {
-  api$ = new BehaviorSubject<ContentApi>(null);
+  content = {};
 
-  components$ = new BehaviorSubject<ContentComponents>({});
+  get(pkg: string) {
+    return this.content[pkg];
+  }
 
-  posts$ = new BehaviorSubject<ContentPosts>({});
+  set(pkg: string, content: any) {
+    this.content[pkg] = content;
+  }
 }

@@ -1,8 +1,5 @@
-import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeDefaultParams, KitDefaultThemeService, kitTheme, } from '@ngx-kit/ngx-kit';
-import { darkPreset } from './presets/dark';
-import { light2Preset } from './presets/light2';
-import { sunsetPreset } from './presets/sunset';
+import { Injectable } from '@angular/core';
+import { UiDefaultThemeDefaultParams, UiDefaultThemeService } from '@ngx-kit/ui-default';
 
 @Injectable()
 export class ThemeService {
@@ -17,13 +14,13 @@ export class ThemeService {
     sideMenuInverted: boolean;
   };
 
-  constructor(@Inject(kitTheme) private kitThemeService: KitDefaultThemeService) {
+  constructor(private defTheme: UiDefaultThemeService) {
   }
 
   applyTheme(name: string) {
     switch (name) {
       case 'default': {
-        const preset = new KitDefaultThemeDefaultParams();
+        const preset = new UiDefaultThemeDefaultParams();
         this.params = {
           sideWidth: 240,
           contentColor: '#fff',
@@ -34,7 +31,7 @@ export class ThemeService {
           textColor: '#333',
           sideMenuInverted: true,
         };
-        this.kitThemeService.applyParams(preset);
+//        this.kitThemeService.applyParams(preset);
         break;
       }
       case 'dark': {
@@ -47,7 +44,7 @@ export class ThemeService {
 //          logoColor: '#09D7DE',
 //          textColor: '#e2e2e2',
 //        };
-        this.kitThemeService.applyParams(JSON.parse(darkPreset));
+//        this.kitThemeService.applyParams(JSON.parse(darkPreset));
         break;
       }
       case 'light2': {
@@ -60,7 +57,7 @@ export class ThemeService {
 //          logoColor: '#09D7DE',
 //          textColor: '#333',
 //        };
-        this.kitThemeService.applyParams(JSON.parse(light2Preset));
+//        this.kitThemeService.applyParams(JSON.parse(light2Preset));
         break;
       }
       case 'sunset': {
@@ -74,7 +71,7 @@ export class ThemeService {
           textColor: '#333',
           sideMenuInverted: false,
         };
-        this.kitThemeService.applyParams(JSON.parse(sunsetPreset));
+//        this.kitThemeService.applyParams(JSON.parse(sunsetPreset));
         break;
       }
     }

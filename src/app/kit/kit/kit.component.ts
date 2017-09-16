@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-import { ThemeService } from '../../core/theme.service';
-import { Content } from '../../interfaces/content';
+import { StylerModule } from '@ngx-kit/styler';
+import { ContentService } from '../../core/content.service';
 import { LayoutStyle } from '../../shared/layout/layout.style';
 import { KitStyle } from './kit.style';
 
@@ -15,20 +13,12 @@ import { KitStyle } from './kit.style';
   ],
 })
 export class KitComponent implements OnInit {
-  module = 'string';
+  content: any;
 
-  constructor(private styler: StylerComponent,
-              private route: ActivatedRoute,
-              private theme: ThemeService) {
-  }
-
-  get sideMenuInverted() {
-    return this.theme.params.sideMenuInverted;
+  constructor(private contentService: ContentService) {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      console.log('data', data);
-    });
+    this.content = this.contentService.get('ngx-kit');
   }
 }

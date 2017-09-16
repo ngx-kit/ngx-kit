@@ -1,3 +1,0 @@
----
-title: Selectable button-group
----

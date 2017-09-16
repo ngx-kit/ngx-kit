@@ -1,3 +1,0 @@
----
-title: Multiple button-group
----

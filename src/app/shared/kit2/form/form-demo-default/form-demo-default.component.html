@@ -1,8 +1,0 @@
-<form [formGroup]="form">
-  <kit-form-group [touched]="true">
-    <kit-form-label>Name</kit-form-label>
-    <kit-input [formControlName]="'name'"></kit-input>
-    <kit-form-error [validator]="'required'">You can't leave this empty.</kit-form-error>
-    <kit-form-error [validator]="'minlength'">Name must be at least 4 characters long..</kit-form-error>
-  </kit-form-group>
-</form>

@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../core/content-resolver.service';
 import { DocsPageComponent } from '../shared/docs-page/docs-page.component';
 import { ModulePageComponent } from '../shared/module-page/module-page.component';
-import { KitComponent } from './kit/kit.component';
+import { UiDefaultComponent } from './ui-default/ui-default.component';
 
-const pkgName = 'ngx-kit';
+const pkgName = 'ui-default';
 const routes: Routes = [
   {
     path: '',
-    component: KitComponent,
+    component: UiDefaultComponent,
     data: {
       pkg: pkgName,
-      file: 'assets/content/ngx-kit-src.json',
+      file: 'assets/content/ui-default-src.json',
     },
     resolve: {
       content: ContentResolverService,
@@ -44,5 +44,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class KitRoutingModule {
+export class UiDefaultRoutingModule {
 }

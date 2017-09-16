@@ -1,3 +1,0 @@
----
-title: Disabled menu item
----

@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
-import { KitDefaultThemeService, kitTheme } from '@ngx-kit/ngx-kit';
+import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
+import { UiDefaultThemeService } from '@ngx-kit/ui-default';
 
 @Injectable()
 export class DemoStyle implements ComponentStyle {
-  constructor(@Inject(kitTheme) private defTheme: KitDefaultThemeService) {
+  constructor(private defTheme: UiDefaultThemeService) {
   }
 
   code(): StyleDef {

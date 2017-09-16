@@ -1,28 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { StylerModule } from '@ngx-kit/styler';
 import { UiDefaultFullModule } from '@ngx-kit/ui-default';
 import { SharedModule } from '../shared/shared.module';
-import { KitRoutingModule } from './kit-routing.module';
-import { KitComponent } from './kit/kit.component';
-import { ModuleComponent } from './module/module.component';
+import { UiDefaultRoutingModule } from './ui-default-routing.module';
+import { UiDefaultComponent } from './ui-default/ui-default.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     StylerModule,
     UiDefaultFullModule,
-    KitRoutingModule,
+    UiDefaultRoutingModule,
   ],
   declarations: [
-    KitComponent,
-    ModuleComponent,
+    UiDefaultComponent,
   ],
-  providers: [],
 })
-export class KitModule {
+export class UiDefaultModule {
 }

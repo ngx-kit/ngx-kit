@@ -3,40 +3,27 @@ import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { ContentService } from '../../core/content.service';
 import { ComponentApi, ComponentApiDoc } from '../../interfaces/content';
-import { clone } from '../utils/clone';
 import { isArray } from '../utils/is-array';
 import { isObject } from '../utils/is-object';
 import { ApiStyle } from './api.style';
+import { clone } from '../utils/clone';
 
 @Component({
-  selector: 'app-kit-api',
+  selector: 'app-api',
   templateUrl: './api.component.html',
   viewProviders: [
     StylerModule.forComponent(ApiStyle),
   ],
 })
 export class ApiComponent implements OnChanges {
-  apis: ComponentApi[] = [];
-
-  @Input() className: string;
-
-  @Input() extenderClassName: string;
-
-  hasInputs = false;
-
-  hasMethods = false;
-
-  hasOutputs = false;
+  api: any;
 
   methods: {
     code: string;
-    module: string;
     doc: ComponentApiDoc;
   }[] = [];
 
-  selector: string;
-
-  type: string;
+  @Input() rawApi: any;
 
   constructor(private content: ContentService,
               private md: MdRenderService) {
@@ -44,21 +31,7 @@ export class ApiComponent implements OnChanges {
 
   ngOnChanges() {
     // main api
-    this.apis = [this.extractApi(this.content.api$.value.files, this.className)];
-    // add extenders
-    if (this.extenderClassName) {
-      this.apis.push(this.extractApi(this.content.api$.value.files, this.extenderClassName));
-    }
-    // get type
-    this.type = this.apis[0].type;
-    // get selector
-    this.selector = this.apis[0].selector;
-    // check inputs
-    this.hasInputs = this.apis.filter(api => api.inputs.length > 0).length > 0;
-    // check outputs
-    this.hasOutputs = this.apis.filter(api => api.outputs.length > 0).length > 0;
-    // check methods
-    this.hasMethods = this.apis.filter(api => api.methods.length > 0).length > 0;
+    this.api = this.extractApi(clone(this.rawApi));
   }
 
   private convertType(typeKeyword: any): string {
@@ -84,11 +57,7 @@ export class ApiComponent implements OnChanges {
     }
   }
 
-  private extractApi(files: ComponentApi[], className: string) {
-    const api: ComponentApi = clone(files.find(f => f.class === className));
-    if (!api) {
-      throw new Error(`${className} not found!`);
-    }
+  private extractApi(api: ComponentApi) {
     // render component doc
     api.doc = this.renderDoc(api.doc);
     // filter stub input
@@ -115,7 +84,6 @@ export class ApiComponent implements OnChanges {
             const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
             return {
               code: `${m.name}${typeParams}(${params})${type}`,
-              module: api.module,
               doc: this.renderDoc(m.doc),
             };
           }),
@@ -129,7 +97,7 @@ export class ApiComponent implements OnChanges {
   private renderDoc(doc: ComponentApiDoc) {
     if (doc) {
       doc.comment = this.md.render(doc.comment);
-      doc.tags.forEach(t => t.comment = this.md.render(t.comment));
+      doc.tags.forEach(t => t.value = this.md.render(t.value));
       return doc;
     } else {
       return {
