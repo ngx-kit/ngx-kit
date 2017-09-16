@@ -187,7 +187,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   ngOnDestroy() {
-    console.log('overlay-container on destroy');
     this.removeListeners();
   }
 
@@ -195,7 +194,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
   }
 
   holderTriggerDone() {
-    console.log('holderTriggerDone');
     if (!this._opened) {
       this.styler.host.applyState({opened: false});
       this.removeListeners();
@@ -279,7 +277,6 @@ export class KitOverlayContainerComponent implements OnInit, OnChanges, OnDestro
 
   private repositionSide() {
     const rect: ClientRect = this.anchor.getBoundingClientRect();
-    console.log('reposition side', this.anchor, rect);
     this.zone.run(() => {
       switch (this.position) {
         case 'top':

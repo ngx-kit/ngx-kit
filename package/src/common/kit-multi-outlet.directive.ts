@@ -45,7 +45,6 @@ export class KitMultiOutletDirective implements OnInit, OnChanges {
       for (const key in this.kitMultiOutletParams) {
         if (this.kitMultiOutletParams.hasOwnProperty(key)) {
           this.componentRef.instance[key] = this.kitMultiOutletParams[key];
-          console.log('*multi:setParam', key, this.componentRef.instance[key]);
         }
       }
       if (this.componentRef.instance.ngOnChanges) {

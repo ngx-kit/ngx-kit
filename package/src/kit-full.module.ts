@@ -10,12 +10,12 @@ import { KitSlideModule } from './slide/kit-slide.module';
 const initableModules = [
   StylerModule,
   KitIconsModule,
+  KitOverlayModule,
 ];
 const simpleModules = [
   KitCollapseModule,
   KitCommonModule,
   KitFormsModule,
-  KitOverlayModule,
   KitSlideModule,
 ];
 
@@ -23,6 +23,7 @@ const simpleModules = [
   imports: [
     StylerModule.forRoot(),
     KitIconsModule.forRoot(),
+    KitOverlayModule.forRoot(),
     ...simpleModules,
   ],
   declarations: [],

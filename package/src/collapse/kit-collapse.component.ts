@@ -66,7 +66,6 @@ export class KitCollapseComponent implements OnChanges, OnInit {
 
   @Input('expanded')
   set expandedSetter(expanded: boolean) {
-    console.log('exp setter', this.id, expanded, this.expanded, this.state);
     if (this.state !== 'animated' && this.expanded !== expanded) {
       this.expanded = expanded;
       this.state = 'animated';
@@ -80,7 +79,6 @@ export class KitCollapseComponent implements OnChanges, OnInit {
   ngOnInit() {
     if (this.group) {
       this.group.expandedId$.subscribe(id => {
-        console.log('eI$ sub', id, this.id, isArray(id), isArray(id) ? id.indexOf(this.id) : null);
         this.expandedSetter = isArray(id)
             ? id.indexOf(this.id) !== -1
             : id === this.id;

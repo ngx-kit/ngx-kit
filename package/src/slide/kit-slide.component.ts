@@ -42,8 +42,8 @@ import { KitSlideAnimation } from './meta';
         animate('{{timings}}'),
       ]),
       transition('void => slide-right', [
-        query('div', style({opacity: 0}), {optional: true}),
-        query('div', stagger(350, animate(450, style({opacity: 1}))), {optional: true}),
+        style({transform: 'translateX(-100%)'}),
+        animate('{{timings}}'),
       ]),
       transition('void => slide-bottom', [
         style({transform: 'translateY(-100%)'}),
