@@ -1,0 +1,2 @@
+<kit-alert [closable]="true" [(isOpen)]="isOpen">Closable message text</kit-alert>
+<button *ngIf="!isOpen" (click)="isOpen = true">Reopen</button>
