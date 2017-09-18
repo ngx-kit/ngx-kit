@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.title {
+  cursor: pointer;
+  user-select: none;
+  transition-duration: .25s;
+  transition-property: background;
+  background: red;
+}
+
+.content {
+  background: yellow;
+}
