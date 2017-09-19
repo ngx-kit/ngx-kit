@@ -1,13 +1,11 @@
 import { animate, animation, style, transition, trigger, useAnimation, } from '@angular/animations';
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   ContentChild,
   EventEmitter,
   forwardRef,
   Input,
-  OnChanges,
   Output,
 } from '@angular/core';
 import { KitAlertTitleComponent } from '../kit-alert-title/kit-alert-title.component';
@@ -30,7 +28,7 @@ const fadeOut = animation([
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitAlertComponent implements OnChanges, AfterContentInit {
+export class KitAlertComponent {
   /**
    * Display closing link that hides alert.
    */
@@ -40,11 +38,6 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
    * Alert close.
    */
   @Output('close') close = new EventEmitter<null>();
-
-  /**
-   * Closing link text.
-   */
-  @Input() closeText: string;
 
   @Input() color = 'default';
 
@@ -58,16 +51,6 @@ export class KitAlertComponent implements OnChanges, AfterContentInit {
   @Input() kitAlert: null;
 
   @ContentChild(forwardRef(() => KitAlertTitleComponent)) title: KitAlertTitleComponent;
-
-  ngAfterContentInit() {
-  }
-
-  ngOnChanges() {
-//    this.styler.host.applyState({
-//      closed: !this.isOpen,
-//      color: this.color,
-//    });
-  }
 
   closeAlert() {
     this.isOpen = false;
