@@ -1,0 +1,25 @@
+{
+  "name": "@ngx-kit/cli",
+  "version": "1.0.0-alpha.10",
+  "description": "ngx-kit - cli",
+  "scripts": {
+    "release": "npm publish --access=public"
+  },
+  "bin": {
+    "ngx-kit": "./cli.js"
+  },
+  "author": {
+    "name": "Sasha Novik",
+    "email": "alex@nvx.me",
+    "url": "https://nvx.me/"
+  },
+  "license": "MIT",
+  "homepage": "https://ngx-kit.com",
+  "repository": {
+    "url": "https://github.com/ngx-kit/cli.git",
+    "type": "git"
+  },
+  "dependencies": {
+    "fs-extra": "^4.0.2"
+  }
+}
