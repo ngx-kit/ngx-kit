@@ -12,7 +12,7 @@ const routes: Routes = [
     component: KitComponent,
     data: {
       pkg: pkgName,
-      file: 'assets/content/ngx-kit-src.json',
+      file: 'assets/docs/ngx-kit-src.json',
     },
     resolve: {
       content: ContentResolverService,
