@@ -1,0 +1,15 @@
+{
+  "copy": {
+    "release": {
+      "from": [],
+      "to": []
+    },
+    "src": {
+      "from": [
+        "./src/app/package/",
+        "./.docs-schema.json"
+      ],
+      "to": []
+    }
+  }
+}
