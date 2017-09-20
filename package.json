@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "deepmerge": "^1.5.1",
+    "front-matter": "^2.2.0",
     "fs-extra": "^4.0.2",
+    "typescript": "^2.5.2",
     "walk": "^2.3.9"
   }
 }

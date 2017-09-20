@@ -10,10 +10,6 @@ const merge = require('deepmerge');
 const args = process.argv;
 const action = args[2];
 
-const configBase = require(path.resolve('.ngx-kit.json'));
-const configEnv = require(path.resolve('.ngx-kit.env.json'));
-const config = merge(configBase, configEnv);
-
 switch (action) {
     // format: "ngx-kit get pkg:module dest"
   case 'get':
@@ -32,17 +28,43 @@ switch (action) {
       fs.copySync(path.resolve('./node_modules/@ngx-kit', pkg, 'lib', module), dest);
       console.log(`Module ${fromParam} copied to ${dest}`);
     } else {
-      console.error('Param for action get in not passed. %DOCS_LINK%');
+      console.error('Param for action get not passed. %DOCS_LINK%');
     }
     break;
   case 'copy':
-    config.copy.source.forEach(source => {
-      config.copy.dest.forEach(dest => {
+    const config = getConfig();
+    // copy release files
+    config.copy.release.from.forEach(source => {
+      config.copy.release.to.forEach(dest => {
         fs.copySync(path.resolve(source), path.resolve(dest));
-        console.log(`${source} copied to ${dest}`);
+        console.log(`${source} copied to ${path.resolve(dest)}`);
+      });
+    });
+    // copy dest files (keeps dir structure)
+    config.copy.src.from.forEach(source => {
+      config.copy.src.to.forEach(dest => {
+        fs.copySync(path.resolve(source), path.resolve(dest, source));
+        console.log(`${source} copied to ${path.resolve(dest, source)}`);
       });
     });
     break;
+  case 'gen-docs':
+    const pkgParam = args[3];
+    if (pkgParam) {
+      const dir = path.resolve('./node_modules', pkgParam);
+      const schema = require(path.resolve(dir, '.docs-schema.json'));
+      const docsGen = require('./lib/docs/docs');
+      docsGen(dir, pkgParam, schema);
+    } else {
+      console.log('Param for action gen-docs not passed. %DOCS_LINK%');
+    }
+    break;
   default:
-    console.error('Cli action is not passed. %DOCS_LINK%');
+    console.error('Cli action not passed. %DOCS_LINK%');
+}
+
+function getConfig() {
+  const configBase = require(path.resolve('.ngx-kit.json'));
+  const configEnv = require(path.resolve('.ngx-kit.env.json'));
+  return merge(configBase, configEnv);
 }
