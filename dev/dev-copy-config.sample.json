@@ -1,8 +1,0 @@
-{
-  "release": [
-    "PATH/node_modules/@ngx-kit/ngx-kit"
-  ],
-  "src": [
-    "PATH/node_modules/ngx-kit-src"
-  ]
-}

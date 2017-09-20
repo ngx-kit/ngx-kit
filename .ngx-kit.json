@@ -1,0 +1,19 @@
+{
+  "copy": {
+    "release": {
+      "from": [
+        "./dist/release"
+      ],
+      "to": []
+    },
+    "src": {
+      "from": [
+        "./demo/",
+        "./docs/",
+        "./package/",
+        "./.docs-schema.json"
+      ],
+      "to": []
+    }
+  }
+}
