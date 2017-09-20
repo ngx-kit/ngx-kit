@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 'use strict';
 
-console.log('@ngx-kit/cli');
+console.log('ngx-kit cli');
 
 const path = require('path');
 const fs = require('fs-extra');
+const merge = require('deepmerge');
 
 const args = process.argv;
 const action = args[2];
+
+const configBase = require(path.resolve('.ngx-kit.json'));
+const configEnv = require(path.resolve('.ngx-kit.env.json'));
+const config = merge(configBase, configEnv);
 
 switch (action) {
     // format: "ngx-kit get pkg:module dest"
@@ -29,6 +34,14 @@ switch (action) {
     } else {
       console.error('Param for action get in not passed. %DOCS_LINK%');
     }
+    break;
+  case 'copy':
+    config.copy.source.forEach(source => {
+      config.copy.dest.forEach(dest => {
+        fs.copySync(path.resolve(source), path.resolve(dest));
+        console.log(`${source} copied to ${dest}`);
+      });
+    });
     break;
   default:
     console.error('Cli action is not passed. %DOCS_LINK%');
