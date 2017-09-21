@@ -11,8 +11,8 @@ const args = process.argv;
 const action = args[2];
 
 switch (action) {
-    // format: "ngx-kit get pkg:module dest"
   case 'get':
+    // format: "ngx-kit get PKG_NAME:MODULE_NAME DEST_DIR"
     const fromParam = args[3];
     const toParam = args[4];
     if (fromParam) {
@@ -32,6 +32,8 @@ switch (action) {
     }
     break;
   case 'copy':
+    // format: "ngx-kit copy"
+    // uses .ngx-kit.json
     const config = getConfig();
     // copy release files
     config.copy.release.from.forEach(source => {
@@ -49,6 +51,8 @@ switch (action) {
     });
     break;
   case 'gen-docs':
+    // format: "ngx-kit gen-docs PKG_NAME"
+    // uses .docs-schema.json
     const pkgParam = args[3];
     if (pkgParam) {
       const dir = path.resolve('./node_modules', pkgParam);
