@@ -10,7 +10,7 @@
     "build:rollup:umd": "rollup -c rollup.umd.config.js",
     "build:release": "node release",
     "build:api-gen": "node api-gen",
-    "build-and-copy": "npm run build && node ./dev/dev-copy.js",
+    "build-and-copy": "npm run build && ngx-kit copy",
     "publish": "npm publish ./dist/release --access=public",
     "release": "npm run test && npm run build && npm run publish",
     "test": "karma start ./karma.conf.js --browsers Firefox --single-run",
