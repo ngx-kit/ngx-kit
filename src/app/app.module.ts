@@ -4,8 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
 import { AppComponent } from './app.component';
 import { demo } from './package/demo/demo';
-import { KitAccordionModule } from './package/lib/accordion/kit-accordion.module';
-import { KitAlertModule } from './package/lib/alert/kit-alert.module';
+import { lib } from './package/lib/lib';
 import { PlaygroundComponent } from './playground/playground.component';
 
 @NgModule({
@@ -18,8 +17,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     BrowserModule,
     BrowserAnimationsModule,
     KitFullForRootModule,
-    KitAccordionModule,
-    KitAlertModule,
+    ...lib,
   ],
   providers: [],
   bootstrap: [AppComponent],
