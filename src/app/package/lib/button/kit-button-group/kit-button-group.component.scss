@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  &.direction {
+    &-row {
+      flex-direction: row;
+    }
+    &-column {
+      flex-direction: column;
+    }
+  }
+  ::ng-deep button {
+    background: red;
+  }
+}

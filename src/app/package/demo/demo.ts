@@ -7,6 +7,10 @@ import { DemoBadgeColorComponent } from './badge/demo-badge-color/demo-badge-col
 import { DemoBadgeDefaultComponent } from './badge/demo-badge-default/demo-badge-default.component';
 import { DemoBadgePositionComponent } from './badge/demo-badge-position/demo-badge-position.component';
 import { DemoBadgeSizeComponent } from './badge/demo-badge-size/demo-badge-size.component';
+import { DemoButtonColorComponent } from './button/demo-button-color/demo-button-color.component';
+import { DemoButtonDefaultComponent } from './button/demo-button-default/demo-button-default.component';
+import { DemoButtonGroupDefaultComponent } from './button/demo-button-group-default/demo-button-group-default.component';
+import { DemoButtonSizeComponent } from './button/demo-button-size/demo-button-size.component';
 
 export const demo = [
   // accordion
@@ -21,4 +25,9 @@ export const demo = [
   DemoBadgeDefaultComponent,
   DemoBadgePositionComponent,
   DemoBadgeSizeComponent,
+  // button
+  DemoButtonDefaultComponent,
+  DemoButtonColorComponent,
+  DemoButtonSizeComponent,
+  DemoButtonGroupDefaultComponent,
 ];
