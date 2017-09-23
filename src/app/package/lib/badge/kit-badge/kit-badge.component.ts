@@ -36,11 +36,11 @@ export class KitBadgeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.kitClass.apply([{
+    this.kitClass.apply({
       size: this.size,
       position: this.position,
       color: this.color,
-    }]);
+    });
   }
 
   ngOnInit() {

@@ -25,12 +25,18 @@ $borderRadius: 3px;
       &:hover {
         background: #bbbbbb;
       }
+      &.checked {
+        background: #aaaaaa;
+      }
     }
     &-primary {
       background: #2399e5;
       color: #ffffff;
       &:hover {
         background: #248acd;
+      }
+      &.checked {
+        background: #1e80cd;
       }
     }
   }

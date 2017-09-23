@@ -9,7 +9,10 @@ import { DemoBadgePositionComponent } from './badge/demo-badge-position/demo-bad
 import { DemoBadgeSizeComponent } from './badge/demo-badge-size/demo-badge-size.component';
 import { DemoButtonColorComponent } from './button/demo-button-color/demo-button-color.component';
 import { DemoButtonDefaultComponent } from './button/demo-button-default/demo-button-default.component';
+import { DemoButtonGroupCheckboxComponent } from './button/demo-button-group-checkbox/demo-button-group-checkbox.component';
 import { DemoButtonGroupDefaultComponent } from './button/demo-button-group-default/demo-button-group-default.component';
+import { DemoButtonGroupRadioComponent } from './button/demo-button-group-radio/demo-button-group-radio.component';
+import { DemoButtonGroupVerticalComponent } from './button/demo-button-group-vertical/demo-button-group-vertical.component';
 import { DemoButtonSizeComponent } from './button/demo-button-size/demo-button-size.component';
 
 export const demo = [
@@ -30,4 +33,7 @@ export const demo = [
   DemoButtonColorComponent,
   DemoButtonSizeComponent,
   DemoButtonGroupDefaultComponent,
+  DemoButtonGroupVerticalComponent,
+  DemoButtonGroupCheckboxComponent,
+  DemoButtonGroupRadioComponent,
 ];

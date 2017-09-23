@@ -1,8 +1,9 @@
 <div *ngIf="isOpen"
-     [kitClass]="['alert', {color: color}]"
+     class="alert"
+     [kitClass]="{color: color}"
      [@fadeOut]>
-  <button *ngIf="closable" (click)="closeAlert()" kitClass="close">x</button>
-  <div *ngIf="title" kitClass="title">
+  <button *ngIf="closable" (click)="closeAlert()" class="close">x</button>
+  <div *ngIf="title" class="title">
     <ng-container *ngTemplateOutlet="title.contentRef"></ng-container>
   </div>
   <ng-content></ng-content>
