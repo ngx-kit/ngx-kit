@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
-import { UiDefaultThemeService } from '@ngx-kit/ui-default';
 import { ThemeService } from '../../core/theme.service';
 
 @Injectable()
-export class UiDefaultStyle implements ComponentStyle {
-  constructor(private theme: ThemeService,
-              private defTheme: UiDefaultThemeService) {
+export class UiBaseStyle implements ComponentStyle {
+  constructor(private theme: ThemeService) {
   }
 
   githubStar(): StyleDef {
@@ -18,10 +16,9 @@ export class UiDefaultStyle implements ComponentStyle {
   }
 
   layoutContent(): StyleDef {
-    const params = this.defTheme.params;
     return {
-      background: params.colors.background,
-      color: params.colors.invert,
+//      background: params.colors.background,
+//      color: params.colors.invert,
       overflowY: 'auto',
     }
   }
@@ -32,6 +29,7 @@ export class UiDefaultStyle implements ComponentStyle {
       padding: 8,
       boxSizing: 'border-box',
       overflowY: 'auto',
+      color: '#fff',
     };
   }
 

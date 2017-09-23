@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../core/content-resolver.service';
 import { DocsPageComponent } from '../shared/docs-page/docs-page.component';
-import { ModulePageComponent } from '../shared/module-page/module-page.component';
-import { UiDefaultComponent } from './ui-default/ui-default.component';
+import { UiBaseComponent } from './ui-base/ui-base.component';
+import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
 
-const pkgName = 'ui-default';
+const pkgName = 'ui-base';
 const routes: Routes = [
   {
     path: '',
-    component: UiDefaultComponent,
+    component: UiBaseComponent,
     data: {
       pkg: pkgName,
-      file: 'assets/docs/@ngx-kit/ui-base.json',
+      file: 'assets/docs/ui-base-src.json',
     },
     resolve: {
       content: ContentResolverService,
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'module/:name',
-        component: ModulePageComponent,
+        component: UiModulePageComponent,
         data: {
           pkg: pkgName,
         },
@@ -44,5 +44,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UiDefaultRoutingModule {
+export class UiBaseRoutingModule {
 }

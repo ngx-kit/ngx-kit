@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { KitFullModule } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
-import { UiDefaultFullModule } from '@ngx-kit/ui-default';
-import { demoComponents } from '../demo/ui-default-src/demo';
+import { demo } from 'ui-base-src/src/app/package/demo/demo';
+import { lib } from 'ui-base-src/src/app/package/lib/lib';
 import { ApiComponent } from './api/api.component';
 import { ContentMenuComponent } from './content-menu/content-menu.component';
 import { DemoComponent } from './demo/demo.component';
@@ -12,8 +13,10 @@ import { DocsPageComponent } from './docs-page/docs-page.component';
 import { MdComponent } from './md/md.component';
 import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
+import { KitAccordionModule } from './ws-kit/accordion/kit-accordion.module';
+import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
 
-const exported = [
+const exp = [
   DocsPageComponent,
   MdComponent,
   DemoComponent,
@@ -21,6 +24,10 @@ const exported = [
   ApiComponent,
   ContentMenuComponent,
   ModulePageComponent,
+];
+const wsKit = [
+  KitAccordionModule,
+  KitTabsModule,
 ];
 
 @NgModule({
@@ -30,17 +37,20 @@ const exported = [
     ReactiveFormsModule,
     RouterModule,
     StylerModule,
-    UiDefaultFullModule,
+    KitFullModule,
+    ...wsKit,
+    ...lib,
   ],
   declarations: [
-    ...exported,
-    ...demoComponents,
+    ...exp,
+    ...demo,
   ],
   exports: [
-    ...exported,
+    ...exp,
+    ...wsKit,
   ],
   entryComponents: [
-    ...demoComponents,
+    ...demo,
   ],
 })
 export class SharedModule {

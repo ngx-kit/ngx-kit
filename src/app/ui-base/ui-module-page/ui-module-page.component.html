@@ -1,0 +1,17 @@
+<ng-container *ngIf="module.docs.length > 0">
+  <app-md *ngFor="let doc of module.docs" [post]="doc"></app-md>
+</ng-container>
+
+<h2>Installation</h2>
+
+<pre><code>ngx-kit get ui-base:{{ module.name }} DEST_DIR</code></pre>
+
+<ng-container *ngIf="module.api.length > 0">
+  <h2>API</h2>
+  <app-api *ngFor="let api of module.api" [rawApi]="api"></app-api>
+</ng-container>
+
+<ng-container *ngIf="module.demo.length > 0">
+  <h2>Demo</h2>
+  <app-demo *ngFor="let demo of module.demo" [demo]="demo"></app-demo>
+</ng-container>

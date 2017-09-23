@@ -110,13 +110,19 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      [
+        "app",
+        "wsKit"
+      ],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      [
+        "app",
+        "ws-kit"
+      ],
       "kebab-case"
     ],
     "use-input-property-decorator": true,

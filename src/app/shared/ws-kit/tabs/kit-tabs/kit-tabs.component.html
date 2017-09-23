@@ -1,0 +1,17 @@
+<ul class="nav">
+  <li *ngFor="let tab of tabs; let index = index"
+      [kitClass]="{active: index === active}"
+      class="tab"
+      (click)="setActive(index)">
+    {{ tab.title }}
+  </li>
+</ul>
+<div class="panel">
+  <kit-slide-host [animation]="slideAnimation">
+    <ng-container *ngFor="let tab of tabs; let index = index">
+      <kit-slide *ngIf="index === active">
+        <ng-container *ngTemplateOutlet="tab.templateRef"></ng-container>
+      </kit-slide>
+    </ng-container>
+  </kit-slide-host>
+</div>

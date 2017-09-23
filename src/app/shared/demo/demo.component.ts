@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { demoComponentsRef } from '../../demo/ui-default-src/demo';
+import { demo } from 'ui-base-src/src/app/package/demo/demo';
 import { DemoStyle } from './demo.style';
 
 @Component({
@@ -34,7 +34,8 @@ export class DemoComponent implements OnChanges {
     if (!this.demo) {
       throw new Error('Demo is not passed!');
     }
-    this.class = demoComponentsRef[this.demo.class];
+    this.class = demo.find(d => Reflect.get(d, 'name') === this.demo.class);
+    console.log('class', this.class);
     this.readme = this.md.render(this.demo.readme);
     this.code = this.demo.code.reduce((prev, file) => ({
       ...prev,

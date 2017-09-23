@@ -6,13 +6,12 @@
   <ng-container *ngComponentOutlet="class"></ng-container>
 </div>
 <div styler="code">
-  <ui-tabs>
-    <ui-tabs-panel *ngFor="let file of demo.code"
-                   [title]="file.file">
-      <pre><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
-                 [innerHtml]="code[file.file]">
+  <ws-kit-tabs>
+    <ws-kit-tabs-panel *ngFor="let file of demo.code"
+                       [title]="file.file">
+      <pre styler="codeSrc"><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
+              [innerHtml]="code[file.file]">
       </code></pre>
-      <a href="#">Edit</a>
-    </ui-tabs-panel>
-  </ui-tabs>
+    </ws-kit-tabs-panel>
+  </ws-kit-tabs>
 </div>

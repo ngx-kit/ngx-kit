@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UiDefaultThemeDefaultParams, UiDefaultThemeService } from '@ngx-kit/ui-default';
 
 @Injectable()
 export class ThemeService {
@@ -14,13 +13,9 @@ export class ThemeService {
     sideMenuInverted: boolean;
   };
 
-  constructor(private defTheme: UiDefaultThemeService) {
-  }
-
   applyTheme(name: string) {
     switch (name) {
       case 'default': {
-        const preset = new UiDefaultThemeDefaultParams();
         this.params = {
           sideWidth: 240,
           contentColor: '#fff',

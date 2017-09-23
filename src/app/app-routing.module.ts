@@ -12,8 +12,8 @@ const routes: Routes = [
     loadChildren: './kit/kit.module#KitModule',
   },
   {
-    path: 'ui-default',
-    loadChildren: './ui-default/ui-default.module#UiDefaultModule',
+    path: 'ui-base',
+    loadChildren: './ui-base/ui-base.module#UiBaseModule',
   },
 ];
 
