@@ -3,12 +3,14 @@ title: Overview
 apiOrder: 1
 ---
 
-# Overview
+# Ngx-kit overview
 
 Low level components and services for creating Angular UI-kits.
 
 ## Features
 
+* Set of helpers without styling
+* Cli-tool
 * AOT-support
 * platform-server support
 * Free and open-source
@@ -16,7 +18,8 @@ Low level components and services for creating Angular UI-kits.
 
 ## Installation
 
-TBD
+* Core: `npm install @ngx-kit/ngx-kit @ngx-kit/styler`
+* Cli: `npm install @ngx-kit/cli -g`
 
 ## Usage
 

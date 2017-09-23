@@ -3,6 +3,8 @@ title: Importing
 apiOrder: 2
 ---
 
+# How to import ngx-kit
+
 You can import all modules using `KitFullModule` or import only required modules.
 
 ## `KitFull*Module`
