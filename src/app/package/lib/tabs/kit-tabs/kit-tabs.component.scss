@@ -1,0 +1,25 @@
+.nav {
+  background: #eeeeee;
+  color: #333333;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab {
+  padding: 8px 8px;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: .25s;
+  transition-property: background, border;
+  &:hover {
+    background: #e4e4e4;
+    border-bottom-color: #eeeeee;
+  }
+  &.active {
+    border-bottom-color: #2399e5;
+  }
+}

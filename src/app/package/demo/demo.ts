@@ -19,6 +19,7 @@ import { DemoInputDefaultComponent } from './input/demo-input-default/demo-input
 import { DemoInputMathComponent } from './input/demo-input-math/demo-input-math.component';
 import { DemoInputRadioComponent } from './input/demo-input-radio/demo-input-radio.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
+import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
 
 export const demo = [
@@ -49,6 +50,8 @@ export const demo = [
   DemoInputRadioComponent,
   // select
   DemoSelectDefaultComponent,
+  // tabs
+  DemoTabsDefaultComponent,
   // textarea
   DemoTextareaDefaultComponent,
 ];

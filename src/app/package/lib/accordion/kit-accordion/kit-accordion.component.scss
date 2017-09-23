@@ -7,9 +7,10 @@
   user-select: none;
   transition-duration: .25s;
   transition-property: background;
-  background: red;
+  background: #eeeeee;
+  padding: 8px 16px;
 }
 
 .content {
-  background: yellow;
+  padding: 8px 16px;
 }
