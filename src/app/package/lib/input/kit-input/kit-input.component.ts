@@ -4,7 +4,7 @@ import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware, KitMathPars
 @Component({
   // tslint:disable-next-line
   selector: 'input[kitInput]',
-  template: ``,
+  template: '',
   styleUrls: ['./kit-input.component.scss'],
   providers: [
     {

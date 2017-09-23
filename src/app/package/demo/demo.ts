@@ -18,6 +18,7 @@ import { DemoInputCheckboxComponent } from './input/demo-input-checkbox/demo-inp
 import { DemoInputDefaultComponent } from './input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './input/demo-input-math/demo-input-math.component';
 import { DemoInputRadioComponent } from './input/demo-input-radio/demo-input-radio.component';
+import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
 
 export const demo = [
   // accordion
@@ -45,4 +46,6 @@ export const demo = [
   DemoInputMathComponent,
   DemoInputCheckboxComponent,
   DemoInputRadioComponent,
+  // textarea
+  DemoTextareaDefaultComponent,
 ];
