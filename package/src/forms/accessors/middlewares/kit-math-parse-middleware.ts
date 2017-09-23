@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { mathParse } from '../math-parser';
-import { KitInputMiddleware } from '../meta';
+import { mathParse } from '../../math-parser';
+import { KitInputMiddleware } from '../../meta';
 
 @Injectable()
 export class KitMathParseMiddleware implements KitInputMiddleware {

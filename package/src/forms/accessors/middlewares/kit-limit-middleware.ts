@@ -1,5 +1,5 @@
 import { Injectable, Renderer2 } from '@angular/core';
-import { KitInputMiddleware } from '../meta';
+import { KitInputMiddleware } from '../../meta';
 
 @Injectable()
 export class KitLimitMiddleware implements KitInputMiddleware {

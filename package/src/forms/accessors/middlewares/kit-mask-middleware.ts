@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KitInputMiddleware } from '../meta';
+import { KitInputMiddleware } from '../../meta';
 
 /**
  * Currently not working
