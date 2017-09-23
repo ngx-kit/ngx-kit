@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "node release && npm run publish",
-    "publish": "npm publish ./dist/release --access=public"
+    "publish": "npm publish ./dist/release --access=public",
+    "copy": "ngx-kit copy"
   },
   "private": true,
   "dependencies": {

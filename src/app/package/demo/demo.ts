@@ -21,6 +21,9 @@ import { DemoInputRadioComponent } from './input/demo-input-radio/demo-input-rad
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
+import { DemoTooltipColorComponent } from './tooltip/demo-tooltip-color/demo-tooltip-color.component';
+import { DemoTooltipDefaultComponent } from './tooltip/demo-tooltip-default/demo-tooltip-default.component';
+import { DemoTooltipPositionComponent } from './tooltip/demo-tooltip-position/demo-tooltip-position.component';
 
 export const demo = [
   // accordion
@@ -54,4 +57,8 @@ export const demo = [
   DemoTabsDefaultComponent,
   // textarea
   DemoTextareaDefaultComponent,
+  // tooltip
+  DemoTooltipDefaultComponent,
+  DemoTooltipPositionComponent,
+  DemoTooltipColorComponent,
 ];
