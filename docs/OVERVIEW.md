@@ -1,3 +1,8 @@
+---
+title: Overview
+apiOrder: 1
+---
+
 # @ngx-kit/ui-base overview
 
 Angular components presets based on ngx-kit.
@@ -10,7 +15,9 @@ Ui-base is set of prepared and simplified components. Just copy component to you
 
 ## Usage
 
-* Install: `npm install @ngx-kit/ngx-kit @ngx-kit/styler --save`, `npm install  @ngx-kit/cli @ngx-kit/ui-base --save-dev`
+* Install ngx-kit core: `npm install @ngx-kit/ngx-kit @ngx-kit/styler --save`
+* Install ngx-kit cli: `npm install @ngx-kit/cli -g`
+* Install ui-base: `@ngx-kit/ui-base --save-dev` 
 * Import ngx-kit lib: MORE_INFO_LINK
 * Copy component to your kit or project:  `ngx-kit copy ui-base:COMPONENT_NAME DESTINATION_DIR`
 * Do with the code what you want :)
