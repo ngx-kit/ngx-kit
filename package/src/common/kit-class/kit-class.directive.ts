@@ -1,4 +1,5 @@
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { KitClassSetter } from '../meta';
 import { KitClassService } from './kit-class.service';
 
 @Directive({
@@ -6,7 +7,7 @@ import { KitClassService } from './kit-class.service';
   providers: [KitClassService],
 })
 export class KitClassDirective implements OnChanges {
-  @Input() kitClass: any;
+  @Input() kitClass: KitClassSetter;
 
   constructor(private service: KitClassService) {
   }
