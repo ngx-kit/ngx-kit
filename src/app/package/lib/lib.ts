@@ -3,6 +3,7 @@ import { KitAlertModule } from './alert/kit-alert.module';
 import { KitBadgeModule } from './badge/kit-badge.module';
 import { KitButtonModule } from './button/kit-button.module';
 import { KitInputModule } from './input/kit-input.module';
+import { KitSelectModule } from './select/kit-select.module';
 import { KitTextareaModule } from './textarea/kit-textarea.module';
 
 export const lib = [
@@ -11,5 +12,6 @@ export const lib = [
   KitBadgeModule,
   KitButtonModule,
   KitInputModule,
+  KitSelectModule,
   KitTextareaModule,
 ];
