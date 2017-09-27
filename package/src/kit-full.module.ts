@@ -4,12 +4,14 @@ import { KitCollapseModule } from './collapse/kit-collapse.module';
 import { KitCommonModule } from './common/kit-common.module';
 import { KitFormsModule } from './forms/kit-forms.module';
 import { KitIconsModule } from './icons/kit-icons.module';
+import { KitLoadingBarModule } from './loading-bar/kit-loading-bar.module';
 import { KitOverlayModule } from './overlay/kit-overlay.module';
 import { KitSlideModule } from './slide/kit-slide.module';
 
 const initableModules = [
   StylerModule,
   KitIconsModule,
+  KitLoadingBarModule,
   KitOverlayModule,
 ];
 const simpleModules = [
@@ -23,6 +25,7 @@ const simpleModules = [
   imports: [
     StylerModule.forRoot(),
     KitIconsModule.forRoot(),
+    KitLoadingBarModule.forRoot(),
     KitOverlayModule.forRoot(),
     ...simpleModules,
   ],

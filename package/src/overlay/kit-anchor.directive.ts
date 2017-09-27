@@ -7,7 +7,6 @@ import {
   Input,
   OnInit,
   Output,
-  Renderer2,
 } from '@angular/core';
 
 @Directive({
@@ -22,8 +21,7 @@ export class KitAnchorDirective implements OnInit {
   private _opened: boolean;
 
   constructor(private elementRef: ElementRef,
-              private cdr: ChangeDetectorRef,
-              private renderer: Renderer2) {
+              private cdr: ChangeDetectorRef) {
   }
 
   get nativeEl() {
