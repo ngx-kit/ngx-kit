@@ -18,6 +18,7 @@ import { DemoInputCheckboxComponent } from './input/demo-input-checkbox/demo-inp
 import { DemoInputDefaultComponent } from './input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './input/demo-input-math/demo-input-math.component';
 import { DemoInputRadioComponent } from './input/demo-input-radio/demo-input-radio.component';
+import { DemoLoadingBarDefaultComponent } from './loading-bar/demo-accordion-default/demo-loading-bar-default.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
@@ -51,6 +52,8 @@ export const demo = [
   DemoInputMathComponent,
   DemoInputCheckboxComponent,
   DemoInputRadioComponent,
+  // loading-bar
+  DemoLoadingBarDefaultComponent,
   // select
   DemoSelectDefaultComponent,
   // tabs
