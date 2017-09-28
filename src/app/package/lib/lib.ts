@@ -8,6 +8,7 @@ import { KitSelectModule } from './select/kit-select.module';
 import { KitTabsModule } from './tabs/kit-tabs.module';
 import { KitTextareaModule } from './textarea/kit-textarea.module';
 import { KitTooltipModule } from './tooltip/kit-tooltip.module';
+import { KitModalModule } from './modal/kit-modal.module';
 
 export const lib = [
   KitAccordionModule,
@@ -16,6 +17,7 @@ export const lib = [
   KitButtonModule,
   KitInputModule,
   KitLoadingBarModule,
+  KitModalModule,
   KitSelectModule,
   KitTabsModule,
   KitTextareaModule,
