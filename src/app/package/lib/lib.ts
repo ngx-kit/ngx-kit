@@ -4,11 +4,12 @@ import { KitBadgeModule } from './badge/kit-badge.module';
 import { KitButtonModule } from './button/kit-button.module';
 import { KitInputModule } from './input/kit-input.module';
 import { KitLoadingBarModule } from './loading-bar/kit-loading-bar.module';
+import { KitModalModule } from './modal/kit-modal.module';
+import { KitNotificationModule } from './notification/kit-notification.module';
 import { KitSelectModule } from './select/kit-select.module';
 import { KitTabsModule } from './tabs/kit-tabs.module';
 import { KitTextareaModule } from './textarea/kit-textarea.module';
 import { KitTooltipModule } from './tooltip/kit-tooltip.module';
-import { KitModalModule } from './modal/kit-modal.module';
 
 export const lib = [
   KitAccordionModule,
@@ -18,6 +19,7 @@ export const lib = [
   KitInputModule,
   KitLoadingBarModule,
   KitModalModule,
+  KitNotificationModule,
   KitSelectModule,
   KitTabsModule,
   KitTextareaModule,

@@ -20,6 +20,9 @@ import { DemoInputMathComponent } from './input/demo-input-math/demo-input-math.
 import { DemoInputRadioComponent } from './input/demo-input-radio/demo-input-radio.component';
 import { DemoLoadingBarDefaultComponent } from './loading-bar/demo-accordion-default/demo-loading-bar-default.component';
 import { DemoModalDefaultComponent } from './modal/demo-modal-default/demo-modal-default.component';
+import { DemoNotificationDefaultComponent } from './notification/notification-demo-default/demo-notification-default.component';
+import { DemoNotificationDurationComponent } from './notification/notification-demo-duration/demo-notification-duration.component';
+import { DemoNotificationPositionComponent } from './notification/notification-demo-position/demo-notification-position.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
@@ -57,6 +60,10 @@ export const demo = [
   DemoLoadingBarDefaultComponent,
   // modal
   DemoModalDefaultComponent,
+  // notification
+  DemoNotificationDefaultComponent,
+  DemoNotificationPositionComponent,
+  DemoNotificationDurationComponent,
   // select
   DemoSelectDefaultComponent,
   // tabs
