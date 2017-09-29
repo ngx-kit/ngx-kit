@@ -8,8 +8,16 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { KitMultiOutletType } from './meta';
+import { KitMultiOutletType } from '../meta';
 
+/**
+ *
+ * Usage:
+ *
+ * ```html
+ * <ng-container *kitMultiOutlet="Class; params: {first: 1, second: 2}"></ng-container>
+ * ```
+ */
 @Directive({
   selector: '[kitMultiOutlet]',
 })
