@@ -23,6 +23,8 @@ import { DemoModalDefaultComponent } from './modal/demo-modal-default/demo-modal
 import { DemoNotificationDefaultComponent } from './notification/notification-demo-default/demo-notification-default.component';
 import { DemoNotificationDurationComponent } from './notification/notification-demo-duration/demo-notification-duration.component';
 import { DemoNotificationPositionComponent } from './notification/notification-demo-position/demo-notification-position.component';
+import { DemoRatingDefaultComponent } from './rating/demo-rating-default/demo-rating-default.component';
+import { DemoRatingIconComponent } from './rating/demo-rating-icon/demo-rating-icon.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
@@ -64,6 +66,9 @@ export const demo = [
   DemoNotificationDefaultComponent,
   DemoNotificationPositionComponent,
   DemoNotificationDurationComponent,
+  // rating
+  DemoRatingDefaultComponent,
+  DemoRatingIconComponent,
   // select
   DemoSelectDefaultComponent,
   // tabs
