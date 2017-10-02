@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { KitIconComponent } from './kit-icon.component';
+import { KitIconComponent } from './kit-icon/kit-icon.component';
 import { KitIconsRegistryService } from './kit-icons-registry.service';
 
 const exports = [
