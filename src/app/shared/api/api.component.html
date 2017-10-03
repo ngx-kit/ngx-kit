@@ -1,6 +1,6 @@
 <h3 styler="head">
   <code *ngIf="api.type === 'Component' || api.type === 'Directive'">{{ api.selector }}</code>
-  <code *ngIf="api.type === 'Injectable'">{{ api.className }}</code>
+  <code *ngIf="api.type === 'Injectable'">{{ api.class }}</code>
 </h3>
 <div *ngIf="api.doc.comment" [innerHtml]="api.doc.comment"></div>
 <ng-container *ngIf="api.inputs.length > 0">

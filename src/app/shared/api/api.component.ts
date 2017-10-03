@@ -77,7 +77,7 @@ export class ApiComponent implements OnChanges {
     this.methods = [
       ...this.methods,
       ...api.methods
-          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+          .filter(m => api.type === 'Injectable' || m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
           .map(m => {
             const type = m.type ? `: ${this.convertType(m.type)}` : '';
             const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
