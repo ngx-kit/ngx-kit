@@ -5,7 +5,7 @@ apiOrder: 1
 
 # Ngx-kit overview
 
-Low level components and services for creating Angular UI-kits.
+Low level components and services for creating Angular UI kit.
 
 ## Features
 

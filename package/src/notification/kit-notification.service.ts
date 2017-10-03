@@ -1,4 +1,4 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { uuid } from '../util/uuid';
@@ -56,11 +56,6 @@ export class KitNotificationService {
 
   /**
    * Configure notification service.
-   *
-   * | Property | Type | Default | Description |
-   * | --- | --- | --- | --- |
-   * | *duration* | `number` | `4000` | How long to display a notification |
-   * | *position* | `string` | `'top-right'` | Where to stack notifications |
    *
    * @publicApi
    */

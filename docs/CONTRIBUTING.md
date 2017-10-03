@@ -5,6 +5,34 @@ apiOrder: 100
 
 # Contributing to ngx-kit
 
+## Docs
+
+* Create README.md for any module.
+* Write jsDoc for services, components and directives.
+  * Mark component/directive methods with `@publicApi` in jsDoc, if you want do display method in website documentation.
+  * Add service public method will be displayed in website documentation.
+  * Use `@apiOrder` in jsDoc for sort services/components/directives in website documentation.  
+
+
+
+## Best Practices
+
+Common component delivered to a project by npm as a package. It means that you can't modify it's code directly.
+
+Remember in most cases ngx-kit common components used for creating ui kits that will be used by end user. 
+
+### Do not hide any elements or components inside 
+
+You should give direct access to all components or html elements. It is important for easy modification, event binding, ARIA customizing. 
+
+### Service better then directive or component
+
+If you could place some logic inside service - do it. User should provide service by local component's providers.
+
+For example `kit-overlay-position.service`. It could be some wrapper-component with same functionality, but result code would be redundant. 
+
+
+
 ## Commit Message Guidelines
 
 ### Commit Message Format
@@ -39,7 +67,7 @@ Must be one of the following:
 
 ### Scope
 
-The scope should be the name of the module affected (**core**, **buttons** etc).
+The scope should be the name of the module affected (**common**, **overlay** etc).
 
 There is currently few exception to the "use module name" rule:
 
