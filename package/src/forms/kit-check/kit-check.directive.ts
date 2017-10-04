@@ -13,7 +13,7 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
 /**
  * Adds to any element ValueAccessor and checkbox/radio behavior.
  * When is checked - adds class "checked" to the element.
- * For change value directive listen click event.
+ * For a value changing the directive listen click event.
  */
 @Directive({
   selector: '[kitCheck]',
