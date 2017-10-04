@@ -1,24 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { StylerModule } from '@ngx-kit/styler';
-import { KitSlideHostComponent } from './kit-slide-host.component';
-import { KitSlideComponent } from './kit-slide.component';
+import { KitSlideDirective } from './kit-slide/kit-slide.directive';
 
-const exports = [
-  KitSlideComponent,
-  KitSlideHostComponent,
+const exp = [
+  KitSlideDirective,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    StylerModule,
   ],
   exports: [
-    ...exports,
+    ...exp,
   ],
   declarations: [
-    ...exports,
+    ...exp,
   ],
   entryComponents: [],
   providers: [],
