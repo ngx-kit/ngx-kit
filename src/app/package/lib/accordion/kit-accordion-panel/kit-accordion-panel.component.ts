@@ -1,33 +1,20 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, TemplateRef, ViewChild, } from '@angular/core';
-import { KitCollapseId, uuid } from '@ngx-kit/ngx-kit';
+import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
+import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
 
 /**
+ * Accordion panel.
+ *
  * @apiOrder 2
  */
 @Component({
   selector: 'kit-accordion-panel,[kitAccordionPanel]',
-  template: `
-    <ng-template #content>
-      <ng-content></ng-content>
-    </ng-template>
-  `,
+  template: '<ng-content></ng-content>',
+  styleUrls: ['./kit-accordion-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    KitCollapseItemService,
+  ],
 })
-export class KitAccordionPanelComponent implements OnInit {
-  @ViewChild('content') contentRef: TemplateRef<any>;
-
-  @Input() id: KitCollapseId;
-
+export class KitAccordionPanelComponent {
   @Input() kitAccordionPanel: void;
-
-  @Input() title: string;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-    if (!this.id) {
-      this.id = uuid();
-    }
-  }
 }

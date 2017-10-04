@@ -1,34 +1,25 @@
-import {
-  AfterContentInit,
-  ChangeDetectionStrategy,
-  Component,
-  ContentChildren,
-  forwardRef,
-  Input,
-  OnInit,
-  QueryList,
-} from '@angular/core';
-import { handleCollapseId, KitCollapseId } from '@ngx-kit/ngx-kit';
-import { KitAccordionPanelComponent } from '../kit-accordion-panel/kit-accordion-panel.component';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, } from '@angular/core';
+import { KitCollapseHostService } from '@ngx-kit/ngx-kit';
 
 /**
- * @todo ngModel for expandedId
+ * Main accordion component.
  *
  * @apiOrder 1
  */
 @Component({
   selector: 'kit-accordion,[kitAccordion]',
-  templateUrl: './kit-accordion.template.html',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./kit-accordion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    KitCollapseHostService,
+  ],
 })
-export class KitAccordionComponent implements OnInit, AfterContentInit {
+export class KitAccordionComponent implements OnInit, OnChanges {
   /**
    * Automatically open first panel.
    */
-  @Input() expandFirst = true;
-
-  @Input() expandedId: KitCollapseId | KitCollapseId[];
+  @Input() activateFirst = false;
 
   @Input() kitAccordion: void;
 
@@ -37,18 +28,18 @@ export class KitAccordionComponent implements OnInit, AfterContentInit {
    */
   @Input() multiple = false;
 
-  @ContentChildren(forwardRef(() => KitAccordionPanelComponent)) panels: QueryList<KitAccordionPanelComponent>;
+  constructor(private host: KitCollapseHostService) {
+  }
 
-  ngAfterContentInit() {
-    if (this.expandFirst && !this.expandedId) {
-      this.handleToggle(this.panels.first.id);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['multiple']) {
+      this.host.multiple = this.multiple;
     }
   }
 
   ngOnInit() {
-  }
-
-  handleToggle(id: KitCollapseId) {
-    this.expandedId = handleCollapseId(this.expandedId, id, this.multiple);
+    if (this.activateFirst) {
+      this.host.activateFirst();
+    }
   }
 }
