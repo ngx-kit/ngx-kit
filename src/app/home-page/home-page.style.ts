@@ -8,12 +8,20 @@ export class HomePageStyle implements ComponentStyle {
 
   brand(): StyleDef {
     return {
-      textAlign: 'center',
-      fontSize: '3rem',
+      textAlign: 'left',
+      fontSize: '3.2rem',
       color: '#ccc',
-      padding: [32, 0],
+      padding: [32, 16],
       margin: 0,
+      background: '#444',
     }
+  }
+
+  brandPrefix(): StyleDef {
+    return {
+      fontSize: '1.5rem',
+      display: 'block',
+    };
   }
 
   footer(): StyleDef {
@@ -35,8 +43,9 @@ export class HomePageStyle implements ComponentStyle {
 
   layoutContent(): StyleDef {
     return {
-      display: 'block',
+      display: 'flex',
       background: '#222',
+      alignItems: 'center',
     };
   }
 

@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:700');
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Lato', Arial;
+  font-family: 'Merriweather+Sans', Arial;
   font-size: 14px;
 }
 
 button, input, textarea, select {
-  font-family: 'Lato', Arial;
+  font-family: 'Merriweather+Sans', Arial;
+}
+
+h1, h2 {
+  font-family: Merriweather;
+  font-weight: 700;
 }
 
 table {
