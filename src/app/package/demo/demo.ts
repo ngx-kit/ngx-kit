@@ -1,4 +1,7 @@
 import { DemoAccordionDefaultComponent } from './accordion/demo-accordion-default/demo-accordion-default.component';
+import { DemoAccordionFirstComponent } from './accordion/demo-accordion-first/demo-accordion-first.component';
+import { DemoAccordionGenComponent } from './accordion/demo-accordion-gen/demo-accordion-gen.component';
+import { DemoAccordionMultipleComponent } from './accordion/demo-accordion-multiple/demo-accordion-multiple.component';
 import { DemoAlertClosableComponent } from './alert/demo-alert-closable/demo-alert-closable.component';
 import { DemoAlertColorComponent } from './alert/demo-alert-color/demo-alert-color.component';
 import { DemoAlertDefaultComponent } from './alert/demo-alert-default/demo-alert-default.component';
@@ -14,6 +17,8 @@ import { DemoButtonGroupDefaultComponent } from './button/demo-button-group-defa
 import { DemoButtonGroupRadioComponent } from './button/demo-button-group-radio/demo-button-group-radio.component';
 import { DemoButtonGroupVerticalComponent } from './button/demo-button-group-vertical/demo-button-group-vertical.component';
 import { DemoButtonSizeComponent } from './button/demo-button-size/demo-button-size.component';
+import { DemoCarouselDefaultComponent } from './carousel/demo-carousel-default/demo-carousel-default.component';
+import { DemoCarouselGenComponent } from './carousel/demo-carousel-gen/demo-carousel-gen.component';
 import { DemoInputCheckboxComponent } from './input/demo-input-checkbox/demo-input-checkbox.component';
 import { DemoInputDefaultComponent } from './input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './input/demo-input-math/demo-input-math.component';
@@ -27,6 +32,7 @@ import { DemoRatingDefaultComponent } from './rating/demo-rating-default/demo-ra
 import { DemoRatingIconComponent } from './rating/demo-rating-icon/demo-rating-icon.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
+import { DemoTabsGenComponent } from './tabs/demo-tabs-gen/demo-tabs-gen.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
 import { DemoTooltipColorComponent } from './tooltip/demo-tooltip-color/demo-tooltip-color.component';
 import { DemoTooltipDefaultComponent } from './tooltip/demo-tooltip-default/demo-tooltip-default.component';
@@ -35,6 +41,9 @@ import { DemoTooltipPositionComponent } from './tooltip/demo-tooltip-position/de
 export const demo = [
   // accordion
   DemoAccordionDefaultComponent,
+  DemoAccordionMultipleComponent,
+  DemoAccordionFirstComponent,
+  DemoAccordionGenComponent,
   // alert
   DemoAlertDefaultComponent,
   DemoAlertColorComponent,
@@ -53,6 +62,9 @@ export const demo = [
   DemoButtonGroupVerticalComponent,
   DemoButtonGroupCheckboxComponent,
   DemoButtonGroupRadioComponent,
+  /// carousel
+  DemoCarouselDefaultComponent,
+  DemoCarouselGenComponent,
   // input
   DemoInputDefaultComponent,
   DemoInputMathComponent,
@@ -73,6 +85,7 @@ export const demo = [
   DemoSelectDefaultComponent,
   // tabs
   DemoTabsDefaultComponent,
+  DemoTabsGenComponent,
   // textarea
   DemoTextareaDefaultComponent,
   // tooltip
