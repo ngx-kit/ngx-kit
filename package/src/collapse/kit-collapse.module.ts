@@ -1,24 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { StylerModule } from '@ngx-kit/styler';
-import { KitCollapseGroupComponent } from './kit-collapse-group.component';
-import { KitCollapseComponent } from './kit-collapse.component';
+import { KitCollapseDirective } from './kit-collapse/kit-collapse.directive';
 
-const exports = [
-  KitCollapseComponent,
-  KitCollapseGroupComponent,
+const exp = [
+  KitCollapseDirective,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    StylerModule,
   ],
   exports: [
-    ...exports,
+    ...exp,
   ],
   declarations: [
-    ...exports,
+    ...exp,
   ],
   entryComponents: [],
   providers: [],
