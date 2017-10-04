@@ -33,7 +33,19 @@ table td {
   text-align: left;
 }
 
+pre, code {
+  background: #f7f7f7;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 92%;
+}
+
 pre {
   margin: 0;
+  padding: 8px;
+}
+
+pre code {
+  background: transparent;
   padding: 0;
 }

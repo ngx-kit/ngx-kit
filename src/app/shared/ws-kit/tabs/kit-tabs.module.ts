@@ -1,21 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitCommonModule, KitSlideModule } from '@ngx-kit/ngx-kit';
-import { StylerModule } from '@ngx-kit/styler';
-import { KitTabsPanelComponent } from './kit-tabs-panel/kit-tabs-panel.component';
+import { KitSlideModule } from '@ngx-kit/ngx-kit';
+import { KitTabsContentComponent } from './kit-tabs-content/kit-tabs-content.component';
+import { KitTabsNavComponent } from './kit-tabs-nav/kit-tabs-nav.component';
+import { KitTabsTabComponent } from './kit-tabs-tab/kit-tabs-tab.component';
 import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
 
 const exp = [
   KitTabsComponent,
-  KitTabsPanelComponent,
+  KitTabsNavComponent,
+  KitTabsTabComponent,
+  KitTabsContentComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    StylerModule,
     KitSlideModule,
-    KitCommonModule,
   ],
   exports: [
     ...exp,

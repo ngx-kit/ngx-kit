@@ -1,46 +1,35 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChildren,
-  forwardRef,
-  Input,
-  OnInit,
-  QueryList,
-  TemplateRef,
-} from '@angular/core';
-import { KitTabsPanelComponent } from '../kit-tabs-panel/kit-tabs-panel.component';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { KitSlideHostService } from '@ngx-kit/ngx-kit';
 
+/**
+ * @apiOrder 1
+ */
 @Component({
   selector: 'ws-kit-tabs,[wsKitTabs]',
-  templateUrl: './kit-tabs.component.html',
+  template: `
+    <ng-content select="ws-kit-tabs-nav"></ng-content>
+    <div class="wrapper">
+      <ng-content></ng-content>
+    </div>
+  `,
   styleUrls: ['./kit-tabs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    KitSlideHostService,
+  ],
 })
 export class KitTabsComponent implements OnInit {
-  active = 0;
+  /**
+   * Automatically activate first tab.
+   */
+  @Input() activateFirst = true;
 
-  @Input() firstActivate = true;
+  @Input() kitTabs: void;
 
-  @Input() wsKitTabs: null;
-
-  panelRef: TemplateRef<any> | null;
-
-  slideAnimation: 'slide-right' | 'slide-left' = 'slide-left';
-
-  @ContentChildren(forwardRef(() => KitTabsPanelComponent)) tabs: QueryList<KitTabsPanelComponent>;
-
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private host: KitSlideHostService) {
   }
 
   ngOnInit() {
-  }
-
-  setActive(index: number) {
-    this.slideAnimation = index < this.active ? 'slide-right' : 'slide-left';
-    setTimeout(() => {
-      this.active = index;
-      this.cdr.markForCheck();
-    }, 1);
+    this.host.activateFirst = this.activateFirst;
   }
 }

@@ -13,7 +13,6 @@ import { DocsPageComponent } from './docs-page/docs-page.component';
 import { MdComponent } from './md/md.component';
 import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
-import { KitAccordionModule } from './ws-kit/accordion/kit-accordion.module';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
 
 const exp = [
@@ -26,7 +25,6 @@ const exp = [
   ModulePageComponent,
 ];
 const wsKit = [
-  KitAccordionModule,
   KitTabsModule,
 ];
 
