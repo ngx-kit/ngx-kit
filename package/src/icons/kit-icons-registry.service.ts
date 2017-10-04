@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -35,7 +35,7 @@ export class KitIconsRegistryService {
 
   private icons: KitIcon[] = [];
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   cloneSvg(svg: SVGElement): SVGElement {
@@ -55,8 +55,7 @@ export class KitIconsRegistryService {
       if (cached) {
         return Observable.of(this.cloneSvg(cached.svg));
       } else {
-        return this.http.get(icon.url)
-            .map(r => r.text())
+        return this.http.get(icon.url, {responseType: 'text'})
             .map(this.svgElementFromString)
             .do(svg => this.cache.push({name, svg: svg}))
             .map(this.cloneSvg)
