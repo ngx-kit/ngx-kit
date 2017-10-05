@@ -11,6 +11,10 @@ export class KitCollapseItemService implements OnDestroy {
     this.id = uuid();
   }
 
+  get active(): boolean {
+    return this.host.isActive(this.id);
+  }
+
   set active(active: boolean) {
     if (this.active) {
       this.host.deactivate(this._id);

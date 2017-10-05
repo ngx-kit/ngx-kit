@@ -48,6 +48,11 @@ export class KitCollapseHostService {
     this.ids.delete(id);
   }
 
+  isActive(id: KitCollapseId): boolean {
+    const current = this._active$.value;
+    return current.has(id);
+  }
+
   toggle(id: KitCollapseId) {
     const current = this._active$.value;
     if (current.has(id)) {
