@@ -32,6 +32,8 @@ import { DemoRatingDefaultComponent } from './rating/demo-rating-default/demo-ra
 import { DemoRatingIconComponent } from './rating/demo-rating-icon/demo-rating-icon.component';
 import { DemoSelectDefaultComponent } from './select/demo-select-default/demo-select-default.component';
 import { DemoSideMenuDefaultComponent } from './side-menu/demo-side-menu-default/demo-side-menu-default.component';
+import { DemoSliderDefaultComponent } from './slider/demo-slider-default/demo-slider-default.component';
+import { DemoSliderRangeComponent } from './slider/demo-slider-range/demo-slider-range.component';
 import { DemoTabsDefaultComponent } from './tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTabsGenComponent } from './tabs/demo-tabs-gen/demo-tabs-gen.component';
 import { DemoTextareaDefaultComponent } from './textarea/demo-textarea-default/demo-textarea-default.component';
@@ -86,6 +88,9 @@ export const demo = [
   DemoSelectDefaultComponent,
   // side-menu
   DemoSideMenuDefaultComponent,
+  // slider
+  DemoSliderDefaultComponent,
+  DemoSliderRangeComponent,
   // tabs
   DemoTabsDefaultComponent,
   DemoTabsGenComponent,

@@ -10,6 +10,7 @@ import { KitNotificationModule } from './notification/kit-notification.module';
 import { KitRatingModule } from './rating/kit-rating.module';
 import { KitSelectModule } from './select/kit-select.module';
 import { KitSideMenuModule } from './side-menu/kit-side-menu.module';
+import { KitSliderModule } from './slider/kit-slider.module';
 import { KitTabsModule } from './tabs/kit-tabs.module';
 import { KitTextareaModule } from './textarea/kit-textarea.module';
 import { KitTooltipModule } from './tooltip/kit-tooltip.module';
@@ -27,6 +28,7 @@ export const lib = [
   KitRatingModule,
   KitSelectModule,
   KitSideMenuModule,
+  KitSliderModule,
   KitTabsModule,
   KitTextareaModule,
   KitTooltipModule,
