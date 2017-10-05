@@ -5,6 +5,7 @@ export * from './src/icons/index';
 export * from './src/loading-bar/index';
 export * from './src/notification/index';
 export * from './src/overlay/index';
+export * from './src/pointer/index';
 export * from './src/slide/index';
 export * from './src/util/index';
 export * from './src/kit-full.module';

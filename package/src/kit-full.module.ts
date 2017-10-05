@@ -7,6 +7,7 @@ import { KitIconsModule } from './icons/kit-icons.module';
 import { KitLoadingBarModule } from './loading-bar/kit-loading-bar.module';
 import { KitNotificationModule } from './notification/kit-notification.module';
 import { KitOverlayModule } from './overlay/kit-overlay.module';
+import { KitPointerModule } from './pointer/kit-pointer.module';
 import { KitSlideModule } from './slide/kit-slide.module';
 
 const initableModules = [
@@ -20,6 +21,7 @@ const simpleModules = [
   KitCollapseModule,
   KitCommonModule,
   KitFormsModule,
+  KitPointerModule,
   KitSlideModule,
 ];
 
