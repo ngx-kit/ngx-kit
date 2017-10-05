@@ -2,7 +2,7 @@ import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/c
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { KitStyleService } from '../common/kit-style/kit-style.service';
-import { KitAnchorDirective } from './kit-anchor.directive';
+import { KitAnchorDirective } from '../common/kit-anchor/kit-anchor.directive';
 import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from './meta';
 
 @Injectable()

@@ -2,8 +2,8 @@
 
 ## Main purpose
  
+* carousel, image slider
 * tabs component
-* sliders
 
 ## Features
 
@@ -14,5 +14,5 @@
 
 ## Examples
 
-* ui-base:slider - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/app/package/lib/slider), [demo](http://ngx-kit.com/ui-base/module/slider)
+* ui-base:carousel - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/app/package/lib/carousel), [demo](http://ngx-kit.com/ui-base/module/carousel)
 * ui-base:tabs - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/app/package/lib/tabs), [demo](http://ngx-kit.com/ui-base/module/tabs) 
