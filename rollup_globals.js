@@ -3,6 +3,7 @@ module.exports = {
   "@angular/animations": "ng.animations",
   "@angular/core": "ng.core",
   "@angular/common": "ng.common",
+  "@angular/common/http": "ng.common",
   "@angular/http": "ng.http",
   "@angular/forms": "ng.forms",
   "@angular/platform-browser": "ng.platform-browser",
