@@ -3,22 +3,7 @@ import { KitClassService } from '@ngx-kit/ngx-kit';
 
 @Component({
   selector: 'kit-rating,[kitRating]',
-  template: `
-    <ng-container *ngIf="icon">
-      <kit-icon *kitRepeat="total; let index = index"
-                [name]="icon"
-                class="icon"
-                [class.active]="index <= value">
-      </kit-icon>
-    </ng-container>
-    <ng-container *ngIf="!icon">
-        <span *kitRepeat="total; let index = index"
-              class="icon"
-              [class.active]="index <= value"
-              [innerHtml]="symbol">
-        </span>
-    </ng-container>
-  `,
+  templateUrl: './kit-rating.component.html',
   styleUrls: ['./kit-rating.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [KitClassService],
