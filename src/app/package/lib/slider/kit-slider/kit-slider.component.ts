@@ -10,8 +10,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitLinePointerMoveEvent } from '@ngx-kit/ngx-kit';
 import { Subject } from 'rxjs/Subject';
+import { KitPointerLineMoveEvent } from '@ngx-kit/ngx-kit';
 
 export const KIT_SLIDER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -65,7 +65,7 @@ export class KitSliderComponent implements ControlValueAccessor, OnInit, OnChang
   ngOnInit() {
   }
 
-  move(event: KitLinePointerMoveEvent) {
+  move(event: KitPointerLineMoveEvent) {
     console.log('pointer move', event);
     const pointerState = this.calcPointerState(event);
     if (pointerState !== this.state) {
@@ -104,7 +104,7 @@ export class KitSliderComponent implements ControlValueAccessor, OnInit, OnChang
     this.cdr.markForCheck();
   }
 
-  private calcPointerState(event: KitLinePointerMoveEvent): number {
+  private calcPointerState(event: KitPointerLineMoveEvent): number {
     const length = this.max - this.min;
     const raw = event.position / event.lineWidth * length;
     return Math.round(raw / this.step) * this.step + this.min;
