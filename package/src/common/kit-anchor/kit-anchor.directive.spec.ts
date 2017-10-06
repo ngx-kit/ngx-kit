@@ -33,10 +33,6 @@ describe('Core/AnchorDirective', () => {
   it('anchor should return nativeEl', () => {
     expect(container.anchorRef.nativeEl).toBe(anchoredDiv);
   });
-  it('should emit click', async(() => {
-    anchoredDiv.click();
-    expect(container.clicks).toBeTruthy();
-  }));
 });
 
 // Component with directive
