@@ -2,8 +2,8 @@ import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { demo } from 'ui-base-src/src/app/package/demo/demo';
 import { DemoStyle } from './demo.style';
+import { demo } from '../../../../packages/ui-base/src/app/package/demo/demo';
 
 @Component({
   selector: 'app-demo',

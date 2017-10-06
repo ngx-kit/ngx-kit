@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StylerModule } from '@ngx-kit/styler';
-import { lib } from 'ui-base-src/src/app/package/lib/lib';
+import { lib } from '../../../packages/ui-base/src/app/package/lib/lib';
 import { SharedModule } from '../shared/shared.module';
 import { UiBaseRoutingModule } from './ui-base-routing.module';
 import { UiBaseComponent } from './ui-base/ui-base.component';

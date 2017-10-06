@@ -12,7 +12,7 @@ const routes: Routes = [
     component: UiBaseComponent,
     data: {
       pkg: pkgName,
-      file: 'assets/docs/ui-base-src.json',
+      file: 'assets/docs/packages/ui-base.json',
     },
     resolve: {
       content: ContentResolverService,

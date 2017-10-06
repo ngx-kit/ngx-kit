@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { KitFullModule } from '@ngx-kit/ngx-kit';
 import { StylerModule } from '@ngx-kit/styler';
-import { demo } from 'ui-base-src/src/app/package/demo/demo';
-import { lib } from 'ui-base-src/src/app/package/lib/lib';
 import { ApiComponent } from './api/api.component';
 import { ContentMenuComponent } from './content-menu/content-menu.component';
 import { DemoComponent } from './demo/demo.component';
@@ -14,6 +12,8 @@ import { MdComponent } from './md/md.component';
 import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
+import { lib } from '../../../packages/ui-base/src/app/package/lib/lib';
+import { demo } from '../../../packages/ui-base/src/app/package/demo/demo';
 
 const exp = [
   DocsPageComponent,

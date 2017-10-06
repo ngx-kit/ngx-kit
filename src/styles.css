@@ -5,11 +5,17 @@ body {
   margin: 0;
   font-family: 'Source+Sans+Pro', Arial;
   font-size: 15px;
+  line-height: 1.35rem;
   color: #444444;
 }
 
 button, input, textarea, select {
   font-family: 'Source+Sans+Pro', Arial;
+}
+
+h2 {
+  padding: 8px 0;
+  border-bottom: 1px solid #eeeeee;
 }
 
 table {
@@ -34,14 +40,15 @@ table td {
   text-align: left;
 }
 
-pre, code {
+code {
   background: #f7f7f7;
   padding: 2px 4px;
   border-radius: 2px;
-  font-size: 85%;
+  font-size: 0.75em;
 }
 
 pre {
+  background: #f7f7f7;
   margin: 0;
   padding: 8px;
 }
