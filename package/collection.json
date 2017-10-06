@@ -1,0 +1,10 @@
+{
+  "schematics": {
+    "component": {
+      "aliases": [ "c" ],
+      "factory": "./component",
+      "description": "Create an ui-base component.",
+      "schema": "./component/schema.json"
+    }
+  }
+}
