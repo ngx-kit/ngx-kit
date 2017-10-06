@@ -36,19 +36,23 @@ switch (action) {
     // uses .ngx-kit.json
     const config = getConfig();
     // copy release files
-    config.copy.release.from.forEach(source => {
-      config.copy.release.to.forEach(dest => {
-        fs.copySync(path.resolve(source), path.resolve(dest));
-        console.log(`${source} copied to ${path.resolve(dest)}`);
+    if (config.copy.release) {
+      config.copy.release.from.forEach(source => {
+        config.copy.release.to.forEach(dest => {
+          fs.copySync(path.resolve(source), path.resolve(dest));
+          console.log(`${source} copied to ${path.resolve(dest)}`);
+        });
       });
-    });
+    }
     // copy dest files (keeps dir structure)
-    config.copy.src.from.forEach(source => {
-      config.copy.src.to.forEach(dest => {
-        fs.copySync(path.resolve(source), path.resolve(dest, source));
-        console.log(`${source} copied to ${path.resolve(dest, source)}`);
+    if (config.copy.src) {
+      config.copy.src.from.forEach(source => {
+        config.copy.src.to.forEach(dest => {
+          fs.copySync(path.resolve(source), path.resolve(dest, source));
+          console.log(`${source} copied to ${path.resolve(dest, source)}`);
+        });
       });
-    });
+    }
     break;
   case 'gen-docs':
     // format: "ngx-kit gen-docs PKG_NAME"
