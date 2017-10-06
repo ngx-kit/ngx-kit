@@ -1,6 +1,6 @@
 ---
 title: Importing
-apiOrder: 2
+apiOrder: 5
 ---
 
 # How to import ngx-kit
