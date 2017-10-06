@@ -1,10 +1,10 @@
 {
   "schematics": {
-    "component": {
-      "aliases": [ "c" ],
-      "factory": "./component",
-      "description": "Create an ui-base component.",
-      "schema": "./component/schema.json"
+    "ui-component": {
+      "aliases": [ "kc" ],
+      "factory": "./kit-component",
+      "description": "Create a kit component.",
+      "schema": "./kit-component/schema.json"
     }
   }
 }

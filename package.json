@@ -1,6 +1,6 @@
 {
   "name": "@ngx-kit/schematcs-src",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "description": "Schematics for ngx-kit",
   "keywords": [
     "angular",
@@ -13,7 +13,8 @@
     "build:tsc": "tsc -p tsconfig.json",
     "build:release": "node release",
     "publish": "npm publish ./dist/package --access=public",
-    "release": "npm run build && npm run publish"
+    "release": "npm run build && npm run publish",
+    "build-and-copy": "npm run build && ngx-kit copy"
   },
   "author": "Sasha Novik",
   "license": "MIT",
