@@ -9,17 +9,17 @@ export class HomePageStyle implements ComponentStyle {
   brand(): StyleDef {
     return {
       textAlign: 'left',
-      fontSize: '3.2rem',
+      fontSize: '3.6rem',
       color: '#ccc',
       padding: [32, 16],
       margin: 0,
-      background: '#444',
+      fontFamily: 'Droid Sans Mono',
     }
   }
 
   brandPrefix(): StyleDef {
     return {
-      fontSize: '1.5rem',
+      fontSize: '2rem',
       display: 'block',
     };
   }
