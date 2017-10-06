@@ -5,6 +5,12 @@
       "factory": "./kit-component",
       "description": "Create a kit component.",
       "schema": "./kit-component/schema.json"
+    },
+    "ui-demo": {
+      "aliases": [ "kdm" ],
+      "factory": "./kit-demo",
+      "description": "Create a kit demo.",
+      "schema": "./kit-demo/schema.json"
     }
   }
 }
