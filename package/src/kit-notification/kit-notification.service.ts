@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { uuid } from '../util/uuid';
+import { uuid } from '../kit-util/uuid';
 import { KitNotificationHostConfig, KitNotificationItem } from './meta';
 
 /**

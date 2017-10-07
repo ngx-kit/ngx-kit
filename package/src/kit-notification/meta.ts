@@ -1,4 +1,4 @@
-import { KitCoreOverlayContainerPositionCorner } from '../overlay/meta';
+import { KitCoreOverlayContainerPositionCorner } from '../kit-overlay/meta';
 
 export interface KitNotificationHostConfig {
   duration: number;
