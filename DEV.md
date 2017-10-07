@@ -1,5 +1,5 @@
 ## Gen
 
-* Component: `ng g kc --collection=@ngx-kit/schematics package/lib/$/kit-$`
-* Demo: `ng g kdm --collection=@ngx-kit/schematics package/demo/$/demo-$`
-* Module: `ng g km --collection=@ngx-kit/schematics package/lib/kit-$`
+* Module: `ng g km lib/MODULE`
+* Component: `ng g kc lib/MODULE/NAME`
+* Demo: `ng g kdm demo/MODULE/NAME`

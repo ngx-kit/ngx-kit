@@ -60,7 +60,10 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "schematics": {
+      "collection": "@ngx-kit/schematics"
+    },
+    "styleExt": "scss",
     "component": {}
   }
 }
