@@ -6,25 +6,23 @@ import { KitTabsNavComponent } from './kit-tabs-nav/kit-tabs-nav.component';
 import { KitTabsTabComponent } from './kit-tabs-tab/kit-tabs-tab.component';
 import { KitTabsComponent } from './kit-tabs/kit-tabs.component';
 
-const exp = [
-  KitTabsComponent,
-  KitTabsNavComponent,
-  KitTabsTabComponent,
-  KitTabsContentComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     KitSlideModule,
   ],
   exports: [
-    ...exp,
+    KitTabsComponent,
+    KitTabsNavComponent,
+    KitTabsTabComponent,
+    KitTabsContentComponent,
   ],
   declarations: [
-    ...exp,
+    KitTabsComponent,
+    KitTabsNavComponent,
+    KitTabsTabComponent,
+    KitTabsContentComponent,
   ],
-  providers: [],
 })
 export class KitTabsModule {
 }

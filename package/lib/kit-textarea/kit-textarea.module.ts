@@ -3,22 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { KitTextareaComponent } from './kit-textarea/kit-textarea.component';
 
-const exp = [
-  KitTextareaComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
   ],
   exports: [
-    ...exp,
+    KitTextareaComponent,
   ],
   declarations: [
-    ...exp,
+    KitTextareaComponent,
   ],
-  providers: [],
 })
 export class KitTextareaModule {
 }

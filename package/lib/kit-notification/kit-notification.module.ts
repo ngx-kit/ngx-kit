@@ -3,20 +3,16 @@ import { NgModule } from '@angular/core';
 import { KitCommonModule } from '@ngx-kit/ngx-kit';
 import { KitNotificationHostComponent } from './kit-notification-host/kit-notification-host.component';
 
-const exp = [
-  KitNotificationHostComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     KitCommonModule,
   ],
   exports: [
-    ...exp,
+    KitNotificationHostComponent,
   ],
   declarations: [
-    ...exp,
+    KitNotificationHostComponent,
   ],
 })
 export class KitNotificationModule {

@@ -6,25 +6,23 @@ import { KitAccordionPanelComponent } from './kit-accordion-panel/kit-accordion-
 import { KitAccordionTitleComponent } from './kit-accordion-title/kit-accordion-title.component';
 import { KitAccordionComponent } from './kit-accordion/kit-accordion.component';
 
-const exp = [
-  KitAccordionComponent,
-  KitAccordionPanelComponent,
-  KitAccordionTitleComponent,
-  KitAccordionContentComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     KitCollapseModule,
   ],
   exports: [
-    ...exp,
+    KitAccordionComponent,
+    KitAccordionPanelComponent,
+    KitAccordionTitleComponent,
+    KitAccordionContentComponent,
   ],
   declarations: [
-    ...exp,
+    KitAccordionComponent,
+    KitAccordionPanelComponent,
+    KitAccordionTitleComponent,
+    KitAccordionContentComponent,
   ],
-  providers: [],
 })
 export class KitAccordionModule {
 }

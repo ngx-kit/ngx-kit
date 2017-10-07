@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 import { KitCommonModule, KitIconsModule } from '@ngx-kit/ngx-kit';
 import { KitRatingComponent } from './kit-rating/kit-rating.component';
 
-const exp = [
-  KitRatingComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -14,12 +10,11 @@ const exp = [
     KitIconsModule,
   ],
   exports: [
-    ...exp,
+    KitRatingComponent,
   ],
   declarations: [
-    ...exp,
+    KitRatingComponent,
   ],
-  providers: [],
 })
 export class KitRatingModule {
 }

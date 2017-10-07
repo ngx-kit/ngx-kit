@@ -4,11 +4,6 @@ import { KitCommonModule, KitSlideModule } from '@ngx-kit/ngx-kit';
 import { KitAlertTitleComponent } from './kit-alert-title/kit-alert-title.component';
 import { KitAlertComponent } from './kit-alert/kit-alert.component';
 
-const exp = [
-  KitAlertComponent,
-  KitAlertTitleComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -16,12 +11,13 @@ const exp = [
     KitCommonModule,
   ],
   exports: [
-    ...exp,
+    KitAlertComponent,
+    KitAlertTitleComponent,
   ],
   declarations: [
-    ...exp,
+    KitAlertComponent,
+    KitAlertTitleComponent,
   ],
-  providers: [],
 })
 export class KitAlertModule {
 }

@@ -3,22 +3,18 @@ import { NgModule } from '@angular/core';
 import { KitButtonGroupComponent } from './kit-button-group/kit-button-group.component';
 import { KitButtonComponent } from './kit-button/kit-button.component';
 
-const exp = [
-  KitButtonComponent,
-  KitButtonGroupComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
   ],
   exports: [
-    ...exp,
+    KitButtonComponent,
+    KitButtonGroupComponent,
   ],
   declarations: [
-    ...exp,
+    KitButtonComponent,
+    KitButtonGroupComponent,
   ],
-  providers: [],
 })
 export class KitButtonModule {
 }

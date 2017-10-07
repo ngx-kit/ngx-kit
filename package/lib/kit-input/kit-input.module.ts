@@ -3,22 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { KitInputComponent } from './kit-input/kit-input.component';
 
-const exp = [
-  KitInputComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
   ],
   exports: [
-    ...exp,
+    KitInputComponent,
   ],
   declarations: [
-    ...exp,
+    KitInputComponent,
   ],
-  providers: [],
 })
 export class KitInputModule {
 }

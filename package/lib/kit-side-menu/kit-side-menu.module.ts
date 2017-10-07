@@ -6,23 +6,22 @@ import { KitSideMenuItemComponent } from './kit-side-menu-item/kit-side-menu-ite
 import { KitSideMenuSubComponent } from './kit-side-menu-sub/kit-side-menu-sub.component';
 import { KitSideMenuComponent } from './kit-side-menu/kit-side-menu.component';
 
-const exp = [
-  KitSideMenuComponent,
-  KitSideMenuItemComponent,
-  KitSideMenuGroupComponent,
-  KitSideMenuSubComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     KitCollapseModule,
   ],
   exports: [
-    ...exp,
+    KitSideMenuComponent,
+    KitSideMenuItemComponent,
+    KitSideMenuGroupComponent,
+    KitSideMenuSubComponent,
   ],
   declarations: [
-    ...exp,
+    KitSideMenuComponent,
+    KitSideMenuItemComponent,
+    KitSideMenuGroupComponent,
+    KitSideMenuSubComponent,
   ],
   providers: [],
 })
