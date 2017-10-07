@@ -1,14 +1,12 @@
 {
-  "name": "ui-base-src",
+  "name": "@ngx-kit/ui-base-src",
   "version": "1.0.0-beta.2",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "dev": "ng serve -a=playground",
+    "test": "ng test -a=playground",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e -a=playground",
     "release": "rimraf ./dist && node release && npm run publish",
     "publish": "npm publish ./dist/release --access=public",
     "copy": "ngx-kit copy"
@@ -33,7 +31,7 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.5",
+    "@angular/cli": "^1.5.0-beta.4",
     "@angular/compiler-cli": "^4.4.4",
     "@angular/language-service": "^4.4.4",
     "@ngx-kit/schematics": "^1.0.0-alpha.5",

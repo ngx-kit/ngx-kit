@@ -6,7 +6,7 @@
     },
     "src": {
       "from": [
-        "./src/app/package/",
+        "./package/",
         "./docs",
         "./.docs-schema.json"
       ],

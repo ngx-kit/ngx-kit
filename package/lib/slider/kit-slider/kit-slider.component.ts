@@ -66,7 +66,6 @@ export class KitSliderComponent implements ControlValueAccessor, OnInit, OnChang
   }
 
   move(event: KitPointerLineMoveEvent) {
-    console.log('pointer move', event);
     const pointerState = this.calcPointerState(event);
     if (pointerState !== this.state) {
       if (this.range) {

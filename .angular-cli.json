@@ -5,7 +5,13 @@
   },
   "apps": [
     {
-      "root": "src",
+      "name": "package",
+      "root": "package",
+      "appRoot": ""
+    },
+    {
+      "name": "playground",
+      "root": "playground",
       "outDir": "dist",
       "assets": [
         "assets",
