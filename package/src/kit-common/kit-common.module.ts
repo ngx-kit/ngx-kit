@@ -7,27 +7,25 @@ import { KitMultiOutletDirective } from './kit-multi-outlet/kit-multi-outlet.dir
 import { KitRepeatDirective } from './kit-repeat/kit-repeat.directive';
 import { KitTreeClickDirective } from './kit-tree-click.directive';
 
-const exports = [
-  KitAnchorDirective,
-  KitClassDirective,
-  KitMultiOutletDirective,
-  KitRepeatDirective,
-  KitTreeClickDirective,
-];
-
 @NgModule({
   imports: [
     CommonModule,
     StylerModule,
   ],
   exports: [
-    ...exports,
+    KitAnchorDirective,
+    KitClassDirective,
+    KitMultiOutletDirective,
+    KitRepeatDirective,
+    KitTreeClickDirective,
   ],
   declarations: [
-    ...exports,
+    KitAnchorDirective,
+    KitClassDirective,
+    KitMultiOutletDirective,
+    KitRepeatDirective,
+    KitTreeClickDirective,
   ],
-  entryComponents: [],
-  providers: [],
 })
 export class KitCommonModule {
 }

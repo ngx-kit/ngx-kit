@@ -3,10 +3,6 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitIconComponent } from './kit-icon/kit-icon.component';
 import { KitIconsRegistryService } from './kit-icons-registry.service';
 
-const exports = [
-  KitIconComponent,
-];
-
 /**
  * @todo register icons in forRoot().
  */
@@ -15,12 +11,11 @@ const exports = [
     HttpClientModule,
   ],
   exports: [
-    ...exports,
+    KitIconComponent,
   ],
   declarations: [
-    ...exports,
+    KitIconComponent,
   ],
-  providers: [],
 })
 export class KitIconsModule {
   static forRoot(): ModuleWithProviders {

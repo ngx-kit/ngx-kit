@@ -6,11 +6,6 @@ import { KitOverlayHostComponent } from './kit-overlay-host.component';
 import { KitOverlayDirective } from './kit-overlay.directive';
 import { KitOverlayService } from './kit-overlay.service';
 
-const exports = [
-  KitOverlayDirective,
-  KitOverlayHostComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,13 +13,13 @@ const exports = [
     KitCommonModule,
   ],
   exports: [
-    ...exports,
+    KitOverlayDirective,
+    KitOverlayHostComponent,
   ],
   declarations: [
-    ...exports,
+    KitOverlayDirective,
+    KitOverlayHostComponent,
   ],
-  entryComponents: [],
-  providers: [],
 })
 export class KitOverlayModule {
   static forRoot(): ModuleWithProviders {
