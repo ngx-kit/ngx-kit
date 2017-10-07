@@ -1,6 +1,6 @@
 {
   "vendors": {
-    "styler": "^1.0.0-beta.13",
+    "styler": "^1.0.0-beta.15",
     "angular": "^4.3.0",
     "typescript": "^2.4.0",
     "moment": "^2.18.1"

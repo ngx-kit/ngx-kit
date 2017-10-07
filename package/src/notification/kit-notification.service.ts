@@ -60,7 +60,7 @@ export class KitNotificationService {
    * @publicApi
    */
   config(config: Partial<KitNotificationHostConfig>) {
-    this._config$.next({...this._config$.value, ...config});
+    this._config$.next({...this._config$.value, ...config} as KitNotificationHostConfig);
   }
 
   /**

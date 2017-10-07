@@ -5,6 +5,10 @@ apiOrder: 100
 
 # Contributing to ngx-kit
 
+Information for ngx-kit developers.
+
+
+
 ## Docs
 
 * Create README.md for any module.
@@ -18,7 +22,7 @@ apiOrder: 100
 ## Best Practices
 
 Common component delivered to a project by npm as a package. It means that you can't modify it's code directly.
-
+  
 Remember in most cases ngx-kit common components used for creating ui kits that will be used by end user. 
 
 ### Do not hide any elements or components inside 

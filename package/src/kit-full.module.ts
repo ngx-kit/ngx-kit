@@ -34,7 +34,6 @@ const simpleModules = [
     KitOverlayModule.forRoot(),
     ...simpleModules,
   ],
-  declarations: [],
   providers: [
     {
       provide: ClassGenStategy,
