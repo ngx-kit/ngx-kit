@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.7",
   "license": "MIT",
   "scripts": {
+    "start": "ng serve -a=playground",
     "build": "npm run build:clean && npm run build:ngc && npm run build:release && npm run build:rollup:es && npm run build:rollup:umd",
     "build:clean": "rimraf ./dist",
     "build:ngc": "ngc -p ./package/tsconfig.package.json",
@@ -14,8 +15,7 @@
     "release": "npm run test && npm run lint && npm run build && npm run publish",
     "test": "ng test -a=playground -sr",
     "test:local": "ng test -a=playground",
-    "lint": "ng lint",
-    "dev": "ng serve -a=playground"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -56,6 +56,6 @@
     "rimraf": "^2.6.1",
     "rollup": "^0.47.6",
     "tslint": "^5.6.0",
-    "typescript": "^2.4.0"
+    "typescript": "^2.5.3"
   }
 }
