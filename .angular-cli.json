@@ -17,7 +17,10 @@
       "main": "main.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json"
+      "testTsconfig": "tsconfig.spec.json",
+      "assets": [
+        "favicon.ico"
+      ]
     }
   ],
   "e2e": {
