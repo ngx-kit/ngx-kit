@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-kit/schematcs-src",
-  "version": "1.0.0-alpha.6",
+  "name": "@ngx-kit/schematics-src",
+  "version": "1.0.0-alpha.7",
   "description": "Schematics for ngx-kit",
   "keywords": [
     "angular",

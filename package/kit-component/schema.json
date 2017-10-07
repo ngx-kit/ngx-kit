@@ -16,6 +16,10 @@
       "default": "src",
       "alias": "sd"
     },
+    "lib": {
+      "type": "string",
+      "default": ""
+    },
     "name": {
       "type": "string"
     },

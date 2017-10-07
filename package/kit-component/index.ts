@@ -84,7 +84,6 @@ export default function (options: ComponentOptions): Rule {
         ...stringUtils,
         'if-flat': (s: string) => s,
         selector: stringUtils.dasherize(options.name),
-        attrSelector: stringUtils.camelize(options.name),
         ...options as object,
       }),
       move(sourceDir),
