@@ -12,6 +12,12 @@ export class UiBaseStyle implements ComponentStyle {
       display: 'flex',
       alignItems: 'center',
       padding: [0, 64],
+      $nest: {
+        '& kit-icon': {
+          width: 30,
+          height: 30,
+        },
+      },
     };
   }
 

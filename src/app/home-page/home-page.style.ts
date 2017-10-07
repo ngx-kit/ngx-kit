@@ -8,20 +8,15 @@ export class HomePageStyle implements ComponentStyle {
 
   brand(): StyleDef {
     return {
-      textAlign: 'left',
-      fontSize: '3.6rem',
-      color: '#ccc',
-      padding: [32, 16],
+      background: 'linear-gradient(135deg, rgba(50,50,50,1) 0%,rgba(14,14,14,1) 100%)',
+      padding: [8, 32],
+      textAlign: 'center',
       margin: 0,
       fontFamily: 'Droid Sans Mono',
+      width: '100%',
+      boxSizing: 'border-box',
+      boxShadow: '2px 2px 30px rgba(0,0,0,.7)',
     }
-  }
-
-  brandPrefix(): StyleDef {
-    return {
-      fontSize: '2rem',
-      display: 'block',
-    };
   }
 
   footer(): StyleDef {
@@ -155,7 +150,7 @@ export class HomePageStyle implements ComponentStyle {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      margin: [64, 0],
+      margin: [128, 0],
     };
   }
 }
