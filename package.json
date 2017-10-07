@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot",
+    "build": "ng build --aot=false --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -15,7 +15,10 @@
     "serve-aot": "ng serve --aot",
     "uni:build": "ng build --prod --app 1",
     "uni:serve": "ts-node src/server.ts",
-    "uni": "npm run uni:build:prod && npm run uni:build:ngc && npm run uni:serve"
+    "uni": "npm run uni:build:prod && npm run uni:build:ngc && npm run uni:serve",
+    "docker:build": "docker build -t dhub.nvx.me:443/ngx-kit-website-prod .",
+    "docker:push": "docker push dhub.nvx.me:443/ngx-kit-website-prod",
+    "deploy": "npm run build && npm run docker:build && npm run docker:push"
   },
   "private": true,
   "dependencies": {
