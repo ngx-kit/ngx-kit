@@ -3,7 +3,7 @@
   "version": "1.0.0-beta.2",
   "license": "MIT",
   "scripts": {
-    "dev": "ng serve -a=playground",
+    "start": "ng serve -a=playground",
     "test": "ng test -a=playground",
     "lint": "ng lint",
     "e2e": "ng e2e -a=playground",
