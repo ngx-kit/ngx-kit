@@ -8,6 +8,7 @@
       "from": [
         "./package/",
         "./docs",
+        "./playground/assets",
         "./.docs-schema.json"
       ],
       "to": []
