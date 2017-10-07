@@ -26,4 +26,4 @@ For example you have `kit-menu`, `kit-section` component and want to collapse so
 
 ## Examples
 
-* ui-base:accordion - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/app/package/lib/accordion), [demo](http://ngx-kit.com/ui-base/module/accordion) 
+* ui-base:accordion - [sources](https://github.com/ngx-kit/ui-base/tree/master/package/lib/kit-accordion), [demo](http://ngx-kit.com/ui-base/module/kit-accordion) 
