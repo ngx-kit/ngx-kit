@@ -4,7 +4,7 @@ import { KitIconStyle } from './kit-icon.style';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
 @Component({
-  selector: 'kit-icon,[kitIcon]',
+  selector: 'kit-icon',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,8 +18,6 @@ export class KitIconComponent implements OnInit, OnChanges {
    * Svg fill color.
    */
   @Input() color = 'currentcolor';
-
-  @Input() kitIcon: void;
 
   /**
    * Name in the registry.
