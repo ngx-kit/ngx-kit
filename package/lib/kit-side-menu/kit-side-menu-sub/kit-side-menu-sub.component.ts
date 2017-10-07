@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angula
  * @apiOrder 5
  */
 @Component({
-  selector: 'kit-side-menu-sub,[kitSideMenuSub]',
+  selector: 'kit-side-menu-sub',
   template: `
     <div class="wrapper">
       <ng-content></ng-content>

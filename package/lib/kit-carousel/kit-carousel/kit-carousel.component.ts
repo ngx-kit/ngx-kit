@@ -11,7 +11,7 @@ import { Subject } from 'rxjs/Subject';
  * @apiOrder 1
  */
 @Component({
-  selector: 'kit-carousel,[kitCarousel]',
+  selector: 'kit-carousel',
   template: `
     <div class="wrapper">
       <ng-content></ng-content>
@@ -28,8 +28,6 @@ export class KitCarouselComponent implements OnInit {
    * Slide auto-changing interval.
    */
   @Input() interval = 5000;
-
-  @Input() kitCarousel: void;
 
   private click$ = new Subject<void>();
 

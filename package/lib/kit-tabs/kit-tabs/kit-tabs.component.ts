@@ -5,7 +5,7 @@ import { KitSlideHostService } from '@ngx-kit/ngx-kit';
  * @apiOrder 1
  */
 @Component({
-  selector: 'kit-tabs,[kitTabs]',
+  selector: 'kit-tabs',
   template: `
     <ng-content select="kit-tabs-nav"></ng-content>
     <div class="wrapper">
@@ -23,8 +23,6 @@ export class KitTabsComponent implements OnInit {
    * Automatically activate first tab.
    */
   @Input() activateFirst = true;
-
-  @Input() kitTabs: void;
 
   constructor(private host: KitSlideHostService) {
   }

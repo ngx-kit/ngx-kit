@@ -7,7 +7,7 @@ import { KitCollapseHostService } from '@ngx-kit/ngx-kit';
  * @apiOrder 1
  */
 @Component({
-  selector: 'kit-accordion,[kitAccordion]',
+  selector: 'kit-accordion',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-accordion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,9 +21,7 @@ export class KitAccordionComponent implements OnInit, OnChanges {
    */
   @Input() activateFirst = false;
 
-  @Input() kitAccordion: void;
-
-  /**
+    /**
    * Allow few panels open at a time.
    */
   @Input() multiple = false;

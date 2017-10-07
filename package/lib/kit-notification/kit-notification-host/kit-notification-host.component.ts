@@ -4,7 +4,7 @@ import { KitCoreOverlayContainerPositionCorner, KitNotificationItem, KitNotifica
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'kit-notification-host,[kitNotificationHost]',
+  selector: 'kit-notification-host',
   template: `
     <div class="wrapper" [kitClass]="{position: position$ | async}">
       <div *ngFor="let item of items$ | async"
@@ -56,9 +56,7 @@ import { Observable } from 'rxjs/Observable';
 export class KitNotificationHostComponent implements OnInit {
   items$: Observable<KitNotificationItem[]>;
 
-  @Input() kitNotificationHost: null;
-
-  position$: Observable<KitCoreOverlayContainerPositionCorner>;
+    position$: Observable<KitCoreOverlayContainerPositionCorner>;
 
   constructor(private notificationService: KitNotificationService) {
   }

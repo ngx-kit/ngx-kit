@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
  * @todo check animateChild on :leave
  */
 @Component({
-  selector: 'kit-modal,[kitModal]',
+  selector: 'kit-modal',
   template: `
     <div class="fade" [@fade] (click)="fadeClick()"></div>
     <div class="modal" [@modal]>
@@ -56,9 +56,7 @@ export class KitModalComponent {
 
   @HostBinding('@host') hostAnimation = true;
 
-  @Input() kitModal: void;
-
-  fadeClick() {
+    fadeClick() {
     this.close.emit();
   }
 }

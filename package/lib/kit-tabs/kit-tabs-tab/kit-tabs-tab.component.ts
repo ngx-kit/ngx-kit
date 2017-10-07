@@ -15,7 +15,7 @@ import { Subject } from 'rxjs/Subject';
  * @apiOrder 3
  */
 @Component({
-  selector: 'kit-tabs-tab,[kitTabsTab]',
+  selector: 'kit-tabs-tab',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-tabs-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,9 +25,7 @@ export class KitTabsTabComponent implements OnInit, OnDestroy {
 
   @Input() id: number;
 
-  @Input() kitTabsTab: void;
-
-  private destroy$ = new Subject<void>();
+    private destroy$ = new Subject<void>();
 
   constructor(private host: KitSlideHostService) {
   }

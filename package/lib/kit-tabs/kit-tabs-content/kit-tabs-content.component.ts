@@ -8,7 +8,7 @@ import { Subject } from 'rxjs/Subject';
  * @apiOrder 4
  */
 @Component({
-  selector: 'kit-tabs-content,[kitTabsContent]',
+  selector: 'kit-tabs-content',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-tabs-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,9 +46,7 @@ import { Subject } from 'rxjs/Subject';
   ],
 })
 export class KitTabsContentComponent implements OnDestroy {
-  @Input() kitTabsContent: void;
-
-  @HostBinding('@slide') slideTrigger: KitSlideDirection;
+    @HostBinding('@slide') slideTrigger: KitSlideDirection;
 
   private destroy$ = new Subject<void>();
 

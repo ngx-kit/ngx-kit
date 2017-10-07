@@ -8,7 +8,7 @@ import { Subject } from 'rxjs/Subject';
  * @apiOrder 2
  */
 @Component({
-  selector: 'kit-carousel-slide,[kitCarouselSlide]',
+  selector: 'kit-carousel-slide',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-carousel-slide.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,9 +46,7 @@ import { Subject } from 'rxjs/Subject';
   ],
 })
 export class KitCarouselSlideComponent implements OnDestroy {
-  @Input() kitCarouselSlide: void;
-
-  @HostBinding('@slide') slideTrigger: KitSlideDirection;
+    @HostBinding('@slide') slideTrigger: KitSlideDirection;
 
   private destroy$ = new Subject<void>();
 

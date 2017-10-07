@@ -16,7 +16,7 @@ const fadeOut = animation([
 ]);
 
 @Component({
-  selector: 'kit-alert,[kitAlert]',
+  selector: 'kit-alert',
   templateUrl: './kit-alert.component.html',
   styleUrls: ['./kit-alert.component.scss'],
   animations: [
@@ -48,9 +48,7 @@ export class KitAlertComponent {
    */
   @Output() isOpenChange = new EventEmitter<boolean>();
 
-  @Input() kitAlert: null;
-
-  @ContentChild(forwardRef(() => KitAlertTitleComponent)) title: KitAlertTitleComponent;
+    @ContentChild(forwardRef(() => KitAlertTitleComponent)) title: KitAlertTitleComponent;
 
   closeAlert() {
     this.isOpen = false;

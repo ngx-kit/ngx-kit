@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@a
 import { KitClassService } from '@ngx-kit/ngx-kit';
 
 @Component({
-  selector: 'kit-rating,[kitRating]',
+  selector: 'kit-rating',
   templateUrl: './kit-rating.component.html',
   styleUrls: ['./kit-rating.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,8 +10,6 @@ import { KitClassService } from '@ngx-kit/ngx-kit';
 })
 export class KitRatingComponent implements OnInit, OnChanges {
   @Input() icon: string;
-
-  @Input() kitRating: void;
 
   @Input() symbol = '&#x2605;';
 

@@ -7,14 +7,12 @@ import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
  * @apiOrder 3
  */
 @Component({
-  selector: 'kit-accordion-title,[kitAccordionTitle]',
+  selector: 'kit-accordion-title',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-accordion-title.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitAccordionTitleComponent {
-  @Input() kitAccordionTitle: void;
-
   constructor(private item: KitCollapseItemService) {
   }
 

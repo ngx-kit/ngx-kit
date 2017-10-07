@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angula
  * @apiOrder 4
  */
 @Component({
-  selector: 'kit-accordion-content,[kitAccordionContent]',
+  selector: 'kit-accordion-content',
   template: `
     <div class="content">
       <ng-content></ng-content>

@@ -7,7 +7,7 @@ import { KitBadgeColor, KitBadgePosition, KitBadgeSize } from '../meta';
  * @todo showZero
  */
 @Component({
-  selector: 'kit-badge,[kitBadge]',
+  selector: 'kit-badge',
   template: `
     {{ count }}
   `,
@@ -29,8 +29,6 @@ export class KitBadgeComponent implements OnInit, OnChanges {
   @Input() position: KitBadgePosition = 'inline';
 
   @Input() size: KitBadgeSize = 'm';
-
-  @Input() kitBadge: null;
 
   constructor(private kitClass: KitClassService) {
   }

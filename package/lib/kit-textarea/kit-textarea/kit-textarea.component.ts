@@ -16,9 +16,9 @@ import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware } from '@ngx
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitTextareaComponent implements OnChanges {
-  @Input() limit: number;
-
   @Input() kitTextarea: void;
+
+  @Input() limit: number;
 
   constructor(@Inject(kitInputMiddleware) private mids: KitInputMiddleware[]) {
   }

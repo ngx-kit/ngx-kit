@@ -6,7 +6,7 @@ import { KitButtonGroupDirection } from '../meta';
  * @apiOrder 2
  */
 @Component({
-  selector: 'kit-button-group,[kitButtonGroup]',
+  selector: 'kit-button-group',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,8 +18,6 @@ import { KitButtonGroupDirection } from '../meta';
 })
 export class KitButtonGroupComponent implements OnInit, OnChanges {
   @Input() direction: KitButtonGroupDirection = 'row';
-
-  @Input() kitButtonGroup: void;
 
   constructor(private kitClass: KitClassService) {
   }

@@ -5,7 +5,7 @@ import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
  * @apiOrder 3
  */
 @Component({
-  selector: 'kit-side-menu-group,[kitSideMenuGroup]',
+  selector: 'kit-side-menu-group',
   template: `
     <div class="title" (click)="toggle()">
       <span class="wrapper"><ng-content></ng-content></span>
@@ -23,8 +23,6 @@ import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
   ],
 })
 export class KitSideMenuGroupComponent {
-  @Input() kitSideMenuGroup: void;
-
   constructor(private item: KitCollapseItemService) {
   }
 

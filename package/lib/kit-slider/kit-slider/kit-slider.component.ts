@@ -20,16 +20,14 @@ export const KIT_SLIDER_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'kit-slider,[kitSlider]',
+  selector: 'kit-slider',
   templateUrl: './kit-slider.component.html',
   styleUrls: ['./kit-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [KIT_SLIDER_VALUE_ACCESSOR],
 })
 export class KitSliderComponent implements ControlValueAccessor, OnInit, OnChanges {
-  @Input() kitSlider: void;
-
-  leftPointerPosition: number;
+    leftPointerPosition: number;
 
   @Input() max = 100;
 

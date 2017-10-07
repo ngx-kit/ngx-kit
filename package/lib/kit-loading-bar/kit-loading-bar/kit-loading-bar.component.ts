@@ -8,7 +8,7 @@ import { Subject } from 'rxjs/Subject';
  * @apiOrder 1
  */
 @Component({
-  selector: 'kit-loading-bar,[kitLoadingBar]',
+  selector: 'kit-loading-bar',
   template: `
     <div [@bar]="barState" class="bar"></div>
   `,

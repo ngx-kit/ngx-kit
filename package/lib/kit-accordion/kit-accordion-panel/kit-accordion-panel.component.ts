@@ -7,7 +7,7 @@ import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
  * @apiOrder 2
  */
 @Component({
-  selector: 'kit-accordion-panel,[kitAccordionPanel]',
+  selector: 'kit-accordion-panel',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-accordion-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

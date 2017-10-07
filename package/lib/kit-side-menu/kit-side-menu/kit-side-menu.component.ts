@@ -5,7 +5,7 @@ import { KitCollapseHostService } from '@ngx-kit/ngx-kit';
  * @apiOrder 1
  */
 @Component({
-  selector: 'kit-side-menu,[kitSideMenu]',
+  selector: 'kit-side-menu',
   template: '<ng-content></ng-content>',
   styleUrls: ['./kit-side-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,9 +14,7 @@ import { KitCollapseHostService } from '@ngx-kit/ngx-kit';
   ],
 })
 export class KitSideMenuComponent implements OnInit, OnChanges {
-  @Input() kitSideMenu: void;
-
-  /**
+    /**
    * Allow few panels open at a time.
    */
   @Input() multiple = false;
