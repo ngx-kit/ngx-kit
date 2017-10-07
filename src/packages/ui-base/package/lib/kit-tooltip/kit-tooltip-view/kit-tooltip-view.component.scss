@@ -1,0 +1,15 @@
+:host {
+  border-radius: 3px;
+  padding: 4px 8px;
+  box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.1);
+  &.color {
+    &-default {
+      background: rgba(0, 0, 0, .6);
+      color: #ffffff;
+    }
+    &-primary {
+      background: rgba(35, 153, 229, 0.8);
+      color: #ffffff;
+    }
+  }
+}

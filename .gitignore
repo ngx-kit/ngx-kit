@@ -43,4 +43,4 @@ testem.log
 Thumbs.db
 
 /src/assets/docs
-/packages
+/src/packages

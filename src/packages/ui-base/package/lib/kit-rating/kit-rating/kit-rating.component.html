@@ -1,0 +1,14 @@
+<ng-container *ngIf="icon">
+  <kit-icon *kitRepeat="total; let index = index"
+            [name]="icon"
+            class="icon"
+            [class.active]="index < value">
+  </kit-icon>
+</ng-container>
+<ng-container *ngIf="!icon">
+        <span *kitRepeat="total; let index = index"
+              class="icon"
+              [class.active]="index < value"
+              [innerHtml]="symbol">
+        </span>
+</ng-container>

@@ -1,0 +1,81 @@
+$borderRadius: 3px;
+
+:host {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  line-height: 1.42857;
+  user-select: none;
+  border-radius: $borderRadius;
+  border: 0;
+  transition-property: background;
+  transition-duration: .3s;
+  &.color {
+    &-default {
+      background: #cccccc;
+      color: #333333;
+      &:hover {
+        background: #bbbbbb;
+      }
+      &.checked {
+        background: #aaaaaa;
+      }
+    }
+    &-primary {
+      background: #2399e5;
+      color: #ffffff;
+      &:hover {
+        background: #248acd;
+      }
+      &.checked {
+        background: #1e80cd;
+      }
+    }
+  }
+  &.size {
+    &-s {
+      padding: 2px 6px;
+      font-size: .85rem;
+    }
+    &-m {
+      padding: 4px 12px;
+      font-size: 1rem;
+    }
+    &-l {
+      padding: 8px 20px;
+      font-size: 1.15rem;
+    }
+  }
+  &.groupDirection {
+    &-row {
+      border-radius: 0;
+      &:first-child {
+        border-bottom-left-radius: $borderRadius;
+        border-top-left-radius: $borderRadius;
+      }
+      &:last-child {
+        border-bottom-right-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
+      }
+    }
+    &-column {
+      border-radius: 0;
+      &:first-child {
+        border-top-right-radius: $borderRadius;
+        border-top-left-radius: $borderRadius;
+      }
+      &:last-child {
+        border-bottom-right-radius: $borderRadius;
+        border-bottom-left-radius: $borderRadius;
+      }
+    }
+  }
+}

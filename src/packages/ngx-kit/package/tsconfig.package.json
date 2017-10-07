@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "angularCompilerOptions": {
+    "genDir": "../dist/build",
+    "skipTemplateCodegen": true,
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true,
+    "annotateForClosureCompiler": true,
+    "flatModuleOutFile": "ngx-kit.js",
+    "flatModuleId": "@ngx-kit/ngx-kit"
+  },
+  "files": [
+    "./public_api.ts"
+  ],
+  "exclude": [
+    "../node_modules",
+    "../dist",
+    "./src/**/*.spec.ts"
+  ]
+}

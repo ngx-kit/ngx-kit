@@ -1,0 +1,19 @@
+:host {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  transition: all .3s;
+  padding: 4px 8px;
+  box-shadow: 0 0 2px 0 rgba(50, 50, 50, 0.1);
+  background: #f7f7f7;
+  border: 1px solid #d6d6d6;
+  color: #4a505a;
+  &:hover {
+    outline: none;
+    border-color: #acadb0;
+  }
+  &:focus {
+    outline: none;
+    border-color: #2399e5;
+  }
+}

@@ -1,0 +1,11 @@
+:host {
+}
+
+.icon {
+  color: #cccccc;
+  width: 20px;
+  height: 20px;
+  &.active {
+    color: #e8ba03;
+  }
+}
