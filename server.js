@@ -16,7 +16,6 @@ const {ngExpressEngine} = require('@nguniversal/express-engine');
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-// @todo на данный момент в момент рендера апи-запросы не приходят на сервак (из-за его адреса, о котором нг-аппе ничего не известно, а именно экспресс раздает доку. поэтому сейчас сервер-рендеринг не до конца решает задачу.
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
   providers: [
@@ -32,6 +31,7 @@ app.get('*.*', express.static('./dist'));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
+  req.readFileSync = fs.readFileSync;
   res.render('index.html', {req});
 });
 
