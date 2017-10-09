@@ -2,8 +2,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "baseUrl": "./",
     "module": "commonjs",
+    "baseUrl": "./",
     "types": []
   },
   "exclude": [

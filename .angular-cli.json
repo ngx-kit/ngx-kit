@@ -35,6 +35,7 @@
       }
     },
     {
+      "name": "server",
       "platform": "server",
       "root": "src",
       "outDir": "dist-server",
@@ -46,15 +47,10 @@
       "main": "main.server.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.server.json",
-      "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "styles.css",
-        "./assets/default.scss",
-        "./assets/dark.scss"
-      ],
-      "scripts": [
-        "../node_modules/moment/moment.js"
+        "./assets/hljs-default.scss"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

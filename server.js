@@ -1,15 +1,41 @@
-// Load zone.js for the server.
 require('zone.js/dist/zone-node');
+require('reflect-metadata');
+const express = require('express');
+const fs = require('fs');
 
-// Import renderModuleFactory from @angular/platform-server.
-var renderModuleFactory = require('@angular/platform-server').renderModuleFactory;
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist-server/main.bundle');
 
-// Import the AOT compiled factory for your AppServerModule.
-// This import will change with the hash of your built server bundle.
-var AppServerModuleNgFactory = require('./dist-server/main.d6255eab1805c41df9b2.bundle').AppServerModuleNgFactory;
+// Our index.html we'll use as our template
+const template = fs.readFileSync('./dist/index.html').toString();
 
-// Load the index.html file.
-var index = require('fs').readFileSync('./src/index.html', 'utf8');
+// Express server
+const app = express();
+// Express Engine
+const {ngExpressEngine} = require('@nguniversal/express-engine');
+// Import module map for lazy loading
+const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
-// Render to HTML and log it to the console.
-renderModuleFactory(AppServerModuleNgFactory, {document: index, url: '/'}).then(html => console.log(html));
+// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+// @todo на данный момент в момент рендера апи-запросы не приходят на сервак (из-за его адреса, о котором нг-аппе ничего не известно, а именно экспресс раздает доку. поэтому сейчас сервер-рендеринг не до конца решает задачу.
+app.engine('html', ngExpressEngine({
+  bootstrap: AppServerModuleNgFactory,
+  providers: [
+    provideModuleMap(LAZY_MODULE_MAP)
+  ]
+}));
+
+app.set('view engine', 'html');
+app.set('views', './dist');
+
+// Server static files from /browser
+app.get('*.*', express.static('./dist'));
+
+// All regular routes use the Universal engine
+app.get('*', (req, res) => {
+  res.render('index.html', {req});
+});
+
+// Start up the Node server
+app.listen(8000, () => {
+  console.log(`Node server listening on http://localhost:8000`);
+});

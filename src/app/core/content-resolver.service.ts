@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import 'rxjs/add/operator/mapTo';
 import { Observable } from 'rxjs/Observable';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { ContentApi } from '../interfaces/content';
 import { ContentService } from './content.service';
 
@@ -13,7 +13,7 @@ export class ContentResolverService implements Resolve<ContentApi> {
   }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<ContentApi> {
+          state: RouterStateSnapshot): Observable<ContentApi> | EmptyObservable<any> {
     const pkg = route.data['pkg'];
     const file = route.data['file'];
     return this.http.get<ContentApi>(file)

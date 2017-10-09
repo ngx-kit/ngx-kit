@@ -1,8 +1,0 @@
-<kit-tabs>
-  <kit-tabs-nav>
-    <kit-tabs-tab *ngFor="let tab of tabs; let id = index" [id]="id">{{ tab.tab }}</kit-tabs-tab>
-  </kit-tabs-nav>
-  <ng-container *ngFor="let tab of tabs; let id = index">
-    <kit-tabs-content *kitSlide="id">{{ tab.content }}</kit-tabs-content>
-  </ng-container>
-</kit-tabs>
