@@ -1,1 +1,1 @@
-# Slider
+# Carousel
