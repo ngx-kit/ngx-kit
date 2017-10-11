@@ -6,6 +6,7 @@ import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { lib } from '../packages/ui-base/package/lib/lib';
 import { AppRoutingModule } from './app-routing.module';
+import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RootComponent } from './root/root.component';
@@ -29,4 +30,14 @@ import { RootComponent } from './root/root.component';
   bootstrap: [RootComponent],
 })
 export class AppModule {
+  constructor(public srv: ContentService) {
+  }
+
+  hmrOnDestroy(store) {
+    // store.state = this.srv.piu;
+  }
+
+  hmrOnInit(store) {
+//    this.srv.piu = store.state;
+  }
 }
