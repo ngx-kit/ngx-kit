@@ -84,6 +84,8 @@ export default function (options: ComponentOptions): Rule {
         ...stringUtils,
         'if-flat': (s: string) => s,
         selector: stringUtils.dasherize(options.name),
+        componentClass: `${stringUtils.classify(options.name)}Component`,
+        vaConst: `${stringUtils.underscore(options.name).toUpperCase()}_VALUE_ACCESSOR`,
         ...options as object,
       }),
       move(sourceDir),

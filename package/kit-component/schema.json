@@ -30,7 +30,7 @@
       "type": "boolean",
       "default": false
     },
-    "module":  {
+    "module": {
       "type": "string",
       "description": "Allows specification of the declaring module.",
       "alias": "m"
@@ -39,6 +39,12 @@
       "type": "boolean",
       "default": true,
       "description": "Specifies if declaring module exports the component."
+    },
+    "valueAccessor": {
+      "type": "boolean",
+      "default": false,
+      "description": "Add VALUE_ACCESSOR to the component.",
+      "alias": "va"
     }
   },
   "required": [
