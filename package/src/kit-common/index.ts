@@ -1,3 +1,4 @@
+export * from './kit-anchor/kit-anchor.directive';
 export * from './kit-class/kit-class.directive';
 export * from './kit-class/kit-class.service';
 export * from './kit-style/kit-style.service';

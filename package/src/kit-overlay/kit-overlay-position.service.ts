@@ -1,13 +1,19 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
 import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
-import { KitCoreOverlayContainerPosition, KitCoreOverlayContainerType } from './meta';
+import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
+import {
+  KitCoreOverlayContainerPosition,
+  KitCoreOverlayContainerType,
+  KitOverlayPositionDirectiveParams,
+} from './meta';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
   anchor: KitAnchorDirective | HTMLElement;
+
+  outsideClick$ = new Subject<MouseEvent>();
 
   position: KitCoreOverlayContainerPosition = 'top';
 
@@ -27,6 +33,7 @@ export class KitOverlayPositionService implements OnDestroy {
       this.listeners = [
         this.renderer.listen('document', 'scroll', () => this._repositionEvent$.next()),
         this.renderer.listen('window', 'resize', () => this._repositionEvent$.next()),
+        this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
       ];
     });
     this._repositionEvent$.subscribe(() => {
@@ -42,6 +49,14 @@ export class KitOverlayPositionService implements OnDestroy {
     this.listeners.forEach(l => l());
   }
 
+  applyParams(params: Partial<KitOverlayPositionDirectiveParams>) {
+    for (const param in params) {
+      if (params.hasOwnProperty(param) && params[param]) {
+        this[param] = params[param];
+      }
+    }
+  }
+
   reposition() {
     switch (this.type) {
       case 'dropdown':
@@ -53,8 +68,29 @@ export class KitOverlayPositionService implements OnDestroy {
     }
   }
 
+  private clickHandler(event: MouseEvent) {
+    this.zone.run(() => {
+      const path = event['path'] || this.getEventPath(event);
+      if (path.indexOf(this.getEl(this.anchor)) === -1 && path.indexOf(this.el.nativeElement) === -1) {
+        this.zone.run(() => {
+          this.outsideClick$.next(event);
+        });
+      }
+    });
+  }
+
   private getEl(anchor: KitAnchorDirective | HTMLElement): HTMLElement {
     return anchor instanceof KitAnchorDirective ? anchor.nativeEl : anchor;
+  }
+
+  private getEventPath(event: Event): EventTarget[] {
+    const path = [];
+    let node = event.target;
+    while (node !== document.body) {
+      path.push(node);
+      node = node['parentNode'];
+    }
+    return path;
   }
 
   private repositionDropdown() {

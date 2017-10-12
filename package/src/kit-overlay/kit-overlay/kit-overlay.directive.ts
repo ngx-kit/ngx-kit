@@ -9,7 +9,7 @@ import {
   ViewRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { KitOverlayService } from './kit-overlay.service';
+import { KitOverlayService } from '../kit-overlay.service';
 
 @Directive({
   selector: '[kitOverlay]',
@@ -28,7 +28,7 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['kitOverlay']) {
-      this.toggleHost();
+      this.updateHost();
     }
   }
 
@@ -43,14 +43,14 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     }
   }
 
-  private toggleHost() {
+  updateHost() {
     if (this.kitOverlay && !this.viewRef) {
       this.viewRef = this.service.hostTemplate(this.templateRef, {});
       this.viewRef.detectChanges();
       this.doCheckSub = this.service.hostDoCheck$.subscribe(() => {
         this.cdr.markForCheck();
       })
-    } else {
+    } else if (!this.kitOverlay) {
       this.destroyView();
       if (this.doCheckSub) {
         this.doCheckSub.unsubscribe();
