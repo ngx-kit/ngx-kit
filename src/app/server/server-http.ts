@@ -8,7 +8,7 @@ export class ServerHttp {
   }
 
   get(url: string, options: {responseType: 'text' | 'json'}): Observable<any> {
-    const file = this.req.readFileSync(`./src/${url}`).toString();
+    const file = this.req.readFileSync(`./dist${url}`).toString();
     return Observable.from([options && options.responseType === 'text' ? file : JSON.parse(file)]);
   }
 }
