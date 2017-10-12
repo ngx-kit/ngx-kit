@@ -55,11 +55,11 @@ switch (action) {
     }
     break;
   case 'gen-docs':
-    // format: "ngx-kit gen-docs PKG_NAME"
+    // format: "ngx-kit gen-docs PATH_TO_SOURCES"
     // uses .docs-schema.json
     const pkgParam = args[3];
     if (pkgParam) {
-      const dir = path.resolve('./node_modules', pkgParam);
+      const dir = path.resolve(pkgParam);
       const schema = require(path.resolve(dir, '.docs-schema.json'));
       const docsGen = require('./lib/docs/docs');
       docsGen(dir, pkgParam, schema);
