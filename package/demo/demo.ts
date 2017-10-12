@@ -19,6 +19,7 @@ import { DemoButtonGroupVerticalComponent } from './kit-button/demo-button-group
 import { DemoButtonSizeComponent } from './kit-button/demo-button-size/demo-button-size.component';
 import { DemoCarouselDefaultComponent } from './kit-carousel/demo-carousel-default/demo-carousel-default.component';
 import { DemoCarouselGenComponent } from './kit-carousel/demo-carousel-gen/demo-carousel-gen.component';
+import { DemoCustomSelectDefaultComponent } from './kit-custom-select/demo-custom-select-default/demo-custom-select-default.component';
 import { DemoInputCheckboxComponent } from './kit-input/demo-input-checkbox/demo-input-checkbox.component';
 import { DemoInputDefaultComponent } from './kit-input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './kit-input/demo-input-math/demo-input-math.component';
@@ -68,6 +69,8 @@ export const demo = [
   /// carousel
   DemoCarouselDefaultComponent,
   DemoCarouselGenComponent,
+  // custom-select
+  DemoCustomSelectDefaultComponent,
   // input
   DemoInputDefaultComponent,
   DemoInputMathComponent,

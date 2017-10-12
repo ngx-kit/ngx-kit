@@ -27,15 +27,15 @@ export class KitTooltipViewComponent implements OnChanges {
 
   @Input() position: KitCoreOverlayContainerPosition;
 
-  constructor(private service: KitOverlayPositionService,
+  constructor(private overlayPosition: KitOverlayPositionService,
               private kitClass: KitClassService) {
   }
 
   ngOnChanges() {
     // position service
-    this.service.anchor = this.anchorEl;
-    this.service.position = this.position;
-    this.service.reposition();
+    this.overlayPosition.anchor = this.anchorEl;
+    this.overlayPosition.position = this.position;
+    this.overlayPosition.reposition();
     // class
     this.kitClass.apply({
       color: this.color,

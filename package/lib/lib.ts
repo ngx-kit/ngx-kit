@@ -3,6 +3,7 @@ import { KitAlertModule } from './kit-alert/kit-alert.module';
 import { KitBadgeModule } from './kit-badge/kit-badge.module';
 import { KitButtonModule } from './kit-button/kit-button.module';
 import { KitCarouselModule } from './kit-carousel/kit-carousel.module';
+import { KitCustomSelectModule } from './kit-custom-select/kit-custom-select.module';
 import { KitInputModule } from './kit-input/kit-input.module';
 import { KitLoadingBarModule } from './kit-loading-bar/kit-loading-bar.module';
 import { KitModalModule } from './kit-modal/kit-modal.module';
@@ -21,6 +22,7 @@ export const lib = [
   KitBadgeModule,
   KitButtonModule,
   KitCarouselModule,
+  KitCustomSelectModule,
   KitInputModule,
   KitLoadingBarModule,
   KitModalModule,
