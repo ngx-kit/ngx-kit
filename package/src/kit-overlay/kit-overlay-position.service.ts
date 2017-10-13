@@ -1,5 +1,4 @@
-import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { ElementRef, Inject, Injectable, NgZone, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
@@ -8,6 +7,7 @@ import {
   KitCoreOverlayContainerType,
   KitOverlayPositionDirectiveParams,
 } from './meta';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -21,29 +21,40 @@ export class KitOverlayPositionService implements OnDestroy {
 
   widthType: 'full' | 'auto' = 'auto';
 
-  private _repositionEvent$ = new Subject<void>();
-
   private listeners: any[];
 
   constructor(private renderer: Renderer2,
               private zone: NgZone,
               private el: ElementRef,
-              private style: KitStyleService) {
-    this.zone.runOutsideAngular(() => {
-      this.listeners = [
-        this.renderer.listen('document', 'scroll', () => this._repositionEvent$.next()),
-        this.renderer.listen('window', 'resize', () => this._repositionEvent$.next()),
-        this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
-      ];
-    });
-    this._repositionEvent$.subscribe(() => {
-      this.reposition();
-    })
+              private style: KitStyleService,
+              @Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.zone.runOutsideAngular(() => {
+        // Renderer2 does not support useCapture
+        document.addEventListener('scroll', this.reposition, true);
+        window.addEventListener('resize', this.reposition, true);
+        this.listeners = [
+          () => document.removeEventListener('scroll', this.reposition, true),
+          () => window.removeEventListener('resize', this.reposition, true),
+          this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+        ];
+      });
+    }
   }
 
-  get repositionEvent$(): Observable<void> {
-    return this._repositionEvent$.asObservable();
-  }
+  reposition = () => {
+    this.zone.run(() => {
+      switch (this.type) {
+        case 'dropdown':
+          this.repositionDropdown();
+          break;
+        case 'side':
+          this.repositionSide();
+          break;
+      }
+    });
+  };
+
 
   ngOnDestroy() {
     this.listeners.forEach(l => l());
@@ -54,17 +65,6 @@ export class KitOverlayPositionService implements OnDestroy {
       if (params.hasOwnProperty(param) && params[param]) {
         this[param] = params[param];
       }
-    }
-  }
-
-  reposition() {
-    switch (this.type) {
-      case 'dropdown':
-        this.repositionDropdown();
-        break;
-      case 'side':
-        this.repositionSide();
-        break;
     }
   }
 
