@@ -49,7 +49,7 @@ import { Subject } from 'rxjs/Subject';
   ],
 })
 export class UiLoadingBarComponent implements OnInit, OnDestroy {
-  barState: string;
+  barState = 'none';
 
   private destroy$ = new Subject<void>();
 

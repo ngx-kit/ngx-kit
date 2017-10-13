@@ -49,7 +49,7 @@ import { Subject } from 'rxjs/Subject';
   ],
 })
 export class <%= classify(name) %>Component implements OnInit, OnDestroy {
-  barState: string;
+  barState = 'none';
 
   private destroy$ = new Subject<void>();
 

@@ -18,9 +18,10 @@ Ui-base is set of prepared and simplified components. Just generate code by Angu
 
 Works only with Angular-cli.
 
-Install ngx-kit core and ui-base schematics: 
+Install latest Angular-cli, ngx-kit core and ui-base schematics: 
 
 ```
+npm install @angular/cli@next @angular-devkit/core @angular-devkit/schematics -g
 npm install @ngx-kit/ngx-kit @ngx-kit/styler --save
 npm install @ngx-kit/ui-base --save-dev
 ```
