@@ -11,26 +11,6 @@ const args = process.argv;
 const action = args[2];
 
 switch (action) {
-  case 'get':
-    // format: "ngx-kit get PKG_NAME:MODULE_NAME DEST_DIR"
-    const fromParam = args[3];
-    const toParam = args[4];
-    if (fromParam) {
-      const fromChunks = fromParam.split(':');
-      // @todo resolve non @ngx-kit scope
-      const pkg = fromChunks.length > 1 ? fromChunks[0] : 'ui-base';
-      const module = fromChunks.length > 1 ? fromChunks[1] : fromChunks[0];
-      const moduleChunks = module.split('/');
-      const dest = toParam
-          ? path.resolve(toParam, moduleChunks[moduleChunks.length - 1])
-          : path.resolve(moduleChunks[moduleChunks.length - 1]);
-      // @todo check if dest exist
-      fs.copySync(path.resolve('./node_modules/@ngx-kit', pkg, 'lib', module), dest);
-      console.log(`Module ${fromParam} copied to ${dest}`);
-    } else {
-      console.error('Param for action get not passed. %DOCS_LINK%');
-    }
-    break;
   case 'copy':
     // format: "ngx-kit copy"
     // uses .ngx-kit.json
