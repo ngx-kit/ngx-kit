@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges } from '@angular/core';
 import {
   KitClassService,
   KitCoreOverlayContainerPosition,
@@ -17,6 +18,18 @@ import { <%= classify(name) %>Colors } from '../meta';
     KitStyleService,
     KitClassService,
   ],
+  animations: [
+    trigger('host', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('150ms', style({opacity: 1})),
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('150ms', style({opacity: 0})),
+      ]),
+    ]),
+  ],
 })
 export class <%= classify(name) %>ViewComponent implements OnChanges {
   @Input() anchorEl: HTMLElement;
@@ -24,6 +37,8 @@ export class <%= classify(name) %>ViewComponent implements OnChanges {
   @Input() color: <%= classify(name) %>Colors;
 
   @Input() content: string;
+
+  @HostBinding('@host') hostTrigger;
 
   @Input() position: KitCoreOverlayContainerPosition;
 
