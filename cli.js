@@ -54,7 +54,7 @@ switch (action) {
       });
     }
     break;
-  case 'gen-docs':
+  case 'gen-docs': {
     // format: "ngx-kit gen-docs PATH_TO_SOURCES"
     // uses .docs-schema.json
     const pkgParam = args[3];
@@ -67,6 +67,17 @@ switch (action) {
       console.log('Param for action gen-docs not passed. %DOCS_LINK%');
     }
     break;
+  }
+  case 'schematize': {
+    const config = getConfig();
+    if (config.schematics) {
+      const schematicsGen = require('./lib/schematize/schematize');
+      schematicsGen(config.schematics);
+    } else {
+      console.log('Schematics section not found in .ngx-kit.json. %DOCS_LINK%');
+    }
+    break;
+  }
   default:
     console.error('Cli action not passed. %DOCS_LINK%');
 }
