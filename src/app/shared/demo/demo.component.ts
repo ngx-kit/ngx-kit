@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { demo } from '../../../packages/ui-base/package/demo/demo-ref';
+import { demo } from '../../../packages/ui-base/src/demo/demo-ref';
 import { DemoStyle } from './demo.style';
 
 @Component({

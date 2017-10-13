@@ -12,7 +12,7 @@
         "favicon.ico",
         {
           "glob": "**/*",
-          "input": "../packages/ui-base/playground/assets",
+          "input": "./packages/ui-base/playground/assets",
           "output": "./assets/"
         }
       ],

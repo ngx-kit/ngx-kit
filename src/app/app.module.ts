@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
-import { lib } from '../packages/ui-base/package/lib/lib';
+import { lib } from '../packages/ui-base/src/lib/lib';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
