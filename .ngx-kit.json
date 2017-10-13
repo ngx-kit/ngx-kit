@@ -1,17 +1,22 @@
 {
   "copy": {
     "release": {
-      "from": [],
+      "from": ["./dist/release"],
       "to": []
     },
     "src": {
       "from": [
-        "./package/",
+        "./src",
         "./docs",
         "./playground/assets",
         "./.docs-schema.json"
       ],
       "to": []
     }
+  },
+  "schematics": {
+    "src": "./src/lib",
+    "template": "./package/_template",
+    "dist": "./package"
   }
 }

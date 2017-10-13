@@ -1,15 +1,19 @@
 {
   "name": "@ngx-kit/ui-base-src",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "license": "MIT",
   "scripts": {
     "start": "ng serve -a=playground",
     "test": "ng test -a=playground",
     "lint": "ng lint",
     "e2e": "ng e2e -a=playground",
-    "release": "rimraf ./dist && node release && npm run publish",
+    "build": "rimraf ./dist && npm run build:schematize && npm run build:tsc && node release",
+    "build:schematize": "ngx-kit schematize",
+    "build:tsc": "tsc -p tsconfig.schematics.json",
+    "release": "npm run build && npm run publish",
     "publish": "npm publish ./dist/release --access=public",
-    "copy": "ngx-kit copy"
+    "copy": "ngx-kit copy",
+    "build-and-copy": "npm run build && npm run copy"
   },
   "private": true,
   "dependencies": {

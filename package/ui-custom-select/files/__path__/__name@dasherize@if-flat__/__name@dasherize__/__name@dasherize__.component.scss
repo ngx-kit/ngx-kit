@@ -1,0 +1,46 @@
+:host {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  transition: all .3s;
+  padding: 4px 8px;
+  box-shadow: 0 0 6px 1px rgba(50, 50, 50, 0.1);
+  border: 2px solid #d6d6d6;
+  color: #4a505a;
+  &:hover {
+    outline: none;
+    border-color: #acadb0;
+  }
+  &:focus {
+    outline: none;
+    border-color: #2399e5;
+  }
+}
+
+.current {
+  flex-grow: 1;
+}
+
+.pointer {
+  cursor: default;
+  color: #aaaaaa;
+}
+
+.popup {
+  background: #ffffff;
+  box-shadow: 0 0 25px 5px rgba(0, 0, 0, .1);
+  margin-top: 4px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.option {
+  display: block;
+  padding: 4px 8px;
+  cursor: default;
+  &:hover {
+    background: #2399e5;
+    color: #ffffff;
+  }
+}

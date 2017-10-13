@@ -1,7 +1,7 @@
 {
   "name": "@ngx-kit/ui-base",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Base set of UI components based on ngx-kit",
+  "description": "UI components schematics for Angular-cli based on ngx-kit",
   "author": {
     "name": "Sasha Novik",
     "email": "alex@nvx.me",
@@ -12,5 +12,6 @@
   "repository": {
     "url": "https://github.com/ngx-kit/ui-base.git",
     "type": "git"
-  }
+  },
+  "schematics": "./collection.json"
 }

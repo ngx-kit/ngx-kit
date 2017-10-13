@@ -5,23 +5,45 @@ apiOrder: 1
 
 # @ngx-kit/ui-base overview
 
-Angular components presets based on ngx-kit.
+Set of Angular components based on ngx-kit and packed into Angular-cli schematics.
 
-All 3rd-party ui-kit has their own limitations and overheads. But projects has own business and design goals, and often the best way to reach this goals - craft component from scratch.
+All 3rd-party ui-kit has their own limitations and overheads. But projects has own business and design goals, and often the best way to reach this goals - craft a component from scratch.
 
 The best interface for ui-components is possibility to change the source code.
 
-Ui-base is set of prepared and simplified components. Just copy component to your project or kit and modify it if needed.
+Ui-base is set of prepared and simplified components. Just generate code by Angular-cli to your project or kit and modify it if needed.
+
 
 ## Usage
 
-* Install ngx-kit core: `npm install @ngx-kit/ngx-kit @ngx-kit/styler --save`
-* Install ngx-kit cli: `npm install @ngx-kit/cli -g`
-* Install ui-base: `@ngx-kit/ui-base --save-dev` 
-* Import ngx-kit lib: MORE_INFO_LINK
-* Copy component to your kit or project:  `ngx-kit copy ui-base:COMPONENT_NAME DESTINATION_DIR`
-* Do with the code what you want :)
+Works only with Angular-cli.
 
-## Tutorials
+Install ngx-kit core and ui-base schematics: 
 
-TBD
+```
+npm install @ngx-kit/ngx-kit @ngx-kit/styler --save
+npm install @ngx-kit/ui-base --save-dev
+```
+
+Import ngx-kit to the root module:
+
+```typescript
+@NgModule({
+  ...
+  imports: [
+    ...
+    KitFullForRootModule,
+```
+ 
+Generate code:
+
+```
+ng g ui-button -c=@ngx-kit/ui-base [name]
+```
+
+Don't forget to import generated module to module where you need it.  
+
+
+## Links
+
+* [github](https://github.com/ngx-kit/ui-base)

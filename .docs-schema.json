@@ -1,5 +1,5 @@
 {
-  "demo": "./package/demo",
+  "demo": "./src/demo",
   "docs": "./docs",
-  "src": "./package/lib"
+  "src": "./src/lib"
 }

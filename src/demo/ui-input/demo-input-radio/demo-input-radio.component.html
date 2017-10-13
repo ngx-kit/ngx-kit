@@ -1,0 +1,14 @@
+<label>
+  <input type="radio" value="1" [uiInput] [(ngModel)]="radioModel">
+  Radio 1
+</label>
+<label>
+  <input type="radio" value="2" [uiInput] [(ngModel)]="radioModel">
+  Radio 2
+</label>
+<label>
+  <input type="radio" value="3" [uiInput] [(ngModel)]="radioModel">
+  Radio 3
+</label>
+
+{{ radioModel | json }}

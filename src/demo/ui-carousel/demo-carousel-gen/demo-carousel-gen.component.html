@@ -1,0 +1,5 @@
+<ui-carousel>
+  <ng-container *ngFor="let slide of slides">
+    <ui-carousel-slide *kitSlide [style.background]="slide.color">{{ slide.content }}</ui-carousel-slide>
+  </ng-container>
+</ui-carousel>

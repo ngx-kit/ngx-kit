@@ -119,7 +119,7 @@
       "attribute",
       [
         "app",
-        "kit",
+        "ui",
         "demo"
       ],
       "camelCase"
@@ -129,7 +129,7 @@
       "element",
       [
         "app",
-        "kit",
+        "ui",
         "demo"
       ],
       "kebab-case"
