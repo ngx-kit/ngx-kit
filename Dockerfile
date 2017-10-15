@@ -11,8 +11,9 @@ RUN mkdir -p /var/app
 WORKDIR /var/app
 
 COPY ./package.json package.json
+COPY ./package-lock.json package-lock.json
 
-RUN npm install --production
+RUN npm install
 
 COPY ./dist/ dist/
 COPY ./dist-server/ dist-server/
