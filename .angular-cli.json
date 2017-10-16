@@ -5,8 +5,8 @@
   },
   "apps": [
     {
-      "name": "package",
-      "root": "package",
+      "name": "ngx-kit",
+      "root": "packages/ngx-kit",
       "appRoot": "src"
     },
     {

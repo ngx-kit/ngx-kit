@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KitFullForRootModule } from '../../package/src/kit-full.module';
 import { AppComponent } from './app.component';
 import { VcComponent } from './vc/vc.component';
+import { KitFullForRootModule } from '../../packages/ngx-kit/src/kit-full.module';
 
 @NgModule({
   imports: [

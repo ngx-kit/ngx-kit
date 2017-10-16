@@ -10,7 +10,7 @@
       "from": [
         "./demo/",
         "./docs/",
-        "./package/",
+        "./packages/ngx-kit/",
         "./.docs-schema.json"
       ],
       "to": []

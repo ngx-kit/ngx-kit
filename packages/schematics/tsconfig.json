@@ -11,7 +11,7 @@
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "outDir": "./dist",
+    "outDir": "../../dist/schematics-build",
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
@@ -28,7 +28,7 @@
     ],
     "baseUrl": "",
     "typeRoots": [
-      "./node_modules/@types"
+      "../node_modules/@types"
     ],
     "types": [
       "jasmine",
@@ -36,13 +36,7 @@
     ]
   },
   "exclude": [
-    "dist/**/*",
-    "package/*/files/**/*",
-    "package/*/other-files/**/*",
-    "tmp/**/*",
-    "rules/**/*",
-    "node_modules/**/*",
-    "tests/**/*",
-    "scripts/**/*"
+    "./*/files/**/*",
+    "./*/other-files/**/*"
   ]
 }

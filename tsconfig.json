@@ -18,15 +18,6 @@
       "es2015",
       "es2016"
     ],
-    "baseUrl": ".",
-    "rootDir": "./package",
-    "outDir": "./dist/build",
-    "declaration": true,
-    "declarationDir": "./dist/release",
-    "paths": {
-      "@ngx-kit/styler": [
-        "./node_modules/@ngx-kit/styler"
-      ]
-    }
+    "baseUrl": "."
   }
 }
