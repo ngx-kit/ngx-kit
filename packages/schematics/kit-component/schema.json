@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsNgxKitComponent",
+  "title": "Ngx-kit Options Schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "default": "app/package/lib"
+    },
+    "appRoot": {
+      "type": "string"
+    },
+    "sourceDir": {
+      "type": "string",
+      "default": "src",
+      "alias": "sd"
+    },
+    "lib": {
+      "type": "string",
+      "default": ""
+    },
+    "name": {
+      "type": "string"
+    },
+    "htmlTemplate": {
+      "type": "string"
+    },
+    "skipImport": {
+      "type": "boolean",
+      "default": false
+    },
+    "module": {
+      "type": "string",
+      "description": "Allows specification of the declaring module.",
+      "alias": "m"
+    },
+    "export": {
+      "type": "boolean",
+      "default": true,
+      "description": "Specifies if declaring module exports the component."
+    },
+    "valueAccessor": {
+      "type": "boolean",
+      "default": false,
+      "description": "Add VALUE_ACCESSOR to the component.",
+      "alias": "va"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
