@@ -13,8 +13,7 @@
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "rootDir": "package/",
-    "outDir": "./dist/release",
+    "rootDir": "./",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
@@ -25,11 +24,7 @@
       "node"
     ]
   },
-  "include": [
-    "package/**/*"
-  ],
   "exclude": [
-    "package/_template/",
-    "package/*/files/**/*"
+    "./*/files/**/*"
   ]
 }

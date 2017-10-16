@@ -1,7 +1,9 @@
 {
   "copy": {
     "release": {
-      "from": ["./dist/release"],
+      "from": [
+        "./dist/release"
+      ],
       "to": []
     },
     "src": {
@@ -17,6 +19,6 @@
   "schematics": {
     "src": "./src/lib",
     "template": "./package/_template",
-    "dist": "./package"
+    "dist": "./dist/release"
   }
 }
