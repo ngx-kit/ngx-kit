@@ -1,0 +1,26 @@
+{
+  "name": "@ngx-kit/cli",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "ngx-kit - developers cli",
+  "bin": {
+    "ngx-kit": "./cli.js"
+  },
+  "author": {
+    "name": "Sasha Novik",
+    "email": "alex@nvx.me",
+    "url": "https://nvx.me/"
+  },
+  "license": "MIT",
+  "homepage": "https://ngx-kit.com",
+  "repository": {
+    "url": "https://github.com/ngx-kit/cli.git",
+    "type": "git"
+  },
+  "dependencies": {
+    "deepmerge": "^1.5.1",
+    "front-matter": "^2.2.0",
+    "fs-extra": "^4.0.2",
+    "typescript": "^2.5.2",
+    "walk": "^2.3.9"
+  }
+}
