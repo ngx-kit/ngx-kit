@@ -1,0 +1,14 @@
+export const keyArrowUp = 38;
+export const keyArrowDown = 40;
+export const keyArrowRight = 39;
+export const keyArrowLeft = 37;
+//export const pageUp = 33;
+//export const pageDown = 34;
+//export const home = 36;
+//export const end = 35;
+//export const enter = 13;
+//export const space = 32;
+//export const tab = 9;
+//export const escape = 27;
+//export const backspace = 8;
+//export const delete = 46;
