@@ -20,6 +20,8 @@ import { DemoButtonSizeComponent } from './ui-button/demo-button-size/demo-butto
 import { DemoCarouselDefaultComponent } from './ui-carousel/demo-carousel-default/demo-carousel-default.component';
 import { DemoCarouselGenComponent } from './ui-carousel/demo-carousel-gen/demo-carousel-gen.component';
 import { DemoCustomSelectDefaultComponent } from './ui-custom-select/demo-custom-select-default/demo-custom-select-default.component';
+import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picker-default/demo-date-picker-default.component';
+import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
 import { DemoInputCheckboxComponent } from './ui-input/demo-input-checkbox/demo-input-checkbox.component';
 import { DemoInputDefaultComponent } from './ui-input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './ui-input/demo-input-math/demo-input-math.component';
@@ -71,6 +73,9 @@ export const demo = [
   DemoCarouselGenComponent,
   // custom-select
   DemoCustomSelectDefaultComponent,
+  // date-picker
+  DemoDatePickerDefaultComponent,
+  DemoDatePickerPopupComponent,
   // input
   DemoInputDefaultComponent,
   DemoInputMathComponent,

@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+  button {
+    border: 0;
+    background: transparent;
+  }
+}
+
+.grid {
+  border: 0;
+  width: 100%;
+  button {
+    width: 100%;
+  }
+  tr {
+    border: 0;
+  }
+  td, th {
+    border: 0;
+    background: transparent;
+    padding: 2px;
+    margin: 0;
+  }
+}
+
+.date {
+  background: #fafafa;
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  &.outside {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    color: #b5b5b5;
+  }
+  &.active {
+    background: #2399e5;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .3);
+    color: #ffffff;
+  }
+  &:focus {
+    border: 1px solid #2399e5;
+    outline: none;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="head">
+  <button (click)="modYear(-1)">&lArr;</button>
+  <button (click)="modMonth(-1)">&larr;</button>
+  <div class="title">{{ monthCursor$ | async | date:'MMMM, y' }}</div>
+  <button (click)="modMonth(1)">&rarr;</button>
+  <button (click)="modYear(1)">&rArr;</button>
+</div>
+<table class="grid">
+  <thead>
+  <tr>
+    <th class="weekday" *ngFor="let weekday of weekdays">{{ weekday | date:'EEE' }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let line of datesGrid$ | async">
+    <td *ngFor="let item of line">
+      <button class="date"
+              [kitClass]="{active: isActive(item.date), outside: item.isOutside}"
+              (click)="setDate(item.date)">
+        {{ item.date | date:'d' }}
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

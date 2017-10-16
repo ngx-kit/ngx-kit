@@ -4,6 +4,7 @@ import { UiBadgeModule } from './ui-badge/ui-badge.module';
 import { UiButtonModule } from './ui-button/ui-button.module';
 import { UiCarouselModule } from './ui-carousel/ui-carousel.module';
 import { UiCustomSelectModule } from './ui-custom-select/ui-custom-select.module';
+import { UiDatePickerModule } from './ui-date-picker/ui-date-picker.module';
 import { UiInputModule } from './ui-input/ui-input.module';
 import { UiLoadingBarModule } from './ui-loading-bar/ui-loading-bar.module';
 import { UiModalModule } from './ui-modal/ui-modal.module';
@@ -23,6 +24,7 @@ export const lib = [
   UiButtonModule,
   UiCarouselModule,
   UiCustomSelectModule,
+  UiDatePickerModule,
   UiInputModule,
   UiLoadingBarModule,
   UiModalModule,

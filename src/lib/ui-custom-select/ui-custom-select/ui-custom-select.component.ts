@@ -37,7 +37,7 @@ export const uiCustomSelectValueAccessor: any = {
           transform: 'translateY(0)',
         })),
       ]),
-      transition('* => void', [
+      transition(':leave', [
         style({opacity: 1}),
         animate('100ms', style({
           opacity: 0,

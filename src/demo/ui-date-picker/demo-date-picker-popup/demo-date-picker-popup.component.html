@@ -1,0 +1,6 @@
+<input [(ngModel)]="model" [kitAnchor] #anchor="anchor" (focus)="opened = true">
+<ui-date-picker-popup *kitOverlay="opened" [anchor]="anchor" (outsideClick)="opened = false">
+  <ui-date-picker [(ngModel)]="model"
+                  (ngModelChange)="opened = false">
+  </ui-date-picker>
+</ui-date-picker-popup>
