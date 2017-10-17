@@ -1,3 +1,3 @@
 export * from './kit-aria.module';
-export * from './kit-aria-focus-grid/kit-aria-focus-grid.directive';
-export * from './kit-aria-focus-grid/kit-aria-focus-grid.service';
+export * from './kit-aria-grid/kit-aria-grid.directive';
+export * from './kit-aria-grid/kit-aria-grid.service';

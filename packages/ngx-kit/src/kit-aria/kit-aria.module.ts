@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitAriaFocusGridDirective } from './kit-aria-focus-grid/kit-aria-focus-grid.directive';
+import { KitAriaGridCellDirective } from './kit-aria-grid/kit-aria-grid-cell.directive';
+import { KitAriaGridDirective } from './kit-aria-grid/kit-aria-grid.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    KitAriaFocusGridDirective,
+    KitAriaGridDirective,
+    KitAriaGridCellDirective,
   ],
   exports: [
-    KitAriaFocusGridDirective,
+    KitAriaGridDirective,
+    KitAriaGridCellDirective,
   ],
 })
 export class KitAriaModule {
