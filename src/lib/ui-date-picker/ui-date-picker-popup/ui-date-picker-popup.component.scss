@@ -4,4 +4,7 @@
   border: 1px solid #eeeeee;
   box-shadow: 0 0 16px rgba(0, 0, 0, .2);
   border-radius: 4px;
+  &:focus-within {
+    box-shadow: 0 0 4px 6px rgba(80,88,156,0.2);
+  }
 }

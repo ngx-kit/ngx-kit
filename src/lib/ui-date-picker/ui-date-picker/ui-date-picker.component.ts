@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitDatePickerGrid, KitDatePickerService } from '@ngx-kit/ngx-kit';
+import { KitAriaGridService, KitDatePickerGrid, KitDatePickerGridItem, KitDatePickerService } from '@ngx-kit/ngx-kit';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -16,6 +16,7 @@ export const uiDatePickerValueAccessor: any = {
   styleUrls: ['./ui-date-picker.component.scss'],
   providers: [
     uiDatePickerValueAccessor,
+    KitAriaGridService,
     KitDatePickerService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,7 +47,7 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   isActive(date: Date) {
-    return date.toDateString() === this.state.toDateString();
+    return this.service.isDatesEqual(date, this.state);
   }
 
   modMonth(modifier: 1 | -1) {
@@ -67,8 +68,9 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
     this.touches$.subscribe(fn);
   }
 
-  setDate(date: Date) {
-    this.state = date;
+  setDate(item: KitDatePickerGridItem) {
+    this.state = item.date;
+    this.service.focus(item.pos);
     this.changes$.next(this.state);
     this.touches$.next();
   }

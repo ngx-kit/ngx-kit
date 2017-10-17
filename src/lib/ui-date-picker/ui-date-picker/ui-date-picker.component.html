@@ -5,7 +5,7 @@
   <button (click)="modMonth(1)">&rarr;</button>
   <button (click)="modYear(1)">&rArr;</button>
 </div>
-<table class="grid">
+<table class="grid" [kitAriaGrid]>
   <thead>
   <tr>
     <th class="weekday" *ngFor="let weekday of weekdays">{{ weekday | date:'EEE' }}</th>
@@ -16,7 +16,8 @@
     <td *ngFor="let item of line">
       <button class="date"
               [kitClass]="{active: isActive(item.date), outside: item.isOutside}"
-              (click)="setDate(item.date)">
+              [kitAriaGridCell]="item.pos"
+              (click)="setDate(item)">
         {{ item.date | date:'d' }}
       </button>
     </td>

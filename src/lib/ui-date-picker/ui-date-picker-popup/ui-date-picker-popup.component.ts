@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -9,7 +10,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { KitAnchorDirective, KitOverlayPositionService, KitStyleService } from '@ngx-kit/ngx-kit';
+import { KitAnchorDirective, KitAriaGridService, KitOverlayPositionService, KitStyleService } from '@ngx-kit/ngx-kit';
 
 @Component({
   selector: 'ui-date-picker-popup',
