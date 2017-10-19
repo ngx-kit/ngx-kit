@@ -1,13 +1,14 @@
-import { ElementRef, Inject, Injectable, NgZone, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
+import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
 import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
+import { KitPlatformService } from '../kit-core/kit-platform.service';
 import {
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitOverlayPositionDirectiveParams,
 } from './meta';
-import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -16,31 +17,6 @@ export class KitOverlayPositionService implements OnDestroy {
   outsideClick$ = new Subject<MouseEvent>();
 
   position: KitCoreOverlayContainerPosition = 'top';
-
-  type: KitCoreOverlayContainerType = 'side';
-
-  widthType: 'full' | 'auto' = 'auto';
-
-  private listeners: any[];
-
-  constructor(private renderer: Renderer2,
-              private zone: NgZone,
-              private el: ElementRef,
-              private style: KitStyleService,
-              @Inject(PLATFORM_ID) private platformId: Object) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.zone.runOutsideAngular(() => {
-        // Renderer2 does not support useCapture
-        document.addEventListener('scroll', this.reposition, true);
-        window.addEventListener('resize', this.reposition, true);
-        this.listeners = [
-          () => document.removeEventListener('scroll', this.reposition, true),
-          () => window.removeEventListener('resize', this.reposition, true),
-          this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
-        ];
-      });
-    }
-  }
 
   reposition = () => {
     this.zone.run(() => {
@@ -55,6 +31,32 @@ export class KitOverlayPositionService implements OnDestroy {
     });
   };
 
+  type: KitCoreOverlayContainerType = 'side';
+
+  widthType: 'full' | 'auto' = 'auto';
+
+  private listeners: any[];
+
+  constructor(private renderer: Renderer2,
+              private zone: NgZone,
+              private el: ElementRef,
+              private style: KitStyleService,
+              private platform: KitPlatformService) {
+    if (this.platform.isBrowser()) {
+      setTimeout(() => {
+        this.zone.runOutsideAngular(() => {
+          // Renderer2 does not support useCapture
+          window.addEventListener('scroll', this.reposition, true);
+          window.addEventListener('resize', this.reposition, true);
+          this.listeners = [
+            () => window.removeEventListener('scroll', this.reposition, true),
+            () => window.removeEventListener('resize', this.reposition, true),
+            this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+          ];
+        });
+      }, 1);
+    }
+  }
 
   ngOnDestroy() {
     this.listeners.forEach(l => l());

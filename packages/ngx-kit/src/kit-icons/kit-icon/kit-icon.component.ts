@@ -1,16 +1,6 @@
-import { isPlatformBrowser } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  Inject,
-  Input,
-  OnChanges,
-  OnInit,
-  PLATFORM_ID,
-  Renderer2,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, } from '@angular/core';
 import { StylerComponent, StylerModule, StylerService } from '@ngx-kit/styler';
+import { KitPlatformService } from '../../kit-core/kit-platform.service';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 import { KitIconStyle } from './kit-icon.style';
 
@@ -52,11 +42,11 @@ export class KitIconComponent implements OnInit, OnChanges {
               private renderer: Renderer2,
               private styler: StylerComponent,
               private stylerService: StylerService,
-              @Inject(PLATFORM_ID) private platformId: Object) {
+              private platform: KitPlatformService) {
   }
 
   ngOnChanges() {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platform.isBrowser()) {
       this.registry.get(this.name).subscribe(this.setSvg);
     }
   }

@@ -3,6 +3,7 @@ import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/sty
 import { KitAriaModule } from './kit-aria/kit-aria.module';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitCommonModule } from './kit-common/kit-common.module';
+import { KitCoreModule } from './kit-core/kit-core.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
 import { KitFormsModule } from './kit-forms/kit-forms.module';
 import { KitIconsModule } from './kit-icons/kit-icons.module';
@@ -14,6 +15,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
 
 const initableModules = [
   StylerModule,
+  KitCoreModule,
   KitIconsModule,
   KitLoadingBarModule,
   KitNotificationModule,
@@ -32,6 +34,7 @@ const simpleModules = [
 @NgModule({
   imports: [
     StylerModule.forRoot(),
+    KitCoreModule.forRoot(),
     KitIconsModule.forRoot(),
     KitLoadingBarModule.forRoot(),
     KitNotificationModule.forRoot(),

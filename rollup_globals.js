@@ -20,6 +20,7 @@ module.exports = {
   "rxjs/add/operator/map": "Rx.add",
   "rxjs/add/operator/switchMap": "Rx.add",
   "rxjs/add/operator/takeUntil": "Rx.add",
+  "rxjs/add/operator/take": "Rx.add",
   "rxjs/BehaviorSubject": "Rx",
   "rxjs/Observable": "Rx",
   "rxjs/Subject": "Rx"
