@@ -1,7 +1,8 @@
 export interface KitDatePickerGridItem {
+  active: boolean;
   date: Date;
-  isOutside: boolean;
-  pos: [number, number];
+  focus: boolean;
+  outside: boolean;
 }
 
 export type KitDatePickerGrid = KitDatePickerGridItem[][];

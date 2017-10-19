@@ -1,20 +1,33 @@
 import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { KitAriaGridService } from '../kit-aria/kit-aria-grid/kit-aria-grid.service';
-import { KitAriaMove, KitAriaMoveType } from '../kit-aria/meta';
+import { Subject } from 'rxjs/Subject';
+import { KitGridControlService } from '../kit-aria/kit-grid-control/kit-grid-control.service';
+import { KitGridControlActionType } from '../kit-aria/meta';
 import { KitDatePickerGrid } from './meta';
 
 @Injectable()
 export class KitDatePickerService {
+  private _active: Date;
+
+  private _focus: Date;
+
   private readonly _grid$ = new BehaviorSubject<KitDatePickerGrid>([]);
 
   private readonly _monthCursor$ = new BehaviorSubject<Date>(new Date());
 
-  constructor(@Optional() private ariaGrid: KitAriaGridService) {
+  private readonly _pick = new Subject<Date>();
+
+  constructor(@Optional() private ariaGrid: KitGridControlService) {
     if (this.ariaGrid) {
       this.handleMove();
     }
+  }
+
+  set active(date: Date) {
+    this._active = new Date(date);
+    this._focus = new Date(date);
+    this.updateGrid();
   }
 
   get grid$(): Observable<KitDatePickerGrid> {
@@ -23,6 +36,10 @@ export class KitDatePickerService {
 
   get monthCursor$(): Observable<Date> {
     return this._monthCursor$.asObservable();
+  }
+
+  get pick(): Observable<Date> {
+    return this._pick.asObservable();
   }
 
   get weekdays(): Date[] {
@@ -35,43 +52,36 @@ export class KitDatePickerService {
     return weekdays;
   }
 
-  focus(pos: [number, number]) {
-    this.ariaGrid.focus(pos);
-  }
-
-  init(date: any) {
-    this.initGrid();
-    this._monthCursor$.next(this.startOfMonth(date));
+  focus(date: Date) {
+    this._focus = new Date(date);
+    this.updateGrid();
   }
 
   isDatesEqual(x: Date, y: Date): boolean {
-    return x.toDateString() === y.toDateString();
+    if (x && y) {
+      // @todo improve performance: cache xp, yp
+      const xp = new Date(x);
+      xp.setHours(0, 0, 0, 0);
+      const yp = new Date(y);
+      yp.setHours(0, 0, 0, 0);
+      return +xp === +yp;
+    } else {
+      throw new Error('isDatesEqual params error');
+    }
   }
 
   modMonth(modifier: 1 | -1) {
-    const newState = new Date(this._monthCursor$.value);
-    newState.setMonth(newState.getMonth() + modifier);
-    this._monthCursor$.next(newState);
+    this._focus.setMonth(this._focus.getMonth() + modifier);
+    this.updateGrid();
   }
 
   modYear(modifier: 1 | -1) {
-    const newState = new Date(this._monthCursor$.value);
-    newState.setFullYear(newState.getFullYear() + modifier);
-    this._monthCursor$.next(newState);
+    this._focus.setFullYear(this._focus.getFullYear() + modifier);
+    this.updateGrid();
   }
 
-  registerAriaGrid(ariaGrid: KitAriaGridService) {
+  registerAriaGrid(ariaGrid: KitGridControlService) {
     this.ariaGrid = ariaGrid;
-  }
-
-  private ariaChangeMonth(date: Date, mod: 1 | -1) {
-    this.modMonth(mod);
-    const pos = this.getDatePosInGrid(date);
-    if (pos) {
-      this.ariaGrid.focus(pos, true);
-    } else {
-      throw new Error('Month changing error!');
-    }
   }
 
   private getDatePosInGrid(date: Date) {
@@ -83,95 +93,52 @@ export class KitDatePickerService {
         }
       });
     });
-    if (!pos) {
-      throw new Error('Date is not in the grid!');
-    }
     return pos;
   }
 
   private handleMove() {
-    this.ariaGrid.move.subscribe((move: KitAriaMove) => {
-      const date = new Date(this._grid$.value[move.position[0]][move.position[1]].date);
-      switch (move.type) {
-        case KitAriaMoveType.prevRow:
-          date.setDate(date.getDate() - 7);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, -1);
-          }
+    this.ariaGrid.action.subscribe((type: KitGridControlActionType) => {
+      switch (type) {
+        case KitGridControlActionType.prevRow:
+          this._focus.setDate(this._focus.getDate() - 7);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.nextCell:
-          date.setDate(date.getDate() + 1);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, 1);
-          }
+        case KitGridControlActionType.nextCell:
+          this._focus.setDate(this._focus.getDate() + 1);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.nextRow:
-          date.setDate(date.getDate() + 7);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, 1);
-          }
+        case KitGridControlActionType.nextRow:
+          this._focus.setDate(this._focus.getDate() + 7);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.prevCell:
-          date.setDate(date.getDate() - 1);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, -1);
-          }
+        case KitGridControlActionType.prevCell:
+          this._focus.setDate(this._focus.getDate() - 1);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.end:
-          date.setMonth(date.getMonth() + 1);
-          date.setDate(0);
-          this.ariaGrid.focus(this.getDatePosInGrid(date));
+        case KitGridControlActionType.end:
+          this._focus.setMonth(this._focus.getMonth() + 1, 0);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.home:
-          date.setDate(1);
-          this.ariaGrid.focus(this.getDatePosInGrid(date));
+        case KitGridControlActionType.home:
+          this._focus.setDate(1);
+          this.updateGrid();
           break;
-        case KitAriaMoveType.prevPage:
-          date.setMonth(date.getMonth() - 1);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, -1);
-          }
+        case KitGridControlActionType.prevPage:
+          this.modMonth(-1);
           break;
-        case KitAriaMoveType.nextPage:
-          date.setMonth(date.getMonth() + 1);
-          if (date.getMonth() === this._monthCursor$.value.getMonth()) {
-            this.ariaGrid.focus(this.getDatePosInGrid(date));
-          } else {
-            this.ariaChangeMonth(date, 1);
-          }
+        case KitGridControlActionType.nextPage:
+          this.modMonth(1);
+          break;
+        case KitGridControlActionType.prevSet:
+          this.modYear(-1);
+          break;
+        case KitGridControlActionType.nextSet:
+          this.modYear(1);
+          break;
+        case KitGridControlActionType.enter:
+          this._pick.next(new Date(this._focus));
           break;
       }
-    });
-  }
-
-  private initGrid() {
-    this._monthCursor$.subscribe(month => {
-      const grid = [];
-      const cursor = this.startOfWeek(month);
-      for (let row = 0; row < this.weeksInMonth(month); row++) {
-        const line = [];
-        for (let col = 0; col < 7; col++) {
-          const date = new Date(cursor);
-          line.push({
-            date,
-            isOutside: date.getMonth() !== month.getMonth(),
-            pos: [row, col] as [number, number],
-          });
-          cursor.setDate(cursor.getDate() + 1);
-        }
-        grid.push(line);
-      }
-      this._grid$.next(grid);
     });
   }
 
@@ -186,6 +153,40 @@ export class KitDatePickerService {
       date.setHours(-24 * (day - 1));
     }
     return date;
+  }
+
+  private updateGrid() {
+    if (this._monthCursor$.value &&
+        this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor$.value))) {
+      // update current grid
+      const grid = this._grid$.value;
+      grid.forEach(r => r.forEach(c => {
+        c.active = this.isDatesEqual(c.date, this._active);
+        c.focus = this.isDatesEqual(c.date, this._focus);
+      }));
+      this._grid$.next(grid);
+    } else {
+      // recompile grid
+      const month = this.startOfMonth(this._focus);
+      const grid = [];
+      const cursor = this.startOfWeek(month);
+      for (let row = 0; row < this.weeksInMonth(month); row++) {
+        const line = [];
+        for (let col = 0; col < 7; col++) {
+          const date = new Date(cursor);
+          line.push({
+            active: this.isDatesEqual(date, this._active),
+            date,
+            focus: this.isDatesEqual(date, this._focus),
+            outside: date.getMonth() !== month.getMonth(),
+          });
+          cursor.setDate(cursor.getDate() + 1);
+        }
+        grid.push(line);
+      }
+      this._monthCursor$.next(month);
+      this._grid$.next(grid);
+    }
   }
 
   private weeksInMonth(curr: Date) {
