@@ -6,13 +6,14 @@ export const keyPageUp = 33;
 export const keyPageDown = 34;
 export const keyHome = 36;
 export const keyEnd = 35;
-//export const enter = 13;
-//export const space = 32;
-//export const tab = 9;
-//export const escape = 27;
-//export const backspace = 8;
-//export const delete = 46;
-export enum KitAriaMoveType {
+export const keyEnter = 13;
+export const keySpace = 32;
+export const keyTab = 9;
+export const keyEscape = 27;
+export const keyBackspace = 8;
+export const keyDelete = 46;
+
+export enum KitGridControlActionType {
   noop,
   nextCell,
   prevCell,
@@ -22,9 +23,7 @@ export enum KitAriaMoveType {
   home,
   nextPage,
   prevPage,
-}
-
-export interface KitAriaMove {
-  position: [number, number];
-  type: KitAriaMoveType;
+  nextSet,
+  prevSet,
+  enter,
 }
