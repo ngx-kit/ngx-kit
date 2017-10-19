@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitAriaGridService, KitDatePickerGrid, KitDatePickerGridItem, KitDatePickerService } from '@ngx-kit/ngx-kit';
+import { KitDatePickerGrid, KitDatePickerService, KitGridControlService } from '@ngx-kit/ngx-kit';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -16,7 +16,7 @@ export const uiDatePickerValueAccessor: any = {
   styleUrls: ['./ui-date-picker.component.scss'],
   providers: [
     uiDatePickerValueAccessor,
-    KitAriaGridService,
+    KitGridControlService,
     KitDatePickerService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,10 +44,9 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
     this.weekdays = this.service.weekdays;
     this.monthCursor$ = this.service.monthCursor$;
     this.datesGrid$ = this.service.grid$;
-  }
-
-  isActive(date: Date) {
-    return this.service.isDatesEqual(date, this.state);
+    this.service.pick.subscribe(date => {
+      this.setDate(date);
+    });
   }
 
   modMonth(modifier: 1 | -1) {
@@ -68,9 +67,9 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
     this.touches$.subscribe(fn);
   }
 
-  setDate(item: KitDatePickerGridItem) {
-    this.state = item.date;
-    this.service.focus(item.pos);
+  setDate(date: Date) {
+    this.state = date;
+    this.service.active = this.state;
     this.changes$.next(this.state);
     this.touches$.next();
   }
@@ -81,7 +80,7 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   writeValue(rawValue: any) {
     this.state = rawValue ? new Date(rawValue) : new Date();
-    this.service.init(this.state);
+    this.service.active = this.state;
     this.cdr.markForCheck();
   }
 }

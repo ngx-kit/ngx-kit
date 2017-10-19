@@ -1,5 +1,9 @@
-<input [(ngModel)]="model" [kitAnchor] #anchor="anchor" (focus)="opened = true">
-<ui-date-picker-popup *kitOverlay="opened" [anchor]="anchor" (outsideClick)="opened = false">
+<input [(ngModel)]="model" [kitAnchor] aria-haspopup="true" #anchor="anchor">
+<button (click)="opened = !opened">Toggle</button>
+
+<ui-date-picker-popup *kitOverlay="opened"
+                      [anchor]="anchor"
+                      (outsideClick)="opened = false">
   <ui-date-picker [(ngModel)]="model"
                   (ngModelChange)="opened = false">
   </ui-date-picker>

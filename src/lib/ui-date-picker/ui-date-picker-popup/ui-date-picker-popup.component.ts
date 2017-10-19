@@ -1,6 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -10,7 +9,12 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { KitAnchorDirective, KitAriaGridService, KitOverlayPositionService, KitStyleService } from '@ngx-kit/ngx-kit';
+import {
+  KitAnchorDirective,
+  KitFocusManagerService,
+  KitOverlayPositionService,
+  KitStyleService,
+} from '@ngx-kit/ngx-kit';
 
 @Component({
   selector: 'ui-date-picker-popup',
@@ -20,6 +24,7 @@ import { KitAnchorDirective, KitAriaGridService, KitOverlayPositionService, KitS
   providers: [
     KitOverlayPositionService,
     KitStyleService,
+    KitFocusManagerService,
   ],
   animations: [
     trigger('host', [
@@ -46,11 +51,20 @@ import { KitAnchorDirective, KitAriaGridService, KitOverlayPositionService, KitS
 export class UiDatePickerPopupComponent implements OnInit, OnChanges {
   @Input() anchor: KitAnchorDirective;
 
+  @HostBinding('attr.aria-describedby') describedby = 'Popup where you can pick a date';
+
   @HostBinding('@host') hostTrigger;
+
+  @HostBinding('attr.aria-labelledby') labelledby = 'Datepicker popup';
 
   @Output() outsideClick = new EventEmitter<MouseEvent>();
 
-  constructor(private overlayPosition: KitOverlayPositionService) {
+  @HostBinding('attr.role') role = 'dialog';
+
+  constructor(private overlayPosition: KitOverlayPositionService,
+              private focusManager: KitFocusManagerService) {
+    this.focusManager.autoCapture = true;
+    this.focusManager.init();
   }
 
   ngOnChanges() {
@@ -63,5 +77,6 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
     this.overlayPosition.position = 'bottom';
     this.overlayPosition.reposition();
     this.overlayPosition.outsideClick$.subscribe(this.outsideClick);
+    this.focusManager.focusItem('grid');
   }
 }

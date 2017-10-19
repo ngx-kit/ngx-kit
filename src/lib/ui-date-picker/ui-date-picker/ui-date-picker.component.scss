@@ -33,9 +33,13 @@
 }
 
 .date {
+  display: inline-block;
   background: #fafafa;
   border: 1px solid #dddddd;
   border-radius: 2px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
   &.outside {
     background: #ffffff;
     border: 1px solid #dddddd;
@@ -46,7 +50,7 @@
     box-shadow: 0 0 6px rgba(0, 0, 0, .3);
     color: #ffffff;
   }
-  &:focus {
+  &.focus {
     border: 1px solid #2399e5;
     outline: none;
   }
