@@ -87,6 +87,7 @@ export class KitIconsRegistryService {
    * Creates a DOM element from the given SVG string.
    */
   private svgElementFromString(str: string): SVGElement {
+    // @todo impl multi-platform
     const div = document.createElement('div');
     div.innerHTML = str;
     const svg = div.querySelector('svg') as SVGElement;

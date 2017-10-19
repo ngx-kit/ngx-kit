@@ -1,23 +1,12 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 import 'rxjs/add/operator/take';
+import { KitGlobalListenerService } from '../../kit-core/kit-global-listener.service';
 import { keyTab } from '../meta';
 import { KitFocusDirective } from './kit-focus.directive';
 
 @Injectable()
 export class KitFocusManagerService implements OnDestroy {
   autoCapture = false;
-
-  handleKey = (event: KeyboardEvent) => {
-    if (event.keyCode === keyTab) {
-      event.preventDefault();
-      event.stopPropagation();
-      if (event.shiftKey) {
-        this.focusPrev();
-      } else {
-        this.focusNext();
-      }
-    }
-  };
 
   private current: HTMLElement;
 
@@ -31,7 +20,12 @@ export class KitFocusManagerService implements OnDestroy {
 
   constructor(private el: ElementRef,
               private renderer: Renderer2,
-              private zone: NgZone) {
+              private zone: NgZone,
+              private globalListener: KitGlobalListenerService) {
+  }
+
+  private get documentActiveElement(): HTMLElement {
+    return this.el.nativeElement.ownerDocument.activeElement as HTMLElement;
   }
 
   ngOnDestroy() {
@@ -43,7 +37,7 @@ export class KitFocusManagerService implements OnDestroy {
 
   capture() {
     this.focusTrap = true;
-    this.outsideSource = document.activeElement as HTMLElement;
+    this.outsideSource = this.documentActiveElement;
     this.focusFirst();
   }
 
@@ -72,7 +66,7 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   focusNext() {
-    const current = document.activeElement as HTMLElement;
+    const current = this.documentActiveElement;
     const nodes = this.getTabbable();
     const currentIndex = nodes.findIndex(n => n === current);
     if (currentIndex !== -1 && currentIndex < nodes.length - 1) {
@@ -83,7 +77,7 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   focusPrev() {
-    const current = document.activeElement as HTMLElement;
+    const current = this.documentActiveElement;
     const nodes = this.getTabbable();
     const currentIndex = nodes.findIndex(n => n === current);
     if (currentIndex !== -1 && currentIndex > 0) {
@@ -95,29 +89,11 @@ export class KitFocusManagerService implements OnDestroy {
 
   init() {
     this.zone.runOutsideAngular(() => {
-      const focusinUnsub = this.renderer.listen(this.el.nativeElement, 'focusin', (event: FocusEvent) => {
-        if (this.isDescendant(this.el.nativeElement, event.target as HTMLElement)) {
-          this.current = event.target as HTMLElement;
-        }
-      });
-      const focusoutUnsub = this.renderer.listen(this.el.nativeElement, 'focusout', (event: FocusEvent) => {
-        if (!this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)) {
-          if (this.focusTrap) {
-            if (this.current) {
-              this.current.focus();
-            } else {
-              this.focusFirst();
-            }
-          }
-        }
-      });
-      // Renderer2 does not support useCapture
-      document.addEventListener('keydown', this.handleKey, true);
       // Unsubs
       this.unsubs = [
-        () => document.removeEventListener('keydown', this.handleKey, true),
-        focusinUnsub,
-        focusoutUnsub,
+        this.renderer.listen(this.el.nativeElement, 'focusin', this.focusinHandler.bind(this)),
+        this.renderer.listen(this.el.nativeElement, 'focusout', this.focusoutHandler.bind(this)),
+        this.globalListener.listen('keydown', this.keydownHandler.bind(this)),
       ];
     });
     if (this.autoCapture) {
@@ -140,6 +116,24 @@ export class KitFocusManagerService implements OnDestroy {
 
   remove(item: KitFocusDirective) {
     this.items.delete(item);
+  }
+
+  private focusinHandler(event: FocusEvent) {
+    if (this.isDescendant(this.el.nativeElement, event.target as HTMLElement)) {
+      this.current = event.target as HTMLElement;
+    }
+  }
+
+  private focusoutHandler(event: FocusEvent) {
+    if (!this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)) {
+      if (this.focusTrap) {
+        if (this.current) {
+          this.current.focus();
+        } else {
+          this.focusFirst();
+        }
+      }
+    }
   }
 
   private getTabbable(): HTMLElement[] {
@@ -195,6 +189,18 @@ export class KitFocusManagerService implements OnDestroy {
       return false;
     } else {
       return false;
+    }
+  }
+
+  private keydownHandler(event: KeyboardEvent) {
+    if (event.keyCode === keyTab) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.shiftKey) {
+        this.focusPrev();
+      } else {
+        this.focusNext();
+      }
     }
   }
 }

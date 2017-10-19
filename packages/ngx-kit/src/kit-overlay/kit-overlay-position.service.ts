@@ -3,12 +3,13 @@ import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
 import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
-import { KitPlatformService } from '../kit-core/kit-platform.service';
+import { KitGlobalListenerService } from '../kit-core/kit-global-listener.service';
 import {
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitOverlayPositionDirectiveParams,
 } from './meta';
+import { KitPlatformService } from '../kit-core/kit-platform.service';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -18,7 +19,43 @@ export class KitOverlayPositionService implements OnDestroy {
 
   position: KitCoreOverlayContainerPosition = 'top';
 
-  reposition = () => {
+  type: KitCoreOverlayContainerType = 'side';
+
+  widthType: 'full' | 'auto' = 'auto';
+
+  private unsubs: any[];
+
+  constructor(private renderer: Renderer2,
+              private zone: NgZone,
+              private el: ElementRef,
+              private style: KitStyleService,
+              private platform: KitPlatformService,
+              private globalListener: KitGlobalListenerService) {
+    setTimeout(() => {
+      this.zone.runOutsideAngular(() => {
+        // Renderer2 does not support useCapture
+        this.unsubs = [
+          this.globalListener.listen('scroll', this.reposition.bind(this)),
+          this.globalListener.listen('resize', this.reposition.bind(this)),
+          this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+        ];
+      });
+    }, 1);
+  }
+
+  ngOnDestroy() {
+    this.unsubs.forEach(l => l());
+  }
+
+  applyParams(params: Partial<KitOverlayPositionDirectiveParams>) {
+    for (const param in params) {
+      if (params.hasOwnProperty(param) && params[param]) {
+        this[param] = params[param];
+      }
+    }
+  }
+
+  reposition() {
     this.zone.run(() => {
       switch (this.type) {
         case 'dropdown':
@@ -30,45 +67,6 @@ export class KitOverlayPositionService implements OnDestroy {
       }
     });
   };
-
-  type: KitCoreOverlayContainerType = 'side';
-
-  widthType: 'full' | 'auto' = 'auto';
-
-  private listeners: any[];
-
-  constructor(private renderer: Renderer2,
-              private zone: NgZone,
-              private el: ElementRef,
-              private style: KitStyleService,
-              private platform: KitPlatformService) {
-    if (this.platform.isBrowser()) {
-      setTimeout(() => {
-        this.zone.runOutsideAngular(() => {
-          // Renderer2 does not support useCapture
-          window.addEventListener('scroll', this.reposition, true);
-          window.addEventListener('resize', this.reposition, true);
-          this.listeners = [
-            () => window.removeEventListener('scroll', this.reposition, true),
-            () => window.removeEventListener('resize', this.reposition, true),
-            this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
-          ];
-        });
-      }, 1);
-    }
-  }
-
-  ngOnDestroy() {
-    this.listeners.forEach(l => l());
-  }
-
-  applyParams(params: Partial<KitOverlayPositionDirectiveParams>) {
-    for (const param in params) {
-      if (params.hasOwnProperty(param) && params[param]) {
-        this[param] = params[param];
-      }
-    }
-  }
 
   private clickHandler(event: MouseEvent) {
     this.zone.run(() => {
@@ -87,10 +85,13 @@ export class KitOverlayPositionService implements OnDestroy {
 
   private getEventPath(event: Event): EventTarget[] {
     const path = [];
-    let node = event.target;
-    while (node !== document.body) {
-      path.push(node);
-      node = node['parentNode'];
+    if (this.platform.isBrowser()) {
+      // @todo impl multi-platform
+      let node = event.target;
+      while (node !== document.body) {
+        path.push(node);
+        node = node['parentNode'];
+      }
     }
     return path;
   }
