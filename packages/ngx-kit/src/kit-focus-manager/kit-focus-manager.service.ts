@@ -40,6 +40,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Activate focus-trap.
+   *
+   * @publicApi
    */
   capture() {
     this.focusTrap = true;
@@ -49,6 +51,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Focus first focusable element.
+   *
+   * @publicApi
    */
   focusFirst() {
     const nodes = this.getTabbable();
@@ -59,6 +63,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Focus item dy id.
+   *
+   * @publicApi
    */
   focusItem(id: string | number) {
     this.zone.onStable.take(1).subscribe(() => {
@@ -72,6 +78,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Focus last focusable element.
+   *
+   * @publicApi
    */
   focusLast() {
     const nodes = this.getTabbable();
@@ -81,7 +89,9 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   /**
-   * Focus next focusable element (from current focused)
+   * Focus next focusable element (from current focused).
+   *
+   * @publicApi
    */
   focusNext() {
     const current = this.documentActiveElement;
@@ -96,6 +106,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Focus prev focusable element (from currect focused).
+   *
+   * @publicApi
    */
   focusPrev() {
     const current = this.documentActiveElement;
@@ -110,6 +122,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Required method for start service.
+   *
+   * @publicApi
    */
   init() {
     this.zone.runOutsideAngular(() => {
@@ -131,6 +145,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Register  item for manual focus.
+   *
+   * @publicApi
    */
   register(item: KitFocusDirective) {
     this.items.add(item);
@@ -138,6 +154,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Disable focus-trap.
+   *
+   * @publicApi
    */
   release() {
     this.focusTrap = false;
@@ -146,6 +164,8 @@ export class KitFocusManagerService implements OnDestroy {
 
   /**
    * Remove item.
+   *
+   * @publicApi
    */
   remove(item: KitFocusDirective) {
     this.items.delete(item);
