@@ -12,6 +12,9 @@ module.exports = function(fileName) {
     inputs: [],
     outputs: [],
     methods: [],
+    props: [],
+    getProps: [],
+    setProps: [],
   };
   ts.forEachChild(sourceFile, readNodeWrapper('', data, null));
   return data;
@@ -25,23 +28,33 @@ function readNodeWrapper(level, data, parent) {
         data.type = node.decorators[0].expression.expression.text;
         data.doc = getDoc(node);
         break;
-      case ts.SyntaxKind.PropertyDeclaration:
+      case ts.SyntaxKind.PropertyDeclaration: {
         if (node.jsDoc) {
           ts.forEach(node.jsDoc, readNodeWrapper(level + '--', data, 'class'));
         }
+        const prop = getProp(node);
+        if (prop) {
+          data.props.push(prop);
+        }
         break;
+      }
+      case ts.SyntaxKind.SetAccessor: {
+        const method = getMethod(node);
+        if (method) {
+          data.setProps.push(method);
+        }
+        break;
+      }
+      case ts.SyntaxKind.GetAccessor: {
+        const prop = getProp(node);
+        if (prop) {
+          data.getProps.push(prop);
+        }
+        break;
+      }
       case ts.SyntaxKind.MethodDeclaration:
-        if (!node.modifiers || node.modifiers
-                .findIndex(m =>
-                    m.kind === ts.SyntaxKind.PrivateKeyword ||
-                    m.kind === ts.SyntaxKind.ProtectedKeyword) === -1) {
-          const method = {
-            name: node.name.text,
-            typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,
-            type: node.type ? getTypeFromTypeNode(node.type) : undefined,
-            params: getMethodParams(node),
-            doc: getDoc(node),
-          };
+        const method = getMethod(node);
+        if (method) {
           data.methods.push(method);
         }
         break;
@@ -199,4 +212,37 @@ function getMethodParams(node) {
     name: p.name.text,
     type: getTypeFromTypeNode(p.type),
   }));
+}
+
+function getProp(node) {
+  if (!node.modifiers || node.modifiers
+          .findIndex(m =>
+              m.kind === ts.SyntaxKind.PrivateKeyword ||
+              m.kind === ts.SyntaxKind.ProtectedKeyword) === -1) {
+    return {
+      name: node.name.text,
+      typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,
+      type: node.type ? getTypeFromTypeNode(node.type) : undefined,
+      doc: getDoc(node),
+    };
+  } else {
+    return null;
+  }
+}
+
+function getMethod(node) {
+  if (!node.modifiers || node.modifiers
+          .findIndex(m =>
+              m.kind === ts.SyntaxKind.PrivateKeyword ||
+              m.kind === ts.SyntaxKind.ProtectedKeyword) === -1) {
+    return {
+      name: node.name.text,
+      typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,
+      type: node.type ? getTypeFromTypeNode(node.type) : undefined,
+      params: getMethodParams(node),
+      doc: getDoc(node),
+    };
+  } else {
+    return null;
+  }
 }

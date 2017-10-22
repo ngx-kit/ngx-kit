@@ -44,3 +44,4 @@ sh.exe.stackdump
 
 .ngx-kit.env.json
 
+packages/cli/node_modules
