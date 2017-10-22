@@ -11,6 +11,7 @@ import {
 import { KitMultiOutletType } from '../meta';
 
 /**
+ * Unstable!
  *
  * Usage:
  *

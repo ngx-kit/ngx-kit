@@ -2,6 +2,14 @@ import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { KitClassSetter } from '../meta';
 import { KitClassService } from './kit-class.service';
 
+/**
+ * Provides `KitClassService` and pass property to `.apply` method.
+ *
+ * ```html
+ * <div [kitClass]="{color: 'red', active: true}">
+ * <div class="color-red active">
+ * ```
+ */
 @Directive({
   selector: '[kitClass]',
   providers: [KitClassService],

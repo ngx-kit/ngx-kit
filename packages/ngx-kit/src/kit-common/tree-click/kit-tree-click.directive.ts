@@ -1,5 +1,8 @@
 import { Directive, EventEmitter, HostListener, Input, Optional, Output, SkipSelf } from '@angular/core';
 
+/**
+ * Unstable!
+ */
 @Directive({
   selector: '[kitTreeClick]',
 })

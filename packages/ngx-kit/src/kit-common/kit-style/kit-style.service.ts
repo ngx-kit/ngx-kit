@@ -1,5 +1,20 @@
 import { ElementRef, Injectable, KeyValueChanges, KeyValueDiffer, KeyValueDiffers, Renderer2 } from '@angular/core';
 
+/**
+ * Service works exactly like `ngStyle`, but must be provided on component or directive.
+ *
+ * ```typescript
+ * providers: [KitStyleService],
+ * ...
+ * constructor(private styleService: KitStyleService) {
+ * }
+ * ...
+ * this.styleService.style = {
+ *  background: 'red',
+ *  color: '#fff',
+ * };
+ * ```
+ */
 @Injectable()
 export class KitStyleService {
   private _differ: KeyValueDiffer<string, string | number>;

@@ -4,6 +4,17 @@ import { isObject } from '../../kit-util/is-object';
 import { isString } from '../../kit-util/is-string';
 import { KitClassSetter } from '../meta';
 
+/**
+ * Apply to classes to an element.
+ *
+ * Must be provided on a component or directive.
+ *
+ * ```typescript
+ * classService.apply({color: 'red', active: true});
+ * ```
+ *
+ * Adds to element: `class="color-red active"`
+ */
 @Injectable()
 export class KitClassService {
   private _state: KitClassSetter = {};
@@ -16,6 +27,9 @@ export class KitClassService {
               private el: ElementRef) {
   }
 
+  /**
+   * Override class declaration state.
+   */
   set state(setterRaw: KitClassSetter) {
     const setter = setterRaw || {};
     if (this.isChanged(setter)) {
@@ -24,6 +38,9 @@ export class KitClassService {
     }
   }
 
+  /**
+   * Merge to class declaration state.
+   */
   apply(setter: KitClassSetter): void {
     const newState = {...this._state, ...setter};
     if (this.isChanged(newState)) {

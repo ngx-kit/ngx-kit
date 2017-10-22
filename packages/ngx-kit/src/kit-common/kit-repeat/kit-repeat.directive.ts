@@ -1,8 +1,6 @@
 import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRef, } from '@angular/core';
 
 /**
- * @todo optimize rendering (do not render if number increase)
- *
  * Structural directive for template repeating.
  *
  * Usage:
@@ -15,6 +13,9 @@ import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRe
   selector: '[kitRepeat]',
 })
 export class KitRepeatDirective implements OnChanges {
+  /**
+   * Number of repeats.
+   */
   @Input() kitRepeat: number;
 
   private componentRef: ComponentRef<any>;
