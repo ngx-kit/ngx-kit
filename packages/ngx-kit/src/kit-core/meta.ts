@@ -12,18 +12,3 @@ export const keyTab = 9;
 export const keyEscape = 27;
 export const keyBackspace = 8;
 export const keyDelete = 46;
-
-export enum KitGridControlActionType {
-  noop,
-  nextCell,
-  prevCell,
-  nextRow,
-  prevRow,
-  end,
-  home,
-  nextPage,
-  prevPage,
-  nextSet,
-  prevSet,
-  enter,
-}

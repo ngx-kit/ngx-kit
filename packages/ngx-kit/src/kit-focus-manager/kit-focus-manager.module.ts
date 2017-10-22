@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitFocusDirective } from './kit-focus-manager/kit-focus.directive';
-import { KitGridControlDirective } from './kit-grid-control/kit-grid-control.directive';
+import { KitFocusDirective } from './kit-focus/kit-focus.directive';
+import { KitGridControlDirective } from '../kit-grid/kit-grid-control/kit-grid-control.directive';
 
 @NgModule({
   imports: [
@@ -16,5 +16,5 @@ import { KitGridControlDirective } from './kit-grid-control/kit-grid-control.dir
     KitFocusDirective,
   ],
 })
-export class KitAriaModule {
+export class KitFocusManagerModule {
 }

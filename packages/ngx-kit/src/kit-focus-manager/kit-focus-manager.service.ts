@@ -1,11 +1,14 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 import 'rxjs/add/operator/take';
-import { KitGlobalListenerService } from '../../kit-core/kit-global-listener.service';
-import { keyTab } from '../meta';
-import { KitFocusDirective } from './kit-focus.directive';
+import { KitGlobalListenerService } from '../kit-core/kit-global-listener.service';
+import { keyTab } from '../kit-core/meta';
+import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 
 @Injectable()
 export class KitFocusManagerService implements OnDestroy {
+  /**
+   * Automatically capture focus after creating.
+   */
   autoCapture = false;
 
   private current: HTMLElement;
@@ -35,12 +38,18 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Activate focus-trap.
+   */
   capture() {
     this.focusTrap = true;
     this.outsideSource = this.documentActiveElement;
     this.focusFirst();
   }
 
+  /**
+   * Focus first focusable element.
+   */
   focusFirst() {
     const nodes = this.getTabbable();
     if (nodes.length > 0) {
@@ -48,6 +57,9 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Focus item dy id.
+   */
   focusItem(id: string | number) {
     this.zone.onStable.take(1).subscribe(() => {
       this.items.forEach(i => {
@@ -58,6 +70,9 @@ export class KitFocusManagerService implements OnDestroy {
     })
   }
 
+  /**
+   * Focus last focusable element.
+   */
   focusLast() {
     const nodes = this.getTabbable();
     if (nodes.length > 0) {
@@ -65,6 +80,9 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Focus next focusable element (from current focused)
+   */
   focusNext() {
     const current = this.documentActiveElement;
     const nodes = this.getTabbable();
@@ -76,6 +94,9 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Focus prev focusable element (from currect focused).
+   */
   focusPrev() {
     const current = this.documentActiveElement;
     const nodes = this.getTabbable();
@@ -87,6 +108,9 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Required method for start service.
+   */
   init() {
     this.zone.runOutsideAngular(() => {
       // Unsubs
@@ -105,15 +129,24 @@ export class KitFocusManagerService implements OnDestroy {
     }
   }
 
+  /**
+   * Register  item for manual focus.
+   */
   register(item: KitFocusDirective) {
     this.items.add(item);
   }
 
+  /**
+   * Disable focus-trap.
+   */
   release() {
     this.focusTrap = false;
     this.outsideSource.focus();
   }
 
+  /**
+   * Remove item.
+   */
   remove(item: KitFocusDirective) {
     this.items.delete(item);
   }

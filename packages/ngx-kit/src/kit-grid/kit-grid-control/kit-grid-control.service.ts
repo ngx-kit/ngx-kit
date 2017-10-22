@@ -12,26 +12,49 @@ import {
   keyPageDown,
   keyPageUp,
   keySpace,
-  KitGridControlActionType,
-} from '../meta';
+} from '../../kit-core/meta';
+import { KitGridControlActionType } from '../meta';
 import { KitGridControlDirective } from './kit-grid-control.directive';
 
+/**
+ * Listens keyboard events and emit actions for grid controlling (navigations event, etc).
+ *
+ * Actions:
+ * * Arrow Up - `prevRow`
+ * * Arrow Right - `nextCell`
+ * * Arrow Down - `nextRow`
+ * * Arrow Left - `prevCell`
+ * * Home - `home`
+ * * End - `end`
+ * * Page Up - `prevPage`
+ * * Page Down - `nextPage`
+ * * Enter - `enter`
+ * * Space - `enter`
+ * * Ctrl + Page Up - `prevSet`
+ * * Ctrl + Page Down - `nextSet`
+ */
 @Injectable()
 export class KitGridControlService implements OnChanges {
-  grid: KitGridControlDirective;
+  private _actions = new Subject<KitGridControlActionType>();
 
-  private _action = new Subject<KitGridControlActionType>();
+  private grid: KitGridControlDirective;
 
   constructor(private renderer: Renderer2) {
   }
 
-  get action(): Observable<KitGridControlActionType> {
-    return this._action.asObservable();
+  /**
+   * Get Observable with captured actions.
+   */
+  get actions(): Observable<KitGridControlActionType> {
+    return this._actions.asObservable();
   }
 
   ngOnChanges() {
   }
 
+  /**
+   * `kitGridControl` automatically register via this method.
+   */
   registerGrid(grid: KitGridControlDirective) {
     this.grid = grid;
     const el = this.grid.nativeEl;
@@ -54,10 +77,10 @@ export class KitGridControlService implements OnChanges {
       };
       if (event.altKey && altTypes[event.keyCode]) {
         event.preventDefault();
-        this._action.next(altTypes[event.keyCode]);
+        this._actions.next(altTypes[event.keyCode]);
       } else if (types[event.keyCode]) {
         event.preventDefault();
-        this._action.next(types[event.keyCode]);
+        this._actions.next(types[event.keyCode]);
       }
     });
   }

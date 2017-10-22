@@ -2,8 +2,8 @@ import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { KitGridControlService } from '../kit-aria/kit-grid-control/kit-grid-control.service';
-import { KitGridControlActionType } from '../kit-aria/meta';
+import { KitGridControlService } from '../kit-grid/kit-grid-control/kit-grid-control.service';
+import { KitGridControlActionType } from '../kit-grid/meta';
 import { KitDatePickerGrid } from './meta';
 
 @Injectable()
@@ -70,12 +70,12 @@ export class KitDatePickerService {
     }
   }
 
-  modMonth(modifier: 1 | -1) {
+  modMonth(modifier: number) {
     this._focus.setMonth(this._focus.getMonth() + modifier);
     this.updateGrid();
   }
 
-  modYear(modifier: 1 | -1) {
+  modYear(modifier: number) {
     this._focus.setFullYear(this._focus.getFullYear() + modifier);
     this.updateGrid();
   }
@@ -97,7 +97,7 @@ export class KitDatePickerService {
   }
 
   private handleMove() {
-    this.ariaGrid.action.subscribe((type: KitGridControlActionType) => {
+    this.ariaGrid.actions.subscribe((type: KitGridControlActionType) => {
       switch (type) {
         case KitGridControlActionType.prevRow:
           this._focus.setDate(this._focus.getDate() - 7);

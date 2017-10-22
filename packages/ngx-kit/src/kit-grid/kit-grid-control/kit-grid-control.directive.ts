@@ -1,6 +1,15 @@
 import { Directive, ElementRef, HostBinding, Input, } from '@angular/core';
 import { KitGridControlService } from './kit-grid-control.service';
 
+/**
+ * Registration directive.
+ *
+ * Inject KitGridControlService and self-register.
+ *
+ * Using for pick html-element and listen keyboard events on it.
+ *
+ * Makes any element focusable.
+ */
 @Directive({
   selector: '[kitGridControl]',
 })

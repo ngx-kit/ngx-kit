@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/styler';
-import { KitAriaModule } from './kit-aria/kit-aria.module';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitCommonModule } from './kit-common/kit-common.module';
 import { KitCoreModule } from './kit-core/kit-core.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
+import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitFormsModule } from './kit-forms/kit-forms.module';
+import { KitGridModule } from './kit-grid/kit-grid.module';
 import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitLoadingBarModule } from './kit-loading-bar/kit-loading-bar.module';
 import { KitNotificationModule } from './kit-notification/kit-notification.module';
@@ -22,11 +23,12 @@ const initableModules = [
   KitOverlayModule,
 ];
 const simpleModules = [
-  KitAriaModule,
   KitCollapseModule,
   KitCommonModule,
   KitDatetimeModule,
+  KitFocusManagerModule,
   KitFormsModule,
+  KitGridModule,
   KitPointerModule,
   KitSlideModule,
 ];
