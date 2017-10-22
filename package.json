@@ -28,7 +28,7 @@
     "@angular/platform-browser": "^4.4.4",
     "@angular/platform-browser-dynamic": "^4.4.4",
     "@angular/router": "^4.4.4",
-    "@ngx-kit/ngx-kit": "^1.0.0-beta.6",
+    "@ngx-kit/ngx-kit": "^1.0.0-beta.11",
     "@ngx-kit/styler": "^1.0.0-beta.14",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",

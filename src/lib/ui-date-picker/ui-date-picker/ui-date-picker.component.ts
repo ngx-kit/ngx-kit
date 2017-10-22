@@ -49,12 +49,12 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
     });
   }
 
-  modMonth(modifier: 1 | -1) {
+  modMonth(modifier: number) {
     this.service.modMonth(modifier);
     this.touches$.next();
   }
 
-  modYear(modifier: 1 | -1) {
+  modYear(modifier: number) {
     this.service.modYear(modifier);
     this.touches$.next();
   }
