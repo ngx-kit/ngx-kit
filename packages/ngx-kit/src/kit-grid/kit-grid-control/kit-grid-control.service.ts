@@ -43,7 +43,9 @@ export class KitGridControlService implements OnChanges {
   }
 
   /**
-   * Get Observable with captured actions.
+   * Get `Observable` with captured actions.
+   *
+   * @publicApi
    */
   get actions(): Observable<KitGridControlActionType> {
     return this._actions.asObservable();
@@ -54,6 +56,8 @@ export class KitGridControlService implements OnChanges {
 
   /**
    * `kitGridControl` automatically register via this method.
+   *
+   * @publicApi
    */
   registerGrid(grid: KitGridControlDirective) {
     this.grid = grid;
