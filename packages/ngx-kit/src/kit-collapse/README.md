@@ -5,6 +5,7 @@
 * accordion component
 * collapsible menus
 
+
 ## Features
 
 * handle state by services
@@ -13,17 +14,54 @@
 * optional: auto activation first item 
 * optional: setup custom id for items
 
+
 ## Usage
 
-For example you have `kit-menu`, `kit-section` component and want to collapse some div inside section.
+For example you have `ui-menu`, `ui-section` component and want to collapse some div inside section.
 
-* Provide `KitCollapseHostService` inside `kit-menu`
-* Provide `KitCollapseItemService` inside `kit-section`
-* Add `*kitCollapse` to collapsible div inside `kit-section` template or projection content
-* Use `KitCollapseItemService` for set state of collapse:
-  * `this.itemService.toggle()`
-  * `this.itemService.active = true`
+Provide `KitCollapseHostService` inside `ui-menu` and `KitCollapseItemService` inside `ui-section`. 
+
+```html
+<ui-menu>
+  <ui-section>
+    <div title>Section 1 title</div>
+    <div>Section 1 body</div>
+  </ui-section>
+  <ui-section>
+    <div title>Section 2 title</div>
+    <div>Section 2 body</div>
+  </ui-section>
+</ui-menu>
+```
+
+##### ui-section.component.html
+
+```html
+<div (click)="toggle()">
+  <ng-content select="[title]"></ng-content>
+</div>
+<div *kitCollapse>
+  <ng-content></ng-content>
+</div>
+```
+
+Use `KitCollapseItemService` for set state of collapse.
+
+##### ui-section.component.ts
+
+```typescript
+providers: [KitCollapseItemService]
+...
+constructor(private itemService: KitCollapseItemService) {
+}
+...
+toggle() {
+  this.itemService.toggle();
+}
+```
+
 
 ## Examples
 
-* ui-base:accordion - [sources](https://github.com/ngx-kit/ui-base/tree/master/package/lib/kit-accordion), [demo](http://ngx-kit.com/ui-base/module/kit-accordion) 
+* ui-base:accordion - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-accordion), [demo](http://ngx-kit.com/ui-base/module/ui-accordion) 
+* ui-base:side-menu - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-side-menu), [demo](http://ngx-kit.com/ui-base/module/ui-side-menu) 

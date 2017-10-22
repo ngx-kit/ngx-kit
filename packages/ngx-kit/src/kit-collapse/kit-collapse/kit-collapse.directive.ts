@@ -4,6 +4,11 @@ import { Subject } from 'rxjs/Subject';
 import { KitCollapseHostService } from '../kit-collapse-host.service';
 import { KitCollapseItemService } from '../kit-collapse-item.service';
 
+/**
+ * Structure directive that collapsing.
+ *
+ * State based on `KitCollapseItemService` provided on a parent.
+ */
 @Directive({
   selector: '[kitCollapse]',
 })
@@ -28,7 +33,7 @@ export class KitCollapseDirective implements OnInit, OnDestroy {
     this.host.active$
         .takeUntil(this.destroy$)
         .subscribe(ids => {
-          if (ids.has(this.item.id  )) {
+          if (ids.has(this.item.id)) {
             if (!this.displayed) {
               this.vcr.createEmbeddedView(this.template);
               this.displayed = true;
