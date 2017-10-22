@@ -13,10 +13,18 @@ import { Subject } from 'rxjs/Subject';
 import { KitSlideHostService } from '../kit-slide-host.service';
 import { KitSlideId } from '../meta';
 
+/**
+ * Structure directive that display slides.
+ */
 @Directive({
   selector: '[kitSlide]',
 })
 export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
+  /**
+   * Slide id.
+   *
+   * If not set will be generated automatically.
+   */
   @Input() kitSlide: KitSlideId = null;
 
   private destroy$ = new Subject<void>();
