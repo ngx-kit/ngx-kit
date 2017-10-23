@@ -3,6 +3,8 @@
 
 # ngx-kit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ngx-kit/ngx-kit.svg)](https://greenkeeper.io/)
+
 Set of low-level components for creating your own Angular UI kit.
 
 Currently in beta, use carefully!
