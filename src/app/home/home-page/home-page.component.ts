@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-import { LayoutStyle } from '../shared/layout/layout.style';
+import { LayoutStyle } from '../../shared/layout/layout.style';
 import { HomePageStyle } from './home-page.style';
 
 @Component({

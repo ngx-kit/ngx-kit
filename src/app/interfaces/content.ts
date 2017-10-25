@@ -23,11 +23,14 @@ export interface ContentApi {
 export interface ComponentApi {
   class: string;
   doc: ComponentApiDoc;
+  getProps: ComponentApiProp[];
   inputs: ComponentApiInput[];
   methods: ComponentApiMethod[];
   module: string;
   outputs: ComponentApiOutput[];
-  selector: string;
+  props: ComponentApiProp[];
+  setProps: ComponentApiMethod[];
+  string;
   type: 'Component' | 'Directive' | 'Injectable';
 }
 
@@ -39,6 +42,12 @@ export interface ComponentApiInput {
 }
 
 export interface ComponentApiOutput {
+  doc: ComponentApiDoc;
+  name: string;
+  type: any;
+}
+
+export interface ComponentApiProp {
   doc: ComponentApiDoc;
   name: string;
   type: any;

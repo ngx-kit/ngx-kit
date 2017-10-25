@@ -11,10 +11,7 @@ RUN mkdir -p /var/app
 WORKDIR /var/app
 
 COPY ./package.json package.json
-COPY ./package-lock.json package-lock.json
-
-RUN npm install
-
+COPY ./node_modules/ node_modules/
 COPY ./dist/ dist/
 COPY ./dist-server/ dist-server/
 COPY ./server.js server.js

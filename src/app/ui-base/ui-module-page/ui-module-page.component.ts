@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/zip';
 import { ContentService } from '../../core/content.service';
 
 @Component({

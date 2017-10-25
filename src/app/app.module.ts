@@ -8,7 +8,6 @@ import { lib } from '../packages/ui-base/src/lib/lib';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
-import { HomePageComponent } from './home-page/home-page.component';
 import { RootComponent } from './root/root.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { RootComponent } from './root/root.component';
   ],
   declarations: [
     RootComponent,
-    HomePageComponent,
   ],
   providers: [],
   bootstrap: [RootComponent],

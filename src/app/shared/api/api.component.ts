@@ -3,10 +3,10 @@ import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { ContentService } from '../../core/content.service';
 import { ComponentApi, ComponentApiDoc } from '../../interfaces/content';
+import { clone } from '../utils/clone';
 import { isArray } from '../utils/is-array';
 import { isObject } from '../utils/is-object';
 import { ApiStyle } from './api.style';
-import { clone } from '../utils/clone';
 
 @Component({
   selector: 'app-api',
@@ -19,6 +19,7 @@ export class ApiComponent implements OnChanges {
   api: any;
 
   methods: {
+    name: string;
     code: string;
     doc: ComponentApiDoc;
   }[] = [];
@@ -61,7 +62,7 @@ export class ApiComponent implements OnChanges {
     // render component doc
     api.doc = this.renderDoc(api.doc);
     // filter stub input
-    api.inputs = api.inputs.filter(i => i.type !== 'NullKeyword');
+    api.inputs = api.inputs.filter(i => i.type !== 'VoidKeyword');
     // auto-implicit type
     api.inputs = api.inputs.map(i => {
       i.type = i.type
@@ -75,19 +76,41 @@ export class ApiComponent implements OnChanges {
     });
     // methods
     this.methods = [
-      ...this.methods,
-      ...api.methods
-          .filter(m => api.type === 'Injectable' || m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+      ...api.setProps
+          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
           .map(m => {
             const type = m.type ? `: ${this.convertType(m.type)}` : '';
             const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
             const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
             return {
+              name: '___' + m.name,
+              code: `set ${m.name}${typeParams}(${params})${type}`,
+              doc: this.renderDoc(m.doc),
+            };
+          }),
+      ...api.getProps
+          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+          .map(m => {
+            const type = m.type ? `: ${this.convertType(m.type)}` : '';
+            return {
+              name: '___' + m.name,
+              code: `get ${m.name}()${type}`,
+              doc: this.renderDoc(m.doc),
+            }
+          }),
+      ...api.methods
+          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+          .map(m => {
+            const type = m.type ? `: ${this.convertType(m.type)}` : '';
+            const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
+            const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
+            return {
+              name: m.name,
               code: `${m.name}${typeParams}(${params})${type}`,
               doc: this.renderDoc(m.doc),
             };
           }),
-    ];
+    ].sort((x, y) => x.name > y.name ? 1 : -1);
     // render params docs
     api.inputs.forEach(i => i.doc = this.renderDoc(i.doc));
     api.outputs.forEach(o => o.doc = this.renderDoc(o.doc));

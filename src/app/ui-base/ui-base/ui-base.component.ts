@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { StylerModule } from '@ngx-kit/styler';
 import { ContentService } from '../../core/content.service';
 import { LayoutStyle } from '../../shared/layout/layout.style';
