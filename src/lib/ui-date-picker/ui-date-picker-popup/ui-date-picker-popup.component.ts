@@ -51,11 +51,13 @@ import {
 export class UiDatePickerPopupComponent implements OnInit, OnChanges {
   @Input() anchor: KitAnchorDirective;
 
-  @HostBinding('attr.aria-describedby') describedby = 'Popup where you can pick a date';
+  @HostBinding('attr.aria-describedby') ariaDescribedby = 'Popup where you can pick a date';
+
+  @HostBinding('attr.aria-labelledby') ariaLabelledby = 'Datepicker popup';
+
+  @HostBinding('attr.aria-modal') ariaModal = true;
 
   @HostBinding('@host') hostTrigger;
-
-  @HostBinding('attr.aria-labelledby') labelledby = 'Datepicker popup';
 
   @Output() outsideClick = new EventEmitter<MouseEvent>();
 
