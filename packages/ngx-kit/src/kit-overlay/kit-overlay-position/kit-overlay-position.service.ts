@@ -1,15 +1,15 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
-import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
-import { KitStyleService } from '../kit-common/kit-style/kit-style.service';
-import { KitGlobalListenerService } from '../kit-core/kit-global-listener.service';
+import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
+import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
+import { KitGlobalListenerService } from '../../kit-core/kit-global-listener.service';
 import {
   KitCoreOverlayContainerPosition,
   KitCoreOverlayContainerType,
   KitOverlayPositionDirectiveParams,
-} from './meta';
-import { KitPlatformService } from '../kit-core/kit-platform.service';
+} from '../meta';
+import { KitPlatformService } from '../../kit-core/kit-platform.service';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {

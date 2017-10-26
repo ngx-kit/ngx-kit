@@ -1,7 +1,7 @@
 import { ComponentFactoryResolver, ComponentRef, Injectable, TemplateRef, Type, ViewRef, } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { KitOverlayHostComponent } from './kit-overlay-host.component';
+import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 
 @Injectable()
 export class KitOverlayService {

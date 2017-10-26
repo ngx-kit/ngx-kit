@@ -36,25 +36,29 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     this.destroyView();
   }
 
-  private destroyView() {
-    if (this.viewRef) {
-      this.viewRef.destroy();
-      this.viewRef = null;
-    }
-  }
-
   updateHost() {
     if (this.kitOverlay && !this.viewRef) {
       this.viewRef = this.service.hostTemplate(this.templateRef, {});
       this.viewRef.detectChanges();
       this.doCheckSub = this.service.hostDoCheck$.subscribe(() => {
-        this.cdr.markForCheck();
+        this.cdrMarkForCheck();
       })
     } else if (!this.kitOverlay) {
       this.destroyView();
       if (this.doCheckSub) {
         this.doCheckSub.unsubscribe();
       }
+    }
+  }
+
+  private cdrMarkForCheck() {
+    this.cdr.markForCheck();
+  }
+
+  private destroyView() {
+    if (this.viewRef) {
+      this.viewRef.destroy();
+      this.viewRef = null;
     }
   }
 }

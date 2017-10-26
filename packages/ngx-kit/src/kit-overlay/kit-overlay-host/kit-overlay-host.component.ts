@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, DoCheck, ViewContainerRef, } from '@angular/core';
-import { KitOverlayService } from './kit-overlay.service';
+import { KitOverlayService } from '../kit-overlay.service';
 
 @Component({
   selector: 'kit-overlay-host',
-  template: '',
+  templateUrl: './kit-overlay-host.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitOverlayHostComponent implements DoCheck {
