@@ -6,12 +6,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
  */
 @Component({
   selector: 'ui-modal',
-  template: `
-    <div class="fade" [@fade] (click)="fadeClick()"></div>
-    <div class="modal" [@modal]>
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './ui-modal.component.html',
   styleUrls: ['./ui-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
