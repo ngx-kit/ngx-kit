@@ -1,50 +1,94 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
+import { StrategyEl, StrategyField } from '../../kit-common/meta';
 import { KitGlobalListenerService } from '../../kit-core/kit-global-listener.service';
+import { KitPlatformService } from '../../kit-core/kit-platform.service';
 import {
-  KitCoreOverlayContainerPosition,
-  KitCoreOverlayContainerType,
+  KitOverlayAutofix,
+  KitOverlayPosition,
+  KitOverlayType,
+  KitOverlayDropdownWidth,
   KitOverlayPositionDirectiveParams,
 } from '../meta';
-import { KitPlatformService } from '../../kit-core/kit-platform.service';
+import { DropdownStrategyService } from './dropdown-strategy.service';
+import { SideStrategyService } from './side-strategy.service';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
+  /**
+   * Anchor element for placing.
+   */
   anchor: KitAnchorDirective | HTMLElement;
+
+  /**
+   * Do not cross window boundaries.
+   *
+   * * none - do nothing
+   * * move - move element to the center
+   * * switch-position - change direction top-bottom / left-right
+   *
+   * @publicApi
+   */
+  autofix: KitOverlayAutofix = 'none';
+
+  dropdownWidth: KitOverlayDropdownWidth = 'auto';
 
   outsideClick$ = new Subject<MouseEvent>();
 
-  position: KitCoreOverlayContainerPosition = 'top';
+  position: KitOverlayPosition = 'top';
 
-  type: KitCoreOverlayContainerType = 'side';
+  type: KitOverlayType = 'side';
 
-  widthType: 'full' | 'auto' = 'auto';
+  private rawPosition = false;
 
-  private unsubs: any[];
+  private unsubs: any[] = [];
 
   constructor(private renderer: Renderer2,
               private zone: NgZone,
               private el: ElementRef,
               private style: KitStyleService,
               private platform: KitPlatformService,
-              private globalListener: KitGlobalListenerService) {
-    setTimeout(() => {
-      this.zone.runOutsideAngular(() => {
-        // Renderer2 does not support useCapture
-        this.unsubs = [
-          this.globalListener.listen('scroll', this.reposition.bind(this)),
-          this.globalListener.listen('resize', this.reposition.bind(this)),
-          this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
-        ];
-      });
-    }, 1);
+              private globalListener: KitGlobalListenerService,
+              private dropdownStrategy: DropdownStrategyService,
+              private sideStrategy: SideStrategyService) {
+    if (this.platform.isBrowser()) {
+      this.zone.onStable
+          .take(1)
+          .subscribe(() => {
+            this.zone.runOutsideAngular(() => {
+              // Renderer2 does not support useCapture
+              this.unsubs = [
+                ...this.unsubs,
+                this.globalListener.listen('scroll', this.reposition.bind(this)),
+                this.globalListener.listen('resize', this.reposition.bind(this)),
+                this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+              ];
+            });
+          });
+      // Handle auto-fix for automatic reposition
+      this.unsubs.push(this.zone.onStable
+          .subscribe(() => {
+            console.log('onStable', this.rawPosition, this.getEl(this.el.nativeElement).getBoundingClientRect());
+            this.runAutofix();
+            if (this.rawPosition) {
+              this.rawPosition = false;
+            }
+          }));
+    }
   }
 
   ngOnDestroy() {
-    this.unsubs.forEach(l => l());
+    this.unsubs.forEach(l => {
+      if (l instanceof Subscription) {
+        l.unsubscribe();
+      } else {
+        l();
+      }
+    });
   }
 
   applyParams(params: Partial<KitOverlayPositionDirectiveParams>) {
@@ -53,6 +97,10 @@ export class KitOverlayPositionService implements OnDestroy {
         this[param] = params[param];
       }
     }
+  }
+
+  getRect(el: KitAnchorDirective | HTMLElement): StrategyEl {
+    return this.getEl(el).getBoundingClientRect();
   }
 
   reposition() {
@@ -68,6 +116,31 @@ export class KitOverlayPositionService implements OnDestroy {
     });
   };
 
+  private autofixDropdown() {
+    const newStyles = this.dropdownStrategy.autofix(
+        this.getRect(this.el.nativeElement),
+        this.getRect(this.anchor),
+        this.getFieldSize(),
+        this.position,
+        this.dropdownWidth,
+        this.autofix);
+    if (newStyles !== null) {
+      this.style.style = newStyles;
+    }
+  }
+
+  private autofixSide() {
+    const newStyles = this.sideStrategy.autofix(
+        this.getRect(this.el.nativeElement),
+        this.getRect(this.anchor),
+        this.getFieldSize(),
+        this.position,
+        this.autofix);
+    if (newStyles !== null) {
+      this.style.style = newStyles;
+    }
+  }
+
   private clickHandler(event: MouseEvent) {
     this.zone.run(() => {
       const path = event['path'] || this.getEventPath(event);
@@ -79,8 +152,8 @@ export class KitOverlayPositionService implements OnDestroy {
     });
   }
 
-  private getEl(anchor: KitAnchorDirective | HTMLElement): HTMLElement {
-    return anchor instanceof KitAnchorDirective ? anchor.nativeEl : anchor;
+  private getEl(el: KitAnchorDirective | HTMLElement): HTMLElement {
+    return el instanceof KitAnchorDirective ? el.nativeEl : el;
   }
 
   private getEventPath(event: Event): EventTarget[] {
@@ -96,89 +169,38 @@ export class KitOverlayPositionService implements OnDestroy {
     return path;
   }
 
+  private getFieldSize(): StrategyField {
+    return {
+      height: window.innerHeight,
+      width: window.innerWidth,
+    };
+  }
+
   private repositionDropdown() {
-    const el = this.getEl(this.anchor);
-    const rect: ClientRect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    switch (this.position) {
-      case 'top':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top)}px`,
-          left: `${Math.round(rect.left)}px`,
-          transform: 'translateY(-100%)',
-          width: this.widthType === 'full' ? `${Math.round(el.offsetWidth)}px` : 'auto',
-          maxHeight: `${rect.top - 16}px`,
-          overflowY: 'auto',
-        };
-        break;
-      case 'bottom':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top + el.offsetHeight)}px`,
-          left: `${Math.round(rect.left)}px`,
-          width: this.widthType === 'full' ? `${Math.round(el.offsetWidth)}px` : 'auto',
-          maxHeight: `${windowHeight - rect.bottom - 16}px`,
-          overflowY: 'auto',
-        };
-        break;
-      case 'left':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top)}px`,
-          left: `${Math.round(rect.left)}px`,
-        };
-        break;
-      case 'right':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top)}px`,
-          left: `${Math.round(rect.right)}px`,
-        };
-        break;
-      default:
-        throw new Error('In development!');
-    }
+    this.style.style = this.dropdownStrategy.reposition(
+        this.getRect(this.anchor),
+        this.getFieldSize(),
+        this.position,
+        this.dropdownWidth);
+    this.rawPosition = true;
   }
 
   private repositionSide() {
-    const el = this.getEl(this.anchor);
-    const rect: ClientRect = el.getBoundingClientRect();
-    switch (this.position) {
-      case 'top':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top)}px`,
-          left: `${Math.round(rect.left + el.offsetWidth / 2)}px`,
-          transform: 'translateX(-50%) translateY(-100%)',
-        };
+    this.style.style = this.sideStrategy.reposition(
+        this.getRect(this.anchor),
+        this.getFieldSize(),
+        this.position);
+    this.rawPosition = true;
+  }
+
+  private runAutofix() {
+    switch (this.type) {
+      case 'dropdown':
+        this.autofixDropdown();
         break;
-      case 'bottom':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.bottom)}px`,
-          left: `${Math.round(rect.left + el.offsetWidth / 2)}px`,
-          transform: 'translateX(-50%)',
-        };
+      case 'side':
+        this.autofixSide();
         break;
-      case 'left':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top + el.offsetHeight / 2)}px`,
-          left: `${Math.round(rect.left)}px`,
-          transform: 'translateX(-100%) translateY(-50%)',
-        };
-        break;
-      case 'right':
-        this.style.style = {
-          position: 'fixed',
-          top: `${Math.round(rect.top + el.offsetHeight / 2)}px`,
-          left: `${Math.round(rect.right)}px`,
-          transform: 'translateY(-50%)',
-        };
-        break;
-      default:
-        throw new Error('In development!');
     }
   }
 }

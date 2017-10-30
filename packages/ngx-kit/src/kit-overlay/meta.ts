@@ -1,15 +1,24 @@
 import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
 
-export type KitCoreOverlayContainerPosition =
-    KitCoreOverlayContainerPositionSide
-    | KitCoreOverlayContainerPositionCorner;
-export type KitCoreOverlayContainerPositionSide = 'top' | 'right' | 'bottom' | 'left';
-export type KitCoreOverlayContainerPositionCorner = 'top-right' | 'bottom-right' | 'bottom-left' | 'top-left';
-export type KitCoreOverlayContainerType = 'dropdown' | 'side' | 'center' | 'fixedSide';
+export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
+    | 'top-left' | 'top-right'
+    | 'bottom-left' | 'bottom-right'
+    | 'left-top' | 'left-bottom'
+    | 'right-top' | 'right-bottom';
+export type KitOverlayType = 'dropdown' | 'side';
+export type KitOverlayAutofix = 'none' | 'move' | 'switch-position';
+export type KitOverlayDropdownWidth = 'auto' | 'full';
+export const positionPairs = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+};
 
 export interface KitOverlayPositionDirectiveParams {
   anchor: KitAnchorDirective | HTMLElement;
-  position: KitCoreOverlayContainerPosition;
-  type: KitCoreOverlayContainerType;
-  widthType: 'full' | 'auto';
+  autofix: KitOverlayAutofix;
+  dropdownWidth: KitOverlayDropdownWidth;
+  position: KitOverlayPosition;
+  type: KitOverlayType;
 }
