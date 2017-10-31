@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { KitStyles, StrategyEl, StrategyField } from '../../kit-common/meta';
-import { KitOverlayAutofix, KitOverlayDropdownWidth, KitOverlayPosition, positionPairs } from '../meta';
+import { KitOverlayAutofix, KitOverlayPosition, positionPairs } from '../meta';
 
 /**
  * @todo correct handle cases when anchor is not visible
@@ -11,13 +11,12 @@ export class DropdownStrategyService {
           anchor: StrategyEl,
           field: StrategyField,
           position: KitOverlayPosition,
-          width: KitOverlayDropdownWidth,
           autofix: KitOverlayAutofix): null | KitStyles {
     switch (autofix) {
       case 'none':
         return null;
       case 'switch-position':
-        const outs = [];
+        const outs: string[] = [];
         if (el.top < 0) {
           outs.push('top');
         }
@@ -30,10 +29,19 @@ export class DropdownStrategyService {
         if (el.right > field.width) {
           outs.push('right');
         }
-        console.log('outs', outs);
-        if (outs.length === 1 && outs.indexOf(position) !== -1) {
-          console.log('rep', outs, positionPairs[position]);
-          return this.reposition(anchor, field, positionPairs[position], width);
+        if (outs.length > 0) {
+          const procPosition = position === 'left' ? 'left-bottom' : position === 'right' ? 'right-bottom' : position;
+          const positionChunks = procPosition.split('-');
+          const newPosition = positionChunks.map(chunk => {
+            if (outs.indexOf(chunk) !== -1) {
+              return positionPairs[chunk];
+            } else {
+              return chunk;
+            }
+          });
+          if (newPosition.length > 0) {
+            return this.reposition(anchor, field, newPosition.join('-') as KitOverlayPosition);
+          }
         }
     }
     return null;
@@ -41,8 +49,7 @@ export class DropdownStrategyService {
 
   reposition(anchor: StrategyEl,
              field: StrategyField,
-             position: KitOverlayPosition,
-             width: KitOverlayDropdownWidth): KitStyles {
+             position: KitOverlayPosition): KitStyles {
     switch (position) {
       case 'top':
         return {
@@ -50,7 +57,23 @@ export class DropdownStrategyService {
           top: `${Math.round(anchor.top)}px`,
           left: `${Math.round(anchor.left)}px`,
           transform: 'translateY(-100%)',
-          width: width === 'full' ? `${Math.round(anchor.width)}px` : 'auto',
+          width: `${Math.round(anchor.width)}px`,
+          overflowY: 'auto',
+        };
+      case 'top-left':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.top)}px`,
+          left: `${Math.round(anchor.right)}px`,
+          transform: 'translateY(-100%) translateX(-100%)',
+          overflowY: 'auto',
+        };
+      case 'top-right':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.top)}px`,
+          left: `${Math.round(anchor.left)}px`,
+          transform: 'translateY(-100%)',
           overflowY: 'auto',
         };
       case 'bottom':
@@ -58,21 +81,52 @@ export class DropdownStrategyService {
           position: 'fixed',
           top: `${Math.round(anchor.top + anchor.height)}px`,
           left: `${Math.round(anchor.left)}px`,
-          width: width === 'full' ? `${Math.round(anchor.width)}px` : 'auto',
+          width: `${Math.round(anchor.width)}px`,
+          overflowY: 'auto',
+        };
+      case 'bottom-left':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.top + anchor.height)}px`,
+          left: `${Math.round(anchor.right)}px`,
+          transform: `translateX(-100%)`,
+          overflowY: 'auto',
+        };
+      case 'bottom-right':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.top + anchor.height)}px`,
+          left: `${Math.round(anchor.left)}px`,
           overflowY: 'auto',
         };
       case 'left':
+      case 'left-bottom':
         return {
           position: 'fixed',
           top: `${Math.round(anchor.top)}px`,
           left: `${Math.round(anchor.left)}px`,
           transform: 'translateX(-100%)',
         };
+      case 'left-top':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.bottom)}px`,
+          left: `${Math.round(anchor.left)}px`,
+          transform: 'translateX(-100%) translateY(-100%)',
+        };
       case 'right':
+      case 'right-bottom':
         return {
           position: 'fixed',
           top: `${Math.round(anchor.top)}px`,
           left: `${Math.round(anchor.right)}px`,
+        };
+      case 'right-top':
+        return {
+          position: 'fixed',
+          top: `${Math.round(anchor.bottom)}px`,
+          left: `${Math.round(anchor.right)}px`,
+          transform: 'translateY(-100%)',
         };
       default:
         throw new Error(`Position ${position} in not correct!`);
