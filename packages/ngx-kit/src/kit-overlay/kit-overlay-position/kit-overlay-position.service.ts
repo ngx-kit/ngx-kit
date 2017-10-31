@@ -64,9 +64,9 @@ export class KitOverlayPositionService implements OnDestroy {
       // Handle auto-fix for automatic reposition
       this.unsubs.push(this.zone.onStable
           .subscribe(() => {
-            this.runAutofix();
             if (this.rawPosition) {
               this.rawPosition = false;
+              this.runAutofix();
             }
           }));
     }
@@ -115,19 +115,21 @@ export class KitOverlayPositionService implements OnDestroy {
         this.position,
         this.autofix);
     if (newStyles !== null) {
-      this.style.style = newStyles;
+      this.style.style = newStyles.styles;
     }
   }
 
-  private autofixSide() {
+  private autofixSide(lastPosition: KitOverlayPosition | null = null) {
     const newStyles = this.sideStrategy.autofix(
         this.getRect(this.el.nativeElement),
         this.getRect(this.anchor),
         this.getFieldSize(),
-        this.position,
+        lastPosition || this.position,
         this.autofix);
-    if (newStyles !== null) {
-      this.style.style = newStyles;
+    if (newStyles !== null && lastPosition !== newStyles.position) {
+      this.style.style = newStyles.styles;
+      // Additional reposition if last position changed
+      this.autofixSide(newStyles.position);
     }
   }
 
@@ -167,19 +169,19 @@ export class KitOverlayPositionService implements OnDestroy {
   }
 
   private repositionDropdown() {
+    this.rawPosition = true;
     this.style.style = this.dropdownStrategy.reposition(
         this.getRect(this.anchor),
         this.getFieldSize(),
         this.position);
-    this.rawPosition = true;
   }
 
   private repositionSide() {
+    this.rawPosition = true;
     this.style.style = this.sideStrategy.reposition(
         this.getRect(this.anchor),
         this.getFieldSize(),
         this.position);
-    this.rawPosition = true;
   }
 
   private runAutofix() {
