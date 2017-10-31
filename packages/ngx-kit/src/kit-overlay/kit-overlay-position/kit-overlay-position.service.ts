@@ -7,13 +7,7 @@ import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
 import { KitGlobalListenerService } from '../../kit-core/kit-global-listener.service';
 import { KitPlatformService } from '../../kit-core/kit-platform.service';
-import {
-  KitOverlayAutofix,
-  KitOverlayPosition,
-  KitOverlayType,
-  KitOverlayDropdownWidth,
-  KitOverlayPositionDirectiveParams,
-} from '../meta';
+import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
 
@@ -34,8 +28,6 @@ export class KitOverlayPositionService implements OnDestroy {
    * @publicApi
    */
   autofix: KitOverlayAutofix = 'none';
-
-  dropdownWidth: KitOverlayDropdownWidth = 'auto';
 
   outsideClick$ = new Subject<MouseEvent>();
 
@@ -72,7 +64,6 @@ export class KitOverlayPositionService implements OnDestroy {
       // Handle auto-fix for automatic reposition
       this.unsubs.push(this.zone.onStable
           .subscribe(() => {
-            console.log('onStable', this.rawPosition, this.getEl(this.el.nativeElement).getBoundingClientRect());
             this.runAutofix();
             if (this.rawPosition) {
               this.rawPosition = false;
@@ -122,7 +113,6 @@ export class KitOverlayPositionService implements OnDestroy {
         this.getRect(this.anchor),
         this.getFieldSize(),
         this.position,
-        this.dropdownWidth,
         this.autofix);
     if (newStyles !== null) {
       this.style.style = newStyles;
@@ -180,8 +170,7 @@ export class KitOverlayPositionService implements OnDestroy {
     this.style.style = this.dropdownStrategy.reposition(
         this.getRect(this.anchor),
         this.getFieldSize(),
-        this.position,
-        this.dropdownWidth);
+        this.position);
     this.rawPosition = true;
   }
 

@@ -7,7 +7,6 @@ export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
     | 'right-top' | 'right-bottom';
 export type KitOverlayType = 'dropdown' | 'side';
 export type KitOverlayAutofix = 'none' | 'move' | 'switch-position';
-export type KitOverlayDropdownWidth = 'auto' | 'full';
 export const positionPairs = {
   top: 'bottom',
   bottom: 'top',
@@ -18,7 +17,6 @@ export const positionPairs = {
 export interface KitOverlayPositionDirectiveParams {
   anchor: KitAnchorDirective | HTMLElement;
   autofix: KitOverlayAutofix;
-  dropdownWidth: KitOverlayDropdownWidth;
   position: KitOverlayPosition;
   type: KitOverlayType;
 }
