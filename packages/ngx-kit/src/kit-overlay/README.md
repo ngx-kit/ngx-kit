@@ -50,19 +50,48 @@ Or provide `KitOverlayPositionService` on component. Also needs `KitStyleService
 
 ```ts
 @Component({
-  selector: 'app-modal',
+  selector: 'app-popup',
   providers: ['KitOverlayPositionService', 'KitStyleService'],
   ...
 })
+export class AppPopupComponent {
+  constructor(private overlayPosition: KitOverlayPositionService) {
+  }
+  
+  ngOnChanges() {
+    this.overlayPosition.type = 'side';
+    this.overlayPosition.anchor = this.anchor;
+    ...
+  }
 ...
 ```
 
 ```html
-<button (click)="display = true">Show modal</button>
-<app-modal *kitOverlay="display">
-  Modal content
-</app-modal>
+<button (click)="display = true" #anchor>Show popup</button>
+<app-popup *kitOverlay="display" [anchor]="anchor">
+  Popup content
+</app-popup>
 ``` 
+
+#### `type`
+
+* `dropdown`
+* `side`
+
+#### `position`
+
+* `top`
+* `bottom`
+* `left`
+* `right`
+* `top-left`
+* `top-right`
+* `bottom-left`
+* `bottom-right`
+* `left-top`
+* `left-bottom`
+* `right-top`
+* `right-bottom`
 
 
 ## Examples
