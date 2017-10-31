@@ -11,7 +11,7 @@ export class DropdownStrategyService {
           anchor: StrategyEl,
           field: StrategyField,
           position: KitOverlayPosition,
-          autofix: KitOverlayAutofix): null | KitStyles {
+          autofix: KitOverlayAutofix): null | {position: KitOverlayPosition, styles: KitStyles} {
     switch (autofix) {
       case 'none':
         return null;
@@ -32,15 +32,19 @@ export class DropdownStrategyService {
         if (outs.length > 0) {
           const procPosition = position === 'left' ? 'left-bottom' : position === 'right' ? 'right-bottom' : position;
           const positionChunks = procPosition.split('-');
-          const newPosition = positionChunks.map(chunk => {
+          const newPositionChunks = positionChunks.map(chunk => {
             if (outs.indexOf(chunk) !== -1) {
               return positionPairs[chunk];
             } else {
               return chunk;
             }
           });
-          if (newPosition.length > 0) {
-            return this.reposition(anchor, field, newPosition.join('-') as KitOverlayPosition);
+          if (newPositionChunks.length > 0) {
+            const newPosition = newPositionChunks.join('-') as KitOverlayPosition;
+            return {
+              position: newPosition,
+              styles: this.reposition(anchor, field, newPosition),
+            };
           }
         }
     }
