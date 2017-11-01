@@ -1,6 +1,8 @@
+export type KitNotificationPosition = 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
+
 export interface KitNotificationHostConfig {
   duration: number;
-  position: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
+  position: KitNotificationPosition;
 }
 
 export interface KitNotificationItem {
