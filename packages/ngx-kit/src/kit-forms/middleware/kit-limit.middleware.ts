@@ -5,7 +5,7 @@ import { KitInputMiddleware } from '../meta';
 export class KitLimitMiddleware implements KitInputMiddleware {
   enabled = false;
 
-  limit: number;
+  limit = 0;
 
   constructor(private renderer: Renderer2) {
   }

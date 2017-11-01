@@ -9,6 +9,9 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
+/**
+ * Service directive, injects middleware.
+ */
 @Directive({
   // tslint:disable-next-line
   selector: `
