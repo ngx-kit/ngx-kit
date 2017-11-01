@@ -26,7 +26,7 @@
     "@angular/common": "^4.3.5",
     "@angular/compiler": "^4.3.5",
     "@angular/compiler-cli": "^4.3.5",
-    "@angular/core": "^4.3.5",
+    "@angular/core": "^5.0.0",
     "@angular/forms": "^4.3.5",
     "@angular/http": "^4.3.5",
     "@angular/language-service": "^4.4.4",
