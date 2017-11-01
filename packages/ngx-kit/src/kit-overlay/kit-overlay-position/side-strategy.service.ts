@@ -62,14 +62,14 @@ export class SideStrategyService {
       case 'left':
         return {
           position: 'fixed',
-          top: `${Math.round(anchor.top + anchor.width / 2)}px`,
+          top: `${Math.round(anchor.top + anchor.height / 2)}px`,
           left: `${Math.round(anchor.left)}px`,
           transform: 'translateX(-100%) translateY(-50%)',
         };
       case 'right':
         return {
           position: 'fixed',
-          top: `${Math.round(anchor.top + anchor.width / 2)}px`,
+          top: `${Math.round(anchor.top + anchor.height / 2)}px`,
           left: `${Math.round(anchor.right)}px`,
           transform: 'translateY(-50%)',
         };
