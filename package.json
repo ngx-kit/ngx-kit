@@ -23,7 +23,7 @@
   "dependencies": {
     "@angular/animations": "^4.3.5",
     "@angular/cli": "^1.5.0-beta.4",
-    "@angular/common": "^4.3.5",
+    "@angular/common": "^5.0.0",
     "@angular/compiler": "^4.3.5",
     "@angular/compiler-cli": "^4.3.5",
     "@angular/core": "^4.3.5",
