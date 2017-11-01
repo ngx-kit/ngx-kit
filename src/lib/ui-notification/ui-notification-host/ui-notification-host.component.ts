@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit, } from '@angular/core';
-import { KitCoreOverlayContainerPositionCorner, KitNotificationItem, KitNotificationService, } from '@ngx-kit/ngx-kit';
+import { KitNotificationItem, KitNotificationPosition, KitNotificationService, } from '@ngx-kit/ngx-kit';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -56,7 +56,7 @@ import { Observable } from 'rxjs/Observable';
 export class UiNotificationHostComponent implements OnInit {
   items$: Observable<KitNotificationItem[]>;
 
-  position$: Observable<KitCoreOverlayContainerPositionCorner>;
+  position$: Observable<KitNotificationPosition>;
 
   constructor(private notificationService: KitNotificationService) {
   }

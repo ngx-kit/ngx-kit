@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitCoreOverlayContainerPositionCorner, KitNotificationService } from '@ngx-kit/ngx-kit';
+import { KitNotificationPosition, KitNotificationService, } from '@ngx-kit/ngx-kit';
 
 @Component({
   selector: 'demo-notification-position',
@@ -9,7 +9,7 @@ export class DemoNotificationPositionComponent {
   constructor(private notificationService: KitNotificationService) {
   }
 
-  open(position: KitCoreOverlayContainerPositionCorner) {
+  open(position: KitNotificationPosition) {
     this.notificationService.config({position});
     this.notificationService.open({message: 'Sided message'});
   }

@@ -1,11 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges } from '@angular/core';
-import {
-  KitClassService,
-  KitCoreOverlayContainerPosition,
-  KitOverlayPositionService,
-  KitStyleService,
-} from '@ngx-kit/ngx-kit';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, } from '@angular/core';
+import { KitClassService, KitOverlayPosition, KitOverlayPositionService, KitStyleService, } from '@ngx-kit/ngx-kit';
 import { UiTooltipColors } from '../meta';
 
 @Component({
@@ -40,7 +35,7 @@ export class UiTooltipViewComponent implements OnChanges {
 
   @HostBinding('@host') hostTrigger;
 
-  @Input() position: KitCoreOverlayContainerPosition;
+  @Input() position: KitOverlayPosition;
 
   constructor(private overlayPosition: KitOverlayPositionService,
               private kitClass: KitClassService) {
