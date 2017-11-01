@@ -6,7 +6,7 @@ export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
     | 'left-top' | 'left-bottom'
     | 'right-top' | 'right-bottom';
 export type KitOverlayType = 'dropdown' | 'side';
-export type KitOverlayAutofix = 'none' | 'move' | 'switch-position';
+export type KitOverlayAutofix = 'none' | 'switch-position';
 export const positionPairs = {
   top: 'bottom',
   bottom: 'top',

@@ -22,12 +22,11 @@ export class KitOverlayPositionService implements OnDestroy {
    * Do not cross window boundaries.
    *
    * * none - do nothing
-   * * move - move element to the center
    * * switch-position - change direction top-bottom / left-right
    *
    * @publicApi
    */
-  autofix: KitOverlayAutofix = 'none';
+  autofix: KitOverlayAutofix = 'switch-position';
 
   outsideClick$ = new Subject<MouseEvent>();
 

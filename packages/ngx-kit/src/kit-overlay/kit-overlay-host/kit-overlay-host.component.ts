@@ -3,7 +3,7 @@ import { KitOverlayService } from '../kit-overlay.service';
 
 @Component({
   selector: 'kit-overlay-host',
-  templateUrl: './kit-overlay-host.component.html',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitOverlayHostComponent implements DoCheck {
