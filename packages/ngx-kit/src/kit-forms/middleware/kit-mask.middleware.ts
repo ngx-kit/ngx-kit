@@ -9,7 +9,7 @@ import { KitInputMiddleware } from '../meta';
 export class KitMaskMiddleware implements KitInputMiddleware {
   enabled = false;
 
-  mask: string;
+  mask = '';
 
   placeholder = '_';
 
