@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, } from '@angular/core';
-import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware, KitMathParseMiddleware, } from '@ngx-kit/ngx-kit';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, } from '@angular/core';
+import {
+  kitInputMiddleware,
+  KitLimitMiddleware,
+  KitMathParseMiddleware,
+  KitMiddlewareManager,
+} from '@ngx-kit/ngx-kit';
 
 @Component({
   // tslint:disable-next-line
@@ -7,6 +12,7 @@ import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware, KitMathPars
   template: '',
   styleUrls: ['./ui-input.component.scss'],
   providers: [
+    KitMiddlewareManager,
     {
       provide: kitInputMiddleware,
       useClass: KitMathParseMiddleware,
@@ -21,8 +27,6 @@ import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware, KitMathPars
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiInputComponent implements OnChanges {
-  @Input() uiInput: void;
-
   @Input() limit: number;
 
   /**
@@ -30,7 +34,9 @@ export class UiInputComponent implements OnChanges {
    */
   @Input() math = false;
 
-  constructor(@Inject(kitInputMiddleware) private mids: KitInputMiddleware[]) {
+  @Input() uiInput: void;
+
+  constructor(private mw: KitMiddlewareManager) {
   }
 
   /**
@@ -39,17 +45,13 @@ export class UiInputComponent implements OnChanges {
    */
   ngOnChanges() {
     // set enabled for math mid
-    this.mids
-        .filter(m => m instanceof KitMathParseMiddleware)
-        .forEach(m => {
-          m.enabled = this.math;
-        });
+    this.mw.update(KitMathParseMiddleware, {
+      enabled: this.math,
+    });
     // set limit for limit mid
-    this.mids
-        .filter(m => m instanceof KitLimitMiddleware)
-        .forEach((m: KitLimitMiddleware) => {
-          m.enabled = !!this.limit;
-          m.limit = this.limit;
-        });
+    this.mw.update(KitLimitMiddleware, {
+      enabled: !!this.limit,
+      limit: this.limit,
+    });
   }
 }
