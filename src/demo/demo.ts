@@ -40,6 +40,7 @@ import { DemoSliderRangeComponent } from './ui-slider/demo-slider-range/demo-sli
 import { DemoTabsDefaultComponent } from './ui-tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTabsGenComponent } from './ui-tabs/demo-tabs-gen/demo-tabs-gen.component';
 import { DemoTextareaDefaultComponent } from './ui-textarea/demo-textarea-default/demo-textarea-default.component';
+import { DemoTextareaLimitComponent } from './ui-textarea/demo-textarea-limit/demo-textarea-limit.component';
 import { DemoTooltipColorComponent } from './ui-tooltip/demo-tooltip-color/demo-tooltip-color.component';
 import { DemoTooltipDefaultComponent } from './ui-tooltip/demo-tooltip-default/demo-tooltip-default.component';
 import { DemoTooltipPositionComponent } from './ui-tooltip/demo-tooltip-position/demo-tooltip-position.component';
@@ -104,6 +105,7 @@ export const demo = [
   DemoTabsGenComponent,
   // textarea
   DemoTextareaDefaultComponent,
+  DemoTextareaLimitComponent,
   // tooltip
   DemoTooltipDefaultComponent,
   DemoTooltipPositionComponent,
