@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KitInputMiddleware } from '../../meta';
+import { KitInputMiddleware } from '../meta';
 
 /**
  * Currently not working
@@ -9,7 +9,7 @@ import { KitInputMiddleware } from '../../meta';
 export class KitMaskMiddleware implements KitInputMiddleware {
   enabled = false;
 
-  mask: string;
+  mask = '';
 
   placeholder = '_';
 

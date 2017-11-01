@@ -5,10 +5,13 @@ import { KitInputMiddleware, kitInputMiddleware } from '../meta';
 
 export const KIT_INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => KitInputValueAccessor),
+  useExisting: forwardRef(() => KitInputValueAccessorDirective),
   multi: true,
 };
 
+/**
+ * Service directive, injects middleware.
+ */
 @Directive({
   // tslint:disable-next-line
   selector: `
@@ -23,7 +26,7 @@ export const KIT_INPUT_VALUE_ACCESSOR: any = {
   providers: [KIT_INPUT_VALUE_ACCESSOR],
 })
 // tslint:disable-next-line
-export class KitInputValueAccessor implements ControlValueAccessor {
+export class KitInputValueAccessorDirective implements ControlValueAccessor {
   private changes$ = new Subject<string>();
 
   private state: any;

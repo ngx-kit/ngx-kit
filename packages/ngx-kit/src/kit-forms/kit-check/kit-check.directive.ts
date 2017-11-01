@@ -12,7 +12,9 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
 
 /**
  * Adds to any element ValueAccessor and checkbox/radio behavior.
+ *
  * When is checked - adds class "checked" to the element.
+ *
  * For a value changing the directive listen click event.
  */
 @Directive({
@@ -23,10 +25,20 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
   ],
 })
 export class KitCheckDirective implements OnChanges, ControlValueAccessor {
+  /**
+   * Class applied when active.
+   *
+   * @type {string}
+   */
   @Input() checkedClass = 'checked';
 
-  @Input() kitCheck: any;
+  @Input() kitCheck: void;
 
+  /**
+   * Value that passed to VALUE_ACCESSOR.
+   *
+   * Enables radio-behavior.
+   */
   @Input() value: any;
 
   private changes$ = new Subject<boolean>();

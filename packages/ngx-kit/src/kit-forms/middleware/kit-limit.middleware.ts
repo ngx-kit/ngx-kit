@@ -1,11 +1,11 @@
 import { Injectable, Renderer2 } from '@angular/core';
-import { KitInputMiddleware } from '../../meta';
+import { KitInputMiddleware } from '../meta';
 
 @Injectable()
 export class KitLimitMiddleware implements KitInputMiddleware {
   enabled = false;
 
-  limit: number;
+  limit = 0;
 
   constructor(private renderer: Renderer2) {
   }
