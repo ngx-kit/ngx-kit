@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, } from '@angular/core';
-import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware } from '@ngx-kit/ngx-kit';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, } from '@angular/core';
+import { kitInputMiddleware, KitLimitMiddleware, KitMiddlewareManager } from '@ngx-kit/ngx-kit';
 
 @Component({
   // tslint:disable-next-line
@@ -7,6 +7,7 @@ import { kitInputMiddleware, KitInputMiddleware, KitLimitMiddleware } from '@ngx
   template: '',
   styleUrls: ['./ui-textarea.component.scss'],
   providers: [
+    KitMiddlewareManager,
     {
       provide: kitInputMiddleware,
       useClass: KitLimitMiddleware,
@@ -20,16 +21,14 @@ export class UiTextareaComponent implements OnChanges {
 
   @Input() uiTextarea: void;
 
-  constructor(@Inject(kitInputMiddleware) private mids: KitInputMiddleware[]) {
+  constructor(private mw: KitMiddlewareManager) {
   }
 
   ngOnChanges() {
     // set limit for limit mid
-    this.mids
-        .filter(m => m instanceof KitLimitMiddleware)
-        .forEach((m: KitLimitMiddleware) => {
-          m.enabled = !!this.limit;
-          m.limit = this.limit;
-        });
+    this.mw.update(KitLimitMiddleware, {
+      enabled: !!this.limit,
+      limit: this.limit,
+    });
   }
 }
