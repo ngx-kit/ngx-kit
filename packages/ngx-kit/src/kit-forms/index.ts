@@ -1,5 +1,6 @@
 export * from './kit-check/kit-check.directive';
 export * from './kit-input-value-accessor/kit-input-value-accessor.directive';
+export * from './kit-morph-form-builder/kit-morph-form-builder';
 export * from './middleware/kit-limit.middleware';
 export * from './middleware/kit-mask.middleware';
 export * from './middleware/kit-math-parse.middleware';
