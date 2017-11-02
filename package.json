@@ -32,7 +32,7 @@
     "@angular/language-service": "^4.4.4",
     "@angular/platform-browser": "^4.3.5",
     "@angular/platform-browser-dynamic": "^4.3.5",
-    "@angular/router": "^4.3.5",
+    "@angular/router": "^5.0.0",
     "@ngx-kit/styler": "^1.0.0-beta.15",
     "moment": "^2.18.1",
     "rxjs": "^5.4.3",
