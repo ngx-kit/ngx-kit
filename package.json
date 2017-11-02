@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@angular-devkit/core": "0.0.20",
-    "@angular-devkit/schematics": "0.0.34",
+    "@angular-devkit/schematics": "0.0.35",
     "@ngx-kit/schematics": "^1.0.0-alpha.6",
     "@types/jasmine": "^2.5.53",
     "@types/node": "^8.0.23",
