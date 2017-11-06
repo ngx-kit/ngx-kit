@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <ui-form-group [kitFormControl]="form.get('name')">
+    Name:
+    <input [formControl]="form.get('name')">
+    <div *kitFormError="">
+      <div *kitFormError="'required'">You can't leave this empty.</div>
+      <div *kitFormError="'minlength'">Name must be at least 4 characters long..</div>
+    </div>
+  </ui-form-group>
+</form>
