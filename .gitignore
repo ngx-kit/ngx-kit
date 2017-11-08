@@ -42,5 +42,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/website/assets/docs
+sh.exe.stackdump
 
+packages/cli/node_modules
+website/assets/docs

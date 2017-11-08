@@ -1,0 +1,30 @@
+{
+  "name": "ngx-kit",
+  "version": "0.1",
+  "schematics": {
+    "kit-component": {
+      "aliases": [
+        "kc"
+      ],
+      "factory": "./kit-component",
+      "description": "Create a kit component.",
+      "schema": "./kit-component/schema.json"
+    },
+    "kit-demo": {
+      "aliases": [
+        "kdm"
+      ],
+      "factory": "./kit-demo",
+      "description": "Create a kit demo.",
+      "schema": "./kit-demo/schema.json"
+    },
+    "kit-module": {
+      "aliases": [
+        "km"
+      ],
+      "factory": "./kit-module",
+      "description": "Create a kit module.",
+      "schema": "./kit-module/schema.json"
+    }
+  }
+}
