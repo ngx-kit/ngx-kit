@@ -42,5 +42,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/src/assets/docs
-/src/packages
+/website/assets/docs
+
