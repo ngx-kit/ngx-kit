@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
-import { demo } from '../../src/demo/demo';
-import { lib } from '../../src/lib/lib';
+import { demo } from '../../../packages/collection/demo/demo';
+import { lib } from '../../../packages/collection/lib/lib';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
 
