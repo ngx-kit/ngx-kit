@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-server
 /tmp
 /out-tsc
 
@@ -40,8 +41,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
 sh.exe.stackdump
 
-.ngx-kit.env.json
-
 packages/cli/node_modules
+website/assets/docs

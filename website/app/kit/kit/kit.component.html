@@ -1,0 +1,33 @@
+<div styler="layoutFull">
+  <div styler="layoutHeader">
+    <a [routerLink]="['/ngx-kit']" styler="logo">ngx-kit</a>
+    <ul styler="menu">
+      <li><a styler="menuLink" [routerLink]="['/ui-base']">ui-base</a></li>
+      <li><a styler="menuLink" href="https://github.com/ngx-kit/styler" target="_blank">styler</a></li>
+    </ul>
+    <div styler="githubStar">
+      <a href="https://github.com/ngx-kit/ngx-kit" target="_blank"><kit-icon [name]="'git'"></kit-icon></a>
+    </div>
+  </div>
+  <div styler="layoutContent">
+    <div styler="layoutRow">
+      <div styler="layoutSide">
+        <app-content-menu [content]="content"></app-content-menu>
+      </div>
+      <div styler="layoutContent">
+        <div styler="layoutContentWrapper">
+          <router-outlet></router-outlet>
+        </div>
+        <div styler="layoutFooter">
+          <div>
+            Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
+          </div>
+          <div>
+            <a href="https://github.com/ngx-kit/ngx-kit/releases" target="_blank">Changelog</a>
+            <a href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

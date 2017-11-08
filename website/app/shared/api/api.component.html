@@ -1,0 +1,62 @@
+<h3 styler="head">
+  <code *ngIf="api.type === 'Component' || api.type === 'Directive'">{{ api.selector }}</code>
+  <code *ngIf="api.type === 'Injectable'">{{ api.class }}</code>
+</h3>
+<div *ngIf="api.doc.comment" [innerHtml]="api.doc.comment"></div>
+<ng-container *ngIf="api.inputs.length > 0">
+  <h4>Inputs</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let input of api.inputs">
+      <td><code>{{ input.name }}</code></td>
+      <td><code>{{ input.type }}</code></td>
+      <td><code>{{ input.default }}</code></td>
+      <td [innerHtml]="input.doc.comment" styler="paramDoc"></td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+<ng-container *ngIf="api.outputs.length > 0">
+  <h4>Outputs</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let output of api.outputs">
+      <td><code>{{ output.name }}</code></td>
+      <td><code>{{ output.type }}</code></td>
+      <td [innerHtml]="output.doc.comment" styler="paramDoc"></td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+<ng-container *ngIf="methods.length > 0">
+  <h4>Methods</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Interface</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let method of methods">
+      <td><code>{{ method.code }}</code></td>
+      <td [innerHtml]="method.doc.comment" styler="paramDoc"></td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>

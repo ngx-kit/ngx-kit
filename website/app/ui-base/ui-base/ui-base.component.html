@@ -1,0 +1,34 @@
+<div styler="layoutFull">
+  <div styler="layoutHeader">
+    <a [routerLink]="['/ui-base']" styler="logo">@ngx-kit/ui-base</a>
+    <ul styler="menu">
+      <li><a styler="menuLink" [routerLink]="['/ngx-kit']">ngx-kit</a></li>
+      <li><a styler="menuLink" href="https://github.com/ngx-kit/styler" target="_blank">styler</a></li>
+    </ul>
+    <div styler="githubStar">
+      <a href="https://github.com/ngx-kit/ui-base" target="_blank"><kit-icon [name]="'git'"></kit-icon></a>
+    </div>
+  </div>
+  <div styler="layoutContent">
+    <div styler="layoutRow">
+      <div styler="layoutSide">
+        <app-content-menu [content]="content"></app-content-menu>
+      </div>
+      <div styler="layoutContent">
+        <div styler="layoutContentWrapper">
+          <router-outlet></router-outlet>
+        </div>
+        <div styler="layoutFooter">
+          <div>
+            Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
+          </div>
+          <div>
+            <a href="https://github.com/ngx-kit/ui-base/releases" target="_blank">Changelog</a>
+            <a href="https://github.com/ngx-kit/ui-base" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-notification-host></ui-notification-host>
