@@ -18,6 +18,14 @@
       "es2015",
       "es2016"
     ],
-    "baseUrl": "."
-  }
+    "baseUrl": ".",
+    "paths": {
+      "@ngx-kit/core": ["./packages/core"]
+    }
+  },
+  "exclude": [
+    "./packages/cli",
+    "./packages/collection",
+    "./packages/schematics"
+  ]
 }

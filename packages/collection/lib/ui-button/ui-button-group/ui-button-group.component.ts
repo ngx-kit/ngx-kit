@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, } from '@angular/core';
-import { KitClassService } from '@ngx-kit/ngx-kit';
+import { KitClassService } from '@ngx-kit/core';
 import { UiButtonGroupDirection } from '../meta';
 
 /**

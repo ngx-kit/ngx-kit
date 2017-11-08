@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Input, OnInit } from '@angular/core';
-import { KitSlideHostService } from '@ngx-kit/ngx-kit';
+import { KitSlideHostService } from '@ngx-kit/core';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/merge';

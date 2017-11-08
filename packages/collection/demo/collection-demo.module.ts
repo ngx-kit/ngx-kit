@@ -1,4 +1,8 @@
-import { DemoFormDefaultComponent } from './ui-form/demo-form-default/demo-form-default.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { KitFullModule } from '@ngx-kit/core';
+import { CollectionLibModule } from '../lib/collection-lib.module';
 import { DemoAccordionDefaultComponent } from './ui-accordion/demo-accordion-default/demo-accordion-default.component';
 import { DemoAccordionFirstComponent } from './ui-accordion/demo-accordion-first/demo-accordion-first.component';
 import { DemoAccordionGenComponent } from './ui-accordion/demo-accordion-gen/demo-accordion-gen.component';
@@ -23,6 +27,7 @@ import { DemoCarouselGenComponent } from './ui-carousel/demo-carousel-gen/demo-c
 import { DemoCustomSelectDefaultComponent } from './ui-custom-select/demo-custom-select-default/demo-custom-select-default.component';
 import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picker-default/demo-date-picker-default.component';
 import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
+import { DemoFormDefaultComponent } from './ui-form/demo-form-default/demo-form-default.component';
 import { DemoInputCheckboxComponent } from './ui-input/demo-input-checkbox/demo-input-checkbox.component';
 import { DemoInputDefaultComponent } from './ui-input/demo-input-default/demo-input-default.component';
 import { DemoInputMathComponent } from './ui-input/demo-input-math/demo-input-math.component';
@@ -114,3 +119,21 @@ export const demo = [
   DemoTooltipPositionComponent,
   DemoTooltipColorComponent,
 ];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    KitFullModule,
+    CollectionLibModule,
+  ],
+  declarations: [
+    ...demo,
+  ],
+  exports: [
+    ...demo,
+  ],
+})
+export class CollectionDemoModule {
+}

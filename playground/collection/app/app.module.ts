@@ -3,9 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
-import { demo } from '../../../packages/collection/demo/demo';
-import { lib } from '../../../packages/collection/lib/lib';
+import { KitFullForRootModule } from '@ngx-kit/core';
+import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
 
@@ -13,7 +12,6 @@ import { PlaygroundComponent } from './playground/playground.component';
   declarations: [
     AppComponent,
     PlaygroundComponent,
-    ...demo,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +20,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     ReactiveFormsModule,
     RouterModule.forRoot([]),
     KitFullForRootModule,
-    ...lib,
+    CollectionDemoModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

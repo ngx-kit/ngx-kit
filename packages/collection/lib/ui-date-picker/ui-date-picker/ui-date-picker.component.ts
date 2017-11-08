@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitDatePickerGrid, KitDatePickerService, KitGridControlService } from '@ngx-kit/ngx-kit';
+import { KitDatePickerGrid, KitDatePickerService, KitGridControlService } from '@ngx-kit/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 

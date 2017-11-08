@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitNotificationService } from '@ngx-kit/ngx-kit';
+import { KitNotificationService } from '@ngx-kit/core';
 
 @Component({
   selector: 'demo-notification-default',

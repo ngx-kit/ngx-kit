@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
-import { KitCollapseItemService } from '@ngx-kit/ngx-kit';
+import { KitCollapseItemService } from '@ngx-kit/core';
 
 /**
  * @apiOrder 2

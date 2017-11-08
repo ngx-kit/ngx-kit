@@ -1,5 +1,5 @@
 import { ComponentRef, Directive, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, } from '@angular/core';
-import { KitOverlayService } from '@ngx-kit/ngx-kit';
+import { KitOverlayService } from '@ngx-kit/core';
 import { UiTooltipViewComponent } from '../ui-tooltip-view/ui-tooltip-view.component';
 import { UiTooltipOptions } from '../meta';
 

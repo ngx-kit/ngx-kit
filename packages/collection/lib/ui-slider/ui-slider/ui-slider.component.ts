@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitPointerLineMoveEvent } from '@ngx-kit/ngx-kit';
+import { KitPointerLineMoveEvent } from '@ngx-kit/core';
 import { Subject } from 'rxjs/Subject';
 
 export const uiSliderValueAccessor: any = {

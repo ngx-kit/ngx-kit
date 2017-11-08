@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { KitLoadingBarService } from '@ngx-kit/ngx-kit';
+import { KitLoadingBarService } from '@ngx-kit/core';
 
 @Component({
   selector: 'demo-loading-bar-default',

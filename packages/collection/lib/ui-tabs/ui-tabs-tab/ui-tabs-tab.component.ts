@@ -7,7 +7,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { KitSlideHostService } from '@ngx-kit/ngx-kit';
+import { KitSlideHostService } from '@ngx-kit/core';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 

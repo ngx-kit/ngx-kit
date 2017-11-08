@@ -1,13 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "../../dist/build",
+    "outDir": "../../../dist/build",
     "declaration": true,
-    "declarationDir": "../../dist/release"
+    "declarationDir": "../../../dist/release"
   },
   "angularCompilerOptions": {
-    "genDir": "../../dist/build",
+    "genDir": "../../../dist/build",
     "skipTemplateCodegen": true,
     "skipMetadataEmit": false,
     "strictMetadataEmit": true,
@@ -19,8 +19,6 @@
     "./public_api.ts"
   ],
   "exclude": [
-    "../../node_modules",
-    "../../dist",
     "./src/**/*.spec.ts"
   ]
 }

@@ -1,4 +1,4 @@
-import { KitOverlayPosition } from '@ngx-kit/ngx-kit';
+import { KitOverlayPosition } from '@ngx-kit/core';
 
 export type UiTooltipColors = 'default' | 'primary';
 

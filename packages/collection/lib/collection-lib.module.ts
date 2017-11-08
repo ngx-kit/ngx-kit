@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { UiAccordionModule } from './ui-accordion/ui-accordion.module';
 import { UiAlertModule } from './ui-alert/ui-alert.module';
 import { UiBadgeModule } from './ui-badge/ui-badge.module';
@@ -18,7 +20,7 @@ import { UiTabsModule } from './ui-tabs/ui-tabs.module';
 import { UiTextareaModule } from './ui-textarea/ui-textarea.module';
 import { UiTooltipModule } from './ui-tooltip/ui-tooltip.module';
 
-export const lib = [
+const lib = [
   UiAccordionModule,
   UiAlertModule,
   UiBadgeModule,
@@ -39,3 +41,17 @@ export const lib = [
   UiTextareaModule,
   UiTooltipModule,
 ];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    ...lib,
+  ],
+  declarations: [
+  ],
+  exports: [
+    ...lib,
+  ],
+})
+export class CollectionLibModule {
+}

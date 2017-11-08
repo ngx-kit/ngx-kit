@@ -4,7 +4,7 @@ import {
   KitLimitMiddleware,
   KitMathParseMiddleware,
   KitMiddlewareManager,
-} from '@ngx-kit/ngx-kit';
+} from '@ngx-kit/core';
 
 @Component({
   // tslint:disable-next-line

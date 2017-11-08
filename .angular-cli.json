@@ -5,21 +5,35 @@
   },
   "apps": [
     {
-      "name": "ngx-kit",
-      "root": "packages/ngx-kit",
+      "name": "core",
+      "root": "packages/core",
       "appRoot": "src"
     },
     {
-      "name": "playground",
-      "root": "playground",
+      "name": "playground-core",
+      "root": "playground/core",
       "outDir": "dist",
       "index": "index.html",
       "main": "main.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
+      "tsconfig": "tsconfig.json",
       "testTsconfig": "tsconfig.spec.json",
       "assets": [
         "favicon.ico"
+      ]
+    },
+    {
+      "name": "playground-collection",
+      "root": "playground/collection",
+      "outDir": "dist",
+      "index": "index.html",
+      "main": "main.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "assets": [
+        "favicon.ico",
+        "assets"
       ]
     }
   ],

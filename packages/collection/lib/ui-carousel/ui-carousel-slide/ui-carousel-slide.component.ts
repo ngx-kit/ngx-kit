@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, } from '@angular/core';
-import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/ngx-kit';
+import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 

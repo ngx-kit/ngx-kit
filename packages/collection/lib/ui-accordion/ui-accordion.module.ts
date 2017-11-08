@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitCollapseModule } from '@ngx-kit/ngx-kit';
+import { KitCollapseModule } from '@ngx-kit/core';
 import { UiAccordionContentComponent } from './ui-accordion-content/ui-accordion-content.component';
 import { UiAccordionPanelComponent } from './ui-accordion-panel/ui-accordion-panel.component';
 import { UiAccordionTitleComponent } from './ui-accordion-title/ui-accordion-title.component';

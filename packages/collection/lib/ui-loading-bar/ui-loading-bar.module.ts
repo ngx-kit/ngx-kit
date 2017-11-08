@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitCollapseModule } from '@ngx-kit/ngx-kit';
+import { KitCollapseModule } from '@ngx-kit/core';
 import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component';
 
 @NgModule({

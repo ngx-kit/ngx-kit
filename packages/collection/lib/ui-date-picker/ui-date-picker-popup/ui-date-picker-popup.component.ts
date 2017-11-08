@@ -14,7 +14,7 @@ import {
   KitFocusManagerService,
   KitOverlayPositionService,
   KitStyleService,
-} from '@ngx-kit/ngx-kit';
+} from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-date-picker-popup',
@@ -57,7 +57,7 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
 
   @HostBinding('attr.aria-modal') ariaModal = true;
 
-  @HostBinding('@host') hostTrigger;
+  @HostBinding('@host') hostTrigger = true;
 
   @Output() outsideClick = new EventEmitter<MouseEvent>();
 
