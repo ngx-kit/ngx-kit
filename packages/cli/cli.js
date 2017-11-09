@@ -49,12 +49,13 @@ switch (action) {
     break;
   }
   case 'schematize': {
-    const config = getConfig();
-    if (config.schematics) {
+    const configPath = args[3];
+    const config = require(path.resolve(configPath));
+    if (config) {
       const schematicsGen = require('./lib/schematize/schematize');
-      schematicsGen(config.schematics);
+      schematicsGen(config);
     } else {
-      console.log('Schematics section not found in .ngx-kit.json. %DOCS_LINK%');
+      console.log('Schematics config not found. %DOCS_LINK%');
     }
     break;
   }
