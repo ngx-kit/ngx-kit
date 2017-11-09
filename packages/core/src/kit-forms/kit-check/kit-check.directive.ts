@@ -27,8 +27,6 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
 export class KitCheckDirective implements OnChanges, ControlValueAccessor {
   /**
    * Class applied when active.
-   *
-   * @type {string}
    */
   @Input() checkedClass = 'checked';
 

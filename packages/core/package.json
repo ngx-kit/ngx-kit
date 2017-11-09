@@ -1,10 +1,10 @@
 {
-  "name": "@ngx-kit/ngx-kit",
+  "name": "@ngx-kit/core",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "ngx-kit - angular components",
-  "main": "./bundle/ngx-kit.umd.js",
-  "module": "./module/ngx-kit.js",
-  "typings": "./ngx-kit.d.ts",
+  "description": "ngx-kit - core module",
+  "main": "./index.umd.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
   "author": {
     "name": "Sasha Novik",
     "email": "alex@nvx.me",

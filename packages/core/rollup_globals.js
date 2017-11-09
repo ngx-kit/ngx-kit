@@ -21,7 +21,9 @@ module.exports = {
   "rxjs/add/operator/switchMap": "Rx.add",
   "rxjs/add/operator/takeUntil": "Rx.add",
   "rxjs/add/operator/take": "Rx.add",
+  "rxjs/add/operator/startWith": "Rx.add",
   "rxjs/BehaviorSubject": "Rx",
   "rxjs/Observable": "Rx",
-  "rxjs/Subject": "Rx"
+  "rxjs/Subject": "Rx",
+  "rxjs/Subscription": "Rx"
 };

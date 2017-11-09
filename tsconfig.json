@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -13,11 +13,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ],
+    "lib": ["es5", "es2015", "dom"],
     "baseUrl": ".",
     "paths": {
       "@ngx-kit/core": ["./packages/core"]

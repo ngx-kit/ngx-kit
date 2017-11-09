@@ -1,16 +1,18 @@
 {
   "name": "ngx-kit-src",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0-rc.0",
   "license": "MIT",
   "scripts": {
     "playground:core": "ng serve -a=playground-core",
     "playground:collection": "ng serve -a=playground-collection",
-    "build": "npm run build:clean && npm run build:ngc && npm run build:release && npm run build:rollup:es && npm run build:rollup:umd",
     "build:clean": "rimraf ./dist",
-    "build:ngc": "ngc -p ./packages/ngx-kit/tsconfig.json",
-    "build:rollup:es": "rollup -c rollup.es.config.js",
-    "build:rollup:umd": "rollup -c rollup.umd.config.js",
-    "build:release": "node release",
+    "build:core": "npm run build:clean && npm run build:core:ngc && npm run build:core:release && npm run build:core:rollup",
+    "build:core:ngc": "ngc -p ./packages/core/tsconfig.build.json",
+    "build:core:rollup": "npm run build:core:rollup:es && npm run build:core:rollup:umd",
+    "build:core:rollup:es": "rollup -c ./packages/core/rollup.es.config.js",
+    "build:core:rollup:umd": "rollup -c ./packages/core/rollup.umd.config.js",
+    "build:core:release": "node ./packages/core/release",
+    "build:core:publish": "publish-build.sh core",
     "copy": "ngx-kit copy",
     "build-and-copy": "npm run build && npm run copy",
     "build:schematics": "npm run build:clean && tsc -p ./packages/schematics/tsconfig.json && node release-schematics",
@@ -23,7 +25,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
-    "@angular/cli": "^1.5.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/compiler-cli": "^5.0.0",
@@ -35,11 +36,11 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ngx-kit/styler": "^1.0.0-beta.15",
-    "moment": "^2.19.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
+    "@angular/cli": "^1.5.0",
     "@angular-devkit/core": "0.0.20",
     "@angular-devkit/schematics": "0.0.35",
     "@ngx-kit/schematics": "^1.0.0-alpha.6",
@@ -59,6 +60,6 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.51.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "typescript": "~2.4.2"
   }
 }

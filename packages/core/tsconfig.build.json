@@ -1,24 +1,23 @@
 {
-  "extends": "../../../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "../../../dist/build",
+    "outDir": "../../dist/core/build",
     "declaration": true,
-    "declarationDir": "../../../dist/release"
+    "declarationDir": "../../dist/core/release"
   },
   "angularCompilerOptions": {
-    "genDir": "../../../dist/build",
-    "skipTemplateCodegen": true,
-    "skipMetadataEmit": false,
+    "genDir": "../../dist/core/build",
+    "annotateForClosureCompiler": false,
     "strictMetadataEmit": true,
-    "annotateForClosureCompiler": true,
-    "flatModuleOutFile": "ngx-kit.js",
-    "flatModuleId": "@ngx-kit/ngx-kit"
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "@ngx-kit/core",
+    "skipTemplateCodegen": true
   },
   "files": [
     "./public_api.ts"
   ],
   "exclude": [
-    "./src/**/*.spec.ts"
+    "./**/*.spec.ts"
   ]
 }
