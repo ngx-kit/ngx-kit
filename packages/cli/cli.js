@@ -35,14 +35,15 @@ switch (action) {
     }
     break;
   case 'gen-docs': {
-    // format: "ngx-kit gen-docs PATH_TO_SOURCES"
+    // format: "ngx-kit gen-docs PATH_TO_SOURCES DESTINATION_PATH"
     // uses .docs-schema.json
     const pkgParam = args[3];
+    const dest = args[4];
     if (pkgParam) {
       const dir = path.resolve(pkgParam);
       const schema = require(path.resolve(dir, '.docs-schema.json'));
       const docsGen = require('./lib/docs/docs');
-      docsGen(dir, pkgParam, schema);
+      docsGen(dir, pkgParam, schema, dest);
     } else {
       console.log('Param for action gen-docs not passed. %DOCS_LINK%');
     }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { KitIconsRegistryService } from '@ngx-kit/ngx-kit';
+import { KitIconsRegistryService } from '@ngx-kit/core';
 import { StylerModule } from '@ngx-kit/styler';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { ThemeService } from '../core/theme.service';

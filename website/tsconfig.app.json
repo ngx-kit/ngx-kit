@@ -4,7 +4,9 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "paths": {
+      "@ngx-kit/core": ["../packages/core"]
+    }
   },
   "exclude": [
     "server.ts",
@@ -12,3 +14,4 @@
     "**/*.spec.ts"
   ]
 }
+

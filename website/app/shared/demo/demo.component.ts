@@ -2,8 +2,8 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { demo } from '../../../packages/ui-base/src/demo/demo-ref';
 import { DemoStyle } from './demo.style';
+import { demoComponents } from '../../../../packages/collection/demo/components-ref';
 
 @Component({
   selector: 'app-demo',
@@ -33,13 +33,13 @@ export class DemoComponent implements OnChanges {
     if (!this.demo) {
       throw new Error('Demo is not passed!');
     }
-    if (!demo) {
+    if (!demoComponents) {
       throw new Error('demo-ref is not generated!');
     }
-    if (!demo[this.demo.class]) {
+    if (!demoComponents[this.demo.class]) {
       throw new Error(`Class ${this.demo.class} not found in demo-ref`);
     }
-    this.class = demo[this.demo.class];
+    this.class = demoComponents[this.demo.class];
     console.log('class', this.class);
     this.readme = this.md.render(this.demo.readme);
     this.code = this.demo.code.reduce((prev, file) => ({

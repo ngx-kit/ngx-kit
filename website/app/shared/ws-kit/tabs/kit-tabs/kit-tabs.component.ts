@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { KitSlideHostService } from '@ngx-kit/ngx-kit';
+import { KitSlideHostService } from '@ngx-kit/core';
 
 /**
  * @apiOrder 1

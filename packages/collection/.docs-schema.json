@@ -1,5 +1,5 @@
 {
   "demo": "./demo",
   "docs": "./docs",
-  "src": "./packages/ngx-kit/src"
+  "src": "./lib"
 }

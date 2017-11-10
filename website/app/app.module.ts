@@ -2,9 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KitFullForRootModule } from '@ngx-kit/ngx-kit';
+import { KitFullForRootModule } from '@ngx-kit/core';
+import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
-import { lib } from '../packages/ui-base/src/lib/lib';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
@@ -18,8 +18,8 @@ import { RootComponent } from './root/root.component';
     MdRenderModule,
     CoreModule,
     KitFullForRootModule,
+    StylerModule.forRoot(),
     AppRoutingModule,
-    ...lib,
   ],
   declarations: [
     RootComponent,
@@ -31,11 +31,11 @@ export class AppModule {
   constructor(public srv: ContentService) {
   }
 
-  hmrOnDestroy(store) {
+  hmrOnDestroy(store: any) {
     // store.state = this.srv.piu;
   }
 
-  hmrOnInit(store) {
+  hmrOnInit(store: any) {
 //    this.srv.piu = store.state;
   }
 }

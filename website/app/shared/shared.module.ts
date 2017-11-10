@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { KitFullModule } from '@ngx-kit/ngx-kit';
+import { KitFullModule } from '@ngx-kit/core';
 import { StylerModule } from '@ngx-kit/styler';
-import { demo } from '../../packages/ui-base/src/demo/demo';
-import { lib } from '../../packages/ui-base/src/lib/lib';
+import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
 import { ApiComponent } from './api/api.component';
 import { ContentMenuComponent } from './content-menu/content-menu.component';
 import { DemoComponent } from './demo/demo.component';
@@ -15,7 +14,7 @@ import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
 
-const exp = [
+const exports = [
   DocsPageComponent,
   MdComponent,
   DemoComponent,
@@ -36,19 +35,15 @@ const wsKit = [
     RouterModule,
     StylerModule,
     KitFullModule,
+    CollectionDemoModule,
     ...wsKit,
-    ...lib,
   ],
   declarations: [
-    ...exp,
-    ...demo,
+    ...exports,
   ],
   exports: [
-    ...exp,
+    ...exports,
     ...wsKit,
-  ],
-  entryComponents: [
-    ...demo,
   ],
 })
 export class SharedModule {
