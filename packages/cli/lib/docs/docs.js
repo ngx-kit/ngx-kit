@@ -6,7 +6,7 @@ const demoGen = require('./demo-gen');
 const demoRefGen = require('./demo-ref-gen');
 const docsGen = require('./docs-gen');
 
-module.exports = function(dir, pkg, schema) {
+module.exports = function(dir, pkg, schema, dest) {
   const compiled = {
     genTime: new Date(),
     docs: [],
@@ -30,13 +30,13 @@ module.exports = function(dir, pkg, schema) {
     });
     compiled.docs = docsGen(path.resolve(dir, schema.docs));
     demoRefGen(path.resolve(dir, schema.demo));
-    saveDocs(pkg, compiled);
+    saveDocs(pkg, compiled, dest);
   });
 };
 
-function saveDocs(pkg, compiled) {
+function saveDocs(pkg, compiled, dest) {
   // @todo get path from config
-  fs.outputFile(path.resolve(`./src/assets/docs/${pkg}.json`), JSON.stringify(compiled), function(err) {
+  fs.outputFile(path.resolve(dest, `${pkg}.json`), JSON.stringify(compiled), function(err) {
     if (err) {
       return console.log(err);
     }
