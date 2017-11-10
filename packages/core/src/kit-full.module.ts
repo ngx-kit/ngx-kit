@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BemClassGenStrategy, ClassGenStategy, StylerModule } from '@ngx-kit/styler';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitCommonModule } from './kit-common/kit-common.module';
 import { KitCoreModule } from './kit-core/kit-core.module';
@@ -15,7 +14,6 @@ import { KitPointerModule } from './kit-pointer/kit-pointer.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
 
 const initableModules = [
-  StylerModule,
   KitCoreModule,
   KitIconsModule,
   KitLoadingBarModule,
@@ -35,19 +33,12 @@ const simpleModules = [
 
 @NgModule({
   imports: [
-    StylerModule.forRoot(),
     KitCoreModule.forRoot(),
     KitIconsModule.forRoot(),
     KitLoadingBarModule.forRoot(),
     KitNotificationModule.forRoot(),
     KitOverlayModule.forRoot(),
     ...simpleModules,
-  ],
-  providers: [
-    {
-      provide: ClassGenStategy,
-      useClass: BemClassGenStrategy,
-    },
   ],
   exports: [
     ...initableModules,

@@ -18,7 +18,6 @@
   },
   "peerDependencies": {
     "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER",
-    "@ngx-kit/styler": "0.0.0-STYLER-PLACEHOLDER",
     "typescript": "0.0.0-TYPESCRIPT-PLACEHOLDER"
   },
   "dependencies": {}

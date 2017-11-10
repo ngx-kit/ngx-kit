@@ -9,8 +9,7 @@ const blueprint = fs.readFileSync(path.resolve(__dirname, './package.json'), 'ut
 const result = blueprint
     .replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version)
     .replace(/0\.0\.0\-ANGULAR\-PLACEHOLDER/g, config.vendors.angular)
-    .replace(/0\.0\.0\-TYPESCRIPT\-PLACEHOLDER/g, config.vendors.typescript)
-    .replace(/0\.0\.0\-STYLER\-PLACEHOLDER/g, config.vendors.styler);
+    .replace(/0\.0\.0\-TYPESCRIPT\-PLACEHOLDER/g, config.vendors.typescript);
 fs.writeFileSync(path.resolve(__dirname, '../../dist/core/release/package.json'), result);
 // Copy README
 fs.copySync(path.resolve('README.md'), path.resolve(__dirname, '../../dist/core/release/README.md'));

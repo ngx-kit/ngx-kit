@@ -23,7 +23,7 @@ You don't need 3rd party ui-kit, your can create your own components that do exa
 ## Installation
 
 ```
-npm install @ngx-kit/ngx-kit @ngx-kit/styler --save
+npm install @ngx-kit/ngx-kit --save
 ```
 
 

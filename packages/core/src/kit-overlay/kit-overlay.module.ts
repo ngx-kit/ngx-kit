@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { StylerModule } from '@ngx-kit/styler';
 import { KitCommonModule } from '../kit-common/kit-common.module';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 import { DropdownStrategyService } from './kit-overlay-position/dropdown-strategy.service';
@@ -12,7 +11,6 @@ import { KitOverlayDirective } from './kit-overlay/kit-overlay.directive';
 @NgModule({
   imports: [
     CommonModule,
-    StylerModule,
     KitCommonModule,
   ],
   exports: [
