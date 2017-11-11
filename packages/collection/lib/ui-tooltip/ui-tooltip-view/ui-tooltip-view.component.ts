@@ -27,7 +27,7 @@ import { UiTooltipColors } from '../meta';
   ],
 })
 export class UiTooltipViewComponent implements OnChanges {
-  @Input() anchorEl: HTMLElement;
+  @Input() anchorEl: any;
 
   @Input() color: UiTooltipColors;
 

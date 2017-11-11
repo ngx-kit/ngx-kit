@@ -19,15 +19,15 @@ export class KitPointerLineDirective {
   }
 
   @HostListener('click', ['$event'])
-  clickHandler(event: MouseEvent) {
+  clickHandler(event: any) {
     this.move.emit({
       position: this.calcPosition(event, this.el.nativeElement),
       lineWidth: this.el.nativeElement.clientWidth,
     });
   }
 
-  @HostListener('mousedown', ['$event'])
-  mousedownHandler(event: MouseEvent) {
+  @HostListener('mousedown')
+  mousedownHandler() {
     this.start.emit();
     this.handleMoving();
   }

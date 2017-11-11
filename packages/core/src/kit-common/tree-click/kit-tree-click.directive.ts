@@ -15,7 +15,7 @@ export class KitTreeClickDirective {
   }
 
   @HostListener('click', ['$event'])
-  clickHandler(event: MouseEvent) {
+  clickHandler(event: any) {
     this.treeClick.emit(event);
     if (this.parent) {
       this.parent.treeClick.emit(event);

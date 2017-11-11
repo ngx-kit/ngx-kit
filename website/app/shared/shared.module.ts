@@ -13,7 +13,7 @@ import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
 
-const exports = [
+const exp = [
   DocsPageComponent,
   MdComponent,
   DemoComponent,
@@ -37,10 +37,10 @@ const wsKit = [
     ...wsKit,
   ],
   declarations: [
-    ...exports,
+    ...exp,
   ],
   exports: [
-    ...exports,
+    ...exp,
     ...wsKit,
   ],
 })
