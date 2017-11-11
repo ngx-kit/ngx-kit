@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { StylerModule } from '@ngx-kit/styler';
-import { ContentService } from '../../core/content.service';
-import { LayoutStyle } from '../../shared/layout/layout.style';
 import { KitStyle } from './kit.style';
+import { LayoutStyle } from '../../../shared/layout/layout.style';
+import { ContentService } from '../../../core/content.service';
 
 @Component({
   selector: 'app-kit',
-  templateUrl: './kit.component.html',
+  templateUrl: './main.component.html',
   viewProviders: [
     StylerModule.forComponent(LayoutStyle),
     StylerModule.forComponent(KitStyle),
   ],
 })
-export class KitComponent implements OnInit {
+export class MainComponent implements OnInit {
   content: any;
 
   constructor(private contentService: ContentService) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ContentService } from '../../core/content.service';
+import { ContentService } from '../../../core/content.service';
 
 /**
  * @todo the same as ModulePageComponent

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStyle, StyleDef } from '@ngx-kit/styler';
-import { ThemeService } from '../../core/theme.service';
+import { ThemeService } from '../../../core/theme.service';
 
 @Injectable()
 export class UiBaseStyle implements ComponentStyle {

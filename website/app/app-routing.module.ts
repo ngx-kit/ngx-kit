@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'ngx-kit',
-    loadChildren: './kit/kit.module#KitModule',
+    path: 'core',
+    loadChildren: './packages/core/core-package.module#CorePackageModule',
   },
   {
-    path: 'ui-base',
-    loadChildren: './ui-base/ui-base.module#UiBaseModule',
+    path: 'collection',
+    loadChildren: './packages/collection/collection-package.module#CollectionPackageModule',
   },
   {
     path: '',

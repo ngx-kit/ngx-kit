@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { KitIconsModule } from '@ngx-kit/core';
 import { StylerModule } from '@ngx-kit/styler';
-import { SharedModule } from '../shared/shared.module';
-import { KitRoutingModule } from './kit-routing.module';
-import { KitComponent } from './kit/kit.component';
-import { ModuleComponent } from './module/module.component';
+import { SharedModule } from '../../shared/shared.module';
+import { CorePackageRoutingModule } from './core-package-routing.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   imports: [
@@ -15,14 +14,13 @@ import { ModuleComponent } from './module/module.component';
     ReactiveFormsModule,
     SharedModule,
     StylerModule,
-    KitRoutingModule,
+    CorePackageRoutingModule,
     KitIconsModule,
   ],
   declarations: [
-    KitComponent,
-    ModuleComponent,
+    MainComponent,
   ],
   providers: [],
 })
-export class KitModule {
+export class CorePackageModule {
 }

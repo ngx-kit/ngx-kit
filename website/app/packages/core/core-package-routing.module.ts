@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentResolverService } from '../core/content-resolver.service';
-import { DocsPageComponent } from '../shared/docs-page/docs-page.component';
-import { UiBaseComponent } from './ui-base/ui-base.component';
-import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
+import { ContentResolverService } from '../../core/content-resolver.service';
+import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
+import { ModulePageComponent } from '../../shared/module-page/module-page.component';
+import { MainComponent } from './main/main.component';
 
-const pkgName = 'ui-base';
+const pkgName = 'ngx-kit';
 const routes: Routes = [
   {
     path: '',
-    component: UiBaseComponent,
+    component: MainComponent,
     data: {
       pkg: pkgName,
-      file: '/assets/docs/packages/collection.json',
+      file: '/assets/docs/packages/core.json',
     },
     resolve: {
       content: ContentResolverService,
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'module/:name',
-        component: UiModulePageComponent,
+        component: ModulePageComponent,
         data: {
           pkg: pkgName,
         },
@@ -44,5 +44,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UiBaseRoutingModule {
+export class CorePackageRoutingModule {
 }
