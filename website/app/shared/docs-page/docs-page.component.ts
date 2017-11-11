@@ -20,7 +20,7 @@ export class DocsPageComponent implements OnInit {
       this.pkg = d['pkg'];
     });
     this.route.params.subscribe(params => {
-      this.doc = this.contentService.get(this.pkg).docs.find(d => d.name === params['name']);
+      this.doc = this.contentService.get(this.pkg).docs.find((d: any) => d.name === params['name']);
     });
   }
 }

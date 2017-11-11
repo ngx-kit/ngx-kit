@@ -15,7 +15,6 @@ export interface ContentComponents {
 }
 
 export interface ContentApi {
-  Date;
   files: ComponentApi[];
   version: string;
 }
@@ -30,7 +29,7 @@ export interface ComponentApi {
   outputs: ComponentApiOutput[];
   props: ComponentApiProp[];
   setProps: ComponentApiMethod[];
-  string;
+  selector: string;
   type: 'Component' | 'Directive' | 'Injectable';
 }
 

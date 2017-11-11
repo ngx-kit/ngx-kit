@@ -16,7 +16,7 @@ export class ContentMenuComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.content.docs.sort((x, y) => {
+    this.content.docs.sort((x: any, y: any) => {
       const xOrder = x.meta.apiOrder || null;
       const yOrder = y.meta.apiOrder || null;
       return xOrder > yOrder ? 1 : -1;

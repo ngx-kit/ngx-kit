@@ -20,18 +20,18 @@ export class ModulePageComponent implements OnInit {
       this.pkg = d['pkg'];
     });
     this.route.params.subscribe(params => {
-      this.module = this.contentService.get(this.pkg).modules.find(m => m.name === params['name']);
-      this.module.docs.sort((x, y) => {
+      this.module = this.contentService.get(this.pkg).modules.find((m: any) => m.name === params['name']);
+      this.module.docs.sort((x: any, y: any) => {
         const xOrder = this.extractMdOrderValue(x);
         const yOrder = this.extractMdOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
       });
-      this.module.api.sort((x, y) => {
+      this.module.api.sort((x: any, y: any) => {
         const xOrder = this.extractApiOrderValue(x);
         const yOrder = this.extractApiOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
       });
-      this.module.demo.sort((x, y) => {
+      this.module.demo.sort((x: any, y: any) => {
         const xOrder = this.extractMdOrderValue(x);
         const yOrder = this.extractMdOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
@@ -40,7 +40,7 @@ export class ModulePageComponent implements OnInit {
   }
 
   private extractApiOrderValue(api: any) {
-    const orderTag = api.doc && api.doc.tags ? api.doc.tags.find(t => t.name === 'apiOrder') : null;
+    const orderTag = api.doc && api.doc.tags ? api.doc.tags.find((t: any) => t.name === 'apiOrder') : null;
     return orderTag ? orderTag.value : null;
   }
 

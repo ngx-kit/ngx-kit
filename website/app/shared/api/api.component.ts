@@ -117,14 +117,14 @@ export class ApiComponent implements OnChanges {
     return api;
   }
 
-  private renderDoc(doc: ComponentApiDoc) {
+  private renderDoc(doc: ComponentApiDoc): ComponentApiDoc {
     if (doc) {
       doc.comment = this.md.render(doc.comment);
       doc.tags.forEach(t => t.value = this.md.render(t.value));
       return doc;
     } else {
       return {
-        comment: null,
+        comment: '',
         tags: [],
       };
     }
