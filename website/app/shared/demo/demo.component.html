@@ -1,18 +1,18 @@
-<h3 styler="title">{{ demo.meta.title }}</h3>
+<h3 class="title">{{ demo.meta.title }}</h3>
 <div *ngIf="readme"
      [innerHtml]="readme"
-     styler="readme"></div>
-<div styler="demo" [stylerState]="{inverted: inverted}">
+     class="readme"></div>
+<div class="demo">
   <ng-container *ngComponentOutlet="class"></ng-container>
 </div>
-<div styler="code">
+<div>
   <ws-kit-tabs>
     <ws-kit-tabs-nav>
       <ws-kit-tabs-tab *ngFor="let file of demo.code; let index = index" [id]="index">{{ file.file }}</ws-kit-tabs-tab>
     </ws-kit-tabs-nav>
     <ng-container *ngFor="let file of demo.code; let index = index">
       <ws-kit-tabs-content *kitSlide="index">
-        <pre styler="codeSrc"><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
+        <pre class="code-src"><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
                                     [innerHtml]="code[file.file]"></code></pre>
       </ws-kit-tabs-content>
     </ng-container>

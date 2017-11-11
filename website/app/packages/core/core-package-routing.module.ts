@@ -5,7 +5,7 @@ import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { ModulePageComponent } from '../../shared/module-page/module-page.component';
 import { MainComponent } from './main/main.component';
 
-const pkgName = 'ngx-kit';
+export const pkgName = 'core';
 const routes: Routes = [
   {
     path: '',

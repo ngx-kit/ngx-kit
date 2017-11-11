@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KitFullForRootModule } from '@ngx-kit/core';
-import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
@@ -18,7 +17,6 @@ import { RootComponent } from './root/root.component';
     MdRenderModule,
     CoreModule,
     KitFullForRootModule,
-    StylerModule.forRoot(),
     AppRoutingModule,
   ],
   declarations: [

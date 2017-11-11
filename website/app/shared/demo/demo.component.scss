@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  margin-bottom: 64px;
+  box-shadow: 0 0 20px #eeeeee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.demo {
+  padding: 32px;
+}
+
+.code-src {
+  padding: 16px;
+}
+
+.readme {
+  background: rgba(0, 0, 0, .03);
+  padding: 8px 16px;
+}
+
+.title {
+  margin: 0;
+  padding: 16px;
+  background: #eeeeee;
+}

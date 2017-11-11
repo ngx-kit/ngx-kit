@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { StylerModule } from '@ngx-kit/styler';
 import { ContentService } from '../../../core/content.service';
-import { LayoutStyle } from '../../../shared/layout/layout.style';
-import { UiBaseStyle } from './ui-base.style';
+import { pkgName } from '../collection-package-routing.module';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  viewProviders: [
-    StylerModule.forComponent(LayoutStyle),
-    StylerModule.forComponent(UiBaseStyle),
-  ],
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
   content: any;
@@ -20,6 +14,6 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.content = this.contentService.get('ui-base');
+    this.content = this.contentService.get(pkgName);
   }
 }

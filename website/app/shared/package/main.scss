@@ -1,0 +1,49 @@
+@import "../../core/params";
+@import "../../shared/layout/layout";
+
+.logo {
+  width: $sideWidth;
+  padding: 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: $headerHeight;
+}
+
+.menu {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  list-style: none;
+  padding: 0 64px;
+  .link {
+    color: #444444;
+    padding: 8px;
+  }
+}
+
+.github-star {
+  display: flex;
+  align-items: center;
+  padding: 0 64px;
+  & kit-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.layout-content {
+  overflow-y: auto;
+}
+
+.layout-side {
+  background: $sideColor;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  color: #ffffff;
+}

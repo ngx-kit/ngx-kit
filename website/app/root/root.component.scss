@@ -1,0 +1,6 @@
+@import "../core/params";
+@import "../shared/layout/layout";
+
+:host {
+  color: $textColor;
+}

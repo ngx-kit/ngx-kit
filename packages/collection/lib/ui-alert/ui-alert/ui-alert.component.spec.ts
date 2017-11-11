@@ -1,8 +1,7 @@
-import { Component, DebugElement, Directive, Injectable, Input } from '@angular/core';
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { StylerComponent } from '@ngx-kit/styler';
 import { Subject } from 'rxjs/Subject';
 import { UiAlertTitleComponent } from '../ui-alert-title/ui-alert-title.component';
 import { UiAlertComponent } from './ui-alert.component';
@@ -12,43 +11,13 @@ describe('Alert/AlertComponent', () => {
   let container: ContainerComponent;
   let element: Element;
   let de: DebugElement;
-  let styler: StylerMock;
-  let stylerForTitle: StylerMock;
   let alert: UiAlertComponent;
   let alertWithTitle: UiAlertComponent;
   // setup
   beforeEach(async(() =>
       TestBed.configureTestingModule({
         imports: [NoopAnimationsModule],
-        declarations: [StylerDirective, ContainerComponent, UiAlertComponent, UiAlertTitleComponent],
-        providers: [
-          {
-            provide: 'styler',
-            useClass: StylerMock,
-          },
-          {
-            provide: 'stylerForTitle',
-            useClass: StylerMock,
-          },
-        ],
-      }).overrideComponent(UiAlertComponent, {
-        set: {
-          viewProviders: [
-            {
-              provide: StylerComponent,
-              useExisting: 'styler',
-            },
-          ],
-        },
-      }).overrideComponent(UiAlertTitleComponent, {
-        set: {
-          viewProviders: [
-            {
-              provide: StylerComponent,
-              useExisting: 'stylerForTitle',
-            },
-          ],
-        },
+        declarations: [ContainerComponent, UiAlertComponent, UiAlertTitleComponent],
       }).compileComponents(),
   ));
   beforeEach(() => {
@@ -60,11 +29,6 @@ describe('Alert/AlertComponent', () => {
     alertWithTitle = de.children[1].componentInstance;
     fixture.detectChanges();
   });
-  beforeEach(inject(['styler', 'stylerForTitle'],
-      (stylerMock: StylerMock, stylerForTitleMock: StylerMock) => {
-        styler = stylerMock;
-        stylerForTitle = stylerForTitleMock;
-      }));
   // specs
   it('container and component instance should be created', () => {
     expect(container).toBeTruthy();
@@ -126,32 +90,4 @@ class ContainerComponent {
   closeText = '';
 
   message = '';
-}
-
-@Injectable()
-class StylerMock {
-  host = {
-    state: {
-      closed: false,
-    },
-    applyState: (state: any) => {
-      this.host.state = {...this.host.state, ...state};
-    },
-  };
-
-  register(style: any) {
-  }
-}
-
-@Injectable()
-class StyleMock {
-}
-
-@Directive({
-  selector: '[styler]',
-})
-export class StylerDirective {
-  @Input() styler: any;
-
-  @Input() stylerState: any;
 }

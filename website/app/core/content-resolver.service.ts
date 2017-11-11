@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { tap } from 'rxjs/operators';
-import { ContentApi } from '../interfaces/content';
+import { ContentApi } from './content-meta';
 import { ContentService } from './content.service';
 
 @Injectable()

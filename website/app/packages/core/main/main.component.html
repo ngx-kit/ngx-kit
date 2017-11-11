@@ -1,30 +1,30 @@
-<div styler="layoutFull">
-  <div styler="layoutHeader">
-    <a [routerLink]="['/core']" styler="logo">@ngx-kit/core</a>
-    <ul styler="menu">
-      <li><a styler="menuLink" [routerLink]="['/collection']">collection</a></li>
-      <li><a styler="menuLink" href="https://github.com/ngx-kit/styler" target="_blank">styler</a></li>
+<div class="layout-full">
+  <div class="layout-header">
+    <a [routerLink]="['/core']" class="logo">@ngx-kit/core</a>
+    <ul class="menu">
+      <li><a class="link" [routerLink]="['/collection']">collection</a></li>
+      <li><a class="link" href="https://github.com/ngx-kit/styler" target="_blank">styler</a></li>
     </ul>
-    <div styler="githubStar">
+    <div class="github-star">
       <a href="https://github.com/ngx-kit/ngx-kit" target="_blank"><kit-icon [name]="'git'"></kit-icon></a>
     </div>
   </div>
-  <div styler="layoutContent">
-    <div styler="layoutRow">
-      <div styler="layoutSide">
+  <div class="layout-content">
+    <div class="layout-row">
+      <div class="layout-side">
         <app-content-menu [content]="content"></app-content-menu>
       </div>
-      <div styler="layoutContent">
-        <div styler="layoutContentWrapper">
+      <div class="layout-content">
+        <div class="layout-content-wrapper">
           <router-outlet></router-outlet>
         </div>
-        <div styler="layoutFooter">
+        <div class="layout-footer">
           <div>
             Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
           </div>
           <div>
             <a href="https://github.com/ngx-kit/ngx-kit/releases" target="_blank">Changelog</a>
-            <a href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
+            <a href="https://github.com/ngx-kit/ngx-kit/tree/master/packages/core" target="_blank">GitHub</a>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { MainComponent } from './main/main.component';
 import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
 
-const pkgName = 'ui-base';
+export const pkgName = 'collection';
 const routes: Routes = [
   {
     path: '',

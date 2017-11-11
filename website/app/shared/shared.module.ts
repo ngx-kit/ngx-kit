@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { KitFullModule } from '@ngx-kit/core';
-import { StylerModule } from '@ngx-kit/styler';
 import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
 import { ApiComponent } from './api/api.component';
 import { ContentMenuComponent } from './content-menu/content-menu.component';
@@ -33,7 +32,6 @@ const wsKit = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    StylerModule,
     KitFullModule,
     CollectionDemoModule,
     ...wsKit,

@@ -1,19 +1,15 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
+import { ComponentApi, ComponentApiDoc } from '../../core/content-meta';
 import { ContentService } from '../../core/content.service';
-import { ComponentApi, ComponentApiDoc } from '../../interfaces/content';
 import { clone } from '../utils/clone';
 import { isArray } from '../utils/is-array';
 import { isObject } from '../utils/is-object';
-import { ApiStyle } from './api.style';
 
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
-  viewProviders: [
-    StylerModule.forComponent(ApiStyle),
-  ],
+  styleUrls: ['./api.component.scss'],
 })
 export class ApiComponent implements OnChanges {
   api: any;

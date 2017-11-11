@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-import { LayoutStyle } from '../../shared/layout/layout.style';
-import { HomePageStyle } from './home-page.style';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  viewProviders: [
-    StylerModule.forComponent(LayoutStyle),
-    StylerModule.forComponent(HomePageStyle),
-  ],
+  styleUrls: ['./home-page.component.scss'],
   animations: [
     // @todo do not run animations second time (first time from universal, second after ng mount)
 //    trigger('products', [
@@ -27,6 +21,6 @@ import { HomePageStyle } from './home-page.style';
   ],
 })
 export class HomePageComponent {
-  constructor(private styler: StylerComponent) {
+  constructor() {
   }
 }

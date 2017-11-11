@@ -1,21 +1,15 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { KitIconsRegistryService } from '@ngx-kit/core';
-import { StylerModule } from '@ngx-kit/styler';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { ThemeService } from '../core/theme.service';
-import { LayoutStyle } from '../shared/layout/layout.style';
-import { RootStyle } from './root.style';
 
 declare const gtag: Function;
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
-  viewProviders: [
-    StylerModule.forComponent(LayoutStyle),
-    StylerModule.forComponent(RootStyle),
-  ],
+  styleUrls: ['./root.component.scss'],
 })
 export class RootComponent {
   hljsTheme = 'hljs-theme-default';

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin-bottom: 32px;
+}
+
+.head {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 4px;
+}
+
+.param-doc ::ng-deep p {
+  margin: 0;
+}

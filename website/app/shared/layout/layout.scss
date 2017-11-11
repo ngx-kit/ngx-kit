@@ -1,0 +1,63 @@
+@import "../../core/params";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.layout-full {
+  @extend :host;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.layout-header {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  height: $headerHeight;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.layout-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.layout-content-wrapper {
+  flex-grow: 1;
+  padding: 16px 64px;
+  box-shadow: inset 0 0 39px -10px rgba(0, 0, 0, .1);
+}
+
+.layout-row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.layout-side {
+  width: $sideWidth;
+  padding: 16px 8px;
+  overflow: hidden;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+
+.layout-footer {
+  display: block;
+  flex-shrink: 0;
+  padding: 32px 64px;
+  text-align: right;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}

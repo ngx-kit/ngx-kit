@@ -1,16 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { StylerComponent, StylerModule } from '@ngx-kit/styler';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { DemoStyle } from './demo.style';
 import { demoComponents } from '../../../../packages/collection/demo/components-ref';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  viewProviders: [
-    StylerModule.forComponent(DemoStyle),
-  ],
+  styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnChanges {
   add = false;
@@ -25,8 +21,7 @@ export class DemoComponent implements OnChanges {
 
   readme: string;
 
-  constructor(private styler: StylerComponent,
-              private md: MdRenderService) {
+  constructor(private md: MdRenderService) {
   }
 
   ngOnChanges() {

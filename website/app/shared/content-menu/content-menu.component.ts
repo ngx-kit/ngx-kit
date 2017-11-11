@@ -1,19 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { StylerComponent, StylerModule } from '@ngx-kit/styler';
-import { ContentMenuStyle } from './content-menu.style';
 
 @Component({
   selector: 'app-content-menu',
   templateUrl: './content-menu.component.html',
-  viewProviders: [
-    StylerModule.forComponent(ContentMenuStyle),
-  ],
+  styleUrls: ['./content-menu.component.scss'],
 })
 export class ContentMenuComponent implements OnChanges {
   @Input() content: any;
-
-  constructor(private styler: StylerComponent) {
-  }
 
   ngOnChanges() {
     this.content.docs.sort((x: any, y: any) => {
