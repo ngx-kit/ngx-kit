@@ -6,6 +6,9 @@
 .head {
   border-bottom: 1px solid #dddddd;
   padding-bottom: 4px;
+  code {
+    font-size: 1rem;
+  }
 }
 
 .param-doc ::ng-deep p {
