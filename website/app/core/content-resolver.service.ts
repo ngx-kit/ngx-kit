@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { tap } from 'rxjs/operators';
 import { ContentApi } from '../interfaces/content';
 import { ContentService } from './content.service';
 
@@ -17,6 +18,6 @@ export class ContentResolverService implements Resolve<ContentApi> {
     const pkg = route.data['pkg'];
     const file = route.data['file'];
     return this.http.get<ContentApi>(file)
-        .do(c => this.content.set(pkg, c));
+        .pipe(tap((c => this.content.set(pkg, c))));
   }
 }

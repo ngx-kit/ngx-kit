@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import 'rxjs/add/operator/startWith';
+import { startWith } from 'rxjs/operators';
 import { isFunction } from '../../kit-util/is-function';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class KitMorphFormBuilder {
   dynamic(condFn: (pathValueFn: any) => boolean, innerFn: () => FormGroup | FormControl) {
     return (group: FormGroup, controlName: string) => {
       group.valueChanges
-          .startWith(true)
+          .pipe(startWith(true))
           .subscribe((v: any) => {
             let control: AbstractControl | null;
             if (condFn((path: string) => {

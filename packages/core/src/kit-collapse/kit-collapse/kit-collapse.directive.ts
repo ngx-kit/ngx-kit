@@ -1,8 +1,8 @@
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef, } from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { KitCollapseHostService } from '../kit-collapse-host.service';
 import { KitCollapseItemService } from '../kit-collapse-item.service';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * Structure directive that collapsing.
@@ -31,7 +31,7 @@ export class KitCollapseDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.host.active$
-        .takeUntil(this.destroy$)
+        .pipe(takeUntil(this.destroy$))
         .subscribe(ids => {
           if (ids.has(this.item.id)) {
             if (!this.displayed) {

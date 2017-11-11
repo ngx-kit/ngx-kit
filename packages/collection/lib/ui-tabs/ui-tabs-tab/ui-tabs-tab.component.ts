@@ -8,8 +8,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { KitSlideHostService } from '@ngx-kit/core';
-import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @apiOrder 3
@@ -36,7 +36,7 @@ export class UiTabsTabComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.host.active$
-        .takeUntil(this.destroy$)
+        .pipe(takeUntil(this.destroy$))
         .subscribe(id => {
           this.classActive = id === this.id;
         });

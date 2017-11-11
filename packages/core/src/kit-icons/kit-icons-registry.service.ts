@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { map, tap } from 'rxjs/operators';
 import { KitIcon, KitIconCached } from './meta';
 
 /**
@@ -53,12 +52,14 @@ export class KitIconsRegistryService {
       // check cache
       const cached = this.cache.find(c => c.name === name);
       if (cached) {
-        return Observable.of(this.cloneSvg(cached.svg));
+        return of(this.cloneSvg(cached.svg));
       } else {
         return this.http.get(icon.url, {responseType: 'text'})
-            .map(this.svgElementFromString)
-            .do(svg => this.cache.push({name, svg: svg}))
-            .map(this.cloneSvg)
+            .pipe(
+                map(this.svgElementFromString),
+                tap(svg => this.cache.push({name, svg: svg})),
+                map(this.cloneSvg),
+            );
       }
     } else {
       throw new Error(`Icon "${name}" not found!`);

@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
 import { KitLoadingBarService } from '@ngx-kit/core';
-import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @apiOrder 1
@@ -63,7 +63,7 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.service.barState$
-        .takeUntil(this.destroy$)
+        .pipe(takeUntil(this.destroy$))
         .subscribe(state => {
           this.barState = state;
           this.cdr.markForCheck();

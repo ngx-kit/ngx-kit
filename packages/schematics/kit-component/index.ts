@@ -12,7 +12,6 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import 'rxjs/add/operator/merge';
 import * as ts from 'typescript';
 import * as stringUtils from '../strings';
 import { addDeclarationToModule, addExportToModule } from '../utility/ast-utils';

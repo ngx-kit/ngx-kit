@@ -1,8 +1,8 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import 'rxjs/add/operator/take';
 import { KitGlobalListenerService } from '../kit-core/kit-global-listener.service';
 import { keyTab } from '../kit-core/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
+import { take } from 'rxjs/operators';
 
 @Injectable()
 export class KitFocusManagerService implements OnDestroy {
@@ -67,13 +67,15 @@ export class KitFocusManagerService implements OnDestroy {
    * @publicApi
    */
   focusItem(id: string | number) {
-    this.zone.onStable.take(1).subscribe(() => {
-      this.items.forEach(i => {
-        if (i.kitFocus === id) {
-          i.focus();
-        }
-      });
-    })
+    this.zone.onStable
+        .pipe(take(1))
+        .subscribe(() => {
+          this.items.forEach(i => {
+            if (i.kitFocus === id) {
+              i.focus();
+            }
+          });
+        })
   }
 
   /**
@@ -136,7 +138,7 @@ export class KitFocusManagerService implements OnDestroy {
     });
     if (this.autoCapture) {
       this.zone.onStable
-          .take(1)
+          .pipe(take(1))
           .subscribe(() => {
             this.capture();
           });

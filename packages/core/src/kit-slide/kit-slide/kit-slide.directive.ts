@@ -8,10 +8,10 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { KitSlideHostService } from '../kit-slide-host.service';
 import { KitSlideId } from '../meta';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * Structure directive that display slides.
@@ -56,7 +56,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
     }
     // handle displaying
     this.host.active$
-        .takeUntil(this.destroy$)
+        .pipe(takeUntil(this.destroy$))
         .subscribe(id => {
           if (id === this.kitSlide) {
             if (!this.displayed) {

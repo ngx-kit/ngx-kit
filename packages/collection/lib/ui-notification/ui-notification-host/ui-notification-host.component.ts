@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit, } from '@angular/core';
 import { KitNotificationItem, KitNotificationPosition, KitNotificationService, } from '@ngx-kit/core';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ui-notification-host',
@@ -62,7 +63,7 @@ export class UiNotificationHostComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.position$ = this.notificationService.config$.map(c => c.position);
+    this.position$ = this.notificationService.config$.pipe(map(c => c.position));
     this.items$ = this.notificationService.items$;
   }
 

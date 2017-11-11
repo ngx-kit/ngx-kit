@@ -12,7 +12,6 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import 'rxjs/add/operator/merge';
 import * as stringUtils from '../strings';
 import { Schema as ComponentOptions } from './schema';
 

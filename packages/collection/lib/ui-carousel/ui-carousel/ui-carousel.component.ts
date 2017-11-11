@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Input, OnInit } from '@angular/core';
 import { KitSlideHostService } from '@ngx-kit/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/interval';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/debounceTime';
-import { Observable } from 'rxjs/Observable';
+import { from } from 'rxjs/observable/from';
+import { interval } from 'rxjs/observable/interval';
+import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
+import { merge } from 'rxjs/observable/merge';
 
 /**
  * @apiOrder 1
@@ -37,9 +36,8 @@ export class UiCarouselComponent implements OnInit {
 
   ngOnInit() {
     // auto-rotate slides, skip rotation if click handled
-    Observable
-        .merge(Observable.from([1]), Observable.interval(this.interval), this.click$)
-        .debounceTime(this.interval)
+    merge(from([1]), interval(this.interval), this.click$)
+        .pipe(debounceTime(this.interval))
         .subscribe(() => {
           this.host.rotate();
           this.cdr.markForCheck();

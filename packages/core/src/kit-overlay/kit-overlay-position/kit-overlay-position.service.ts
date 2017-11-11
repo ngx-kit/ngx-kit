@@ -1,5 +1,4 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
@@ -10,6 +9,7 @@ import { KitPlatformService } from '../../kit-core/kit-platform.service';
 import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
+import { take } from 'rxjs/operators';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -48,7 +48,7 @@ export class KitOverlayPositionService implements OnDestroy {
               private sideStrategy: SideStrategyService) {
     if (this.platform.isBrowser()) {
       this.zone.onStable
-          .take(1)
+          .pipe(take(1))
           .subscribe(() => {
             this.zone.runOutsideAngular(() => {
               // Renderer2 does not support useCapture
