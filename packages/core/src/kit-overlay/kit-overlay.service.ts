@@ -25,6 +25,7 @@ export class KitOverlayService {
   }
 
   hostTemplate(templateRef: TemplateRef<any>, context: any): ViewRef {
+    this.checkHost();
     return this.host.vcr.createEmbeddedView(templateRef, context);
   }
 
@@ -34,7 +35,7 @@ export class KitOverlayService {
 
   private checkHost() {
     if (!this.host) {
-      throw new Error(`Pls add <kit-overlay-host></kit-overlay-host> to the app!`);
+      throw new Error(`Please add <kit-overlay-host></kit-overlay-host> to the app!`);
     }
   }
 }
