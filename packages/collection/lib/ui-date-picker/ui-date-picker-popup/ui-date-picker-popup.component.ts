@@ -76,7 +76,7 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.overlayPosition.type = 'dropdown';
-    this.overlayPosition.position = 'bottom';
+    this.overlayPosition.position = 'bottom-right';
     this.overlayPosition.reposition();
     this.overlayPosition.outsideClick$.subscribe(this.outsideClick);
     this.focusManager.focusItem('grid');

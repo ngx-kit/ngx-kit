@@ -3,27 +3,28 @@ title: Overview
 apiOrder: 1
 ---
 
-# @ngx-kit/ui-base overview
+# Ngx-kit Collection Overview
 
 Set of Angular components based on ngx-kit and packed into Angular-cli schematics.
 
-All 3rd-party ui-kit has their own limitations and overheads. But projects has own business and design goals, and often the best way to reach this goals - craft a component from scratch.
+All 3rd-party ui-kits has their own limitations and overheads. But projects has own business and design goals, and often the best way to reach this goals - craft a component from a scratch.
 
-The best interface for ui-components is possibility to change the source code.
+The best interface for ui-components is a possibility to change the source code.
 
-Ui-base is set of prepared and simplified components. Just generate code by Angular-cli to your project or kit and modify it if needed.
+Ui-base is set of prepared and simplified components. Just generate the code by Angular-cli to your project or kit and modify it if needed.
 
 
 ## Usage
 
-Works only with Angular-cli.
+Requirements:
+* angular 5+
+* angular-cli 1.5+
 
-Install latest Angular-cli, ngx-kit core and ui-base schematics: 
+Install ngx-kit core and collection: 
 
 ```
-npm install @angular/cli@next @angular-devkit/core @angular-devkit/schematics -g
-npm install @ngx-kit/ngx-kit @ngx-kit/styler --save
-npm install @ngx-kit/ui-base --save-dev
+npm install @ngx-kit/core --save
+npm install @ngx-kit/collection --save-dev
 ```
 
 Import ngx-kit to the root module:
@@ -39,12 +40,23 @@ Import ngx-kit to the root module:
 Generate code:
 
 ```
-ng g ui-button -c=@ngx-kit/ui-base [name]
+ng g ui-button -c=@ngx-kit/collection ui-button
 ```
 
-Don't forget to import generated module to module where you need it.  
+Import generated module:
 
+```typescript
+@NgModule({
+  ...
+  imports: [
+    ...
+    UiButtonModule,
+  ],
+})
+```
 
-## Links
+Use the component:
 
-* [github](https://github.com/ngx-kit/ui-base)
+```html
+<button [uiButton]>Hello!</button>
+```

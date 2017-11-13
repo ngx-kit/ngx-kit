@@ -1,1 +1,5 @@
 # UiSlider
+
+## Dependencies
+
+* `FormsModule`
