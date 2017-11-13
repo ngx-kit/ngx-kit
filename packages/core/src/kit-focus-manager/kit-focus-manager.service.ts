@@ -1,6 +1,6 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import { KitGlobalListenerService } from '../kit-core/kit-global-listener.service';
-import { keyTab } from '../kit-core/meta';
+import { KitGlobalListenerService } from '../kit-browser/kit-global-listener.service';
+import { keyTab } from '../kit-browser/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 import { take } from 'rxjs/operators';
 

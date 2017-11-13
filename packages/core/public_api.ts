@@ -1,6 +1,6 @@
 export * from './src/kit-collapse/index';
 export * from './src/kit-common/index';
-export * from './src/kit-core/index';
+export * from './src/kit-browser/index';
 export * from './src/kit-datetime/index';
 export * from './src/kit-focus-manager/index';
 export * from './src/kit-forms/index';

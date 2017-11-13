@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitCommonModule } from './kit-common/kit-common.module';
-import { KitCoreModule } from './kit-core/kit-core.module';
+import { KitBrowserModule } from './kit-browser/kit-browser.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
 import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitFormsModule } from './kit-forms/kit-forms.module';
@@ -14,7 +14,7 @@ import { KitPointerModule } from './kit-pointer/kit-pointer.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
 
 const initableModules = [
-  KitCoreModule,
+  KitBrowserModule,
   KitIconsModule,
   KitLoadingBarModule,
   KitNotificationModule,
@@ -33,7 +33,7 @@ const simpleModules = [
 
 @NgModule({
   imports: [
-    KitCoreModule.forRoot(),
+    KitBrowserModule.forRoot(),
     KitIconsModule.forRoot(),
     KitLoadingBarModule.forRoot(),
     KitNotificationModule.forRoot(),

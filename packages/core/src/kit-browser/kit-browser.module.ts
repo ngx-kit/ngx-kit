@@ -3,10 +3,10 @@ import { KitGlobalListenerService } from './kit-global-listener.service';
 import { KitPlatformService } from './kit-platform.service';
 
 @NgModule({})
-export class KitCoreModule {
+export class KitBrowserModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: KitCoreModule,
+      ngModule: KitBrowserModule,
       providers: [
         KitPlatformService,
         KitGlobalListenerService,
