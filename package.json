@@ -31,8 +31,8 @@
     "website:docker:build": "docker build -t dhub.nvx.me:443/ngx-kit-website-prod .",
     "website:docker:run": "docker run -d -p 8002:8000 dhub.nvx.me:443/ngx-kit-website-prod",
     "website:docker:push": "docker push dhub.nvx.me:443/ngx-kit-website-prod",
-    "release": "npm run test && npm run lint && npm run build && npm run publish",
-    "publish": "npm publish ./dist/release --access=public",
+    "release": "npm run test && npm run lint && npm run core:build && npm run collection:build && npm run publish",
+    "publish": "npm publish ./tmp/core-builds --access=public && npm publish ./tmp/collection-builds --access=public",
     "test": "ng test -a=playground-core -sr",
     "test:local": "ng test -a=playground-core",
     "lint": "ng lint"
