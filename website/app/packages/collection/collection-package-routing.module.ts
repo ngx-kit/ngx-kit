@@ -4,15 +4,15 @@ import { ContentResolverService } from '../../core/content-resolver.service';
 import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { MainComponent } from './main/main.component';
 import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
+import { pkgName } from './meta';
 
-export const pkgName = 'collection';
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
     data: {
       pkg: pkgName,
-      file: '/assets/docs/packages/collection.json',
+      file: `/assets/docs/packages/${pkgName}.json`,
     },
     resolve: {
       content: ContentResolverService,

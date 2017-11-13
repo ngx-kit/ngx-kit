@@ -4,15 +4,15 @@ import { ContentResolverService } from '../../core/content-resolver.service';
 import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { ModulePageComponent } from '../../shared/module-page/module-page.component';
 import { MainComponent } from './main/main.component';
+import { pkgName } from './meta';
 
-export const pkgName = 'core';
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
     data: {
       pkg: pkgName,
-      file: '/assets/docs/packages/core.json',
+      file: `/assets/docs/packages/${pkgName}.json`,
     },
     resolve: {
       content: ContentResolverService,

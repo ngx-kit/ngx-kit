@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { UiFormGroupComponent } from './';
+import { UiFormGroupComponent } from './ui-form-group/ui-form-group.component';
 
 @NgModule({
   imports: [

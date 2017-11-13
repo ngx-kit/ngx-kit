@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../../../core/content.service';
-import { pkgName } from '../collection-package-routing.module';
+import { pkgName } from '../meta';
 
 @Component({
   selector: 'app-main',
