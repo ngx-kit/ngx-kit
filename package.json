@@ -13,7 +13,7 @@
     "core:build:release": "node ./packages/core/release",
     "core:build:publish": "publish-build.sh core",
     "collection:serve": "ng serve -a=playground-collection",
-    "collection:build": "npm run clean &&  && npm run collection:build:schematize && npm run collection:build:tsc && npm run collection:build:publish",
+    "collection:build": "npm run collection:build:clean && npm run collection:build:release && npm run collection:build:schematize && npm run collection:build:tsc && npm run collection:build:publish",
     "collection:build:clean": "rimraf ./dist/collection",
     "collection:build:release": "node ./packages/collection/release",
     "collection:build:schematize": "ngx-kit schematize ./packages/collection/.schematize-schema.json",

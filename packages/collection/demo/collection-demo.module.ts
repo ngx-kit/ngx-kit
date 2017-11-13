@@ -5,7 +5,6 @@ import { KitFullModule } from '@ngx-kit/core';
 import { CollectionLibModule } from '../lib/collection-lib.module';
 import { demoComponents } from './components';
 
-
 @NgModule({
   imports: [
     CommonModule,

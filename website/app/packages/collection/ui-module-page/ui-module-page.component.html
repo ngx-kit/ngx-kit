@@ -2,9 +2,9 @@
   <app-md *ngFor="let doc of module.docs" [post]="doc"></app-md>
 </ng-container>
 
-<h2>Installation</h2>
+<h2>Generation</h2>
 
-<pre><code>ng g {{ module.name }} -c=@ngx-kit/ui-base [name]</code></pre>
+<pre><code>ng g {{ module.name }} -c=@ngx-kit/collection [name]</code></pre>
 
 <ng-container *ngIf="module.api.length > 0">
   <h2>API</h2>

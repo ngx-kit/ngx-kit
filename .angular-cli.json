@@ -42,12 +42,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        {
-          "glob": "**/*",
-          "input": "./packages/ui-base/playground/assets",
-          "output": "./assets/"
-        }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
