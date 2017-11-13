@@ -15,14 +15,6 @@ Information for ngx-kit developers.
 
 ### Commands
 
-#### copy
-
-```
-ngx-kit copy
-```
-
-Uses `.ngx-kit.json` configuration for copying source or dist files. Used for copying files during development.
-
 #### gen-docs
 
 ```
@@ -38,62 +30,6 @@ ngx-kit schematize
 ```
 
 Convert ui-modules (like in @ngx-kit/ui-base) to schematics. Uses `.docs-schema.json` configuration.
-
-### Config files
-
-#### `.ngx-kit.json`
-
-```json
-{
-  "copy": {
-    "release": {
-      "from": [],
-      "to": []
-    },
-    "src": {
-      "from": [
-        "./src/app/package/",
-        "./docs",
-        "./.docs-schema.json"
-      ],
-      "to": []
-    }
-  },
-  "schematics": {
-    "src": "./src/lib",
-    "template": "./package/_template",
-    "dist": "./package"
-  }
-}
-```
-
-You can create `.ngx-kit.env.json` file that will be automatically merged in `.ngx-kit.json`.
-
-Do not forget to add env file to `.gitignore`.
-
-`.ngx-kit.env.json` example:
-
-```json
-{
-  "copy": {
-    "src": {
-      "to": [
-        "D://ngx-kit/website/node_modules/ui-base-src"
-      ]
-    }
-  }
-}
-```
-
-#### `.docs-schema.json`
-
-```json
-{
-  "demo": "./src/app/package/demo",
-  "docs": "./docs",
-  "src": "./src/app/package/lib"
-}
-```
 
 
 ## Angular-cli schematics

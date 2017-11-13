@@ -71,13 +71,7 @@ Must be one of the following:
 
 ### Scope
 
-The scope should be the name of the module affected (**common**, **overlay** etc).
-
-There is currently few exception to the "use module name" rule:
-
-* **packaging**: used for changes that change the npm package layout in all of our packages, e.g. public path changes, package.json changes done to all packages, d.ts file/format changes, changes to bundles, etc.
-* **changelog**: used for updating the release notes in CHANGELOG.md
-* none/empty string: useful for style, test and refactor changes that are done across all packages (e.g. style: add missing semicolons), global documentation`
+The scope should be the name of the package (and module if exists) affected (**core/common**, **collection/date-picker**, **website** etc).
 
 ### Subject
 
