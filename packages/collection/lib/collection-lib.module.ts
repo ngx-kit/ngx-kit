@@ -28,7 +28,6 @@ const lib = [
   UiCarouselModule,
   UiCustomSelectModule,
   UiDatePickerModule,
-  UiFormModule,
   UiInputModule,
   UiLoadingBarModule,
   UiModalModule,
