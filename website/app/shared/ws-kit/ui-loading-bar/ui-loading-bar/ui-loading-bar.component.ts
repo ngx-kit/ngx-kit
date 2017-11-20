@@ -62,7 +62,7 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.service.barState$
+    this.service.barStateChanges
         .pipe(takeUntil(this.destroy$))
         .subscribe(s => {
           this.barState = s;

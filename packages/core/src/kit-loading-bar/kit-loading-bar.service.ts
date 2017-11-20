@@ -2,26 +2,27 @@ import { Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { KitLoadingBarState } from './meta';
 
 @Injectable()
 export class KitLoadingBarService {
-  private _barState$ = new Subject<string>();
+  private _barStateChanges = new Subject<string>();
 
-  private _end$ = new Subject<string>();
+  private _ends = new Subject<string>();
 
-  private _start$ = new Subject<string>();
+  private _starts = new Subject<string>();
 
   private lastKey: string;
 
   constructor(private router: Router) {
     // handle barState
-    this._start$.subscribe((key: string) => {
+    this._starts.subscribe((key: string) => {
       this.lastKey = key;
-      this._barState$.next('in-progress');
+      this._barStateChanges.next(KitLoadingBarState.InProgress);
     });
-    this._end$.subscribe((key: string) => {
+    this._ends.subscribe((key: string) => {
       if (key === this.lastKey) {
-        this._barState$.next('none');
+        this._barStateChanges.next(KitLoadingBarState.None);
       }
     });
     // subscribe to router events
@@ -35,16 +36,16 @@ export class KitLoadingBarService {
     });
   }
 
-  get barState$(): Observable<string> {
-    return this._barState$.asObservable();
+  get barStateChanges(): Observable<string> {
+    return this._barStateChanges.asObservable();
   }
 
-  get end$(): Observable<string> {
-    return this._end$.asObservable();
+  get ends(): Observable<string> {
+    return this._ends.asObservable();
   }
 
-  get start$(): Observable<string> {
-    return this._start$.asObservable();
+  get starts(): Observable<string> {
+    return this._starts.asObservable();
   }
 
   /**
@@ -53,7 +54,7 @@ export class KitLoadingBarService {
    * @publicApi
    */
   end(key: string) {
-    this._end$.next(key);
+    this._ends.next(key);
   }
 
   /**
@@ -62,6 +63,6 @@ export class KitLoadingBarService {
    * @publicApi
    */
   start(key: string) {
-    this._start$.next(key);
+    this._starts.next(key);
   }
 }
