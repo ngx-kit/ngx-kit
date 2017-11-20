@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
 import { RootComponent } from './root/root.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { RootComponent } from './root/root.component';
     HttpClientModule,
     MdRenderModule,
     CoreModule,
+    SharedModule,
     KitFullForRootModule,
     AppRoutingModule,
     CollectionDemoModule,
