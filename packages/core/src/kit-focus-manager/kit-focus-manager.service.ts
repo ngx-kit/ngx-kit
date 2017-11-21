@@ -1,8 +1,8 @@
-import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import { KitGlobalListenerService } from '../kit-browser/kit-global-listener.service';
+import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
+import { take } from 'rxjs/operators';
 import { keyTab } from '../kit-browser/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
-import { take } from 'rxjs/operators';
 
 @Injectable()
 export class KitFocusManagerService implements OnDestroy {
@@ -22,9 +22,8 @@ export class KitFocusManagerService implements OnDestroy {
   private unsubs: any[];
 
   constructor(private el: ElementRef,
-              private renderer: Renderer2,
               private zone: NgZone,
-              private globalListener: KitGlobalListenerService) {
+              private em: EventManager) {
   }
 
   private get documentActiveElement(): HTMLElement {
@@ -131,9 +130,9 @@ export class KitFocusManagerService implements OnDestroy {
     this.zone.runOutsideAngular(() => {
       // Unsubs
       this.unsubs = [
-        this.renderer.listen(this.el.nativeElement, 'focusin', this.focusinHandler.bind(this)),
-        this.renderer.listen(this.el.nativeElement, 'focusout', this.focusoutHandler.bind(this)),
-        this.globalListener.listen('keydown', this.keydownHandler.bind(this)),
+        this.em.addEventListener(this.el.nativeElement, 'focusin', this.focusinHandler.bind(this)),
+        this.em.addEventListener(this.el.nativeElement, 'focusout', this.focusoutHandler.bind(this)),
+        this.em.addGlobalEventListener('window', 'keydown', this.keydownHandler.bind(this)),
       ];
     });
     if (this.autoCapture) {

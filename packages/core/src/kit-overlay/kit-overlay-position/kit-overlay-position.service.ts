@@ -1,15 +1,15 @@
-import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
+import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
+import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { KitPlatformService } from '../../kit-browser/kit-platform.service';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
-import { KitGlobalListenerService } from '../../kit-browser/kit-global-listener.service';
-import { KitPlatformService } from '../../kit-browser/kit-platform.service';
 import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
-import { take } from 'rxjs/operators';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -38,12 +38,11 @@ export class KitOverlayPositionService implements OnDestroy {
 
   private unsubs: any[] = [];
 
-  constructor(private renderer: Renderer2,
-              private zone: NgZone,
+  constructor(private zone: NgZone,
               private el: ElementRef,
               private style: KitStyleService,
               private platform: KitPlatformService,
-              private globalListener: KitGlobalListenerService,
+              private em: EventManager,
               private dropdownStrategy: DropdownStrategyService,
               private sideStrategy: SideStrategyService) {
     if (this.platform.isBrowser()) {
@@ -51,12 +50,12 @@ export class KitOverlayPositionService implements OnDestroy {
           .pipe(take(1))
           .subscribe(() => {
             this.zone.runOutsideAngular(() => {
-              // Renderer2 does not support useCapture
               this.unsubs = [
                 ...this.unsubs,
-                this.globalListener.listen('scroll', this.reposition.bind(this)),
-                this.globalListener.listen('resize', this.reposition.bind(this)),
-                this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+                this.em.addGlobalEventListener('window', 'scroll', this.reposition.bind(this)),
+                this.em.addGlobalEventListener('window', 'resize', this.reposition.bind(this)),
+                this.em.addGlobalEventListener('document', 'click',
+                    (event: MouseEvent) => this.clickHandler(event)),
               ];
             });
           });
