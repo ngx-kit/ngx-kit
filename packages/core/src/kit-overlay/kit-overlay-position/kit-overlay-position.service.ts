@@ -3,7 +3,7 @@ import { EventManager } from '@angular/platform-browser';
 import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { KitPlatformService } from '../../kit-browser/kit-platform.service';
+import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';

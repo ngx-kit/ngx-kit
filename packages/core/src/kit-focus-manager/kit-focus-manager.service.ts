@@ -1,7 +1,7 @@
 import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { take } from 'rxjs/operators';
-import { keyTab } from '../kit-browser/meta';
+import { keyTab } from '../kit-platform/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, } from '@angular/core';
-import { KitPlatformService } from '../../kit-browser/kit-platform.service';
+import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
 @Component({

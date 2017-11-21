@@ -12,7 +12,7 @@ import {
   keyPageDown,
   keyPageUp,
   keySpace,
-} from '../../kit-browser/meta';
+} from '../../kit-platform/meta';
 import { KitGridControlActionType } from '../meta';
 import { KitGridControlDirective } from './kit-grid-control.directive';
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitCommonModule } from './kit-common/kit-common.module';
-import { KitBrowserModule } from './kit-browser/kit-browser.module';
+import { KitBrowserModule } from './kit-platform/kit-platform.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
 import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitFormsModule } from './kit-forms/kit-forms.module';
