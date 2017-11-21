@@ -27,6 +27,8 @@ ngOnInit() {
 }
 ```
 
+There are two states: `KitLoadingBarState.InProgress` and `KitLoadingBarState.None`.
+
 State changes on `NavigationStart` and `NavigationEnd` event by default.
 
 Also you can emit custom events for start/end navigation.
