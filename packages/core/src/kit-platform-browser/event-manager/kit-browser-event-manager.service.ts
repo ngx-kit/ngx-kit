@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { KitEventManager } from '../../kit-event-manager/kit-event-manager';
+import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 
 @Injectable()
-export class KitBrowserEventManager extends KitEventManager {
+export class KitBrowserEventManagerService extends KitEventManagerService {
   listenGlobal(eventName: string, handler: Function, useCapture?: boolean): Function {
     window.addEventListener(eventName, handler as any, useCapture);
     return () => window.removeEventListener(eventName, handler as any, useCapture);

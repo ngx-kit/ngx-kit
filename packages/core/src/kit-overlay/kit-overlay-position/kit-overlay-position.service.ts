@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
-import { KitEventManager } from '../../kit-event-manager/kit-event-manager';
+import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
@@ -42,7 +42,7 @@ export class KitOverlayPositionService implements OnDestroy {
               private el: ElementRef,
               private style: KitStyleService,
               private platform: KitPlatformService,
-              private em: KitEventManager,
+              private em: KitEventManagerService,
               private dropdownStrategy: DropdownStrategyService,
               private sideStrategy: SideStrategyService) {
     if (this.platform.isBrowser()) {

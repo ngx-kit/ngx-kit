@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { KitEventManager } from '../kit-event-manager/kit-event-manager';
-import { KitBrowserEventManager } from './event-manager/kit-browser-event-manager';
+import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
+import { KitBrowserEventManagerService } from './event-manager/kit-browser-event-manager.service';
 
 @NgModule({
   providers: [
     {
-      provide: KitEventManager,
-      useClass: KitBrowserEventManager,
+      provide: KitEventManagerService,
+      useClass: KitBrowserEventManagerService,
     },
   ],
 })

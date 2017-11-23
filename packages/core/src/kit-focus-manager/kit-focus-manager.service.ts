@@ -1,5 +1,5 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import { KitEventManager } from '../kit-event-manager/kit-event-manager';
+import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { take } from 'rxjs/operators';
 import { keyTab } from '../kit-event-manager/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
@@ -24,7 +24,7 @@ export class KitFocusManagerService implements OnDestroy {
   constructor(private el: ElementRef,
               private zone: NgZone,
               private renderer: Renderer2,
-              private em: KitEventManager) {
+              private em: KitEventManagerService) {
   }
 
   private get documentActiveElement(): HTMLElement {
