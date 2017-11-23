@@ -28,7 +28,7 @@ export class KitOverlayPositionService implements OnDestroy {
    */
   autofix: KitOverlayAutofix = 'switch-position';
 
-  outsideClick$ = new Subject<MouseEvent>();
+  outsideClicks = new Subject<MouseEvent>();
 
   position: KitOverlayPosition = 'top';
 
@@ -136,7 +136,7 @@ export class KitOverlayPositionService implements OnDestroy {
       const path = event['path'] || this.getEventPath(event);
       if (path.indexOf(this.getEl(this.anchor)) === -1 && path.indexOf(this.el.nativeElement) === -1) {
         this.zone.run(() => {
-          this.outsideClick$.next(event);
+          this.outsideClicks.next(event);
         });
       }
     });

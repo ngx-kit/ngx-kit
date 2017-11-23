@@ -12,9 +12,9 @@ export class KitSlideHostService {
    */
   activateFirst = true;
 
-  private _active$ = new BehaviorSubject<KitSlideId>(null);
+  private _active = new BehaviorSubject<KitSlideId>(null);
 
-  private _direction$ = new BehaviorSubject<KitSlideDirection>('next');
+  private _direction = new BehaviorSubject<KitSlideDirection>('next');
 
   private firstRegistration = false;
 
@@ -31,7 +31,7 @@ export class KitSlideHostService {
    * @publicApi
    */
   get active(): KitSlideId {
-    return this._active$.value;
+    return this._active.value;
   }
 
   /**
@@ -40,14 +40,14 @@ export class KitSlideHostService {
    * @publicApi
    */
   set active(id: KitSlideId) {
-    this._direction$.next(this._active$.value === null
+    this._direction.next(this._active.value === null
         ? 'initial' // no animation for init render
-        : id !== null && id > this._active$.value
+        : id !== null && id > this._active.value
             ? 'prev'
             : 'next');
     // timeout for right animation trigger setup
     setTimeout(() => {
-      this._active$.next(id);
+      this._active.next(id);
       this.cdr.markForCheck();
     }, 1);
   }
@@ -57,8 +57,8 @@ export class KitSlideHostService {
    *
    * @publicApi
    */
-  get active$(): Observable<KitSlideId> {
-    return this._active$.asObservable();
+  get activeChanges(): Observable<KitSlideId> {
+    return this._active.asObservable();
   }
 
   /**
@@ -66,8 +66,8 @@ export class KitSlideHostService {
    *
    * @publicApi
    */
-  get direction$(): Observable<KitSlideDirection> {
-    return this._direction$.asObservable();
+  get directionChanges(): Observable<KitSlideDirection> {
+    return this._direction.asObservable();
   }
 
   /**
@@ -145,7 +145,7 @@ export class KitSlideHostService {
 
   private getCurrentIndex() {
     const ids = Array.from(this.ids);
-    const current = this._active$.value;
+    const current = this._active.value;
     return ids.findIndex(i => i === current);
   }
 }

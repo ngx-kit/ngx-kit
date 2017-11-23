@@ -40,7 +40,7 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     if (this.kitOverlay && !this.viewRef) {
       this.viewRef = this.service.hostTemplate(this.templateRef, {});
       this.viewRef.detectChanges();
-      this.doCheckSub = this.service.hostDoCheck$.subscribe(() => {
+      this.doCheckSub = this.service.hostDoCheck.subscribe(() => {
         this.cdrMarkForCheck();
       })
     } else if (!this.kitOverlay) {

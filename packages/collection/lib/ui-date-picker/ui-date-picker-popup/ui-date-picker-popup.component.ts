@@ -78,7 +78,7 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
     this.overlayPosition.type = 'dropdown';
     this.overlayPosition.position = 'bottom-right';
     this.overlayPosition.reposition();
-    this.overlayPosition.outsideClick$.subscribe(this.outsideClick);
+    this.overlayPosition.outsideClicks.subscribe(this.outsideClick);
     this.focusManager.focusItem('grid');
   }
 }

@@ -27,30 +27,30 @@ import { KitNotificationHostConfig, KitNotificationItem } from './meta';
  */
 @Injectable()
 export class KitNotificationService {
-  private _config$ = new BehaviorSubject<KitNotificationHostConfig>({
+  private _config = new BehaviorSubject<KitNotificationHostConfig>({
     position: 'top-right',
     duration: 4000,
   });
 
-  private _items$ = new BehaviorSubject<KitNotificationItem[]>([]);
+  private _items = new BehaviorSubject<KitNotificationItem[]>([]);
 
   constructor() {
   }
 
-  get config$(): Observable<KitNotificationHostConfig> {
-    return this._config$.asObservable();
+  get configChanges(): Observable<KitNotificationHostConfig> {
+    return this._config.asObservable();
   }
 
-  get items$(): Observable<KitNotificationItem[]> {
-    return this._items$.asObservable();
+  get itemsChanges(): Observable<KitNotificationItem[]> {
+    return this._items.asObservable();
   }
 
   close(__id: string) {
-    const items = [...this._items$.value];
+    const items = [...this._items.value];
     const index = items.findIndex(i => i.__id === __id);
     if (index !== -1) {
       items.splice(index, 1);
-      this._items$.next(items);
+      this._items.next(items);
     }
   }
 
@@ -60,7 +60,7 @@ export class KitNotificationService {
    * @publicApi
    */
   config(config: Partial<KitNotificationHostConfig>) {
-    this._config$.next({...this._config$.value, ...config} as KitNotificationHostConfig);
+    this._config.next({...this._config.value, ...config} as KitNotificationHostConfig);
   }
 
   /**
@@ -70,13 +70,13 @@ export class KitNotificationService {
    */
   open(params: any) {
     const __id = uuid();
-    this._items$.next([...this._items$.value, {
+    this._items.next([...this._items.value, {
       __id,
       params,
     }]);
     // auto-close
     setTimeout(() => {
       this.close(__id);
-    }, this._config$.value.duration);
+    }, this._config.value.duration);
   }
 }

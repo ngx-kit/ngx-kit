@@ -28,7 +28,7 @@ export class UiCarouselComponent implements OnInit {
    */
   @Input() interval = 5000;
 
-  private click$ = new Subject<void>();
+  private clicks = new Subject<void>();
 
   constructor(private host: KitSlideHostService,
               private cdr: ChangeDetectorRef) {
@@ -36,7 +36,7 @@ export class UiCarouselComponent implements OnInit {
 
   ngOnInit() {
     // auto-rotate slides, skip rotation if click handled
-    merge(from([1]), interval(this.interval), this.click$)
+    merge(from([1]), interval(this.interval), this.clicks)
         .pipe(debounceTime(this.interval))
         .subscribe(() => {
           this.host.rotate();
@@ -47,6 +47,6 @@ export class UiCarouselComponent implements OnInit {
   @HostListener('click')
   clickHandler() {
     this.host.rotate();
-    this.click$.next();
+    this.clicks.next();
   }
 }

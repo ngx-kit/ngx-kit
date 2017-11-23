@@ -48,17 +48,17 @@ import { takeUntil } from 'rxjs/operators';
 export class UiTabsContentComponent implements OnDestroy {
   @HostBinding('@slide') slideTrigger: KitSlideDirection;
 
-  private destroy$ = new Subject<void>();
+  private destroy = new Subject<void>();
 
   constructor(private host: KitSlideHostService) {
-    this.host.direction$
-        .pipe(takeUntil(this.destroy$))
+    this.host.directionChanges
+        .pipe(takeUntil(this.destroy))
         .subscribe(d => {
           this.slideTrigger = d;
         });
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy.next();
   }
 }

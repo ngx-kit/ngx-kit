@@ -45,13 +45,13 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
 
   @Input() step = 1;
 
-  private changes$ = new Subject<number | [number, number]>();
+  private changes = new Subject<number | [number, number]>();
 
   private disabled = false;
 
   private state: any;
 
-  private touches$ = new Subject<void>();
+  private touches = new Subject<void>();
 
   constructor(private cdr: ChangeDetectorRef) {
   }
@@ -78,16 +78,16 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
         this.state = pointerState;
       }
       this.updatePointers();
-      this.changes$.next(this.state);
+      this.changes.next(this.state);
     }
   }
 
   registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
+    this.changes.subscribe(fn);
   }
 
   registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
+    this.touches.subscribe(fn);
   }
 
   setDisabledState(isDisabled: boolean): void {
