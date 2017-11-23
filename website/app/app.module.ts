@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KitFullForRootModule } from '@ngx-kit/core';
+import { KitFullForRootModule, KitPlatformBrowserModule } from '@ngx-kit/core';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { CollectionDemoModule } from '../../packages/collection/demo/collection-demo.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
     KitFullForRootModule,
+    KitPlatformBrowserModule,
     AppRoutingModule,
     CollectionDemoModule,
   ],
