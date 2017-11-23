@@ -51,7 +51,10 @@ Or provide `KitOverlayPositionService` on a component. Also needs `KitStyleServi
 ```ts
 @Component({
   selector: 'app-popup',
-  providers: ['KitOverlayPositionService', 'KitStyleService'],
+  providers: [
+    KitOverlayPositionService, 
+    KitStyleService,
+  ],
   ...
 })
 export class AppPopupComponent {
