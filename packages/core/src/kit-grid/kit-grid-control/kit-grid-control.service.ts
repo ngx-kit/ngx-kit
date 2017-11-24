@@ -19,6 +19,8 @@ import { KitGridControlDirective } from './kit-grid-control.directive';
 /**
  * Listens keyboard events and emit actions for grid controlling (navigations event, etc).
  *
+ * Should be provided on component or directive.
+ *
  * Actions:
  * * Arrow Up - `prevRow`
  * * Arrow Right - `nextCell`
