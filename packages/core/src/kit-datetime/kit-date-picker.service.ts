@@ -6,6 +6,15 @@ import { KitGridControlService } from '../kit-grid/kit-grid-control/kit-grid-con
 import { KitGridControlActionType } from '../kit-grid/meta';
 import { KitDatePickerGrid } from './meta';
 
+/**
+ * Service encapsulates complex date-picker grid logic.
+ *
+ * Examples:
+ *
+ * * collection:date-picker -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
+ * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
+ */
 @Injectable()
 export class KitDatePickerService {
   private _active: Date;
@@ -18,30 +27,55 @@ export class KitDatePickerService {
 
   private readonly _pick = new Subject<Date>();
 
-  constructor(@Optional() private ariaGrid: KitGridControlService) {
-    if (this.ariaGrid) {
+  constructor(@Optional() private gridControl: KitGridControlService) {
+    if (this.gridControl) {
       this.handleMove();
     }
   }
 
+  /**
+   * Set active date.
+   *
+   * @publicApi
+   */
   set active(date: Date) {
     this._active = new Date(date);
     this._focus = new Date(date);
     this.updateGrid();
   }
 
+  /**
+   * Observable with grid state.
+   *
+   * @publicApi
+   */
   get gridChanges(): Observable<KitDatePickerGrid> {
     return this._grid.asObservable();
   }
 
+  /**
+   * Observable with month cursor state.
+   *
+   * @publicApi
+   */
   get monthCursorChanges(): Observable<Date> {
     return this._monthCursor.asObservable();
   }
 
+  /**
+   * Observable with pick date events.
+   *
+   * @publicApi
+   */
   get pick(): Observable<Date> {
     return this._pick.asObservable();
   }
 
+  /**
+   * Weekdays array.
+   *
+   * @publicApi
+   */
   get weekdays(): Date[] {
     const weekdays = [];
     const cursor = this.startOfWeek(new Date());
@@ -52,12 +86,40 @@ export class KitDatePickerService {
     return weekdays;
   }
 
+  /**
+   * Focus date (open correspondent month).
+   *
+   * @publicApi
+   */
   focus(date: Date) {
     this._focus = new Date(date);
     this.updateGrid();
   }
 
-  isDatesEqual(x: Date, y: Date): boolean {
+  /**
+   * Modify opened month.
+   *
+   * @publicApi
+   */
+  modMonth(modifier: number) {
+    this._focus.setMonth(this._focus.getMonth() + modifier);
+    this.updateGrid();
+  }
+
+  /**
+   * Modify opened year.
+   *
+   * @publicApi
+   */
+  modYear(modifier: number) {
+    this._focus.setFullYear(this._focus.getFullYear() + modifier);
+    this.updateGrid();
+  }
+
+  /**
+   * Compare two dates.
+   */
+  private isDatesEqual(x: Date, y: Date): boolean {
     if (x && y) {
       // @todo improve performance: cache xp, yp
       const xp = new Date(x);
@@ -70,34 +132,11 @@ export class KitDatePickerService {
     }
   }
 
-  modMonth(modifier: number) {
-    this._focus.setMonth(this._focus.getMonth() + modifier);
-    this.updateGrid();
-  }
-
-  modYear(modifier: number) {
-    this._focus.setFullYear(this._focus.getFullYear() + modifier);
-    this.updateGrid();
-  }
-
-  registerAriaGrid(ariaGrid: KitGridControlService) {
-    this.ariaGrid = ariaGrid;
-  }
-
-  private getDatePosInGrid(date: Date) {
-    let pos = null;
-    this._grid.value.forEach((row, rowIndex) => {
-      row.forEach((col, colIndex) => {
-        if (this.isDatesEqual(col.date, date)) {
-          pos = [rowIndex, colIndex];
-        }
-      });
-    });
-    return pos;
-  }
-
+  /**
+   * Handle keyboard movement.
+   */
   private handleMove() {
-    this.ariaGrid.actions.subscribe((type: KitGridControlActionType) => {
+    this.gridControl.actions.subscribe((type: KitGridControlActionType) => {
       switch (type) {
         case KitGridControlActionType.prevRow:
           this._focus.setDate(this._focus.getDate() - 7);
@@ -142,10 +181,16 @@ export class KitDatePickerService {
     });
   }
 
+  /**
+   * Start of month of passed date.
+   */
   private startOfMonth(curr: Date) {
     return new Date(curr.getFullYear(), curr.getMonth(), 1);
   }
 
+  /**
+   * Start of week of passed date.
+   */
   private startOfWeek(curr: Date) {
     const date = new Date(curr);
     const day = date.getDay() || 7;
@@ -155,6 +200,9 @@ export class KitDatePickerService {
     return date;
   }
 
+  /**
+   * Redraw grid based on monthCursor and current date.
+   */
   private updateGrid() {
     if (this._monthCursor.value &&
         this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor.value))) {
@@ -189,7 +237,10 @@ export class KitDatePickerService {
     }
   }
 
-  private weeksInMonth(curr: Date) {
+  /**
+   * Calc number of weeks in month.
+   */
+  private weeksInMonth(curr: Date): number {
     const firstOfMonth = new Date(curr.getFullYear(), curr.getMonth(), 1);
     let day = firstOfMonth.getDay() || 6;
     day = day === 1 ? 0 : day;
