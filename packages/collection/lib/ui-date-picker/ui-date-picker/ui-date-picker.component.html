@@ -1,7 +1,7 @@
 <div class="head">
   <button (click)="modYear(-1)">&lArr;</button>
   <button (click)="modMonth(-1)">&larr;</button>
-  <div class="title">{{ monthCursor$ | async | date:'MMMM, y' }}</div>
+  <div class="title">{{ monthCursor | async | date:'MMMM, y' }}</div>
   <button (click)="modMonth(1)">&rarr;</button>
   <button (click)="modYear(1)">&rArr;</button>
 </div>
@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let line of datesGrid$ | async">
+  <tr *ngFor="let line of datesGrid | async">
     <td *ngFor="let item of line">
       <span class="date"
             [kitClass]="{active: item.active, focus: item.focus, outside: item.outside}"

@@ -1,15 +1,15 @@
-import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
+import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
-import { KitGlobalListenerService } from '../../kit-browser/kit-global-listener.service';
-import { KitPlatformService } from '../../kit-browser/kit-platform.service';
+import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
+import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
-import { take } from 'rxjs/operators';
 
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
@@ -28,7 +28,7 @@ export class KitOverlayPositionService implements OnDestroy {
    */
   autofix: KitOverlayAutofix = 'switch-position';
 
-  outsideClick$ = new Subject<MouseEvent>();
+  outsideClicks = new Subject<MouseEvent>();
 
   position: KitOverlayPosition = 'top';
 
@@ -38,12 +38,11 @@ export class KitOverlayPositionService implements OnDestroy {
 
   private unsubs: any[] = [];
 
-  constructor(private renderer: Renderer2,
-              private zone: NgZone,
+  constructor(private zone: NgZone,
               private el: ElementRef,
               private style: KitStyleService,
               private platform: KitPlatformService,
-              private globalListener: KitGlobalListenerService,
+              private em: KitEventManagerService,
               private dropdownStrategy: DropdownStrategyService,
               private sideStrategy: SideStrategyService) {
     if (this.platform.isBrowser()) {
@@ -51,12 +50,10 @@ export class KitOverlayPositionService implements OnDestroy {
           .pipe(take(1))
           .subscribe(() => {
             this.zone.runOutsideAngular(() => {
-              // Renderer2 does not support useCapture
               this.unsubs = [
                 ...this.unsubs,
-                this.globalListener.listen('scroll', this.reposition.bind(this)),
-                this.globalListener.listen('resize', this.reposition.bind(this)),
-                this.renderer.listen('document', 'click', (event: MouseEvent) => this.clickHandler(event)),
+                this.em.listenGlobal('scroll', this.reposition.bind(this), true),
+                this.em.listenGlobal('resize', this.reposition.bind(this), true),
               ];
             });
           });
@@ -132,32 +129,8 @@ export class KitOverlayPositionService implements OnDestroy {
     }
   }
 
-  private clickHandler(event: MouseEvent) {
-    this.zone.run(() => {
-      const path = event['path'] || this.getEventPath(event);
-      if (path.indexOf(this.getEl(this.anchor)) === -1 && path.indexOf(this.el.nativeElement) === -1) {
-        this.zone.run(() => {
-          this.outsideClick$.next(event);
-        });
-      }
-    });
-  }
-
   private getEl(el: KitAnchorDirective | HTMLElement): HTMLElement {
     return el instanceof KitAnchorDirective ? el.nativeEl : el;
-  }
-
-  private getEventPath(event: Event): EventTarget[] {
-    const path = [];
-    if (this.platform.isBrowser()) {
-      // @todo impl multi-platform
-      let node = event.target;
-      while (node !== document.body) {
-        path.push(node);
-        node = node['parentNode'];
-      }
-    }
-    return path;
   }
 
   private getFieldSize(): StrategyField {

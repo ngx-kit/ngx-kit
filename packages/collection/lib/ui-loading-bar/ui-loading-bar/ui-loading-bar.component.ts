@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
-import { KitLoadingBarService } from '@ngx-kit/core';
+import { KitLoadingBarState, KitLoadingBarService } from '@ngx-kit/core';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ import { takeUntil } from 'rxjs/operators';
         transform: 'translateX(0)',
         opacity: 1,
       })),
-      transition('none => in-progress', [
+      transition(`${KitLoadingBarState.None} => ${KitLoadingBarState.InProgress}`, [
         style({
           transform: 'translateX(-100%)',
           opacity: 0,
@@ -36,7 +36,7 @@ import { takeUntil } from 'rxjs/operators';
           transform: 'translateX(0)',
         })),
       ]),
-      transition('in-progress => none', [
+      transition(`${KitLoadingBarState.InProgress} => ${KitLoadingBarState.None}`, [
         animate('150ms ease-in', style({
           opacity: 1,
           transform: 'translateX(0)',
@@ -51,19 +51,19 @@ import { takeUntil } from 'rxjs/operators';
 export class UiLoadingBarComponent implements OnInit, OnDestroy {
   barState = 'none';
 
-  private destroy$ = new Subject<void>();
+  private destroy = new Subject<void>();
 
   constructor(private service: KitLoadingBarService,
               private cdr: ChangeDetectorRef) {
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy.next();
   }
 
   ngOnInit() {
-    this.service.barState$
-        .pipe(takeUntil(this.destroy$))
+    this.service.barStateChanges
+        .pipe(takeUntil(this.destroy))
         .subscribe(s => {
           this.barState = s;
           this.cdr.markForCheck();

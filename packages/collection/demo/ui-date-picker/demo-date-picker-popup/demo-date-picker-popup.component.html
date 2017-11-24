@@ -2,7 +2,8 @@
 <button (click)="opened = !opened">Toggle</button>
 
 <ui-date-picker-popup *kitOverlay="opened"
-                      [anchor]="anchor">
+                      [anchor]="anchor"
+                      (kitOutsideClick)="opened = false">
   <ui-date-picker [(ngModel)]="model"
                   (ngModelChange)="opened = false"
                   [style.width.px]="300">

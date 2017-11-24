@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./dist-server && rimraf ./covarage && rimraf ./tmp",
-    "core:serve": "ng serve -a=playground-core",
+    "core:playground": "ng serve -a=playground-core",
     "core:build": "npm run clean && npm run core:build:ngc && npm run core:build:release && npm run core:build:rollup && npm run core:build:publish",
     "core:build:ngc": "ngc -p ./packages/core/tsconfig.build.json",
     "core:build:rollup": "npm run core:build:rollup:es && npm run core:build:rollup:umd",
@@ -12,7 +12,7 @@
     "core:build:rollup:umd": "rollup -c ./packages/core/rollup.umd.config.js",
     "core:build:release": "node ./packages/core/release",
     "core:build:publish": "publish-build.sh core",
-    "collection:serve": "ng serve -a=playground-collection",
+    "collection:playground": "ng serve -a=playground-collection",
     "collection:build": "npm run collection:build:clean && npm run collection:build:release && npm run collection:build:schematize && npm run collection:build:tsc && npm run collection:build:publish",
     "collection:build:clean": "rimraf ./dist/collection",
     "collection:build:release": "node ./packages/collection/release",
@@ -55,7 +55,7 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular-devkit/core": "0.0.20",
+    "@angular-devkit/core": "0.0.21",
     "@angular-devkit/schematics": "0.0.36",
     "@angular/cli": "^1.5.0",
     "@angular/platform-server": "^5.0.1",

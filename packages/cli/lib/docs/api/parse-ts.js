@@ -231,10 +231,11 @@ function getProp(node) {
 }
 
 function getMethod(node) {
-  if (!node.modifiers || node.modifiers
-          .findIndex(m =>
-              m.kind === ts.SyntaxKind.PrivateKeyword ||
-              m.kind === ts.SyntaxKind.ProtectedKeyword) === -1) {
+  if (!node.modifiers ||
+      node.modifiers.findIndex(m =>
+          m.kind === ts.SyntaxKind.PrivateKeyword ||
+          m.kind === ts.SyntaxKind.ProtectedKeyword
+      ) === -1) {
     return {
       name: node.name.text,
       typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,

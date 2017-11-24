@@ -12,6 +12,7 @@ import { MdComponent } from './md/md.component';
 import { ModulePageComponent } from './module-page/module-page.component';
 import { TitleComponent } from './title/title.component';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
+import { UiLoadingBarModule } from './ws-kit/ui-loading-bar/ui-loading-bar.module';
 
 const exp = [
   DocsPageComponent,
@@ -24,6 +25,7 @@ const exp = [
 ];
 const wsKit = [
   KitTabsModule,
+  UiLoadingBarModule,
 ];
 
 @NgModule({

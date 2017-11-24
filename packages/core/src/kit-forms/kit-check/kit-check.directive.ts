@@ -39,13 +39,13 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
    */
   @Input() value: any;
 
-  private changes$ = new Subject<boolean>();
+  private changes = new Subject<boolean>();
 
   private checked: boolean;
 
   private disabled: boolean;
 
-  private touches$ = new Subject<void>();
+  private touches = new Subject<void>();
 
   constructor(@Host() private kitClass: KitClassService) {
   }
@@ -61,22 +61,22 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
     if (isDefined(this.value)) {
       // radio-mode
       this.checked = true;
-      this.changes$.next(this.value);
+      this.changes.next(this.value);
     } else {
       // checkbox-mode
       this.checked = !this.checked;
-      this.changes$.next(this.checked);
+      this.changes.next(this.checked);
     }
-    this.touches$.next();
+    this.touches.next();
     this.applyClass();
   }
 
   registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
+    this.changes.subscribe(fn);
   }
 
   registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
+    this.touches.subscribe(fn);
   }
 
   setDisabledState(isDisabled: boolean) {

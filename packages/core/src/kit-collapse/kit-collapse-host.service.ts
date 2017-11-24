@@ -10,7 +10,7 @@ export class KitCollapseHostService {
    */
   multiple = false;
 
-  private _active$ = new BehaviorSubject<Set<KitCollapseId>>(new Set<KitCollapseId>());
+  private _active = new BehaviorSubject<Set<KitCollapseId>>(new Set<KitCollapseId>());
 
   private ids = new Set<KitCollapseId>();
 
@@ -19,8 +19,8 @@ export class KitCollapseHostService {
    *
    * @publicApi
    */
-  get active$(): Observable<Set<KitCollapseId>> {
-    return this._active$.asObservable();
+  get activeChanges(): Observable<Set<KitCollapseId>> {
+    return this._active.asObservable();
   }
 
   /**
@@ -29,12 +29,12 @@ export class KitCollapseHostService {
    * @publicApi
    */
   activate(id: KitCollapseId) {
-    const current = this._active$.value;
+    const current = this._active.value;
     if (!current.has(id)) {
       if (this.multiple) {
-        this._active$.next(new Set(current).add(id));
+        this._active.next(new Set(current).add(id));
       } else {
-        this._active$.next(new Set().add(id));
+        this._active.next(new Set().add(id));
       }
     }
   }
@@ -63,9 +63,9 @@ export class KitCollapseHostService {
    * @publicApi
    */
   deactivate(id: KitCollapseId) {
-    const current = this._active$.value;
+    const current = this._active.value;
     if (current.has(id)) {
-      this._active$.next(new Set(Array.from(current).filter(i => i !== id)));
+      this._active.next(new Set(Array.from(current).filter(i => i !== id)));
     }
   }
 
@@ -84,7 +84,7 @@ export class KitCollapseHostService {
    * @publicApi
    */
   isActive(id: KitCollapseId): boolean {
-    const current = this._active$.value;
+    const current = this._active.value;
     return current.has(id);
   }
 
@@ -94,7 +94,7 @@ export class KitCollapseHostService {
    * @publicApi
    */
   toggle(id: KitCollapseId) {
-    const current = this._active$.value;
+    const current = this._active.value;
     if (current.has(id)) {
       this.deactivate(id);
     } else {

@@ -24,7 +24,7 @@ export class KitOverlayPositionDirective implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.service.outsideClick$.subscribe((event) => {
+    this.service.outsideClicks.subscribe((event) => {
       this.outsideClick.emit(event);
     });
   }

@@ -7,10 +7,10 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'ui-notification-host',
   template: `
-    <div class="wrapper" [kitClass]="{position: position$ | async}">
-      <div *ngFor="let item of items$ | async"
+    <div class="wrapper" [kitClass]="{position: position | async}">
+      <div *ngFor="let item of items | async"
            (click)="close(item.__id)"
-           [@item]="position$ | async"
+           [@item]="position | async"
            class="item">
         <h3 *ngIf="item.params.title" class="title">{{ item.params.title }}</h3>
         <div class="message">{{ item.params.message }}</div>
@@ -55,16 +55,16 @@ import { map } from 'rxjs/operators';
   ],
 })
 export class UiNotificationHostComponent implements OnInit {
-  items$: Observable<KitNotificationItem[]>;
+  items: Observable<KitNotificationItem[]>;
 
-  position$: Observable<KitNotificationPosition>;
+  position: Observable<KitNotificationPosition>;
 
   constructor(private notificationService: KitNotificationService) {
   }
 
   ngOnInit() {
-    this.position$ = this.notificationService.config$.pipe(map(c => c.position));
-    this.items$ = this.notificationService.items$;
+    this.position = this.notificationService.configChanges.pipe(map(c => c.position));
+    this.items = this.notificationService.itemsChanges;
   }
 
   close(__id: string) {

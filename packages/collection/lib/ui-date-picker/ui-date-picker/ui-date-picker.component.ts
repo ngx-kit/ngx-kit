@@ -22,19 +22,19 @@ export const uiDatePickerValueAccessor: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
-  datesGrid$: Observable<KitDatePickerGrid>;
+  datesGrid: Observable<KitDatePickerGrid>;
 
-  monthCursor$: Observable<Date>;
+  monthCursor: Observable<Date>;
 
   weekdays: Date[] = [];
 
-  private changes$ = new Subject<Date>();
+  private changes = new Subject<Date>();
 
   private isDisabled = false;
 
   private state: Date;
 
-  private touches$ = new Subject<void>();
+  private touches = new Subject<void>();
 
   constructor(private cdr: ChangeDetectorRef,
               private service: KitDatePickerService) {
@@ -42,8 +42,8 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.weekdays = this.service.weekdays;
-    this.monthCursor$ = this.service.monthCursor$;
-    this.datesGrid$ = this.service.grid$;
+    this.monthCursor = this.service.monthCursorChanges;
+    this.datesGrid = this.service.gridChanges;
     this.service.pick.subscribe(date => {
       this.setDate(date);
     });
@@ -51,27 +51,27 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   modMonth(modifier: number) {
     this.service.modMonth(modifier);
-    this.touches$.next();
+    this.touches.next();
   }
 
   modYear(modifier: number) {
     this.service.modYear(modifier);
-    this.touches$.next();
+    this.touches.next();
   }
 
   registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
+    this.changes.subscribe(fn);
   }
 
   registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
+    this.touches.subscribe(fn);
   }
 
   setDate(date: Date) {
     this.state = date;
     this.service.active = this.state;
-    this.changes$.next(this.state);
-    this.touches$.next();
+    this.changes.next(this.state);
+    this.touches.next();
   }
 
   setDisabledState(isDisabled: boolean) {

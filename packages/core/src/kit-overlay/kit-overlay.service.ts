@@ -5,12 +5,12 @@ import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.com
 
 @Injectable()
 export class KitOverlayService {
-  private _hostDoCheck$ = new Subject<void>();
+  private _hostDoCheck = new Subject<void>();
 
   private host: KitOverlayHostComponent;
 
-  get hostDoCheck$(): Observable<void> {
-    return this._hostDoCheck$.asObservable();
+  get hostDoCheck(): Observable<void> {
+    return this._hostDoCheck.asObservable();
   }
 
   hostComponent<T>(component: Type<T>): ComponentRef<T> {
@@ -21,7 +21,7 @@ export class KitOverlayService {
   }
 
   hostDoCheckEmit() {
-    this._hostDoCheck$.next();
+    this._hostDoCheck.next();
   }
 
   hostTemplate(templateRef: TemplateRef<any>, context: any): ViewRef {

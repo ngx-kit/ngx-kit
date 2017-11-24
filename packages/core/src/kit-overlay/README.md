@@ -23,7 +23,7 @@ Any element/component could be projected.
 
 ### Positioning
 
-If base example `<div>` just would be projected to `<kit-overlay-host>`. You can use css for positioning.
+In base example `<div>` just will be projected to `<kit-overlay-host>`. You can use css for positioning.
 
 ```html
 <div *kitOverlay="display" style="position: fixed; top: 100px; left: 50%; transform: translateX(-50%)">
@@ -46,12 +46,15 @@ Use `KitOverlayPositionService` for more advanced cases.
 </div>
 ```
 
-Or provide `KitOverlayPositionService` on component. Also needs `KitStyleService` for applying styles.
+Or provide `KitOverlayPositionService` on a component. Also needs `KitStyleService` for applying styles.
 
 ```ts
 @Component({
   selector: 'app-popup',
-  providers: ['KitOverlayPositionService', 'KitStyleService'],
+  providers: [
+    KitOverlayPositionService, 
+    KitStyleService,
+  ],
   ...
 })
 export class AppPopupComponent {
