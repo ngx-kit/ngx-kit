@@ -25,18 +25,18 @@ export class UiTabsTabComponent implements OnInit, OnDestroy {
 
   @Input() id: number;
 
-  private destroy$ = new Subject<void>();
+  private destroy = new Subject<void>();
 
   constructor(private host: KitSlideHostService) {
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy.next();
   }
 
   ngOnInit() {
-    this.host.active$
-        .pipe(takeUntil(this.destroy$))
+    this.host.activeChanges
+        .pipe(takeUntil(this.destroy))
         .subscribe(id => {
           this.classActive = id === this.id;
         });

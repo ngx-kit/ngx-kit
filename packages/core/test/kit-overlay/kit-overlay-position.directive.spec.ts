@@ -42,7 +42,7 @@ describe('kitOverlayPosition directive', () => {
   it('should emit outside click from service', async(() => {
     spyOn(component, 'outsideClick');
     fixture.detectChanges();
-    service.outsideClick$.next();
+    service.outsideClicks.next();
     expect(component.outsideClick).toHaveBeenCalled();
   }));
   it('should apply params and run reposition on changes', async(() => {
@@ -69,7 +69,7 @@ class TestComponent {
 }
 
 class KitOverlayPositionMockService {
-  outsideClick$ = new Subject<any>();
+  outsideClicks = new Subject<any>();
 
   applyParams() {
   }

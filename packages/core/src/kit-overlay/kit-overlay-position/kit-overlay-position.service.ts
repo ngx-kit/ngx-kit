@@ -1,12 +1,12 @@
 import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
-import { EventManager } from '@angular/platform-browser';
 import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
+import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
+import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
@@ -28,7 +28,7 @@ export class KitOverlayPositionService implements OnDestroy {
    */
   autofix: KitOverlayAutofix = 'switch-position';
 
-  outsideClick$ = new Subject<MouseEvent>();
+  outsideClicks = new Subject<MouseEvent>();
 
   position: KitOverlayPosition = 'top';
 
@@ -42,7 +42,7 @@ export class KitOverlayPositionService implements OnDestroy {
               private el: ElementRef,
               private style: KitStyleService,
               private platform: KitPlatformService,
-              private em: EventManager,
+              private em: KitEventManagerService,
               private dropdownStrategy: DropdownStrategyService,
               private sideStrategy: SideStrategyService) {
     if (this.platform.isBrowser()) {
@@ -52,10 +52,8 @@ export class KitOverlayPositionService implements OnDestroy {
             this.zone.runOutsideAngular(() => {
               this.unsubs = [
                 ...this.unsubs,
-                this.em.addGlobalEventListener('window', 'scroll', this.reposition.bind(this)),
-                this.em.addGlobalEventListener('window', 'resize', this.reposition.bind(this)),
-                this.em.addGlobalEventListener('document', 'click',
-                    (event: MouseEvent) => this.clickHandler(event)),
+                this.em.listenGlobal('scroll', this.reposition.bind(this), true),
+                this.em.listenGlobal('resize', this.reposition.bind(this), true),
               ];
             });
           });
@@ -131,32 +129,8 @@ export class KitOverlayPositionService implements OnDestroy {
     }
   }
 
-  private clickHandler(event: MouseEvent) {
-    this.zone.run(() => {
-      const path = event['path'] || this.getEventPath(event);
-      if (path.indexOf(this.getEl(this.anchor)) === -1 && path.indexOf(this.el.nativeElement) === -1) {
-        this.zone.run(() => {
-          this.outsideClick$.next(event);
-        });
-      }
-    });
-  }
-
   private getEl(el: KitAnchorDirective | HTMLElement): HTMLElement {
     return el instanceof KitAnchorDirective ? el.nativeEl : el;
-  }
-
-  private getEventPath(event: Event): EventTarget[] {
-    const path = [];
-    if (this.platform.isBrowser()) {
-      // @todo impl multi-platform
-      let node = event.target;
-      while (node !== document.body) {
-        path.push(node);
-        node = node['parentNode'];
-      }
-    }
-    return path;
   }
 
   private getFieldSize(): StrategyField {

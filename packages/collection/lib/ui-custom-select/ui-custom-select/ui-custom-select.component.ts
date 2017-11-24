@@ -54,13 +54,13 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
 
   viewState: any;
 
-  private changes$ = new Subject<any>();
+  private changes = new Subject<any>();
 
   private disabled = false;
 
   private state: any;
 
-  private touches$ = new Subject<void>();
+  private touches = new Subject<void>();
 
   constructor(private cdr: ChangeDetectorRef,
               private el: ElementRef) {
@@ -84,16 +84,16 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   registerOnChange(fn: any) {
-    this.changes$.subscribe(fn);
+    this.changes.subscribe(fn);
   }
 
   registerOnTouched(fn: any) {
-    this.touches$.subscribe(fn);
+    this.touches.subscribe(fn);
   }
 
   select(value: any) {
     this.state = value;
-    this.changes$.next(this.state);
+    this.changes.next(this.state);
     this.updateViewState();
     this.displayPopup = false;
   }

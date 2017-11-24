@@ -12,9 +12,9 @@ export class KitDatePickerService {
 
   private _focus: Date;
 
-  private readonly _grid$ = new BehaviorSubject<KitDatePickerGrid>([]);
+  private readonly _grid = new BehaviorSubject<KitDatePickerGrid>([]);
 
-  private readonly _monthCursor$ = new BehaviorSubject<Date>(new Date());
+  private readonly _monthCursor = new BehaviorSubject<Date>(new Date());
 
   private readonly _pick = new Subject<Date>();
 
@@ -30,12 +30,12 @@ export class KitDatePickerService {
     this.updateGrid();
   }
 
-  get grid$(): Observable<KitDatePickerGrid> {
-    return this._grid$.asObservable();
+  get gridChanges(): Observable<KitDatePickerGrid> {
+    return this._grid.asObservable();
   }
 
-  get monthCursor$(): Observable<Date> {
-    return this._monthCursor$.asObservable();
+  get monthCursorChanges(): Observable<Date> {
+    return this._monthCursor.asObservable();
   }
 
   get pick(): Observable<Date> {
@@ -86,7 +86,7 @@ export class KitDatePickerService {
 
   private getDatePosInGrid(date: Date) {
     let pos = null;
-    this._grid$.value.forEach((row, rowIndex) => {
+    this._grid.value.forEach((row, rowIndex) => {
       row.forEach((col, colIndex) => {
         if (this.isDatesEqual(col.date, date)) {
           pos = [rowIndex, colIndex];
@@ -156,15 +156,15 @@ export class KitDatePickerService {
   }
 
   private updateGrid() {
-    if (this._monthCursor$.value &&
-        this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor$.value))) {
+    if (this._monthCursor.value &&
+        this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor.value))) {
       // update current grid
-      const grid = this._grid$.value;
+      const grid = this._grid.value;
       grid.forEach(r => r.forEach(c => {
         c.active = this.isDatesEqual(c.date, this._active);
         c.focus = this.isDatesEqual(c.date, this._focus);
       }));
-      this._grid$.next(grid);
+      this._grid.next(grid);
     } else {
       // recompile grid
       const month = this.startOfMonth(this._focus);
@@ -184,8 +184,8 @@ export class KitDatePickerService {
         }
         grid.push(line);
       }
-      this._monthCursor$.next(month);
-      this._grid$.next(grid);
+      this._monthCursor.next(month);
+      this._grid.next(grid);
     }
   }
 

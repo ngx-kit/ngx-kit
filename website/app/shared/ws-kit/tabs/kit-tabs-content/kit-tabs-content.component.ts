@@ -53,7 +53,7 @@ export class KitTabsContentComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(private host: KitSlideHostService) {
-    this.host.direction$
+    this.host.directionChanges
         .pipe(
             takeUntil(this.destroy$),
         )

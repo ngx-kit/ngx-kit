@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { KitFullForRootModule } from '@ngx-kit/core';
+import { KitFullForRootModule, KitPlatformBrowserModule } from '@ngx-kit/core';
 import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
@@ -20,6 +20,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     ReactiveFormsModule,
     RouterModule.forRoot([]),
     KitFullForRootModule,
+    KitPlatformBrowserModule,
     CollectionDemoModule,
   ],
   providers: [],

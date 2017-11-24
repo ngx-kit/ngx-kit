@@ -15,7 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 export class KitCollapseDirective implements OnInit, OnDestroy {
   @Input() kitCollapse: void;
 
-  private destroy$ = new Subject<void>();
+  private destroy = new Subject<void>();
 
   private displayed = false;
 
@@ -26,12 +26,12 @@ export class KitCollapseDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy.next();
   }
 
   ngOnInit() {
-    this.host.active$
-        .pipe(takeUntil(this.destroy$))
+    this.host.activeChanges
+        .pipe(takeUntil(this.destroy))
         .subscribe(ids => {
           if (ids.has(this.item.id)) {
             if (!this.displayed) {

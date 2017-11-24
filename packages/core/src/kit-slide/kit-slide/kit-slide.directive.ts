@@ -27,7 +27,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
    */
   @Input() kitSlide: KitSlideId = null;
 
-  private destroy$ = new Subject<void>();
+  private destroy = new Subject<void>();
 
   private displayed = false;
 
@@ -45,7 +45,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy() {
     this.host.deleteId(this.kitSlide);
-    this.destroy$.next();
+    this.destroy.next();
   }
 
   ngOnInit() {
@@ -55,8 +55,8 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
       this.host.addId(this.kitSlide);
     }
     // handle displaying
-    this.host.active$
-        .pipe(takeUntil(this.destroy$))
+    this.host.activeChanges
+        .pipe(takeUntil(this.destroy))
         .subscribe(id => {
           if (id === this.kitSlide) {
             if (!this.displayed) {

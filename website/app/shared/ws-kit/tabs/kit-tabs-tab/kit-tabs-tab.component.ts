@@ -37,7 +37,7 @@ export class KitTabsTabComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.host.active$
+    this.host.activeChanges
         .pipe(
             takeUntil(this.destroy$),
         )

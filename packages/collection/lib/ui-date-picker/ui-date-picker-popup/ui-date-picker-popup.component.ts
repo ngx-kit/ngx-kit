@@ -1,20 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
-import {
-  KitAnchorDirective,
-  KitFocusManagerService,
-  KitOverlayPositionService,
-  KitStyleService,
-} from '@ngx-kit/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit, } from '@angular/core';
+import { KitAnchorDirective, KitFocusManagerService, KitOverlayPositionService, KitStyleService, } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-date-picker-popup',
@@ -59,8 +45,6 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
 
   @HostBinding('@host') hostTrigger = true;
 
-  @Output() outsideClick = new EventEmitter<MouseEvent>();
-
   @HostBinding('attr.role') role = 'dialog';
 
   constructor(private overlayPosition: KitOverlayPositionService,
@@ -78,7 +62,6 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
     this.overlayPosition.type = 'dropdown';
     this.overlayPosition.position = 'bottom-right';
     this.overlayPosition.reposition();
-    this.overlayPosition.outsideClick$.subscribe(this.outsideClick);
     this.focusManager.focusItem('grid');
   }
 }
