@@ -11,7 +11,7 @@ All 3rd-party ui-kits has their own limitations and overheads. But projects has 
 
 The best interface for ui-components is a possibility to change the source code.
 
-Ui-base is set of prepared and simplified components. Just generate the code by Angular-cli to your project or kit and modify it if needed.
+**@ngx-kit/collection** it is a set of prepared and simplified components. Just generate the code by Angular-cli into your project or kit and modify it if needed.
 
 
 ## Usage
