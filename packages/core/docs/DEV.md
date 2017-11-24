@@ -29,12 +29,12 @@ Uses `.docs-schema.json` configuration for generating meta file that contains al
 ngx-kit schematize
 ```
 
-Convert ui-modules (like in @ngx-kit/ui-base) to schematics. Uses `.docs-schema.json` configuration.
+Convert ui-modules (like in @ngx-kit/collection) to schematics. Uses `.docs-schema.json` configuration.
 
 
 ## Angular-cli schematics
 
-There are few custom blueprints for the fast entity generation. Created for ngx-kit and ui-base development.
+There are few custom blueprints for the fast entity generation. Created for ngx-kit development.
 
 ### Installation
 

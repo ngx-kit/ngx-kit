@@ -10,4 +10,4 @@
 
 ## Examples
 
-* ui-base:slider - [sources](https://github.com/ngx-kit/ui-base/tree/master/package/lib/kit-slider), [demo](http://ngx-kit.com/ui-base/module/kit-slider)
+* collection:slider - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-slider), [demo](http://ngx-kit.com/collection/module/ui-slider)

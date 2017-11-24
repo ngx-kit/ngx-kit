@@ -6,7 +6,7 @@ module.exports = function(name, schematicsConfig) {
   const collection = JSON.parse(fs.readFileSync(file, 'utf-8'));
   collection.schematics[name] = {
     factory: `./${name}`,
-    description: `Create a @ngx-kit/ui-base/${name} module.`,
+    description: `Create a @ngx-kit/collection/${name} module.`,
     schema: `./${name}/schema.json`
   };
   fs.outputFileSync(file, JSON.stringify(collection));

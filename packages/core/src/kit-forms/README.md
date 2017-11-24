@@ -26,4 +26,4 @@ Radio behavior:
 
 ### Examples
 
-* ui-base:button - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-button), [demo](http://ngx-kit.com/ui-base/module/ui-button)
+* collection:button - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-button), [demo](http://ngx-kit.com/collection/module/ui-button)

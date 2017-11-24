@@ -63,5 +63,5 @@ toggle() {
 
 ## Examples
 
-* ui-base:accordion - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-accordion), [demo](http://ngx-kit.com/ui-base/module/ui-accordion) 
-* ui-base:side-menu - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-side-menu), [demo](http://ngx-kit.com/ui-base/module/ui-side-menu) 
+* collection:accordion - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-accordion), [demo](http://ngx-kit.com/collection/module/ui-accordion) 
+* collection:side-menu - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-side-menu), [demo](http://ngx-kit.com/collection/module/ui-side-menu) 

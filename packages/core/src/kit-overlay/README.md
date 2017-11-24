@@ -99,6 +99,6 @@ export class AppPopupComponent {
 
 ## Examples
 
-* ui-base:custom-select - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-custom-select), [demo](http://ngx-kit.com/ui-base/module/ui-custom-select) 
-* ui-base:modal - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-modal), [demo](http://ngx-kit.com/ui-base/module/ui-modal) 
-* ui-base:tooltip - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-tooltip), [demo](http://ngx-kit.com/ui-base/module/ui-tooltip) 
+* collection:custom-select - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-custom-select), [demo](http://ngx-kit.com/collection/module/ui-custom-select) 
+* collection:modal - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-modal), [demo](http://ngx-kit.com/collection/module/ui-modal) 
+* collection:tooltip - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-tooltip), [demo](http://ngx-kit.com/collection/module/ui-tooltip) 

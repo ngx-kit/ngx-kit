@@ -33,5 +33,5 @@ constructor(private grid: KitGridControlService) {
 
 ## Examples
 
-* [ngx-kit:datetime/KitDatePickerService sources](https://github.com/ngx-kit/ngx-kit/blob/master/packages/ngx-kit/src/kit-datetime/kit-date-picker.service.ts)
-* [ui-base:date-picker demo](http://ngx-kit.com/ui-base/module/ui-date-picker)
+* [ngx-kit:datetime/KitDatePickerService sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/core/src/kit-datetime)
+* [collection:date-picker demo](http://ngx-kit.com/collection/module/ui-date-picker)

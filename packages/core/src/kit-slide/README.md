@@ -39,5 +39,5 @@ rotate() {
 
 ## Examples
 
-* ui-base:carousel - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-carousel), [demo](http://ngx-kit.com/ui-base/module/ui-carousel)
-* ui-base:tabs - [sources](https://github.com/ngx-kit/ui-base/tree/master/src/lib/ui-tabs), [demo](http://ngx-kit.com/ui-base/module/ui-tabs) 
+* collection:carousel - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-carousel), [demo](http://ngx-kit.com/collection/module/ui-carousel)
+* collection:tabs - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-tabs), [demo](http://ngx-kit.com/collection/module/ui-tabs) 
