@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitEventManagerModule } from '../../src/kit-event-manager';
+import { KitOutsideClickModule } from '../../src/kit-outside-click';
 import { KitPlatformBrowserModule } from '../../src/kit-platform-browser/kit-platform-browser.module';
 
 describe('kitOutsideClick directive', () => {
@@ -16,7 +16,7 @@ describe('kitOutsideClick directive', () => {
           imports: [
             CommonModule,
             KitPlatformBrowserModule,
-            KitEventManagerModule,
+            KitOutsideClickModule,
           ],
         });
   }));

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, } from '@angular/core';
-import { KitEventManagerService } from '../kit-event-manager.service';
+import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 
 /**
  * Emitted when user clicks not on current element.

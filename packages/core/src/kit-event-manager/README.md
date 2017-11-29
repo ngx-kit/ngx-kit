@@ -1,3 +1,3 @@
 # Event-manager
 
-Services and directives for events handling.
+Services for events handling.
