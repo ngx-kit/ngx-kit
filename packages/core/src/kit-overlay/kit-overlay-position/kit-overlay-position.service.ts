@@ -3,11 +3,17 @@ import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { KitAnchorDirective } from '../../kit-anchor/kit-anchor.directive';
-import { KitStyleService } from '../../kit-style/kit-style.service';
-import { StrategyEl, StrategyField } from '../../kit-common/meta';
 import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
-import { KitOverlayAutofix, KitOverlayPosition, KitOverlayPositionDirectiveParams, KitOverlayType, } from '../meta';
+import { KitStyleService } from '../../kit-style/kit-style.service';
+import {
+  KitOverlayAutofix,
+  KitOverlayPosition,
+  KitOverlayPositionDirectiveParams,
+  KitOverlayType,
+  StrategyEl,
+  StrategyField,
+} from '../meta';
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
 

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import {
   KitAnchorModule,
   KitClassModule,
-  KitCommonModule,
   KitFocusManagerModule,
   KitGridModule,
   KitOutsideClickModule,
@@ -15,7 +14,6 @@ import { UiDatePickerComponent } from './ui-date-picker/ui-date-picker.component
 @NgModule({
   imports: [
     CommonModule,
-    KitCommonModule,
     KitGridModule,
     KitFocusManagerModule,
     KitClassModule,

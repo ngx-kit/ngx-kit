@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { KitStyles, StrategyEl, StrategyField } from '../../kit-common/meta';
+import { StrategyEl, StrategyField } from '../meta';
 import { KitOverlayAutofix, KitOverlayPosition, positionPairs } from '../meta';
+import { KitStyles } from '../../kit-style/meta';
 
 /**
  * @todo correct handle cases when anchor is not visible

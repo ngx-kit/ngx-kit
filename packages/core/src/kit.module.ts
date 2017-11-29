@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { KitAnchorModule } from './kit-anchor/kit-anchor.module';
 import { KitClassModule } from './kit-class/kit-class.module';
 import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
-import { KitCommonModule } from './kit-common/kit-common.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
 import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitFormsModule } from './kit-forms/kit-forms.module';
@@ -19,7 +18,6 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitAnchorModule,
     KitClassModule,
     KitCollapseModule,
-    KitCommonModule,
     KitDatetimeModule,
     KitFocusManagerModule,
     KitFormsModule,
@@ -35,7 +33,6 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitAnchorModule,
     KitClassModule,
     KitCollapseModule,
-    KitCommonModule,
     KitDatetimeModule,
     KitFocusManagerModule,
     KitFormsModule,

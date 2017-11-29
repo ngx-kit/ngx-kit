@@ -20,3 +20,17 @@ export interface KitOverlayPositionDirectiveParams {
   position: KitOverlayPosition;
   type: KitOverlayType;
 }
+
+export interface StrategyEl {
+  bottom: number;
+  height: number;
+  left: number;
+  right: number;
+  top: number;
+  width: number;
+}
+
+export interface StrategyField {
+  width: number;
+  height: number;
+}
