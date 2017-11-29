@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { KitFullModule } from '@ngx-kit/core';
+import { KitModule } from '@ngx-kit/core';
 import { CollectionLibModule } from '../lib/collection-lib.module';
 import { demoComponents } from './components';
 
@@ -10,7 +10,7 @@ import { demoComponents } from './components';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    KitFullModule,
+    KitModule,
     CollectionLibModule,
   ],
   declarations: [
