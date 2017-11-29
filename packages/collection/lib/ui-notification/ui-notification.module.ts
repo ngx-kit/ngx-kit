@@ -8,10 +8,10 @@ import { UiNotificationHostComponent } from './ui-notification-host/ui-notificat
     CommonModule,
     KitCommonModule,
   ],
-  exports: [
+  declarations: [
     UiNotificationHostComponent,
   ],
-  declarations: [
+  exports: [
     UiNotificationHostComponent,
   ],
 })

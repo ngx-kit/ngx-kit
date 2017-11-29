@@ -8,13 +8,12 @@ import { UiSelectComponent } from './ui-select/ui-select.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [
-    UiSelectComponent,
-  ],
   declarations: [
     UiSelectComponent,
   ],
-  providers: [],
+  exports: [
+    UiSelectComponent,
+  ],
 })
 export class UiSelectModule {
 }

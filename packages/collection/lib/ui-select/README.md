@@ -1,5 +1,1 @@
 # UiSelect
-
-## Dependencies
- 
-* `FormsModule`

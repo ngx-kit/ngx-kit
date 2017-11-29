@@ -9,13 +9,12 @@ import { UiSliderComponent } from './ui-slider/ui-slider.component';
     KitCommonModule,
     KitPointerModule,
   ],
-  exports: [
-    UiSliderComponent,
-  ],
   declarations: [
     UiSliderComponent,
   ],
-  providers: [],
+  exports: [
+    UiSliderComponent,
+  ],
 })
 export class UiSliderModule {
 }

@@ -9,10 +9,10 @@ import { UiRatingComponent } from './ui-rating/ui-rating.component';
     KitCommonModule,
     KitIconsModule,
   ],
-  exports: [
+  declarations: [
     UiRatingComponent,
   ],
-  declarations: [
+  exports: [
     UiRatingComponent,
   ],
 })

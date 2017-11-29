@@ -11,19 +11,19 @@ import { UiSideMenuComponent } from './ui-side-menu/ui-side-menu.component';
     CommonModule,
     KitCollapseModule,
   ],
-  exports: [
-    UiSideMenuComponent,
-    UiSideMenuItemComponent,
-    UiSideMenuGroupComponent,
-    UiSideMenuSubComponent,
-  ],
   declarations: [
     UiSideMenuComponent,
     UiSideMenuItemComponent,
     UiSideMenuGroupComponent,
     UiSideMenuSubComponent,
   ],
-  providers: [],
+  exports: [
+    KitCollapseModule,
+    UiSideMenuComponent,
+    UiSideMenuItemComponent,
+    UiSideMenuGroupComponent,
+    UiSideMenuSubComponent,
+  ],
 })
 export class UiSideMenuModule {
 }

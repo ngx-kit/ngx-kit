@@ -9,12 +9,12 @@ import { UiTooltipDirective } from './ui-tooltip/ui-tooltip.directive';
     CommonModule,
     KitOverlayModule,
   ],
-  exports: [
-    UiTooltipDirective,
-  ],
   declarations: [
     UiTooltipDirective,
     UiTooltipViewComponent,
+  ],
+  exports: [
+    UiTooltipDirective,
   ],
   entryComponents: [
     UiTooltipViewComponent,

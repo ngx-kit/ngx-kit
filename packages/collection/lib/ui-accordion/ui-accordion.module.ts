@@ -11,13 +11,14 @@ import { UiAccordionComponent } from './ui-accordion/ui-accordion.component';
     CommonModule,
     KitCollapseModule,
   ],
-  exports: [
+  declarations: [
     UiAccordionComponent,
     UiAccordionPanelComponent,
     UiAccordionTitleComponent,
     UiAccordionContentComponent,
   ],
-  declarations: [
+  exports: [
+    KitCollapseModule,
     UiAccordionComponent,
     UiAccordionPanelComponent,
     UiAccordionTitleComponent,

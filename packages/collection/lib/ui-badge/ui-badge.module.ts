@@ -6,10 +6,10 @@ import { UiBadgeComponent } from './ui-badge/ui-badge.component';
   imports: [
     CommonModule,
   ],
-  exports: [
+  declarations: [
     UiBadgeComponent,
   ],
-  declarations: [
+  exports: [
     UiBadgeComponent,
   ],
 })

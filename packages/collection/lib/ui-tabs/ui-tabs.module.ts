@@ -11,13 +11,14 @@ import { UiTabsComponent } from './ui-tabs/ui-tabs.component';
     CommonModule,
     KitSlideModule,
   ],
-  exports: [
+  declarations: [
     UiTabsComponent,
     UiTabsNavComponent,
     UiTabsTabComponent,
     UiTabsContentComponent,
   ],
-  declarations: [
+  exports: [
+    KitSlideModule,
     UiTabsComponent,
     UiTabsNavComponent,
     UiTabsTabComponent,

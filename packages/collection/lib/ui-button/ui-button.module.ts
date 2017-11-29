@@ -7,11 +7,11 @@ import { UiButtonComponent } from './ui-button/ui-button.component';
   imports: [
     CommonModule,
   ],
-  exports: [
+  declarations: [
     UiButtonComponent,
     UiButtonGroupComponent,
   ],
-  declarations: [
+  exports: [
     UiButtonComponent,
     UiButtonGroupComponent,
   ],

@@ -9,11 +9,12 @@ import { UiCarouselComponent } from './ui-carousel/ui-carousel.component';
     CommonModule,
     KitSlideModule,
   ],
-  exports: [
+  declarations: [
     UiCarouselComponent,
     UiCarouselSlideComponent,
   ],
-  declarations: [
+  exports: [
+    KitSlideModule,
     UiCarouselComponent,
     UiCarouselSlideComponent,
   ],

@@ -8,10 +8,11 @@ import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component
     CommonModule,
     KitCollapseModule,
   ],
-  exports: [
+  declarations: [
     UiLoadingBarComponent,
   ],
-  declarations: [
+  exports: [
+    KitCollapseModule,
     UiLoadingBarComponent,
   ],
 })

@@ -1,5 +1,1 @@
 # UiAlert
-
-## Dependencies
-
-* `BrowserAnimationsModule`

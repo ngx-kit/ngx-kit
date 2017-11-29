@@ -48,7 +48,9 @@ export class AppModule {
 }
 ```
 
-And import `KitModule` to any module where you need kit directives and components, even in the root module.
+Import `KitModule` to any module where you need kit directives and components, even in the root module.
+
+Add `<kit-overlay-host>` to the root component (imported by `KitModule`).
 
 
 ## Links

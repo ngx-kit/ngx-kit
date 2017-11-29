@@ -8,10 +8,10 @@ import { UiTextareaComponent } from './ui-textarea/ui-textarea.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [
+  declarations: [
     UiTextareaComponent,
   ],
-  declarations: [
+  exports: [
     UiTextareaComponent,
   ],
 })

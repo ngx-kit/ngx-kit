@@ -8,10 +8,10 @@ import { UiInputComponent } from './ui-input/ui-input.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [
+  declarations: [
     UiInputComponent,
   ],
-  declarations: [
+  exports: [
     UiInputComponent,
   ],
 })
