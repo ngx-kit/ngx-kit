@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
+import { KitStyleService } from '../../kit-style/kit-style.service';
 import { KitOverlayPositionService } from './kit-overlay-position.service';
 import { KitOverlayPositionDirectiveParams } from '../meta';
 

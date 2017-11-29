@@ -1,8 +1,8 @@
 import { ElementRef, Injectable, KeyValueChanges, KeyValueDiffer, KeyValueDiffers, Renderer2 } from '@angular/core';
-import { KitStyles } from '../meta';
+import { KitStyles } from './meta';
 
 /**
- * Service works exactly like `ngStyle`, but must be provided on component or directive.
+ * Service works exactly like `ngStyle`, but for providing on component or directive.
  *
  * ```typescript
  * providers: [KitStyleService],

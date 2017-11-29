@@ -18,6 +18,7 @@ export * from './src/kit-platform-server/index';
 export * from './src/kit-pointer/index';
 export * from './src/kit-repeat/index';
 export * from './src/kit-slide/index';
+export * from './src/kit-style/index';
 export * from './src/util/index';
 export * from './src/kit.module';
 export * from './src/kit-root.module';
