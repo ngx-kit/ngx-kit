@@ -24,7 +24,7 @@ export const uiDatePickerValueAccessor: any = {
 export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
   datesGrid: Observable<KitDatePickerGrid>;
 
-  monthCursor: Observable<Date>;
+  monthCursor: Observable<Date | null>;
 
   weekdays: Date[] = [];
 

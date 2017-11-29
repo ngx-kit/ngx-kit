@@ -23,7 +23,7 @@ export class KitDatePickerService {
 
   private readonly _grid = new BehaviorSubject<KitDatePickerGrid>([]);
 
-  private readonly _monthCursor = new BehaviorSubject<Date>(new Date());
+  private readonly _monthCursor = new BehaviorSubject<Date | null>(null);
 
   private readonly _pick = new Subject<Date>();
 
@@ -58,7 +58,7 @@ export class KitDatePickerService {
    *
    * @publicApi
    */
-  get monthCursorChanges(): Observable<Date> {
+  get monthCursorChanges(): Observable<Date | null> {
     return this._monthCursor.asObservable();
   }
 
