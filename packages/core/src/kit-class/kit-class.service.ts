@@ -1,8 +1,8 @@
 import { ElementRef, Injectable, Renderer2 } from '@angular/core';
-import { isArray } from '../../util/is-array';
-import { isObject } from '../../util/is-object';
-import { isString } from '../../util/is-string';
-import { KitClassSetter } from '../meta';
+import { isArray } from '../util/is-array';
+import { isObject } from '../util/is-object';
+import { isString } from '../util/is-string';
+import { KitClassSetter } from './meta';
 
 /**
  * Apply to classes to an element.

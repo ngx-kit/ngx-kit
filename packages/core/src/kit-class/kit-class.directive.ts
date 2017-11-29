@@ -1,6 +1,6 @@
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { KitClassSetter } from '../meta';
 import { KitClassService } from './kit-class.service';
+import { KitClassSetter } from './meta';
 
 /**
  * Provides `KitClassService` and pass property to `.apply` method.

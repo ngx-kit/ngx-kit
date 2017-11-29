@@ -1,4 +1,5 @@
 export * from './src/kit-anchor/index';
+export * from './src/kit-class/index';
 export * from './src/kit-collapse/index';
 export * from './src/kit-common/index';
 export * from './src/kit-datetime/index';
