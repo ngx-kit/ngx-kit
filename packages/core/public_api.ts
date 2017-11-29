@@ -1,3 +1,4 @@
+export * from './src/kit-anchor/index';
 export * from './src/kit-collapse/index';
 export * from './src/kit-common/index';
 export * from './src/kit-datetime/index';
@@ -8,6 +9,7 @@ export * from './src/kit-grid/index';
 export * from './src/kit-icons/index';
 export * from './src/kit-loading-bar/index';
 export * from './src/kit-notification/index';
+export * from './src/kit-outside-click/index';
 export * from './src/kit-overlay/index';
 export * from './src/kit-platform/index';
 export * from './src/kit-platform-browser/index';

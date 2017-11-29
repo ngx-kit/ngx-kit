@@ -2,7 +2,7 @@ import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { KitAnchorDirective } from '../../kit-common/kit-anchor/kit-anchor.directive';
+import { KitAnchorDirective } from '../../kit-anchor/kit-anchor.directive';
 import { KitStyleService } from '../../kit-common/kit-style/kit-style.service';
 import { StrategyEl, StrategyField } from '../../kit-common/meta';
 import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';

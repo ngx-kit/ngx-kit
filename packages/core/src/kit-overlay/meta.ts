@@ -1,4 +1,4 @@
-import { KitAnchorDirective } from '../kit-common/kit-anchor/kit-anchor.directive';
+import { KitAnchorDirective } from '../kit-anchor/kit-anchor.directive';
 
 export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
     | 'top-left' | 'top-right'
