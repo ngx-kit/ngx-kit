@@ -14,5 +14,5 @@ export * from './src/kit-platform-browser/index';
 export * from './src/kit-platform-server/index';
 export * from './src/kit-pointer/index';
 export * from './src/kit-slide/index';
-export * from './src/kit-util/index';
+export * from './src/util/index';
 export * from './src/kit-full.module';

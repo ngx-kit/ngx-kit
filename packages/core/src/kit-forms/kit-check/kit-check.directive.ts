@@ -2,7 +2,7 @@ import { Directive, forwardRef, Host, HostListener, Input, OnChanges, SimpleChan
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { KitClassService } from '../../kit-common/kit-class/kit-class.service';
-import { isDefined } from '../../kit-util/is-defined';
+import { isDefined } from '../../util/is-defined';
 
 export const KIT_CHECK_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
