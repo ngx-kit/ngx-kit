@@ -11,6 +11,7 @@ import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitOutsideClickModule } from './kit-outside-click/kit-outside-click.module';
 import { KitOverlayModule } from './kit-overlay/kit-overlay.module';
 import { KitPointerModule } from './kit-pointer/kit-pointer.module';
+import { KitRepeatModule } from './kit-repeat/kit-repeat.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitOutsideClickModule,
     KitOverlayModule,
     KitPointerModule,
+    KitRepeatModule,
     KitSlideModule,
   ],
   exports: [
@@ -42,6 +44,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitOutsideClickModule,
     KitOverlayModule,
     KitPointerModule,
+    KitRepeatModule,
     KitSlideModule,
   ],
 })

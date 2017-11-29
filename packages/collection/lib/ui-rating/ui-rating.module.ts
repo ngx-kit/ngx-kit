@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitCommonModule, KitIconsModule } from '@ngx-kit/core';
+import { KitCommonModule, KitIconsModule, KitRepeatModule } from '@ngx-kit/core';
 import { UiRatingComponent } from './ui-rating/ui-rating.component';
 
 @NgModule({
@@ -8,6 +8,7 @@ import { UiRatingComponent } from './ui-rating/ui-rating.component';
     CommonModule,
     KitCommonModule,
     KitIconsModule,
+    KitRepeatModule,
   ],
   declarations: [
     UiRatingComponent,
