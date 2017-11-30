@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
@@ -30,6 +31,8 @@ export class KitIconComponent implements OnInit, OnChanges {
    */
   @Input() size = '100%';
 
+  private svgChangesSubscription: Subscription;
+
   private setSvg = (svg: SVGElement) => {
     const el = this.el.nativeElement;
     el.innerHTML = '';
@@ -47,7 +50,13 @@ export class KitIconComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.platform.isBrowser()) {
-      this.registry.get(this.name).subscribe(this.setSvg);
+      const svgChanges = this.registry.get(this.name);
+      if (svgChanges) {
+        if (this.svgChangesSubscription) {
+          this.svgChangesSubscription.unsubscribe();
+        }
+        this.svgChangesSubscription = svgChanges.subscribe(this.setSvg);
+      }
     }
   }
 

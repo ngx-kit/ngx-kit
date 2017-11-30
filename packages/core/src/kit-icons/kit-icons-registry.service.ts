@@ -6,10 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { KitIcon, KitIconCached } from './meta';
 
 /**
- *
- * ## Usage
- *
- * ### Register icons
+ * Register icons
  *
  * ```typescript
  * this.iconsRegistry.register('star', '/assets/icons/star.svg');
@@ -20,7 +17,7 @@ import { KitIcon, KitIconCached } from './meta';
  * ]);
  * ```
  *
- * ### Use in a template
+ * Use in a template
  *
  * ```html
  * <kit-icon [name]="'star'"></kit-icon>
