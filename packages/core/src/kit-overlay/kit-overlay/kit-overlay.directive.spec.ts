@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitOverlayHostComponent } from '../../src/kit-overlay/kit-overlay-host/kit-overlay-host.component';
-import { KitOverlayModule } from '../../src/kit-overlay/kit-overlay.module';
-import { KitOverlayDirective } from '../../src/kit-overlay/kit-overlay/kit-overlay.directive';
+import { KitOverlayHostComponent } from '../kit-overlay-host/kit-overlay-host.component';
+import { KitOverlayModule } from '../kit-overlay.module';
+import { KitOverlayDirective } from './kit-overlay.directive';
 
 describe('kitOverlay directive', () => {
   let fixture: ComponentFixture<TestComponent>;

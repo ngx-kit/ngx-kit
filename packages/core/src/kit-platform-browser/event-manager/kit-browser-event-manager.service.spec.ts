@@ -1,5 +1,5 @@
 import { async } from '@angular/core/testing';
-import { KitBrowserEventManagerService } from '../../src/kit-platform-browser/event-manager/kit-browser-event-manager.service';
+import { KitBrowserEventManagerService } from './kit-browser-event-manager.service';
 import createSpy = jasmine.createSpy;
 
 describe('KitBrowserEventManagerService', () => {

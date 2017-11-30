@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { KitFormsModule } from '../../src/kit-forms/kit-forms.module';
+import { KitFormsModule } from '../kit-forms.module';
 
 describe('kitCheck directive', () => {
   let fixture: ComponentFixture<TestComponent>;

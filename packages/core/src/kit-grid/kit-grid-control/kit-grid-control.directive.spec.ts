@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitGridControlDirective } from '../../src/kit-grid/kit-grid-control/kit-grid-control.directive';
-import { KitGridControlService } from '../../src/kit-grid/kit-grid-control/kit-grid-control.service';
-import { KitGridModule } from '../../src/kit-grid/kit-grid.module';
+import { KitGridControlDirective } from './kit-grid-control.directive';
+import { KitGridControlService } from './kit-grid-control.service';
+import { KitGridModule } from '../kit-grid.module';
 
 describe('kitGridControl directive', () => {
   let fixture: ComponentFixture<TestComponent>;

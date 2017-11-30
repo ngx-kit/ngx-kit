@@ -1,8 +1,8 @@
 import { async } from '@angular/core/testing';
 import { NavigationEnd, NavigationStart } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
-import { KitLoadingBarService } from '../../src/kit-loading-bar/kit-loading-bar.service';
-import { KitLoadingBarState } from '../../src/kit-loading-bar/meta';
+import { KitLoadingBarService } from './kit-loading-bar.service';
+import { KitLoadingBarState } from './meta';
 
 describe('KitLoadingBarService', () => {
   let service: KitLoadingBarService;

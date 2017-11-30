@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs/Subject';
-import { KitOverlayPositionDirective } from '../../src/kit-overlay/kit-overlay-position/kit-overlay-position.directive';
-import { KitOverlayPositionService } from '../../src/kit-overlay/kit-overlay-position/kit-overlay-position.service';
+import { KitOverlayPositionDirective } from './kit-overlay-position.directive';
+import { KitOverlayPositionService } from './kit-overlay-position.service';
 
 describe('kitOverlayPosition directive', () => {
   let fixture: ComponentFixture<any>;

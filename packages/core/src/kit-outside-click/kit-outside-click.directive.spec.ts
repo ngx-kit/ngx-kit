@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitOutsideClickModule } from '../../src/kit-outside-click';
-import { KitPlatformBrowserModule } from '../../src/kit-platform-browser/kit-platform-browser.module';
+import { KitOutsideClickModule } from './index';
+import { KitPlatformBrowserModule } from '../kit-platform-browser/kit-platform-browser.module';
 
 describe('kitOutsideClick directive', () => {
   let fixture: ComponentFixture<TestComponent>;

@@ -1,8 +1,8 @@
 import { async } from '@angular/core/testing';
 import { Subject } from 'rxjs/Subject';
-import { KitDatePickerService } from '../../src/kit-datetime/kit-date-picker.service';
-import { KitDatePickerGrid } from '../../src/kit-datetime/meta';
-import { KitGridControlActionType } from '../../src/kit-grid/meta';
+import { KitDatePickerService } from './kit-date-picker.service';
+import { KitDatePickerGrid } from './meta';
+import { KitGridControlActionType } from '../kit-grid/meta';
 import createSpy = jasmine.createSpy;
 
 describe('KitDatePickerService', () => {

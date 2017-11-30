@@ -12,7 +12,7 @@
     "test.ts"
   ],
   "include": [
-    "../../packages/core/test",
+    "../../packages/core/src",
     "**/*.spec.ts",
     "**/*.d.ts"
   ]

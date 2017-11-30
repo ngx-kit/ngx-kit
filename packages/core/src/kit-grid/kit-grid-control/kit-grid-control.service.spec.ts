@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { keyEnter } from '../../src/kit-event-manager/meta';
-import { KitGridControlDirective } from '../../src/kit-grid/kit-grid-control/kit-grid-control.directive';
-import { KitGridControlService } from '../../src/kit-grid/kit-grid-control/kit-grid-control.service';
-import { KitGridModule } from '../../src/kit-grid/kit-grid.module';
-import { KitGridControlActionType } from '../../src/kit-grid/meta';
-import { dispatchKeyboardEvent } from '../utils/dispatch-events';
+import { keyEnter } from '../../kit-event-manager/meta';
+import { KitGridControlDirective } from './kit-grid-control.directive';
+import { KitGridControlService } from './kit-grid-control.service';
+import { KitGridModule } from '../kit-grid.module';
+import { KitGridControlActionType } from '../meta';
+import { dispatchKeyboardEvent } from '../../../test/utils/dispatch-events';
 
 describe('kitGridControlService', () => {
   let fixture: ComponentFixture<TestComponent>;

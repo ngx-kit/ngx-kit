@@ -1,5 +1,5 @@
 import { async } from '@angular/core/testing';
-import { KitFocusDirective } from '../../src/kit-focus-manager/kit-focus/kit-focus.directive';
+import { KitFocusDirective } from './kit-focus.directive';
 
 describe('kitFocus directive', () => {
   let directive: KitFocusDirective;

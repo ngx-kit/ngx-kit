@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { keyTab } from '../../src/kit-event-manager/meta';
-import { KitFocusManagerService } from '../../src/kit-focus-manager/kit-focus-manager.service';
-import { KitPlatformBrowserModule } from '../../src/kit-platform-browser/kit-platform-browser.module';
-import { dispatchKeyboardEvent } from '../utils/dispatch-events';
+import { keyTab } from '../kit-event-manager/meta';
+import { KitFocusManagerService } from './kit-focus-manager.service';
+import { KitPlatformBrowserModule } from '../kit-platform-browser/kit-platform-browser.module';
+import { dispatchKeyboardEvent } from '../../test/utils/dispatch-events';
 
 describe('KitFocusManagerService', () => {
   let fixture: ComponentFixture<TestWrapperComponent>;
