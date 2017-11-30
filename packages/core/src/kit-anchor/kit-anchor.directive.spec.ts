@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { KitAnchorDirective } from './kit-anchor.directive';
 
-describe('Core/AnchorDirective', () => {
+describe('KitAnchorDirective', () => {
   let fixture: ComponentFixture<ContainerComponent>;
   let container: ContainerComponent;
   let element: Element;

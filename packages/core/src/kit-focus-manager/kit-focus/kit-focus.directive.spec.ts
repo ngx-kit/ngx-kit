@@ -1,7 +1,7 @@
 import { async } from '@angular/core/testing';
 import { KitFocusDirective } from './kit-focus.directive';
 
-describe('kitFocus directive', () => {
+describe('KitFocusDirective', () => {
   let directive: KitFocusDirective;
   let focusManagerMock: FocusManagerMock;
   let elMock: ElMock;

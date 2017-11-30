@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { KitOverlayService } from '../kit-overlay.service';
 import { KitOverlayHostComponent } from './kit-overlay-host.component';
 
-describe('KitOverlayHost component', () => {
+describe('KitOverlayHostComponent', () => {
   let fixture: ComponentFixture<KitOverlayHostComponent>;
   let service: KitOverlayService;
   beforeEach(async(() => {

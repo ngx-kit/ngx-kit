@@ -9,7 +9,7 @@ import { KitGridModule } from '../kit-grid.module';
 import { KitGridControlActionType } from '../meta';
 import { dispatchKeyboardEvent } from '../../../test/utils/dispatch-events';
 
-describe('kitGridControlService', () => {
+describe('KitGridControlService', () => {
   let fixture: ComponentFixture<TestComponent>;
   let service: KitGridControlService;
   beforeEach(async(() => {

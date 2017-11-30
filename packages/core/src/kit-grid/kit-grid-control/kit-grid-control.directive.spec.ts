@@ -6,7 +6,7 @@ import { KitGridControlDirective } from './kit-grid-control.directive';
 import { KitGridControlService } from './kit-grid-control.service';
 import { KitGridModule } from '../kit-grid.module';
 
-describe('kitGridControl directive', () => {
+describe('KitGridControlDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let service: ControlServiceMock;
   beforeEach(async(() => {

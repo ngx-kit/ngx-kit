@@ -6,7 +6,7 @@ import { KitOverlayHostComponent } from '../kit-overlay-host/kit-overlay-host.co
 import { KitOverlayModule } from '../kit-overlay.module';
 import { KitOverlayDirective } from './kit-overlay.directive';
 
-describe('kitOverlay directive', () => {
+describe('KitOverlayDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(async(() => {
     TestBed

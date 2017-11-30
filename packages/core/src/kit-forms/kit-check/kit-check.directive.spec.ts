@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { KitFormsModule } from '../kit-forms.module';
 
-describe('kitCheck directive', () => {
+describe('KitCheckDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(async(() => {
     TestBed

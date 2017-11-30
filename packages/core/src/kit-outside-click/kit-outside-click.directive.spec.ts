@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { KitOutsideClickModule } from './index';
 import { KitPlatformBrowserModule } from '../kit-platform-browser/kit-platform-browser.module';
 
-describe('kitOutsideClick directive', () => {
+describe('KitOutsideClickDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(async(() => {
     TestBed

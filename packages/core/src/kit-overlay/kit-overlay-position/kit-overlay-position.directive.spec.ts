@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { KitOverlayPositionDirective } from './kit-overlay-position.directive';
 import { KitOverlayPositionService } from './kit-overlay-position.service';
 
-describe('kitOverlayPosition directive', () => {
+describe('KitOverlayPositionDirective', () => {
   let fixture: ComponentFixture<any>;
   let component: TestComponent;
   let service: KitOverlayPositionMockService;
