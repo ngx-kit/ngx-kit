@@ -8,10 +8,10 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { KitSlideHostService } from '../kit-slide-host.service';
 import { KitSlideId } from '../meta';
-import { takeUntil } from 'rxjs/operators';
 
 /**
  * Structure directive that display slides.
