@@ -34,9 +34,6 @@ export class KitNotificationService {
 
   private _items = new BehaviorSubject<KitNotificationItem[]>([]);
 
-  constructor() {
-  }
-
   get configChanges(): Observable<KitNotificationHostConfig> {
     return this._config.asObservable();
   }
