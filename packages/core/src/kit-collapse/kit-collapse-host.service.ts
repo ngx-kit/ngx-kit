@@ -24,6 +24,13 @@ export class KitCollapseHostService {
   }
 
   /**
+   * Get Set with activated items.
+   */
+  get active(): Set<KitCollapseId> {
+    return new Set(this._active.value);
+  }
+
+  /**
    * Activate item with id.
    *
    * @publicApi

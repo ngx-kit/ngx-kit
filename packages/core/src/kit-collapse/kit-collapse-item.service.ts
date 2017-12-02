@@ -17,7 +17,7 @@ export class KitCollapseItemService implements OnDestroy {
    * @publicApi
    */
   get active(): boolean {
-    return this.host.isActive(this.id);
+    return this.host.isActive(this._id);
   }
 
   /**
@@ -26,10 +26,10 @@ export class KitCollapseItemService implements OnDestroy {
    * @publicApi
    */
   set active(active: boolean) {
-    if (this.active) {
-      this.host.deactivate(this._id);
-    } else {
+    if (active) {
       this.host.activate(this._id);
+    } else {
+      this.host.deactivate(this._id);
     }
   }
 
