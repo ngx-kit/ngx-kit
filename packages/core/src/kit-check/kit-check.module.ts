@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitCheckDirective } from './kit-check/kit-check.directive';
+import { KitCheckDirective } from './kit-check.directive';
 
 @NgModule({
   imports: [
@@ -13,5 +13,5 @@ import { KitCheckDirective } from './kit-check/kit-check.directive';
     KitCheckDirective,
   ],
 })
-export class KitFormsModule {
+export class KitCheckModule {
 }

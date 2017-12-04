@@ -1,6 +1,4 @@
-# Forms
-
-## `KitCheck`
+# Check
 
 Adds to any element ValueAccessor and checkbox/radio behavior.
  
@@ -24,6 +22,6 @@ Radio behavior:
 <button [kitCheck] [(ngModel)]="buttonModel" [value]="3">Radio button 3</button>
 ```
 
-### Examples
+## Examples
 
 * collection:button - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-button), [demo](http://ngx-kit.com/collection/module/ui-button)

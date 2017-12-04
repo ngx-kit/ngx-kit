@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { KitFormsModule } from '../kit-forms.module';
+import { KitCheckModule } from './kit-check.module';
 
 describe('KitCheckDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -16,7 +16,7 @@ describe('KitCheckDirective', () => {
           imports: [
             CommonModule,
             FormsModule,
-            KitFormsModule,
+            KitCheckModule,
           ],
         });
   }));
