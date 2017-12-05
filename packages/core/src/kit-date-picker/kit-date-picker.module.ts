@@ -6,5 +6,5 @@ import { NgModule } from '@angular/core';
     CommonModule,
   ],
 })
-export class KitDatetimeModule {
+export class KitDatePickerModule {
 }

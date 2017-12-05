@@ -59,5 +59,5 @@ constructor(private service: KitKeymapService) {
 
 ## Examples
 
-* [ngx-kit:datetime sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/core/src/kit-datetime)
+* [ngx-kit:date-picker sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/core/src/kit-date-picker)
 * [collection:date-picker demo](http://ngx-kit.com/collection/module/ui-date-picker)
