@@ -2,9 +2,8 @@ import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { KitGridControlService } from '../kit-grid/kit-grid-control/kit-grid-control.service';
-import { KitGridControlActionType } from '../kit-grid/meta';
-import { KitDatePickerGrid } from './meta';
+import { KitKeymapService } from '../kit-keymap/kit-keymap.service';
+import { KitDatePickerGrid, KitDatePickerKeymap } from './meta';
 
 /**
  * Service encapsulates complex date-picker grid logic.
@@ -27,7 +26,7 @@ export class KitDatePickerService {
 
   private readonly _pick = new Subject<Date>();
 
-  constructor(@Optional() private gridControl: KitGridControlService) {
+  constructor(@Optional() private gridControl: KitKeymapService) {
     if (this.gridControl) {
       this.handleMove();
     }
@@ -136,45 +135,45 @@ export class KitDatePickerService {
    * Handle keyboard movement.
    */
   private handleMove() {
-    this.gridControl.actions.subscribe((type: KitGridControlActionType) => {
+    this.gridControl.actions.subscribe((type: KitDatePickerKeymap) => {
       switch (type) {
-        case KitGridControlActionType.prevRow:
+        case KitDatePickerKeymap.prevWeek:
           this._focus.setDate(this._focus.getDate() - 7);
           this.updateGrid();
           break;
-        case KitGridControlActionType.nextCell:
+        case KitDatePickerKeymap.nextDay:
           this._focus.setDate(this._focus.getDate() + 1);
           this.updateGrid();
           break;
-        case KitGridControlActionType.nextRow:
+        case KitDatePickerKeymap.nextWeek:
           this._focus.setDate(this._focus.getDate() + 7);
           this.updateGrid();
           break;
-        case KitGridControlActionType.prevCell:
+        case KitDatePickerKeymap.prevDay:
           this._focus.setDate(this._focus.getDate() - 1);
           this.updateGrid();
           break;
-        case KitGridControlActionType.end:
+        case KitDatePickerKeymap.lastDayOfMonth:
           this._focus.setMonth(this._focus.getMonth() + 1, 0);
           this.updateGrid();
           break;
-        case KitGridControlActionType.home:
+        case KitDatePickerKeymap.firstDayOfMonth:
           this._focus.setDate(1);
           this.updateGrid();
           break;
-        case KitGridControlActionType.prevPage:
+        case KitDatePickerKeymap.prevMonth:
           this.modMonth(-1);
           break;
-        case KitGridControlActionType.nextPage:
+        case KitDatePickerKeymap.nextMonth:
           this.modMonth(1);
           break;
-        case KitGridControlActionType.prevSet:
+        case KitDatePickerKeymap.prevYear:
           this.modYear(-1);
           break;
-        case KitGridControlActionType.nextSet:
+        case KitDatePickerKeymap.nextYear:
           this.modYear(1);
           break;
-        case KitGridControlActionType.enter:
+        case KitDatePickerKeymap.pick:
           this._pick.next(new Date(this._focus));
           break;
       }

@@ -5,7 +5,7 @@ export * from './src/kit-datetime/index';
 export * from './src/kit-event-manager/index';
 export * from './src/kit-focus-manager/index';
 export * from './src/kit-check/index';
-export * from './src/kit-grid/index';
+export * from './src/kit-keymap/index';
 export * from './src/kit-icons/index';
 export * from './src/kit-loading-bar/index';
 export * from './src/kit-notification/index';

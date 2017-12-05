@@ -6,3 +6,18 @@ export interface KitDatePickerGridItem {
 }
 
 export type KitDatePickerGrid = KitDatePickerGridItem[][];
+
+export enum KitDatePickerKeymap {
+  noop, // omit 0 value
+  nextDay,
+  prevDay,
+  nextWeek,
+  prevWeek,
+  lastDayOfMonth,
+  firstDayOfMonth,
+  nextMonth,
+  prevMonth,
+  nextYear,
+  prevYear,
+  pick,
+}

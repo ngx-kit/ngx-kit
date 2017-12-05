@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitGridControlDirective } from './kit-grid-control.directive';
-import { KitGridControlService } from './kit-grid-control.service';
-import { KitGridModule } from '../kit-grid.module';
+import { KitKeymapDirective } from './kit-keymap.directive';
+import { KitKeymapService } from './kit-keymap.service';
+import { KitKeymapModule } from './kit-keymap.module';
 
-describe('KitGridControlDirective', () => {
+describe('KitKeymapDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let service: ControlServiceMock;
   beforeEach(async(() => {
@@ -14,7 +14,7 @@ describe('KitGridControlDirective', () => {
         .configureTestingModule({
           providers: [
             {
-              provide: KitGridControlService,
+              provide: KitKeymapService,
               useClass: ControlServiceMock,
             },
           ],
@@ -23,21 +23,21 @@ describe('KitGridControlDirective', () => {
           ],
           imports: [
             CommonModule,
-            KitGridModule,
+            KitKeymapModule,
           ],
         });
   }));
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
-    service = TestBed.get(KitGridControlService);
+    service = TestBed.get(KitKeymapService);
   });
 
   function getComponent() {
     return fixture.componentInstance;
   }
 
-  it('should register in KitGridControlService', async(() => {
-    const spy = spyOn(service, 'registerGrid');
+  it('should register in service', async(() => {
+    const spy = spyOn(service, 'register');
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   }));
@@ -48,14 +48,14 @@ describe('KitGridControlDirective', () => {
 });
 
 class ControlServiceMock {
-  registerGrid() {
+  register() {
   }
 }
 
 @Component({
   selector: 'test-cmp',
-  template: '<div kitGridControl></div>',
+  template: '<div kitKeymap></div>',
 })
 class TestComponent {
-  @ViewChild(KitGridControlDirective) directive: KitGridControlDirective;
+  @ViewChild(KitKeymapDirective) directive: KitKeymapDirective;
 }

@@ -1,24 +1,24 @@
 import { Directive, ElementRef, HostBinding, Input, OnInit, } from '@angular/core';
-import { KitGridControlService } from './kit-grid-control.service';
+import { KitKeymapService } from './kit-keymap.service';
 
 /**
  * Registration directive.
  *
- * Inject KitGridControlService and self-register.
+ * Injects KitKeymapService and self-registrates.
  *
  * Using for pick html-element and listen keyboard events on it.
  *
  * Makes any element focusable.
  */
 @Directive({
-  selector: '[kitGridControl]',
+  selector: '[kitKeymap]',
 })
-export class KitGridControlDirective implements OnInit {
-  @Input() kitGridControl: void;
+export class KitKeymapDirective implements OnInit {
+  @Input() kitKeymap: void;
 
   @HostBinding('tabindex') tabindex = 0;
 
-  constructor(private service: KitGridControlService,
+  constructor(private service: KitKeymapService,
               private el: ElementRef) {
   }
 
@@ -27,6 +27,6 @@ export class KitGridControlDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.service.registerGrid(this);
+    this.service.register(this);
   }
 }

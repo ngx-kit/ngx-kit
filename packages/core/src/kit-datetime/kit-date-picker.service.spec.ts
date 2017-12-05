@@ -1,8 +1,7 @@
 import { async } from '@angular/core/testing';
 import { Subject } from 'rxjs/Subject';
 import { KitDatePickerService } from './kit-date-picker.service';
-import { KitDatePickerGrid } from './meta';
-import { KitGridControlActionType } from '../kit-grid/meta';
+import { KitDatePickerGrid, KitDatePickerKeymap } from './meta';
 import createSpy = jasmine.createSpy;
 
 describe('KitDatePickerService', () => {
@@ -45,15 +44,15 @@ describe('KitDatePickerService', () => {
     const spy = createSpy();
     service.active = new Date('2017-12-31');
     service.gridChanges.subscribe(spy);
-    gridControlMock.actions.next(KitGridControlActionType.prevCell);
-    gridControlMock.actions.next(KitGridControlActionType.end);
+    gridControlMock.actions.next(KitDatePickerKeymap.prevDay);
+    gridControlMock.actions.next(KitDatePickerKeymap.lastDayOfMonth);
     expect(spy).toHaveBeenCalledTimes(3);
   });
   it(`should pick on GridControl enter`, () => {
     const spy = createSpy();
     service.active = new Date('2017-12-31');
     service.pick.subscribe(spy);
-    gridControlMock.actions.next(KitGridControlActionType.enter);
+    gridControlMock.actions.next(KitDatePickerKeymap.pick);
     expect(spy).toHaveBeenCalledTimes(1);
   });
   // @todo should change month by gridControl
@@ -63,5 +62,5 @@ describe('KitDatePickerService', () => {
 });
 
 class GridControlMock {
-  actions = new Subject<KitGridControlActionType>();
+  actions = new Subject<KitDatePickerKeymap>();
 }

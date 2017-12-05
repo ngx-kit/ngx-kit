@@ -1,6 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitDatePickerGrid, KitDatePickerService, KitGridControlService } from '@ngx-kit/core';
+import {
+  KitDatePickerGrid,
+  KitDatePickerNavMapping,
+  KitDatePickerService,
+  KitKeymapActions,
+  KitKeymapService,
+} from '@ngx-kit/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -16,8 +22,12 @@ export const uiDatePickerValueAccessor: any = {
   styleUrls: ['./ui-date-picker.component.scss'],
   providers: [
     uiDatePickerValueAccessor,
-    KitGridControlService,
+    KitKeymapService,
     KitDatePickerService,
+    {
+      provide: KitKeymapActions,
+      useClass: KitDatePickerNavMapping,
+    },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

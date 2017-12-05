@@ -12,3 +12,6 @@ export const keyTab = 9;
 export const keyEscape = 27;
 export const keyBackspace = 8;
 export const keyDelete = 46;
+export const keyShift = 16;
+export const keyCtrl = 17;
+export const keyAlt = 18;

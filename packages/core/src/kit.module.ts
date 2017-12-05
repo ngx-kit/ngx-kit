@@ -5,7 +5,7 @@ import { KitCollapseModule } from './kit-collapse/kit-collapse.module';
 import { KitDatetimeModule } from './kit-datetime/kit-datetime.module';
 import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitCheckModule } from './kit-check/kit-check.module';
-import { KitGridModule } from './kit-grid/kit-grid.module';
+import { KitKeymapModule } from './kit-keymap/kit-keymap.module';
 import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitOutsideClickModule } from './kit-outside-click/kit-outside-click.module';
 import { KitOverlayModule } from './kit-overlay/kit-overlay.module';
@@ -21,7 +21,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitDatetimeModule,
     KitFocusManagerModule,
     KitCheckModule,
-    KitGridModule,
+    KitKeymapModule,
     KitIconsModule,
     KitOutsideClickModule,
     KitOverlayModule,
@@ -36,7 +36,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitDatetimeModule,
     KitFocusManagerModule,
     KitCheckModule,
-    KitGridModule,
+    KitKeymapModule,
     KitIconsModule,
     KitOutsideClickModule,
     KitOverlayModule,

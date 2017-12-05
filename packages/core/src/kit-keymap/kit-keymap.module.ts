@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitGridControlDirective } from './kit-grid-control/kit-grid-control.directive';
+import { KitKeymapDirective } from './kit-keymap.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    KitGridControlDirective,
+    KitKeymapDirective,
   ],
   exports: [
-    KitGridControlDirective,
+    KitKeymapDirective,
   ],
 })
-export class KitGridModule {
+export class KitKeymapModule {
 }

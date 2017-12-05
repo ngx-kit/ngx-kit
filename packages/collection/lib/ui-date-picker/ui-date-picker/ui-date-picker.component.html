@@ -5,7 +5,7 @@
   <button (click)="modMonth(1)">&rarr;</button>
   <button (click)="modYear(1)">&rArr;</button>
 </div>
-<table class="grid" [kitGridControl] [kitFocus]="'grid'">
+<table class="grid" kitKeymap kitFocus="grid">
   <thead>
   <tr>
     <th class="weekday" *ngFor="let weekday of weekdays">{{ weekday | date:'EEE' }}</th>
