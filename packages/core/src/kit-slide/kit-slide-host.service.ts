@@ -53,6 +53,20 @@ export class KitSlideHostService {
   }
 
   /**
+   * Set active and emit only 'initial' direction.
+   *
+   * @publicApi
+   */
+  set activeInitial(id: KitSlideId) {
+    this._direction.next('initial');
+    // timeout for right animation trigger setup
+    setTimeout(() => {
+      this._active.next(id);
+      this.cdr.markForCheck();
+    }, 1);
+  }
+
+  /**
    * Get `Observable` with active slide id.
    *
    * @publicApi
