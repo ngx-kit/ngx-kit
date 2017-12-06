@@ -1,15 +1,14 @@
 import { async } from '@angular/core/testing';
-import { Subject } from 'rxjs/Subject';
 import { KitDatePickerService } from './kit-date-picker.service';
-import { KitDatePickerGrid, KitDatePickerKeymap } from './meta';
+import { KitDatePickerGrid } from './meta';
 import createSpy = jasmine.createSpy;
 
 describe('KitDatePickerService', () => {
   let service: KitDatePickerService;
-  let gridControlMock: GridControlMock;
+  let rendererMock: RendererMock;
   beforeEach(async(() => {
-    gridControlMock = new GridControlMock();
-    service = new KitDatePickerService(gridControlMock as any);
+    rendererMock = new RendererMock();
+    service = new KitDatePickerService(rendererMock as any);
   }));
   it('should create the service', () => {
     expect(service).toBeTruthy();
@@ -40,19 +39,21 @@ describe('KitDatePickerService', () => {
     expect(cursor.getMonth()).toEqual(11);
     expect(cursor.getDate()).toEqual(1);
   });
-  it(`should handle GridControl moves`, () => {
+  it(`should handle moves`, () => {
     const spy = createSpy();
     service.active = new Date('2017-12-31');
     service.gridChanges.subscribe(spy);
-    gridControlMock.actions.next(KitDatePickerKeymap.prevDay);
-    gridControlMock.actions.next(KitDatePickerKeymap.lastDayOfMonth);
+    service.handleMove({});
+    runHandler(rendererMock, 'keydown.ArrowUp');
+    runHandler(rendererMock, 'keydown.End');
     expect(spy).toHaveBeenCalledTimes(3);
   });
   it(`should pick on GridControl enter`, () => {
     const spy = createSpy();
     service.active = new Date('2017-12-31');
     service.pick.subscribe(spy);
-    gridControlMock.actions.next(KitDatePickerKeymap.pick);
+    service.handleMove({});
+    runHandler(rendererMock, 'keydown.Enter');
     expect(spy).toHaveBeenCalledTimes(1);
   });
   // @todo should change month by gridControl
@@ -61,6 +62,17 @@ describe('KitDatePickerService', () => {
   // @todo process modYear
 });
 
-class GridControlMock {
-  actions = new Subject<KitDatePickerKeymap>();
+function runHandler(renderer: RendererMock, event: string) {
+  renderer.handlers[event]({
+    preventDefault: () => {
+    },
+  });
+}
+
+class RendererMock {
+  handlers = {};
+
+  listen(target: any, event: string, handler: any) {
+    this.handlers[event] = handler;
+  }
 }
