@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
-  KitDatePickerGrid,
-  KitDatePickerNavMapping,
-  KitDatePickerService,
-  KitKeymapActions,
-  KitKeymapService,
-} from '@ngx-kit/core';
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  forwardRef,
+  HostBinding,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { KitDatePickerGrid, KitDatePickerService } from '@ngx-kit/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -22,12 +25,7 @@ export const uiDatePickerValueAccessor: any = {
   styleUrls: ['./ui-date-picker.component.scss'],
   providers: [
     uiDatePickerValueAccessor,
-    KitKeymapService,
     KitDatePickerService,
-    {
-      provide: KitKeymapActions,
-      useClass: KitDatePickerNavMapping,
-    },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -37,6 +35,10 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
   monthCursor: Observable<Date | null>;
 
   weekdays: Date[] = [];
+
+  @ViewChild('grid') grid: ElementRef;
+
+  @HostBinding('tabindex') tabindex = 0;
 
   private changes = new Subject<Date>();
 
@@ -57,6 +59,7 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
     this.service.pick.subscribe(date => {
       this.setDate(date);
     });
+    this.service.handleMove(this.grid.nativeElement);
   }
 
   modMonth(modifier: number) {

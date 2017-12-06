@@ -1,9 +1,8 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, OnDestroy, Optional, Renderer2 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { KitKeymapService } from '../kit-keymap/kit-keymap.service';
-import { KitDatePickerGrid, KitDatePickerKeymap } from './meta';
+import { KitDatePickerGrid } from './meta';
 
 /**
  * Service encapsulates complex date-picker grid logic.
@@ -15,10 +14,12 @@ import { KitDatePickerGrid, KitDatePickerKeymap } from './meta';
  * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
  */
 @Injectable()
-export class KitDatePickerService {
+export class KitDatePickerService implements OnDestroy {
   private _active: Date;
 
   private _focus: Date;
+
+  private moveHandlerUnsubs: any[] = [];
 
   private readonly _grid = new BehaviorSubject<KitDatePickerGrid>([]);
 
@@ -26,10 +27,7 @@ export class KitDatePickerService {
 
   private readonly _pick = new Subject<Date>();
 
-  constructor(@Optional() private gridControl: KitKeymapService) {
-    if (this.gridControl) {
-      this.handleMove();
-    }
+  constructor(@Optional() private renderer: Renderer2) {
   }
 
   /**
@@ -85,6 +83,10 @@ export class KitDatePickerService {
     return weekdays;
   }
 
+  ngOnDestroy() {
+    this.moveHandlerUnsubs.forEach(u => u());
+  }
+
   /**
    * Focus date (open correspondent month).
    *
@@ -116,6 +118,70 @@ export class KitDatePickerService {
   }
 
   /**
+   * Handle keyboard movement.
+   */
+  handleMove(target: any) {
+    if (this.renderer) {
+      this.moveHandlerUnsubs = [
+        this.renderer.listen(target, 'keydown.ArrowRight', e => {
+          e.preventDefault();
+          this._focus.setDate(this._focus.getDate() + 1);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.ArrowLeft', e => {
+          e.preventDefault();
+          this._focus.setDate(this._focus.getDate() - 1);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.ArrowUp', e => {
+          e.preventDefault();
+          this._focus.setDate(this._focus.getDate() - 7);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.ArrowDown', e => {
+          e.preventDefault();
+          this._focus.setDate(this._focus.getDate() + 7);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.Home', e => {
+          e.preventDefault();
+          this._focus.setDate(1);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.End', e => {
+          e.preventDefault();
+          this._focus.setMonth(this._focus.getMonth() + 1, 0);
+          this.updateGrid();
+        }),
+        this.renderer.listen(target, 'keydown.PageUp', e => {
+          e.preventDefault();
+          this.modMonth(-1);
+        }),
+        this.renderer.listen(target, 'keydown.PageDown', e => {
+          e.preventDefault();
+          this.modMonth(1);
+        }),
+        this.renderer.listen(target, 'keydown.Alt.PageUp', e => {
+          e.preventDefault();
+          this.modYear(-1);
+        }),
+        this.renderer.listen(target, 'keydown.Alt.PageDown', e => {
+          e.preventDefault();
+          this.modYear(1);
+        }),
+        this.renderer.listen(target, 'keydown.Enter', e => {
+          e.preventDefault();
+          this._pick.next(new Date(this._focus));
+        }),
+        this.renderer.listen(target, 'keydown.Space', e => {
+          e.preventDefault();
+          this._pick.next(new Date(this._focus));
+        }),
+      ];
+    }
+  }
+
+  /**
    * Compare two dates.
    */
   private isDatesEqual(x: Date, y: Date): boolean {
@@ -129,55 +195,6 @@ export class KitDatePickerService {
     } else {
       throw new Error('isDatesEqual params error');
     }
-  }
-
-  /**
-   * Handle keyboard movement.
-   */
-  private handleMove() {
-    this.gridControl.actions.subscribe((type: KitDatePickerKeymap) => {
-      switch (type) {
-        case KitDatePickerKeymap.prevWeek:
-          this._focus.setDate(this._focus.getDate() - 7);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.nextDay:
-          this._focus.setDate(this._focus.getDate() + 1);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.nextWeek:
-          this._focus.setDate(this._focus.getDate() + 7);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.prevDay:
-          this._focus.setDate(this._focus.getDate() - 1);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.lastDayOfMonth:
-          this._focus.setMonth(this._focus.getMonth() + 1, 0);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.firstDayOfMonth:
-          this._focus.setDate(1);
-          this.updateGrid();
-          break;
-        case KitDatePickerKeymap.prevMonth:
-          this.modMonth(-1);
-          break;
-        case KitDatePickerKeymap.nextMonth:
-          this.modMonth(1);
-          break;
-        case KitDatePickerKeymap.prevYear:
-          this.modYear(-1);
-          break;
-        case KitDatePickerKeymap.nextYear:
-          this.modYear(1);
-          break;
-        case KitDatePickerKeymap.pick:
-          this._pick.next(new Date(this._focus));
-          break;
-      }
-    });
   }
 
   /**
