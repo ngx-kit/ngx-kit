@@ -38,8 +38,6 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   @ViewChild('grid') grid: ElementRef;
 
-  @HostBinding('tabindex') tabindex = 0;
-
   private changes = new Subject<Date>();
 
   private isDisabled = false;
