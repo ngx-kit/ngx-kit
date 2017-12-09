@@ -34,7 +34,8 @@ Import ngx-kit to the root module:
   ...
   imports: [
     ...
-    KitFullForRootModule,
+    KitForRootModule,
+    KitModule,
     KitPlatformBrowserModule,
 ```
  

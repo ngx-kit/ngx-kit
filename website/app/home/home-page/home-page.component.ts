@@ -21,6 +21,8 @@ import { Component } from '@angular/core';
   ],
 })
 export class HomePageComponent {
+  year = (new Date()).getFullYear();
+
   constructor() {
   }
 }

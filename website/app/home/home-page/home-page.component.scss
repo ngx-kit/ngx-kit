@@ -1,103 +1,194 @@
-@import "../../shared/layout/layout";
-
-.layout-content {
-  background: #222222;
+.header {
   align-items: center;
-}
-
-.brand {
-  background: linear-gradient(135deg, rgba(50, 50, 50, 1) 0%, rgba(14, 14, 14, 1) 100%);
-  padding: 8px 32px;
-  text-align: center;
-  margin: 0;
-  font-family: "Droid Sans Mono";
-  width: 100%;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 30px rgba(0, 0, 0, .7);
-}
-
-.products {
+  background: #111715;
+  color: #f0f0f0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin: 128px 0;
+  font-size: 1.1rem;
+  justify-content: space-between;
+  padding: 24px 32px;
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .nav {
+    a {
+      margin-left: 24px;
+    }
+  }
+  a {
+    color: #e9e9e9;
+    text-decoration: none;
+  }
 }
 
-.panel {
-  display: block;
-  border-radius: 6px;
-  color: #ffffff;
-  margin: 0 32px;
-  transition: all .3s;
-  width: 200px;
-  height: 250px;
-  text-decoration: none;
+.block {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   .wrapper {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 32px 16px;
+    padding: 96px 0;
+    width: 1000px;
   }
-  .pkg {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, .6);
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 3rem;
   }
-  .name {
-    font-size: 1.3rem;
-    font-weight: 700;
+  h2 {
+    border-bottom: 0;
+    font-weight: 300;
+    line-height: 2.2rem;
+    font-size: 1.7rem;
   }
-  .info {
-    display: block;
-    font-size: .9rem;
-    margin: 32px 0;
+  pre {
+    padding: 16px;
   }
-  &:hover {
-    transform: scale(1.05);
+  &.dark {
+    background: #151d1b;
+    background: linear-gradient(45deg, #151d1b 0%, #334042 100%);
+    color: #f0f0f0;
   }
-  &.-core {
-    background: linear-gradient(135deg, #0fd8df 0%, #0fbac1 100%);
-    box-shadow: 1px 1px 35px 5px rgba(0, 0, 0, .8);
-  }
-  &.-collection {
-    background: linear-gradient(135deg, #2b6db7 0%, #155096 100%);
-    box-shadow: 1px 1px 35px 5px rgba(0, 0, 0, .8);
-  }
-  &.-styler {
-    border-width: 3px;
+  &.light {
+    background: linear-gradient(45deg, rgb(226, 231, 234) 0%, rgba(247, 252, 255, 0) 100%), url("../../../assets/hypnotize.png");
+    color: #333333;
     position: relative;
-    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-name: styler-panel;
-    background-size: 300% 300%;
-    & > span {
-      position: absolute;
-      top: 3px;
-      right: 3px;
-      bottom: 3px;
-      left: 3px;
-      background: #222222;
-      border-radius: 6px;
+    h1, h2, h3 {
+      color: #4f8cfc;
+    }
+    a {
+      color: #333333;
+    }
+  }
+  &.blue {
+    background: linear-gradient(45deg, #4475da 0%, #4f8cfc 100%);
+    color: #ffffff;
+    h1, h2, h3 {
+      color: #ffffff;
+    }
+  }
+}
+
+.promo {
+  min-height: 600px;
+  .wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+  .logo {
+    flex-shrink: 0;
+    padding: 0 50px;
+    width: 400px;
+  }
+}
+
+.structure {
+  .wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  h2 {
+    border-bottom: 0;
+    font-size: 2rem;
+    margin: 0 0 64px;
+    padding: 0;
+  }
+  .layers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    > div {
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 0 30px 6px rgba(31, 51, 73, .1);
+      margin: 0 32px;
+      padding: 32px;
+      transition: .2s box-shadow;
+      width: 200px;
+      h3 {
+        margin: 0 0 16px;
+        padding: 0;
+      }
+      img {
+        max-width: 60%;
+        margin-bottom: 8px;
+      }
+      &:hover {
+        box-shadow: 2px 0 50px 12px rgba(31, 51, 73, .2);
+      }
+    }
+  }
+}
+
+.video {
+  .container {
+    background: #111111;
+    height: 315px;
+    width: 560px;
+  }
+}
+
+.how-it-works {
+  .steps {
+    width: 700px;
+    text-align: left;
+  }
+}
+
+.made-with {
+  .project {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 48px;
+    width: 700px;
+    text-align: left;
+    .picture {
+      background: #3b61bd;
+      height: 150px;
+      width: 250px;
+      flex-shrink: 0;
+    }
+    .info {
+      flex-grow: 1;
+      padding: 0 32px;
+      h3 {
+        margin-top: 0;
+      }
+    }
+    .links {
+      border-top: 1px solid #7ea9fc;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+    .links a {
+      display: inline-block;
+      background: #eed33c;
+      border-radius: 8px;
+      color: #333333;
+      line-height: 2.2em;
+      margin-right: 8px;
+      padding: 0 16px;
+      text-decoration: none;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
 .footer {
-  color: #cccccc;
+  background: #111715;
+  color: #f0f0f0;
+  font-size: .9rem;
+  padding: 64px 0;
   text-align: center;
-  padding: 32px 16px;
-  & a {
-    color: #aaaaaa;
-  }
-}
-
-@keyframes styler-panel {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
+  .logo img {
+    width: 46px
   }
 }

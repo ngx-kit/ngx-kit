@@ -6,12 +6,12 @@
 
 <pre><code>ng g {{ module.name }} -c=@ngx-kit/collection [name]</code></pre>
 
-<ng-container *ngIf="module.api.length > 0">
-  <h2>API</h2>
-  <app-api *ngFor="let api of module.api" [rawApi]="api"></app-api>
-</ng-container>
-
 <ng-container *ngIf="module.demo.length > 0">
   <h2>Demo</h2>
   <app-demo *ngFor="let demo of module.demo" [demo]="demo"></app-demo>
+</ng-container>
+
+<ng-container *ngIf="module.api.length > 0">
+  <h2>API</h2>
+  <app-api *ngFor="let api of module.api" [rawApi]="api"></app-api>
 </ng-container>

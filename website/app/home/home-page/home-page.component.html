@@ -1,33 +1,114 @@
-<div class="layout-full">
-  <div class="layout-content">
-    <h1 class="brand">
-      <img src="../../../assets/site-logo.png">
-    </h1>
-    <div class="products">
-      <a [routerLink]="['/core']" class="panel -core">
-        <span class="wrapper">
-          <span class="pkg">@ngx-kit/</span>
-          <span class="name">core</span>
-          <span class="info">Toolkit for creating UI components for your Angular application</span>
-        </span>
-      </a>
-      <a [routerLink]="['/collection']" class="panel -collection">
-        <span class="wrapper">
-          <span class="pkg">@ngx-kit/</span>
-          <span class="name">collection</span>
-          <span class="info">UI components presets based on ngx-kit</span>
-        </span>
-      </a>
-      <a href="https://github.com/ngx-kit/styler" class="panel -styler">
-        <span class="wrapper">
-          <span class="pkg">@ngx-kit/</span>
-          <span class="name">styler</span>
-          <span class="info">CSS-in-JSS tools for Angular applications</span>
-        </span>
-      </a>
-    </div>
-    <div class="footer">
-      Created and maintained by <a href="https://nvx.me" target="_blank">Sasha Novik</a>
+<div class="header">
+  <a href="#" class="brand">ngx-kit</a>
+  <div class="nav">
+    <a routerLink="/core">Core</a>
+    <a routerLink="/collection">Collection</a>
+    <a href="https://github.com/ngx-kit/ngx-kit" target="_blank">GitHub</a>
+  </div>
+</div>
+<div class="content">
+  <div class="block dark promo">
+    <div class="wrapper">
+      <div class="logo">
+        <img src="../../../assets/ngx-kit-logo.svg">
+      </div>
+      <div class="intro">
+        <h1>Boost your Angular development</h1>
+        <h2>Components customizing should be simple. Just generate components from ngx-kit collection and modify them as
+          you like.</h2>
+      </div>
     </div>
   </div>
+  <div class="block light structure">
+    <div class="wrapper">
+      <h2>Ngx-kit packages</h2>
+      <div class="layers">
+        <div>
+          <div>
+            <img src="../../../assets/core.svg">
+          </div>
+          <h3>Core</h3>
+          Low level services and directives for hiding complex logic
+        </div>
+        <div>
+          <div>
+            <img src="../../../assets/collection.svg">
+          </div>
+          <h3>Collection</h3>
+          Set of components based on ngx-kit core and packed into Angular-cli schematics
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block dark video">
+    <div class="wrapper">
+      <h2>Watch the video</h2>
+      <div class="container"></div>
+    </div>
+  </div>
+  <div class="block light how-it-works">
+    <div class="wrapper">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div>
+          <h3>1. Install the packages</h3>
+          <pre>npm i @ngx-kit/core --save
+npm i @ngx-kit/collection --save-dev</pre>
+        </div>
+        <div>
+          <h3>2. Import core modules</h3>
+
+          <pre>@NgModule({{ '{' }}
+  ...
+  imports: [
+    ...
+    KitForRootModule,
+    KitModule,
+    KitPlatformBrowserModule,</pre>
+        </div>
+        <div>
+          <h3>3. Generate via Angular CLI</h3>
+          <p>Pick a module from <a routerLink="/collection">Collection</a> and put the code to your project.</p>
+          <pre>ng g ui-button -c=@ngx-kit/collection [name]</pre>
+        </div>
+        <div>
+          <h3>4. Modify by your requirements</h3>
+          Update templates and styles. Only complex (but stable) logic is stored in <a routerLink="/core">Core</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block blue made-with">
+    <div class="wrapper">
+      <h2>Made with ngx-kit</h2>
+      <div class="project">
+        <div class="picture"></div>
+        <div class="info">
+          <h3>Alma</h3>
+          eCommerce Angular demo based on ngx-kit
+          <div class="links">
+            <a href="#">Live</a>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="project">
+        <div class="picture"></div>
+        <div class="info">
+          <h3>Let's Play Hub</h3>
+          Game video portal
+          <div class="links">
+            <a href="#">Live</a>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="logo">
+    <img src="../../../assets/ngx-kit-logo.svg">
+  </div>
+  &copy; ngx-kit {{ year }}
 </div>
