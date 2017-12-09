@@ -35,7 +35,9 @@
     "publish": "npm publish ./tmp/core-builds --access=public && npm publish ./tmp/collection-builds --access=public",
     "test": "ng test -a=playground-core -sr",
     "test:local": "ng test -a=playground-core",
-    "lint": "ng lint"
+    "lint": "npm run lint:ng && npm run lint:styles",
+    "lint:ng": "npm run lint",
+    "lint:styles": "stylelint {packages/collection,playground,website}/**/*.scss"
   },
   "private": true,
   "dependencies": {
@@ -79,6 +81,8 @@
     "ncp": "^2.0.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.51.8",
+    "stylelint": "^8.3.1",
+    "stylelint-order": "^0.8.0",
     "tslint": "^5.8.0",
     "typescript": "~2.4.2"
   }
