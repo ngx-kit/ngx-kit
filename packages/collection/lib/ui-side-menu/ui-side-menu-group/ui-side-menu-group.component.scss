@@ -1,21 +1,21 @@
 :host {
-  display: block;
   border-bottom: 1px solid #eeeeee;
+  display: block;
   &:last-child {
     border-bottom: 0;
   }
 }
 
 .title {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   padding: 8px 16px;
-  cursor: pointer;
   .wrapper {
     flex-grow: 1;
   }
   .arrow {
-    border: 0;
     background: transparent;
+    border: 0;
   }
 }

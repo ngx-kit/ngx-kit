@@ -1,9 +1,9 @@
 :host {
-  display: block;
+  background: #eeeeee;
   cursor: pointer;
-  user-select: none;
+  display: block;
+  padding: 8px 16px;
   transition-duration: .25s;
   transition-property: background;
-  background: #eeeeee;
-  padding: 8px 16px;
+  user-select: none;
 }

@@ -49,17 +49,7 @@
     "value-list-comma-space-before": "never",
     "value-list-max-empty-lines": 0,
     "custom-property-empty-line-before": [
-      "always",
-      {
-        "except": [
-          "after-custom-property",
-          "first-nested"
-        ],
-        "ignore": [
-          "after-comment",
-          "inside-single-line-block"
-        ]
-      }
+      "never"
     ],
     "custom-property-pattern": null,
     "shorthand-property-no-redundant-values": true,
@@ -75,14 +65,7 @@
     "declaration-colon-space-after": "always-single-line",
     "declaration-colon-space-before": "never",
     "declaration-empty-line-before": [
-      "always",
-      {
-        "except": [
-          "first-nested",
-          "after-comment",
-          "after-declaration"
-        ]
-      }
+      "never"
     ],
     "declaration-no-important": true,
     "declaration-property-unit-blacklist": null,

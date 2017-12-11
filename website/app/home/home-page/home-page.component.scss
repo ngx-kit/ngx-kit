@@ -41,9 +41,9 @@
   }
   h2 {
     border-bottom: 0;
+    font-size: 1.7rem;
     font-weight: 300;
     line-height: 2.2rem;
-    font-size: 1.7rem;
   }
   pre {
     padding: 16px;
@@ -115,8 +115,8 @@
         padding: 0;
       }
       img {
-        max-width: 60%;
         margin-bottom: 8px;
+        max-width: 60%;
       }
       &:hover {
         box-shadow: 2px 0 50px 12px rgba(31, 51, 73, .2);
@@ -135,8 +135,8 @@
 
 .how-it-works {
   .steps {
-    width: 700px;
     text-align: left;
+    width: 700px;
   }
 }
 
@@ -146,13 +146,13 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 48px;
-    width: 700px;
     text-align: left;
+    width: 700px;
     .picture {
       background: #3b61bd;
+      flex-shrink: 0;
       height: 150px;
       width: 250px;
-      flex-shrink: 0;
     }
     .info {
       flex-grow: 1;
@@ -167,10 +167,10 @@
       padding-top: 16px;
     }
     .links a {
-      display: inline-block;
       background: #eed33c;
       border-radius: 8px;
       color: #333333;
+      display: inline-block;
       line-height: 2.2em;
       margin-right: 8px;
       padding: 0 16px;
@@ -189,6 +189,6 @@
   padding: 64px 0;
   text-align: center;
   .logo img {
-    width: 46px
+    width: 46px;
   }
 }
