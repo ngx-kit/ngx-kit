@@ -1,8 +1,8 @@
 :host {
+  border-radius: 4px;
+  box-shadow: 0 0 20px #eeeeee;
   display: block;
   margin-bottom: 64px;
-  box-shadow: 0 0 20px #eeeeee;
-  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .title {
+  background: #eeeeee;
   margin: 0;
   padding: 16px;
-  background: #eeeeee;
 }

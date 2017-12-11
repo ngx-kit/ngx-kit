@@ -5,12 +5,13 @@ Original: https://github.com/mbostock/colorbrewer-theme (c) Mike Bostock <mike@o
 Ported by Fabrício Tavares de Oliveira
 
 */
+
 .hljs {
+  background: #f8f8f8;
+  color: #333333;
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
-  color: #333333;
-  background: #f8f8f8;
+  padding: .5em;
 }
 
 .hljs-comment,
@@ -23,7 +24,7 @@ Ported by Fabrício Tavares de Oliveira
 .hljs-selector-tag,
 .hljs-subst {
   color: #333333;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hljs-number,
@@ -43,24 +44,24 @@ Ported by Fabrício Tavares de Oliveira
 .hljs-section,
 .hljs-selector-id {
   color: #990000;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hljs-subst {
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .hljs-type,
 .hljs-class .hljs-title {
   color: #445588;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hljs-tag,
 .hljs-name,
 .hljs-attribute {
   color: #000080;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .hljs-regexp,
@@ -80,7 +81,7 @@ Ported by Fabrício Tavares de Oliveira
 
 .hljs-meta {
   color: #999999;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hljs-deletion {
@@ -96,6 +97,6 @@ Ported by Fabrício Tavares de Oliveira
 }
 
 .hljs-strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 

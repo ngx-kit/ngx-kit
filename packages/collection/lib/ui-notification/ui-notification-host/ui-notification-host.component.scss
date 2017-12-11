@@ -2,8 +2,8 @@
   position: fixed;
   &.position {
     &-top-right {
-      top: 0;
       right: 0;
+      top: 0;
     }
     &-bottom-right {
       bottom: 0;
@@ -14,20 +14,20 @@
       left: 0;
     }
     &-top-left {
-      top: 0;
       left: 0;
+      top: 0;
     }
   }
 }
 
 .item {
   background: rgba(0, 0, 0, .6);
-  padding: 16px;
-  margin: 8px;
   border-radius: 3px;
+  box-shadow: 0 0 15px 0 rgba(50, 50, 50, .3);
   color: #ffffff;
+  margin: 8px;
   min-width: 150px;
-  box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.3);
+  padding: 16px;
   .title {
     margin: 0;
     padding: 0;

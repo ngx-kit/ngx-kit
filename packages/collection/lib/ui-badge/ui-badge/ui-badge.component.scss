@@ -1,8 +1,8 @@
 :host {
+  border-radius: 1rem;
+  line-height: 1;
   min-width: 1px;
   text-align: center;
-  line-height: 1;
-  border-radius: 1rem;
   &.color {
     &-default {
       background: #cccccc;
@@ -15,16 +15,16 @@
   }
   &.size {
     &-s {
-      padding: 2px 4px;
       font-size: .8rem;
+      padding: 2px 4px;
     }
     &-m {
-      padding: 2px 8px;
       font-size: .9rem;
+      padding: 2px 8px;
     }
     &-l {
-      padding: 4px 8px;
       font-size: 1.1rem;
+      padding: 4px 8px;
     }
   }
   &.position {
@@ -37,8 +37,8 @@
     }
     &-top-right {
       @include corner;
-      top: 0;
       right: 0;
+      top: 0;
       transform: translate(50%, -50%);
     }
     &-bottom-right {
@@ -55,8 +55,8 @@
     }
     &-top-left {
       @include corner;
-      top: 0;
       left: 0;
+      top: 0;
       transform: translate(-50%, -50%);
     }
   }

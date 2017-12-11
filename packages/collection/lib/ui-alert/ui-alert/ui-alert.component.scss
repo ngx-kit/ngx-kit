@@ -3,8 +3,8 @@
 }
 
 .alert {
-  display: block;
   border-radius: 3px;
+  display: block;
   margin: 8px 0;
   padding: 8px 16px;
   &.color-default {
@@ -12,8 +12,8 @@
     border: 1px solid #dddddd;
   }
   &.color-primary {
-    background: skyblue;
-    border: deepskyblue;
+    background: #86cce9;
+    border: #00bbfa;
   }
 }
 
@@ -26,8 +26,8 @@
 .close {
   background: transparent;
   border: 0;
-  margin: 0;
-  padding: 0;
   cursor: pointer;
   float: right;
+  margin: 0;
+  padding: 0;
 }

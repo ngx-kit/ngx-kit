@@ -1,23 +1,23 @@
 $borderRadius: 3px;
 
 :host {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  text-decoration: none;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
   background-image: none;
-  white-space: nowrap;
-  line-height: 1.42857;
-  user-select: none;
-  border-radius: $borderRadius;
   border: 0;
-  transition-property: background;
+  border-radius: $borderRadius;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.42857;
+  margin-bottom: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
   transition-duration: .3s;
+  transition-property: background;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
   &.color {
     &-default {
       background: #cccccc;
@@ -42,16 +42,16 @@ $borderRadius: 3px;
   }
   &.size {
     &-s {
-      padding: 2px 6px;
       font-size: .85rem;
+      padding: 2px 6px;
     }
     &-m {
-      padding: 4px 12px;
       font-size: 1rem;
+      padding: 4px 12px;
     }
     &-l {
-      padding: 8px 20px;
       font-size: 1.15rem;
+      padding: 8px 20px;
     }
   }
   &.groupDirection {
@@ -69,12 +69,12 @@ $borderRadius: 3px;
     &-column {
       border-radius: 0;
       &:first-child {
-        border-top-right-radius: $borderRadius;
         border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
       }
       &:last-child {
-        border-bottom-right-radius: $borderRadius;
         border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
       }
     }
   }
