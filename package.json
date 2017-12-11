@@ -36,7 +36,7 @@
     "test": "ng test -a=playground-core -sr",
     "test:local": "ng test -a=playground-core",
     "lint": "npm run lint:ng && npm run lint:styles",
-    "lint:ng": "npm run lint",
+    "lint:ng": "ng lint",
     "lint:styles": "stylelint {packages/collection,playground,website}/**/*.scss"
   },
   "private": true,
