@@ -13,13 +13,15 @@ import { KitOverlayDirective } from './kit-overlay/kit-overlay.directive';
   ],
   exports: [
     KitOverlayDirective,
-    KitOverlayHostComponent,
     KitOverlayPositionDirective,
   ],
   declarations: [
     KitOverlayDirective,
     KitOverlayHostComponent,
     KitOverlayPositionDirective,
+  ],
+  entryComponents: [
+    KitOverlayHostComponent,
   ],
 })
 export class KitOverlayModule {

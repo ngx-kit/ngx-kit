@@ -17,10 +17,17 @@ import {
 import { DropdownStrategyService } from './dropdown-strategy.service';
 import { SideStrategyService } from './side-strategy.service';
 
+/**
+ * Implements positioning mechanism.
+ *
+ * Should be provided on component or directive.
+ */
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
   /**
    * Anchor element for placing.
+   *
+   * @publicApi
    */
   anchor: KitAnchorDirective | HTMLElement;
 
@@ -34,43 +41,54 @@ export class KitOverlayPositionService implements OnDestroy {
    */
   autofix: KitOverlayAutofix = 'switch-position';
 
+  /**
+   * @publicApi
+   */
   outsideClicks = new Subject<MouseEvent>();
 
+  /**
+   * @publicApi
+   */
   position: KitOverlayPosition = 'top';
 
+  /**
+   * @publicApi
+   */
   type: KitOverlayType = 'side';
 
   private rawPosition = false;
 
   private unsubs: any[] = [];
 
-  constructor(private zone: NgZone,
-              private el: ElementRef,
-              private style: KitStyleService,
-              private platform: KitPlatformService,
-              private em: KitEventManagerService,
-              private dropdownStrategy: DropdownStrategyService,
-              private sideStrategy: SideStrategyService) {
+  constructor(
+    private zone: NgZone,
+    private el: ElementRef,
+    private style: KitStyleService,
+    private platform: KitPlatformService,
+    private em: KitEventManagerService,
+    private dropdownStrategy: DropdownStrategyService,
+    private sideStrategy: SideStrategyService,
+  ) {
     if (this.platform.isBrowser()) {
       this.zone.onStable
-          .pipe(take(1))
-          .subscribe(() => {
-            this.zone.runOutsideAngular(() => {
-              this.unsubs = [
-                ...this.unsubs,
-                this.em.listenGlobal('scroll', this.reposition.bind(this), true),
-                this.em.listenGlobal('resize', this.reposition.bind(this), true),
-              ];
-            });
+        .pipe(take(1))
+        .subscribe(() => {
+          this.zone.runOutsideAngular(() => {
+            this.unsubs = [
+              ...this.unsubs,
+              this.em.listenGlobal('scroll', this.reposition.bind(this), true),
+              this.em.listenGlobal('resize', this.reposition.bind(this), true),
+            ];
           });
+        });
       // Handle auto-fix for automatic reposition
       this.unsubs.push(this.zone.onStable
-          .subscribe(() => {
-            if (this.rawPosition) {
-              this.rawPosition = false;
-              this.runAutofix();
-            }
-          }));
+        .subscribe(() => {
+          if (this.rawPosition) {
+            this.rawPosition = false;
+            this.runAutofix();
+          }
+        }));
     }
   }
 
@@ -107,15 +125,15 @@ export class KitOverlayPositionService implements OnDestroy {
           break;
       }
     });
-  };
+  }
 
   private autofixDropdown() {
     const newStyles = this.dropdownStrategy.autofix(
-        this.getRect(this.el.nativeElement),
-        this.getRect(this.anchor),
-        this.getFieldSize(),
-        this.position,
-        this.autofix);
+      this.getRect(this.el.nativeElement),
+      this.getRect(this.anchor),
+      this.getFieldSize(),
+      this.position,
+      this.autofix);
     if (newStyles !== null) {
       this.style.style = newStyles.styles;
     }
@@ -123,11 +141,11 @@ export class KitOverlayPositionService implements OnDestroy {
 
   private autofixSide(lastPosition: KitOverlayPosition | null = null) {
     const newStyles = this.sideStrategy.autofix(
-        this.getRect(this.el.nativeElement),
-        this.getRect(this.anchor),
-        this.getFieldSize(),
-        lastPosition || this.position,
-        this.autofix);
+      this.getRect(this.el.nativeElement),
+      this.getRect(this.anchor),
+      this.getFieldSize(),
+      lastPosition || this.position,
+      this.autofix);
     if (newStyles !== null && lastPosition !== newStyles.position) {
       this.style.style = newStyles.styles;
       // Additional reposition if last position changed
@@ -149,17 +167,17 @@ export class KitOverlayPositionService implements OnDestroy {
   private repositionDropdown() {
     this.rawPosition = true;
     this.style.style = this.dropdownStrategy.reposition(
-        this.getRect(this.anchor),
-        this.getFieldSize(),
-        this.position);
+      this.getRect(this.anchor),
+      this.getFieldSize(),
+      this.position);
   }
 
   private repositionSide() {
     this.rawPosition = true;
     this.style.style = this.sideStrategy.reposition(
-        this.getRect(this.anchor),
-        this.getFieldSize(),
-        this.position);
+      this.getRect(this.anchor),
+      this.getFieldSize(),
+      this.position);
   }
 
   private runAutofix() {
