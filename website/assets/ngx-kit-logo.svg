@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ version="1.1"
+ id="Layer_1"
+ x="0px"
+ y="0px"
+ viewBox="0 0 250 250"
+ style="enable-background:new 0 0 250 250;"
+ xml:space="preserve"
+ sodipodi:docname="ngx-kit-2.svg"
+ inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+ <defs id="defs4534">
+  <linearGradient
+   inkscape:collect="always"
+   id="linearGradient6016">
+   <stop
+     style="stop-color:#00f0fe;stop-opacity:1"
+     offset="0"
+     id="stop6012" />
+   <stop
+     style="stop-color:#4D8BFF;stop-opacity:1"
+     offset="1"
+     id="stop6014" />
+ </linearGradient>
+ <linearGradient
+   inkscape:collect="always"
+   id="linearGradient6006"><stop
+   style="stop-color:#9a41ff;stop-opacity:1;"
+   offset="0"
+   id="stop6002" /><stop
+   style="stop-color:#00d5ff;stop-opacity:1"
+   offset="1"
+   id="stop6004" />
+ </linearGradient>
+ <linearGradient
+   inkscape:collect="always"
+   xlink:href="#linearGradient6006"
+   id="linearGradient6008"
+   x1="-2.5015574"
+   y1="163.27936"
+   x2="195.95529"
+   y2="86.564941"
+   gradientUnits="userSpaceOnUse" />
+<linearGradient
+  inkscape:collect="always"
+  xlink:href="#linearGradient6016"
+  id="linearGradient6018"
+  x1="237.61792"
+  y1="30.032997"
+  x2="100.60849"
+  y2="120.084915"
+  gradientUnits="userSpaceOnUse" />
+<linearGradient
+  inkscape:collect="always"
+  xlink:href="#linearGradient6006"
+  id="linearGradient7898"
+  x1="214.03302"
+  y1="200.47169"
+  x2="-28.301888"
+  y2="201.06133"
+  gradientUnits="userSpaceOnUse" />
+</defs>
+<sodipodi:namedview
+pagecolor="#000000"
+bordercolor="#666666"
+borderopacity="1"
+objecttolerance="10"
+gridtolerance="10"
+guidetolerance="10"
+inkscape:pageopacity="1"
+inkscape:pageshadow="2"
+inkscape:window-width="1920"
+inkscape:window-height="1017"
+id="namedview4532"
+showgrid="false"
+showguides="false"
+inkscape:zoom="1.696"
+inkscape:cx="70.750493"
+inkscape:cy="132.8913"
+inkscape:window-x="-8"
+inkscape:window-y="-8"
+inkscape:window-maximized="1"
+inkscape:current-layer="g4529" />
+  <style
+  type="text/css"
+  id="style4521">
+  .st0{fill:#DD0031;}
+  .st1{fill:#C3002F;}
+  .st2{fill:#FFFFFF;}
+  </style>
+  <g id="g4529">
+    <path
+    style="fill:url(#linearGradient6018);stroke:none;stroke-width:1.0015748;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+    d="M 125,30 L 120,35 V 220 L 125,230 L 203.9,186.3 218.1,63.2 Z"
+    id="path6010"
+    inkscape:connector-curvature="0" />
+    <path
+    style="fill:url(#linearGradient7898);stroke:none;stroke-width:1.0015748;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+    d="M 125,30 V 230 L 46.1,186.3 31.9,63.2 Z"
+    id="path7878"
+    inkscape:connector-curvature="0" />
+    <g
+    aria-label="K"
+    style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+    id="text7914">
+      <path
+      sodipodi:type="inkscape:offset"
+      inkscape:radius="0"
+      inkscape:original="M 78.048828 68.517578 L 78.048828 181.48242 L 103.49414 181.48242 L 103.49414 126.18164 L 103.88867 126.18164 C 105.25413 129.3852 106.25065 131.45898 106.88086 132.4043 L 139.81055 181.48242 L 171.95117 181.48242 L 129.17578 122.40039 L 168.5625 68.517578 L 138.23438 68.517578 L 107.03906 115.625 C 105.56858 118.35591 104.51888 120.45725 103.88867 121.92773 L 103.49414 121.92773 L 103.49414 68.517578 L 78.048828 68.517578 z "
+      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:161.33332825px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Bold';fill:#ffffff;fill-opacity:1"
+      id="path8133"
+      d="M 78.048828,68.517578 V 181.48242 h 25.445312 v -55.30078 h 0.39453 c 1.36546,3.20356 2.36198,5.27734 2.99219,6.22266 l 32.92969,49.07812 h 32.14062 L 129.17578,122.40039 168.5625,68.517578 H 138.23438 L 107.03906,115.625 c -1.47048,2.73091 -2.52018,4.83225 -3.15039,6.30273 h -0.39453 V 68.517578 Z" />
+    </g>
+  </g>
+</svg>
