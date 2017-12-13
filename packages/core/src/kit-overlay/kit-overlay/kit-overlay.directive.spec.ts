@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { dispatchMouseEvent } from '../../../test/utils/dispatch-events';
 import { KitOverlayHostComponent } from '../kit-overlay-host/kit-overlay-host.component';
 import { KitOverlayModule } from '../kit-overlay.module';
 import { KitOverlayDirective } from './kit-overlay.directive';
@@ -10,63 +11,83 @@ describe('KitOverlayDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(async(() => {
     TestBed
-        .configureTestingModule({
-          declarations: [
-            TestComponent,
-          ],
-          imports: [
-            CommonModule,
-            KitOverlayModule.forRoot(),
-          ],
-        });
+      .configureTestingModule({
+        declarations: [
+          TestComponent,
+        ],
+        imports: [
+          CommonModule,
+          KitOverlayModule.forRoot(),
+          KitOverlayModule,
+        ],
+      });
   }));
+  beforeEach(() => {
+    const container = document.querySelector('.kit-overlay-container');
+    if (container) {
+      container.remove();
+    }
+  });
+
   function getComponent() {
     return fixture.componentInstance;
   }
-  it('should project to host', async(() => {
+
+  it('should project to the host', async(() => {
     fixture = createTestComponent(basicTemplate);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
   }));
   it('should toggle', async(() => {
     fixture = createTestComponent(basicTemplate);
     // show
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
     // hide
     getComponent().display = false;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeFalsy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeFalsy();
     // show again
     getComponent().display = true;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
   }));
   it('should hide if parent destroyed', async(() => {
     const template = `
       <div *ngIf="parentDisplay">
         <div *kitOverlay="display"><div class="content"></div></div>
       </div>
-      <div class="host">
-        <kit-overlay-host></kit-overlay-host>
-      </div>
     `;
     fixture = createTestComponent(template);
     // show
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
     // hide parent
     getComponent().parentDisplay = false;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.host .content'))).toBeFalsy();
+    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
+    expect(document.querySelector('.kit-overlay-container .content')).toBeFalsy();
   }));
-  it('should mark for check', async(() => {
-    fixture = createTestComponent(basicTemplate);
-    const spy = spyOn(getComponent().dir as any, 'cdrMarkForCheck');
+  it('should run CD from host', () => {
+    const template = `
+      <div class="local">{{ x }}</div>
+      <div *kitOverlay="display"><button class="act" (click)="x = x + 1"></button></div>
+    `;
+    fixture = createTestComponent(template);
     fixture.detectChanges();
-    getComponent().host.ngDoCheck();
-    expect(spy).toHaveBeenCalled();
-  }));
+    expect(fixture.debugElement.query(By.css('.local')).nativeElement.innerText).toEqual('0');
+    const act = document.querySelector('.kit-overlay-container .act');
+    expect(act).toBeTruthy();
+    if (act) {
+      dispatchMouseEvent(act, 'click');
+    }
+    expect(fixture.debugElement.query(By.css('.local')).nativeElement.innerText).toEqual('1');
+  });
 });
 
 @Component({
@@ -81,15 +102,15 @@ class TestComponent {
   @ViewChild(KitOverlayHostComponent) host: KitOverlayHostComponent;
 
   parentDisplay = true;
+
+  x = 0;
 }
 
 const basicTemplate = `
   <div *kitOverlay="display"><div class="content"></div></div>
-  <div class="host">
-    <kit-overlay-host></kit-overlay-host>
-  </div>
 `;
+
 function createTestComponent(template: string): ComponentFixture<TestComponent> {
   return TestBed.overrideComponent(TestComponent, {set: {template: template}})
-      .createComponent(TestComponent);
+    .createComponent(TestComponent);
 }

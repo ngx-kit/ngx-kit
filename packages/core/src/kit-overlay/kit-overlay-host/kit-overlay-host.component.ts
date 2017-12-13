@@ -1,18 +1,17 @@
-import { ChangeDetectionStrategy, Component, DoCheck, ViewContainerRef, } from '@angular/core';
-import { KitOverlayService } from '../kit-overlay.service';
+import { ChangeDetectionStrategy, Component, NgZone, ViewContainerRef, } from '@angular/core';
 
+/**
+ * @internal
+ */
 @Component({
   selector: 'kit-overlay-host',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KitOverlayHostComponent implements DoCheck {
-  constructor(public vcr: ViewContainerRef,
-              private service: KitOverlayService) {
-    this.service.registerHost(this);
-  }
-
-  ngDoCheck() {
-    this.service.hostDoCheckEmit();
+export class KitOverlayHostComponent {
+  constructor(
+    public zone: NgZone,
+    public vcr: ViewContainerRef,
+  ) {
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KitPlatformBrowserModule, KitRootModule } from '@ngx-kit/core';
+import { KitOverlayModule, KitPlatformBrowserModule, KitRootModule } from '@ngx-kit/core';
 import { AppComponent } from './app.component';
 import { VcComponent } from './vc/vc.component';
 
@@ -14,6 +14,7 @@ import { VcComponent } from './vc/vc.component';
     FormsModule,
     KitRootModule,
     KitPlatformBrowserModule,
+    KitOverlayModule,
   ],
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { VcComponent } from './vc/vc.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [VcComponent],
 })
 export class AppModule {
 }

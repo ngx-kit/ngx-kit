@@ -21,9 +21,11 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
 
   private viewRef: ViewRef | null;
 
-  constructor(private templateRef: TemplateRef<any>,
-              private service: KitOverlayService,
-              private cdr: ChangeDetectorRef) {
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private service: KitOverlayService,
+    private cdr: ChangeDetectorRef,
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -40,19 +42,15 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     if (this.kitOverlay && !this.viewRef) {
       this.viewRef = this.service.hostTemplate(this.templateRef, {});
       this.viewRef.detectChanges();
-      this.doCheckSub = this.service.hostDoCheck.subscribe(() => {
-        this.cdrMarkForCheck();
-      })
+      this.doCheckSub = this.service.onHostStable.subscribe(() => {
+        this.cdr.detectChanges();
+      });
     } else if (!this.kitOverlay) {
       this.destroyView();
       if (this.doCheckSub) {
         this.doCheckSub.unsubscribe();
       }
     }
-  }
-
-  private cdrMarkForCheck() {
-    this.cdr.markForCheck();
   }
 
   private destroyView() {

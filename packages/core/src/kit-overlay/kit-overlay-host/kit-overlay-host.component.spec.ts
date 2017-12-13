@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { KitOverlayModule } from '../kit-overlay.module';
 import { KitOverlayService } from '../kit-overlay.service';
 import { KitOverlayHostComponent } from './kit-overlay-host.component';
 
@@ -7,24 +8,22 @@ describe('KitOverlayHostComponent', () => {
   let service: KitOverlayService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        KitOverlayModule.forRoot(),
+        KitOverlayModule,
+      ],
       declarations: [
-        KitOverlayHostComponent,
       ],
       providers: [
-        KitOverlayService,
       ],
     }).compileComponents();
   }));
   beforeEach(() => {
     service = TestBed.get(KitOverlayService);
-    spyOn(service, 'registerHost');
     fixture = TestBed.createComponent(KitOverlayHostComponent);
   });
-  it('should create the app', () => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-  it(`should register in service`, () => {
-    expect(service.registerHost).toHaveBeenCalled();
+  it('should create the component', () => {
+    const component = fixture.debugElement.componentInstance;
+    expect(component).toBeTruthy();
   });
 });

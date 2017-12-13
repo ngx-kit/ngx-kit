@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { KitOverlayAutofix, KitOverlayPosition, StrategyEl, StrategyField } from '../meta';
 import { KitStyles } from '../../kit-style/meta';
+import { KitOverlayAutofix, KitOverlayPosition, StrategyEl, StrategyField } from '../meta';
 
 /**
  * @todo correct handle cases when anchor is not visible
+ *
+ * @internal
  */
 @Injectable()
 export class SideStrategyService {
-  autofix(el: StrategyEl,
-          anchor: StrategyEl,
-          field: StrategyField,
-          position: KitOverlayPosition,
-          autofix: KitOverlayAutofix): null | {position: KitOverlayPosition, styles: KitStyles} {
+  autofix(
+    el: StrategyEl,
+    anchor: StrategyEl,
+    field: StrategyField,
+    position: KitOverlayPosition,
+    autofix: KitOverlayAutofix,
+  ): null | {position: KitOverlayPosition, styles: KitStyles} {
     switch (autofix) {
       case 'none':
         return null;
@@ -41,9 +45,11 @@ export class SideStrategyService {
     return null;
   }
 
-  reposition(anchor: StrategyEl,
-             field: StrategyField,
-             position: KitOverlayPosition): KitStyles {
+  reposition(
+    anchor: StrategyEl,
+    field: StrategyField,
+    position: KitOverlayPosition,
+  ): KitStyles {
     switch (position) {
       case 'top':
         return {
