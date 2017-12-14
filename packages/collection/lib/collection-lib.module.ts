@@ -45,8 +45,7 @@ const lib = [
     CommonModule,
     ...lib,
   ],
-  declarations: [
-  ],
+  declarations: [],
   exports: [
     ...lib,
   ],

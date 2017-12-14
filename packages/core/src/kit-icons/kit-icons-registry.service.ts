@@ -52,11 +52,11 @@ export class KitIconsRegistryService {
         return of(this.cloneSvg(cached.svg));
       } else {
         return this.http.get(icon.url, {responseType: 'text'})
-            .pipe(
-                map(this.svgElementFromString),
-                tap(svg => this.cache.push({name, svg: svg})),
-                map(this.cloneSvg),
-            );
+          .pipe(
+            map(this.svgElementFromString),
+            tap(svg => this.cache.push({name, svg: svg})),
+            map(this.cloneSvg),
+          );
       }
     } else {
       throw new Error(`Icon "${name}" not found!`);

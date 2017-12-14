@@ -11,9 +11,9 @@ describe('KitAnchorDirective', () => {
   let anchoredDiv: any;
   // setup
   beforeEach(async(() =>
-      TestBed.configureTestingModule({
-        declarations: [ContainerComponent, KitAnchorDirective],
-      }).compileComponents(),
+    TestBed.configureTestingModule({
+      declarations: [ContainerComponent, KitAnchorDirective],
+    }).compileComponents(),
   ));
   beforeEach(() => {
     fixture = TestBed.createComponent(ContainerComponent);

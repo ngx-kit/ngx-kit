@@ -37,8 +37,10 @@ export class UiTooltipViewComponent implements OnChanges {
 
   @Input() position: KitOverlayPosition;
 
-  constructor(private overlayPosition: KitOverlayPositionService,
-              private kitClass: KitClassService) {
+  constructor(
+    private overlayPosition: KitOverlayPositionService,
+    private kitClass: KitClassService,
+  ) {
   }
 
   ngOnChanges() {

@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   forwardRef,
-  HostBinding,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -46,8 +45,10 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   private touches = new Subject<void>();
 
-  constructor(private cdr: ChangeDetectorRef,
-              private service: KitDatePickerService) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private service: KitDatePickerService,
+  ) {
   }
 
   ngOnInit() {

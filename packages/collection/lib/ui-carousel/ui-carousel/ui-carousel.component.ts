@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, In
 import { KitSlideHostService } from '@ngx-kit/core';
 import { from } from 'rxjs/observable/from';
 import { interval } from 'rxjs/observable/interval';
+import { merge } from 'rxjs/observable/merge';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
-import { merge } from 'rxjs/observable/merge';
 
 /**
  * @apiOrder 1
@@ -30,18 +30,20 @@ export class UiCarouselComponent implements OnInit {
 
   private clicks = new Subject<void>();
 
-  constructor(private host: KitSlideHostService,
-              private cdr: ChangeDetectorRef) {
+  constructor(
+    private host: KitSlideHostService,
+    private cdr: ChangeDetectorRef,
+  ) {
   }
 
   ngOnInit() {
     // auto-rotate slides, skip rotation if click handled
     merge(from([1]), interval(this.interval), this.clicks)
-        .pipe(debounceTime(this.interval))
-        .subscribe(() => {
-          this.host.rotate();
-          this.cdr.markForCheck();
-        });
+      .pipe(debounceTime(this.interval))
+      .subscribe(() => {
+        this.host.rotate();
+        this.cdr.markForCheck();
+      });
   }
 
   @HostListener('click')

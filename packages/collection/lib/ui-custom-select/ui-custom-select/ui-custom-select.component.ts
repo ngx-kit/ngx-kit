@@ -62,8 +62,10 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
 
   private touches = new Subject<void>();
 
-  constructor(private cdr: ChangeDetectorRef,
-              private el: ElementRef) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private el: ElementRef,
+  ) {
   }
 
   get nativeEl() {

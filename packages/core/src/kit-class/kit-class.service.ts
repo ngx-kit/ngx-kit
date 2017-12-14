@@ -23,8 +23,10 @@ export class KitClassService {
 
   private stateSize = 0;
 
-  constructor(private renderer: Renderer2,
-              private el: ElementRef) {
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+  ) {
   }
 
   /**
@@ -64,15 +66,15 @@ export class KitClassService {
 
   private processObj(obj: any): string[] {
     return Object.keys(obj)
-        .map((key: string) => {
-          const value = obj[key];
-          return isString(value)
-              ? `${key}-${value}`
-              : !!value
-                  ? key
-                  : null;
-        })
-        .filter(isString);
+      .map((key: string) => {
+        const value = obj[key];
+        return isString(value)
+          ? `${key}-${value}`
+          : !!value
+            ? key
+            : null;
+      })
+      .filter(isString);
   }
 
   private render(classes: Set<string>) {

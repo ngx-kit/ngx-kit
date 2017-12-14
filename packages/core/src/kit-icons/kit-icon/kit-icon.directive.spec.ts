@@ -10,21 +10,21 @@ describe('KitIconComponent', () => {
   let registry: RegistryMock;
   // setup
   beforeEach(async(() =>
-      TestBed.configureTestingModule({
-        imports: [
-          KitPlatformModule.forRoot(),
-        ],
-        declarations: [
-          TestComponent,
-          KitIconComponent,
-        ],
-        providers: [
-          {
-            provide: KitIconsRegistryService,
-            useClass: RegistryMock,
-          },
-        ],
-      }).compileComponents(),
+    TestBed.configureTestingModule({
+      imports: [
+        KitPlatformModule.forRoot(),
+      ],
+      declarations: [
+        TestComponent,
+        KitIconComponent,
+      ],
+      providers: [
+        {
+          provide: KitIconsRegistryService,
+          useClass: RegistryMock,
+        },
+      ],
+    }).compileComponents(),
   ));
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

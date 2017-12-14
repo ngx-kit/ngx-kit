@@ -21,9 +21,9 @@ const fadeOut = animation([
   styleUrls: ['./ui-alert.component.scss'],
   animations: [
     trigger(
-        'fadeOut', [
-          transition(':leave', useAnimation(fadeOut)),
-        ],
+      'fadeOut', [
+        transition(':leave', useAnimation(fadeOut)),
+      ],
     ),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,7 +48,7 @@ export class UiAlertComponent {
    */
   @Output() isOpenChange = new EventEmitter<boolean>();
 
-    @ContentChild(forwardRef(() => UiAlertTitleComponent)) title: UiAlertTitleComponent;
+  @ContentChild(forwardRef(() => UiAlertTitleComponent)) title: UiAlertTitleComponent;
 
   closeAlert() {
     this.isOpen = false;

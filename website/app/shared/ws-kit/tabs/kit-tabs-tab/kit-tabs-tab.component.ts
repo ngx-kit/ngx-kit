@@ -38,12 +38,12 @@ export class KitTabsTabComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.host.activeChanges
-        .pipe(
-            takeUntil(this.destroy$),
-        )
-        .subscribe(id => {
-          this.classActive = id === this.id;
-        });
+      .pipe(
+        takeUntil(this.destroy$),
+      )
+      .subscribe(id => {
+        this.classActive = id === this.id;
+      });
   }
 
   @HostListener('click')

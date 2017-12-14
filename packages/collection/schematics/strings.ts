@@ -10,6 +10,7 @@ const STRING_DECAMELIZE_REGEXP = (/([a-z\d])([A-Z])/g);
 const STRING_CAMELIZE_REGEXP = (/(-|_|\.|\s)+(.)?/g);
 const STRING_UNDERSCORE_REGEXP_1 = (/([a-z\d])([A-Z]+)/g);
 const STRING_UNDERSCORE_REGEXP_2 = (/-|\s+/g);
+
 /**
  * Converts a camelized string into all lower case separated by underscores.
  *
@@ -27,6 +28,7 @@ const STRING_UNDERSCORE_REGEXP_2 = (/-|\s+/g);
 export function decamelize(str: string): string {
   return str.replace(STRING_DECAMELIZE_REGEXP, '$1_$2').toLowerCase();
 }
+
 /**
  Replaces underscores, spaces, or camelCase with dashes.
 
@@ -44,6 +46,7 @@ export function decamelize(str: string): string {
 export function dasherize(str: string): string {
   return decamelize(str).replace(STRING_DASHERIZE_REGEXP, '-');
 }
+
 /**
  Returns the lowerCamelCase form of a string.
 
@@ -61,11 +64,12 @@ export function dasherize(str: string): string {
  */
 export function camelize(str: string): string {
   return str
-      .replace(STRING_CAMELIZE_REGEXP, (_match: string, _separator: string, chr: string) => {
-        return chr ? chr.toUpperCase() : '';
-      })
-      .replace(/^([A-Z])/, (match: string) => match.toLowerCase());
+    .replace(STRING_CAMELIZE_REGEXP, (_match: string, _separator: string, chr: string) => {
+      return chr ? chr.toUpperCase() : '';
+    })
+    .replace(/^([A-Z])/, (match: string) => match.toLowerCase());
 }
+
 /**
  Returns the UpperCamelCase form of a string.
 
@@ -83,6 +87,7 @@ export function camelize(str: string): string {
 export function classify(str: string): string {
   return str.split('.').map(part => capitalize(camelize(part))).join('.');
 }
+
 /**
  More general than decamelize. Returns the lower\_case\_and\_underscored
  form of a string.
@@ -100,10 +105,11 @@ export function classify(str: string): string {
  */
 export function underscore(str: string): string {
   return str
-      .replace(STRING_UNDERSCORE_REGEXP_1, '$1_$2')
-      .replace(STRING_UNDERSCORE_REGEXP_2, '_')
-      .toLowerCase();
+    .replace(STRING_UNDERSCORE_REGEXP_1, '$1_$2')
+    .replace(STRING_UNDERSCORE_REGEXP_2, '_')
+    .toLowerCase();
 }
+
 /**
  Returns the Capitalized form of a string
 

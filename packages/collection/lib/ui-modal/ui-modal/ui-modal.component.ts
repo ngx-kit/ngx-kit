@@ -1,5 +1,5 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Output, } from '@angular/core';
 
 /**
  * @todo check animateChild on :leave
@@ -51,7 +51,7 @@ export class UiModalComponent {
 
   @HostBinding('@host') hostAnimation = true;
 
-    fadeClick() {
+  fadeClick() {
     this.close.emit();
   }
 }

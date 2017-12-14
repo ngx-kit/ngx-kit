@@ -15,7 +15,7 @@ fs.copySync(path.resolve(__dirname, 'schematics'), path.resolve(releaseDir), {
 {
   const blueprint = fs.readFileSync(path.resolve(__dirname, 'package.json'), 'utf-8');
   const result = blueprint
-      .replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version);
+    .replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version);
   fs.writeFileSync(path.resolve(releaseDir, 'package.json'), result);
 }
 
@@ -23,7 +23,7 @@ fs.copySync(path.resolve(__dirname, 'schematics'), path.resolve(releaseDir), {
 {
   const blueprint = fs.readFileSync(path.resolve(__dirname, 'schematics/collection.json'), 'utf-8');
   const result = blueprint
-      .replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version);
+    .replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version);
   fs.writeFileSync(path.resolve(releaseDir, 'collection.json'), result);
 }
 

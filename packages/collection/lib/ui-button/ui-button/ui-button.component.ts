@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, Optional, } from '@angular/core';
 import { KitClassService } from '@ngx-kit/core';
-import { UiButtonGroupComponent } from '../ui-button-group/ui-button-group.component';
 import { UiButtonColor, UiButtonSize } from '../meta';
+import { UiButtonGroupComponent } from '../ui-button-group/ui-button-group.component';
 
 /**
  * @apiOrder 1
@@ -27,8 +27,10 @@ export class UiButtonComponent implements OnInit, OnChanges {
 
   @Input() size: UiButtonSize = 'm';
 
-  constructor(private kitClass: KitClassService,
-              @Optional() private group: UiButtonGroupComponent) {
+  constructor(
+    private kitClass: KitClassService,
+    @Optional() private group: UiButtonGroupComponent,
+  ) {
   }
 
   ngOnChanges() {

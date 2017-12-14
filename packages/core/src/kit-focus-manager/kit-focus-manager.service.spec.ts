@@ -12,16 +12,16 @@ describe('KitFocusManagerService', () => {
   let service: KitFocusManagerService;
   beforeEach(async(() => {
     TestBed
-        .configureTestingModule({
-          declarations: [
-            TestWrapperComponent,
-            TestComponent,
-          ],
-          imports: [
-            CommonModule,
-            KitPlatformBrowserModule,
-          ],
-        });
+      .configureTestingModule({
+        declarations: [
+          TestWrapperComponent,
+          TestComponent,
+        ],
+        imports: [
+          CommonModule,
+          KitPlatformBrowserModule,
+        ],
+      });
   }));
   beforeEach(() => {
     fixture = TestBed.createComponent(TestWrapperComponent);
@@ -71,8 +71,8 @@ describe('KitFocusManagerService', () => {
       done();
     }, 1);
   });
-    // @todo fix
-    // Does not work on minimized browser
+  // @todo fix
+  // Does not work on minimized browser
 //  it('should trap the focus', (done) => {
 //    service.capture();
 //    const outside = fixture.debugElement.query(By.css('.outside')).nativeElement;

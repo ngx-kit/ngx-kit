@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, } from '@angular/core';
 import { KitCollapseItemService } from '@ngx-kit/core';
 
 /**

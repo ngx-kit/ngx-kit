@@ -4,7 +4,9 @@
     "outDir": "../../out-tsc/app",
     "baseUrl": "",
     "paths": {
-      "@ngx-kit/core": ["../../packages/core"]
+      "@ngx-kit/core": [
+        "../../packages/core"
+      ]
     }
   },
   "exclude": [

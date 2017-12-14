@@ -18,24 +18,26 @@ export class KitOutsideClickDirective implements OnInit, OnDestroy {
 
   private unsubFn: Function;
 
-  constructor(private el: ElementRef,
-              private em: KitEventManagerService,
-              private zone: NgZone) {
+  constructor(
+    private el: ElementRef,
+    private em: KitEventManagerService,
+    private zone: NgZone,
+  ) {
   }
 
   ngOnInit() {
     this.zone.runOutsideAngular(() => {
       this.unsubFn = this.em.listenGlobal(
-          'click',
-          (event: MouseEvent) => {
-            const path = event['path'] || this.em.getEventPath(event);
-            if (path.indexOf(this.el.nativeElement) === -1) {
-              this.zone.run(() => {
-                this.kitOutsideClick.emit(event);
-              });
-            }
-          },
-          true);
+        'click',
+        (event: MouseEvent) => {
+          const path = event['path'] || this.em.getEventPath(event);
+          if (path.indexOf(this.el.nativeElement) === -1) {
+            this.zone.run(() => {
+              this.kitOutsideClick.emit(event);
+            });
+          }
+        },
+        true);
     });
   }
 

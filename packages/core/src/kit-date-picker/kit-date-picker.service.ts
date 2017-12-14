@@ -221,7 +221,7 @@ export class KitDatePickerService implements OnDestroy {
    */
   private updateGrid() {
     if (this._monthCursor.value &&
-        this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor.value))) {
+      this.isDatesEqual(this.startOfMonth(this._focus), this.startOfMonth(this._monthCursor.value))) {
       // update current grid
       const grid = this._grid.value;
       grid.forEach(r => r.forEach(c => {

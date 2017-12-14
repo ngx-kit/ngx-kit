@@ -1,8 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, } from '@angular/core';
 import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
-import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 /**
  * @apiOrder 4
@@ -52,10 +52,10 @@ export class UiTabsContentComponent implements OnDestroy {
 
   constructor(private host: KitSlideHostService) {
     this.host.directionChanges
-        .pipe(takeUntil(this.destroy))
-        .subscribe(d => {
-          this.slideTrigger = d;
-        });
+      .pipe(takeUntil(this.destroy))
+      .subscribe(d => {
+        this.slideTrigger = d;
+      });
   }
 
   ngOnDestroy() {

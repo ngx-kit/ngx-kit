@@ -68,11 +68,11 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
     if (pointerState !== this.state) {
       if (this.range) {
         const pointer = Math.abs(this.state[0] - pointerState) < Math.abs(this.state[1] - pointerState)
-            ? 'left'
-            : 'right';
+          ? 'left'
+          : 'right';
         const newState = pointer === 'left'
-            ? [pointerState, this.state[1]]
-            : [this.state[0], pointerState];
+          ? [pointerState, this.state[1]]
+          : [this.state[0], pointerState];
         this.state = newState;
       } else {
         this.state = pointerState;
