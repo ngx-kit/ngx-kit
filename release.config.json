@@ -1,6 +1,5 @@
 {
   "vendors": {
-    "styler": "1.0.0-beta.15",
     "angular": "^5.0.0",
     "typescript": "~2.4.2"
   }
