@@ -40,8 +40,6 @@ export class KitIconsRegistryService {
 
   /**
    * Get icon by name.
-   *
-   * @publicApi
    */
   get(name: string): Observable<SVGElement> {
     const icon = this.icons.find(i => i.name === name);
@@ -65,8 +63,6 @@ export class KitIconsRegistryService {
 
   /**
    * Register icon.
-   *
-   * @publicApi
    */
   register(name: string, url: string) {
     this.icons.push({name, url});
@@ -74,8 +70,6 @@ export class KitIconsRegistryService {
 
   /**
    * Register icons set.
-   *
-   * @publicApi
    */
   registerSet(icons: KitIcon[]) {
     this.icons = [...this.icons, ...icons];

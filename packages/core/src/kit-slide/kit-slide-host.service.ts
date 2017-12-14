@@ -7,8 +7,6 @@ import { KitSlideDirection, KitSlideId } from './meta';
 export class KitSlideHostService {
   /**
    * Activate first slide on init.
-   *
-   * @publicApi
    */
   activateFirst = true;
 
@@ -27,8 +25,6 @@ export class KitSlideHostService {
 
   /**
    * Get active slide id.
-   *
-   * @publicApi
    */
   get active(): KitSlideId {
     return this._active.value;
@@ -36,8 +32,6 @@ export class KitSlideHostService {
 
   /**
    * Set active side by id.
-   *
-   * @publicApi
    */
   set active(id: KitSlideId) {
     this._direction.next(this._active.value === null
@@ -54,8 +48,6 @@ export class KitSlideHostService {
 
   /**
    * Set active and emit only 'initial' direction.
-   *
-   * @publicApi
    */
   set activeInitial(id: KitSlideId) {
     this._direction.next('initial');
@@ -68,8 +60,6 @@ export class KitSlideHostService {
 
   /**
    * Get `Observable` with active slide id.
-   *
-   * @publicApi
    */
   get activeChanges(): Observable<KitSlideId> {
     return this._active.asObservable();
@@ -77,8 +67,6 @@ export class KitSlideHostService {
 
   /**
    * Get `Observable` with direction of slide changing (next, prev).
-   *
-   * @publicApi
    */
   get directionChanges(): Observable<KitSlideDirection> {
     return this._direction.asObservable();
@@ -86,8 +74,6 @@ export class KitSlideHostService {
 
   /**
    * Register slide.
-   *
-   * @publicApi
    */
   addId(id: KitSlideId) {
     if (!this.firstRegistration) {
@@ -101,8 +87,6 @@ export class KitSlideHostService {
 
   /**
    * Delete slide.
-   *
-   * @publicApi
    */
   deleteId(id: KitSlideId) {
     this.ids.delete(id);
@@ -110,8 +94,6 @@ export class KitSlideHostService {
 
   /**
    * Generate slide id.
-   *
-   * @publicApi
    */
   genId(): number {
     this.lastId++;
@@ -120,8 +102,6 @@ export class KitSlideHostService {
 
   /**
    * Activate next slide.
-   *
-   * @publicApi
    */
   next() {
     const ids = Array.from(this.ids);
@@ -133,8 +113,6 @@ export class KitSlideHostService {
 
   /**
    * Activate prev slide.
-   *
-   * @publicApi
    */
   prev() {
     const currentIndex = this.getCurrentIndex();
@@ -145,8 +123,6 @@ export class KitSlideHostService {
 
   /**
    * Activate next item or first.
-   *
-   * @publicApi
    */
   rotate() {
     const ids = Array.from(this.ids);

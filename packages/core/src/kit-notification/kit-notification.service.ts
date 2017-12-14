@@ -53,8 +53,6 @@ export class KitNotificationService {
 
   /**
    * Configure notification service.
-   *
-   * @publicApi
    */
   config(config: Partial<KitNotificationHostConfig>) {
     this._config.next({...this._config.value, ...config} as KitNotificationHostConfig);
@@ -62,8 +60,6 @@ export class KitNotificationService {
 
   /**
    * Display notification message.
-   *
-   * @publicApi
    */
   open(params: any) {
     const __id = uuid();

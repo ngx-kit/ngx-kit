@@ -13,8 +13,6 @@ export class KitCollapseItemService implements OnDestroy {
 
   /**
    * Is item activated.
-   *
-   * @publicApi
    */
   get active(): boolean {
     return this.host.isActive(this._id);
@@ -22,8 +20,6 @@ export class KitCollapseItemService implements OnDestroy {
 
   /**
    * Set activation state.
-   *
-   * @publicApi
    */
   set active(active: boolean) {
     if (active) {
@@ -35,8 +31,6 @@ export class KitCollapseItemService implements OnDestroy {
 
   /**
    * Get item id.
-   *
-   * @publicApi
    */
   get id(): KitCollapseId {
     return this._id;
@@ -44,8 +38,6 @@ export class KitCollapseItemService implements OnDestroy {
 
   /**
    * Set item id.
-   *
-   * @publicApi
    */
   set id(id: KitCollapseId) {
     if (id) {
@@ -63,8 +55,6 @@ export class KitCollapseItemService implements OnDestroy {
 
   /**
    * Toggle activation state.
-   *
-   * @publicApi
    */
   toggle() {
     this.host.toggle(this._id);

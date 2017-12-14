@@ -5,9 +5,6 @@ import { KitCollapseId } from './meta';
 
 @Injectable()
 export class KitCollapseHostService {
-  /**
-   * @publicApi
-   */
   multiple = false;
 
   private _active = new BehaviorSubject<Set<KitCollapseId>>(new Set<KitCollapseId>());
@@ -16,8 +13,6 @@ export class KitCollapseHostService {
 
   /**
    * Get `Observable` with activated items.
-   *
-   * @publicApi
    */
   get activeChanges(): Observable<Set<KitCollapseId>> {
     return this._active.asObservable();
@@ -32,8 +27,6 @@ export class KitCollapseHostService {
 
   /**
    * Activate item with id.
-   *
-   * @publicApi
    */
   activate(id: KitCollapseId) {
     const current = this._active.value;
@@ -48,8 +41,6 @@ export class KitCollapseHostService {
 
   /**
    * Activate first registered item.
-   *
-   * @publicApi
    */
   activateFirst() {
     this.activate(this.ids.values().next().value);
@@ -57,8 +48,6 @@ export class KitCollapseHostService {
 
   /**
    * Add item.
-   *
-   * @publicApi
    */
   addId(id: KitCollapseId) {
     this.ids.add(id);
@@ -66,8 +55,6 @@ export class KitCollapseHostService {
 
   /**
    * Deactivate item.
-   *
-   * @publicApi
    */
   deactivate(id: KitCollapseId) {
     const current = this._active.value;
@@ -78,8 +65,6 @@ export class KitCollapseHostService {
 
   /**
    * Delete item.
-   *
-   * @publicApi
    */
   deleteId(id: KitCollapseId) {
     this.ids.delete(id);
@@ -87,8 +72,6 @@ export class KitCollapseHostService {
 
   /**
    * Is item activated.
-   *
-   * @publicApi
    */
   isActive(id: KitCollapseId): boolean {
     const current = this._active.value;
@@ -97,8 +80,6 @@ export class KitCollapseHostService {
 
   /**
    * Change item activation state.
-   *
-   * @publicApi
    */
   toggle(id: KitCollapseId) {
     const current = this._active.value;

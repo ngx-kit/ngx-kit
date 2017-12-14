@@ -20,6 +20,8 @@ export class ApiComponent implements OnChanges {
     doc: ComponentApiDoc;
   }[] = [];
 
+  displayBody = false;
+
   @Input() rawApi: any;
 
   constructor(
@@ -75,7 +77,7 @@ export class ApiComponent implements OnChanges {
     // methods
     this.methods = [
       ...api.setProps
-        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .filter(m => m.doc && !m.doc.tags.find(t => t.name === 'internal'))
         .map(m => {
           const type = m.type ? `: ${this.convertType(m.type)}` : '';
           const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
@@ -87,17 +89,17 @@ export class ApiComponent implements OnChanges {
           };
         }),
       ...api.getProps
-        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .filter(m => m.doc && !m.doc.tags.find(t => t.name === 'internal'))
         .map(m => {
           const type = m.type ? `: ${this.convertType(m.type)}` : '';
           return {
             name: '___' + m.name,
             code: `get ${m.name}()${type}`,
             doc: this.renderDoc(m.doc),
-          }
+          };
         }),
       ...api.methods
-        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .filter(m => m.doc && !m.doc.tags.find(t => t.name === 'internal'))
         .map(m => {
           const type = m.type ? `: ${this.convertType(m.type)}` : '';
           const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
@@ -109,9 +111,18 @@ export class ApiComponent implements OnChanges {
           };
         }),
     ].sort((x, y) => x.name > y.name ? 1 : -1);
+    // props (only for services)
+    api.props = api.props.map(p => {
+      p.type = p.type
+        ? this.convertType(p.type)
+        : typeof p.default;
+      return p;
+    });
     // render params docs
     api.inputs.forEach(i => i.doc = this.renderDoc(i.doc));
     api.outputs.forEach(o => o.doc = this.renderDoc(o.doc));
+    // render props docs
+    api.props.forEach(p => p.doc = this.renderDoc(p.doc));
     return api;
   }
 

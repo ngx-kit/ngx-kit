@@ -67,7 +67,7 @@ function readNodeWrapper(level, data, parent) {
           const input = {
             name: getDecoratorName(node),
             type: getInputDecoratorType(node),
-            default: getInputDecoratorDefault(node),
+            default: getInitializerValue(node.parent),
             doc: getDoc(node.parent),
           };
           data.inputs.push(input);
@@ -156,14 +156,14 @@ function getInputDecoratorType(node) {
   }
 }
 
-function getInputDecoratorDefault(node) {
-  if (node.parent.initializer) {
-    switch (node.parent.initializer.kind) {
+function getInitializerValue(node) {
+  if (node.initializer) {
+    switch (node.initializer.kind) {
       case ts.SyntaxKind.StringLiteral:
-        return node.parent.initializer.text;
+        return node.initializer.text;
         break;
       case ts.SyntaxKind.NumericLiteral:
-        return node.parent.initializer.text;
+        return node.initializer.text;
         break;
       case ts.SyntaxKind.FalseKeyword:
         return false;
@@ -174,7 +174,7 @@ function getInputDecoratorDefault(node) {
       case ts.SyntaxKind.NullKeyword:
         return null;
       case ts.SyntaxKind.NewExpression:
-        return node.parent.initializer.expression.text;
+        return node.initializer.expression.text;
         break;
     }
   }
@@ -223,6 +223,7 @@ function getProp(node) {
       name: node.name.text,
       typeParameters: node.typeParameters ? node.typeParameters.map(t => t.name.text) : undefined,
       type: node.type ? getTypeFromTypeNode(node.type) : undefined,
+      default: getInitializerValue(node),
       doc: getDoc(node),
     };
   } else {
