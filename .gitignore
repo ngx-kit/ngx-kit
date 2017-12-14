@@ -43,6 +43,7 @@ testem.log
 Thumbs.db
 
 sh.exe.stackdump
+debug.log
 
 packages/cli/node_modules
 website/assets/docs
