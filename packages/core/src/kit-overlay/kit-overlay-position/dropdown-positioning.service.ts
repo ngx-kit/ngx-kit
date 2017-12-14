@@ -8,7 +8,7 @@ import { KitOverlayAutofix, KitOverlayPosition, positionPairs, StrategyEl, Strat
  * @internal
  */
 @Injectable()
-export class DropdownStrategyService {
+export class DropdownPositioningService {
   autofix(
     el: StrategyEl,
     anchor: StrategyEl,

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
-import { DropdownStrategyService } from './kit-overlay-position/dropdown-strategy.service';
+import { DropdownPositioningService } from './kit-overlay-position/dropdown-positioning.service';
 import { KitOverlayPositionDirective } from './kit-overlay-position/kit-overlay-position.directive';
-import { SideStrategyService } from './kit-overlay-position/side-strategy.service';
+import { SidePositioningService } from './kit-overlay-position/side-positioning.service';
 import { KitOverlayService } from './kit-overlay.service';
 import { KitOverlayDirective } from './kit-overlay/kit-overlay.directive';
 
@@ -30,8 +30,8 @@ export class KitOverlayModule {
       ngModule: KitOverlayModule,
       providers: [
         KitOverlayService,
-        DropdownStrategyService,
-        SideStrategyService,
+        DropdownPositioningService,
+        SidePositioningService,
       ],
     };
   }
