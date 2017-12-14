@@ -10,6 +10,8 @@ import { pkgName } from '../meta';
 export class MainComponent implements OnInit {
   content: any;
 
+  sideOpened = false;
+
   constructor(private contentService: ContentService) {
   }
 

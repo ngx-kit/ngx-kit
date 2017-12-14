@@ -23,6 +23,10 @@ export class RootComponent {
         name: 'git',
         url: '/assets/github-sign.svg',
       },
+      {
+        name: 'menu',
+        url: '/assets/menu.svg',
+      },
     ]);
     // google analytics
     router.events

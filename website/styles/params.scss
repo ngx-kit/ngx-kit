@@ -1,0 +1,32 @@
+$brandColor: #4f8cfc;
+$brandBackground: linear-gradient(45deg, #4475da 0%, $brandColor 100%);
+$darkBackground: linear-gradient(45deg, #151d1b 0%, #334042 100%);
+$lightBackground: linear-gradient(45deg, rgb(226, 231, 234) 0%, rgba(247, 252, 255, 0) 100%), url("/assets/hypnotize.png");
+$textColor: #333333;
+
+$headerHeight: 80px;
+$sideWidth: 240px;
+
+@mixin for-small-mobile {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}

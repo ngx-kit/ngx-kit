@@ -50,6 +50,7 @@ code {
 pre {
   background: #f7f7f7;
   margin: 0;
+  overflow-x: auto;
   padding: 8px;
 }
 

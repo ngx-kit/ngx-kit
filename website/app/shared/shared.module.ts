@@ -10,6 +10,7 @@ import { DemoComponent } from './demo/demo.component';
 import { DocsPageComponent } from './docs-page/docs-page.component';
 import { MdComponent } from './md/md.component';
 import { ModulePageComponent } from './module-page/module-page.component';
+import { ScrollUpDirective } from './scroll-up/scroll-up.directive';
 import { TitleComponent } from './title/title.component';
 import { KitTabsModule } from './ws-kit/tabs/kit-tabs.module';
 import { UiLoadingBarModule } from './ws-kit/ui-loading-bar/ui-loading-bar.module';
@@ -22,6 +23,7 @@ const exp = [
   ApiComponent,
   ContentMenuComponent,
   ModulePageComponent,
+  ScrollUpDirective,
 ];
 const wsKit = [
   KitTabsModule,

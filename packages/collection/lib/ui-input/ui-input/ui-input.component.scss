@@ -39,8 +39,10 @@
     &::after {
       border-bottom-width: 2px;
       border-color: #f7f7f7;
+      border-left: 0;
       border-right-width: 2px;
       border-style: solid;
+      border-top: 0;
       content: " ";
       display: table;
       height: 8px;
