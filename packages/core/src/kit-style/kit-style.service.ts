@@ -22,9 +22,11 @@ export class KitStyleService {
 
   private _style: {[key: string]: string};
 
-  constructor(private el: ElementRef,
-              private differs: KeyValueDiffers,
-              private renderer: Renderer2) {
+  constructor(
+    private el: ElementRef,
+    private differs: KeyValueDiffers,
+    private renderer: Renderer2,
+  ) {
   }
 
   set style(v: KitStyles) {

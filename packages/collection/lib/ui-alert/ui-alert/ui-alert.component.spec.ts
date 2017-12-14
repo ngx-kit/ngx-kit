@@ -15,10 +15,10 @@ describe('Alert/AlertComponent', () => {
   let alertWithTitle: UiAlertComponent;
   // setup
   beforeEach(async(() =>
-      TestBed.configureTestingModule({
-        imports: [NoopAnimationsModule],
-        declarations: [ContainerComponent, UiAlertComponent, UiAlertTitleComponent],
-      }).compileComponents(),
+    TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule],
+      declarations: [ContainerComponent, UiAlertComponent, UiAlertTitleComponent],
+    }).compileComponents(),
   ));
   beforeEach(() => {
     fixture = TestBed.createComponent(ContainerComponent);

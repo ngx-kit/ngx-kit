@@ -9,20 +9,20 @@
 export function createMouseEvent(type: string, x = 0, y = 0) {
   const event = document.createEvent('MouseEvent');
   event.initMouseEvent(type,
-      false, /* canBubble */
-      false, /* cancelable */
-      window, /* view */
-      0, /* detail */
-      x, /* screenX */
-      y, /* screenY */
-      x, /* clientX */
-      y, /* clientY */
-      false, /* ctrlKey */
-      false, /* altKey */
-      false, /* shiftKey */
-      false, /* metaKey */
-      0, /* button */
-      null /* relatedTarget */);
+    false, /* canBubble */
+    false, /* cancelable */
+    window, /* view */
+    0, /* detail */
+    x, /* screenX */
+    y, /* screenY */
+    x, /* clientX */
+    y, /* clientY */
+    false, /* ctrlKey */
+    false, /* altKey */
+    false, /* shiftKey */
+    false, /* metaKey */
+    0, /* button */
+    null /* relatedTarget */);
   return event;
 }
 
@@ -42,15 +42,17 @@ export function createTouchEvent(type: string, pageX = 0, pageY = 0) {
 }
 
 /** Dispatches a keydown event from an element. */
-export function createKeyboardEvent(type: string,
-                                    keyCode: number,
-                                    extra: {
-                                      target?: Element,
-                                      key?: string,
-                                      ctrl?: boolean,
-                                      alt?: boolean,
-                                      shift?: boolean
-                                    } = {}) {
+export function createKeyboardEvent(
+  type: string,
+  keyCode: number,
+  extra: {
+    target?: Element,
+    key?: string,
+    ctrl?: boolean,
+    alt?: boolean,
+    shift?: boolean
+  } = {},
+) {
   const event = document.createEvent('KeyboardEvent') as any;
   // Firefox does not support `initKeyboardEvent`, but supports `initKeyEvent`.
   const initEventFn = (event.initKeyEvent || event.initKeyboardEvent).bind(event);

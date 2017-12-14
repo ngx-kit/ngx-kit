@@ -1,6 +1,6 @@
 import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/core';
-import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { take } from 'rxjs/operators';
+import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyTab } from '../kit-event-manager/meta';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 
@@ -21,10 +21,12 @@ export class KitFocusManagerService implements OnDestroy {
 
   private unsubs: any[];
 
-  constructor(private el: ElementRef,
-              private zone: NgZone,
-              private renderer: Renderer2,
-              private em: KitEventManagerService) {
+  constructor(
+    private el: ElementRef,
+    private zone: NgZone,
+    private renderer: Renderer2,
+    private em: KitEventManagerService,
+  ) {
   }
 
   private get documentActiveElement(): HTMLElement {
@@ -68,14 +70,14 @@ export class KitFocusManagerService implements OnDestroy {
    */
   focusItem(id: string | number) {
     this.zone.onStable
-        .pipe(take(1))
-        .subscribe(() => {
-          this.items.forEach(i => {
-            if (i.kitFocus === id) {
-              i.focus();
-            }
-          });
-        })
+      .pipe(take(1))
+      .subscribe(() => {
+        this.items.forEach(i => {
+          if (i.kitFocus === id) {
+            i.focus();
+          }
+        });
+      })
   }
 
   /**
@@ -138,10 +140,10 @@ export class KitFocusManagerService implements OnDestroy {
     });
     if (this.autoCapture) {
       this.zone.onStable
-          .pipe(take(1))
-          .subscribe(() => {
-            this.capture();
-          });
+        .pipe(take(1))
+        .subscribe(() => {
+          this.capture();
+        });
     }
   }
 
@@ -207,8 +209,8 @@ export class KitFocusManagerService implements OnDestroy {
       const candidate = candidates[i];
       const candidateIndex = parseInt(candidate.getAttribute('tabindex'), 10) || candidate.tabIndex;
       if (candidateIndex < 0
-          || (candidate.tagName === 'INPUT' && candidate.type === 'hidden')
-          || candidate.disabled) {
+        || (candidate.tagName === 'INPUT' && candidate.type === 'hidden')
+        || candidate.disabled) {
         continue;
       }
       if (candidateIndex === 0) {
@@ -222,12 +224,12 @@ export class KitFocusManagerService implements OnDestroy {
       }
     }
     const tabbableNodes = orderedTabbables
-        .sort(function (a, b) {
-          return a.tabIndex === b.tabIndex ? a.index - b.index : a.tabIndex - b.tabIndex;
-        })
-        .map(function (a) {
-          return a.node
-        });
+      .sort(function (a, b) {
+        return a.tabIndex === b.tabIndex ? a.index - b.index : a.tabIndex - b.tabIndex;
+      })
+      .map(function (a) {
+        return a.node
+      });
     Array.prototype.push.apply(tabbableNodes, basicTabbables);
     return tabbableNodes;
   }

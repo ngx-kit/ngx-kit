@@ -14,8 +14,10 @@ export class UiModulePageComponent implements OnInit {
 
   private pkg: string;
 
-  constructor(private route: ActivatedRoute,
-              private contentService: ContentService) {
+  constructor(
+    private route: ActivatedRoute,
+    private contentService: ContentService,
+  ) {
   }
 
   ngOnInit() {

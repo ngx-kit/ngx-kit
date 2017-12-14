@@ -11,25 +11,25 @@ describe('KitOverlayPositionDirective', () => {
   let service: KitOverlayPositionMockService;
   beforeEach(async(() => {
     TestBed
-        .configureTestingModule({
-          declarations: [
-            TestComponent,
-            KitOverlayPositionDirective,
-          ],
+      .configureTestingModule({
+        declarations: [
+          TestComponent,
+          KitOverlayPositionDirective,
+        ],
+        providers: [
+          KitOverlayPositionMockService,
+        ],
+      })
+      .overrideDirective(KitOverlayPositionDirective, {
+        set: {
           providers: [
-            KitOverlayPositionMockService,
+            {
+              provide: KitOverlayPositionService,
+              useExisting: KitOverlayPositionMockService,
+            },
           ],
-        })
-        .overrideDirective(KitOverlayPositionDirective, {
-          set: {
-            providers: [
-              {
-                provide: KitOverlayPositionService,
-                useExisting: KitOverlayPositionMockService,
-              },
-            ],
-          },
-        });
+        },
+      });
   }));
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

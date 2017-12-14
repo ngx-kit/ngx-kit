@@ -14,7 +14,7 @@ import { KitCollapseHostService } from '@ngx-kit/core';
   ],
 })
 export class UiSideMenuComponent implements OnInit, OnChanges {
-    /**
+  /**
    * Allow few panels open at a time.
    */
   @Input() multiple = false;

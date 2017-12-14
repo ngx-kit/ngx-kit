@@ -12,10 +12,8 @@ describe('KitOverlayHostComponent', () => {
         KitOverlayModule.forRoot(),
         KitOverlayModule,
       ],
-      declarations: [
-      ],
-      providers: [
-      ],
+      declarations: [],
+      providers: [],
     }).compileComponents();
   }));
   beforeEach(() => {

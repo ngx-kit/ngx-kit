@@ -42,10 +42,12 @@ export class KitIconComponent implements OnInit, OnChanges {
     this.renderer.appendChild(el, svg);
   };
 
-  constructor(private registry: KitIconsRegistryService,
-              private el: ElementRef,
-              private renderer: Renderer2,
-              private platform: KitPlatformService) {
+  constructor(
+    private registry: KitIconsRegistryService,
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private platform: KitPlatformService,
+  ) {
   }
 
   ngOnChanges() {

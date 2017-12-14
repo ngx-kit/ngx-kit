@@ -1,12 +1,15 @@
 import { isMergeableObject } from './is-mergable';
+
 // @todo add types
 function emptyTarget(val: any) {
   return Array.isArray(val) ? [] : {}
 }
+
 function cloneIfNecessary(value: any, optionsArgument?: any): any {
   const clone = optionsArgument && optionsArgument.clone === true;
   return (clone && isMergeableObject(value)) ? mergeDeep(emptyTarget(value), value, optionsArgument) : value
 }
+
 function defaultArrayMerge(target: any, source: any, optionsArgument: any) {
   const destination = target.slice();
   source.forEach(function (e: any, i: any) {
@@ -20,6 +23,7 @@ function defaultArrayMerge(target: any, source: any, optionsArgument: any) {
   });
   return destination
 }
+
 function mergeObject(target: any, source: any, optionsArgument?: any) {
   const destination = {};
   if (isMergeableObject(target)) {
@@ -36,6 +40,7 @@ function mergeObject(target: any, source: any, optionsArgument?: any) {
   });
   return destination
 }
+
 export function mergeDeep(target: any, source: any, optionsArgument?: any) {
   const sourceIsArray = Array.isArray(source);
   const targetIsArray = Array.isArray(target);
@@ -50,6 +55,7 @@ export function mergeDeep(target: any, source: any, optionsArgument?: any) {
     return mergeObject(target, source, optionsArgument)
   }
 }
+
 export function mergeDeepAll(array: any[], optionsArgument?: any) {
   if (!Array.isArray(array) || array.length < 2) {
     throw new Error('first argument should be an array with at least two elements')

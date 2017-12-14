@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContentResolverService } from '../../core/content-resolver.service';
 import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { MainComponent } from './main/main.component';
-import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
 import { pkgName } from './meta';
+import { UiModulePageComponent } from './ui-module-page/ui-module-page.component';
 
 const routes: Routes = [
   {

@@ -13,9 +13,11 @@ export class KitPointerLineDirective {
 
   @Output() stop = new EventEmitter<void>();
 
-  constructor(private el: ElementRef,
-              private renderer: Renderer2,
-              private zone: NgZone) {
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private zone: NgZone,
+  ) {
   }
 
   @HostListener('click', ['$event'])
@@ -37,10 +39,10 @@ export class KitPointerLineDirective {
     const mousePos = event.clientX;
     const sliderRect: ClientRect = el.getBoundingClientRect();
     return mousePos <= sliderRect.left
-        ? 0
-        : mousePos >= sliderRect.right
-            ? width
-            : mousePos - sliderRect.left;
+      ? 0
+      : mousePos >= sliderRect.right
+        ? width
+        : mousePos - sliderRect.left;
   }
 
   private handleMoving() {

@@ -13,8 +13,10 @@ export class KitFocusDirective implements OnDestroy {
    */
   @Input() kitFocus: string | number;
 
-  constructor(@Optional() private service: KitFocusManagerService,
-              private el: ElementRef) {
+  constructor(
+    @Optional() private service: KitFocusManagerService,
+    private el: ElementRef,
+  ) {
     if (this.service) {
       this.service.register(this);
     }

@@ -13,8 +13,10 @@ declare const gtag: Function;
 export class RootComponent {
   hljsTheme = 'hljs-theme-default';
 
-  constructor(private icons: KitIconsRegistryService,
-              private router: Router) {
+  constructor(
+    private icons: KitIconsRegistryService,
+    private router: Router,
+  ) {
     // icons & theme
     this.icons.registerSet([
       {
@@ -24,18 +26,18 @@ export class RootComponent {
     ]);
     // google analytics
     router.events
-        .pipe(
-            distinctUntilChanged((previous: any, current: any) => {
-              if (current instanceof NavigationEnd) {
-                return previous.url === current.url;
-              }
-              return true;
-            }),
-        )
-        .subscribe((x: any) => {
-          if (typeof gtag !== 'undefined') {
-            gtag('config', 'UA-26418434-15', {'page_path': x.url});
+      .pipe(
+        distinctUntilChanged((previous: any, current: any) => {
+          if (current instanceof NavigationEnd) {
+            return previous.url === current.url;
           }
-        });
+          return true;
+        }),
+      )
+      .subscribe((x: any) => {
+        if (typeof gtag !== 'undefined') {
+          gtag('config', 'UA-26418434-15', {'page_path': x.url});
+        }
+      });
   }
 }

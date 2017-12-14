@@ -13,20 +13,20 @@ describe('KitNotificationService', () => {
   });
   it('should emit open', (done: DoneFn) => {
     service.itemsChanges
-        .pipe(skip(1))
-        .subscribe(items => {
-          expect(items.length).toEqual(1);
-          done();
-        });
+      .pipe(skip(1))
+      .subscribe(items => {
+        expect(items.length).toEqual(1);
+        done();
+      });
     service.open({});
   });
   it('should emit close after timeout', (done: DoneFn) => {
     service.itemsChanges
-        .pipe(skip(2))
-        .subscribe(items => {
-          expect(items.length).toEqual(0);
-          done();
-        });
+      .pipe(skip(2))
+      .subscribe(items => {
+        expect(items.length).toEqual(0);
+        done();
+      });
     // speed up the test
     service.config({duration: 10});
     service.open({});
@@ -37,12 +37,12 @@ describe('KitNotificationService', () => {
       position: 'top-left',
     };
     service.configChanges
-        .pipe(skip(1))
-        .subscribe(c => {
-          expect(c.duration).toEqual(config.duration);
-          expect(c.position).toEqual(config.position);
-          done();
-        });
+      .pipe(skip(1))
+      .subscribe(c => {
+        expect(c.duration).toEqual(config.duration);
+        expect(c.position).toEqual(config.position);
+        done();
+      });
     service.config(config);
   });
 });

@@ -3,8 +3,8 @@ export function clone(obj: any) {
     return obj;
   }
   const temp = obj instanceof Date
-      ? new Date(obj)
-      : obj.constructor();
+    ? new Date(obj)
+    : obj.constructor();
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       obj['isActiveClone'] = null;

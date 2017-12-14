@@ -31,9 +31,11 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
 
   private displayed = false;
 
-  constructor(private vcr: ViewContainerRef,
-              private template: TemplateRef<any>,
-              private host: KitSlideHostService) {
+  constructor(
+    private vcr: ViewContainerRef,
+    private template: TemplateRef<any>,
+    private host: KitSlideHostService,
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -56,19 +58,19 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
     }
     // handle displaying
     this.host.activeChanges
-        .pipe(takeUntil(this.destroy))
-        .subscribe(id => {
-          if (id === this.kitSlide) {
-            if (!this.displayed) {
-              this.vcr.createEmbeddedView(this.template);
-              this.displayed = true;
-            }
-          } else {
-            if (this.displayed) {
-              this.vcr.clear();
-              this.displayed = false;
-            }
+      .pipe(takeUntil(this.destroy))
+      .subscribe(id => {
+        if (id === this.kitSlide) {
+          if (!this.displayed) {
+            this.vcr.createEmbeddedView(this.template);
+            this.displayed = true;
           }
-        });
+        } else {
+          if (this.displayed) {
+            this.vcr.clear();
+            this.displayed = false;
+          }
+        }
+      });
   }
 }

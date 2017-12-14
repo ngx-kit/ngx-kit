@@ -10,22 +10,22 @@ describe('KitClassDirective', () => {
   // setup
   beforeEach(async(() => {
     TestBed
-        .configureTestingModule({
-          declarations: [TestComponent, KitClassDirective],
+      .configureTestingModule({
+        declarations: [TestComponent, KitClassDirective],
+        providers: [
+          ServiceMock,
+        ],
+      })
+      .overrideDirective(KitClassDirective, {
+        set: {
           providers: [
-            ServiceMock,
+            {
+              provide: KitClassService,
+              useExisting: ServiceMock,
+            },
           ],
-        })
-        .overrideDirective(KitClassDirective, {
-          set: {
-            providers: [
-              {
-                provide: KitClassService,
-                useExisting: ServiceMock,
-              },
-            ],
-          },
-        });
+        },
+      });
   }));
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

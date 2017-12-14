@@ -1,10 +1,10 @@
 import { KitAnchorDirective } from '../kit-anchor/kit-anchor.directive';
 
 export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
-    | 'top-left' | 'top-right'
-    | 'bottom-left' | 'bottom-right'
-    | 'left-top' | 'left-bottom'
-    | 'right-top' | 'right-bottom';
+  | 'top-left' | 'top-right'
+  | 'bottom-left' | 'bottom-right'
+  | 'left-top' | 'left-bottom'
+  | 'right-top' | 'right-bottom';
 export type KitOverlayType = 'dropdown' | 'side';
 export type KitOverlayAutofix = 'none' | 'switch-position';
 export const positionPairs = {

@@ -20,8 +20,10 @@ export class KitRepeatDirective implements OnChanges {
 
   private componentRef: ComponentRef<any>;
 
-  constructor(private vcr: ViewContainerRef,
-              private template: TemplateRef<any>) {
+  constructor(
+    private vcr: ViewContainerRef,
+    private template: TemplateRef<any>,
+  ) {
   }
 
   ngOnChanges() {

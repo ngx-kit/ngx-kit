@@ -41,10 +41,10 @@ export class KitSlideHostService {
    */
   set active(id: KitSlideId) {
     this._direction.next(this._active.value === null
-        ? 'initial' // no animation for init render
-        : id !== null && id > this._active.value
-            ? 'prev'
-            : 'next');
+      ? 'initial' // no animation for init render
+      : id !== null && id > this._active.value
+        ? 'prev'
+        : 'next');
     // timeout for right animation trigger setup
     setTimeout(() => {
       this._active.next(id);
@@ -152,8 +152,8 @@ export class KitSlideHostService {
     const ids = Array.from(this.ids);
     const currentIndex = this.getCurrentIndex();
     const newIndex = currentIndex < ids.length - 1
-        ? currentIndex + 1
-        : 0;
+      ? currentIndex + 1
+      : 0;
     this.active = ids[newIndex];
   }
 

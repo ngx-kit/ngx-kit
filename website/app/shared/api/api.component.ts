@@ -22,8 +22,10 @@ export class ApiComponent implements OnChanges {
 
   @Input() rawApi: any;
 
-  constructor(private content: ContentService,
-              private md: MdRenderService) {
+  constructor(
+    private content: ContentService,
+    private md: MdRenderService,
+  ) {
   }
 
   ngOnChanges() {
@@ -62,8 +64,8 @@ export class ApiComponent implements OnChanges {
     // auto-implicit type
     api.inputs = api.inputs.map(i => {
       i.type = i.type
-          ? this.convertType(i.type)
-          : typeof i.default;
+        ? this.convertType(i.type)
+        : typeof i.default;
       return i;
     });
     api.outputs = api.outputs.map(o => {
@@ -73,39 +75,39 @@ export class ApiComponent implements OnChanges {
     // methods
     this.methods = [
       ...api.setProps
-          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
-          .map(m => {
-            const type = m.type ? `: ${this.convertType(m.type)}` : '';
-            const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
-            const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
-            return {
-              name: '___' + m.name,
-              code: `set ${m.name}${typeParams}(${params})${type}`,
-              doc: this.renderDoc(m.doc),
-            };
-          }),
+        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .map(m => {
+          const type = m.type ? `: ${this.convertType(m.type)}` : '';
+          const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
+          const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
+          return {
+            name: '___' + m.name,
+            code: `set ${m.name}${typeParams}(${params})${type}`,
+            doc: this.renderDoc(m.doc),
+          };
+        }),
       ...api.getProps
-          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
-          .map(m => {
-            const type = m.type ? `: ${this.convertType(m.type)}` : '';
-            return {
-              name: '___' + m.name,
-              code: `get ${m.name}()${type}`,
-              doc: this.renderDoc(m.doc),
-            }
-          }),
+        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .map(m => {
+          const type = m.type ? `: ${this.convertType(m.type)}` : '';
+          return {
+            name: '___' + m.name,
+            code: `get ${m.name}()${type}`,
+            doc: this.renderDoc(m.doc),
+          }
+        }),
       ...api.methods
-          .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
-          .map(m => {
-            const type = m.type ? `: ${this.convertType(m.type)}` : '';
-            const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
-            const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
-            return {
-              name: m.name,
-              code: `${m.name}${typeParams}(${params})${type}`,
-              doc: this.renderDoc(m.doc),
-            };
-          }),
+        .filter(m => m.doc && m.doc.tags.find(t => t.name === 'publicApi'))
+        .map(m => {
+          const type = m.type ? `: ${this.convertType(m.type)}` : '';
+          const typeParams = m.typeParameters ? `<${m.typeParameters.join(', ')}>` : '';
+          const params = m.params ? m.params.map(p => `${p.name}: ${this.convertType(p.type)}`).join(', ') : '';
+          return {
+            name: m.name,
+            code: `${m.name}${typeParams}(${params})${type}`,
+            doc: this.renderDoc(m.doc),
+          };
+        }),
     ].sort((x, y) => x.name > y.name ? 1 : -1);
     // render params docs
     api.inputs.forEach(i => i.doc = this.renderDoc(i.doc));

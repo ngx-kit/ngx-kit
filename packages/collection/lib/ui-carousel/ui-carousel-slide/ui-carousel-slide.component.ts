@@ -52,10 +52,10 @@ export class UiCarouselSlideComponent implements OnDestroy {
 
   constructor(private host: KitSlideHostService) {
     this.host.directionChanges
-        .pipe(takeUntil(this.destroy))
-        .subscribe(d => {
-          this.slideTrigger = d;
-        });
+      .pipe(takeUntil(this.destroy))
+      .subscribe(d => {
+        this.slideTrigger = d;
+      });
   }
 
   ngOnDestroy() {

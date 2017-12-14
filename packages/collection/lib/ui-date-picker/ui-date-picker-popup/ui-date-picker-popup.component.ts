@@ -47,8 +47,10 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
 
   @HostBinding('attr.role') role = 'dialog';
 
-  constructor(private overlayPosition: KitOverlayPositionService,
-              private focusManager: KitFocusManagerService) {
+  constructor(
+    private overlayPosition: KitOverlayPositionService,
+    private focusManager: KitFocusManagerService,
+  ) {
     this.focusManager.autoCapture = true;
     this.focusManager.init();
   }

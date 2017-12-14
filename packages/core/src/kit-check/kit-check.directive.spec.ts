@@ -9,16 +9,16 @@ describe('KitCheckDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(async(() => {
     TestBed
-        .configureTestingModule({
-          declarations: [
-            TestComponent,
-          ],
-          imports: [
-            CommonModule,
-            FormsModule,
-            KitCheckModule,
-          ],
-        });
+      .configureTestingModule({
+        declarations: [
+          TestComponent,
+        ],
+        imports: [
+          CommonModule,
+          FormsModule,
+          KitCheckModule,
+        ],
+      });
   }));
 
   function getComponent() {
@@ -67,5 +67,5 @@ const radioTemplate = `
 
 function createTestComponent(template: string): ComponentFixture<TestComponent> {
   return TestBed.overrideComponent(TestComponent, {set: {template: template}})
-      .createComponent(TestComponent);
+    .createComponent(TestComponent);
 }

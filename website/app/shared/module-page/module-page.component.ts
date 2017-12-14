@@ -11,8 +11,10 @@ export class ModulePageComponent implements OnInit {
 
   private pkg: string;
 
-  constructor(private route: ActivatedRoute,
-              private contentService: ContentService) {
+  constructor(
+    private route: ActivatedRoute,
+    private contentService: ContentService,
+  ) {
   }
 
   ngOnInit() {
@@ -35,7 +37,7 @@ export class ModulePageComponent implements OnInit {
         const xOrder = this.extractMdOrderValue(x);
         const yOrder = this.extractMdOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
-      })
+      });
     });
   }
 

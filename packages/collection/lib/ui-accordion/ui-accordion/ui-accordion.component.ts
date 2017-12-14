@@ -21,7 +21,7 @@ export class UiAccordionComponent implements OnInit, OnChanges {
    */
   @Input() activateFirst = false;
 
-    /**
+  /**
    * Allow few panels open at a time.
    */
   @Input() multiple = false;

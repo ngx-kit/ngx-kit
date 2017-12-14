@@ -16,11 +16,11 @@ describe('KitSlideHostService', () => {
   it('should activate first', (done: DoneFn) => {
     const id = 1;
     service.activeChanges
-        .pipe(skip(1))
-        .subscribe(i => {
-          expect(i).toEqual(id);
-          done();
-        });
+      .pipe(skip(1))
+      .subscribe(i => {
+        expect(i).toEqual(id);
+        done();
+      });
     service.addId(id);
   });
   // @todo should change to next

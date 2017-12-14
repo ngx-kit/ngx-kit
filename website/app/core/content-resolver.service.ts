@@ -9,15 +9,19 @@ import { ContentService } from './content.service';
 
 @Injectable()
 export class ContentResolverService implements Resolve<ContentApi> {
-  constructor(private http: HttpClient,
-              private content: ContentService) {
+  constructor(
+    private http: HttpClient,
+    private content: ContentService,
+  ) {
   }
 
-  resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<ContentApi> | EmptyObservable<any> {
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): Observable<ContentApi> | EmptyObservable<any> {
     const pkg = route.data['pkg'];
     const file = route.data['file'];
     return this.http.get<ContentApi>(file)
-        .pipe(tap((c => this.content.set(pkg, c))));
+      .pipe(tap((c => this.content.set(pkg, c))));
   }
 }
