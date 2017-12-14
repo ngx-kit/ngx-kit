@@ -1,4 +1,4 @@
-@import "../../core/params";
+@import "params";
 
 :host {
   display: flex;
@@ -35,7 +35,7 @@
 .layout-content-wrapper {
   box-shadow: inset 0 0 39px -10px rgba(0, 0, 0, .1);
   flex-grow: 1;
-  padding: 16px 64px;
+  padding: 32px 64px 64px;
 }
 
 .layout-row {

@@ -1,3 +1,5 @@
+@import "params";
+
 .header {
   align-items: center;
   background: #111715;
@@ -10,6 +12,7 @@
   .brand {
     font-size: 1.5rem;
     font-weight: 600;
+    white-space: nowrap;
   }
   .nav {
     a {
@@ -31,8 +34,8 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 96px 0;
-    width: 1000px;
+    max-width: 1000px;
+    padding: 96px 64px;
   }
   h1 {
     font-size: 3rem;
@@ -44,28 +47,28 @@
     font-size: 1.7rem;
     font-weight: 300;
     line-height: 2.2rem;
+    margin: 0 0 64px;
   }
   pre {
     padding: 16px;
   }
   &.dark {
-    background: #151d1b;
-    background: linear-gradient(45deg, #151d1b 0%, #334042 100%);
+    background: $darkBackground;
     color: #f0f0f0;
   }
   &.light {
-    background: linear-gradient(45deg, rgb(226, 231, 234) 0%, rgba(247, 252, 255, 0) 100%), url("../../../assets/hypnotize.png");
+    background: $lightBackground;
     color: #333333;
     position: relative;
     h1, h2, h3 {
-      color: #4f8cfc;
+      color: $brandColor;
     }
     a {
       color: #333333;
     }
   }
   &.blue {
-    background: linear-gradient(45deg, #4475da 0%, #4f8cfc 100%);
+    background: $brandBackground;
     color: #ffffff;
     h1, h2, h3 {
       color: #ffffff;
@@ -95,19 +98,19 @@
   h2 {
     border-bottom: 0;
     font-size: 2rem;
-    margin: 0 0 64px;
     padding: 0;
   }
-  .layers {
+  .packages {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    > div {
+    .package {
       background: #ffffff;
       border-radius: 4px;
       box-shadow: 0 0 30px 6px rgba(31, 51, 73, .1);
       margin: 0 32px;
       padding: 32px;
+      text-decoration: none;
       transition: .2s box-shadow;
       width: 200px;
       h3 {
@@ -153,6 +156,9 @@
       flex-shrink: 0;
       height: 150px;
       width: 250px;
+      img {
+        box-shadow: 4px 4px 16px rgba(0, 0, 0, .2);
+      }
     }
     .info {
       flex-grow: 1;
@@ -190,5 +196,68 @@
   text-align: center;
   .logo img {
     width: 46px;
+  }
+}
+
+@include for-tablet-portrait() {
+  .block {
+    .wrapper {
+      padding: 32px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+  .promo {
+    min-height: auto;
+    .logo {
+      padding: 0 16px;
+      width: 40%;
+    }
+  }
+  .video {
+    .container {
+      width: auto;
+    }
+  }
+  .how-it-works {
+    .steps {
+      box-sizing: border-box;
+      padding: 0 16px;
+      width: 100%;
+    }
+  }
+  .made-with {
+    .project {
+      width: 100%;
+    }
+  }
+}
+
+@include for-mobile() {
+  .promo {
+    .wrapper {
+      flex-direction: column;
+    }
+  }
+  .structure {
+    .packages {
+      flex-direction: column;
+      .package {
+        margin: 0 0 32px;
+      }
+    }
+  }
+  .made-with {
+    .project {
+      flex-direction: column;
+      .info {
+        margin-top: 24px;
+      }
+    }
   }
 }
