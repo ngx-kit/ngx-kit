@@ -10,12 +10,8 @@ RUN mkdir -p /var/app
 
 WORKDIR /var/app
 
-COPY ./package.json package.json
-COPY ./node_modules/ node_modules/
 COPY ./dist/ dist/
-COPY ./dist-server/ dist-server/
-COPY ./website/server.js ./website/server.js
 
 EXPOSE 8000
 
-CMD ["pm2-docker", "./website/server.js", "--name='uni'"]
+CMD ["pm2-docker", "./dist/server.js", "--name='uni'"]
