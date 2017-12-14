@@ -51,29 +51,30 @@
       <h2>How it works</h2>
       <div class="steps">
         <div>
-          <h3>1. Install the packages</h3>
-          <pre>npm i @ngx-kit/core --save
-npm i @ngx-kit/collection --save-dev</pre>
+          <h3>Install the packages</h3>
+          <pre>{{ codeExamples[0] }}</pre>
         </div>
         <div>
-          <h3>2. Import core modules</h3>
-
-          <pre>@NgModule({{ '{' }}
-  ...
-  imports: [
-    ...
-    KitForRootModule,
-    KitModule,
-    KitPlatformBrowserModule,</pre>
+          <h3>Import core modules</h3>
+          <pre>{{ codeExamples[1] }}</pre>
         </div>
         <div>
-          <h3>3. Generate via Angular CLI</h3>
+          <h3>Generate via Angular CLI</h3>
           <p>Pick a module from <a routerLink="/collection">Collection</a> and put the code to your project.</p>
-          <pre>ng g ui-button -c=@ngx-kit/collection [name]</pre>
+          <pre>{{ codeExamples[2] }}</pre>
         </div>
         <div>
-          <h3>4. Modify by your requirements</h3>
-          Only complex (but stable) logic is stored in <a routerLink="/core">Core</a>, so you can change generated templates and styles in any way.
+          <h3>Import generated module</h3>
+          <pre>{{ codeExamples[3] }}</pre>
+        </div>
+        <div>
+          <h3>Use component</h3>
+          <pre>{{ codeExamples[4] }}</pre>
+        </div>
+        <div>
+          <h3>Modify by your requirements</h3>
+          Only complex (but stable) logic is stored in <a routerLink="/core">Core</a>, so you can change generated
+          templates and styles in any way.
         </div>
       </div>
     </div>
