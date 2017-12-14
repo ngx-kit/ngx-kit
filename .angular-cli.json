@@ -38,11 +38,13 @@
     },
     {
       "name": "website",
+      "serviceWorker": true,
       "root": "website",
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -66,11 +68,13 @@
     {
       "name": "website-server",
       "platform": "server",
+      "serviceWorker": true,
       "root": "website",
       "outDir": "dist-server",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.server.ts",

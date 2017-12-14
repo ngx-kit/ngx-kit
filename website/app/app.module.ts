@@ -2,9 +2,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { KitModule, KitPlatformBrowserModule, KitRootModule } from '@ngx-kit/core';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { CollectionDemoModule } from '../../packages/collection/demo/collection-demo.module';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentService } from './core/content.service';
 import { CoreModule } from './core/core.module';
@@ -14,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: '_website'}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     BrowserAnimationsModule,
     HttpClientModule,
     MdRenderModule,
