@@ -28,7 +28,7 @@
     "website:server:build": "ng build -a=website-server --prod --output-hashing=none",
     "website:server:bundle": "webpack --config ./website/webpack.server.config.js --progress --colors",
     "website:server:serve": "node ./dist/server",
-    "website:deploy": "npm run website:gen-docs && npm run website:build && npm run website:server:build && npm run website:docker:build && npm run website:docker:push",
+    "website:deploy": "npm run website:gen-docs && npm run website:build && npm run website:server:build && npm run website:server:bundle && npm run website:docker:build && npm run website:docker:push",
     "website:docker:build": "docker build -t dhub.nvx.me:443/ngx-kit-website-prod .",
     "website:docker:run": "docker run -d -p 8002:8000 dhub.nvx.me:443/ngx-kit-website-prod",
     "website:docker:push": "docker push dhub.nvx.me:443/ngx-kit-website-prod",
