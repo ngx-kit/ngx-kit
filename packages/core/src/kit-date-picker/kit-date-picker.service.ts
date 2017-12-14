@@ -32,8 +32,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Set active date.
-   *
-   * @publicApi
    */
   set active(date: Date) {
     this._active = new Date(date);
@@ -43,8 +41,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Observable with grid state.
-   *
-   * @publicApi
    */
   get gridChanges(): Observable<KitDatePickerGrid> {
     return this._grid.asObservable();
@@ -52,8 +48,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Observable with month cursor state.
-   *
-   * @publicApi
    */
   get monthCursorChanges(): Observable<Date | null> {
     return this._monthCursor.asObservable();
@@ -61,8 +55,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Observable with pick date events.
-   *
-   * @publicApi
    */
   get pick(): Observable<Date> {
     return this._pick.asObservable();
@@ -70,8 +62,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Weekdays array.
-   *
-   * @publicApi
    */
   get weekdays(): Date[] {
     const weekdays = [];
@@ -89,8 +79,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Focus date (open correspondent month).
-   *
-   * @publicApi
    */
   focus(date: Date) {
     this._focus = new Date(date);
@@ -99,8 +87,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Modify opened month.
-   *
-   * @publicApi
    */
   modMonth(modifier: number) {
     this._focus.setMonth(this._focus.getMonth() + modifier);
@@ -109,8 +95,6 @@ export class KitDatePickerService implements OnDestroy {
 
   /**
    * Modify opened year.
-   *
-   * @publicApi
    */
   modYear(modifier: number) {
     this._focus.setFullYear(this._focus.getFullYear() + modifier);

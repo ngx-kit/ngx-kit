@@ -50,8 +50,6 @@ export class KitLoadingBarService {
 
   /**
    * Finish loading animation.
-   *
-   * @publicApi
    */
   end(key: string) {
     this._ends.next(key);
@@ -59,8 +57,6 @@ export class KitLoadingBarService {
 
   /**
    * Start loading animation.
-   *
-   * @publicApi
    */
   start(key: string) {
     this._starts.next(key);

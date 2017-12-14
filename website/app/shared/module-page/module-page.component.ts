@@ -28,11 +28,13 @@ export class ModulePageComponent implements OnInit {
         const yOrder = this.extractMdOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
       });
-      this.module.api.sort((x: any, y: any) => {
-        const xOrder = this.extractApiOrderValue(x);
-        const yOrder = this.extractApiOrderValue(y);
-        return xOrder > yOrder ? 1 : -1;
-      });
+      this.module.api = this.module.api
+        .filter(this.isPublic)
+        .sort((x: any, y: any) => {
+          const xOrder = this.extractApiOrderValue(x);
+          const yOrder = this.extractApiOrderValue(y);
+          return xOrder > yOrder ? 1 : -1;
+        });
       this.module.demo.sort((x: any, y: any) => {
         const xOrder = this.extractMdOrderValue(x);
         const yOrder = this.extractMdOrderValue(y);
@@ -48,5 +50,9 @@ export class ModulePageComponent implements OnInit {
 
   private extractMdOrderValue(demo: any) {
     return demo.meta && demo.meta['apiOrder'] ? demo.meta['apiOrder'] : null;
+  }
+
+  private isPublic(a: any) {
+    return !(a.doc && a.doc.tags && a.doc.tags.find((t: any) => t.name === 'internal'));
   }
 }

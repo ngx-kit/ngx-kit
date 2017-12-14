@@ -15,8 +15,6 @@ export class KitAnchorDirective {
 
   /**
    * Get anchored html-element.
-   *
-   * @publicApi
    */
   get nativeEl() {
     return this.elementRef.nativeElement;

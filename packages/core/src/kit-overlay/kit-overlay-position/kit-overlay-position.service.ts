@@ -26,8 +26,6 @@ import { SideStrategyService } from './side-strategy.service';
 export class KitOverlayPositionService implements OnDestroy {
   /**
    * Anchor element for placing.
-   *
-   * @publicApi
    */
   anchor: KitAnchorDirective | HTMLElement;
 
@@ -36,24 +34,13 @@ export class KitOverlayPositionService implements OnDestroy {
    *
    * * none - do nothing
    * * switch-position - change direction top-bottom / left-right
-   *
-   * @publicApi
    */
   autofix: KitOverlayAutofix = 'switch-position';
 
-  /**
-   * @publicApi
-   */
   outsideClicks = new Subject<MouseEvent>();
 
-  /**
-   * @publicApi
-   */
   position: KitOverlayPosition = 'top';
 
-  /**
-   * @publicApi
-   */
   type: KitOverlayType = 'side';
 
   private rawPosition = false;

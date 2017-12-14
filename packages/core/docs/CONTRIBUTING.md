@@ -13,8 +13,8 @@ Information for ngx-kit developers.
 
 * Create README.md for any module.
 * Write jsDoc for services, components and directives.
-  * Mark component/directive methods with `@publicApi` in jsDoc, if you want do display method in website documentation.
-  * Add service public method will be displayed in website documentation.
+  * Mark component/directive methods with `@internal` in jsDoc, if you want to not display method in website documentation.
+  * Add service public methods and props will be displayed in website documentation.
   * Use `@apiOrder` in jsDoc for sort services/components/directives in website documentation.  
 
 

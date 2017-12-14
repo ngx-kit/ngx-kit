@@ -40,8 +40,6 @@ export class KitOverlayService {
 
   /**
    * Render component on the overlay.
-   *
-   * @publicApi
    */
   hostComponent<T>(component: Type<T>): ComponentRef<T> {
     const injector = this.host.vcr.parentInjector;
@@ -51,8 +49,6 @@ export class KitOverlayService {
 
   /**
    * Render template (passed by TemplateRef) on the overlay.
-   *
-   * @publicApi
    */
   hostTemplate(templateRef: TemplateRef<any>, context: any): ViewRef {
     return this.host.vcr.createEmbeddedView(templateRef, context);

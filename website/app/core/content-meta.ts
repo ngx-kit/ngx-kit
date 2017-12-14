@@ -34,6 +34,7 @@ export interface ComponentApiProp {
   doc: ComponentApiDoc;
   name: string;
   type: any;
+  default: any;
 }
 
 export interface ComponentApiMethod {
