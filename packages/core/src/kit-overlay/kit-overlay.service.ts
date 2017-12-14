@@ -26,7 +26,7 @@ export class KitOverlayService {
   private container: Element;
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: any,
     private cfr: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
