@@ -14,8 +14,8 @@ import {
   StrategyEl,
   StrategyField,
 } from '../meta';
-import { DropdownStrategyService } from './dropdown-strategy.service';
-import { SideStrategyService } from './side-strategy.service';
+import { DropdownPositioningService } from './dropdown-positioning.service';
+import { SidePositioningService } from './side-positioning.service';
 
 /**
  * Implements positioning mechanism.
@@ -53,8 +53,8 @@ export class KitOverlayPositionService implements OnDestroy {
     private style: KitStyleService,
     private platform: KitPlatformService,
     private em: KitEventManagerService,
-    private dropdownStrategy: DropdownStrategyService,
-    private sideStrategy: SideStrategyService,
+    private dropdownStrategy: DropdownPositioningService,
+    private sideStrategy: SidePositioningService,
   ) {
     if (this.platform.isBrowser()) {
       this.zone.onStable

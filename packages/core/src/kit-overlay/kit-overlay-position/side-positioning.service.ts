@@ -8,7 +8,7 @@ import { KitOverlayAutofix, KitOverlayPosition, StrategyEl, StrategyField } from
  * @internal
  */
 @Injectable()
-export class SideStrategyService {
+export class SidePositioningService {
   autofix(
     el: StrategyEl,
     anchor: StrategyEl,
