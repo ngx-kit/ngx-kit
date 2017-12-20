@@ -11,7 +11,7 @@ export class KitBrowserEventManagerService extends KitEventManagerService {
   getEventPath(event: Event): EventTarget[] {
     const path = [];
     let node = event.target;
-    while (node !== document.body) {
+    while (node && node !== document.body) {
       path.push(node);
       node = node['parentNode'];
     }
