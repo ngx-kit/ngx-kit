@@ -60,5 +60,5 @@ Import generated module:
 Use the component:
 
 ```html
-<button [uiButton]>Hello!</button>
+<button uiButton>Hello!</button>
 ```
