@@ -16,7 +16,7 @@ Provide `KitFocusManagerService` on component.
 Add directive and set id to an element.
 
 ```html
-<input [kitFocus]="'start'">
+<input kitFocus="start">
 ```
 
 Focus element by `id`
