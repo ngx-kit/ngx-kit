@@ -30,6 +30,9 @@
     margin: 0;
     padding: 2px;
   }
+  &:focus {
+    outline: 1px solid #23a3f2;
+  }
 }
 
 .date {
@@ -45,13 +48,15 @@
     border: 1px solid #dddddd;
     color: #b5b5b5;
   }
+  &.focus {
+    border: 1px solid #2399e5;
+  }
   &.active {
     background: #2399e5;
     box-shadow: 0 0 6px rgba(0, 0, 0, .3);
     color: #ffffff;
   }
-  &.focus {
-    border: 1px solid #2399e5;
-    outline: none;
+  &:focus {
+    outline: 1px solid #23a3f2;
   }
 }
