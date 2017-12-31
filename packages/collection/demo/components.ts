@@ -22,9 +22,8 @@ import { DemoCarouselGenComponent } from './ui-carousel/demo-carousel-gen/demo-c
 import { DemoCustomSelectDefaultComponent } from './ui-custom-select/demo-custom-select-default/demo-custom-select-default.component';
 import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picker-default/demo-date-picker-default.component';
 import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
-import { DemoInputCheckboxComponent } from './ui-input/demo-input-checkbox/demo-input-checkbox.component';
-import { DemoInputDefaultComponent } from './ui-input/demo-input-default/demo-input-default.component';
-import { DemoInputRadioComponent } from './ui-input/demo-input-radio/demo-input-radio.component';
+import { DemoTextInputComponent } from './ui-text/demo-text-input/demo-text-input.component';
+import { DemoTextTextareaComponent } from './ui-text/demo-text-textarea/demo-text-textarea.component';
 import { DemoLoadingBarDefaultComponent } from './ui-loading-bar/demo-accordion-default/demo-loading-bar-default.component';
 import { DemoModalDefaultComponent } from './ui-modal/demo-modal-default/demo-modal-default.component';
 import { DemoNotificationDefaultComponent } from './ui-notification/notification-demo-default/demo-notification-default.component';
@@ -38,7 +37,6 @@ import { DemoSliderDefaultComponent } from './ui-slider/demo-slider-default/demo
 import { DemoSliderRangeComponent } from './ui-slider/demo-slider-range/demo-slider-range.component';
 import { DemoTabsDefaultComponent } from './ui-tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTabsGenComponent } from './ui-tabs/demo-tabs-gen/demo-tabs-gen.component';
-import { DemoTextareaDefaultComponent } from './ui-textarea/demo-textarea-default/demo-textarea-default.component';
 import { DemoTooltipColorComponent } from './ui-tooltip/demo-tooltip-color/demo-tooltip-color.component';
 import { DemoTooltipDefaultComponent } from './ui-tooltip/demo-tooltip-default/demo-tooltip-default.component';
 import { DemoTooltipPositionComponent } from './ui-tooltip/demo-tooltip-position/demo-tooltip-position.component';
@@ -75,10 +73,6 @@ export const demoComponents = [
   // date-picker
   DemoDatePickerDefaultComponent,
   DemoDatePickerPopupComponent,
-  // input
-  DemoInputDefaultComponent,
-  DemoInputCheckboxComponent,
-  DemoInputRadioComponent,
   // loading-bar
   DemoLoadingBarDefaultComponent,
   // modal
@@ -100,8 +94,9 @@ export const demoComponents = [
   // tabs
   DemoTabsDefaultComponent,
   DemoTabsGenComponent,
-  // textarea
-  DemoTextareaDefaultComponent,
+  // text
+  DemoTextInputComponent,
+  DemoTextTextareaComponent,
   // tooltip
   DemoTooltipDefaultComponent,
   DemoTooltipPositionComponent,

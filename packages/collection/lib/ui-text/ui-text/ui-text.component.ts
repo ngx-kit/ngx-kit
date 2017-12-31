@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line
-  selector: 'input[uiInput]',
+  selector: 'input[uiText],textarea[uiText]',
   template: '',
-  styleUrls: ['./ui-input.component.scss'],
+  styleUrls: ['./ui-text.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiInputComponent {
-  @Input() uiInput: void;
+export class UiTextComponent {
+  @Input() uiText: void;
 }
