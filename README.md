@@ -49,6 +49,8 @@ npm i @ngx-kit/collection --save-dev
 #### Import core modules
 
 ```typescript
+import { KitRootModule, KitModule, KitPlatformBrowserModule } from '@ngx-kit/core';
+
 @NgModule({
   ...
   imports: [
