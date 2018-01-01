@@ -30,6 +30,9 @@
     .link {
       color: #444444;
       padding: 8px;
+      &.-active {
+        font-weight: 600;
+      }
     }
   }
 }

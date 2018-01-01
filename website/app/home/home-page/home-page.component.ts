@@ -11,7 +11,9 @@ export class HomePageComponent {
   codeExamples = [
     `npm i @ngx-kit/core --save
 npm i @ngx-kit/collection --save-dev`,
-    `@NgModule({
+    `import { KitRootModule, KitModule, KitPlatformBrowserModule } from '@ngx-kit/core';
+
+@NgModule({
   ...
   imports: [
     ...
