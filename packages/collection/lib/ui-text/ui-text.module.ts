@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UiInputComponent } from './ui-input/ui-input.component';
+import { UiTextComponent } from './ui-text/ui-text.component';
 
 @NgModule({
   imports: [
@@ -9,11 +9,11 @@ import { UiInputComponent } from './ui-input/ui-input.component';
     FormsModule,
   ],
   declarations: [
-    UiInputComponent,
+    UiTextComponent,
   ],
   exports: [
-    UiInputComponent,
+    UiTextComponent,
   ],
 })
-export class UiInputModule {
+export class UiTextModule {
 }
