@@ -32,7 +32,9 @@ Components customizing should be simple. Just generate components from ngx-kit c
 
 ## Watch the video
 
-TBD
+https://www.youtube.com/watch?v=th9fhD1e3d4
+
+Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 
 
 ## Usage
