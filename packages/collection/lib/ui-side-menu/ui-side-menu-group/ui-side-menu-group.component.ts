@@ -30,7 +30,9 @@ import { KitCollapseHostService, KitCollapseItemService } from '@ngx-kit/core';
     KitCollapseItemService,
   ],
 })
-export class UiSideMenuGroupComponent implements OnInit {
+export class UiSideMenuGroupComponent implements OnInit, OnChanges {
+  @Input() active: boolean;
+
   activeState = false;
 
   constructor(
@@ -45,6 +47,12 @@ export class UiSideMenuGroupComponent implements OnInit {
       this.activeState = this.item.active;
       this.cdr.markForCheck();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('active' in changes) {
+      this.item.active = this.active;
+    }
   }
 
   toggle() {

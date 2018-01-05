@@ -22,8 +22,6 @@ import { DemoCarouselGenComponent } from './ui-carousel/demo-carousel-gen/demo-c
 import { DemoCustomSelectDefaultComponent } from './ui-custom-select/demo-custom-select-default/demo-custom-select-default.component';
 import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picker-default/demo-date-picker-default.component';
 import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
-import { DemoTextInputComponent } from './ui-text/demo-text-input/demo-text-input.component';
-import { DemoTextTextareaComponent } from './ui-text/demo-text-textarea/demo-text-textarea.component';
 import { DemoLoadingBarDefaultComponent } from './ui-loading-bar/demo-accordion-default/demo-loading-bar-default.component';
 import { DemoModalDefaultComponent } from './ui-modal/demo-modal-default/demo-modal-default.component';
 import { DemoNotificationDefaultComponent } from './ui-notification/notification-demo-default/demo-notification-default.component';
@@ -33,10 +31,13 @@ import { DemoRatingDefaultComponent } from './ui-rating/demo-rating-default/demo
 import { DemoRatingIconComponent } from './ui-rating/demo-rating-icon/demo-rating-icon.component';
 import { DemoSelectDefaultComponent } from './ui-select/demo-select-default/demo-select-default.component';
 import { DemoSideMenuDefaultComponent } from './ui-side-menu/demo-side-menu-default/demo-side-menu-default.component';
+import { DemoSideMenuMultipleComponent } from './ui-side-menu/demo-side-menu-multiple/demo-side-menu-multiple.component';
 import { DemoSliderDefaultComponent } from './ui-slider/demo-slider-default/demo-slider-default.component';
 import { DemoSliderRangeComponent } from './ui-slider/demo-slider-range/demo-slider-range.component';
 import { DemoTabsDefaultComponent } from './ui-tabs/demo-tabs-default/demo-tabs-default.component';
 import { DemoTabsGenComponent } from './ui-tabs/demo-tabs-gen/demo-tabs-gen.component';
+import { DemoTextInputComponent } from './ui-text/demo-text-input/demo-text-input.component';
+import { DemoTextTextareaComponent } from './ui-text/demo-text-textarea/demo-text-textarea.component';
 import { DemoTooltipColorComponent } from './ui-tooltip/demo-tooltip-color/demo-tooltip-color.component';
 import { DemoTooltipDefaultComponent } from './ui-tooltip/demo-tooltip-default/demo-tooltip-default.component';
 import { DemoTooltipPositionComponent } from './ui-tooltip/demo-tooltip-position/demo-tooltip-position.component';
@@ -88,6 +89,7 @@ export const demoComponents = {
   'DemoSelectDefaultComponent': DemoSelectDefaultComponent,
   // side-menu
   'DemoSideMenuDefaultComponent': DemoSideMenuDefaultComponent,
+  'DemoSideMenuMultipleComponent': DemoSideMenuMultipleComponent,
   // slider
   'DemoSliderDefaultComponent': DemoSliderDefaultComponent,
   'DemoSliderRangeComponent': DemoSliderRangeComponent,
