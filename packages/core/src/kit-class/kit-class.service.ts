@@ -1,16 +1,14 @@
-import { ElementRef, Injectable, Renderer2 } from '@angular/core';
-import { isArray } from '../util/is-array';
-import { isObject } from '../util/is-object';
+import { ElementRef, Injectable, IterableChanges, IterableDiffer, IterableDiffers, Renderer2, } from '@angular/core';
 import { isString } from '../util/is-string';
 import { KitClassSetter } from './meta';
 
 /**
- * Apply to classes to an element.
+ * Apply classes to an element.
  *
  * Must be provided on a component or directive.
  *
  * ```typescript
- * classService.apply({color: 'red', active: true});
+ * classService.apply({color: 'red', active: true, primary: false});
  * ```
  *
  * Adds to element: `class="color-red active"`
@@ -19,13 +17,12 @@ import { KitClassSetter } from './meta';
 export class KitClassService {
   private _state: KitClassSetter = {};
 
-  private classes = new Set<string>();
-
-  private stateSize = 0;
+  private _differ: IterableDiffer<string>;
 
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
+    private differs: IterableDiffers,
   ) {
   }
 
@@ -33,11 +30,8 @@ export class KitClassService {
    * Override class declaration state.
    */
   set state(setterRaw: KitClassSetter) {
-    const setter = setterRaw || {};
-    if (this.isChanged(setter)) {
-      this._state = {...setter};
-      this.update(this._state);
-    }
+    const newState = {...setterRaw};
+    this.process(newState);
   }
 
   /**
@@ -45,23 +39,24 @@ export class KitClassService {
    */
   apply(setter: KitClassSetter): void {
     const newState = {...this._state, ...setter};
-    if (this.isChanged(newState)) {
+    this.process(newState);
+  }
+
+  private process(newState: KitClassSetter) {
+    const classList = this.processObj(newState);
+    if (!this._differ) {
+      this._differ = this.differs.find(classList).create();
+    }
+    const changes = this._differ.diff(classList);
+    if (changes) {
+      this.applyChanges(changes);
       this._state = newState;
-      this.update(this._state);
     }
   }
 
-  private isChanged(newState: KitClassSetter): boolean {
-    if (Object.keys(newState).length === this.stateSize) {
-      for (const name in newState) {
-        if (newState[name] !== this._state[name]) {
-          return true;
-        }
-      }
-      return false;
-    } else {
-      return true;
-    }
+  private applyChanges(changes: IterableChanges<string>) {
+    changes.forEachRemovedItem((record) => this.renderer.removeClass(this.el.nativeElement, record.item));
+    changes.forEachAddedItem((record) => this.renderer.addClass(this.el.nativeElement, record.item));
   }
 
   private processObj(obj: any): string[] {
@@ -75,39 +70,5 @@ export class KitClassService {
             : null;
       })
       .filter(isString);
-  }
-
-  private render(classes: Set<string>) {
-    this.classes.forEach(c => {
-      if (!classes.has(c)) {
-        this.renderer.removeClass(this.el.nativeElement, c);
-      }
-    });
-    classes.forEach(c => {
-      this.renderer.addClass(this.el.nativeElement, c);
-    });
-    this.classes = classes;
-  }
-
-  private update(state: any) {
-    const classes = new Set<string>();
-    if (isString(state)) {
-      classes.add(state);
-    } else if (isArray(state)) {
-      state.forEach((v: string | any) => {
-        if (isString(v)) {
-          classes.add(v);
-        } else if (isObject(v)) {
-          this.processObj(v).forEach(c => classes.add(c));
-        } else {
-          throw new Error(`[kitClass] item should be a string or an object`);
-        }
-      });
-    } else if (isObject(state)) {
-      this.processObj(state).forEach(c => classes.add(c));
-    } else {
-      throw new Error(`[kitClass] must be a string, array or object`);
-    }
-    this.render(classes);
   }
 }
