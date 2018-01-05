@@ -31,7 +31,7 @@ describe('KitStyleService', () => {
     expect(fixture.nativeElement.style.background).toBe(styles.background);
     service.style = {};
     expect(fixture.nativeElement.style.background).toBe('');
-  })
+  });
 });
 
 @Component({
