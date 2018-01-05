@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, } from '@angular/core';
-import { KitCollapseItemService } from '@ngx-kit/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { KitCollapseHostService, KitCollapseItemService } from '@ngx-kit/core';
 
 /**
  * @apiOrder 3
@@ -10,8 +18,8 @@ import { KitCollapseItemService } from '@ngx-kit/core';
     <div class="title" (click)="toggle()">
       <span class="wrapper"><ng-content></ng-content></span>
       <button class="arrow">
-        <ng-container *ngIf="active">&#10005;</ng-container>
-        <ng-container *ngIf="!active">&#9661;</ng-container>
+        <ng-container *ngIf="activeState">&#10005;</ng-container>
+        <ng-container *ngIf="!activeState">&#9661;</ng-container>
       </button>
     </div>
     <ng-content select="ui-side-menu-sub"></ng-content>
@@ -22,12 +30,21 @@ import { KitCollapseItemService } from '@ngx-kit/core';
     KitCollapseItemService,
   ],
 })
-export class UiSideMenuGroupComponent {
-  constructor(private item: KitCollapseItemService) {
+export class UiSideMenuGroupComponent implements OnInit {
+  activeState = false;
+
+  constructor(
+    private item: KitCollapseItemService,
+    private host: KitCollapseHostService,
+    private cdr: ChangeDetectorRef,
+  ) {
   }
 
-  get active() {
-    return this.item.active;
+  ngOnInit() {
+    this.host.activeChanges.subscribe(() => {
+      this.activeState = this.item.active;
+      this.cdr.markForCheck();
+    });
   }
 
   toggle() {
