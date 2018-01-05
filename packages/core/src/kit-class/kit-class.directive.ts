@@ -3,11 +3,11 @@ import { KitClassService } from './kit-class.service';
 import { KitClassSetter } from './meta';
 
 /**
- * Provides `KitClassService` and pass property to `.apply` method.
+ * Provides `KitClassService` and pass input value to `KitClassService.apply` method.
  *
  * ```html
- * <div [kitClass]="{color: 'red', active: true}">
- * <div class="color-red active">
+ * <div [kitClass]="{color: 'red', active: true, primary: false}">
+ * <!--<div class="color-red active">-->
  * ```
  */
 @Directive({
