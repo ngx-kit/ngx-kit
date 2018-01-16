@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ngx-kit/ngx-kit.svg?branch=master)](https://travis-ci.org/ngx-kit/ngx-kit)
+[![CircleCI](https://circleci.com/gh/ngx-kit/ngx-kit.svg?style=svg)](https://circleci.com/gh/ngx-kit/ngx-kit)
 [![npm version](https://badge.fury.io/js/%40ngx-kit%2Fcore.svg)](https://www.npmjs.com/@ngx-kit/core)
 
 # [ngx-kit](https://ngx-kit.com)
