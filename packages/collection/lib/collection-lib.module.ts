@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { UiAccordionModule } from './ui-accordion/ui-accordion.module';
 import { UiAlertModule } from './ui-alert/ui-alert.module';
 import { UiBadgeModule } from './ui-badge/ui-badge.module';
+import { UiBreadcrumbsModule } from './ui-breadcrumbs/ui-breadcrumbs.module';
 import { UiButtonModule } from './ui-button/ui-button.module';
 import { UiCarouselModule } from './ui-carousel/ui-carousel.module';
 import { UiCustomSelectModule } from './ui-custom-select/ui-custom-select.module';
@@ -22,6 +23,7 @@ const lib = [
   UiAccordionModule,
   UiAlertModule,
   UiBadgeModule,
+  UiBreadcrumbsModule,
   UiButtonModule,
   UiCarouselModule,
   UiCustomSelectModule,
