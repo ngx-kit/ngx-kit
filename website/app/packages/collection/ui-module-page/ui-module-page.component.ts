@@ -40,7 +40,7 @@ export class UiModulePageComponent implements OnInit {
         const xOrder = this.extractMdOrderValue(x);
         const yOrder = this.extractMdOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
-      })
+      });
     });
   }
 

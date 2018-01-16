@@ -60,5 +60,5 @@ describe('KitCollapseHostService', () => {
     expect(service.active.has(firstId)).toBeTruthy();
     expect(service.active.has(secondId)).toBeTruthy();
     expect(service.active.size).toEqual(2);
-  })
+  });
 });
