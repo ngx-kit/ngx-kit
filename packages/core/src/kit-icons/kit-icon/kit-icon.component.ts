@@ -40,7 +40,7 @@ export class KitIconComponent implements OnInit, OnChanges {
     this.renderer.setStyle(svg, 'width', this.size);
     this.renderer.setStyle(svg, 'fill', this.color);
     this.renderer.appendChild(el, svg);
-  };
+  }
 
   constructor(
     private registry: KitIconsRegistryService,

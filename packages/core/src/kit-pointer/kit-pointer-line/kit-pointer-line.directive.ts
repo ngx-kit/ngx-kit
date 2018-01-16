@@ -69,6 +69,6 @@ export class KitPointerLineDirective {
           this.stop.emit();
         });
       }));
-    })
+    });
   }
 }
