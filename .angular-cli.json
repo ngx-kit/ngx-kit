@@ -109,15 +109,7 @@
   },
   "lint": [
     {
-      "project": "package/tsconfig.package.json",
-      "exclude": "**/node_modules/**"
-    },
-    {
-      "project": "package/tsconfig.spec.json",
-      "exclude": "**/node_modules/**"
-    },
-    {
-      "project": "playground/tsconfig.app.json",
+      "project": "tsconfig.json",
       "exclude": "**/node_modules/**"
     }
   ],

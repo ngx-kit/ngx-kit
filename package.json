@@ -38,8 +38,8 @@
     "test:local": "ng test -a=playground-core",
     "lint": "npm run lint:ng && npm run lint:styles",
     "lint:ng": "ng lint",
-    "lint:styles": "stylelint {packages/collection,playground,website}/**/*.scss",
-    "lint:styles:fix": "stylelint {packages/collection,playground,website}/**/*.scss --fix"
+    "lint:styles": "stylelint ./{packages/collection,playground,website}/**/*.scss",
+    "lint:styles:fix": "stylelint ./{packages/collection,playground,website}/**/*.scss --fix"
   },
   "private": true,
   "dependencies": {
