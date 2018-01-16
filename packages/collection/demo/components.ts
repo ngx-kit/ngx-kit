@@ -10,6 +10,7 @@ import { DemoBadgeColorComponent } from './ui-badge/demo-badge-color/demo-badge-
 import { DemoBadgeDefaultComponent } from './ui-badge/demo-badge-default/demo-badge-default.component';
 import { DemoBadgePositionComponent } from './ui-badge/demo-badge-position/demo-badge-position.component';
 import { DemoBadgeSizeComponent } from './ui-badge/demo-badge-size/demo-badge-size.component';
+import { DemoBreadcrumbsDefaultComponent } from './ui-breadcrumbs/demo-breadcrumbs-default/demo-breadcrumbs-default.component';
 import { DemoButtonColorComponent } from './ui-button/demo-button-color/demo-button-color.component';
 import { DemoButtonDefaultComponent } from './ui-button/demo-button-default/demo-button-default.component';
 import { DemoButtonGroupCheckboxComponent } from './ui-button/demo-button-group-checkbox/demo-button-group-checkbox.component';
@@ -58,6 +59,8 @@ export const demoComponents = [
   DemoBadgeDefaultComponent,
   DemoBadgePositionComponent,
   DemoBadgeSizeComponent,
+  // breadcrumbs
+  DemoBreadcrumbsDefaultComponent,
   // button
   DemoButtonDefaultComponent,
   DemoButtonColorComponent,
@@ -66,7 +69,7 @@ export const demoComponents = [
   DemoButtonGroupVerticalComponent,
   DemoButtonGroupCheckboxComponent,
   DemoButtonGroupRadioComponent,
-  /// carousel
+  // carousel
   DemoCarouselDefaultComponent,
   DemoCarouselGenComponent,
   // custom-select
