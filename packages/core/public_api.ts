@@ -14,6 +14,7 @@ export * from './src/kit-platform/index';
 export * from './src/kit-platform-browser/index';
 export * from './src/kit-platform-server/index';
 export * from './src/kit-pointer/index';
+export * from './src/kit-ref/index';
 export * from './src/kit-repeat/index';
 export * from './src/kit-slide/index';
 export * from './src/kit-style/index';
