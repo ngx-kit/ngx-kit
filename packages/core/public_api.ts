@@ -8,6 +8,7 @@ export * from './src/kit-check/index';
 export * from './src/kit-icons/index';
 export * from './src/kit-loading-bar/index';
 export * from './src/kit-notification/index';
+export * from './src/kit-modal/index';
 export * from './src/kit-outside-click/index';
 export * from './src/kit-overlay/index';
 export * from './src/kit-platform/index';
