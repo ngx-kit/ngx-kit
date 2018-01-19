@@ -2,9 +2,9 @@
 
 ## Main purpose
  
-* dialogs
-* popups
+* modals
 * tooltips
+* dropdowns
 
 
 ## Usage
