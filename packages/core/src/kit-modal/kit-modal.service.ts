@@ -1,7 +1,9 @@
-import { ComponentRef, Injectable, Type } from '@angular/core';
+import { ComponentRef, Inject, Injectable, Type } from '@angular/core';
+import { Partial } from '@ngx-kit/core';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalRef } from './kit-modal-ref';
+import { kitModalDefaultParams, KitModalParams } from './meta';
 
 @Injectable()
 export class KitModalService {
@@ -9,10 +11,13 @@ export class KitModalService {
 
   private displayed = new Set<KitModalRef<any>>();
 
-  constructor(private overlay: KitOverlayService) {
+  constructor(
+    private overlay: KitOverlayService,
+    @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
+  ) {
   }
 
-  show<T>(component: Type<T>): KitModalRef<T> {
+  show<T>(component: Type<T>, params: Partial<KitModalParams> = {}): KitModalRef<T> {
     const modalRef = new KitModalRef();
     const componentRef = this.overlay.hostComponent<T>(component, [
       {
@@ -20,6 +25,7 @@ export class KitModalService {
         useValue: modalRef,
       },
     ]);
+    modalRef.params = {...this.defaultParams, ...params};
     modalRef.onClose.subscribe(() => {
       componentRef.destroy();
       modalRef.destroy();
@@ -55,7 +61,7 @@ export class KitModalService {
 
   private closeTop() {
     const top: KitModalRef<any> | undefined = Array.from(this.displayed.values()).pop();
-    if (top) {
+    if (top && top.params.backdropClose) {
       top.close();
     }
   }

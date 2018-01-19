@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalService } from './kit-modal.service';
 import { KitModalDirective } from './kit-modal/kit-modal.directive';
+import { kitModalDefaultParams } from './meta';
 
 @NgModule({
   imports: [
@@ -25,6 +26,10 @@ export class KitModalModule {
       ngModule: KitModalModule,
       providers: [
         KitModalService,
+        {
+          provide: kitModalDefaultParams,
+          useValue: {},
+        },
       ],
     };
   }
