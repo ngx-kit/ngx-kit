@@ -43,7 +43,7 @@ export class KitOverlayService {
    */
   hostComponent<T>(component: Type<T>): ComponentRef<T> {
     const injector = this.host.vcr.parentInjector;
-    const componentFactory = injector.get(ComponentFactoryResolver).resolveComponentFactory(component);
+    const componentFactory = this.cfr.resolveComponentFactory(component);
     return this.host.vcr.createComponent(componentFactory, this.host.vcr.length, injector);
   }
 

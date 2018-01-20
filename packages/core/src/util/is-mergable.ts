@@ -9,5 +9,5 @@ export function isNonNullObject(value: any): boolean {
 export function isNotSpecial(value: any): boolean {
   const stringValue = Object.prototype.toString.call(value);
   return stringValue !== '[object RegExp]'
-    && stringValue !== '[object Date]'
+    && stringValue !== '[object Date]';
 }

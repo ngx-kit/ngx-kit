@@ -10,6 +10,7 @@ import { KitModalModule } from './kit-modal/kit-modal.module';
 import { KitOutsideClickModule } from './kit-outside-click/kit-outside-click.module';
 import { KitOverlayModule } from './kit-overlay/kit-overlay.module';
 import { KitPointerModule } from './kit-pointer/kit-pointer.module';
+import { KitRefModule } from './kit-ref/kit-ref.module';
 import { KitRepeatModule } from './kit-repeat/kit-repeat.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
 
@@ -26,6 +27,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitOutsideClickModule,
     KitOverlayModule,
     KitPointerModule,
+    KitRefModule,
     KitRepeatModule,
     KitSlideModule,
   ],
@@ -41,6 +43,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitOutsideClickModule,
     KitOverlayModule,
     KitPointerModule,
+    KitRefModule,
     KitRepeatModule,
     KitSlideModule,
   ],
