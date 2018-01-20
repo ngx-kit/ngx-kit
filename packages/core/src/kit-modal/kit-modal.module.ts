@@ -28,7 +28,10 @@ export class KitModalModule {
         KitModalService,
         {
           provide: kitModalDefaultParams,
-          useValue: {},
+          useValue: {
+            backdropClose: true,
+            escClose: true,
+          },
         },
       ],
     };

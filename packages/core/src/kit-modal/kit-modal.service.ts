@@ -1,6 +1,7 @@
 import { ComponentRef, Inject, Injectable, Type } from '@angular/core';
-import { Partial } from '@ngx-kit/core';
+import { keyEscape, KitEventManagerService } from '../kit-event-manager';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
+import { Partial } from '../util';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalRef } from './kit-modal-ref';
 import { kitModalDefaultParams, KitModalParams } from './meta';
@@ -13,6 +14,7 @@ export class KitModalService {
 
   constructor(
     private overlay: KitOverlayService,
+    private em: KitEventManagerService,
     @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
   ) {
   }
@@ -36,8 +38,16 @@ export class KitModalService {
 
   registerRef(ref: KitModalRef<any>) {
     this.displayed.add(ref);
+    // control esc
+    const escUnsub = this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
+      if (event.keyCode === keyEscape && ref.params.escClose) {
+        ref.close();
+      }
+    }, true);
+    // update backdrop
     ref.onDestroy.subscribe(() => {
       this.displayed.delete(ref);
+      escUnsub();
       this.checkBackdrop();
     });
     this.checkBackdrop();
