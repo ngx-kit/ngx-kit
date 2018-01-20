@@ -40,3 +40,9 @@ constructor(private focusManager: KitFocusManagerService) {
   this.focusManager.init();
 }
 ```
+
+Or add via `kitFocusTrap` directive:
+
+```html
+<modal kitFocusTrap></modal>
+```
