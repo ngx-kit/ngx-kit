@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "lib": [
+      "es5",
+      "es2015",
+      "dom"
+    ],
+    "baseUrl": "."
+  },
+  "files": [
+    "./public_api.ts"
+  ],
+  "exclude": [
+    "./**/*.spec.ts"
+  ]
+}
