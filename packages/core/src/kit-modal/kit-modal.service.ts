@@ -1,4 +1,4 @@
-import { ComponentRef, Inject, Injectable, Type } from '@angular/core';
+import { ComponentRef, Inject, Injectable, TemplateRef, Type } from '@angular/core';
 import { keyEscape, KitEventManagerService } from '../kit-event-manager';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
 import { Partial } from '../util';
@@ -8,7 +8,7 @@ import { kitModalDefaultParams, KitModalParams } from './meta';
 
 @Injectable()
 export class KitModalService {
-  private backdropRef: ComponentRef<KitModalBackdropComponent> | null = null;
+  private backdropRef: ComponentRef<KitModalBackdropComponent>;
 
   private displayed = new Set<KitModalRef<any>>();
 
@@ -17,6 +17,10 @@ export class KitModalService {
     private em: KitEventManagerService,
     @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
   ) {
+    this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
+    this.backdropRef.instance.click.subscribe(() => {
+      this.backdropClickHandler();
+    });
   }
 
   show<T>(component: Type<T>, params: Partial<KitModalParams> = {}): KitModalRef<T> {
@@ -28,8 +32,23 @@ export class KitModalService {
       },
     ]);
     modalRef.params = {...this.defaultParams, ...params};
+    modalRef.viewRef = componentRef.hostView;
     modalRef.onClose.subscribe(() => {
       componentRef.destroy();
+      modalRef.destroy();
+    });
+    this.registerRef(modalRef);
+    return modalRef;
+  }
+
+  showTemplate(
+    template: TemplateRef<any>,
+    modalRef: KitModalRef<any>,
+  ): KitModalRef<any> {
+    const viewRef = this.overlay.hostTemplate(template);
+    modalRef.viewRef = viewRef;
+    modalRef.onClose.subscribe(() => {
+      viewRef.destroy();
       modalRef.destroy();
     });
     this.registerRef(modalRef);
@@ -54,25 +73,21 @@ export class KitModalService {
   }
 
   private checkBackdrop() {
-    if (this.displayed.size > 0) {
-      if (!this.backdropRef) {
-        this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
-        this.backdropRef.instance.click.subscribe(() => {
-          this.closeTop();
-        });
-      }
-    } else {
-      if (this.backdropRef) {
-        this.backdropRef.destroy();
-        this.backdropRef = null;
-      }
+    this.backdropRef.instance.display = this.displayed.size > 0;
+    const top = this.getTopModalRef();
+    if (top) {
+      this.overlay.moveUnder(this.backdropRef.hostView, top.viewRef);
     }
   }
 
-  private closeTop() {
-    const top: KitModalRef<any> | undefined = Array.from(this.displayed.values()).pop();
+  private backdropClickHandler() {
+    const top = this.getTopModalRef();
     if (top && top.params.backdropClose) {
       top.close();
     }
+  }
+
+  private getTopModalRef(): KitModalRef<any> | undefined {
+    return Array.from(this.displayed.values()).pop();
   }
 }

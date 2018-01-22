@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Partial } from '@ngx-kit/core';
+import { Injectable, ViewRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Partial } from '../util';
 import { uuid } from '../util/uuid';
 import { KitModalParams } from './meta';
 
@@ -9,7 +9,9 @@ import { KitModalParams } from './meta';
 export class KitModalRef<T> {
   readonly id = uuid();
 
-  _params: Partial<KitModalParams> = {};
+  viewRef: ViewRef;
+
+  private _params: Partial<KitModalParams> = {};
 
   private readonly _onDestroy = new Subject<void>();
 

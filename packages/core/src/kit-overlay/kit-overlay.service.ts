@@ -1,18 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ApplicationRef,
-  ComponentFactoryResolver,
-  ComponentRef,
-  EmbeddedViewRef,
-  Inject,
-  Injectable,
-  Injector,
-  TemplateRef,
-  Type,
-  ViewRef,
+  ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Injector,
+  TemplateRef, Type, ViewRef,
 } from '@angular/core';
+import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { uuid } from '../util/uuid';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 
 @Injectable()
@@ -41,17 +35,30 @@ export class KitOverlayService {
   /**
    * Render component on the overlay.
    */
-  hostComponent<T>(component: Type<T>): ComponentRef<T> {
-    const injector = this.host.vcr.parentInjector;
+  hostComponent<T>(component: Type<T>, providers: StaticProvider[] = []): ComponentRef<T> {
+    const id = uuid();
+    const injector = Injector.create({
+      providers,
+      parent: this.host.vcr.parentInjector,
+    });
     const componentFactory = this.cfr.resolveComponentFactory(component);
-    return this.host.vcr.createComponent(componentFactory, this.host.vcr.length, injector);
+    return this.host.vcr.createComponent<T>(componentFactory, this.host.vcr.length, injector);
   }
 
   /**
    * Render template (passed by TemplateRef) on the overlay.
    */
-  hostTemplate(templateRef: TemplateRef<any>, context: any): ViewRef {
+  hostTemplate(templateRef: TemplateRef<any>, context: any = {}): ViewRef {
     return this.host.vcr.createEmbeddedView(templateRef, context);
+  }
+
+  /**
+   * Move passed ViewRef under target ViewRef.
+   * Used for multi-modals backdrop handling.
+   */
+  moveUnder(ref: ViewRef, target: ViewRef) {
+    const targetIndex = this.host.vcr.indexOf(target);
+    this.host.vcr.move(ref, targetIndex - 1);
   }
 
   private mountHost() {

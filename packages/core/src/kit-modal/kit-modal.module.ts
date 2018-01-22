@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalService } from './kit-modal.service';
-import { KitModalDirective } from './kit-modal/kit-modal.directive';
+import { KitModalComponent } from './kit-modal/kit-modal.component';
 import { kitModalDefaultParams } from './meta';
 
 @NgModule({
@@ -11,10 +11,10 @@ import { kitModalDefaultParams } from './meta';
   ],
   declarations: [
     KitModalBackdropComponent,
-    KitModalDirective,
+    KitModalComponent,
   ],
   exports: [
-    KitModalDirective,
+    KitModalComponent,
   ],
   entryComponents: [
     KitModalBackdropComponent,
