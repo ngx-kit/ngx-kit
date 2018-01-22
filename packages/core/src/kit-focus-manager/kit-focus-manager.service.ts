@@ -2,6 +2,7 @@ import { ElementRef, Injectable, NgZone, OnDestroy, Renderer2 } from '@angular/c
 import { take } from 'rxjs/operators';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyTab } from '../kit-event-manager/meta';
+import { KitFocusManagerRegistryService } from './kit-focus-manager-registry.service';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 
 @Injectable()
@@ -10,6 +11,8 @@ export class KitFocusManagerService implements OnDestroy {
    * Automatically capture focus after creating.
    */
   autoCapture = false;
+
+  onHold = false;
 
   private current: HTMLElement;
 
@@ -26,6 +29,7 @@ export class KitFocusManagerService implements OnDestroy {
     private zone: NgZone,
     private renderer: Renderer2,
     private em: KitEventManagerService,
+    private registry: KitFocusManagerRegistryService,
   ) {
   }
 
@@ -44,6 +48,7 @@ export class KitFocusManagerService implements OnDestroy {
    * Activate focus-trap.
    */
   capture() {
+    this.registry.capture(this);
     this.focusTrap = true;
     this.outsideSource = this.documentActiveElement;
     this.focusFirst();
@@ -144,6 +149,7 @@ export class KitFocusManagerService implements OnDestroy {
    * Disable focus-trap.
    */
   release() {
+    this.registry.release(this);
     this.focusTrap = false;
     this.outsideSource.focus();
   }
@@ -156,13 +162,13 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   private focusinHandler(event: FocusEvent) {
-    if (this.isDescendant(this.el.nativeElement, event.target as HTMLElement)) {
+    if (!this.onHold && this.isDescendant(this.el.nativeElement, event.target as HTMLElement)) {
       this.current = event.target as HTMLElement;
     }
   }
 
   private focusoutHandler(event: FocusEvent) {
-    if (!this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)) {
+    if (!this.onHold && !this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)) {
       if (this.focusTrap) {
         if (this.current) {
           this.current.focus();
@@ -230,7 +236,7 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   private keydownHandler(event: KeyboardEvent) {
-    if (event.keyCode === keyTab) {
+    if (!this.onHold && event.keyCode === keyTab) {
       event.preventDefault();
       event.stopPropagation();
       if (event.shiftKey) {
