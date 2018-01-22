@@ -1,5 +1,5 @@
 import {
-  AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, NgZone, OnDestroy, OnInit,
+  AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, OnDestroy, OnInit,
   Output,
 } from '@angular/core';
 import { KitOverlayDirective } from '../../kit-overlay';
@@ -26,7 +26,6 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
     private ref: KitModalRef<any>,
     private service: KitModalService,
     @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
-    private zone: NgZone,
   ) {
     this.ref.params = this.defaultParams;
     this.ref.onClose.subscribe(() => {
@@ -35,15 +34,18 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
   }
 
   @Input() set backdropClose(backdropClose: boolean) {
-    this.ref.params = {backdropClose};
+    this.ref.applyParams({backdropClose});
   }
 
   @Input() set escClose(escClose: boolean) {
-    this.ref.params = {escClose};
+    this.ref.applyParams({escClose});
+  }
+
+  @Input() set scrollLock(scrollLock: boolean) {
+    this.ref.applyParams({scrollLock});
   }
 
   ngAfterContentInit() {
-    console.log('kek lol', this.overlay);
     this.overlay.displayed.subscribe(displayed => {
       console.log('displayed', displayed);
       if (this._displayed !== displayed) {

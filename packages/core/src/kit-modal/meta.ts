@@ -4,7 +4,6 @@ export interface KitModalParams {
   backdropClose: boolean;
   escClose: boolean;
   stack: boolean;
-  // @todo
   scrollLock: boolean;
 }
 

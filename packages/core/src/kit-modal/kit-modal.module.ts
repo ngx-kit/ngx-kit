@@ -31,6 +31,7 @@ export class KitModalModule {
           useValue: {
             backdropClose: true,
             escClose: true,
+            scrollLock: true,
           },
         },
       ],

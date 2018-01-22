@@ -8,7 +8,7 @@ import { Subject } from 'rxjs/Subject';
   styles: [`
     :host {
       background: rgba(0, 0, 0, .4);
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
