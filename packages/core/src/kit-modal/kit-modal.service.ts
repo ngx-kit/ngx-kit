@@ -1,6 +1,8 @@
+import { DOCUMENT } from '@angular/common';
 import { ComponentRef, Inject, Injectable, TemplateRef, Type } from '@angular/core';
 import { keyEscape, KitEventManagerService } from '../kit-event-manager';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
+import { KitPlatformService } from '../kit-platform';
 import { Partial } from '../util';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalRef } from './kit-modal-ref';
@@ -16,6 +18,8 @@ export class KitModalService {
     private overlay: KitOverlayService,
     private em: KitEventManagerService,
     @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
+    @Inject(DOCUMENT) private document: Document,
+    private platform: KitPlatformService,
   ) {
     this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
     this.backdropRef.instance.click.subscribe(() => {
@@ -74,9 +78,18 @@ export class KitModalService {
 
   private checkBackdrop() {
     this.backdropRef.instance.display = this.displayed.size > 0;
+    // move backdrop
     const top = this.getTopModalRef();
     if (top) {
       this.overlay.moveUnder(this.backdropRef.hostView, top.viewRef);
+    }
+    // handle body scroll-lock
+    if (this.platform.isBrowser() && this.document) {
+      if (top && top.params.scrollLock) {
+        this.document.body.style.overflow = 'hidden';
+      } else {
+        this.document.body.style.removeProperty('overflow');
+      }
     }
   }
 

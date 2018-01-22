@@ -30,6 +30,10 @@ export class KitModalRef<T> {
   }
 
   set params(params: Partial<KitModalParams>) {
+    this._params = {...params};
+  }
+
+  applyParams(params: Partial<KitModalParams>) {
     this._params = {...this.params, ...params};
   }
 
