@@ -25,6 +25,10 @@ import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picke
 import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
 import { DemoLoadingBarDefaultComponent } from './ui-loading-bar/demo-accordion-default/demo-loading-bar-default.component';
 import { DemoModalDefaultComponent } from './ui-modal/demo-modal-default/demo-modal-default.component';
+import { DemoModalUsingServiceModalComponent } from './ui-modal/demo-modal-using-service/demo-modal-using-service-modal.component';
+import { DemoModalUsingServiceComponent } from './ui-modal/demo-modal-using-service/demo-modal-using-service.component';
+import { DemoModalUsingTemplateModalComponent } from './ui-modal/demo-modal-using-template/demo-modal-using-template-modal.component';
+import { DemoModalUsingTemplateComponent } from './ui-modal/demo-modal-using-template/demo-modal-using-template.component';
 import { DemoNotificationDefaultComponent } from './ui-notification/notification-demo-default/demo-notification-default.component';
 import { DemoNotificationDurationComponent } from './ui-notification/notification-demo-duration/demo-notification-duration.component';
 import { DemoNotificationPositionComponent } from './ui-notification/notification-demo-position/demo-notification-position.component';
@@ -81,6 +85,10 @@ export const demoComponents = {
   'DemoLoadingBarDefaultComponent': DemoLoadingBarDefaultComponent,
   // modal
   'DemoModalDefaultComponent': DemoModalDefaultComponent,
+  'DemoModalUsingServiceComponent': DemoModalUsingServiceComponent,
+  'DemoModalUsingServiceModalComponent': DemoModalUsingServiceModalComponent,
+  'DemoModalUsingTemplateModalComponent': DemoModalUsingTemplateModalComponent,
+  'DemoModalUsingTemplateComponent': DemoModalUsingTemplateComponent,
   // notification
   'DemoNotificationDefaultComponent': DemoNotificationDefaultComponent,
   'DemoNotificationPositionComponent': DemoNotificationPositionComponent,

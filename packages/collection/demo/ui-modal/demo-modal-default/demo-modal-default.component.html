@@ -1,5 +1,11 @@
 <button (click)="display = true">Show modal</button>
 
-<ui-modal *kitOverlay="display" (close)="close()">
-  Some content
-</ui-modal>
+<kit-modal (close)="display = false">
+  <ui-modal *kitOverlay="display"
+            title="Modal title">
+    Modal body
+    <ui-modal-footer>
+      <button (click)="display = false">Close</button>
+    </ui-modal-footer>
+  </ui-modal>
+</kit-modal>
