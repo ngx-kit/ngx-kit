@@ -30,7 +30,6 @@ export class KitModalBackdropComponent {
     private zone: NgZone,
   ) {
     this.zone.onStable.subscribe(() => {
-      console.log('on stable sub', this.display);
       if (this.display !== this._prevDisplay) {
         this.zone.runTask(() => {
           this._prevDisplay = this.display;

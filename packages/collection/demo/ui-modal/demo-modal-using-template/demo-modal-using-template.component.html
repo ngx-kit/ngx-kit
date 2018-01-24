@@ -1,0 +1,5 @@
+<button (click)="display = true">Show modal</button>
+
+<kit-modal (close)="display = false">
+  <demo-modal-using-template-modal *kitOverlay="display"></demo-modal-using-template-modal>
+</kit-modal>

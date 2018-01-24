@@ -1,4 +1,10 @@
-<div class="fade" [@fade] (click)="fadeClick()"></div>
-<div class="modal" [@modal] aria-modal="true">
+<div *ngIf="title" class="header">
+  <div class="title">{{ title }}</div>
+  <div>
+    <button class="close" (click)="close()">X</button>
+  </div>
+</div>
+<div class="body">
   <ng-content></ng-content>
 </div>
+<ng-content select="ui-modal-footer"></ng-content>
