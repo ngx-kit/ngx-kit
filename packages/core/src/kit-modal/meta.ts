@@ -1,10 +1,10 @@
 import { InjectionToken } from '@angular/core';
 
-export interface KitModalParams {
+export interface KitModalOptions {
   backdropClose: boolean;
   escClose: boolean;
   stack: boolean;
   scrollLock: boolean;
 }
 
-export const kitModalDefaultParams = new InjectionToken('kitModalDefaultParams');
+export const kitModalDefaultOptions = new InjectionToken('kitModalDefaultOptions');

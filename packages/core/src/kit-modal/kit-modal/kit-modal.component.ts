@@ -2,11 +2,11 @@ import {
   AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, OnDestroy, OnInit,
   Output,
 } from '@angular/core';
-import { KitOverlayDirective } from '../../kit-overlay';
-import { Partial } from '../../util';
+import { KitOverlayDirective } from '../../kit-overlay/kit-overlay/kit-overlay.directive';
+import { Partial } from '../../util/partial';
 import { KitModalRef } from '../kit-modal-ref';
 import { KitModalService } from '../kit-modal.service';
-import { kitModalDefaultParams, KitModalParams } from '../meta';
+import { kitModalDefaultOptions, KitModalOptions } from '../meta';
 
 @Component({
   selector: 'kit-modal',
@@ -25,7 +25,7 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
   constructor(
     private ref: KitModalRef<any>,
     private service: KitModalService,
-    @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
+    @Inject(kitModalDefaultOptions) private defaultParams: Partial<KitModalOptions>,
   ) {
     this.ref.params = this.defaultParams;
     this.ref.onClose.subscribe(() => {
@@ -54,14 +54,14 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
           this.ref.viewRef = this.overlay.viewRef;
           this.service.registerRef(this.ref);
         } else {
-          this.ref.destroy();
+          this.ref.onDestroy.next();
         }
       }
     });
   }
 
   ngOnDestroy() {
-    this.ref.destroy();
+    this.ref.onDestroy.next();
   }
 
   ngOnInit() {

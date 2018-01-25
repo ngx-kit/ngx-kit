@@ -3,7 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalService } from './kit-modal.service';
 import { KitModalComponent } from './kit-modal/kit-modal.component';
-import { kitModalDefaultParams } from './meta';
+import { kitModalDefaultOptions } from './meta';
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ export class KitModalModule {
       providers: [
         KitModalService,
         {
-          provide: kitModalDefaultParams,
+          provide: kitModalDefaultOptions,
           useValue: {
             backdropClose: true,
             escClose: true,

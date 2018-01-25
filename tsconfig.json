@@ -13,6 +13,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
+    "stripInternal": true,
     "lib": ["es5", "es2015", "dom"],
     "baseUrl": ".",
     "paths": {
