@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { KitFocusManagerModule } from './kit-focus-manager';
+import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitLoadingBarModule } from './kit-loading-bar/kit-loading-bar.module';
 import { KitModalModule } from './kit-modal/kit-modal.module';

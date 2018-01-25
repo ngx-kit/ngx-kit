@@ -1,12 +1,13 @@
 import { DOCUMENT } from '@angular/common';
-import { ComponentRef, Inject, Injectable, TemplateRef, Type } from '@angular/core';
-import { keyEscape, KitEventManagerService } from '../kit-event-manager';
+import { ComponentRef, Inject, Injectable, Type } from '@angular/core';
+import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
+import { keyEscape } from '../kit-event-manager/meta';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
-import { KitPlatformService } from '../kit-platform';
-import { Partial } from '../util';
+import { KitPlatformService } from '../kit-platform/kit-platform.service';
+import { Partial } from '../util/partial';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalRef } from './kit-modal-ref';
-import { kitModalDefaultParams, KitModalParams } from './meta';
+import { kitModalDefaultOptions, KitModalOptions } from './meta';
 
 @Injectable()
 export class KitModalService {
@@ -17,8 +18,8 @@ export class KitModalService {
   constructor(
     private overlay: KitOverlayService,
     private em: KitEventManagerService,
-    @Inject(kitModalDefaultParams) private defaultParams: Partial<KitModalParams>,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(kitModalDefaultOptions) private defaultOptions: Partial<KitModalOptions>,
+    @Inject(DOCUMENT) private document: any,
     private platform: KitPlatformService,
   ) {
     this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
@@ -27,44 +28,31 @@ export class KitModalService {
     });
   }
 
-  show<T>(component: Type<T>, params: Partial<KitModalParams> = {}): KitModalRef<T> {
-    const modalRef = new KitModalRef();
+  show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}): KitModalRef<T> {
+    const ref = new KitModalRef();
     const componentRef = this.overlay.hostComponent<T>(component, [
       {
         provide: KitModalRef,
-        useValue: modalRef,
+        useValue: ref,
       },
     ]);
-    modalRef.params = {...this.defaultParams, ...params};
-    modalRef.viewRef = componentRef.hostView;
-    modalRef.onClose.subscribe(() => {
+    ref.params = {...this.defaultOptions, ...options};
+    ref.viewRef = componentRef.hostView;
+    ref.onClose.subscribe(() => {
       componentRef.destroy();
-      modalRef.destroy();
+      ref.onDestroy.next();
     });
-    this.registerRef(modalRef);
-    return modalRef;
+    this.registerRef(ref);
+    return ref;
   }
 
-  showTemplate(
-    template: TemplateRef<any>,
-    modalRef: KitModalRef<any>,
-  ): KitModalRef<any> {
-    const viewRef = this.overlay.hostTemplate(template);
-    modalRef.viewRef = viewRef;
-    modalRef.onClose.subscribe(() => {
-      viewRef.destroy();
-      modalRef.destroy();
-    });
-    this.registerRef(modalRef);
-    return modalRef;
-  }
-
+  /** @internal */
   registerRef(ref: KitModalRef<any>) {
     this.displayed.add(ref);
     // control esc
     const escUnsub = this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
       if (event.keyCode === keyEscape && ref.params.escClose) {
-        ref.close();
+        ref.onClose.next();
       }
     }, true);
     // update backdrop
@@ -96,7 +84,7 @@ export class KitModalService {
   private backdropClickHandler() {
     const top = this.getTopModalRef();
     if (top && top.params.backdropClose) {
-      top.close();
+      top.onClose.next();
     }
   }
 
