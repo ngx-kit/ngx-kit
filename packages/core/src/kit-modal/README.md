@@ -28,6 +28,14 @@ Modal params could be passed by DI provider and direct params.
 
 
 
+## Data-binding
+
+#### input
+
+#### output
+
+
+
 ## Examples
 
 *
