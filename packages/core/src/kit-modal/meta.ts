@@ -8,3 +8,7 @@ export interface KitModalOptions {
 }
 
 export const kitModalDefaultOptions = new InjectionToken('kitModalDefaultOptions');
+
+export interface KitModalCanClose {
+  canClose(): boolean;
+}

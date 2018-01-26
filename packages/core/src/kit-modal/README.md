@@ -2,8 +2,7 @@
 
 ## Main purpose
  
-* dialogs
-* popups
+For modal dialogs are displayed in a layer is above of the page content.
 
 
 ## Usage
@@ -33,6 +32,12 @@ Modal params could be passed by DI provider and direct params.
 #### input
 
 #### output
+
+
+
+## Guards
+
+### `canClose`
 
 
 

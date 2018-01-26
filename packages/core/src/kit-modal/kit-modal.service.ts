@@ -47,8 +47,11 @@ export class KitModalService {
     ref.viewRef = componentRef.hostView;
     ref.instance = componentRef.instance;
     ref.onClose.subscribe(() => {
-      componentRef.destroy();
-      ref.onDestroy.next();
+      // run closing guard if defined
+      if (!ref.instance['canClose'] || ref.instance['canClose']()) {
+        componentRef.destroy();
+        ref.onDestroy.next();
+      }
     });
     this.registerRef(ref);
     return ref;
