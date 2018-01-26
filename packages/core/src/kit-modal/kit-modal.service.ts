@@ -29,7 +29,7 @@ export class KitModalService {
   }
 
   show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}): KitModalRef<T> {
-    const ref = new KitModalRef();
+    const ref = new KitModalRef<T>();
     const componentRef = this.overlay.hostComponent<T>(component, [
       {
         provide: KitModalRef,
@@ -38,6 +38,7 @@ export class KitModalService {
     ]);
     ref.params = {...this.defaultOptions, ...options};
     ref.viewRef = componentRef.hostView;
+    ref.instance = componentRef.instance;
     ref.onClose.subscribe(() => {
       componentRef.destroy();
       ref.onDestroy.next();

@@ -47,7 +47,6 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     this.overlay.displayed.subscribe(displayed => {
-      console.log('displayed', displayed);
       if (this._displayed !== displayed) {
         this._displayed = displayed;
         if (displayed && this.overlay.viewRef) {
