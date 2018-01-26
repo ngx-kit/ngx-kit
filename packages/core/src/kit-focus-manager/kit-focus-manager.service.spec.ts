@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { dispatchKeyboardEvent } from '../../test/utils/dispatch-events';
 import { keyTab } from '../kit-event-manager/meta';
 import { KitPlatformBrowserModule } from '../kit-platform-browser/kit-platform-browser.module';
+import { KitFocusManagerRegistryService } from './kit-focus-manager-registry.service';
 import { KitFocusManagerService } from './kit-focus-manager.service';
 
 describe('KitFocusManagerService', () => {
@@ -20,6 +21,9 @@ describe('KitFocusManagerService', () => {
         imports: [
           CommonModule,
           KitPlatformBrowserModule,
+        ],
+        providers: [
+          KitFocusManagerRegistryService,
         ],
       });
   }));
