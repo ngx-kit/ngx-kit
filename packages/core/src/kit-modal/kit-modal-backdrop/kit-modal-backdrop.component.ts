@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, NgZone, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, NgZone, } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -15,7 +15,7 @@ import { Subject } from 'rxjs/Subject';
       left: 0;
     }
   `],
-//  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalBackdropComponent {
   display = false;
