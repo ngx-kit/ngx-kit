@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, SimpleChange, SimpleChanges, ViewRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Partial } from '../util';
+import { Partial } from '../util/util';
 import { uuid } from '../util/uuid';
 import { KitModalOptions } from './meta';
 

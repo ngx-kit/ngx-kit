@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KitFocusManagerService } from '@ngx-kit/core';
+import { KitFocusManagerService } from './kit-focus-manager.service';
 
 @Injectable()
 export class KitFocusManagerRegistryService {

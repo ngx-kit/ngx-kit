@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { KitPlatformBrowserModule } from '../kit-platform-browser/kit-platform-browser.module';
-import { KitOutsideClickModule } from './index';
+import { KitOutsideClickModule } from './kit-outside-click';
 
 describe('KitOutsideClickDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
