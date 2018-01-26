@@ -23,9 +23,16 @@ export class KitModalService {
     private platform: KitPlatformService,
   ) {
     this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
+    // backdrop click handler
     this.backdropRef.instance.click.subscribe(() => {
       this.backdropClickHandler();
     });
+    // control esc
+    this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
+      if (event.keyCode === keyEscape) {
+        this.escHandler();
+      }
+    }, true);
   }
 
   show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}): KitModalRef<T> {
@@ -50,16 +57,9 @@ export class KitModalService {
   /** @internal */
   registerRef(ref: KitModalRef<any>) {
     this.displayed.add(ref);
-    // control esc
-    const escUnsub = this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
-      if (event.keyCode === keyEscape && ref.params.escClose) {
-        ref.onClose.next();
-      }
-    }, true);
     // update backdrop
     ref.onDestroy.subscribe(() => {
       this.displayed.delete(ref);
-      escUnsub();
       this.checkBackdrop();
     });
     this.checkBackdrop();
@@ -85,6 +85,13 @@ export class KitModalService {
   private backdropClickHandler() {
     const top = this.getTopModalRef();
     if (top && top.params.backdropClose) {
+      top.onClose.next();
+    }
+  }
+
+  private escHandler() {
+    const top = this.getTopModalRef();
+    if (top && top.params.escClose) {
       top.onClose.next();
     }
   }
