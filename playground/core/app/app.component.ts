@@ -1,19 +1,11 @@
-import { AfterViewChecked, ChangeDetectionStrategy, Component } from '@angular/core';
-import { KitPlatformService } from '@ngx-kit/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'test-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements AfterViewChecked {
-  constructor(private platform: KitPlatformService) {
-    if (this.platform.isBrowser()) {
-      alert('it is a browser!');
-    }
-  }
-
-  ngAfterViewChecked() {
-    console.log('root vc');
+export class AppComponent {
+  constructor() {
   }
 }
