@@ -43,7 +43,7 @@ Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 
 ```
 npm i @ngx-kit/core --save
-npm i @ngx-kit/collection --save-dev
+npm i @ngx-kit/collection @angular-devkit/core --save-dev
 ```
 
 #### Import core modules

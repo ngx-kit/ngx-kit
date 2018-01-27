@@ -24,7 +24,7 @@ Install ngx-kit core and collection:
 
 ```
 npm install @ngx-kit/core --save
-npm install @ngx-kit/collection --save-dev
+npm install @ngx-kit/collection @angular-devkit/core --save-dev
 ```
 
 Import ngx-kit to the root module:
