@@ -35,6 +35,9 @@ export class KitModalService {
     }, true);
   }
 
+  /**
+   * Display component as modal in the overlay.
+   */
   show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}): KitModalRef<T> {
     const ref = new KitModalRef<T>();
     const componentRef = this.overlay.hostComponent<T>(component, [

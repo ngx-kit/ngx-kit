@@ -37,10 +37,16 @@ export class KitModalRef<T> {
     this._params = {...this.params, ...params};
   }
 
+  /**
+   * Emit close event.
+   */
   close() {
     this.onClose.next();
   }
 
+  /**
+   * Pass input to the hosted component.
+   */
   input(name: string, value: any) {
     if (this.instance) {
       const prev = this.instance[name];
@@ -56,6 +62,9 @@ export class KitModalRef<T> {
     }
   }
 
+  /**
+   * Get output stream from the hosted component.
+   */
   output<R>(name: string): Observable<R> {
     if (this.instance) {
       const output: EventEmitter<R> = this.instance[name];
