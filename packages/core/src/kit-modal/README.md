@@ -47,6 +47,8 @@ export class DemoModalComponent {
 
 When `KitModalRef.close()` called it destroys component instance.
 
+Do not forget to define `DemoModalComponent` in `entryComponents`.
+
 
 ### Use `kit-modal` component
 
