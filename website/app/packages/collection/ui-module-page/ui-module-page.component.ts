@@ -26,11 +26,6 @@ export class UiModulePageComponent implements OnInit {
     });
     this.route.params.subscribe(params => {
       this.module = this.contentService.get(this.pkg).modules.find((m: any) => m.name === params['name']);
-      this.module.docs.sort((x: any, y: any) => {
-        const xOrder = this.extractMdOrderValue(x);
-        const yOrder = this.extractMdOrderValue(y);
-        return xOrder > yOrder ? 1 : -1;
-      });
       this.module.api.sort((x: any, y: any) => {
         const xOrder = this.extractApiOrderValue(x);
         const yOrder = this.extractApiOrderValue(y);
