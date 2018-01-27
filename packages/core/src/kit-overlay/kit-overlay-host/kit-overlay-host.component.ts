@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, NgZone, ViewContainerRef, } from '@angular/core';
 
-/**
- * @internal
- */
 @Component({
   selector: 'kit-overlay-host',
   template: '',
