@@ -1,5 +1,5 @@
 import {
-  AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, OnDestroy, OnInit,
+  AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, OnDestroy,
   Output,
 } from '@angular/core';
 import { KitOverlayDirective } from '../../kit-overlay/kit-overlay/kit-overlay.directive';
@@ -15,7 +15,10 @@ import { kitModalDefaultOptions, KitModalOptions } from '../meta';
     KitModalRef,
   ],
 })
-export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
+export class KitModalComponent implements OnDestroy, AfterContentInit {
+  /**
+   * Emits when modal should be closed.
+   */
   @Output() close = new EventEmitter<void>();
 
   @ContentChild(KitOverlayDirective) overlay: KitOverlayDirective;
@@ -33,14 +36,23 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
     });
   }
 
+  /**
+   * Indicating if clicking the backdrop should close the modal.
+   */
   @Input() set backdropClose(backdropClose: boolean) {
     this.ref.applyParams({backdropClose});
   }
 
+  /**
+   * Indicating if pressing the `esc` key should close the modal.
+   */
   @Input() set escClose(escClose: boolean) {
     this.ref.applyParams({escClose});
   }
 
+  /**
+   * Indicating if scroll of body is disabled while modal is displayed.
+   */
   @Input() set scrollLock(scrollLock: boolean) {
     this.ref.applyParams({scrollLock});
   }
@@ -61,8 +73,5 @@ export class KitModalComponent implements OnDestroy, OnInit, AfterContentInit {
 
   ngOnDestroy() {
     this.ref.onDestroy.next();
-  }
-
-  ngOnInit() {
   }
 }
