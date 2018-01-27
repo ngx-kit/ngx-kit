@@ -4,8 +4,6 @@ import { KitOverlayAutofix, KitOverlayPosition, positionPairs, StrategyEl, Strat
 
 /**
  * @todo correct handle cases when anchor is not visible
- *
- * @internal
  */
 @Injectable()
 export class DropdownPositioningService {
