@@ -157,7 +157,7 @@ As you can see `DemoModalComponent` can be used both in the service-hosted and i
 
 Handy for service-hosted modals when you don't have full control of closing process.
 
-If `canClose` method returns `false` modal will not be destroyed (or `close` event will not be emitted in `kit-modal` usage case).
+If `canClose` method returns `false` modal will not be destroyed.
 
 ```typescript
 export class DemoModalComponent implements KitModalCanClose {
