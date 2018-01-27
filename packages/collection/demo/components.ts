@@ -24,6 +24,10 @@ import { DemoCustomSelectDefaultComponent } from './ui-custom-select/demo-custom
 import { DemoDatePickerDefaultComponent } from './ui-date-picker/demo-date-picker-default/demo-date-picker-default.component';
 import { DemoDatePickerPopupComponent } from './ui-date-picker/demo-date-picker-popup/demo-date-picker-popup.component';
 import { DemoLoadingBarDefaultComponent } from './ui-loading-bar/demo-accordion-default/demo-loading-bar-default.component';
+import { DemoModalCanCloseModalComponent } from './ui-modal/demo-modal-can-close/demo-modal-can-close-modal.component';
+import { DemoModalCanCloseComponent } from './ui-modal/demo-modal-can-close/demo-modal-can-close.component';
+import { DemoModalDataBindingModalComponent } from './ui-modal/demo-modal-data-binding/demo-modal-data-binding-modal.component';
+import { DemoModalDataBindingComponent } from './ui-modal/demo-modal-data-binding/demo-modal-data-binding.component';
 import { DemoModalDefaultComponent } from './ui-modal/demo-modal-default/demo-modal-default.component';
 import { DemoModalUsingServiceModalComponent } from './ui-modal/demo-modal-using-service/demo-modal-using-service-modal.component';
 import { DemoModalUsingServiceComponent } from './ui-modal/demo-modal-using-service/demo-modal-using-service.component';
@@ -89,6 +93,10 @@ export const demoComponents = [
   DemoModalUsingServiceModalComponent,
   DemoModalUsingTemplateModalComponent,
   DemoModalUsingTemplateComponent,
+  DemoModalDataBindingComponent,
+  DemoModalDataBindingModalComponent,
+  DemoModalCanCloseComponent,
+  DemoModalCanCloseModalComponent,
   // notification
   DemoNotificationDefaultComponent,
   DemoNotificationPositionComponent,
