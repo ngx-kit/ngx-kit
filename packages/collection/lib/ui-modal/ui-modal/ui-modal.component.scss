@@ -1,11 +1,11 @@
 :host {
-  position: fixed;
-  left: 50%;
-  top: 25%;
-  transform: translateX(-50%);
   background: #ffffff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+  left: 50%;
   min-width: 400px;
+  position: fixed;
+  top: 25%;
+  transform: translateX(-50%);
 }
 
 .header {
