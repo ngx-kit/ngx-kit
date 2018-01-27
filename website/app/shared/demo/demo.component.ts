@@ -36,9 +36,10 @@ export class DemoComponent implements OnChanges {
     }
     this.class = demoComponents[this.demo.class];
     this.readme = this.md.render(this.demo.readme);
-    this.code = this.demo.code.reduce((prev: any, file: any) => ({
-      ...prev,
-      [file.file]: highlightAuto(file.content, [file.language]).value,
-    }), {});
+    this.code = this.demo.code
+      .reduce((prev: any, file: any) => ({
+        ...prev,
+        [file.file]: highlightAuto(file.content, [file.language]).value,
+      }), {});
   }
 }
