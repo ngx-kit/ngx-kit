@@ -57,11 +57,12 @@ Or provide `KitOverlayPositionService` on a component. Also needs `KitStyleServi
 })
 export class AppPopupComponent {
   constructor(private overlayPosition: KitOverlayPositionService) {
+    this.overlayPosition.type = 'side';
   }
   
   ngOnChanges() {
-    this.overlayPosition.type = 'side';
     this.overlayPosition.anchor = this.anchor;
+    this.overlayPosition.reposition();
     ...
   }
 ...
