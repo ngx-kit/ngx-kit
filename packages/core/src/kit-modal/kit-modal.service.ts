@@ -1,5 +1,8 @@
 import { DOCUMENT } from '@angular/common';
-import { ComponentRef, Inject, Injectable, Type } from '@angular/core';
+import {
+  ComponentFactoryResolver, ComponentRef, forwardRef, Inject, Injectable, Optional, SkipSelf,
+  Type,
+} from '@angular/core';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyEscape } from '../kit-event-manager/meta';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
@@ -15,60 +18,75 @@ export class KitModalService {
 
   private displayed = new Set<KitModalRef<any>>();
 
+  private isRoot: boolean;
+
   constructor(
     private overlay: KitOverlayService,
     private em: KitEventManagerService,
     @Inject(kitModalDefaultOptions) private defaultOptions: Partial<KitModalOptions>,
     @Inject(DOCUMENT) private document: any,
     private platform: KitPlatformService,
+    @Optional() @Inject(forwardRef(() => KitModalService)) @SkipSelf() private parent: KitModalService,
+    private cfr: ComponentFactoryResolver,
   ) {
-    this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
-    // backdrop click handler
-    this.backdropRef.instance.click.subscribe(() => {
-      this.backdropClickHandler();
-    });
-    // control esc
-    this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
-      if (event.keyCode === keyEscape) {
-        this.escHandler();
-      }
-    }, true);
+    this.isRoot = !this.parent;
+    if (this.isRoot) {
+      this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
+      // backdrop click handler
+      this.backdropRef.instance.click.subscribe(() => {
+        this.backdropClickHandler();
+      });
+      // control esc
+      this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
+        if (event.keyCode === keyEscape) {
+          this.escHandler();
+        }
+      }, true);
+    }
   }
 
   /**
    * Display component as modal in the overlay.
    */
-  show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}): KitModalRef<T> {
-    const ref = new KitModalRef<T>();
-    const componentRef = this.overlay.hostComponent<T>(component, [
-      {
-        provide: KitModalRef,
-        useValue: ref,
-      },
-    ]);
-    ref.params = {...this.defaultOptions, ...options};
-    ref.viewRef = componentRef.hostView;
-    ref.instance = componentRef.instance;
-    ref.onClose.subscribe(() => {
-      // run closing guard if defined
-      if (!ref.instance['canClose'] || ref.instance['canClose']()) {
-        componentRef.destroy();
-        ref.onDestroy.next();
-      }
-    });
-    this.registerRef(ref);
-    return ref;
+  show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}, cfr?: ComponentFactoryResolver): KitModalRef<T> {
+    if (this.isRoot) {
+      const ref = new KitModalRef<T>();
+      const componentRef = this.overlay.hostComponent<T>(component, [
+        {
+          provide: KitModalRef,
+          useValue: ref,
+        },
+      ], cfr);
+      ref.params = {...this.defaultOptions, ...options};
+      ref.viewRef = componentRef.hostView;
+      ref.instance = componentRef.instance;
+      ref.onClose.subscribe(() => {
+        // run closing guard if defined
+        if (!ref.instance['canClose'] || ref.instance['canClose']()) {
+          componentRef.destroy();
+          ref.onDestroy.next();
+        }
+      });
+      this.registerRef(ref);
+      return ref;
+    } else {
+      return this.parent.show(component, options, cfr || this.cfr);
+    }
   }
 
   /** @internal */
   registerRef(ref: KitModalRef<any>) {
-    this.displayed.add(ref);
-    // update backdrop
-    ref.onDestroy.subscribe(() => {
-      this.displayed.delete(ref);
+    if (this.isRoot) {
+      this.displayed.add(ref);
+      // update backdrop
+      ref.onDestroy.subscribe(() => {
+        this.displayed.delete(ref);
+        this.checkBackdrop();
+      });
       this.checkBackdrop();
-    });
-    this.checkBackdrop();
+    } else {
+      this.parent.registerRef(ref);
+    }
   }
 
   private checkBackdrop() {

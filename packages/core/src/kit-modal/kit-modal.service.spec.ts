@@ -24,6 +24,8 @@ describe('KitModalService', () => {
       options,
       documentStub as any,
       platformStub as any,
+      null as any,
+      null as any,
     );
   }
 

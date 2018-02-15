@@ -1,7 +1,15 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Injector,
-  TemplateRef, Type, ViewRef,
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EmbeddedViewRef,
+  Inject,
+  Injectable,
+  Injector,
+  TemplateRef,
+  Type,
+  ViewRef,
 } from '@angular/core';
 import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable } from 'rxjs/Observable';
@@ -35,13 +43,15 @@ export class KitOverlayService {
   /**
    * Render component on the overlay.
    */
-  hostComponent<T>(component: Type<T>, providers: StaticProvider[] = []): ComponentRef<T> {
+  hostComponent<T>(component: Type<T>, providers: StaticProvider[] = [], cfr?: ComponentFactoryResolver): ComponentRef<T> {
     const id = uuid();
     const injector = Injector.create({
       providers,
       parent: this.host.vcr.parentInjector,
     });
-    const componentFactory = this.cfr.resolveComponentFactory(component);
+    const componentFactory = cfr
+      ? cfr.resolveComponentFactory(component)
+      : this.cfr.resolveComponentFactory(component);
     return this.host.vcr.createComponent<T>(componentFactory, this.host.vcr.length, injector);
   }
 
