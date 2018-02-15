@@ -196,6 +196,10 @@ ngOnInit() {
 TBD
 
 
+## Modal components in Lazy Modules
+
+You could get error `No component factory found for NameOfModalComponent` inside Lazy Modules. To solve the problem just provide `KitModelService` in this module.
+
 
 ## Examples
 
