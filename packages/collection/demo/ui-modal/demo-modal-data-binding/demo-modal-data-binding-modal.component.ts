@@ -16,6 +16,10 @@ export class DemoModalDataBindingModalComponent {
   ) {
   }
 
+  close() {
+    this.ref.close();
+  }
+
   closeWith(value: string) {
     this.outputField.emit(value);
     this.ref.close();
