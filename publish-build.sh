@@ -51,3 +51,5 @@ NPM_LINK="${ORG}/${BUILD_REPO}#${BUILD_VER}"
 echo "Build published: ${NPM_LINK}"
 
 echo "${NPM_LINK}" > "${REPO_DIR}/npm_link"
+
+read -p "Press any key to continue... " -n1 -s
