@@ -96,6 +96,11 @@ export class AppPopupComponent {
 * `right-bottom`
 
 
+## Host components in Lazy Modules
+
+You could get error `No component factory found for NameOfComponent` inside Lazy Modules. To solve the problem just provide `KitOverlayService` in this module.
+
+
 ## Examples
 
 * collection:custom-select - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-custom-select), [demo](http://ngx-kit.com/collection/module/ui-custom-select) 
