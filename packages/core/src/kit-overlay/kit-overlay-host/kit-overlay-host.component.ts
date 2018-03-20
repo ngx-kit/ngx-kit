@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, NgZone, ViewContainerRef, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'kit-overlay-host',
@@ -9,6 +16,8 @@ export class KitOverlayHostComponent {
   constructor(
     public zone: NgZone,
     public vcr: ViewContainerRef,
+    public cdr: ChangeDetectorRef,
+    public elRef: ElementRef,
   ) {
   }
 }

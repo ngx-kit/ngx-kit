@@ -12,21 +12,24 @@ import {
   SkipSelf,
   TemplateRef,
   Type,
+  ViewContainerRef,
   ViewRef,
 } from '@angular/core';
 import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { uuid } from '../util/uuid';
+import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-host-wrapper.component';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 
 @Injectable()
 export class KitOverlayService {
   private _onHostStable = new Subject<void>();
 
-  private host: KitOverlayHostComponent;
+  private hostWrapperRef: ComponentRef<KitOverlayHostWrapperComponent>;
 
   private hostRef: ComponentRef<KitOverlayHostComponent>;
+
+  private host: KitOverlayHostComponent;
 
   private container: Element;
 
@@ -52,31 +55,52 @@ export class KitOverlayService {
   }
 
   /**
-   * Render component on the overlay.
+   * Render component in the overlay.
    */
-  hostComponent<T>(component: Type<T>, providers: StaticProvider[] = [], cfr?: ComponentFactoryResolver): ComponentRef<T> {
+  hostComponent<T>(
+    {component, providers = [], componentFactoryResolver, viewContainerRef}: {
+      component: Type<T>;
+      providers?: StaticProvider[];
+      componentFactoryResolver?: ComponentFactoryResolver;
+      viewContainerRef?: ViewContainerRef;
+    },
+  ): ComponentRef<T> {
     if (this.isRoot) {
-      const id = uuid();
+      const hostVcr = viewContainerRef || this.host.vcr;
       const injector = Injector.create({
         providers,
-        parent: this.host.vcr.parentInjector,
+        parent: hostVcr.injector,
       });
-      const componentFactory = cfr
-        ? cfr.resolveComponentFactory(component)
+      const componentFactory = componentFactoryResolver
+        ? componentFactoryResolver.resolveComponentFactory(component)
         : this.cfr.resolveComponentFactory(component);
-      return this.host.vcr.createComponent<T>(componentFactory, this.host.vcr.length, injector);
+      const ref = hostVcr.createComponent<T>(componentFactory, hostVcr.length, injector);
+      this.host.elRef.nativeElement.appendChild(this.getComponentRootNode(ref));
+      ref.changeDetectorRef.detectChanges();
+      return ref;
     } else {
-      return this.parent.hostComponent(component, providers, cfr || this.cfr);
+      return this.parent.hostComponent({component, providers, componentFactoryResolver, viewContainerRef});
     }
   }
 
   /**
    * Render template (passed by TemplateRef) on the overlay.
    */
-  hostTemplate(templateRef: TemplateRef<any>, context: any = {}): ViewRef {
-    return this.isRoot
-      ? this.host.vcr.createEmbeddedView(templateRef, context)
-      : this.parent.hostTemplate(templateRef);
+  hostTemplate(
+    {templateRef, context = {}, viewContainerRef}: {
+      templateRef: TemplateRef<any>,
+      context?: any;
+      viewContainerRef?: ViewContainerRef;
+    },
+  ): ViewRef {
+    if (this.isRoot) {
+      const hostVcr = viewContainerRef || this.host.vcr;
+      const ref = hostVcr.createEmbeddedView(templateRef, context);
+      this.host.elRef.nativeElement.appendChild(this.getTemplateRootNode(ref));
+      return ref;
+    } else {
+      return this.parent.hostTemplate({templateRef, context, viewContainerRef});
+    }
   }
 
   /**
@@ -85,11 +109,20 @@ export class KitOverlayService {
    */
   moveUnder(ref: ViewRef, target: ViewRef) {
     if (this.isRoot) {
-      const targetIndex = this.host.vcr.indexOf(target);
-      this.host.vcr.move(ref, targetIndex - 1);
+      this.getTemplateRootNode(this.hostRef.hostView)
+        .insertBefore(this.getTemplateRootNode(ref), this.getTemplateRootNode(target));
     } else {
       this.parent.moveUnder(ref, target);
     }
+  }
+
+  /** Gets the root HTMLElement for an instantiated component. */
+  private getComponentRootNode(componentRef: ComponentRef<any>): HTMLElement {
+    return this.getTemplateRootNode(componentRef.hostView);
+  }
+
+  private getTemplateRootNode(viewRef: EmbeddedViewRef<any> | ViewRef): HTMLElement {
+    return (viewRef as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
   }
 
   private mountHost() {
@@ -100,18 +133,19 @@ export class KitOverlayService {
     this.container = this.document.createElement('div');
     this.container.classList.add('kit-overlay-container');
     this.document.body.appendChild(this.container);
+    // Create host-wrapper
+    const hostWrapperFactory = this.cfr.resolveComponentFactory(KitOverlayHostWrapperComponent);
+    this.hostWrapperRef = hostWrapperFactory.create(this.injector);
+    this.container.appendChild(this.getComponentRootNode(this.hostWrapperRef));
     // Create host
-    const componentFactory = this.cfr.resolveComponentFactory(KitOverlayHostComponent);
-    this.hostRef = componentFactory.create(this.injector);
+    const hostFactory = this.cfr.resolveComponentFactory(KitOverlayHostComponent);
+    const wrapperVcr = this.hostWrapperRef.instance.vcr;
+    this.hostRef = wrapperVcr.createComponent(hostFactory, wrapperVcr.length, this.injector);
     this.host = this.hostRef.instance;
-    this.appRef.attachView(this.hostRef.hostView);
+    this.container.appendChild(this.getComponentRootNode(this.hostRef));
     // Track CD
     this.host.zone.onStable.subscribe(() => {
       this._onHostStable.next();
     });
-    // At this point the component has been instantiated, so we move it to the location in the DOM
-    // where we want it to be rendered.
-    const componentRoot: HTMLElement = (this.hostRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    this.container.appendChild(componentRoot);
   }
 }

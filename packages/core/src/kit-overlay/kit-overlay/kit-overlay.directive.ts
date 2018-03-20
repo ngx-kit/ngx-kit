@@ -1,5 +1,12 @@
 import {
-  ChangeDetectorRef, Directive, Input, OnChanges, OnDestroy, SimpleChanges, TemplateRef,
+  ChangeDetectorRef,
+  Directive,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+  TemplateRef,
+  ViewContainerRef,
   ViewRef,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -23,6 +30,7 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     private templateRef: TemplateRef<any>,
     private service: KitOverlayService,
     private cdr: ChangeDetectorRef,
+    private vcr: ViewContainerRef,
   ) {
   }
 
@@ -46,7 +54,10 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
 
   updateHost() {
     if (this.kitOverlay && !this._viewRef) {
-      this._viewRef = this.service.hostTemplate(this.templateRef, {kek: '123KEK'});
+      this._viewRef = this.service.hostTemplate({
+        templateRef: this.templateRef,
+        viewContainerRef: this.vcr,
+      });
       this._viewRef.detectChanges();
       this.doCheckSub = this.service.onHostStable.subscribe(() => {
         if (!this.cdr['destroyed']) {
