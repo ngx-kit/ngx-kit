@@ -22,8 +22,8 @@ export class DemoModalDataBindingComponent {
 
   show() {
     this.ref = this.modal.show(DemoModalDataBindingModalComponent);
-    this.ref.input('inputField', this.inputField);
-    this.ref.output('outputField').subscribe((value: any) => {
+    this.ref.input({inputField: this.inputField});
+    this.ref.instance.outputField.subscribe((value: any) => {
       this.outputField = value;
       this.cdr.markForCheck();
     });

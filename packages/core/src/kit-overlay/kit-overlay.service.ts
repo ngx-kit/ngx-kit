@@ -18,6 +18,7 @@ import {
 import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { KitOverlayComponentRef } from './kit-overlay-component-ref';
 import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-host-wrapper.component';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 
@@ -64,7 +65,7 @@ export class KitOverlayService {
       componentFactoryResolver?: ComponentFactoryResolver;
       viewContainerRef?: ViewContainerRef;
     },
-  ): ComponentRef<T> {
+  ): KitOverlayComponentRef<T> {
     if (this.isRoot) {
       const hostVcr = viewContainerRef || this.host.vcr;
       const injector = Injector.create({
@@ -74,10 +75,10 @@ export class KitOverlayService {
       const componentFactory = componentFactoryResolver
         ? componentFactoryResolver.resolveComponentFactory(component)
         : this.cfr.resolveComponentFactory(component);
-      const ref = hostVcr.createComponent<T>(componentFactory, hostVcr.length, injector);
-      this.host.elRef.nativeElement.appendChild(this.getComponentRootNode(ref));
-      ref.changeDetectorRef.detectChanges();
-      return ref;
+      const componentRef = hostVcr.createComponent<T>(componentFactory, hostVcr.length, injector);
+      this.host.elRef.nativeElement.appendChild(this.getComponentRootNode(componentRef));
+      componentRef.changeDetectorRef.detectChanges();
+      return new KitOverlayComponentRef(componentRef);
     } else {
       return this.parent.hostComponent({component, providers, componentFactoryResolver, viewContainerRef});
     }

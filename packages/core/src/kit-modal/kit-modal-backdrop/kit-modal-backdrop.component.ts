@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'kit-modal-backdrop',
-  template: '{{ styleDisplay }}',
+  template: '',
   styles: [`
     :host {
       background: rgba(0, 0, 0, .4);
@@ -18,11 +24,11 @@ import { Subject } from 'rxjs/Subject';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalBackdropComponent {
+  @Output() close = new EventEmitter<void>();
+
   @HostBinding('style.display') styleDisplay = 'none';
 
   private _display = false;
-
-  private _click = new Subject<void>();
 
   @Input() set display(display: boolean) {
     if (display !== this._display) {
@@ -31,11 +37,7 @@ export class KitModalBackdropComponent {
     }
   }
 
-  get click(): Observable<void> {
-    return this._click.asObservable();
-  }
-
   @HostListener('click') clickHandler() {
-    this._click.next();
+    this.close.emit();
   }
 }

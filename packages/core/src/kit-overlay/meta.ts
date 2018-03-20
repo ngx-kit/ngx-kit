@@ -34,3 +34,7 @@ export interface StrategyField {
   width: number;
   height: number;
 }
+
+export interface KitOverlayInput {
+  [key: string]: any;
+}

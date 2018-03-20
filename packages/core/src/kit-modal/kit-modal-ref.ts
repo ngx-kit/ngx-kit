@@ -1,6 +1,6 @@
-import { EventEmitter, Injectable, SimpleChange, SimpleChanges, ViewRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Injectable, ViewRef } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { KitOverlayComponentRef, KitOverlayInput } from '../../';
 import { Partial } from '../util/util';
 import { uuid } from '../util/uuid';
 import { KitModalOptions } from './meta';
@@ -20,7 +20,7 @@ export class KitModalRef<T> {
   viewRef: ViewRef;
 
   /** @internal */
-  instance: T;
+  componentRef: KitOverlayComponentRef<T>;
 
   private _params: Partial<KitModalOptions> = {};
 
@@ -30,6 +30,14 @@ export class KitModalRef<T> {
 
   set params(params: Partial<KitModalOptions>) {
     this._params = {...params};
+  }
+
+  get instance(): T {
+    if (this.componentRef) {
+      return this.componentRef.componentRef.instance;
+    } else {
+      throw new Error('Modal initiated without instance.');
+    }
   }
 
   /** @internal */
@@ -47,34 +55,11 @@ export class KitModalRef<T> {
   /**
    * Pass input to the hosted component.
    */
-  input(name: string, value: any) {
-    if (this.instance) {
-      const prev = this.instance[name];
-      this.instance[name] = value;
-      if (this.instance['ngOnChanges']) {
-        const changes: SimpleChanges = {[name]: new SimpleChange(prev, value, false)};
-        this.instance['ngOnChanges'](changes);
-      }
-      this.viewRef.markForCheck();
+  input(input: KitOverlayInput) {
+    if (this.componentRef) {
+      this.componentRef.input(input);
     } else {
       throw new Error('Modal initiated without instance. Input could be passed programmatically only for ' +
-        'service-hosted modals.');
-    }
-  }
-
-  /**
-   * Get output stream from the hosted component.
-   */
-  output<R>(name: string): Observable<R> {
-    if (this.instance) {
-      const output: EventEmitter<R> = this.instance[name];
-      if (output) {
-        return output.asObservable();
-      } else {
-        throw new Error(`Output "${name}" not declared!`);
-      }
-    } else {
-      throw new Error('Modal initiated without instance. Output could be provided only for ' +
         'service-hosted modals.');
     }
   }

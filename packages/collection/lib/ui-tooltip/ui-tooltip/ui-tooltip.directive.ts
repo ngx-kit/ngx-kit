@@ -1,5 +1,4 @@
 import {
-  ComponentRef,
   Directive,
   ElementRef,
   HostListener,
@@ -9,13 +8,10 @@ import {
   OnInit,
   ViewContainerRef,
 } from '@angular/core';
-import { KitOverlayService } from '@ngx-kit/core';
+import { KitOverlayComponentRef, KitOverlayService } from '@ngx-kit/core';
 import { UiTooltipOptions } from '../meta';
 import { UiTooltipViewComponent } from '../ui-tooltip-view/ui-tooltip-view.component';
 
-/**
- * @todo simplify proxying
- */
 @Directive({
   selector: '[uiTooltip]',
 })
@@ -24,7 +20,7 @@ export class UiTooltipDirective implements OnInit, OnChanges, OnDestroy {
 
   @Input() uiTooltipOptions: UiTooltipOptions = {};
 
-  private componentRef: ComponentRef<UiTooltipViewComponent>;
+  private componentRef: KitOverlayComponentRef<UiTooltipViewComponent>;
 
   constructor(
     private el: ElementRef,
@@ -56,18 +52,18 @@ export class UiTooltipDirective implements OnInit, OnChanges, OnDestroy {
 
   private hide() {
     if (this.componentRef) {
-      this.componentRef.destroy();
+      this.componentRef.componentRef.destroy();
     }
   }
 
   private proxyProps() {
     if (this.componentRef) {
-      const instance = this.componentRef.instance;
-      instance.anchorEl = this.el.nativeElement;
-      instance.content = this.uiTooltip;
-      instance.color = this.uiTooltipOptions.color || 'default';
-      instance.position = this.uiTooltipOptions.position || 'top';
-      instance.ngOnChanges();
+      this.componentRef.input({
+        anchorEl: this.el.nativeElement,
+        content: this.uiTooltip,
+        color: this.uiTooltipOptions.color || 'default',
+        position: this.uiTooltipOptions.position || 'top',
+      });
     }
   }
 
