@@ -22,7 +22,7 @@ export class KitFocusManagerService implements OnDestroy {
 
   private outsideSource: HTMLElement;
 
-  private unsubs: any[];
+  private unsubs: any[] = [];
 
   constructor(
     private el: ElementRef,
