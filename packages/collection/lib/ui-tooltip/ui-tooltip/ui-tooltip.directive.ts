@@ -1,4 +1,14 @@
-import { ComponentRef, Directive, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 import { KitOverlayService } from '@ngx-kit/core';
 import { UiTooltipOptions } from '../meta';
 import { UiTooltipViewComponent } from '../ui-tooltip-view/ui-tooltip-view.component';
@@ -19,6 +29,7 @@ export class UiTooltipDirective implements OnInit, OnChanges, OnDestroy {
   constructor(
     private el: ElementRef,
     private overlayService: KitOverlayService,
+    private vcr: ViewContainerRef,
   ) {
   }
 
@@ -61,7 +72,10 @@ export class UiTooltipDirective implements OnInit, OnChanges, OnDestroy {
   }
 
   private show() {
-    this.componentRef = this.overlayService.hostComponent<UiTooltipViewComponent>(UiTooltipViewComponent);
+    this.componentRef = this.overlayService.hostComponent<UiTooltipViewComponent>({
+      component: UiTooltipViewComponent,
+      viewContainerRef: this.vcr,
+    });
     this.proxyProps();
   }
 }

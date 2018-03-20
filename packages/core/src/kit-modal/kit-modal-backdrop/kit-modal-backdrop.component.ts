@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, NgZone, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'kit-modal-backdrop',
-  template: '',
+  template: '{{ styleDisplay }}',
   styles: [`
     :host {
       background: rgba(0, 0, 0, .4);
@@ -18,25 +18,17 @@ import { Subject } from 'rxjs/Subject';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitModalBackdropComponent {
-  display = false;
-
   @HostBinding('style.display') styleDisplay = 'none';
 
-  private _prevDisplay = false;
+  private _display = false;
 
   private _click = new Subject<void>();
 
-  constructor(
-    private zone: NgZone,
-  ) {
-    this.zone.onStable.subscribe(() => {
-      if (this.display !== this._prevDisplay) {
-        this.zone.runTask(() => {
-          this._prevDisplay = this.display;
-          this.styleDisplay = this.display ? 'block' : 'none';
-        });
-      }
-    });
+  @Input() set display(display: boolean) {
+    if (display !== this._display) {
+      this._display = display;
+      this.styleDisplay = this._display ? 'block' : 'none';
+    }
   }
 
   get click(): Observable<void> {

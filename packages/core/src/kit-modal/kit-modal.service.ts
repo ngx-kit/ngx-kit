@@ -1,7 +1,14 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ComponentFactoryResolver, ComponentRef, forwardRef, Inject, Injectable, Optional, SkipSelf,
+  ComponentFactoryResolver,
+  ComponentRef,
+  forwardRef,
+  Inject,
+  Injectable,
+  Optional,
+  SkipSelf,
   Type,
+  ViewContainerRef,
 } from '@angular/core';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyEscape } from '../kit-event-manager/meta';
@@ -30,33 +37,33 @@ export class KitModalService {
     private cfr: ComponentFactoryResolver,
   ) {
     this.isRoot = !this.parent;
-    if (this.isRoot) {
-      this.backdropRef = this.overlay.hostComponent(KitModalBackdropComponent);
-      // backdrop click handler
-      this.backdropRef.instance.click.subscribe(() => {
-        this.backdropClickHandler();
-      });
-      // control esc
-      this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
-        if (event.keyCode === keyEscape) {
-          this.escHandler();
-        }
-      }, true);
-    }
   }
 
   /**
    * Display component as modal in the overlay.
    */
-  show<T>(component: Type<T>, options: Partial<KitModalOptions> = {}, cfr?: ComponentFactoryResolver): KitModalRef<T> {
+  show<T>(
+    component: Type<T>,
+    options: Partial<KitModalOptions> = {},
+    cfr?: ComponentFactoryResolver,
+    vcr?: ViewContainerRef,
+  ): KitModalRef<T> {
+    console.log('MODAL SHOW', this.isRoot, cfr);
     if (this.isRoot) {
+      this.initBackdrop();
       const ref = new KitModalRef<T>();
-      const componentRef = this.overlay.hostComponent<T>(component, [
-        {
-          provide: KitModalRef,
-          useValue: ref,
-        },
-      ], cfr);
+      const componentRef = this.overlay
+        .hostComponent<T>({
+          component,
+          providers: [
+            {
+              provide: KitModalRef,
+              useValue: ref,
+            },
+          ],
+          componentFactoryResolver: cfr,
+          viewContainerRef: vcr,
+        });
       ref.params = {...this.defaultOptions, ...options};
       ref.viewRef = componentRef.hostView;
       ref.instance = componentRef.instance;
@@ -70,7 +77,7 @@ export class KitModalService {
       this.registerRef(ref);
       return ref;
     } else {
-      return this.parent.show(component, options, cfr || this.cfr);
+      return this.parent.show(component, options, cfr || this.cfr, vcr);
     }
   }
 
@@ -91,6 +98,7 @@ export class KitModalService {
 
   private checkBackdrop() {
     this.backdropRef.instance.display = this.displayed.size > 0;
+    this.backdropRef.changeDetectorRef.detectChanges();
     // move backdrop
     const top = this.getTopModalRef();
     if (top) {
@@ -122,5 +130,21 @@ export class KitModalService {
 
   private getTopModalRef(): KitModalRef<any> | undefined {
     return Array.from(this.displayed.values()).pop();
+  }
+
+  private initBackdrop() {
+    if (!this.backdropRef) {
+      this.backdropRef = this.overlay.hostComponent({component: KitModalBackdropComponent});
+      // backdrop click handler
+      this.backdropRef.instance.click.subscribe(() => {
+        this.backdropClickHandler();
+      });
+      // control esc
+      this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
+        if (event.keyCode === keyEscape) {
+          this.escHandler();
+        }
+      }, true);
+    }
   }
 }
