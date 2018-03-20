@@ -29,13 +29,13 @@ import { UiTooltipColors } from '../meta';
 export class UiTooltipViewComponent implements OnChanges {
   @Input() anchorEl: any;
 
-  @Input() color: UiTooltipColors;
+  @Input() color: UiTooltipColors = 'default';
 
   @Input() content: string;
 
   @HostBinding('@host') hostTrigger = true;
 
-  @Input() position: KitOverlayPosition;
+  @Input() position: KitOverlayPosition = 'top';
 
   constructor(
     private overlayPosition: KitOverlayPositionService,
