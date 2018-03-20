@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import {
   ComponentFactoryResolver,
-  ComponentRef,
   forwardRef,
   Inject,
   Injectable,
@@ -12,6 +11,7 @@ import {
 } from '@angular/core';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyEscape } from '../kit-event-manager/meta';
+import { KitOverlayComponentRef } from '../kit-overlay/kit-overlay-component-ref';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { Partial } from '../util/partial';
@@ -21,7 +21,7 @@ import { kitModalDefaultOptions, KitModalOptions } from './meta';
 
 @Injectable()
 export class KitModalService {
-  private backdropRef: ComponentRef<KitModalBackdropComponent>;
+  private backdropRef: KitOverlayComponentRef<KitModalBackdropComponent>;
 
   private displayed = new Set<KitModalRef<any>>();
 
@@ -48,7 +48,6 @@ export class KitModalService {
     cfr?: ComponentFactoryResolver,
     vcr?: ViewContainerRef,
   ): KitModalRef<T> {
-    console.log('MODAL SHOW', this.isRoot, cfr);
     if (this.isRoot) {
       this.initBackdrop();
       const ref = new KitModalRef<T>();
@@ -65,12 +64,12 @@ export class KitModalService {
           viewContainerRef: vcr,
         });
       ref.params = {...this.defaultOptions, ...options};
-      ref.viewRef = componentRef.hostView;
-      ref.instance = componentRef.instance;
+      ref.componentRef = componentRef;
+      ref.viewRef = componentRef.componentRef.hostView;
       ref.onClose.subscribe(() => {
         // run closing guard if defined
         if (!ref.instance['canClose'] || ref.instance['canClose']()) {
-          componentRef.destroy();
+          componentRef.componentRef.destroy();
           ref.onDestroy.next();
         }
       });
@@ -84,6 +83,7 @@ export class KitModalService {
   /** @internal */
   registerRef(ref: KitModalRef<any>) {
     if (this.isRoot) {
+      this.initBackdrop();
       this.displayed.add(ref);
       // update backdrop
       ref.onDestroy.subscribe(() => {
@@ -97,12 +97,11 @@ export class KitModalService {
   }
 
   private checkBackdrop() {
-    this.backdropRef.instance.display = this.displayed.size > 0;
-    this.backdropRef.changeDetectorRef.detectChanges();
+    this.backdropRef.input({display: this.displayed.size > 0});
     // move backdrop
     const top = this.getTopModalRef();
     if (top) {
-      this.overlay.moveUnder(this.backdropRef.hostView, top.viewRef);
+      this.overlay.moveUnder(this.backdropRef.componentRef.hostView, top.viewRef);
     }
     // handle body scroll-lock
     if (this.platform.isBrowser() && this.document) {
@@ -135,8 +134,8 @@ export class KitModalService {
   private initBackdrop() {
     if (!this.backdropRef) {
       this.backdropRef = this.overlay.hostComponent({component: KitModalBackdropComponent});
-      // backdrop click handler
-      this.backdropRef.instance.click.subscribe(() => {
+      // backdrop close handler
+      this.backdropRef.componentRef.instance.close.subscribe(() => {
         this.backdropClickHandler();
       });
       // control esc

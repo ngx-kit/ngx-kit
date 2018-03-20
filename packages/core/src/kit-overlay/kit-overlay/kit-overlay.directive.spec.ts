@@ -33,27 +33,23 @@ describe('KitOverlayDirective', () => {
     return fixture.componentInstance;
   }
 
-  it('should project to the host', async(() => {
+  it('projects template to the host', async(() => {
     fixture = createTestComponent(basicTemplate);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
   }));
   it('should toggle', async(() => {
     fixture = createTestComponent(basicTemplate);
     // show
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
     // hide
     getComponent().display = false;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeFalsy();
     // show again
     getComponent().display = true;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
   }));
   it('should hide if parent destroyed', async(() => {
@@ -65,12 +61,10 @@ describe('KitOverlayDirective', () => {
     fixture = createTestComponent(template);
     // show
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeTruthy();
     // hide parent
     getComponent().parentDisplay = false;
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.content'))).toBeFalsy();
     expect(document.querySelector('.kit-overlay-container .content')).toBeFalsy();
   }));
   it('should run CD from host', () => {

@@ -30,25 +30,31 @@ describe('KitModalService', () => {
   }
 
   describe('.show()', () => {
+    it('calls OverlayService.hostComponent()', () => {
+      const spy = spyOn(overlayStub, 'hostComponent').and.callThrough();
+      createService();
+      service.show(ModalStub);
+      expect(spy).toHaveBeenCalled();
+    });
     it('returns ref with instance', () => {
       createService();
       const ref = service.show(ModalStub);
-      expect(ref.instance).toEqual(overlayStub.componentRef.instance);
+      expect(ref.instance).toEqual(overlayStub.componentRef.componentRef.instance);
     });
   });
   describe('param "backdropClose"', () => {
-    it('=true closes modal on backdrop click', () => {
+    it('=true closes modal on backdrop close', () => {
       createService({backdropClose: true});
       service.show(ModalStub);
-      const spy = spyOn(overlayStub.componentRef, 'destroy');
-      overlayStub.backdropRef.instance.click.next();
+      const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
+      overlayStub.backdropRef.componentRef.instance.close.next();
       expect(spy).toHaveBeenCalled();
     });
-    it('=false does not close modal on backdrop click', () => {
+    it('=false does not close modal on backdrop close', () => {
       createService({backdropClose: false});
       service.show(ModalStub);
-      const spy = spyOn(overlayStub.componentRef, 'destroy');
-      overlayStub.backdropRef.instance.click.next();
+      const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
+      overlayStub.backdropRef.componentRef.instance.close.next();
       expect(spy).toHaveBeenCalledTimes(0);
     });
   });
@@ -56,14 +62,14 @@ describe('KitModalService', () => {
     it('=true closes modal on esc press', () => {
       createService({escClose: true});
       service.show(ModalStub);
-      const spy = spyOn(overlayStub.componentRef, 'destroy');
+      const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       emStub.listener({keyCode: keyEscape});
       expect(spy).toHaveBeenCalled();
     });
     it('=false does not close modal on esc press', () => {
       createService({escClose: false});
       service.show(ModalStub);
-      const spy = spyOn(overlayStub.componentRef, 'destroy');
+      const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       emStub.listener({keyCode: keyEscape});
       expect(spy).toHaveBeenCalledTimes(0);
     });
@@ -75,8 +81,8 @@ class OverlayStub {
 
   componentRef = new ComponentRefStub();
 
-  hostComponent(cpm: any) {
-    if (cpm === KitModalBackdropComponent) {
+  hostComponent(options: any) {
+    if (options.component === KitModalBackdropComponent) {
       return this.backdropRef;
     } else {
       return this.componentRef;
@@ -88,11 +94,15 @@ class OverlayStub {
 }
 
 class ComponentRefStub {
-  instance = {
-    click: new Subject(),
+  componentRef = {
+    instance: {
+      close: new Subject(),
+    },
+    destroy: () => {
+    },
   };
 
-  destroy() {
+  input() {
   }
 }
 
