@@ -3,6 +3,7 @@ export * from './src/kit-class/kit-class';
 export * from './src/kit-collapse/kit-collapse';
 export * from './src/kit-date-picker/kit-date-picker';
 export * from './src/kit-event-manager/kit-event-manager';
+export * from './src/kit-focus-listener/kit-focus-listener';
 export * from './src/kit-focus-manager/kit-focus-manager';
 export * from './src/kit-check/kit-check';
 export * from './src/kit-icons/kit-icons';
