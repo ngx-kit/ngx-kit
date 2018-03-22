@@ -5,7 +5,7 @@ Control focus like a boss.
 ## Main purpose
  
 * dialogs/popups/modals
-* complex forms
+* complex forms and components
 
 ## Usage
 

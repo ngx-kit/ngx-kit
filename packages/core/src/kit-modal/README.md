@@ -23,7 +23,7 @@ export class DemoComponent {
   }
   
   showModal() {
-    this.modalRef = this.modalService.show(DemoModalComponent);
+    this.modalRef = this.modalService.show({component: DemoModalComponent});
   }
   
   closeModal() {
@@ -62,8 +62,7 @@ When modal hosted in template `KitModalRef.close()` just emit `(close)` event on
 ```
 
 
-
-## Configuration
+### Configuration
 
 Available options:
   * `backdropClose` (default: `true`) - indicating if clicking the backdrop should close the modal.
@@ -72,13 +71,13 @@ Available options:
 
 Modal options can be passed by DI provider, `KitModelService.show()` method or with `kit-modal` params.
 
-### Set params with the service
+#### Set params with the service
 
 ```typescript
-this.modalService.show(DemoModalComponent, {backdropClose: false});
+this.modalService.show({component: DemoModalComponent, options: {backdropClose: false}});
 ```
 
-### Ser params with `kit-modal`
+#### Ser params with `kit-modal`
 
 ```html
 <kit-modal [backdropClose]="false">
@@ -86,14 +85,14 @@ this.modalService.show(DemoModalComponent, {backdropClose: false});
 </kit-modal>
 ```
 
-### Default config
+#### Default config
 
 If you want to redefine default options with DI you should define all options:
 
 ```typescript
 providers: [
   {
-    provide: kitModalDefaultOptions,
+    provide: KitModalOptions,
     useValue: {
       backdropClose: true,
       escClose: true,
@@ -104,8 +103,7 @@ providers: [
 ```
 
 
-
-## Data-binding
+### Data-binding
 
 For service-hosted modals we have methods for communication with component instance.
 
@@ -118,8 +116,8 @@ export class DemoModalComponent {
 ```
 
 ```typescript
-this.modalRef = this.modalService.show(DemoModalComponent);
-this.modalRef.input('field', 'value');
+this.modalRef = this.modalService.show({component: DemoModalComponent});
+this.modalRef.input({field: 'value'});
 ```
 
 `input` method passes value to the defined field and calls `ngOnChanges` life-cycle hook (if needed).
@@ -133,12 +131,10 @@ export class DemoModalComponent {
 ```
 
 ```typescript
-this.modalRef = this.modalService.show(DemoModalComponent);
-this.modalRef.output('event').subscribe((value: any) => {
+this.modalRef = this.modalService.show({component: DemoModalComponent});
+this.modalRef.instance.event.subscribe((value: any) => {
 });
 ```
-
-`output` provides `Observable` with subscription on event emitter.
 
 As you can see `DemoModalComponent` can be used both in the service-hosted and in the template-hosted approach.
 
@@ -153,9 +149,9 @@ As you can see `DemoModalComponent` can be used both in the service-hosted and i
 
 
 
-## Guards
+### Guards
 
-### `canClose`
+#### `canClose`
 
 Handy for service-hosted modals when you don't have full control of closing process.
 
@@ -169,7 +165,7 @@ export class DemoModalComponent implements KitModalCanClose {
 ```
 
 
-## Focus managment
+### Focus management
 
 Provide `KitFocusManagerService`
 
@@ -180,7 +176,7 @@ export class DemoModalComponent {
 }
 ```
 
-### Trap
+#### Trap
 
 Capture focus:
 
@@ -191,14 +187,15 @@ ngOnInit() {
 }
 ```
 
-### Initial focus
+#### Initial focus
 
 TBD
 
 
-## Modal components in Lazy Modules
+### Modal components in Lazy Modules
 
 You could get error `No component factory found for NameOfModalComponent` inside Lazy Modules. To solve the problem just provide `KitModelService` in this module.
+
 
 
 ## Examples

@@ -1,13 +1,20 @@
-import { InjectionToken } from '@angular/core';
+import { ComponentFactoryResolver, Type, ViewContainerRef } from '@angular/core';
+import { Partial } from '../../';
 
-export interface KitModalOptions {
-  backdropClose: boolean;
-  escClose: boolean;
-  stack: boolean;
-  scrollLock: boolean;
+export class KitModalOptions {
+  backdropClose = true;
+
+  escClose = true;
+
+  scrollLock = true;
 }
 
-export const kitModalDefaultOptions = new InjectionToken('kitModalDefaultOptions');
+export interface KitModalShowArgs<T> {
+  component: Type<T>;
+  options?: Partial<KitModalOptions>;
+  componentFactoryResolver?: ComponentFactoryResolver;
+  viewContainerRef?: ViewContainerRef;
+}
 
 export interface KitModalCanClose {
   canClose(): boolean;

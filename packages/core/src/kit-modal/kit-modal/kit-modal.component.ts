@@ -1,12 +1,8 @@
-import {
-  AfterContentInit, Component, ContentChild, EventEmitter, Inject, Input, OnDestroy,
-  Output,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, } from '@angular/core';
 import { KitOverlayDirective } from '../../kit-overlay/kit-overlay/kit-overlay.directive';
-import { Partial } from '../../util/partial';
 import { KitModalRef } from '../kit-modal-ref';
 import { KitModalService } from '../kit-modal.service';
-import { kitModalDefaultOptions, KitModalOptions } from '../meta';
+import { KitModalOptions } from '../meta';
 
 @Component({
   selector: 'kit-modal',
@@ -28,9 +24,9 @@ export class KitModalComponent implements OnDestroy, AfterContentInit {
   constructor(
     private ref: KitModalRef<any>,
     private service: KitModalService,
-    @Inject(kitModalDefaultOptions) private defaultParams: Partial<KitModalOptions>,
+    private options: KitModalOptions,
   ) {
-    this.ref.params = this.defaultParams;
+    this.ref.params = this.options;
     this.ref.onClose.subscribe(() => {
       this.close.emit();
     });
