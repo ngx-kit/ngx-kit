@@ -16,6 +16,6 @@ export class DemoModalCanCloseComponent {
   }
 
   show() {
-    this.ref = this.modal.show(DemoModalCanCloseModalComponent);
+    this.ref = this.modal.show({component: DemoModalCanCloseModalComponent});
   }
 }
