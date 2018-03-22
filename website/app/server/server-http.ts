@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { REQUEST } from '@nguniversal/express-engine';
 import { Observable } from 'rxjs/Observable';
 import { from } from 'rxjs/observable/from';
 

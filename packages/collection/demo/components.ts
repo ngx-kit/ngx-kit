@@ -6,6 +6,12 @@ import { DemoAlertClosableComponent } from './ui-alert/demo-alert-closable/demo-
 import { DemoAlertColorComponent } from './ui-alert/demo-alert-color/demo-alert-color.component';
 import { DemoAlertDefaultComponent } from './ui-alert/demo-alert-default/demo-alert-default.component';
 import { DemoAlertTitleComponent } from './ui-alert/demo-alert-title/demo-alert-title.component';
+import { DemoAutocompleteOptionObjectComponent } from './ui-autocomplete/demo-autocomplete-option-object/demo-autocomplete-option-object.component';
+import { DemoAutocompleteOptionTemplateComponent } from './ui-autocomplete/demo-autocomplete-option-template/demo-autocomplete-option-template.component';
+import { DemoAutocompleteDebounceComponent } from './ui-autocomplete/demo-autocomplete-debounce/demo-autocomplete-debounce.component';
+import { DemoAutocompleteDefaultComponent } from './ui-autocomplete/demo-autocomplete-default/demo-autocomplete-default.component';
+import { DemoAutocompleteOnFocusComponent } from './ui-autocomplete/demo-autocomplete-on-focus/demo-autocomplete-on-focus.component';
+import { DemoAutocompleteSelectModeComponent } from './ui-autocomplete/demo-autocomplete-select-mode/demo-autocomplete-select-mode.component';
 import { DemoBadgeColorComponent } from './ui-badge/demo-badge-color/demo-badge-color.component';
 import { DemoBadgeDefaultComponent } from './ui-badge/demo-badge-default/demo-badge-default.component';
 import { DemoBadgePositionComponent } from './ui-badge/demo-badge-position/demo-badge-position.component';
@@ -62,6 +68,13 @@ export const demoComponents = [
   DemoAlertColorComponent,
   DemoAlertTitleComponent,
   DemoAlertClosableComponent,
+  // autocomplete
+  DemoAutocompleteDefaultComponent,
+  DemoAutocompleteSelectModeComponent,
+  DemoAutocompleteOptionObjectComponent,
+  DemoAutocompleteOnFocusComponent,
+  DemoAutocompleteDebounceComponent,
+  DemoAutocompleteOptionTemplateComponent,
   // badge
   DemoBadgeColorComponent,
   DemoBadgeDefaultComponent,
