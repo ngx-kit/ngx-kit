@@ -1,0 +1,8 @@
+<div>
+  Value: {{ value | json }}
+</div>
+<input uiAutocomplete
+       [options]="options"
+       (search)="searchOptions($event)"
+       [(ngModel)]="value"
+       placeholder="Start typing…">

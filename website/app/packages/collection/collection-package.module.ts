@@ -24,7 +24,6 @@ import { UiModulePageComponent } from './ui-module-page/ui-module-page.component
   providers: [
     KitLoadingBarService,
   ],
-  entryComponents: [],
 })
 export class CollectionPackageModule {
 }
