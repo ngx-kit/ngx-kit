@@ -13,6 +13,7 @@ import { KitPointerModule } from './kit-pointer/kit-pointer.module';
 import { KitRefModule } from './kit-ref/kit-ref.module';
 import { KitRepeatModule } from './kit-repeat/kit-repeat.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
+import { KitValueAccessorModule } from './kit-value-accessor/kit-value-accessor.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitRefModule,
     KitRepeatModule,
     KitSlideModule,
+    KitValueAccessorModule,
   ],
   exports: [
     KitAnchorModule,
@@ -46,6 +48,7 @@ import { KitSlideModule } from './kit-slide/kit-slide.module';
     KitRefModule,
     KitRepeatModule,
     KitSlideModule,
+    KitValueAccessorModule,
   ],
 })
 export class KitModule {
