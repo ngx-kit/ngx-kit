@@ -9,6 +9,8 @@
 
 ## Usage
 
+### Use `*kitOverlay` directive
+
 Any element/component could be projected.
 
 ```html
@@ -18,6 +20,13 @@ Any element/component could be projected.
 ```
 
 `*kitOverlay` - expects a boolean expression, like `*ngIf`.
+
+### Use `KitOverlayService`
+
+```typescript
+const ref = this.overlayService.hostComponent({component: DemoOverlayComponent});
+```
+
 
 ### Positioning
 
@@ -96,9 +105,44 @@ export class AppPopupComponent {
 * `right-bottom`
 
 
-## Host components in Lazy Modules
+### Data-binding
+
+For service-hosted components we have methods for communication with component instance.
+
+#### input
+
+```typescript
+export class OverlayComponent {
+  @Input() field: string;
+}
+```
+
+```typescript
+const ref = this.overlayService.hostComponent({component: OverlayComponent});
+ref.input({field: 'value'});
+```
+
+`input` method passes value to the defined field and calls `ngOnChanges` life-cycle hook (if needed).
+
+#### output
+
+```typescript
+export class OverlayComponent {
+  @Output() event = new EventEmitter<any>();
+}
+```
+
+```typescript
+const ref = this.overlayService.hostComponent({component: OverlayComponent});
+ref.instance.event.subscribe((value: any) => {
+});
+```
+
+
+### Host components in Lazy Modules
 
 You could get error `No component factory found for NameOfComponent` inside Lazy Modules. To solve the problem just provide `KitOverlayService` in this module.
+
 
 
 ## Examples
