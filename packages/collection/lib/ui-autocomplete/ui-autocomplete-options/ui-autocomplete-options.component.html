@@ -1,0 +1,8 @@
+<button *ngFor="let option of options; let index = index"
+        (click)="select.emit(index)"
+        [class.-selected]="index === selected">
+  <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
+  <ng-container *ngIf="optionTemplate">
+    <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option}"></ng-container>
+  </ng-container>
+</button>
