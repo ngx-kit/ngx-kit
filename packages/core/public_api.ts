@@ -20,6 +20,7 @@ export * from './src/kit-ref/kit-ref';
 export * from './src/kit-repeat/kit-repeat';
 export * from './src/kit-slide/kit-slide';
 export * from './src/kit-style/kit-style';
+export * from './src/kit-value-accessor/kit-value-accessor';
 export * from './src/util/util';
 export * from './src/kit.module';
 export * from './src/kit-root.module';
