@@ -26,7 +26,7 @@ describe('KitModalBackdropComponent', () => {
   // specs
   describe('.click', () => {
     it('outputs event on mouse click', (done) => {
-      component.click.subscribe(() => {
+      component.close.subscribe(() => {
         expect(true).toBeTruthy();
         done();
       });

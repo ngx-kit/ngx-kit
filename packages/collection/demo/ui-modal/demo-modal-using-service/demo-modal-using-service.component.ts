@@ -16,6 +16,6 @@ export class DemoModalUsingServiceComponent {
   }
 
   show() {
-    this.ref = this.modal.show(DemoModalUsingServiceModalComponent);
+    this.ref = this.modal.show({component: DemoModalUsingServiceModalComponent});
   }
 }

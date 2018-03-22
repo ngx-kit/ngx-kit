@@ -1,23 +1,13 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  ComponentFactoryResolver,
-  forwardRef,
-  Inject,
-  Injectable,
-  Optional,
-  SkipSelf,
-  Type,
-  ViewContainerRef,
-} from '@angular/core';
+import { ComponentFactoryResolver, forwardRef, Inject, Injectable, Optional, SkipSelf, } from '@angular/core';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyEscape } from '../kit-event-manager/meta';
 import { KitOverlayComponentRef } from '../kit-overlay/kit-overlay-component-ref';
 import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
-import { Partial } from '../util/partial';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalRef } from './kit-modal-ref';
-import { kitModalDefaultOptions, KitModalOptions } from './meta';
+import { KitModalOptions, KitModalShowArgs } from './meta';
 
 @Injectable()
 export class KitModalService {
@@ -30,7 +20,7 @@ export class KitModalService {
   constructor(
     private overlay: KitOverlayService,
     private em: KitEventManagerService,
-    @Inject(kitModalDefaultOptions) private defaultOptions: Partial<KitModalOptions>,
+    private options: KitModalOptions,
     @Inject(DOCUMENT) private document: any,
     private platform: KitPlatformService,
     @Optional() @Inject(forwardRef(() => KitModalService)) @SkipSelf() private parent: KitModalService,
@@ -43,10 +33,12 @@ export class KitModalService {
    * Display component as modal in the overlay.
    */
   show<T>(
-    component: Type<T>,
-    options: Partial<KitModalOptions> = {},
-    cfr?: ComponentFactoryResolver,
-    vcr?: ViewContainerRef,
+    {
+      component,
+      options,
+      componentFactoryResolver,
+      viewContainerRef,
+    }: KitModalShowArgs<T>,
   ): KitModalRef<T> {
     if (this.isRoot) {
       this.initBackdrop();
@@ -60,10 +52,10 @@ export class KitModalService {
               useValue: ref,
             },
           ],
-          componentFactoryResolver: cfr,
-          viewContainerRef: vcr,
+          componentFactoryResolver: componentFactoryResolver,
+          viewContainerRef: viewContainerRef,
         });
-      ref.params = {...this.defaultOptions, ...options};
+      ref.params = {...this.options, ...options};
       ref.componentRef = componentRef;
       ref.viewRef = componentRef.componentRef.hostView;
       ref.onClose.subscribe(() => {
@@ -76,7 +68,12 @@ export class KitModalService {
       this.registerRef(ref);
       return ref;
     } else {
-      return this.parent.show(component, options, cfr || this.cfr, vcr);
+      return this.parent.show({
+        component,
+        options,
+        componentFactoryResolver: componentFactoryResolver || this.cfr,
+        viewContainerRef,
+      });
     }
   }
 

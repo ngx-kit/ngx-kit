@@ -21,7 +21,7 @@ describe('KitModalService', () => {
     service = new KitModalService(
       overlayStub as any,
       emStub as any,
-      options,
+      options as any,
       documentStub as any,
       platformStub as any,
       null as any,
@@ -33,26 +33,26 @@ describe('KitModalService', () => {
     it('calls OverlayService.hostComponent()', () => {
       const spy = spyOn(overlayStub, 'hostComponent').and.callThrough();
       createService();
-      service.show(ModalStub);
+      service.show({component: ModalStub});
       expect(spy).toHaveBeenCalled();
     });
     it('returns ref with instance', () => {
       createService();
-      const ref = service.show(ModalStub);
+      const ref = service.show({component: ModalStub});
       expect(ref.instance).toEqual(overlayStub.componentRef.componentRef.instance);
     });
   });
   describe('param "backdropClose"', () => {
     it('=true closes modal on backdrop close', () => {
       createService({backdropClose: true});
-      service.show(ModalStub);
+      service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       overlayStub.backdropRef.componentRef.instance.close.next();
       expect(spy).toHaveBeenCalled();
     });
     it('=false does not close modal on backdrop close', () => {
       createService({backdropClose: false});
-      service.show(ModalStub);
+      service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       overlayStub.backdropRef.componentRef.instance.close.next();
       expect(spy).toHaveBeenCalledTimes(0);
@@ -61,14 +61,14 @@ describe('KitModalService', () => {
   describe('param "escClose"', () => {
     it('=true closes modal on esc press', () => {
       createService({escClose: true});
-      service.show(ModalStub);
+      service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       emStub.listener({keyCode: keyEscape});
       expect(spy).toHaveBeenCalled();
     });
     it('=false does not close modal on esc press', () => {
       createService({escClose: false});
-      service.show(ModalStub);
+      service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
       emStub.listener({keyCode: keyEscape});
       expect(spy).toHaveBeenCalledTimes(0);
