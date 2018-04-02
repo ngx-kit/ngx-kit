@@ -58,6 +58,11 @@ export class KitValueAccessorDirective implements ControlValueAccessor {
     this.interceptor.keyDown(event);
   }
 
+  @HostListener('blur', ['$event'])
+  blurHandler(event: any) {
+    this.touches$.next();
+  }
+
   registerOnChange(fn: any) {
     this.changes$.subscribe(fn);
   }
