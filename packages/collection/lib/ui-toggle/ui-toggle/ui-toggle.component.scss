@@ -1,0 +1,101 @@
+:host {
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+$boxSize: 40px;
+$borderWidth: 1px;
+
+.toggle {
+  cursor: pointer;
+  margin-left: $boxSize + 8px;
+  position: relative;
+  &:before {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: $boxSize;
+    height: $boxSize / 2;
+    content: '';
+    border-radius: $boxSize;
+    margin-left: - $boxSize - 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: $borderWidth solid #becad6;
+    transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
+    box-shadow: none;
+  }
+  &:after {
+    content: '';
+    background: #becad6;
+    border-radius: ($boxSize / 2 - 4px) / 2;
+    margin-left: - $boxSize - 8px;
+    width: $boxSize / 2 - 4px;
+    height: $boxSize / 2 - 4px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    left: $borderWidth + 2px;
+    position: absolute;
+    transition: all 300ms cubic-bezier(.27, .01, .38, 1.06);
+  }
+  &.-checked {
+    &:before {
+      background: #2399e5;
+      border-color: #2399e5;
+    }
+    &:after {
+      margin-left: - $boxSize / 2 - 8px;
+      background: #ffffff;
+    }
+    &:active {
+      &:after {
+        margin-left: - $boxSize / 2 - 12px;
+      }
+    }
+  }
+  &.-focused {
+    &:before {
+      border-color: #2399e5;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    }
+  }
+  &.-has-errors {
+    &:before {
+      border-color: red;
+    }
+    &.-checked:before {
+      background: red;
+    }
+  }
+  &.-disabled {
+    cursor: default;
+    &.-checked {
+      &:before {
+        background: #9da8b4;
+        border-color: #9da8b4;
+      }
+      &:after {
+        background: #ffffff;
+      }
+    }
+    &:before {
+      background: #f6f6f6;
+      border-color: #becad6;
+    }
+  }
+  &:active {
+    &:before {
+    }
+    &:after {
+      width: $boxSize / 2;
+    }
+  }
+}
+
