@@ -6,6 +6,8 @@ export * from './src/kit-event-manager/kit-event-manager';
 export * from './src/kit-focus-listener/kit-focus-listener';
 export * from './src/kit-focus-manager/kit-focus-manager';
 export * from './src/kit-check/kit-check';
+export * from './src/kit-form-field/kit-form-field';
+export * from './src/kit-form-touch/kit-form-touch';
 export * from './src/kit-icons/kit-icons';
 export * from './src/kit-loading-bar/kit-loading-bar';
 export * from './src/kit-notification/kit-notification';
