@@ -1,0 +1,9 @@
+<ng-template #checkTemplate>
+  <label [attr.for]="idBinding"
+         class="check"
+         [class.-checked]="isChecked()"
+         [class.-focused]="focused"
+         [class.-has-errors]="hasErrors"
+         [class.-disabled]="disabled">
+  </label>
+</ng-template>
