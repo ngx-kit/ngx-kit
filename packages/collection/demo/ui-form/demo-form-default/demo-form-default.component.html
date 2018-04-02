@@ -1,0 +1,15 @@
+<form uiForm>
+  <ui-form-field label="Email">
+    <input [(ngModel)]="email"
+           name="email"
+           required
+           email>
+    <span *kitFormError="'required'">Field is required</span>
+    <span *kitFormError="'email'">Enter a valid email</span>
+  </ui-form-field>
+  <ui-form-field label="Name">
+    <input [(ngModel)]="name"
+           name="name">
+  </ui-form-field>
+  <button kitFormTouch>Submit</button>
+</form>
