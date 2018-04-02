@@ -1,0 +1,47 @@
+<form uiForm>
+  <ui-form-field label="Email">
+    <input uiText
+           [(ngModel)]="email"
+           name="email"
+           required
+           email>
+    <span *kitFormError="'required'">Field is required</span>
+    <span *kitFormError="'email'">Enter a valid email</span>
+  </ui-form-field>
+  <ui-form-field label="Name">
+    <input uiText
+           [(ngModel)]="name"
+           name="name">
+  </ui-form-field>
+  <ui-form-field label="Type">
+    <input type="radio"
+           uiRadio
+           [(ngModel)]="type"
+           name="type"
+           id="type-customer"
+           value="customer"
+           required>
+    <label for="type-customer">Customer</label>
+    <input type="radio"
+           uiRadio
+           [(ngModel)]="type"
+           name="type"
+           id="type-merchant"
+           value="merchant"
+           required>
+    <label for="type-merchant">Merchant</label>
+    <span *kitFormError="'required'">Select a type</span>
+  </ui-form-field>
+  <ui-form-field>
+    <input uiCheckbox
+           type="checkbox"
+           [(ngModel)]="rememberMe"
+           name="rememberMe"
+           id="rememberMe">
+    <label for="rememberMe">Remember Me</label>
+  </ui-form-field>
+  <button uiButton
+          kitFormTouch
+          (click)="submit()">Submit
+  </button>
+</form>
