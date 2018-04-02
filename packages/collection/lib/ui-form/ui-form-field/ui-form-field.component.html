@@ -1,0 +1,19 @@
+<label [for]="formFieldService.controls.length === 1 ? formFieldService.control?.id : ''">
+  {{ label }}
+  <span *ngIf="required || formFieldService.isRequired()"
+        class="required"
+        title="Required">*</span>
+</label>
+<div class="control">
+  <ng-content></ng-content>
+  <div *ngIf="errorRefs"
+       class="errors">
+    <ng-container *ngFor="let ref of errorRefs">
+      <div *ngIf="hasError(ref.name)"
+           @error
+           class="error">
+        <ng-container *ngTemplateOutlet="ref.templateRef"></ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

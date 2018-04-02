@@ -1,0 +1,13 @@
+<form uiForm
+      [formGroup]="form">
+  <ui-form-field label="Email"
+                 [required]="true">
+    <input formControlName="email">
+    <span *kitFormError="'required'">Field is required</span>
+    <span *kitFormError="'email'">Enter a valid email</span>
+  </ui-form-field>
+  <ui-form-field label="Name">
+    <input formControlName="name">
+  </ui-form-field>
+  <button kitFormTouch>Submit</button>
+</form>

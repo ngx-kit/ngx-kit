@@ -1,0 +1,12 @@
+:host {
+  &.layout {
+    &-aligned {
+    }
+    &-inline {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
