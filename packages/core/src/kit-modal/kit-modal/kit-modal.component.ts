@@ -59,7 +59,7 @@ export class KitModalComponent implements OnDestroy, AfterContentInit {
         this._displayed = displayed;
         if (displayed && this.overlay.viewRef) {
           this.ref.viewRef = this.overlay.viewRef;
-          this.service.registerRef(this.ref);
+          this.service.addRef(this.ref);
         } else {
           this.ref.onDestroy.next();
         }
