@@ -106,7 +106,7 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
 
   ngOnInit() {
     // Register in blur service
-    this.focusListener.register(this.elRef.nativeElement);
+    this.focusListener.add(this.elRef.nativeElement);
     // Handle blur (the service helps to track focus of options list)
     this.focusListener.blur
       .pipe(takeUntil(this.destroy))
