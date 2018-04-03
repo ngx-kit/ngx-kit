@@ -27,7 +27,7 @@ describe('KitFocusDirective', () => {
 class FocusManagerMock {
   directive: KitFocusDirective;
 
-  register(directive: KitFocusDirective) {
+  add(directive: KitFocusDirective) {
     this.directive = directive;
   }
 

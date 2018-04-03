@@ -139,9 +139,9 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   /**
-   * Register  item for manual focus.
+   * Register item for manual focus.
    */
-  register(item: KitFocusDirective) {
+  add(item: KitFocusDirective) {
     this.items.add(item);
   }
 
