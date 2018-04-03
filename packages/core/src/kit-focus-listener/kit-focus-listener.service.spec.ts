@@ -11,10 +11,10 @@ describe('KitFocusListenerService', () => {
   it('should create the service', () => {
     expect(service).toBeTruthy();
   });
-  describe('.register()', () => {
+  describe('.add()', () => {
     it('adds listener', () => {
       const spy = spyOn(emStub, 'addEventListener');
-      service.register(true as any);
+      service.add(true as any);
       expect(spy).toHaveBeenCalled();
     });
     it('emits focus on gains focus', (done) => {
@@ -23,7 +23,7 @@ describe('KitFocusListenerService', () => {
         expect(true).toBeTruthy();
         done();
       });
-      service.register(elSample);
+      service.add(elSample);
       emStub.emitFocus();
     });
     it('emits blur on loosing focus', (done) => {
@@ -32,7 +32,7 @@ describe('KitFocusListenerService', () => {
         expect(true).toBeTruthy();
         done();
       });
-      service.register(elSample);
+      service.add(elSample);
       emStub.emitBlur();
     });
   });

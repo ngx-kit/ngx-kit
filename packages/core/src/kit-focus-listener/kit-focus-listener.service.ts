@@ -44,7 +44,7 @@ export class KitFocusListenerService {
     return this._focused;
   }
 
-  register(el: HTMLElement) {
+  add(el: HTMLElement) {
     this.elements.push({
       el: el,
       focus: this.em.addEventListener(el, 'focus', (event: any) => {

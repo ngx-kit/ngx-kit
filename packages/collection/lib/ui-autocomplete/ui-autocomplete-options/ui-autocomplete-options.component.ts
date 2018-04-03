@@ -69,7 +69,7 @@ export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDest
 
   ngOnInit() {
     // Register in blur service
-    this.focusListener.register(this.elRef.nativeElement);
+    this.focusListener.add(this.elRef.nativeElement);
     // Setup overlay position
     this.overlayPosition.type = 'dropdown';
     this.overlayPosition.position = 'bottom';

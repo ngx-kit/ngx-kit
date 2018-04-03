@@ -3,7 +3,7 @@
 ## Features 
 
 * Handles focus/blur from a group of elements
-* Register/remove elements at any moment
+* Add/remove elements at any moment
 
 
 ## Example
