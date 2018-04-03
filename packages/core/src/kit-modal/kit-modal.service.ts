@@ -65,7 +65,7 @@ export class KitModalService {
           ref.onDestroy.next();
         }
       });
-      this.registerRef(ref);
+      this.addRef(ref);
       return ref;
     } else {
       return this.parent.show({
@@ -78,7 +78,7 @@ export class KitModalService {
   }
 
   /** @internal */
-  registerRef(ref: KitModalRef<any>) {
+  addRef(ref: KitModalRef<any>) {
     if (this.isRoot) {
       this.initBackdrop();
       this.displayed.add(ref);
@@ -89,7 +89,7 @@ export class KitModalService {
       });
       this.checkBackdrop();
     } else {
-      this.parent.registerRef(ref);
+      this.parent.addRef(ref);
     }
   }
 
