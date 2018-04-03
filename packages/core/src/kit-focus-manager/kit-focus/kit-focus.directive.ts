@@ -18,7 +18,7 @@ export class KitFocusDirective implements OnDestroy {
     private el: ElementRef,
   ) {
     if (this.service) {
-      this.service.register(this);
+      this.service.add(this);
     }
   }
 
