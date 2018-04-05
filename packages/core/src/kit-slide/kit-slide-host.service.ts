@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { take } from 'rxjs/operators';
 import { KitSlideDirection, KitSlideId } from './meta';
 
 @Injectable()
@@ -20,7 +21,10 @@ export class KitSlideHostService {
 
   private lastId = 0;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone,
+  ) {
   }
 
   /**
@@ -36,14 +40,13 @@ export class KitSlideHostService {
   set active(id: KitSlideId) {
     this._direction.next(this._active.value === null
       ? 'initial' // no animation for init render
-      : id !== null && id > this._active.value
-        ? 'prev'
-        : 'next');
-    // timeout for right animation trigger setup
-    setTimeout(() => {
+      : id !== null && this.getIndex(id) > this.getIndex(this._active.value)
+        ? 'next'
+        : 'prev');
+    // run after stabilization for correct animation trigger setup
+    this.zone.onStable.pipe(take(1)).subscribe(() => {
       this._active.next(id);
-      this.cdr.markForCheck();
-    }, 1);
+    });
   }
 
   /**
@@ -51,11 +54,10 @@ export class KitSlideHostService {
    */
   set activeInitial(id: KitSlideId) {
     this._direction.next('initial');
-    // timeout for right animation trigger setup
-    setTimeout(() => {
+    // run after stabilization for correct animation trigger setup
+    this.zone.onStable.pipe(take(1)).subscribe(() => {
       this._active.next(id);
-      this.cdr.markForCheck();
-    }, 1);
+    });
   }
 
   /**
@@ -134,8 +136,11 @@ export class KitSlideHostService {
   }
 
   private getCurrentIndex() {
+    return this.getIndex(this._active.value);
+  }
+
+  private getIndex(value: any) {
     const ids = Array.from(this.ids);
-    const current = this._active.value;
-    return ids.findIndex(i => i === current);
+    return ids.findIndex(i => i === value);
   }
 }

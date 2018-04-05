@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Directive,
   Input,
   OnChanges,
@@ -35,6 +36,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
     private vcr: ViewContainerRef,
     private template: TemplateRef<any>,
     private host: KitSlideHostService,
+    private cdr: ChangeDetectorRef,
   ) {
   }
 
@@ -63,11 +65,13 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
         if (id === this.kitSlide) {
           if (!this.displayed) {
             this.vcr.createEmbeddedView(this.template);
+            this.cdr.detectChanges();
             this.displayed = true;
           }
         } else {
           if (this.displayed) {
             this.vcr.clear();
+            this.cdr.detectChanges();
             this.displayed = false;
           }
         }
