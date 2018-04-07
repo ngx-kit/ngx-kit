@@ -44,6 +44,8 @@ export class UiTabsTabComponent implements OnInit, OnDestroy {
 
   @HostListener('click')
   clickHandler() {
-    this.host.active = this.id;
+    if (this.id) {
+      this.host.active = this.id;
+    }
   }
 }
