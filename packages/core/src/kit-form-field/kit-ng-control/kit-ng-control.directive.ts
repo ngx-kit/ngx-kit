@@ -1,6 +1,5 @@
 import {
   Directive,
-  DoCheck,
   Host,
   HostBinding,
   Input,
@@ -24,7 +23,7 @@ import { KitFormFieldService } from '../kit-form-field.service';
   // tslint:disable-next-line
   selector: '[ngModel],[formControl],[formControlName]',
 })
-export class KitNgControlDirective implements DoCheck, OnDestroy {
+export class KitNgControlDirective implements OnDestroy {
   @Input() required: boolean;
 
   private _id: string = uuid();
@@ -62,7 +61,9 @@ export class KitNgControlDirective implements DoCheck, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.formFieldService.remove(this);
+    if (this.formFieldService) {
+      this.formFieldService.remove(this);
+    }
   }
 
   ngDoCheck() {
