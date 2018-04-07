@@ -3,14 +3,13 @@ import { KitOverlayInput } from './meta';
 
 @Injectable()
 export class KitOverlayComponentRef<T> {
-  constructor(public componentRef: ComponentRef<T>) {
-  }
+  componentRef: ComponentRef<T>;
 
   /**
    * Pass input to the hosted component.
    */
   input(input: KitOverlayInput) {
-    if (this.componentRef.instance) {
+    if (this.componentRef && this.componentRef.instance) {
       // Set props and gather changes object
       const changes: SimpleChanges = {};
       for (const name in input) {
