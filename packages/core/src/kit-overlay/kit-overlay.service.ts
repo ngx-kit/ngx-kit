@@ -8,6 +8,7 @@ import {
   Inject,
   Injectable,
   Injector,
+  NgZone,
   Optional,
   SkipSelf,
   TemplateRef,
@@ -18,6 +19,7 @@ import {
 import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import { KitOverlayComponentRef } from './kit-overlay-component-ref';
 import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-host-wrapper.component';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
@@ -67,19 +69,35 @@ export class KitOverlayService {
     },
   ): KitOverlayComponentRef<T> {
     if (this.isRoot) {
+      // Pick passed vcr or from host
       const hostVcr = viewContainerRef || this.host.vcr;
+      // Provide passed providers and parent injector
       const injector = Injector.create({
         providers,
         parent: hostVcr.injector,
       });
+      // Create component
       const componentFactory = componentFactoryResolver
         ? componentFactoryResolver.resolveComponentFactory(component)
         : this.cfr.resolveComponentFactory(component);
-      const componentRef = hostVcr.createComponent<T>(componentFactory, hostVcr.length, injector);
-      this.host.elRef.nativeElement.appendChild(this.getComponentRootNode(componentRef));
-      componentRef.changeDetectorRef.detectChanges();
-      return new KitOverlayComponentRef(componentRef);
+      const ref = new KitOverlayComponentRef<T>();
+      ref.componentRef = hostVcr.createComponent<T>(componentFactory, hostVcr.length, injector);
+      // Move component to the host
+      this.host.elRef.nativeElement.appendChild(this.getComponentRootNode(ref.componentRef));
+      // Force change detection
+      ref.componentRef.changeDetectorRef.detectChanges();
+      // Proxy CD to the hosted component from host
+      const cdSub: Subscription = hostVcr.injector.get<NgZone>(NgZone).onStable
+        .subscribe(() => {
+          ref.componentRef.changeDetectorRef.detectChanges();
+        });
+      ref.componentRef.onDestroy(() => {
+        cdSub.unsubscribe();
+      });
+      // Return the ref
+      return ref;
     } else {
+      // Proxy to root
       return this.parent.hostComponent({component, providers, componentFactoryResolver, viewContainerRef});
     }
   }
