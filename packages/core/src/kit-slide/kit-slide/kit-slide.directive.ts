@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Directive,
   Input,
+  NgZone,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -37,6 +38,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
     private template: TemplateRef<any>,
     private host: KitSlideHostService,
     private cdr: ChangeDetectorRef,
+    private zone: NgZone,
   ) {
   }
 
@@ -64,15 +66,19 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
       .subscribe(id => {
         if (id === this.kitSlide) {
           if (!this.displayed) {
-            this.vcr.createEmbeddedView(this.template);
-            this.cdr.detectChanges();
-            this.displayed = true;
+            this.zone.run(() => {
+              this.vcr.createEmbeddedView(this.template);
+              this.displayed = true;
+              this.cdr.detectChanges();
+            });
           }
         } else {
           if (this.displayed) {
-            this.vcr.clear();
-            this.cdr.detectChanges();
-            this.displayed = false;
+            this.zone.run(() => {
+              this.vcr.clear();
+              this.displayed = false;
+              this.cdr.detectChanges();
+            });
           }
         }
       });
