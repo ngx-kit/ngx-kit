@@ -16,11 +16,17 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { isString, isUndefined, KitFocusListenerService, KitModelInterceptor, KitOverlayService, } from '@ngx-kit/core';
+import {
+  isString,
+  isUndefined,
+  KitFocusListenerService,
+  KitModelInterceptor,
+  KitOverlayComponentRef,
+  KitOverlayService,
+} from '@ngx-kit/core';
 import { debounceTime, filter, take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
-import { KitOverlayComponentRef } from '../../../../core/src/kit-overlay/kit-overlay-component-ref';
-import { UiAutocompleteOption, } from '../meta';
+import { UiAutocompleteOption } from '../meta';
 import { UiAutocompleteOptionsComponent } from '../ui-autocomplete-options/ui-autocomplete-options.component';
 
 @Directive({
