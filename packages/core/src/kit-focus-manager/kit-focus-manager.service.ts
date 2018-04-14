@@ -168,7 +168,11 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   private focusoutHandler(event: FocusEvent) {
-    if (!this.onHold && !this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)) {
+    if (
+      !this.onHold
+      && event.relatedTarget
+      && !this.isDescendant(this.el.nativeElement, event.relatedTarget as HTMLElement)
+    ) {
       if (this.focusTrap) {
         if (this.current) {
           this.current.focus();
@@ -238,7 +242,6 @@ export class KitFocusManagerService implements OnDestroy {
   private keydownHandler(event: KeyboardEvent) {
     if (!this.onHold && event.keyCode === keyTab) {
       event.preventDefault();
-      event.stopPropagation();
       if (event.shiftKey) {
         this.focusPrev();
       } else {
