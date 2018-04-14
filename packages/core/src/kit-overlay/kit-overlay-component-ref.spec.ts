@@ -7,7 +7,8 @@ describe('KitOverlayComponentRef', () => {
   let componentRef: ComponentRefStub;
   beforeEach(async(() => {
     componentRef = new ComponentRefStub();
-    service = new KitOverlayComponentRef<any>(componentRef as any);
+    service = new KitOverlayComponentRef<any>();
+    service.componentRef = componentRef as any;
   }));
   describe('.input', () => {
     const nameSample = 'field';
