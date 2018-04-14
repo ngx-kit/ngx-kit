@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
@@ -22,7 +22,6 @@ export class KitSlideHostService {
   private lastId = 0;
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private zone: NgZone,
   ) {
   }
