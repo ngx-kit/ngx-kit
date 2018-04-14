@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
+import { from } from 'rxjs/observable/from';
 import { skip } from 'rxjs/operators';
 import { KitSlideHostService } from './kit-slide-host.service';
 
 describe('KitSlideHostService', () => {
   let service: KitSlideHostService;
-  let cdrMock: CdrMock;
+  let zoneMock: ZoneMock;
   beforeEach(async(() => {
-    cdrMock = new CdrMock();
-    service = new KitSlideHostService(cdrMock as any);
+    zoneMock = new ZoneMock();
+    service = new KitSlideHostService(zoneMock as any);
   }));
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -29,7 +30,8 @@ describe('KitSlideHostService', () => {
 });
 
 @Injectable()
-class CdrMock {
-  markForCheck() {
+class ZoneMock {
+  get onStable() {
+    return from([true]);
   }
 }
