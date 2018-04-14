@@ -1,5 +1,5 @@
 import {
-  Directive,
+  Directive, DoCheck,
   Host,
   HostBinding,
   Input,
@@ -23,14 +23,12 @@ import { KitFormFieldService } from '../kit-form-field.service';
   // tslint:disable-next-line
   selector: '[ngModel],[formControl],[formControlName]',
 })
-export class KitNgControlDirective implements OnDestroy {
+export class KitNgControlDirective implements OnDestroy, DoCheck {
   @Input() required: boolean;
 
   private _id: string = uuid();
 
   private _errorStateChanges = new Subject<string[]>();
-
-  private hasErrors = false;
 
   private errorsDiffer: IterableDiffer<string>;
 

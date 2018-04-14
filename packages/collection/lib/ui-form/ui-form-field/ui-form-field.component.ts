@@ -62,10 +62,12 @@ export class UiFormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formFieldService.control.errorStateChanges.subscribe(errors => {
-      this.errors = errors;
-      this.cdr.detectChanges();
-    });
+    if (this.formFieldService.control) {
+      this.formFieldService.control.errorStateChanges.subscribe(errors => {
+        this.errors = errors;
+        this.cdr.detectChanges();
+      });
+    }
   }
 
   hasError(name: string): boolean {
