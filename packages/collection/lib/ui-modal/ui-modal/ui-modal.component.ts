@@ -15,11 +15,11 @@ import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translate(-50%, -50px)',
+          transform: 'translate(-50%, -55%)',
         }),
         animate('250ms', style({
           opacity: 1,
-          transform: 'translate(-50%, 0)',
+          transform: 'translate(-50%, -50%)',
         })),
       ]),
     ]),
