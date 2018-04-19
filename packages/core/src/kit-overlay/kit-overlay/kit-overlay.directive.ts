@@ -67,9 +67,6 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
       this._displayed.next(true);
     } else if (!this.kitOverlay) {
       this.destroyView();
-      if (this.doCheckSub) {
-        this.doCheckSub.unsubscribe();
-      }
       this._displayed.next(false);
     }
   }
@@ -78,6 +75,9 @@ export class KitOverlayDirective implements OnChanges, OnDestroy {
     if (this._viewRef) {
       this._viewRef.destroy();
       this._viewRef = null;
+    }
+    if (this.doCheckSub) {
+      this.doCheckSub.unsubscribe();
     }
   }
 }
