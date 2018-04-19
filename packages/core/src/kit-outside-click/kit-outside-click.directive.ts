@@ -1,4 +1,5 @@
-import { Directive, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, NgZone, OnDestroy, OnInit, Output } from '@angular/core';
+import { KitAnchorDirective } from '../kit-anchor/kit-anchor.directive';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 
 /**
@@ -14,6 +15,9 @@ import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.s
   selector: '[kitOutsideClick]',
 })
 export class KitOutsideClickDirective implements OnInit, OnDestroy {
+  // @todo also accept HtmlElement
+  @Input() anchor: KitAnchorDirective;
+
   @Output() kitOutsideClick = new EventEmitter<MouseEvent>();
 
   private unsubFn: Function;
@@ -31,7 +35,8 @@ export class KitOutsideClickDirective implements OnInit, OnDestroy {
         'click',
         (event: MouseEvent) => {
           const path = event['path'] || this.em.getEventPath(event);
-          if (path.indexOf(this.el.nativeElement) === -1) {
+          const anchorEl = this.anchor ? this.anchor.nativeEl : null;
+          if (path.indexOf(this.el.nativeElement) === -1 && (!anchorEl || path.indexOf(anchorEl) === -1)) {
             this.zone.run(() => {
               this.kitOutsideClick.emit(event);
             });
