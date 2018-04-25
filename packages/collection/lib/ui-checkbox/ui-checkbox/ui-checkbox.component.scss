@@ -2,13 +2,13 @@ $boxSize: 16px;
 $borderWidth: 1px;
 
 :host {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
   height: 1px;
-  width: 1px;
   margin: -1px;
   overflow: hidden;
   position: absolute;
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
+  width: 1px;
 }
 
 .check {
@@ -16,69 +16,69 @@ $borderWidth: 1px;
   margin-left: $boxSize + 8px;
   position: relative;
   &.-checked {
-    &:before {
+    &::before {
       background: #2399e5;
       border-color: #2399e5;
     }
-    &:after {
-      content: '';
-      margin-left: - $boxSize - 8px;
-      width: $boxSize / 4;
-      height: $boxSize / 2;
-      top: 50%;
-      left: $boxSize / 3 + $borderWidth;
-      position: absolute;
-      border-right: 2px solid #ffffff;
+    &::after {
       border-bottom: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
+      content: "";
+      height: $boxSize / 2;
+      left: $boxSize / 3 + $borderWidth;
+      margin-left: - $boxSize - 8px;
+      position: absolute;
+      top: 50%;
       transform: translateY(-50%) rotate(45deg) scale(1);
+      width: $boxSize / 4;
     }
   }
   &.-focused {
-    &:before {
+    &::before {
       border-color: #2399e5;
       box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     }
   }
   &.-has-errors {
-    &:before {
-      border-color: red;
+    &::before {
+      border-color: #ff0c09;
     }
-    &.-checked:before {
-      background: red;
+    &.-checked::before {
+      background: #ff0c09;
     }
   }
   &.-disabled {
     cursor: default;
     &.-checked {
-      &:before {
+      &::before {
         background: #9da8b4;
         border-color: #9da8b4;
       }
-      &:after {
-        border-right: 2px solid #ffffff;
+      &::after {
         border-bottom: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
       }
     }
-    &:before {
+    &::before {
       background: #f6f6f6;
       border-color: #becad6;
     }
   }
-  &:before {
+  &::before {
+    background-color: #ffffff;
+    border: $borderWidth solid #becad6;
+    border-radius: 2px;
+    box-shadow: none;
+    content: "";
     display: inline-block;
+    height: $boxSize;
+    left: 0;
+    margin-left: - $boxSize - 8px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 0;
-    width: $boxSize;
-    height: $boxSize;
-    content: '';
-    border-radius: 2px;
-    margin-left: - $boxSize - 8px;
-    background-color: #ffffff;
-    border: $borderWidth solid #becad6;
     transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
-    box-shadow: none;
+    width: $boxSize;
   }
 }
 
