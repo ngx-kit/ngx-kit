@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ComponentRef, Injectable, SimpleChange, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, ComponentRef, Injectable, SimpleChange, SimpleChanges, Type } from '@angular/core';
 import { KitOverlayInput } from './meta';
 
 @Injectable()
@@ -26,7 +26,7 @@ export class KitOverlayComponentRef<T> {
       // Run change detection on the component host (for applying host bindings)
       this.componentRef.changeDetectorRef.detectChanges();
       // Run change detection inside component
-      this.componentRef.injector.get(ChangeDetectorRef).detectChanges();
+      this.componentRef.injector.get<ChangeDetectorRef>(ChangeDetectorRef as any).detectChanges();
     } else {
       throw new Error('Modal initiated without instance. Input could be passed programmatically only for ' +
         'service-hosted modals.');
