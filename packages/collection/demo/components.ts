@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import { DemoAccordionDefaultComponent } from './ui-accordion/demo-accordion-default/demo-accordion-default.component';
 import { DemoAccordionFirstComponent } from './ui-accordion/demo-accordion-first/demo-accordion-first.component';
 import { DemoAccordionGenComponent } from './ui-accordion/demo-accordion-gen/demo-accordion-gen.component';
