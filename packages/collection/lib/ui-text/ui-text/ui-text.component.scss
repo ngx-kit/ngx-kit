@@ -14,13 +14,13 @@
   }
   &:focus {
     border-color: #2399e5;
-    outline: none;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    outline: none;
   }
   &.-has-errors {
-    border-color: red;
+    border-color: #ff0c09;
     &:hover, &:focus {
-      border-color: red;
+      border-color: #ff0c09;
     }
   }
 }

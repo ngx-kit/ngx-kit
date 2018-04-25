@@ -1,11 +1,11 @@
 :host {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
   height: 1px;
-  width: 1px;
   margin: -1px;
   overflow: hidden;
   position: absolute;
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
+  width: 1px;
 }
 
 $boxSize: 40px;
@@ -15,85 +15,82 @@ $borderWidth: 1px;
   cursor: pointer;
   margin-left: $boxSize + 8px;
   position: relative;
-  &:before {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: $boxSize;
-    height: $boxSize / 2;
-    content: '';
-    border-radius: $boxSize;
-    margin-left: - $boxSize - 8px;
-    top: 50%;
-    transform: translateY(-50%);
+  &::before {
     background-color: #ffffff;
     border: $borderWidth solid #becad6;
-    transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
+    border-radius: $boxSize;
     box-shadow: none;
-  }
-  &:after {
-    content: '';
-    background: #becad6;
-    border-radius: ($boxSize / 2 - 4px) / 2;
+    content: "";
+    display: block;
+    height: $boxSize / 2;
+    left: 0;
     margin-left: - $boxSize - 8px;
-    width: $boxSize / 2 - 4px;
-    height: $boxSize / 2 - 4px;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-
+    transition: all 250ms cubic-bezier(.27, .01, .38, 1.06);
+    width: $boxSize;
+  }
+  &::after {
+    background: #becad6;
+    border-radius: ($boxSize / 2 - 4px) / 2;
+    content: "";
+    height: $boxSize / 2 - 4px;
     left: $borderWidth + 2px;
+    margin-left: - $boxSize - 8px;
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     transition: all 300ms cubic-bezier(.27, .01, .38, 1.06);
+    width: $boxSize / 2 - 4px;
   }
   &.-checked {
-    &:before {
+    &::before {
       background: #2399e5;
       border-color: #2399e5;
     }
-    &:after {
-      margin-left: - $boxSize / 2 - 8px;
+    &::after {
       background: #ffffff;
+      margin-left: - $boxSize / 2 - 8px;
     }
     &:active {
-      &:after {
+      &::after {
         margin-left: - $boxSize / 2 - 12px;
       }
     }
   }
   &.-focused {
-    &:before {
+    &::before {
       border-color: #2399e5;
       box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     }
   }
   &.-has-errors {
-    &:before {
-      border-color: red;
+    &::before {
+      border-color: #ff0c09;
     }
-    &.-checked:before {
-      background: red;
+    &.-checked::before {
+      background: #ff0c09;
     }
   }
   &.-disabled {
     cursor: default;
     &.-checked {
-      &:before {
+      &::before {
         background: #9da8b4;
         border-color: #9da8b4;
       }
-      &:after {
+      &::after {
         background: #ffffff;
       }
     }
-    &:before {
+    &::before {
       background: #f6f6f6;
       border-color: #becad6;
     }
   }
   &:active {
-    &:before {
-    }
-    &:after {
+    &::after {
       width: $boxSize / 2;
     }
   }
