@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map, tap } from 'rxjs/operators';
-import { KitIcon, KitIconCached } from './meta';
+import { isArray } from '../util/is-array';
+import { KitIcon, KitIconCached, KitIconNode } from './meta';
 
 /**
- * Register icons
+ * Icons registry.
  *
  * ```typescript
- * this.iconsRegistry.register('star', '/assets/icons/star.svg');
+ * this.iconsRegistry.add({name: 'star', url: '/assets/icons/star.svg'});
  * // or
- * this.iconsRegistry.registerSet([
+ * this.iconsRegistry.add([
  * {name: 'star', url: '/assets/icons/star.svg'},
  * {name: 'cloud', url: '/assets/icons/cloud.svg'},
  * ]);
@@ -20,7 +21,7 @@ import { KitIcon, KitIconCached } from './meta';
  * Use in a template
  *
  * ```html
- * <kit-icon [name]="'star'"></kit-icon>
+ * <kit-icon name="star"></kit-icon>
  * ```
  *
  * @todo cache pending (avoid parallel loading of same icon)
@@ -34,35 +35,20 @@ export class KitIconsRegistryService {
   constructor(private http: HttpClient) {
   }
 
-  cloneSvg(svg: SVGElement): SVGElement {
-    return svg.cloneNode(true) as SVGElement;
-  }
-
   /**
-   * Get icon by name.
+   * Add icons to registry.
    */
-  get(name: string): Observable<SVGElement> {
-    const icon = this.icons.find(i => i.name === name);
-    if (icon) {
-      // check cache
-      const cached = this.cache.find(c => c.name === name);
-      if (cached) {
-        return of(this.cloneSvg(cached.svg));
-      } else {
-        return this.http.get(icon.url, {responseType: 'text'})
-          .pipe(
-            map(this.svgElementFromString),
-            tap(svg => this.cache.push({name, svg: svg})),
-            map(this.cloneSvg),
-          );
-      }
-    } else {
-      throw new Error(`Icon "${name}" not found!`);
-    }
+  add(icon: KitIcon | KitIcon[]) {
+    const icons = isArray(icon) ? icon : [icon];
+    this.icons = [...this.icons, ...icons];
   }
 
   /**
    * Register icon.
+   *
+   * @deprecated Use `.add()`
+   *
+   * @todo remove on 3.0 release
    */
   register(name: string, url: string) {
     this.icons.push({name, url});
@@ -70,9 +56,42 @@ export class KitIconsRegistryService {
 
   /**
    * Register icons set.
+   *
+   * @deprecated Use `.add()`
+   *
+   * @todo remove on 3.0 release
    */
   registerSet(icons: KitIcon[]) {
     this.icons = [...this.icons, ...icons];
+  }
+
+  /**
+   * Get icon by name.
+   *
+   * @internal
+   */
+  get(name: string): Observable<KitIconNode> {
+    const icon = this.icons.find(i => i.name === name);
+    if (icon) {
+      // check cache
+      const cached = this.cache.find(c => c.name === name);
+      if (cached) {
+        return of({svg: this.cloneSvg(cached.svg), size: icon.size});
+      } else {
+        return this.http.get(icon.url, {responseType: 'text'})
+          .pipe(
+            map(this.svgElementFromString),
+            tap(svg => this.cache.push({name, svg: svg})),
+            map(svg => ({svg: this.cloneSvg(svg), size: icon.size})),
+          );
+      }
+    } else {
+      throw new Error(`Icon "${name}" not found!`);
+    }
+  }
+
+  private cloneSvg(svg: SVGElement): SVGElement {
+    return svg.cloneNode(true) as SVGElement;
   }
 
   /**
