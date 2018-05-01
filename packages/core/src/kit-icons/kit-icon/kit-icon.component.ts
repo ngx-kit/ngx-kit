@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
+import { isArray } from '../../util/is-array';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { KitIconsRegistryService } from '../kit-icons-registry.service';
   `,
   styles: [`
     :host {
-      display: inline-block;
+      display: inline-flex;
+      align-self: center;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,20 +29,15 @@ export class KitIconComponent implements OnInit, OnChanges {
   @Input() name: string;
 
   /**
-   * Size in pixels or percents.
+   * Size. If not specified icon size depends on line-height.
+   * Height and width can be specified separately by passing array `[height, width]`.
+   * Accepts any css sizing ('32px', '100%', '2em').
    */
-  @Input() size = '100%';
+  @Input() size: string | [string, string];
 
   private svgChangesSubscription: Subscription;
 
-  private setSvg = (svg: SVGElement) => {
-    const el = this.el.nativeElement;
-    el.innerHTML = '';
-    this.renderer.setStyle(svg, 'height', this.size);
-    this.renderer.setStyle(svg, 'width', this.size);
-    this.renderer.setStyle(svg, 'fill', this.color);
-    this.renderer.appendChild(el, svg);
-  }
+  private svg: SVGElement;
 
   constructor(
     private registry: KitIconsRegistryService,
@@ -57,11 +54,52 @@ export class KitIconComponent implements OnInit, OnChanges {
         if (this.svgChangesSubscription) {
           this.svgChangesSubscription.unsubscribe();
         }
-        this.svgChangesSubscription = svgChanges.subscribe(this.setSvg);
+        this.svgChangesSubscription = svgChanges.subscribe(this.setSvg.bind(this));
       }
     }
   }
 
   ngOnInit() {
+  }
+
+  private setSvg(svg: SVGElement) {
+    this.svg = svg;
+    this.el.nativeElement.innerHTML = '';
+    this.updateStyles();
+    this.renderer.appendChild(this.el.nativeElement, this.svg);
+  }
+
+  private updateStyles() {
+    let height: string;
+    let width: string;
+    let position: string;
+    let top: string;
+    if (this.size) {
+      if (isArray(this.size)) {
+        height = this.size[0];
+        width = this.size[1];
+      } else {
+        height = this.size;
+        width = this.size;
+      }
+    } else {
+      height = '1em';
+      width = '1em';
+
+    }
+    // Fix position if height is 1em (default inline sizing)
+    if (height === '1em') {
+      position = 'relative';
+      top = '.125em';
+    } else {
+      position = 'static';
+      top = 'auto';
+    }
+    // Set props
+    this.renderer.setStyle(this.svg, 'fill', this.color);
+    this.renderer.setStyle(this.svg, 'height', height);
+    this.renderer.setStyle(this.svg, 'position', position);
+    this.renderer.setStyle(this.svg, 'top', top);
+    this.renderer.setStyle(this.svg, 'width', width);
   }
 }
