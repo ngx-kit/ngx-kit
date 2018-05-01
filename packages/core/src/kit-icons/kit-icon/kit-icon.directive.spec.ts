@@ -1,5 +1,7 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { from } from 'rxjs/observable/from';
+import { of } from 'rxjs/observable/of';
 import { KitPlatformModule } from '../../kit-platform/kit-platform.module';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 import { KitIconComponent } from './kit-icon.component';
@@ -35,7 +37,7 @@ describe('KitIconComponent', () => {
     expect(icon).toBeTruthy();
   });
   it('should get observable from registry', () => {
-    const spy = spyOn(registry, 'get');
+    const spy = spyOn(registry, 'get').and.callThrough();
     fixture.detectChanges();
     expect(spy).toHaveBeenCalledWith('icon-name');
   });
@@ -45,10 +47,7 @@ describe('KitIconComponent', () => {
 @Injectable()
 class RegistryMock {
   get(name: string) {
-    return {
-      subscribe: () => {
-      },
-    };
+    return from([{svg: '<svg></svg>'}]);
   }
 }
 
