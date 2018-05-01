@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map, tap } from 'rxjs/operators';
 import { isArray } from '../util/is-array';
-import { KitIcon, KitIconCached, KitIconNode } from './meta';
+import { KitIcon, KitIconCached, KitIconSource } from './meta';
 
 /**
  * Icons registry.
@@ -70,38 +70,22 @@ export class KitIconsRegistryService {
    *
    * @internal
    */
-  get(name: string): Observable<KitIconNode> {
+  get(name: string): Observable<KitIconSource> {
     const icon = this.icons.find(i => i.name === name);
     if (icon) {
       // check cache
       const cached = this.cache.find(c => c.name === name);
       if (cached) {
-        return of({svg: this.cloneSvg(cached.svg), size: icon.size});
+        return of({svg: cached.svg, size: icon.size});
       } else {
         return this.http.get(icon.url, {responseType: 'text'})
           .pipe(
-            map(this.svgElementFromString),
             tap(svg => this.cache.push({name, svg: svg})),
-            map(svg => ({svg: this.cloneSvg(svg), size: icon.size})),
+            map(svg => ({svg, size: icon.size})),
           );
       }
     } else {
       throw new Error(`Icon "${name}" not found!`);
     }
-  }
-
-  private cloneSvg(svg: SVGElement): SVGElement {
-    return svg.cloneNode(true) as SVGElement;
-  }
-
-  /**
-   * Creates a DOM element from the given SVG string.
-   */
-  private svgElementFromString(str: string): SVGElement {
-    // @todo impl multi-platform
-    const div = document.createElement('div');
-    div.innerHTML = str;
-    const svg = div.querySelector('svg') as SVGElement;
-    return svg;
   }
 }
