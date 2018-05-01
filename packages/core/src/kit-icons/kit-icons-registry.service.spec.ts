@@ -18,7 +18,7 @@ describe('KitIconsRegistryService', () => {
       pipe: () => {
       },
     });
-    service.register(name, url);
+    service.add({name, url});
     service.get(name);
     expect(spy).toHaveBeenCalledWith(url, {responseType: 'text'});
   });

@@ -4,12 +4,12 @@ export interface KitIcon {
   size?: string;
 }
 
-export interface KitIconNode {
-  svg: SVGElement;
+export interface KitIconSource {
+  svg: string;
   size?: string;
 }
 
 export interface KitIconCached {
   name: string;
-  svg: SVGElement;
+  svg: string;
 }
