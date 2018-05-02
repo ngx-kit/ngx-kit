@@ -47,6 +47,11 @@ You can define fill color:
 <kit-icon name="star" color="#ff0000"></kit-icon>
 ```
 
+### A11y
+
+Use `title` and `desc` properties to add `<title>` and `<desc>` elements into `<svg>`. Also binds `aria-labeledby` attribute that points to the elements.
+
+
 
 ### Server-rendering
 
