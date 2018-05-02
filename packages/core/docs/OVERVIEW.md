@@ -29,18 +29,17 @@ npm install @ngx-kit/core --save
 
 ## Usage
 
-Import `KitRootModule` and platform module (`KitPlatformBrowserModule` or `KitPlatformServerModule`) to the root module of your application.
+Import `KitRootModule` to the root module of your application.
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { KitRootModule, KitPlatformBrowserModule } from '@ngx-kit/core';
+import { KitRootModule } from '@ngx-kit/core';
 ...
 
 @NgModule({
   imports: [
     ...
     KitRootModule,
-    KitPlatformBrowserModule,
   ],
   ...
 })

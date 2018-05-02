@@ -1,8 +1,14 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { KitEventManagerService } from './kit-event-manager.service';
 
-@NgModule({
-  declarations: [],
-  exports: [],
-})
+@NgModule({})
 export class KitEventManagerModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: KitEventManagerModule,
+      providers: [
+        KitEventManagerService,
+      ],
+    };
+  }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { KitModule, KitPlatformBrowserModule, KitRootModule } from '@ngx-kit/core';
+import { KitModule, KitRootModule } from '@ngx-kit/core';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { CollectionDemoModule } from '../../packages/collection/demo/collection-demo.module';
 import { environment } from '../environments/environment';
@@ -24,7 +24,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     KitRootModule,
     KitModule,
-    KitPlatformBrowserModule,
     AppRoutingModule,
     CollectionDemoModule,
   ],
