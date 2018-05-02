@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { map, tap } from 'rxjs/operators';
+import { filter, map, take, tap } from 'rxjs/operators';
 import { isArray } from '../util/is-array';
 import { KitIcon, KitIconCached, KitIconSource } from './meta';
 
@@ -23,8 +23,6 @@ import { KitIcon, KitIconCached, KitIconSource } from './meta';
  * ```html
  * <kit-icon name="star"></kit-icon>
  * ```
- *
- * @todo cache pending (avoid parallel loading of same icon)
  */
 @Injectable()
 export class KitIconsRegistryService {
@@ -73,17 +71,32 @@ export class KitIconsRegistryService {
   get(name: string): Observable<KitIconSource> {
     const icon = this.icons.find(i => i.name === name);
     if (icon) {
-      // check cache
-      const cached = this.cache.find(c => c.name === name);
-      if (cached) {
-        return of({svg: cached.svg, size: icon.size});
-      } else {
+      // Init cache
+      const fromCache = this.cache.find(c => c.name === name);
+      const cached = fromCache
+        ? fromCache
+        : {
+          name,
+          svg: new BehaviorSubject(null),
+        };
+      // Fetch
+      if (!fromCache) {
+        // Add cached to the pull
+        this.cache.push(cached);
         return this.http.get(icon.url, {responseType: 'text'})
           .pipe(
-            tap(svg => this.cache.push({name, svg: svg})),
+            tap(svg => cached.svg.next(svg)),
             map(svg => ({svg, size: icon.size})),
           );
       }
+      // Return stream
+      return cached.svg
+        .asObservable()
+        .pipe(
+          filter(svg => svg !== null),
+          take(1),
+          map((svg: string) => ({svg, size: icon.size})),
+        );
     } else {
       throw new Error(`Icon "${name}" not found!`);
     }
