@@ -12,6 +12,7 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { isArray } from '../../util/is-array';
+import { uuid } from '../../util/uuid';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 import { KitIconSource } from '../meta';
 
@@ -46,6 +47,16 @@ export class KitIconComponent implements OnChanges, OnDestroy {
    */
   @Input() size: string | [string, string];
 
+  /**
+   * A11y title.
+   */
+  @Input() title: string;
+
+  /**
+   * A11y description.
+   */
+  @Input() desc: string;
+
   private source: KitIconSource;
 
   private svg: SVGElement;
@@ -53,6 +64,10 @@ export class KitIconComponent implements OnChanges, OnDestroy {
   private nameChanges = new Subject<string>();
 
   private destroy = new Subject<void>();
+
+  private titleEl: any;
+
+  private descEl: any;
 
   constructor(
     private registry: KitIconsRegistryService,
@@ -71,6 +86,7 @@ export class KitIconComponent implements OnChanges, OnDestroy {
         this.svg = this.svgElementFromString(this.source.svg);
         this.clear();
         this.updateStyles();
+        this.updateA11y();
         this.mount();
       });
   }
@@ -81,6 +97,9 @@ export class KitIconComponent implements OnChanges, OnDestroy {
     }
     if ('size' in changes || 'color' in changes) {
       this.updateStyles();
+    }
+    if ('title' in changes || 'desc' in changes) {
+      this.updateA11y();
     }
   }
 
@@ -95,6 +114,8 @@ export class KitIconComponent implements OnChanges, OnDestroy {
         el.removeChild(el.lastChild);
       }
     }
+    this.titleEl = null;
+    this.descEl = null;
   }
 
   private updateStyles() {
@@ -144,6 +165,35 @@ export class KitIconComponent implements OnChanges, OnDestroy {
       return svg;
     } else {
       throw new Error(`SVG has not been rendered from "${str}"`);
+    }
+  }
+
+  private updateA11y() {
+    if (this.source && this.svg) {
+      this.renderer.setAttribute(this.svg, 'role', 'img');
+      if (this.title) {
+        if (!this.titleEl) {
+          this.titleEl = this.renderer.createElement('title');
+          const titleId = uuid();
+          this.renderer.setAttribute(this.titleEl, 'id', titleId);
+          this.renderer.insertBefore(this.svg, this.titleEl, this.svg.childNodes[0]);
+        }
+        this.titleEl.innerHTML = this.title;
+      }
+      if (this.desc) {
+        if (!this.descEl) {
+          this.descEl = this.renderer.createElement('desc');
+          const descId = uuid();
+          this.renderer.setAttribute(this.descEl, 'id', descId);
+          this.renderer.appendChild(this.svg, this.descEl);
+        }
+        this.descEl.innerHTML = this.desc;
+      }
+      this.renderer.setAttribute(
+        this.svg,
+        'aria-labelledby',
+        `${this.titleEl ? this.titleEl.id : ''} ${this.descEl ? this.descEl.id : ''}`,
+      );
     }
   }
 
