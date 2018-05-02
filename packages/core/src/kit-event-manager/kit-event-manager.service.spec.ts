@@ -1,11 +1,11 @@
 import { async } from '@angular/core/testing';
-import { KitBrowserEventManagerService } from './kit-browser-event-manager.service';
+import { KitEventManagerService } from './kit-event-manager.service';
 import createSpy = jasmine.createSpy;
 
-describe('KitBrowserEventManagerService', () => {
-  let service: KitBrowserEventManagerService;
+describe('KitEventManagerService', () => {
+  let service: KitEventManagerService;
   beforeEach(async(() => {
-    service = new KitBrowserEventManagerService();
+    service = new KitEventManagerService(new PlatformStub() as any);
   }));
   it('should listen global event', () => {
     const spy = createSpy('listener');
@@ -14,3 +14,9 @@ describe('KitBrowserEventManagerService', () => {
     expect(spy).toHaveBeenCalled();
   });
 });
+
+class PlatformStub {
+  isBrowser() {
+    return true;
+  }
+}

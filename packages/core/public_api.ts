@@ -15,8 +15,6 @@ export * from './src/kit-modal/kit-modal';
 export * from './src/kit-outside-click/kit-outside-click';
 export * from './src/kit-overlay/kit-overlay';
 export * from './src/kit-platform/kit-platform';
-export * from './src/kit-platform-browser/kit-platform-browser';
-export * from './src/kit-platform-server/kit-platform-server';
 export * from './src/kit-pointer/kit-pointer';
 export * from './src/kit-ref/kit-ref';
 export * from './src/kit-repeat/kit-repeat';

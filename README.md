@@ -49,7 +49,7 @@ npm i @ngx-kit/collection @angular-devkit/core --save-dev
 #### Import core modules
 
 ```typescript
-import { KitRootModule, KitModule, KitPlatformBrowserModule } from '@ngx-kit/core';
+import { KitRootModule, KitModule } from '@ngx-kit/core';
 
 @NgModule({
   ...
@@ -57,7 +57,6 @@ import { KitRootModule, KitModule, KitPlatformBrowserModule } from '@ngx-kit/cor
     ...
     KitRootModule,
     KitModule,
-    KitPlatformBrowserModule,
 ```
 
 #### Generate via Angular CLI
