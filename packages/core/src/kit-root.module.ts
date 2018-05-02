@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { KitEventManagerModule } from './kit-event-manager/kit-event-manager.module';
 import { KitFocusManagerModule } from './kit-focus-manager/kit-focus-manager.module';
 import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitLoadingBarModule } from './kit-loading-bar/kit-loading-bar.module';
@@ -16,6 +17,7 @@ import { KitPlatformModule } from './kit-platform/kit-platform.module';
     KitModalModule.forRoot(),
     KitOverlayModule.forRoot(),
     KitPlatformModule.forRoot(),
+    KitEventManagerModule.forRoot(),
   ],
   exports: [],
 })

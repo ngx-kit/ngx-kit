@@ -11,15 +11,14 @@ export class HomePageComponent {
   codeExamples = [
     `npm i @ngx-kit/core --save
 npm i @ngx-kit/collection @angular-devkit/core --save-dev`,
-    `import { KitRootModule, KitModule, KitPlatformBrowserModule } from '@ngx-kit/core';
+    `import { KitRootModule, KitModule } from '@ngx-kit/core';
 
 @NgModule({
   ...
   imports: [
     ...
     KitRootModule,
-    KitModule,
-    KitPlatformBrowserModule,`,
+    KitModule,`,
     `ng g ui-button -c=@ngx-kit/collection my-button`,
     `@NgModule({
   ...

@@ -36,7 +36,6 @@ Import ngx-kit to the root module:
     ...
     KitRootModule,
     KitModule,
-    KitPlatformBrowserModule,
 ```
  
 Generate code:

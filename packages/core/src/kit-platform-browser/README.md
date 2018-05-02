@@ -1,3 +1,0 @@
-# Platform-browser
-
-Browser implementations.
