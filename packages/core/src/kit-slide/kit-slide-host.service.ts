@@ -104,26 +104,33 @@ export class KitSlideHostService {
   /**
    * Activate next slide.
    */
-  next() {
+  next(cycle = false) {
     const ids = Array.from(this.ids);
     const currentIndex = this.getCurrentIndex();
     if (currentIndex < ids.length - 1) {
-      this.active = currentIndex + 1;
+      this.active = ids[currentIndex + 1];
+    } else if (cycle) {
+      this.active = ids[0];
     }
   }
 
   /**
    * Activate prev slide.
    */
-  prev() {
+  prev(cycle = false) {
+    const ids = Array.from(this.ids);
     const currentIndex = this.getCurrentIndex();
     if (currentIndex > 0) {
-      this.active = currentIndex - 1;
+      this.active = ids[currentIndex - 1];
+    } else if (cycle) {
+      this.active = ids[ids.length - 1];
     }
   }
 
   /**
    * Activate next item or first.
+   *
+   * @deprecated Use .next()/.prev() with cycle property.
    */
   rotate() {
     const ids = Array.from(this.ids);

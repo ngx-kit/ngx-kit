@@ -10,14 +10,14 @@ import { KitPlatformModule } from './kit-platform/kit-platform.module';
 
 @NgModule({
   imports: [
+    KitEventManagerModule.forRoot(),
     KitFocusManagerModule.forRoot(),
     KitIconsModule.forRoot(),
     KitLoadingBarModule.forRoot(),
-    KitNotificationModule.forRoot(),
     KitModalModule.forRoot(),
+    KitNotificationModule.forRoot(),
     KitOverlayModule.forRoot(),
     KitPlatformModule.forRoot(),
-    KitEventManagerModule.forRoot(),
   ],
   exports: [],
 })

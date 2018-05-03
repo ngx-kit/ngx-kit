@@ -6,5 +6,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DemoSliderRangeComponent {
-  value = [20, 70];
+  value = [-150, 350];
 }

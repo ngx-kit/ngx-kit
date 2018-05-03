@@ -1,2 +1,2 @@
-<ui-slider [(ngModel)]="value" [range]="true"></ui-slider>
-{{ value | json }}
+Range: from -1000 to 1600, step: 50, value: {{ value | json }}<br>
+<ui-slider [(ngModel)]="value" [range]="true" [min]="-1000" [max]="1600" [step]="50"></ui-slider>
