@@ -42,8 +42,8 @@ Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 #### Install the packages
 
 ```
-npm i @ngx-kit/core --save
-npm i @ngx-kit/collection @angular-devkit/core --save-dev
+npm i @ngx-kit/core hammerjs --save
+npm i @ngx-kit/collection @angular-devkit/core @types/hammerjs --save-dev
 ```
 
 #### Import core modules

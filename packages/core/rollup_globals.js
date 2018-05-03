@@ -9,6 +9,7 @@ module.exports = {
   "@angular/platform-browser": "ng.platform-browser",
   "@angular/platform-browser/animations": "ng.platform-browser.animations",
   "@angular/router": "ng.router",
+  "hammerjs": "hammerjs",
   "moment": "moment",
   "rxjs/observable/combineLatest": "Rx",
   "rxjs/observable/of": "Rx",

@@ -1,6 +1,0 @@
-{
-  "vendors": {
-    "angular": "^5.0.0",
-    "typescript": "~2.4.2"
-  }
-}

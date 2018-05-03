@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   forwardRef,
+  HostListener,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -59,6 +60,14 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
       this.setDate(date);
     });
     this.service.handleMove(this.grid.nativeElement);
+  }
+
+  @HostListener('swiperight') swiperightHandler() {
+    this.modMonth(1);
+  }
+
+  @HostListener('swipeleft') swipeleftHandler() {
+    this.modMonth(-1);
   }
 
   modMonth(modifier: number) {

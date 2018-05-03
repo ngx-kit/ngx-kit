@@ -6,11 +6,10 @@ import {
   forwardRef,
   Input,
   OnChanges,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitPointerLineMoveEvent } from '@ngx-kit/core';
+import { isArray } from '@ngx-kit/core';
 import { Subject } from 'rxjs/Subject';
 
 export const uiSliderValueAccessor: any = {
@@ -26,14 +25,12 @@ export const uiSliderValueAccessor: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [uiSliderValueAccessor],
 })
-export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChanges {
-  leftPointerPosition: number;
+export class UiSliderComponent implements ControlValueAccessor, OnChanges {
+  @Input() min = 0;
 
   @Input() max = 100;
 
-  @Input() min = 0;
-
-  pointerPosition: number;
+  @Input() step = 1;
 
   /**
    * Range section mode.
@@ -41,9 +38,21 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
    */
   @Input() range = false;
 
-  @ViewChild('slider') sliderRef: ElementRef;
+  /**
+   * Fill space from start to pointer.
+   * Always true for range-mode.
+   */
+  @Input() fill = true;
 
-  @Input() step = 1;
+  @ViewChild('sliderRef') sliderRef: ElementRef;
+
+  mainPointerLeft: number;
+
+  leftPointerLeft: number;
+
+  fillLeft: number;
+
+  fillRight: number;
 
   private changes = new Subject<number | [number, number]>();
 
@@ -53,33 +62,19 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
 
   private touches = new Subject<void>();
 
-  constructor(private cdr: ChangeDetectorRef) {
+  private rangeLength: number;
+
+  private totalSteps: number;
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+  ) {
   }
 
   ngOnChanges() {
-    this.updatePointers();
-  }
-
-  ngOnInit() {
-  }
-
-  move(event: KitPointerLineMoveEvent) {
-    const pointerState = this.calcPointerState(event);
-    if (pointerState !== this.state) {
-      if (this.range) {
-        const pointer = Math.abs(this.state[0] - pointerState) < Math.abs(this.state[1] - pointerState)
-          ? 'left'
-          : 'right';
-        const newState = pointer === 'left'
-          ? [pointerState, this.state[1]]
-          : [this.state[0], pointerState];
-        this.state = newState;
-      } else {
-        this.state = pointerState;
-      }
-      this.updatePointers();
-      this.changes.next(this.state);
-    }
+    this.rangeLength = this.max - this.min;
+    this.totalSteps = this.rangeLength / this.step;
+    this.updateView();
   }
 
   registerOnChange(fn: any) {
@@ -95,34 +90,64 @@ export class UiSliderComponent implements ControlValueAccessor, OnInit, OnChange
   }
 
   writeValue(rawValue: any): void {
-    //  @todo validate range
     this.state = rawValue;
-    this.updatePointers();
-    this.cdr.markForCheck();
+    this.updateView();
   }
 
-  private calcPointerState(event: KitPointerLineMoveEvent): number {
-    const length = this.max - this.min;
-    const raw = event.position / event.lineWidth * length;
-    return Math.round(raw / this.step) * this.step + this.min;
-  }
-
-  private calcPosition(value: number): number {
-    const length = this.max - this.min;
-    const relPosition = value - this.min;
-    return relPosition / length * 100;
-  }
-
-  private updatePointers() {
+  handleMove(event: any) {
+    const xPosition = this.calcXPosition(event.center.x);
+    const width = this.sliderRef.nativeElement.clientWidth;
+    const relPosition = xPosition / width;
+    const rawValue = this.totalSteps * relPosition * this.step + this.min;
+    const value = Math.round(this.totalSteps * relPosition) * this.step + this.min;
     if (this.range) {
-      if (!this.state) {
-        this.state = [0, 0];
+      if (isArray(this.state)) {
+        const mid = (this.state[0] + this.state[1]) / 2;
+        if (rawValue <= mid && value !== this.state[0]) {
+          // Move left pointer
+          this.updateStateAfterMove([value, this.state[1]]);
+        } else if (rawValue >= mid && value !== this.state[1]) {
+          // Move right pointer
+          this.updateStateAfterMove([this.state[0], value]);
+        }
       }
-      this.leftPointerPosition = this.calcPosition(this.state[0]);
-      this.pointerPosition = this.calcPosition(this.state[1]);
     } else {
-      this.leftPointerPosition = 0;
-      this.pointerPosition = this.calcPosition(this.state);
+      if (this.state !== value) {
+        this.updateStateAfterMove(value);
+      }
     }
+  }
+
+  private calcXPosition(clientX: number) {
+    const width = this.sliderRef.nativeElement.clientWidth;
+    const sliderRect: ClientRect = this.sliderRef.nativeElement.getBoundingClientRect();
+    return clientX <= sliderRect.left
+      ? 0
+      : clientX >= sliderRect.right
+        ? width
+        : clientX - sliderRect.left;
+  }
+
+  private updateStateAfterMove(state: number | [number, number]) {
+    this.state = state;
+    this.updateView();
+    this.changes.next(this.state);
+  }
+
+  private updateView() {
+    const width = this.sliderRef.nativeElement.clientWidth;
+    if (this.range) {
+      if (isArray(this.state)) {
+        this.leftPointerLeft = Math.round(((this.state[0] - this.min) / this.rangeLength) * width);
+        this.mainPointerLeft = Math.round(((this.state[1] - this.min) / this.rangeLength) * width);
+        this.fillLeft = this.leftPointerLeft;
+        this.fillRight = width - this.mainPointerLeft;
+      }
+    } else {
+      this.mainPointerLeft = Math.round(((this.state - this.min) / this.rangeLength) * width);
+      this.fillLeft = 0;
+      this.fillRight = width - this.mainPointerLeft;
+    }
+    this.cdr.detectChanges();
   }
 }
