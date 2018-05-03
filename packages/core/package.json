@@ -17,8 +17,11 @@
     "type": "git"
   },
   "peerDependencies": {
-    "@angular/core": "0.0.0-ANGULAR-PLACEHOLDER",
-    "typescript": "0.0.0-TYPESCRIPT-PLACEHOLDER"
+    "@angular/core": "^5.0.0",
+    "hammerjs": "^2.0.8",
+    "typescript": "~2.4.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/hammerjs": "^2.0.35"
+  }
 }

@@ -6,17 +6,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ui-notification-host',
-  template: `
-    <div class="wrapper" [kitClass]="{position: position | async}">
-      <div *ngFor="let item of items | async"
-           (click)="close(item.__id)"
-           [@item]="position | async"
-           class="item">
-        <h3 *ngIf="item.params.title" class="title">{{ item.params.title }}</h3>
-        <div class="message">{{ item.params.message }}</div>
-      </div>
-    </div>
-  `,
+  templateUrl: './ui-notification-host.component.html',
   styleUrls: ['./ui-notification-host.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [

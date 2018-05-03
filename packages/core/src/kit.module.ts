@@ -11,32 +11,12 @@ import { KitIconsModule } from './kit-icons/kit-icons.module';
 import { KitModalModule } from './kit-modal/kit-modal.module';
 import { KitOutsideClickModule } from './kit-outside-click/kit-outside-click.module';
 import { KitOverlayModule } from './kit-overlay/kit-overlay.module';
-import { KitPointerModule } from './kit-pointer/kit-pointer.module';
 import { KitRefModule } from './kit-ref/kit-ref.module';
 import { KitRepeatModule } from './kit-repeat/kit-repeat.module';
 import { KitSlideModule } from './kit-slide/kit-slide.module';
 import { KitValueAccessorModule } from './kit-value-accessor/kit-value-accessor.module';
 
 @NgModule({
-  imports: [
-    KitAnchorModule,
-    KitClassModule,
-    KitCollapseModule,
-    KitDatePickerModule,
-    KitFocusManagerModule,
-    KitCheckModule,
-    KitFormFieldModule,
-    KitFormTouchModule,
-    KitIconsModule,
-    KitModalModule,
-    KitOutsideClickModule,
-    KitOverlayModule,
-    KitPointerModule,
-    KitRefModule,
-    KitRepeatModule,
-    KitSlideModule,
-    KitValueAccessorModule,
-  ],
   exports: [
     KitAnchorModule,
     KitClassModule,
@@ -50,7 +30,6 @@ import { KitValueAccessorModule } from './kit-value-accessor/kit-value-accessor.
     KitModalModule,
     KitOutsideClickModule,
     KitOverlayModule,
-    KitPointerModule,
     KitRefModule,
     KitRepeatModule,
     KitSlideModule,

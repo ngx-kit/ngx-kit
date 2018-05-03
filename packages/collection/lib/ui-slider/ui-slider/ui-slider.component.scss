@@ -1,5 +1,5 @@
 $height: 4px;
-$pointer: 8px;
+$pointer: 10px;
 $pad: 4px;
 
 .slider {
@@ -17,22 +17,22 @@ $pad: 4px;
   background: #2399e5;
   bottom: $pad;
   height: $height;
+  left: 0;
   position: absolute;
   top: $pad;
-  transition-duration: 100ms;
-  transition-property: left, right;
 }
 
 .pointer {
   background: #ffffff;
+  border: 1px solid #2399e5;
   border-radius: 50%;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, .3);
+  box-sizing: border-box;
   cursor: pointer;
   height: $pointer;
   position: absolute;
   top: ($height - $pointer) / 2 + $pad;
   transform: translateX(-50%);
-  transition: left 100ms;
   width: $pointer;
   &:focus {
     background: #f9f9f9;

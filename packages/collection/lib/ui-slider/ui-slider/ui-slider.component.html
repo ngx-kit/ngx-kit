@@ -1,16 +1,16 @@
 <div class="slider"
-     [kitPointerLine]
-     (move)="move($event)"
-     #slider>
+     #sliderRef
+     (pan)="handleMove($event)"
+     (tap)="handleMove($event)">
   <div class="bg"></div>
-  <div [style.left.%]="leftPointerPosition"
-       [style.right.%]="100 - pointerPosition"
+  <div [style.left.px]="fillLeft"
+       [style.right.px]="fillRight"
        class="fill"></div>
   <div *ngIf="range"
-       [style.left.%]="leftPointerPosition"
+       [style.left.px]="leftPointerLeft"
        class="pointer"
        tabindex="0"></div>
-  <div [style.left.%]="pointerPosition"
-       class="pointer"
+  <div class="pointer"
+       [style.left.px]="mainPointerLeft"
        tabindex="0"></div>
 </div>

@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { KitModule, KitRootModule } from '@ngx-kit/core';
 import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
+import { UiNotificationModule } from '../../../packages/collection/lib/ui-notification';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
 
@@ -22,6 +23,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     KitRootModule,
     KitModule,
     CollectionDemoModule,
+    UiNotificationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
