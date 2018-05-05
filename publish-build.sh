@@ -2,7 +2,7 @@
 
 PACKAGE=$1
 ORG="ngx-kit"
-PKG_DIR="dist/${PACKAGE}/release"
+PKG_DIR="dist/${PACKAGE}"
 BUILD_REPO="${PACKAGE}-builds"
 REPO_URL="git@github.com:${ORG}/${BUILD_REPO}.git"
 REPO_DIR="tmp/${BUILD_REPO}"

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, take, tap } from 'rxjs/operators';
 import { isArray } from '../util/is-array';
 import { KitIcon, KitIconCached, KitIconSource } from './meta';
@@ -24,7 +23,9 @@ import { KitIcon, KitIconCached, KitIconSource } from './meta';
  * <kit-icon name="star"></kit-icon>
  * ```
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitIconsRegistryService {
   private cache: KitIconCached[] = [];
 

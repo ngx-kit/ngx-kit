@@ -1,7 +1,5 @@
 import { Injectable, OnDestroy, Optional, Renderer2 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { KitDatePickerGrid } from './meta';
 
 /**

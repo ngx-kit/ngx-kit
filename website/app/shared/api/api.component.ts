@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MdRenderService } from '@nvxme/ngx-md-render';
-import { ComponentApi, ComponentApiDoc } from '../../core/content-meta';
-import { ContentService } from '../../core/content.service';
+import { ComponentApi, ComponentApiDoc } from '../../content/content-meta';
+import { ContentService } from '../../content/content.service';
 import { clone } from '../utils/clone';
 import { isArray } from '../utils/is-array';
 import { isObject } from '../utils/is-object';

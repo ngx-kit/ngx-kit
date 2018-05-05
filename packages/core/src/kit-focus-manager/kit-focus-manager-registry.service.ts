@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { KitFocusManagerService } from './kit-focus-manager.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitFocusManagerRegistryService {
   stack: KitFocusManagerService[] = [];
 

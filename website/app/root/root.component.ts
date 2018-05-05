@@ -18,7 +18,7 @@ export class RootComponent {
     private router: Router,
   ) {
     // icons & theme
-    this.icons.registerSet([
+    this.icons.add([
       {
         name: 'git',
         url: '/assets/github-sign.svg',

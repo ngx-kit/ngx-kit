@@ -5,7 +5,9 @@ import { KitOverlayAutofix, KitOverlayPosition, StrategyEl, StrategyField } from
 /**
  * @todo correct handle cases when anchor is not visible
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SidePositioningService {
   autofix(
     el: StrategyEl,

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isArray } from '@ngx-kit/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 export const uiSliderValueAccessor: any = {
   provide: NG_VALUE_ACCESSOR,

@@ -1,6 +1,6 @@
 import { Directive, ElementRef, forwardRef, HostListener, Inject, Optional, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitDefaultModelInterceptor } from './kit-default-model-interceptor';
 import { KitModelInterceptor } from './kit-model-interceptor';
 
@@ -43,7 +43,7 @@ export class KitValueAccessorDirective implements ControlValueAccessor {
   ) {
     this.interceptor = this.injInterceptor || this.defaultInterceptor;
     this.interceptor.modelStateChanges.subscribe(this.changes$);
-    this.interceptor.viewStateChanges.subscribe(value => {
+    this.interceptor.viewStateChanges.subscribe((value: any) => {
       this.renderer.setProperty(this.el.nativeElement, 'value', value || '');
     });
   }

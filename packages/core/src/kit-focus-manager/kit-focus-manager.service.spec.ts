@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KitPlatformModule } from '../kit-platform/kit-platform.module';
-import { KitEventManagerModule } from '../kit-event-manager/kit-event-manager.module';
 import { dispatchKeyboardEvent } from '../../test/utils/dispatch-events';
 import { keyTab } from '../kit-event-manager/meta';
 import { KitFocusManagerRegistryService } from './kit-focus-manager-registry.service';
@@ -21,8 +19,6 @@ describe('KitFocusManagerService', () => {
         ],
         imports: [
           CommonModule,
-          KitEventManagerModule.forRoot(),
-          KitPlatformModule.forRoot(),
         ],
         providers: [
           KitFocusManagerRegistryService,

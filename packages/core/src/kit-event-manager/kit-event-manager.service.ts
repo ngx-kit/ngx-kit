@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitEventManagerService {
   constructor(private platform: KitPlatformService) {
   }

@@ -1,8 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 
 /**
  * @apiOrder 4

@@ -1,8 +1,6 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { from } from 'rxjs/observable/from';
-import { of } from 'rxjs/observable/of';
-import { KitPlatformModule } from '../../kit-platform/kit-platform.module';
+import { from } from 'rxjs';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 import { KitIconComponent } from './kit-icon.component';
 
@@ -13,9 +11,7 @@ describe('KitIconComponent', () => {
   // setup
   beforeEach(async(() =>
     TestBed.configureTestingModule({
-      imports: [
-        KitPlatformModule.forRoot(),
-      ],
+      imports: [],
       declarations: [
         TestComponent,
         KitIconComponent,

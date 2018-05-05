@@ -1,5 +1,5 @@
 {
   "src": "./packages/collection/lib",
   "template": "./packages/collection/schematics/_template",
-  "dist": "./dist/collection/release"
+  "dist": "./dist/collection"
 }

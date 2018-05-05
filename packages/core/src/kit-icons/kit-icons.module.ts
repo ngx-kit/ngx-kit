@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { KitIconComponent } from './kit-icon/kit-icon.component';
-import { KitIconsRegistryService } from './kit-icons-registry.service';
 
 /**
  * @todo register icons in forRoot().
@@ -18,10 +17,4 @@ import { KitIconsRegistryService } from './kit-icons-registry.service';
   ],
 })
 export class KitIconsModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: KitIconsModule,
-      providers: [KitIconsRegistryService],
-    };
-  }
 }

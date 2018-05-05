@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MdRenderService } from '@nvxme/ngx-md-render';
-import { ContentPost } from '../../core/content-meta';
+import { ContentPost } from '../../content/content-meta';
 
 @Component({
   selector: 'app-md',

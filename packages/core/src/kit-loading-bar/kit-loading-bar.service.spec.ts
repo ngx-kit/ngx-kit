@@ -1,6 +1,6 @@
 import { async } from '@angular/core/testing';
 import { NavigationEnd, NavigationStart } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitLoadingBarService } from './kit-loading-bar.service';
 import { KitLoadingBarState } from './meta';
 

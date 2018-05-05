@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, OnInit, } from '@angular/core';
-import { KitNotificationItem, KitNotificationPosition, KitNotificationService, } from '@ngx-kit/core';
-import { Observable } from 'rxjs/Observable';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { KitNotificationItem, KitNotificationPosition, KitNotificationService } from '@ngx-kit/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({

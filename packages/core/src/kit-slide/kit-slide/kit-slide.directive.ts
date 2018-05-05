@@ -10,8 +10,8 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 import { KitSlideHostService } from '../kit-slide-host.service';
 import { KitSlideId } from '../meta';
 
@@ -63,7 +63,7 @@ export class KitSlideDirective implements OnInit, OnDestroy, OnChanges {
     // handle displaying
     this.host.activeChanges
       .pipe(takeUntil(this.destroy))
-      .subscribe(id => {
+      .subscribe((id: string) => {
         if (id === this.kitSlide) {
           if (!this.displayed) {
             this.zone.run(() => {

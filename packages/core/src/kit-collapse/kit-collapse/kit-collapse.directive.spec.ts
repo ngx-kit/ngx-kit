@@ -1,7 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { KitCollapseHostService } from '../kit-collapse-host.service';
 import { KitCollapseItemService } from '../kit-collapse-item.service';
 import { KitCollapseDirective } from './kit-collapse.directive';

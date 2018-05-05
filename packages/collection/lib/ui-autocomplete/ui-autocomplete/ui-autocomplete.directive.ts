@@ -24,8 +24,8 @@ import {
   KitOverlayComponentRef,
   KitOverlayService,
 } from '@ngx-kit/core';
+import { Subject } from 'rxjs';
 import { debounceTime, filter, take, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 import { UiAutocompleteOption } from '../meta';
 import { UiAutocompleteOptionsComponent } from '../ui-autocomplete-options/ui-autocomplete-options.component';
 
@@ -144,7 +144,7 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
         debounceTime(this.debounce),
         filter(() => this.focused),
       )
-      .subscribe(value => {
+      .subscribe((value: string) => {
         this.search.emit(value);
       });
   }

@@ -9,7 +9,9 @@ import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdr
 import { KitModalRef } from './kit-modal-ref';
 import { KitModalOptions, KitModalShowArgs } from './meta';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitModalService {
   private backdropRef: KitOverlayComponentRef<KitModalBackdropComponent>;
 
