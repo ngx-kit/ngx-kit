@@ -17,31 +17,20 @@ The best interface for ui-components is a possibility to change the source code.
 ## Usage
 
 Requirements:
-* angular 5+
-* angular-cli 1.5+
+* angular 6+
+* angular-cli 6+
 
 Install ngx-kit core and collection: 
 
 ```
-npm install @ngx-kit/core --save
-npm install @ngx-kit/collection @angular-devkit/core --save-dev
-```
-
-Import ngx-kit to the root module:
-
-```typescript
-@NgModule({
-  ...
-  imports: [
-    ...
-    KitRootModule,
-    KitModule,
+npm install @ngx-kit/core hammerjs
+npm install @ngx-kit/collection --save-dev
 ```
  
 Generate code:
 
 ```
-ng g ui-button -c=@ngx-kit/collection ui-button
+ng g @ngx-kit/collection:ui-button ui-button
 ```
 
 Import generated module:

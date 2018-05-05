@@ -9,7 +9,7 @@ module.exports = function(dir, moduleName, schematicsConfig) {
   // copy templates
   fs.copySync(path.resolve(schematicsConfig.template), distDir);
   // gen
-  const blueprintsDist = path.resolve(distDir, 'files/__path__/__name@dasherize@if-flat__');
+  const blueprintsDist = path.resolve(distDir, 'files/__name@dasherize@if-flat__');
   walk.walkSync(path.resolve(dir), {
     listeners: {
       file: function(root, fileStats, next) {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentResolverService } from '../../core/content-resolver.service';
+import { ContentResolverService } from '../../content/content-resolver.service';
 import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
 import { ModulePageComponent } from '../../shared/module-page/module-page.component';
 import { MainComponent } from './main/main.component';

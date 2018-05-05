@@ -1,6 +1,9 @@
-import { ComponentFactoryResolver, Type, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
 import { Partial } from '../../';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class KitModalOptions {
   backdropClose = true;
 

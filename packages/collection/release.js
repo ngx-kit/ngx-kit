@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const pkg = require('../../package.json');
-const releaseDir = path.resolve('./dist/collection/release');
+const releaseDir = path.resolve('./dist/collection/');
 
 // Copy files
 fs.copySync(path.resolve(__dirname, 'schematics'), path.resolve(releaseDir), {

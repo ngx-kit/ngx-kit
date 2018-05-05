@@ -1,0 +1,150 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "core": {
+      "root": "",
+      "sourceRoot": "packages/core",
+      "projectType": "library",
+      "prefix": "kit",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/core/tsconfig.lib.json",
+            "project": "packages/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "packages/core/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/core/test.ts",
+            "tsConfig": "packages/core/tsconfig.spec.json",
+            "karmaConfig": "packages/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/core/tsconfig.lib.json",
+              "packages/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "core-playground": {
+      "root": "",
+      "sourceRoot": "playground/core",
+      "projectType": "application",
+      "prefix": "kit",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/playground-core",
+            "index": "playground/core/index.html",
+            "main": "playground/core/main.ts",
+            "tsConfig": "playground/core/tsconfig.app.json",
+            "assets": [
+              "playground/core/favicon.ico"
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "core-playground:build"
+          }
+        }
+      }
+    },
+    "collection-playground": {
+      "root": "",
+      "sourceRoot": "playground/collection",
+      "projectType": "application",
+      "prefix": "ui",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/playground-collection",
+            "index": "playground/collection/index.html",
+            "main": "playground/collection/main.ts",
+            "tsConfig": "playground/collection/tsconfig.app.json",
+            "assets": [
+              "playground/collection/favicon.ico",
+              "playground/collection/assets"
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "collection-playground:build"
+          }
+        }
+      }
+    },
+    "website": {
+      "root": "",
+      "sourceRoot": "website",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/website",
+            "index": "website/index.html",
+            "main": "website/main.ts",
+            "tsConfig": "website/tsconfig.app.json",
+            "assets": [
+              "website/favicon.ico",
+              "website/assets"
+            ],
+            "styles": [
+              "website/styles.css",
+              "website/assets/hljs-default.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "website/styles"
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "website:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "website/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

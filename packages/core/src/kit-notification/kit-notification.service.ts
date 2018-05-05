@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { uuid } from '../util/uuid';
 import { KitNotificationHostConfig, KitNotificationItem } from './meta';
 
@@ -25,7 +24,9 @@ import { KitNotificationHostConfig, KitNotificationItem } from './meta';
  * }
  *  ```
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitNotificationService {
   private _config = new BehaviorSubject<KitNotificationHostConfig>({
     position: 'top-right',

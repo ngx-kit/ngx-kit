@@ -1,5 +1,5 @@
 import { async } from '@angular/core/testing';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { keyEscape } from '../kit-event-manager/meta';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalService } from './kit-modal.service';

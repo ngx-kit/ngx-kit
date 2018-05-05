@@ -1,7 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { KitSlideHostService } from '../kit-slide-host.service';
 import { KitSlideDirective } from './kit-slide.directive';
 

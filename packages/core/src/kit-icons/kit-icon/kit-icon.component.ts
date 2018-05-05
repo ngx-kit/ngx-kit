@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { switchMap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { isArray } from '../../util/is-array';
 import { uuid } from '../../util/uuid';
@@ -81,7 +81,7 @@ export class KitIconComponent implements OnChanges, OnDestroy {
         takeUntil(this.destroy),
         switchMap(name => this.registry.get(name)),
       )
-      .subscribe(source => {
+      .subscribe((source: KitIconSource) => {
         this.source = source;
         this.svg = this.svgElementFromString(this.source.svg);
         this.clear();

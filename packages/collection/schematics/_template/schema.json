@@ -4,22 +4,27 @@
   "title": "Angular Module Options Schema",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
     "path": {
       "type": "string",
-      "default": "app"
+      "format": "path",
+      "description": "The path to create the module.",
+      "visible": false
     },
-    "appRoot": {
-      "type": "string"
-    },
-    "sourceDir": {
+    "project": {
       "type": "string",
-      "default": "src"
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the module.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": []
 }

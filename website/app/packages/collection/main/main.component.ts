@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentService } from '../../../core/content.service';
+import { ContentService } from '../../../content/content.service';
 import { pkgName } from '../meta';
 
 @Component({

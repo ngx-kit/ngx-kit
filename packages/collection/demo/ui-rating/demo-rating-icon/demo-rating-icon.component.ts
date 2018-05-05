@@ -8,6 +8,6 @@ import { KitIconsRegistryService } from '@ngx-kit/core';
 })
 export class DemoRatingIconComponent {
   constructor(private icons: KitIconsRegistryService) {
-    this.icons.register('star', '/assets/star-icon.svg');
+    this.icons.add({name: 'star', url: '/assets/star-icon.svg'});
   }
 }

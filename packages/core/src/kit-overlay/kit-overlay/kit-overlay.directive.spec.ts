@@ -17,7 +17,6 @@ describe('KitOverlayDirective', () => {
         ],
         imports: [
           CommonModule,
-          KitOverlayModule.forRoot(),
           KitOverlayModule,
         ],
       });

@@ -22,4 +22,3 @@ export * from './src/kit-style/kit-style';
 export * from './src/kit-value-accessor/kit-value-accessor';
 export * from './src/util/util';
 export * from './src/kit.module';
-export * from './src/kit-root.module';

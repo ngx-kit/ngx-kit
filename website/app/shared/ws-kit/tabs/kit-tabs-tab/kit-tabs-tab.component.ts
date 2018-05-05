@@ -8,8 +8,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { KitSlideHostService } from '@ngx-kit/core';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 
 /**
  * @apiOrder 3

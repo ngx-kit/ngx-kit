@@ -9,8 +9,7 @@ import {
   Optional,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 import { uuid } from '../../util/uuid';
 import { KitFormFieldService } from '../kit-form-field.service';
 

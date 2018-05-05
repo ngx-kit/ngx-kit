@@ -1,15 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
-import { REQUEST } from '@nguniversal/express-engine';
-import { Observable } from 'rxjs/Observable';
-import { from } from 'rxjs/observable/from';
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class ServerHttp {
-  constructor(@Inject(REQUEST) private req: any) {
-  }
+//  constructor(@Inject(REQUEST) private req: any) {
+//  }
 
   get(url: string, options: {responseType: 'text' | 'json'}): Observable<any> {
-    const file = this.req.readFileSync(`./dist${url}`).toString();
-    return from([options && options.responseType === 'text' ? file : JSON.parse(file)]);
+//    const file = this.req.readFileSync(`./dist${url}`).toString();
+    return from([]);
   }
 }

@@ -3,9 +3,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { KitModule, KitRootModule } from '@ngx-kit/core';
+import { KitModule } from '@ngx-kit/core';
 import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
-import { UiNotificationModule } from '../../../packages/collection/lib/ui-notification';
+import { UiNotificationModule } from '../../../packages/collection/lib/ui-notification/ui-notification.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
 
@@ -20,7 +20,6 @@ import { PlaygroundComponent } from './playground/playground.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([]),
-    KitRootModule,
     KitModule,
     CollectionDemoModule,
     UiNotificationModule,

@@ -1,6 +1,6 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef, } from '@angular/core';
+import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 import { KitCollapseHostService } from '../kit-collapse-host.service';
 import { KitCollapseItemService } from '../kit-collapse-item.service';
 

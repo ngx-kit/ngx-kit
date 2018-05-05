@@ -10,7 +10,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { UiCustomSelectOption } from '../meta';
 
 export const uiCustomSelectValueAccessor: any = {

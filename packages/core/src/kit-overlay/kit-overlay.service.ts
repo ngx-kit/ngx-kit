@@ -17,14 +17,14 @@ import {
   ViewRef,
 } from '@angular/core';
 import { StaticProvider } from '@angular/core/src/di/provider';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { KitOverlayComponentRef } from './kit-overlay-component-ref';
 import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-host-wrapper.component';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitOverlayService {
   private _onHostStable = new Subject<void>();
 

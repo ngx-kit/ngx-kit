@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 import { KitLoadingBarState } from './meta';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class KitLoadingBarService {
   private _barStateChanges = new Subject<string>();
 
