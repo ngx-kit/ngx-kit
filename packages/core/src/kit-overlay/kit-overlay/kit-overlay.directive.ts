@@ -9,9 +9,7 @@ import {
   ViewContainerRef,
   ViewRef,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject, Subscription, Observable } from 'rxjs';
 import { KitOverlayService } from '../kit-overlay.service';
 
 @Directive({

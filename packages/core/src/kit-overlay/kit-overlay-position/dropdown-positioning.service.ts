@@ -5,7 +5,9 @@ import { KitOverlayAutofix, KitOverlayPosition, positionPairs, StrategyEl, Strat
 /**
  * @todo correct handle cases when anchor is not visible
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class DropdownPositioningService {
   autofix(
     el: StrategyEl,

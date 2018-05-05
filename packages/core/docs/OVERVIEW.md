@@ -14,7 +14,7 @@ You don't need 3rd party ui-kit, just create your own components that do exactly
 
 * Set of modules for creating rich Angular applications 
 * Collection of blueprints: [@ngx-kit/collection](https://ngx-kit.com/collection)
-* Angular 5+ support
+* Angular 6+ support
 * AOT support
 * Server-rendering support
 * Free and open-source
@@ -26,28 +26,6 @@ You don't need 3rd party ui-kit, just create your own components that do exactly
 ```
 npm install @ngx-kit/core --save
 ```
-
-## Usage
-
-Import `KitRootModule` to the root module of your application.
-
-```typescript
-import { NgModule } from '@angular/core';
-import { KitRootModule } from '@ngx-kit/core';
-...
-
-@NgModule({
-  imports: [
-    ...
-    KitRootModule,
-  ],
-  ...
-})
-export class AppModule {
-}
-```
-
-Import `KitModule` to any module where you need kit directives and components, even in the root module.
 
 
 ## Links

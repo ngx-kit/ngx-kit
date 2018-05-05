@@ -9,7 +9,6 @@ describe('KitOverlayHostComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        KitOverlayModule.forRoot(),
         KitOverlayModule,
       ],
       declarations: [],

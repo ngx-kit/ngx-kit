@@ -26,8 +26,8 @@ Components customizing should be simple. Just generate components from ngx-kit c
 
 ## Requirements
 
-* Angular ^5.0.0
-* Angular-cli ^1.5.0
+* Angular ^6
+* Angular-cli ^6
 
 
 ## Watch the video
@@ -43,20 +43,7 @@ Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 
 ```
 npm i @ngx-kit/core hammerjs --save
-npm i @ngx-kit/collection @angular-devkit/core @types/hammerjs --save-dev
-```
-
-#### Import core modules
-
-```typescript
-import { KitRootModule, KitModule } from '@ngx-kit/core';
-
-@NgModule({
-  ...
-  imports: [
-    ...
-    KitRootModule,
-    KitModule,
+npm i @ngx-kit/collection --save-dev
 ```
 
 #### Generate via Angular CLI
@@ -66,7 +53,7 @@ Pick a module from [Collection](https://ngx-kit.com/collection) and put the code
 Button for example:
 
 ```
-ng g ui-button -c=@ngx-kit/collection my-button
+ng g @ngx-kit/collection:ui-button ui-button
 ```
 
 #### Import generated module
@@ -76,13 +63,13 @@ ng g ui-button -c=@ngx-kit/collection my-button
   ...
   imports: [
     ...
-    MyButtonModule,
+    UiButtonModule,
 ```
 
 #### Use component
 
 ```html
-<button myButton color="primary">Let's do it!</button>
+<button uiButton color="primary">Let's do it!</button>
 ```
 
 #### Modify by your requirements

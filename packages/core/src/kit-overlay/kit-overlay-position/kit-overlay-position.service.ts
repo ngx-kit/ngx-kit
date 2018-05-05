@@ -1,7 +1,6 @@
 import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject, Subscription } from 'rxjs';
 import { KitAnchorDirective } from '../../kit-anchor/kit-anchor.directive';
 import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';

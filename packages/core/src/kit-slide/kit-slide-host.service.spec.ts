@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
-import { from } from 'rxjs/observable/from';
+import { from } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { KitSlideHostService } from './kit-slide-host.service';
 

@@ -1,5 +1,5 @@
 import { Injectable, ViewRef } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitOverlayComponentRef, KitOverlayInput } from '../../';
 import { Partial } from '../util/util';
 import { uuid } from '../util/uuid';

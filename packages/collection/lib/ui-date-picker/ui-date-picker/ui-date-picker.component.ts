@@ -10,8 +10,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { KitDatePickerGrid, KitDatePickerService } from '@ngx-kit/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 
 export const uiDatePickerValueAccessor: any = {
   provide: NG_VALUE_ACCESSOR,

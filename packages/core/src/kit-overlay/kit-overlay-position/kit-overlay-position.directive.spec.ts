@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitOverlayPositionDirective } from './kit-overlay-position.directive';
 import { KitOverlayPositionService } from './kit-overlay-position.service';
 

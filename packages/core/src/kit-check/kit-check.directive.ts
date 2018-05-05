@@ -1,6 +1,6 @@
 import { Directive, forwardRef, Host, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { KitClassService } from '../kit-class/kit-class.service';
 import { isDefined } from '../util/is-defined';
 
