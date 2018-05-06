@@ -3,4 +3,13 @@
 ## Usage
 
 1. Import generated module into root.
-2. Use `KitNotificationService` to fire notifications.
+
+```typescript
+...
+imports: [
+  ...
+  UiNotificationModule.forRoot(),
+],
+```
+
+2. Use `KitNotificationService` api to show notifications.
