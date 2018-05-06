@@ -6,7 +6,7 @@ import { KitNotificationHostConfig } from './meta';
 describe('KitNotificationService', () => {
   let service: KitNotificationService;
   beforeEach(async(() => {
-    service = new KitNotificationService();
+    service = new KitNotificationService({} as any, new OverlayStub() as any);
   }));
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -46,3 +46,8 @@ describe('KitNotificationService', () => {
     service.config(config);
   });
 });
+
+class OverlayStub {
+  hostComponent() {
+  }
+}
