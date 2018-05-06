@@ -9,7 +9,7 @@ export * from './src/kit-focus-manager/kit-focus-manager';
 export * from './src/kit-form-field/kit-form-field';
 export * from './src/kit-form-touch/kit-form-touch';
 export * from './src/kit-icons/kit-icons';
-export * from './src/kit-loading-bar/kit-loading-bar';
+export * from './src/kit-loading/kit-loading';
 export * from './src/kit-notification/kit-notification';
 export * from './src/kit-modal/kit-modal';
 export * from './src/kit-outside-click/kit-outside-click';

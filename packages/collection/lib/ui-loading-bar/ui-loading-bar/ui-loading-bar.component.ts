@@ -1,6 +1,14 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { KitLoadingBarService, KitLoadingBarState } from '@ngx-kit/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
+import { kitLoadingGlobal, KitLoadingService, KitLoadingState } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -24,7 +32,7 @@ import { takeUntil } from 'rxjs/operators';
         transform: 'translateX(0)',
         opacity: 1,
       })),
-      transition(`${KitLoadingBarState.None} => ${KitLoadingBarState.InProgress}`, [
+      transition(`${KitLoadingState.None} => ${KitLoadingState.InProgress}`, [
         style({
           transform: 'translateX(-100%)',
           opacity: 0,
@@ -36,7 +44,7 @@ import { takeUntil } from 'rxjs/operators';
           transform: 'translateX(0)',
         })),
       ]),
-      transition(`${KitLoadingBarState.InProgress} => ${KitLoadingBarState.None}`, [
+      transition(`${KitLoadingState.InProgress} => ${KitLoadingState.None}`, [
         animate('150ms ease-in', style({
           opacity: 1,
           transform: 'translateX(0)',
@@ -48,13 +56,17 @@ import { takeUntil } from 'rxjs/operators';
     ]),
   ],
 })
-export class UiLoadingBarComponent implements OnInit, OnDestroy {
-  barState = 'none';
+export class UiLoadingBarComponent implements OnChanges, OnDestroy {
+  @Input() id = kitLoadingGlobal;
+
+  barState = KitLoadingState.None;
 
   private destroy = new Subject<void>();
 
+  private idChange = new Subject<void>();
+
   constructor(
-    private service: KitLoadingBarService,
+    private loading: KitLoadingService,
     private cdr: ChangeDetectorRef,
   ) {
   }
@@ -63,12 +75,20 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
     this.destroy.next();
   }
 
-  ngOnInit() {
-    this.service.barStateChanges
-      .pipe(takeUntil(this.destroy))
-      .subscribe(s => {
-        this.barState = s;
-        this.cdr.markForCheck();
-      });
+  ngOnChanges(changes: SimpleChanges) {
+    if ('id' in changes) {
+      this.idChange.next();
+      this.loading
+        .progress(this.id)
+        .stateChanges
+        .pipe(
+          takeUntil(this.destroy),
+          takeUntil(this.idChange),
+        )
+        .subscribe(s => {
+          this.barState = s;
+          this.cdr.detectChanges();
+        });
+    }
   }
 }
