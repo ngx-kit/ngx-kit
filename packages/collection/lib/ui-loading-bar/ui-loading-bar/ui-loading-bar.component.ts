@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,6 +6,7 @@ import {
   Input,
   OnChanges,
   OnDestroy,
+  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { kitLoadingGlobal, KitLoadingService, KitLoadingState } from '@ngx-kit/core';
@@ -17,18 +18,16 @@ import { takeUntil } from 'rxjs/operators';
  */
 @Component({
   selector: 'ui-loading-bar',
-  template: `
-    <div [@bar]="barState" class="bar"></div>
-  `,
+  templateUrl: './ui-loading-bar.component.html',
   styleUrls: ['./ui-loading-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('bar', [
-      state('none', style({
+      state(KitLoadingState.None, style({
         transform: 'translateX(-100%)',
         opacity: 0,
       })),
-      state('in-progress', style({
+      state(KitLoadingState.InProgress, style({
         transform: 'translateX(0)',
         opacity: 1,
       })),
@@ -44,19 +43,23 @@ import { takeUntil } from 'rxjs/operators';
           transform: 'translateX(0)',
         })),
       ]),
-      transition(`${KitLoadingState.InProgress} => ${KitLoadingState.None}`, [
-        animate('150ms ease-in', style({
-          opacity: 1,
-          transform: 'translateX(0)',
-        })),
-        animate('150ms', style({
-          opacity: 0,
-        })),
-      ]),
+      transition(`${KitLoadingState.InProgress} => ${KitLoadingState.None}`,
+        sequence([
+          animate('150ms ease-in', style({
+            opacity: 1,
+            transform: 'translateX(0)',
+          })),
+          animate('150ms', style({
+            opacity: 0,
+          })),
+          animate('10ms', style({
+            transform: 'translateX(-100%)',
+          })),
+        ])),
     ]),
   ],
 })
-export class UiLoadingBarComponent implements OnChanges, OnDestroy {
+export class UiLoadingBarComponent implements OnInit, OnChanges, OnDestroy {
   @Input() id = kitLoadingGlobal;
 
   barState = KitLoadingState.None;
@@ -71,24 +74,32 @@ export class UiLoadingBarComponent implements OnChanges, OnDestroy {
   ) {
   }
 
+  ngOnInit() {
+    this.handleState();
+  }
+
   ngOnDestroy() {
     this.destroy.next();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if ('id' in changes) {
-      this.idChange.next();
-      this.loading
-        .progress(this.id)
-        .stateChanges
-        .pipe(
-          takeUntil(this.destroy),
-          takeUntil(this.idChange),
-        )
-        .subscribe(s => {
-          this.barState = s;
-          this.cdr.detectChanges();
-        });
+      this.handleState();
     }
+  }
+
+  private handleState() {
+    this.idChange.next();
+    this.loading
+      .progress(this.id)
+      .stateChanges
+      .pipe(
+        takeUntil(this.destroy),
+        takeUntil(this.idChange),
+      )
+      .subscribe(s => {
+        this.barState = s;
+        this.cdr.detectChanges();
+      });
   }
 }

@@ -41,7 +41,6 @@ export class KitOverlayService {
   constructor(
     @Inject(DOCUMENT) private document: any,
     private cfr: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
     private injector: Injector,
     @Optional() @Inject(forwardRef(() => KitOverlayService)) @SkipSelf() private parent: KitOverlayService,
   ) {

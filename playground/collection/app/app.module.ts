@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { CollectionDemoModule } from '../../../packages/collection/demo/collection-demo.module';
+import { UiLoadingBarModule } from '../../../packages/collection/lib/ui-loading-bar/ui-loading-bar.module';
 import { UiNotificationModule } from '../../../packages/collection/lib/ui-notification/ui-notification.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
@@ -21,6 +22,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     RouterModule.forRoot([]),
     CollectionDemoModule,
     UiNotificationModule,
+    UiLoadingBarModule.forRoot(),
   ],
   bootstrap: [AppComponent],
 })
