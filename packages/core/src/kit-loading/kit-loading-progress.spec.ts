@@ -20,6 +20,11 @@ describe('KitLoadingProgress', () => {
       });
       service.start(key);
     });
+    it('returns end function that stops progress', () => {
+      const fn = service.start(key);
+      fn();
+      expect(service.state).toEqual(KitLoadingState.None);
+    });
   });
   describe('.end()', () => {
     beforeEach(() => {
@@ -35,6 +40,12 @@ describe('KitLoadingProgress', () => {
         done();
       });
       service.end(key);
+    });
+    it('forces state to None if key is not passed', () => {
+      service.start('test1');
+      service.start('test2');
+      service.end();
+      expect(service.state).toEqual(KitLoadingState.None);
     });
   });
 });
