@@ -52,7 +52,7 @@ export class KitNotificationService {
             useValue: this,
           },
         ],
-      })
+      });
     } else {
       throw new Error(`Please provide component for token "KitNotificationHost".`);
     }
