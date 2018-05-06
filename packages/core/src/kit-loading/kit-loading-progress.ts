@@ -1,5 +1,5 @@
 import { Observable, Subject } from 'rxjs';
-import { uuid } from '../..';
+import { uuid } from '../util/uuid';
 import { KitLoadingEndFn, KitLoadingState } from './meta';
 
 export class KitLoadingProgress {

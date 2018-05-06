@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { RootComponent } from './root/root.component';
 import { SharedModule } from './shared/shared.module';
+import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AppRoutingModule,
     CollectionDemoModule,
+    UiLoadingBarModule.forRoot(),
   ],
   declarations: [
     RootComponent,
