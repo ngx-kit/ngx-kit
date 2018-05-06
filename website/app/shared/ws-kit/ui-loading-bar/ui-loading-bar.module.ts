@@ -1,7 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { KitCollapseModule } from '@ngx-kit/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { KitCollapseModule, KitOverlayService } from '@ngx-kit/core';
 import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component';
+
+export function initFactory(overlay: KitOverlayService) {
+  return () => {
+    overlay.hostComponent({component: UiLoadingBarComponent});
+  };
+}
 
 @NgModule({
   imports: [
@@ -14,6 +20,22 @@ import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component
   declarations: [
     UiLoadingBarComponent,
   ],
+  entryComponents: [
+    UiLoadingBarComponent,
+  ],
 })
 export class UiLoadingBarModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: UiLoadingBarModule,
+      providers: [
+        {
+          provide: APP_INITIALIZER,
+          useFactory: initFactory,
+          deps: [KitOverlayService],
+          multi: true,
+        },
+      ],
+    };
+  }
 }
