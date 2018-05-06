@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Type } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { KitOverlayComponentRef } from '../kit-overlay/kit-overlay-component-ref';
+import { KitOverlayService } from '../kit-overlay/kit-overlay.service';
 import { uuid } from '../util/uuid';
-import { KitNotificationHostConfig, KitNotificationItem } from './meta';
+import { KitNotificationHost, KitNotificationHostConfig, KitNotificationItem } from './meta';
 
 /**
  *
@@ -34,6 +36,27 @@ export class KitNotificationService {
   });
 
   private _items = new BehaviorSubject<KitNotificationItem[]>([]);
+
+  private hostRef: KitOverlayComponentRef<any>;
+
+  constructor(
+    @Inject(KitNotificationHost) private host: Type<any>,
+    private overlay: KitOverlayService,
+  ) {
+    if (this.host) {
+      this.hostRef = this.overlay.hostComponent({
+        component: this.host,
+        providers: [
+          {
+            provide: KitNotificationService,
+            useValue: this,
+          },
+        ],
+      })
+    } else {
+      throw new Error(`Please provide component for token "KitNotificationHost".`);
+    }
+  }
 
   get configChanges(): Observable<KitNotificationHostConfig> {
     return this._config.asObservable();
