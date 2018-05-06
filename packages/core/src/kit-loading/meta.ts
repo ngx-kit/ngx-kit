@@ -4,3 +4,5 @@ export enum KitLoadingState {
 }
 
 export const kitLoadingGlobal = 'global';
+
+export type KitLoadingEndFn = () => void;

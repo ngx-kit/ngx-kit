@@ -1,5 +1,6 @@
 import { Observable, Subject } from 'rxjs';
-import { KitLoadingState } from './meta';
+import { uuid } from '../..';
+import { KitLoadingEndFn, KitLoadingState } from './meta';
 
 export class KitLoadingProgress {
 
@@ -20,13 +21,20 @@ export class KitLoadingProgress {
     return this._stateChanges.asObservable();
   }
 
-  start(key: string) {
-    this.current.add(key);
+  start(key?: string): KitLoadingEndFn {
+    this.current.add(key || uuid());
     this.checkState();
+    return () => {
+      this.end(key);
+    };
   }
 
-  end(key: string) {
-    this.current.delete(key);
+  end(key?: string) {
+    if (key) {
+      this.current.delete(key);
+    } else {
+      this.current.clear();
+    }
     this.checkState();
   }
 
