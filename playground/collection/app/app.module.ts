@@ -21,7 +21,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     ReactiveFormsModule,
     RouterModule.forRoot([]),
     CollectionDemoModule,
-    UiNotificationModule,
+    UiNotificationModule.forRoot(),
     UiLoadingBarModule.forRoot(),
   ],
   bootstrap: [AppComponent],
