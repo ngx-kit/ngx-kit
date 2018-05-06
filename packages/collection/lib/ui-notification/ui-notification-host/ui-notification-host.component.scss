@@ -1,19 +1,25 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   &.position {
     &-top-right {
+      align-items: flex-end;
       right: 0;
       top: 0;
     }
     &-bottom-right {
+      align-items: flex-end;
       bottom: 0;
       right: 0;
     }
     &-bottom-left {
+      align-items: flex-start;
       bottom: 0;
       left: 0;
     }
     &-top-left {
+      align-items: flex-start;
       left: 0;
       top: 0;
     }

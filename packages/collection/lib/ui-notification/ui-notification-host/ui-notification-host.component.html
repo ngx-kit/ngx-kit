@@ -2,7 +2,7 @@
   <div *ngFor="let item of items | async"
        [@item]="position | async"
        class="item"
-       (click)="close(item.__id)"
+       (tap)="close(item.__id)"
        (swipe)="close(item.__id)">
     <h3 *ngIf="item.params.title" class="title">{{ item.params.title }}</h3>
     <div class="message">{{ item.params.message }}</div>
