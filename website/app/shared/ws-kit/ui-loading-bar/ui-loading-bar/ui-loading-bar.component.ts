@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { KitLoadingBarService } from '@ngx-kit/core';
+import { KitLoadingService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -54,7 +54,7 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(
-    private service: KitLoadingBarService,
+    private loading: KitLoadingService,
     private cdr: ChangeDetectorRef,
   ) {
   }
@@ -64,11 +64,11 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.service.barStateChanges
+    this.loading.global.stateChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(s => {
         this.barState = s;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
   }
 }

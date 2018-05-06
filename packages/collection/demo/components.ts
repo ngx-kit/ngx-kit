@@ -37,7 +37,8 @@ import { DemoFormCombinedComponent } from './ui-form/demo-form-combined/demo-for
 import { DemoFormDefaultComponent } from './ui-form/demo-form-default/demo-form-default.component';
 import { DemoFormInlineComponent } from './ui-form/demo-form-inline/demo-form-inline.component';
 import { DemoFormReactiveComponent } from './ui-form/demo-form-reactive/demo-form-reactive.component';
-import { DemoLoadingBarDefaultComponent } from './ui-loading-bar/demo-accordion-default/demo-loading-bar-default.component';
+import { DemoLoadingBarGlobalComponent } from './ui-loading-bar/demo-loading-bar-global/demo-loading-bar-global.component';
+import { DemoLoadingBarLocalComponent } from './ui-loading-bar/demo-loading-bar-local/demo-loading-bar-local.component';
 import { DemoModalCanCloseModalComponent } from './ui-modal/demo-modal-can-close/demo-modal-can-close-modal.component';
 import { DemoModalCanCloseComponent } from './ui-modal/demo-modal-can-close/demo-modal-can-close.component';
 import { DemoModalDataBindingModalComponent } from './ui-modal/demo-modal-data-binding/demo-modal-data-binding-modal.component';
@@ -117,7 +118,8 @@ export const demoComponents = [
   DemoFormInlineComponent,
   DemoFormCombinedComponent,
   // loading-bar
-  DemoLoadingBarDefaultComponent,
+  DemoLoadingBarGlobalComponent,
+  DemoLoadingBarLocalComponent,
   // modal
   DemoModalDefaultComponent,
   DemoModalUsingServiceComponent,
