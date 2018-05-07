@@ -21,8 +21,8 @@
     "website:gen-docs": "npm run website:gen-docs:core && npm run website:gen-docs:collection",
     "website:gen-docs:core": "ngx-kit gen-docs ./packages/core ./website/assets/docs",
     "website:gen-docs:collection": "ngx-kit gen-docs ./packages/collection ./website/assets/docs",
-    "website:build": "npm run clean && ng build -a=website --prod --output-hashing=all --build-optimizer=false",
-    "website:server:build": "ng build -a=website-server --prod --output-hashing=none",
+    "website:build": "npm run clean && ng run website:build",
+    "website:server:build": "ng run website:server",
     "website:server:bundle": "webpack --config ./website/webpack.server.config.js --progress --colors",
     "website:server:serve": "node ./dist/server",
     "website:deploy": "npm run website:gen-docs && npm run website:build && npm run website:server:build && npm run website:server:bundle && npm run website:docker:build && npm run website:docker:push",
@@ -92,6 +92,7 @@
     "stylelint": "^9.1.3",
     "stylelint-order": "^0.8.1",
     "tslint": "^5.8.0",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "webpack-cli": "^2.1.3"
   }
 }
