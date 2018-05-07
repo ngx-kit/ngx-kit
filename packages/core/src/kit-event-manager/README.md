@@ -1,12 +1,11 @@
 # Event-manager
 
-Services for events handling.
+Service for global events handling.
 
 
-## Features
+## Why
 
-* Listen events with `useCapture` param.
-* Working correctly with `platform-server`.
+Angular `Renderer2` does not listen events with `useCapture` param.
 
 
 ## Example

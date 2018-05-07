@@ -4,12 +4,6 @@ import { KitDatePickerGrid } from './meta';
 
 /**
  * Service encapsulates complex date-picker grid logic.
- *
- * Examples:
- *
- * * collection:date-picker -
- * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
- * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
  */
 @Injectable()
 export class KitDatePickerService implements OnDestroy {

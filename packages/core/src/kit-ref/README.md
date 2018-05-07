@@ -1,8 +1,6 @@
 # Ref
 
-## Main purpose
-
-* Template projecting shortcut
+Template projecting shortcut.
 
 
 ## Usage
@@ -30,6 +28,6 @@ Output by `*ngTemplateOutlet`:
 ```
 
 
-## Examples
+## Example
 
 * collection:breadcrumbs - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-breadcrumbs), [demo](http://ngx-kit.com/collection/module/ui-breadcrumbs)

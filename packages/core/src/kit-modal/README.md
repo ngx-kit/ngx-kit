@@ -1,9 +1,6 @@
 # Modal
 
-## Main purpose
- 
-For modal dialogs are displayed in a layer is above of the page content.
-
+Modal dialogs are displayed in a layer is above of the page content.
 
 
 ## Usage
@@ -198,6 +195,6 @@ You could get error `No component factory found for NameOfModalComponent` inside
 
 
 
-## Examples
+## Example
 
 * collection:modal - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-modal), [demo](https://ngx-kit.com/collection/module/ui-modal)

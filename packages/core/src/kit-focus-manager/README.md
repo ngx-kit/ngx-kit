@@ -2,10 +2,12 @@
 
 Control focus like a boss.
 
-## Main purpose
+
+## Scope
  
 * dialogs/popups/modals
 * complex forms and components
+
 
 ## Usage
 
@@ -46,3 +48,8 @@ Or add via `kitFocusTrap` directive:
 ```html
 <modal kitFocusTrap></modal>
 ```
+
+
+## Example
+
+* collection:date-picker - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker), [demo](https://ngx-kit.com/collection/module/ui-date-picker)

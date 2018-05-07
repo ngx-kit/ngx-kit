@@ -2,15 +2,15 @@ import { ElementRef, Injectable, KeyValueChanges, KeyValueDiffer, KeyValueDiffer
 import { KitStyles } from './meta';
 
 /**
- * Service works exactly like `ngStyle`, but for providing on component or directive.
+ * Service that works exactly like `ngStyle`, but can be provided on a component or directive.
  *
  * ```typescript
  * providers: [KitStyleService],
  * ...
- * constructor(private styleService: KitStyleService) {
+ * constructor(private style: KitStyleService) {
  * }
  * ...
- * this.styleService.style = {
+ * this.style.style = {
  *  background: 'red',
  *  color: '#fff',
  * };
