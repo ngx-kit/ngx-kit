@@ -146,7 +146,7 @@ export class UiSliderComponent implements ControlValueAccessor, OnChanges {
     } else {
       this.mainPointerLeft = Math.round(((this.state - this.min) / this.rangeLength) * width);
       this.fillLeft = 0;
-      this.fillRight = width - this.mainPointerLeft;
+      this.fillRight = this.fill ? width - this.mainPointerLeft : width;
     }
     this.cdr.detectChanges();
   }
