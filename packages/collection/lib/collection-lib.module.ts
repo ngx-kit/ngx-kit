@@ -17,7 +17,7 @@ import { UiNotificationModule } from './ui-notification/ui-notification.module';
 import { UiRadioModule } from './ui-radio/ui-radio.module';
 import { UiRatingModule } from './ui-rating/ui-rating.module';
 import { UiSelectModule } from './ui-select/ui-select.module';
-import { UiSideMenuModule } from './ui-side-menu/ui-side-menu.module';
+import { UiVerticalMenuModule } from './ui-vertical-menu/ui-vertical-menu.module';
 import { UiSliderModule } from './ui-slider/ui-slider.module';
 import { UiTabsModule } from './ui-tabs/ui-tabs.module';
 import { UiTextModule } from './ui-text/ui-text.module';
@@ -42,7 +42,7 @@ const lib = [
   UiRadioModule,
   UiRatingModule,
   UiSelectModule,
-  UiSideMenuModule,
+  UiVerticalMenuModule,
   UiSliderModule,
   UiTabsModule,
   UiTextModule,

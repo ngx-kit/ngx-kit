@@ -55,8 +55,8 @@ import { DemoRadioDefaultComponent } from './ui-radio/demo-radio-default/demo-ra
 import { DemoRatingDefaultComponent } from './ui-rating/demo-rating-default/demo-rating-default.component';
 import { DemoRatingIconComponent } from './ui-rating/demo-rating-icon/demo-rating-icon.component';
 import { DemoSelectDefaultComponent } from './ui-select/demo-select-default/demo-select-default.component';
-import { DemoSideMenuDefaultComponent } from './ui-side-menu/demo-side-menu-default/demo-side-menu-default.component';
-import { DemoSideMenuMultipleComponent } from './ui-side-menu/demo-side-menu-multiple/demo-side-menu-multiple.component';
+import { DemoVerticalMenuDefaultComponent } from './ui-vertical-menu/demo-vertical-menu-default/demo-vertical-menu-default.component';
+import { DemoVerticalMenuMultipleComponent } from './ui-vertical-menu/demo-vertical-menu-multiple/demo-vertical-menu-multiple.component';
 import { DemoSliderDefaultComponent } from './ui-slider/demo-slider-default/demo-slider-default.component';
 import { DemoSliderRangeComponent } from './ui-slider/demo-slider-range/demo-slider-range.component';
 import { DemoTabsDefaultComponent } from './ui-tabs/demo-tabs-default/demo-tabs-default.component';
@@ -141,9 +141,9 @@ export const demoComponents = [
   DemoRatingIconComponent,
   // select
   DemoSelectDefaultComponent,
-  // side-menu
-  DemoSideMenuDefaultComponent,
-  DemoSideMenuMultipleComponent,
+  // vertical-menu
+  DemoVerticalMenuDefaultComponent,
+  DemoVerticalMenuMultipleComponent,
   // slider
   DemoSliderDefaultComponent,
   DemoSliderRangeComponent,
