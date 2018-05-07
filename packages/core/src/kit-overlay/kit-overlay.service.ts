@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ApplicationRef,
   ComponentFactoryResolver,
   ComponentRef,
   EmbeddedViewRef,
@@ -18,6 +17,7 @@ import {
 } from '@angular/core';
 import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable, Subject, Subscription } from 'rxjs';
+import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { KitOverlayComponentRef } from './kit-overlay-component-ref';
 import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-host-wrapper.component';
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
@@ -43,6 +43,7 @@ export class KitOverlayService {
     private cfr: ComponentFactoryResolver,
     private injector: Injector,
     @Optional() @Inject(forwardRef(() => KitOverlayService)) @SkipSelf() private parent: KitOverlayService,
+    private platform: KitPlatformService,
   ) {
     this.isRoot = !this.parent;
     if (this.isRoot) {
@@ -147,10 +148,13 @@ export class KitOverlayService {
     if (!this.isRoot) {
       throw new Error(`Run .mountHost() only for root service`);
     }
-    // Append container
+    // Init container
     this.container = this.document.createElement('div');
-    this.container.classList.add('kit-overlay-container');
-    this.document.body.appendChild(this.container);
+    // Append container, only in browser
+    if (this.platform.isBrowser()) {
+      this.container.classList.add('kit-overlay-container');
+      this.document.body.appendChild(this.container);
+    }
     // Create host-wrapper
     const hostWrapperFactory = this.cfr.resolveComponentFactory(KitOverlayHostWrapperComponent);
     this.hostWrapperRef = hostWrapperFactory.create(this.injector);
