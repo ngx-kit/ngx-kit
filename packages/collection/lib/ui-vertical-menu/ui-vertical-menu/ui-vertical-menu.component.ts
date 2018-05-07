@@ -5,15 +5,15 @@ import { KitCollapseHostService } from '@ngx-kit/core';
  * @apiOrder 1
  */
 @Component({
-  selector: 'ui-side-menu',
+  selector: 'ui-vertical-menu',
   template: '<ng-content></ng-content>',
-  styleUrls: ['./ui-side-menu.component.scss'],
+  styleUrls: ['./ui-vertical-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     KitCollapseHostService,
   ],
 })
-export class UiSideMenuComponent implements OnInit, OnChanges {
+export class UiVerticalMenuComponent implements OnInit, OnChanges {
   /**
    * Allow few panels open at a time.
    */

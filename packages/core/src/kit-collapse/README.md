@@ -66,4 +66,4 @@ toggle() {
 ## Example
 
 * collection:accordion - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-accordion), [demo](http://ngx-kit.com/collection/module/ui-accordion) 
-* collection:side-menu - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-side-menu), [demo](http://ngx-kit.com/collection/module/ui-side-menu) 
+* collection:vertical-menu - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-vertical-menu), [demo](http://ngx-kit.com/collection/module/ui-vertical-menu) 
