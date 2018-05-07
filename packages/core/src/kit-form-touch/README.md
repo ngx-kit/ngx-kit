@@ -1,12 +1,18 @@
 # Form-touch
 
-## Main purpose
+Touch all form's fields for proper errors displaying.
 
-* Touch all form's fields for proper errors displaying.
+
+## Scope
+
+* Forms
+
 
 ## Usage
 
-Add `kitFormTouch` directive to submit button:
+1. Import `KitFormTouchModule`
+
+2. Add `kitFormTouch` directive to submit button: 
 
 ```html
 <form ...>
@@ -15,6 +21,7 @@ Add `kitFormTouch` directive to submit button:
 </form>
 ```
 
-## Examples
+
+## Example
 
 * collection:form - [demo](https://ngx-kit.com/collection/module/ui-form)

@@ -3,7 +3,7 @@
 Service for providing loading state.
 
 
-## Main purpose
+## Scope
 
 * Loading bar
 * Global loading spinner
@@ -59,6 +59,6 @@ this.dataService.get().subscribe(() => {
 ```
 
 
-## Examples
+## Example
 
 * collection:loading-bar - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-loading-bar), [demo](https://ngx-kit.com/collection/module/ui-loading-bar)

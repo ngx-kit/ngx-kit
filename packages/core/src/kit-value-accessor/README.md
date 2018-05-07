@@ -1,17 +1,17 @@
 # Value-accessor
 
-By default you can't prevent `ngModel` updating, if user inputs new data. `KitValueAccessor` allows to intercept in communication between html `input` and `ngModel`.
+`KitValueAccessor` allows to intercept in communication between html `input` and `ngModel`.
 
 
-## Main purpose
+## Why
+
+By default you can't prevent `ngModel` updating, if user inputs new data.
+
+
+## Scope
 
 * Input components
 * Input filters and masks 
-
-
-## Usage
-
-TBD
 
 
 ## Examples
