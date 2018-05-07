@@ -1,0 +1,26 @@
+<ui-vertical-menu [multiple]="true">
+  <ui-vertical-menu-item>Item 1</ui-vertical-menu-item>
+  <ui-vertical-menu-item>Item 2</ui-vertical-menu-item>
+  <a href="javascript:void(0)" uiSideMenuItem>Item 3</a>
+  <ui-vertical-menu-group>
+    Group 1
+    <ui-vertical-menu-sub *kitCollapse>
+      <ui-vertical-menu-item>Gr 1 Item 1</ui-vertical-menu-item>
+      <ui-vertical-menu-item>Gr 1 Item 2</ui-vertical-menu-item>
+    </ui-vertical-menu-sub>
+  </ui-vertical-menu-group>
+  <ui-vertical-menu-group [active]="true">
+    Group 2
+    <ui-vertical-menu-sub *kitCollapse>
+      <ui-vertical-menu-item>Gr 2 Item 1</ui-vertical-menu-item>
+      <ui-vertical-menu-item>Gr 2 Item 2</ui-vertical-menu-item>
+    </ui-vertical-menu-sub>
+  </ui-vertical-menu-group>
+  <ui-vertical-menu-group [active]="true">
+    Group 3
+    <ui-vertical-menu-sub *kitCollapse>
+      <ui-vertical-menu-item>Gr 3 Item 1</ui-vertical-menu-item>
+      <ui-vertical-menu-item>Gr 3 Item 2</ui-vertical-menu-item>
+    </ui-vertical-menu-sub>
+  </ui-vertical-menu-group>
+</ui-vertical-menu>

@@ -5,13 +5,13 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angula
  * @apiOrder 5
  */
 @Component({
-  selector: 'ui-side-menu-sub',
+  selector: 'ui-vertical-menu-sub',
   template: `
     <div class="wrapper">
       <ng-content></ng-content>
     </div>
   `,
-  styleUrls: ['./ui-side-menu-sub.component.scss'],
+  styleUrls: ['./ui-vertical-menu-sub.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('collapse', [
@@ -26,7 +26,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angula
     ]),
   ],
 })
-export class UiSideMenuSubComponent {
+export class UiVerticalMenuSubComponent {
   @HostBinding('@collapse') collapseTrigger = true;
 
   @Input() uiSideMenuSub: void;
