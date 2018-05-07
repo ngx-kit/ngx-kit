@@ -12,7 +12,7 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { isString, KitFocusListenerService, KitOverlayPositionService, KitStyleService, } from '@ngx-kit/core';
+import { isString, KitFocusListenerService, KitOverlayPositionService, KitStyleService } from '@ngx-kit/core';
 import { UiAutocompleteOption } from '../meta';
 
 @Component({

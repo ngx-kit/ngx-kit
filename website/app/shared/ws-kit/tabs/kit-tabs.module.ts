@@ -19,6 +19,7 @@ const exp = [
     KitSlideModule,
   ],
   exports: [
+    KitSlideModule,
     ...exp,
   ],
   declarations: [
