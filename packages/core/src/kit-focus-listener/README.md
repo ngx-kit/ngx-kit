@@ -1,9 +1,8 @@
 # Focus-listener
 
-## Features 
+Handles focus/blur from a group of elements.
 
-* Handles focus/blur from a group of elements
-* Add/remove elements at any moment
+If focus moves among elements in a defined group, blur event will not be fired. 
 
 
 ## Example

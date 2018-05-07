@@ -1,10 +1,12 @@
 # Overlay
 
-## Main purpose
+Service for hosting elements/components in a layer is above of the page content.
+
+## Scope
  
-* modals
-* tooltips
-* dropdowns
+* Modals
+* Tooltips
+* Dropdowns
 
 
 ## Usage
@@ -145,7 +147,7 @@ You could get error `No component factory found for NameOfComponent` inside Lazy
 
 
 
-## Examples
+## Example
 
 * collection:custom-select - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-custom-select), [demo](http://ngx-kit.com/collection/module/ui-custom-select) 
 * collection:modal - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-modal), [demo](http://ngx-kit.com/collection/module/ui-modal) 

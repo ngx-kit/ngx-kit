@@ -8,7 +8,9 @@ import { KitClassSetter } from './meta';
  * Must be provided on a component or directive.
  *
  * ```typescript
- * classService.apply({color: 'red', active: true, primary: false});
+ * constructor(private kitClass: KitClassService) {}
+ * ...
+ * this.kitClass.apply({color: 'red', active: true, primary: false});
  * ```
  *
  * Adds to element: `class="color-red active"`

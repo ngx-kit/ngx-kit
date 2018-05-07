@@ -1,9 +1,9 @@
 # Collapse
 
-## Main purpose
+## Scope
  
-* accordion component
-* collapsible menus
+* Accordions
+* Collapsible menus
 
 
 ## Features
@@ -16,6 +16,8 @@
 
 
 ## Usage
+
+Import `KitCollapseModule`.
 
 For example you have `ui-menu`, `ui-section` component and want to collapse some div inside section.
 
@@ -61,7 +63,7 @@ toggle() {
 ```
 
 
-## Examples
+## Example
 
 * collection:accordion - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-accordion), [demo](http://ngx-kit.com/collection/module/ui-accordion) 
 * collection:side-menu - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-side-menu), [demo](http://ngx-kit.com/collection/module/ui-side-menu) 
