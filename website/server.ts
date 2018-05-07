@@ -16,13 +16,13 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const DIST_FOLDER = join(process.cwd(), 'dist', 'website');
 
 // Our index.html we'll use as our template
 const template = readFileSync(join(DIST_FOLDER, 'index.html')).toString();
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist-server/main.bundle');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist-server/main');
 
 // Express Engine
 const {ngExpressEngine} = require('@nguniversal/express-engine');

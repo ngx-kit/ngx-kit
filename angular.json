@@ -131,6 +131,19 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist-server/",
+            "main": "website/main.server.ts",
+            "tsConfig": "website/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "website/styles"
+              ]
+            }
+          }
         }
       }
     }
