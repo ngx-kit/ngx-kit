@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { KitClassModule, KitOverlayService } from '@ngx-kit/core';
-import 'hammerjs';
 import { UiNotificationHostComponent } from './ui-notification-host/ui-notification-host.component';
 
 export function initFactory(overlay: KitOverlayService) {
