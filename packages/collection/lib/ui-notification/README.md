@@ -13,3 +13,8 @@ imports: [
 ```
 
 2. Use `KitNotificationService` api to show notifications.
+
+
+## Hammerjs
+
+Import `import 'hammerjs';` in `main.ts` for proper working.

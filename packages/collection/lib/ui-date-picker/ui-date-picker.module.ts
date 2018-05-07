@@ -7,7 +7,6 @@ import {
   KitOutsideClickModule,
   KitOverlayModule,
 } from '@ngx-kit/core';
-import 'hammerjs';
 import { UiDatePickerPopupComponent } from './ui-date-picker-popup/ui-date-picker-popup.component';
 import { UiDatePickerComponent } from './ui-date-picker/ui-date-picker.component';
 
