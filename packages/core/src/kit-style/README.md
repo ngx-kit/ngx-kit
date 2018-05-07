@@ -5,7 +5,7 @@ Service that works exactly like `ngStyle`, but can be provided on a component or
 
 ## Why
 
-In a cases when we need to bind from a component, but `@HostBinding` has limited functionallity.
+In a cases when we need to bind from a component, but `@HostBinding` has limited functionality.
 
 
 ## Usage

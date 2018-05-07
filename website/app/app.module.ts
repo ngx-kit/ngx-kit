@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { KitModule } from '@ngx-kit/core';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { CollectionDemoModule } from '../../packages/collection/demo/collection-demo.module';
 import { UiNotificationModule } from '../../packages/collection/lib/ui-notification/ui-notification.module';
@@ -22,7 +21,6 @@ import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
     BrowserAnimationsModule,
     HttpClientModule,
     MdRenderModule,
-    KitModule,
     SharedModule,
     AppRoutingModule,
     CollectionDemoModule,
