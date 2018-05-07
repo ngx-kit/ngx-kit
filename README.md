@@ -42,7 +42,7 @@ Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 #### Install the packages
 
 ```
-npm i @ngx-kit/core hammerjs --save
+npm i @ngx-kit/core --save
 npm i @ngx-kit/collection --save-dev
 ```
 
@@ -75,6 +75,17 @@ ng g @ngx-kit/collection:ui-button ui-button
 #### Modify by your requirements
 
 Only complex (but stable) logic is stored in [Core](https://ngx-kit.com/core), so you can change generated templates and styles in any way.
+
+
+### Hammerjs
+
+Some collection modules use Hammer.js. 
+
+For proper working:
+
+1. Install `npm i hammerjs --save`
+
+2. Import `import 'hammerjs';` in `main.ts`.
 
 
 ## License

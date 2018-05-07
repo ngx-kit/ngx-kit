@@ -9,7 +9,7 @@ export class HomePageComponent {
   year = (new Date()).getFullYear();
 
   codeExamples = [
-    `npm i @ngx-kit/core hammerjs --save
+    `npm i @ngx-kit/core --save
 npm i @ngx-kit/collection --save-dev`,
     `ng g @ngx-kit/collection:ui-button ui-button`,
     `@NgModule({

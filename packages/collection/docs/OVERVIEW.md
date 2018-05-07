@@ -23,7 +23,7 @@ Requirements:
 Install ngx-kit core and collection: 
 
 ```
-npm install @ngx-kit/core hammerjs
+npm install @ngx-kit/core --save
 npm install @ngx-kit/collection --save-dev
 ```
  
