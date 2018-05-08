@@ -29,5 +29,5 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angula
 export class UiVerticalMenuSubComponent {
   @HostBinding('@collapse') collapseTrigger = true;
 
-  @Input() uiSideMenuSub: void;
+  @Input() uiVerticalMenuSub: void;
 }

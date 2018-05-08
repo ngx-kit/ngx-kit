@@ -5,7 +5,7 @@ import { KitCollapseItemService } from '@ngx-kit/core';
  * @apiOrder 2
  */
 @Component({
-  selector: 'ui-vertical-menu-item,a[uiSideMenuItem]',
+  selector: 'ui-vertical-menu-item,a[uiVerticalMenuItem]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./ui-vertical-menu-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,5 +14,5 @@ import { KitCollapseItemService } from '@ngx-kit/core';
   ],
 })
 export class UiVerticalMenuItemComponent {
-  @Input() uiSideMenuItem: void;
+  @Input() uiVerticalMenuItem: void;
 }
