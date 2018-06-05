@@ -1,7 +1,7 @@
 {
   "name": "@ngx-kit/schematics",
-  "version": "0.0.0-PLACEHOLDER",
-  "description": "Schematics specific to ngx-kit",
+  "version": "1.1.2",
+  "description": "ngx-kit development schematics",
   "keywords": [
     "blueprints",
     "code generation",
