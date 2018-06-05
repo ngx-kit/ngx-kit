@@ -1,0 +1,47 @@
+<div>
+  <h3>Default modal</h3>
+  <button (click)="display1 = true">Show modal</button>
+
+  <kit-modal (close)="display1 = false">
+    <ui-modal *kitOverlay="display1"
+              header="Modal title">
+      Modal body
+      <ui-modal-footer>
+        <button (click)="display1 = false">Close</button>
+      </ui-modal-footer>
+    </ui-modal>
+  </kit-modal>
+</div>
+
+
+<div>
+  <h3>Show modal component using the service</h3>
+  <p>Declare modal in the stand-alone component and control it with service.</p>
+  <p>Do not forget to define the modal component in `entryComponents`.</p>
+  <button (click)="show2()">Show modal</button>
+</div>
+
+<div>
+  <h3>Show modal component using template</h3>
+  <p>Declare modal in the stand-alone component and control it in the template.</p>
+  <button (click)="display3 = true">Show modal</button>
+
+  <kit-modal (close)="display3 = false">
+    <ui-modal-demo-modal *kitOverlay="display3"></ui-modal-demo-modal>
+  </kit-modal>
+</div>
+
+<div>
+  <h3>Data-binding</h3>
+  <p>Interaction with service-hosted modal.</p>
+  <div>Input: <input [(ngModel)]="inputField"></div>
+  <div>Output: {{ outputField }}</div>
+  <button (click)="show4()">Show modal</button>
+</div>
+
+<div>
+  <h3>canClose guard</h3>
+  <p>Prevent closing by guard-method.</p>
+  <p>Works only for service-hosted modals.</p>
+  <button (click)="show5()">Show modal</button>
+</div>

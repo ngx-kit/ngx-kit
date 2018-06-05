@@ -5,45 +5,38 @@ const matter = require('front-matter');
 const parseTs = require('./api/parse-ts');
 
 module.exports = function(location) {
-  const components = [];
+  const demo = {files: []};
 
   walker = walk.walkSync(location, {
     listeners: {
       file: function(root, fileStats, next) {
-        const componentName = root.split('\\').pop();
-        let component = components.find(c => c.name === componentName);
-        if (!component) {
-          component = {
-            name: componentName,
-            code: [],
-          };
-          components.push(component);
-        }
+        let file = {};
         const content = fs.readFileSync(path.resolve(root, fileStats.name), 'utf-8');
         const ext = fileStats.name.split('.').pop();
         if (ext === 'md') {
-          const parsed = matter(content);
-          component['meta'] = parsed.attributes;
-          component['readme'] = parsed.body;
+          // const parsed = matter(content);
+          // file['meta'] = parsed.attributes;
+          // file['readme'] = parsed.body;
         } else {
-          component['code'].push({
-            file: fileStats.name,
-            language: ext === 'ts' ? 'typescript' : ext,
-            content,
-          });
+          file.name = fileStats.name;
+          file.ext = ext;
+          file.content = content;
           if (ext === 'ts') {
             const api = parseTs(path.resolve(root, fileStats.name));
-            component['class'] = api.class;
+            file.class = api.class;
           }
         }
+
+        demo.files.push(file);
         next();
       },
       errors: function(root, nodeStatsArray, next) {
         console.log('err', nodeStatsArray);
         next();
-      },
+      }
+      ,
     }
   });
 
-  return components;
+  return demo.files.length > 0 ? demo : null;
 };

@@ -1,0 +1,19 @@
+<div>
+  <h3>Default</h3>
+  <button (click)="open()">Open default</button>
+</div>
+
+<div>
+  <h3>Position</h3>
+  <button (click)="open({position: 'top-right'})">Set top-right and open</button>
+  <button (click)="open({position: 'bottom-right'})">Set bottom-right and open</button>
+  <button (click)="open({position: 'bottom-left'})">Set bottom-left and open</button>
+  <button (click)="open({position: 'top-left'})">Set top-left and open</button>
+</div>
+
+<div>
+  <h3>Duration</h3>
+  <button (click)="open({duration: 2000})">Set duration=2000 and open</button>
+  <button (click)="open({duration: 4000})">Set duration=4000 and open</button>
+  <button (click)="open({duration: 10000})">Set duration=10000 and open</button>
+</div>

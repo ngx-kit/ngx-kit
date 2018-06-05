@@ -1,0 +1,24 @@
+<div>
+  <h3>Default alert</h3>
+  <ui-alert>Message text</ui-alert>
+</div>
+
+<div>
+  <h3>Color</h3>
+  <ui-alert color="default">Default message text</ui-alert>
+  <ui-alert color="primary">Primary message text</ui-alert>
+</div>
+
+<div>
+  <h3>Title</h3>
+  <ui-alert>
+    <ui-alert-title>Message title</ui-alert-title>
+    Message description
+  </ui-alert>
+</div>
+
+<div>
+  <h3>Closable</h3>
+  <ui-alert [closable]="true" [(isOpen)]="isOpen">Closable message text</ui-alert>
+  <button *ngIf="!isOpen" (click)="isOpen = true">Reopen</button>
+</div>

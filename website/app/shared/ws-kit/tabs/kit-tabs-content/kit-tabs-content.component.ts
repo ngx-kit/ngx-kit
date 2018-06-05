@@ -16,11 +16,11 @@ import { takeUntil } from 'rxjs/operators';
     trigger('slide', [
       // entering
       transition('void => next', [
-        style({transform: 'translateX(-100%)'}),
+        style({transform: 'translateX(100%)'}),
         animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)'),
       ]),
       transition('void => prev', [
-        style({transform: 'translateX(100%)'}),
+        style({transform: 'translateX(-100%)'}),
         animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)'),
       ]),
       // leaving
@@ -31,7 +31,7 @@ import { takeUntil } from 'rxjs/operators';
           right: 0,
           left: 0,
         }),
-        animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)', style({transform: 'translateX(100%)'})),
+        animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)', style({transform: 'translateX(-100%)'})),
       ]),
       transition('prev => void', [
         style({
@@ -40,7 +40,7 @@ import { takeUntil } from 'rxjs/operators';
           right: 0,
           left: 0,
         }),
-        animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)', style({transform: 'translateX(-100%)'})),
+        animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)', style({transform: 'translateX(100%)'})),
       ]),
     ]),
   ],

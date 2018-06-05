@@ -1,0 +1,28 @@
+<div>
+  <h3>Default slider</h3>
+  <div>
+    Range: from 0 to 10, step: 1, {{ value1 | json }}<br>
+    <ui-slider [(ngModel)]="value1" [min]="0" [max]="10" [step]="1"></ui-slider>
+  </div>
+
+  <div>
+    Range: from -1000 to 1000, step: 2, value: {{ value2 | json }}<br>
+    <ui-slider [(ngModel)]="value2" [min]="-1000" [max]="1000" [step]="2"></ui-slider>
+  </div>
+
+  <div>
+    Range: from 50 to 150, step: 5, {{ value3 | json }} (without fill)<br>
+    <ui-slider [(ngModel)]="value3"
+               [min]="50"
+               [max]="150"
+               [step]="5"
+               [fill]="false">
+    </ui-slider>
+  </div>
+</div>
+
+<div>
+  <h3>Range slider</h3>
+  Range: from -1000 to 1600, step: 50, value: {{ value | json }}<br>
+  <ui-slider [(ngModel)]="rangeValue" [range]="true" [min]="-1000" [max]="1600" [step]="50"></ui-slider>
+</div>
