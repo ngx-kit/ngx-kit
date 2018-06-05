@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
-import { demoComponents } from '../../../../packages/collection/demo/components-ref';
+import { demoComponentsRef } from '../../../../packages/collection/lib/demo.module';
 
 @Component({
   selector: 'app-demo',
@@ -15,7 +15,7 @@ export class DemoComponent implements OnChanges {
 
   code: {[key: string]: string} = {};
 
-  @Input() demo: any;
+  @Input() demo: {files: {name: string, ext: string; content: string; class: string}[]};
 
   @Input() inverted: boolean;
 
@@ -25,21 +25,31 @@ export class DemoComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (!this.demo) {
-      throw new Error('Demo is not passed!');
+    if (this.demo && this.demo.files.length > 0) {
+      const main = this.demo.files.find(f => f.name.indexOf('-demo.component.ts') !== -1);
+      if (main) {
+        const cmp = demoComponentsRef.find(d => d[0] === main.class);
+        if (!cmp) {
+          throw new Error(`Class ${main.class} not found in demo-ref`);
+        }
+        this.class = cmp[1];
+        this.code = this.demo.files.reduce((prev: any, file: any) => ({
+          ...prev,
+          [file.name]: highlightAuto(file.content, [this.getLangByExt(file.ext)]).value,
+        }), {});
+      }
     }
-    if (!demoComponents) {
-      throw new Error('demo-ref is not generated!');
+  }
+
+  getLangByExt(ext: string) {
+    switch (ext) {
+      case 'ts':
+        return 'typescript';
+      case 'css':
+        return 'css';
+      case 'html':
+        return 'html';
     }
-    if (!demoComponents[this.demo.class]) {
-      throw new Error(`Class ${this.demo.class} not found in demo-ref`);
-    }
-    this.class = demoComponents[this.demo.class];
-    this.readme = this.md.render(this.demo.readme);
-    this.code = this.demo.code
-      .reduce((prev: any, file: any) => ({
-        ...prev,
-        [file.file]: highlightAuto(file.content, [file.language]).value,
-      }), {});
+    return ext;
   }
 }

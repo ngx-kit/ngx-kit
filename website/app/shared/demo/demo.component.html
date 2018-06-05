@@ -1,20 +1,18 @@
-<h3 class="title">{{ demo.meta.title }}</h3>
-<div *ngIf="readme"
-     [innerHtml]="readme"
-     class="readme"></div>
-<div class="demo">
-  <ng-container *ngComponentOutlet="class"></ng-container>
-</div>
-<div>
-  <ws-kit-tabs>
-    <ws-kit-tabs-nav>
-      <ws-kit-tabs-tab *ngFor="let file of demo.code; let index = index" [id]="index">{{ file.file }}</ws-kit-tabs-tab>
-    </ws-kit-tabs-nav>
-    <ng-container *ngFor="let file of demo.code; let index = index">
-      <ws-kit-tabs-content *kitSlide="index">
-        <pre class="code-src"><code [ngClass]="[file.language, 'language-' + file.language, 'hljs']"
-                                    [innerHtml]="code[file.file]"></code></pre>
-      </ws-kit-tabs-content>
-    </ng-container>
-  </ws-kit-tabs>
-</div>
+<ws-kit-tabs>
+  <ws-kit-tabs-nav>
+    <ws-kit-tabs-tab [id]="'preview'">Preview</ws-kit-tabs-tab>
+    <ws-kit-tabs-tab *ngFor="let file of demo.files; let index = index" [id]="index"
+                     [title]="file.name">{{ file.ext.toUpperCase() }}</ws-kit-tabs-tab>
+  </ws-kit-tabs-nav>
+
+  <ws-kit-tabs-content *kitSlide="'preview'">
+    <ng-container *ngComponentOutlet="class"></ng-container>
+  </ws-kit-tabs-content>
+  <ng-container *ngFor="let file of demo.files; let index = index">
+    <ws-kit-tabs-content *kitSlide="index">
+      <div><b>{{ file.name }}</b></div>
+        <pre class="code-src"><code [ngClass]="[getLangByExt(file.ext), 'language-' + getLangByExt(file.ext), 'hljs']"
+                                    [innerHtml]="code[file.name]"></code></pre>
+    </ws-kit-tabs-content>
+  </ng-container>
+</ws-kit-tabs>

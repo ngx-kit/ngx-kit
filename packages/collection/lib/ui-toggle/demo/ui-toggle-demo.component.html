@@ -1,0 +1,12 @@
+<div>
+  <label>
+    <input type="checkbox"
+           uiToggle
+           [(ngModel)]="toggleModel">
+    Toggle label
+  </label>
+
+  <div>
+    Model: {{ toggleModel | json }}
+  </div>
+</div>

@@ -1,9 +1,0 @@
-<div>
-  Value: {{ value | json }}
-</div>
-<input uiAutocomplete
-       [options]="options"
-       [debounce]="750"
-       (search)="searchOptions($event)"
-       [(ngModel)]="value"
-       placeholder="Start typing…">

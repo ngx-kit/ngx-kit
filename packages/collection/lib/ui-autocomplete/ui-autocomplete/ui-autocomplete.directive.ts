@@ -56,7 +56,7 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
   /**
    * Emit `(search)` with current value on focus.
    */
-  @Input() showOptionsOnFocus = false;
+  @Input() emitSearchOnFocus = false;
 
   /**
    * Delay for `(search)` output in milliseconds.
@@ -207,7 +207,7 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
 
   @HostListener('focus') focusHandler() {
     this.focused = true;
-    if (this.showOptionsOnFocus) {
+    if (this.emitSearchOnFocus) {
       this.changed = true;
       this.search.emit(this.viewState);
     }
