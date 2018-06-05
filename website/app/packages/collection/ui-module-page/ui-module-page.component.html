@@ -6,9 +6,9 @@
 
 <pre><code>ng g @ngx-kit/collection:{{ module.name }} [name]</code></pre>
 
-<ng-container *ngIf="module.demo.length > 0">
+<ng-container *ngIf="module.demo">
   <h2>Demo</h2>
-  <app-demo *ngFor="let demo of module.demo" [demo]="demo"></app-demo>
+  <app-demo [demo]="module.demo"></app-demo>
 </ng-container>
 
 <ng-container *ngIf="module.api.length > 0">

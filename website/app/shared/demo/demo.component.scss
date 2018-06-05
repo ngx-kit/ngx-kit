@@ -24,3 +24,9 @@
   margin: 0;
   padding: 16px;
 }
+
+ws-kit-tabs-tab {
+  &:first-of-type {
+    font-weight: 600;
+  }
+}

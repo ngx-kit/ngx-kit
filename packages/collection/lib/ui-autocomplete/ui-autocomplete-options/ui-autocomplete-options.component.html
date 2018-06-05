@@ -3,6 +3,6 @@
         [class.-selected]="index === selected">
   <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
   <ng-container *ngIf="optionTemplate">
-    <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option}"></ng-container>
+    <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option, index: index}"></ng-container>
   </ng-container>
 </button>
