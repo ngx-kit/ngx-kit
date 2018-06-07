@@ -3,7 +3,7 @@
   "version": 1,
   "projects": {
     "core": {
-      "root": "",
+      "root": "packages/core",
       "sourceRoot": "packages/core",
       "projectType": "library",
       "prefix": "kit",
@@ -30,6 +30,12 @@
           }
         }
       }
+    },
+    "collection": {
+      "root": "packages/collection",
+      "sourceRoot": "packages/collection",
+      "projectType": "library",
+      "prefix": "ui"
     },
     "core-playground": {
       "root": "",
