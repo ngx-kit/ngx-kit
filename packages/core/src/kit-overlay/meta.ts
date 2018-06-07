@@ -1,4 +1,4 @@
-import { KitAnchorDirective } from '../kit-anchor/kit-anchor.directive';
+import { KitAnchor } from '../kit-anchor/meta';
 
 export type KitOverlayPosition = 'top' | 'right' | 'bottom' | 'left'
   | 'top-left' | 'top-right'
@@ -15,7 +15,7 @@ export const positionPairs = {
 };
 
 export interface KitOverlayPositionDirectiveParams {
-  anchor: KitAnchorDirective | HTMLElement;
+  anchor: KitAnchor | HTMLElement;
   autofix: KitOverlayAutofix;
   position: KitOverlayPosition;
   type: KitOverlayType;
@@ -38,3 +38,5 @@ export interface StrategyField {
 export interface KitOverlayInput {
   [key: string]: any;
 }
+
+export type KitOverlayToggleTrigger = 'click' | 'hover';
