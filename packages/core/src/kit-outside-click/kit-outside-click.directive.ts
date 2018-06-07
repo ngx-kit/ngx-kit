@@ -1,6 +1,7 @@
-import { Directive, ElementRef, EventEmitter, Input, NgZone, OnDestroy, OnInit, Output } from '@angular/core';
-import { KitAnchorDirective } from '../kit-anchor/kit-anchor.directive';
-import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
+import { Directive, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { KitAnchor } from '../kit-anchor/meta';
+import { isArray } from '../util/is-array';
+import { KitOutsideClickService } from './kit-outside-click.service';
 
 /**
  * Emitted when user clicks not on current element.
@@ -13,40 +14,39 @@ import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.s
  */
 @Directive({
   selector: '[kitOutsideClick]',
+  providers: [
+    KitOutsideClickService,
+  ],
 })
-export class KitOutsideClickDirective implements OnInit, OnDestroy {
+export class KitOutsideClickDirective implements OnInit, OnChanges {
   // @todo also accept HtmlElement
-  @Input() anchor: KitAnchorDirective;
+  // @todo do not capture anchor?
+  @Input() anchor: KitAnchor;
 
-  @Output() kitOutsideClick = new EventEmitter<MouseEvent>();
+  /**
+   * Define elements that are not considered as outside.
+   */
+  @Input() skip: KitAnchor | KitAnchor[];
 
-  private unsubFn: Function;
+  @Output() kitOutsideClick = new EventEmitter<any>();
 
   constructor(
-    private el: ElementRef,
-    private em: KitEventManagerService,
-    private zone: NgZone,
+    private service: KitOutsideClickService,
   ) {
   }
 
   ngOnInit() {
-    this.zone.runOutsideAngular(() => {
-      this.unsubFn = this.em.listenGlobal(
-        'click',
-        (event: MouseEvent) => {
-          const path = event['path'] || this.em.getEventPath(event);
-          const anchorEl = this.anchor ? this.anchor.nativeEl : null;
-          if (path.indexOf(this.el.nativeElement) === -1 && (!anchorEl || path.indexOf(anchorEl) === -1)) {
-            this.zone.run(() => {
-              this.kitOutsideClick.emit(event);
-            });
-          }
-        },
-        true);
+    this.service.outsideClick.subscribe(e => {
+      this.kitOutsideClick.emit(e);
     });
   }
 
-  ngOnDestroy() {
-    return this.unsubFn && this.unsubFn();
+  ngOnChanges() {
+    this.service.skip = [
+      ...this.anchor ? [this.anchor.nativeEl] : [],
+      ...this.skip
+        ? isArray(this.skip) ? this.skip.map(s => s.nativeEl) : [this.skip.nativeEl]
+        : [],
+    ];
   }
 }
