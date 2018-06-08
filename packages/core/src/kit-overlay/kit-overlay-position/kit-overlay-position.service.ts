@@ -159,7 +159,6 @@ export class KitOverlayPositionService implements OnDestroy {
   private repositionSide() {
     this.rawPosition = true;
     this.style.style = this.sideStrategy.reposition(
-      this.getRect(this.el.nativeElement),
       this.getRect(this.anchor),
       this.getFieldSize(),
       this.position);

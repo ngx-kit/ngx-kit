@@ -70,7 +70,6 @@ export class KitOverlayToggleDirective implements KitAnchor {
    * Set state to false.
    */
   hide() {
-    console.log('HIDE');
     this._state.next(false);
   }
 
