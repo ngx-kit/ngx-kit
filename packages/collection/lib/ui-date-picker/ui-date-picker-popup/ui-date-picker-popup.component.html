@@ -1,1 +1,8 @@
-<ng-content></ng-content>
+<div kitSidePosition
+     position="bottom-left"
+     [anchor]="anchor || toggle">
+  <div class="popup"
+       [@fade]="true">
+    <ng-content></ng-content>
+  </div>
+</div>

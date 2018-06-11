@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
 })
 export class UiDatePickerDemoComponent {
   model = '2018-01-02';
-
-  opened = false;
 }

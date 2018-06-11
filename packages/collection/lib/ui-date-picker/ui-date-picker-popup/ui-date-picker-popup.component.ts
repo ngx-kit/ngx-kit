@@ -1,6 +1,6 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit, } from '@angular/core';
-import { KitAnchorDirective, KitFocusManagerService, KitOverlayPositionService, KitStyleService, } from '@ngx-kit/core';
+import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit } from '@angular/core';
+import { KitAnchor, KitFocusManagerService, KitOutsideClickService, KitOverlayToggleDirective } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-date-picker-popup',
@@ -8,38 +8,42 @@ import { KitAnchorDirective, KitFocusManagerService, KitOverlayPositionService, 
   styleUrls: ['./ui-date-picker-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    KitOverlayPositionService,
-    KitStyleService,
     KitFocusManagerService,
+    KitOutsideClickService,
   ],
   animations: [
     trigger('host', [
+      transition(':enter, :leave', [
+        query('@*', animateChild()),
+      ]),
+    ]),
+    trigger('fade', [
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translateY(-5px)',
+          transform: 'scale(0.5)',
         }),
-        animate('100ms', style({
+        animate('150ms ease-out', style({
           opacity: 1,
-          transform: 'translateY(0)',
+          transform: 'scale(1)',
         })),
       ]),
       transition(':leave', [
         style({opacity: 1}),
-        animate('100ms', style({
+        animate('150ms ease-in', style({
           opacity: 0,
-          transform: 'translateY(-5px)',
+          transform: 'scale(0.5)',
         })),
       ]),
     ]),
   ],
 })
 export class UiDatePickerPopupComponent implements OnInit, OnChanges {
-  @Input() anchor: KitAnchorDirective;
+  @Input() anchor: KitAnchor | HTMLElement;
 
-  @HostBinding('attr.aria-describedby') ariaDescribedby = 'Popup where you can pick a date';
+  @Input() toggle: KitOverlayToggleDirective;
 
-  @HostBinding('attr.aria-labelledby') ariaLabelledby = 'Datepicker popup';
+  @HostBinding('attr.aria-label') ariaLabel = 'Datepicker popup';
 
   @HostBinding('attr.aria-modal') ariaModal = true;
 
@@ -48,22 +52,21 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
   @HostBinding('attr.role') role = 'dialog';
 
   constructor(
-    private overlayPosition: KitOverlayPositionService,
     private focusManager: KitFocusManagerService,
+    private outsideClick: KitOutsideClickService,
   ) {
     this.focusManager.autoCapture = true;
     this.focusManager.init();
   }
 
   ngOnChanges() {
-    this.overlayPosition.anchor = this.anchor;
-    this.overlayPosition.reposition();
+    this.outsideClick.skip = [this.toggle.nativeEl];
   }
 
   ngOnInit() {
-    this.overlayPosition.type = 'dropdown';
-    this.overlayPosition.position = 'bottom-right';
-    this.overlayPosition.reposition();
     this.focusManager.focusItem('grid');
+    this.outsideClick.outsideClick.subscribe(e => {
+      this.toggle.hide();
+    });
   }
 }

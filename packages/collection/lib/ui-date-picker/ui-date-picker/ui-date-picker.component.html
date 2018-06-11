@@ -14,14 +14,14 @@
   <tbody>
   <tr *ngFor="let line of datesGrid | async">
     <td *ngFor="let item of line">
-      <span class="date"
+      <div class="date"
             [kitClass]="{active: item.active, focus: item.focus, outside: item.outside}"
             [attr.aria-label]="item.date | date:'MMMM d, y'"
             [attr.aria-selected]="item.selected"
             role="gridcell"
             (click)="setDate(item.date)">
         {{ item.date | date:'d' }}
-      </span>
+      </div>
     </td>
   </tr>
   </tbody>
