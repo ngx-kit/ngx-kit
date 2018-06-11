@@ -14,6 +14,7 @@ import { UiFormModule } from './ui-form/ui-form.module';
 import { UiLoadingBarModule } from './ui-loading-bar/ui-loading-bar.module';
 import { UiModalModule } from './ui-modal/ui-modal.module';
 import { UiNotificationModule } from './ui-notification/ui-notification.module';
+import { UiPopupModule } from './ui-popup/ui-popup.module';
 import { UiRadioModule } from './ui-radio/ui-radio.module';
 import { UiRatingModule } from './ui-rating/ui-rating.module';
 import { UiSelectModule } from './ui-select/ui-select.module';
@@ -39,6 +40,7 @@ const lib = [
   UiLoadingBarModule,
   UiModalModule,
   UiNotificationModule,
+  UiPopupModule,
   UiRadioModule,
   UiRatingModule,
   UiSelectModule,

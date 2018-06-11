@@ -20,6 +20,7 @@ import { UiModalDemoCanCloseModalComponent } from './ui-modal/demo/ui-modal-demo
 import { UiModalDemoModalComponent } from './ui-modal/demo/ui-modal-demo-modal.component';
 import { UiModalDemoComponent } from './ui-modal/demo/ui-modal-demo.component';
 import { UiNotificationDemoComponent } from './ui-notification/demo/ui-notification-demo.component';
+import { UiPopupDemoComponent } from './ui-popup/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from './ui-radio/demo/ui-radio-demo.component';
 import { UiRatingDemoComponent } from './ui-rating/demo/ui-rating-demo.component';
 import { UiSelectDemoComponent } from './ui-select/demo/ui-select-demo.component';
@@ -72,6 +73,7 @@ export const demoComponents = [
   UiLoadingBarDemoComponent,
   UiNotificationDemoComponent,
   UiModalDemoComponent,
+  UiPopupDemoComponent,
   UiRadioDemoComponent,
   UiRatingDemoComponent,
   UiSelectDemoComponent,

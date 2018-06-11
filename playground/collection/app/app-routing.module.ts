@@ -14,7 +14,7 @@ import { UiFormDemoComponent } from '../../../packages/collection/lib/ui-form/de
 import { UiLoadingBarDemoComponent } from '../../../packages/collection/lib/ui-loading-bar/demo/ui-loading-bar-demo.component';
 import { UiModalDemoComponent } from '../../../packages/collection/lib/ui-modal/demo/ui-modal-demo.component';
 import { UiNotificationDemoComponent } from '../../../packages/collection/lib/ui-notification/demo/ui-notification-demo.component';
-import { UiPopoverDemoComponent } from '../../../packages/collection/lib/ui-popover/demo/ui-popover-demo.component';
+import { UiPopupDemoComponent } from '../../../packages/collection/lib/ui-popup/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from '../../../packages/collection/lib/ui-radio/demo/ui-radio-demo.component';
 import { UiRatingDemoComponent } from '../../../packages/collection/lib/ui-rating/demo/ui-rating-demo.component';
 import { UiSelectDemoComponent } from '../../../packages/collection/lib/ui-select/demo/ui-select-demo.component';
@@ -83,8 +83,8 @@ const routes: Routes = [
     component: UiNotificationDemoComponent,
   },
   {
-    path: 'ui-popover',
-    component: UiPopoverDemoComponent,
+    path: 'ui-popup',
+    component: UiPopupDemoComponent,
   },
   {
     path: 'ui-radio',

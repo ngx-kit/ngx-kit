@@ -1,0 +1,57 @@
+$offset: 8px;
+
+.popup {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  &.position {
+    &-top-center {
+      margin-bottom: $offset;
+      transform-origin: bottom;
+    }
+    &-top-right {
+      margin-bottom: $offset;
+      transform-origin: bottom right;
+    }
+    &-top-left {
+      margin-bottom: $offset;
+      transform-origin: bottom left;
+    }
+    &-right-center {
+      margin-left: $offset;
+      transform-origin: left;
+    }
+    &-right-top {
+      margin-left: $offset;
+      transform-origin: left top;
+    }
+    &-right-bottom {
+      margin-left: $offset;
+      transform-origin: left bottom;
+    }
+    &-bottom-center {
+      margin-top: $offset;
+      transform-origin: top;
+    }
+    &-bottom-right {
+      margin-top: $offset;
+      transform-origin: top right;
+    }
+    &-bottom-left {
+      margin-top: $offset;
+      transform-origin: top left;
+    }
+    &-left-center {
+      margin-right: $offset;
+      transform-origin: right;
+    }
+    &-left-top {
+      margin-right: $offset;
+      transform-origin: right top;
+    }
+    &-left-bottom {
+      margin-right: $offset;
+      transform-origin: right bottom;
+    }
+  }
+}
