@@ -11,12 +11,9 @@ import { isDefined, KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 3
- */
 @Component({
   selector: 'ui-tabs-tab',
-  template: '<ng-content></ng-content>{{ id | json }}',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./ui-tabs-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
