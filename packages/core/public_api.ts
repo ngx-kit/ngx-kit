@@ -15,6 +15,7 @@ export * from './src/kit-modal/kit-modal';
 export * from './src/kit-outside-click/kit-outside-click';
 export * from './src/kit-overlay/kit-overlay';
 export * from './src/kit-platform/kit-platform';
+export * from './src/kit-position/kit-position';
 export * from './src/kit-ref/kit-ref';
 export * from './src/kit-repeat/kit-repeat';
 export * from './src/kit-slide/kit-slide';

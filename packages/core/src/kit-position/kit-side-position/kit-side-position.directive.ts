@@ -74,6 +74,8 @@ export class KitSidePositionDirective implements OnChanges {
       justifyContent: 'center',
       position: 'fixed',
     };
+    const vSideLeft = field.width / 2 > anchor.left + anchor.width / 2;
+    const vSideTop = field.height / 2 > anchor.top + anchor.height / 2;
     switch (this.position) {
       case 'top':
         return {
@@ -83,13 +85,21 @@ export class KitSidePositionDirective implements OnChanges {
           left: `${Math.round(anchor.left)}px`,
           right: `${Math.round(field.width - anchor.right)}px`,
         };
+      case 'top-center':
+        return {
+          ...common,
+          bottom: `${Math.round(field.height - anchor.top)}px`,
+          flexDirection: 'row',
+          left: vSideLeft ? '0' : `${Math.round(anchor.left - (field.width - anchor.right))}px`,
+          right: vSideLeft ? `${Math.round(field.width - anchor.left - anchor.right)}px` : '0',
+        };
       case 'top-right':
         return {
           ...common,
           bottom: `${Math.round(field.height - anchor.top)}px`,
           flexDirection: 'row',
           justifyContent: 'flex-end',
-          left: `${Math.round(anchor.left)}px`,
+          left: '0',
           right: `${Math.round(field.width - anchor.right)}px`,
         };
       case 'top-left':
@@ -99,7 +109,7 @@ export class KitSidePositionDirective implements OnChanges {
           flexDirection: 'row',
           justifyContent: 'flex-start',
           left: `${Math.round(anchor.left)}px`,
-          right: `${Math.round(field.width - anchor.right)}px`,
+          right: '0',
         };
       case 'right':
         return {
@@ -108,6 +118,14 @@ export class KitSidePositionDirective implements OnChanges {
           flexDirection: 'column',
           left: `${Math.round(anchor.right)}px`,
           top: `${Math.round(anchor.top)}px`,
+        };
+      case 'right-center':
+        return {
+          ...common,
+          bottom: vSideTop ? `${Math.round(field.height - anchor.top - anchor.bottom)}px` : '0',
+          flexDirection: 'column',
+          left: `${Math.round(anchor.right)}px`,
+          top: vSideTop ? '0' : `${Math.round(anchor.top - (field.height - anchor.bottom))}px`,
         };
       case 'right-top':
         return {
@@ -135,6 +153,14 @@ export class KitSidePositionDirective implements OnChanges {
           right: `${Math.round(field.width - anchor.right)}px`,
           top: `${Math.round(anchor.bottom)}px`,
         };
+      case 'bottom-center':
+        return {
+          ...common,
+          flexDirection: 'row',
+          left: vSideLeft ? '0' : `${Math.round(anchor.left - (field.width - anchor.right))}px`,
+          right: vSideLeft ? `${Math.round(field.width - anchor.left - anchor.right)}px` : '0',
+          top: `${Math.round(anchor.bottom)}px`,
+        };
       case 'bottom-right':
         return {
           ...common,
@@ -160,6 +186,14 @@ export class KitSidePositionDirective implements OnChanges {
           flexDirection: 'column',
           right: `${Math.round(field.width - anchor.left)}px`,
           top: `${Math.round(anchor.top)}px`,
+        };
+      case 'left-center':
+        return {
+          ...common,
+          bottom: vSideTop ? `${Math.round(field.height - anchor.top - anchor.bottom)}px` : '0',
+          flexDirection: 'column',
+          right: `${Math.round(field.width - anchor.left)}px`,
+          top: vSideTop ? '0' : `${Math.round(anchor.top - (field.height - anchor.bottom))}px`,
         };
       case 'left-top':
         return {
