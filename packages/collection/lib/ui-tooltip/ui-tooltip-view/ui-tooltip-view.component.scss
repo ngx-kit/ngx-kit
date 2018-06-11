@@ -1,4 +1,6 @@
-:host {
+$offset: 2px;
+
+span {
   border-radius: 3px;
   box-shadow: 0 0 6px 0 rgba(50, 50, 50, .1);
   padding: 4px 8px;
@@ -10,6 +12,20 @@
     &-primary {
       background: rgba(35, 153, 229, .8);
       color: #ffffff;
+    }
+  }
+  &.position {
+    &-top-center, &-top-left, &-top-right {
+      margin-bottom: $offset;
+    }
+    &-right-center, &-right-top, &-right-bottom {
+      margin-left: $offset;
+    }
+    &-bottom-center, &-bottom-left, &-bottom-right {
+      margin-top: $offset;
+    }
+    &-left-center, &-left-top, &-left-bottom {
+      margin-right: $offset;
     }
   }
 }

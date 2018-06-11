@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitOverlayModule } from '@ngx-kit/core';
+import { KitClassModule, KitOverlayModule } from '@ngx-kit/core';
+import { KitPositionModule } from '../../../core/src/kit-position/kit-position.module';
 import { UiTooltipViewComponent } from './ui-tooltip-view/ui-tooltip-view.component';
 import { UiTooltipDirective } from './ui-tooltip/ui-tooltip.directive';
 
@@ -8,6 +9,8 @@ import { UiTooltipDirective } from './ui-tooltip/ui-tooltip.directive';
   imports: [
     CommonModule,
     KitOverlayModule,
+    KitPositionModule,
+    KitClassModule,
   ],
   declarations: [
     UiTooltipDirective,
