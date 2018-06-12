@@ -53,6 +53,8 @@ export class UiAutocompleteDemoComponent {
   }
 
   searchFocusOptions(query: string) {
-    this.options = [...this.data];
+    this.options = query
+      ? this.data.filter(d => d.toLocaleLowerCase().indexOf(query.toLocaleLowerCase().trim()) !== -1)
+      : [...this.data];
   }
 }
