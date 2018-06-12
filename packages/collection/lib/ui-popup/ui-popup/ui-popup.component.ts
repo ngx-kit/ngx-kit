@@ -1,6 +1,6 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit } from '@angular/core';
-import { KitOutsideClickService, KitOverlayToggleDirective, KitSidePosition } from '@ngx-kit/core';
+import { KitOutsideClickService, KitOverlayToggleDirective, KitPinPosition } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-popup',
@@ -40,7 +40,7 @@ import { KitOutsideClickService, KitOverlayToggleDirective, KitSidePosition } fr
 export class UiPopupComponent implements OnInit, OnChanges {
   @Input() toggle: KitOverlayToggleDirective;
 
-  @Input() position: KitSidePosition = 'top-center';
+  @Input() position: KitPinPosition = 'top-center';
 
   @HostBinding('attr.aria-label') ariaLabel = 'Popup description';
 

@@ -6,20 +6,20 @@ import { StrategyEl } from '../../kit-overlay/meta';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitStyleService } from '../../kit-style/kit-style.service';
 import { KitStyles } from '../../kit-style/meta';
-import { KitPositionField, KitPositionRect, KitSidePosition } from '../meta';
+import { KitPositionField, KitPositionRect, KitPinPosition } from '../meta';
 
 @Directive({
-  selector: '[kitSidePosition]',
+  selector: '[kitPinPosition]',
   providers: [
     KitStyleService,
   ],
 })
-export class KitSidePositionDirective implements OnChanges {
-  @Input() kitSidePosition: void;
+export class KitPinPositionDirective implements OnChanges {
+  @Input() kitPinPosition: void;
 
   @Input() anchor: KitAnchor | HTMLElement;
 
-  @Input() position: KitSidePosition;
+  @Input() position: KitPinPosition;
 
   private unsubs: any[] = [];
 

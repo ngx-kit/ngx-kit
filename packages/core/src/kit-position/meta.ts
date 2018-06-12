@@ -12,7 +12,7 @@ export interface KitPositionField {
   height: number;
 }
 
-export type KitSidePosition = 'top' | 'top-center' | 'top-right' | 'top-left'
+export type KitPinPosition = 'top' | 'top-center' | 'top-right' | 'top-left'
   | 'right' | 'right-center' | 'right-top' | 'right-bottom'
   | 'bottom' | 'bottom-center' | 'bottom-right' | 'bottom-left'
   | 'left' | 'left-center' | 'left-top' | 'left-bottom';

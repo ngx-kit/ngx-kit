@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitSidePositionDirective } from './kit-side-position/kit-side-position.directive';
+import { KitPinPositionDirective } from './kit-pin-position/kit-pin-position.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    KitSidePositionDirective,
+    KitPinPositionDirective,
   ],
   exports: [
-    KitSidePositionDirective,
+    KitPinPositionDirective,
   ],
 })
 export class KitPositionModule {

@@ -1,3 +1,3 @@
 export * from './kit-position.module';
 export * from './meta';
-export * from './kit-side-position/kit-side-position.directive';
+export * from './kit-pin-position/kit-pin-position.directive';
