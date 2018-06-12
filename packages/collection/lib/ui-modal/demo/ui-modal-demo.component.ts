@@ -31,7 +31,7 @@ export class UiModalDemoComponent {
     ref.input({inputField: this.inputField});
     ref.instance.outputField.subscribe((value: any) => {
       this.outputField = value;
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     });
   }
 

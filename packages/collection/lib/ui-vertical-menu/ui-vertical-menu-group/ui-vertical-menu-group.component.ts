@@ -45,7 +45,7 @@ export class UiVerticalMenuGroupComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.host.activeChanges.subscribe(() => {
       this.activeState = this.item.active;
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     });
   }
 

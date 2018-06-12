@@ -58,7 +58,7 @@ export class UiCarouselSlideComponent implements OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(d => {
         this.slideTrigger = d;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
   }
 

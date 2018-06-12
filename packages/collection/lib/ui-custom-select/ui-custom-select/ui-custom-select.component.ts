@@ -82,7 +82,7 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
 
   closePopup() {
     this.displayPopup = false;
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   registerOnChange(fn: any) {
@@ -107,7 +107,7 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
   writeValue(rawValue: any): void {
     this.state = rawValue;
     this.updateViewState();
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   private updateViewState() {

@@ -58,7 +58,7 @@ export class UiTabsContentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(d => {
         this.slideTrigger = d;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
   }
 
