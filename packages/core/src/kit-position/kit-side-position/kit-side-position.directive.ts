@@ -30,6 +30,11 @@ export class KitSidePositionDirective implements OnChanges {
     private platform: KitPlatformService,
     private em: KitEventManagerService,
   ) {
+    this.style.style = {
+      left: '0',
+      position: 'fixed',
+      top: '0',
+    };
     if (this.platform.isBrowser()) {
       this.zone.onStable
         .pipe(take(1))
@@ -69,9 +74,7 @@ export class KitSidePositionDirective implements OnChanges {
     anchor: KitPositionRect,
   ): KitStyles {
     const common = {
-      alignItems: 'center',
       display: 'flex',
-      justifyContent: 'center',
       position: 'fixed',
     };
     const vSideLeft = field.width / 2 > anchor.left + anchor.width / 2;
@@ -80,138 +83,167 @@ export class KitSidePositionDirective implements OnChanges {
       case 'top':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.top)}px`,
+          alignItems: 'flex-end',
+          top: '0',
           flexDirection: 'row',
-          left: `${Math.round(anchor.left)}px`,
-          right: `${Math.round(field.width - anchor.right)}px`,
+          height: this.px(anchor.top),
+          left: this.px(anchor.left),
+          width: this.px(anchor.width),
         };
       case 'top-center':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.top)}px`,
+          alignItems: 'flex-end',
+          top: '0',
           flexDirection: 'row',
-          left: vSideLeft ? '0' : `${Math.round(anchor.left - (field.width - anchor.right))}px`,
-          right: vSideLeft ? `${Math.round(field.width - anchor.left - anchor.right)}px` : '0',
+          justifyContent: 'center',
+          height: this.px(anchor.top),
+          left: vSideLeft ? '0' : this.px(anchor.left - (field.width - anchor.right)),
+          width: vSideLeft ? this.px(anchor.left + anchor.right) : this.px(anchor.width + (field.width - anchor.right) * 2),
         };
       case 'top-right':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.top)}px`,
+          alignItems: 'flex-end',
+          top: '0',
           flexDirection: 'row',
           justifyContent: 'flex-end',
+          height: this.px(anchor.top),
           left: '0',
-          right: `${Math.round(field.width - anchor.right)}px`,
+          width: this.px(anchor.right),
         };
       case 'top-left':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.top)}px`,
+          alignItems: 'flex-end',
+          top: '0',
           flexDirection: 'row',
           justifyContent: 'flex-start',
-          left: `${Math.round(anchor.left)}px`,
-          right: '0',
+          height: this.px(anchor.top),
+          left: this.px(anchor.left),
+          width: this.px(field.width - anchor.left),
         };
       case 'right':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
           flexDirection: 'column',
-          left: `${Math.round(anchor.right)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          height: this.px(anchor.height),
+          left: this.px(anchor.right),
+          top: this.px(anchor.top),
         };
       case 'right-center':
         return {
           ...common,
-          bottom: vSideTop ? `${Math.round(field.height - anchor.top - anchor.bottom)}px` : '0',
           flexDirection: 'column',
-          left: `${Math.round(anchor.right)}px`,
-          top: vSideTop ? '0' : `${Math.round(anchor.top - (field.height - anchor.bottom))}px`,
+          justifyContent: 'center',
+          height: vSideTop ? this.px(anchor.top + anchor.bottom) : this.px(anchor.height + (field.height - anchor.bottom) * 2),
+          left: this.px(anchor.right),
+          top: vSideTop ? '0' : this.px(anchor.top - (field.height - anchor.bottom)),
         };
       case 'right-top':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
           flexDirection: 'column',
+          height: this.px(field.height - anchor.top),
           justifyContent: 'flex-start',
-          left: `${Math.round(anchor.right)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          left: this.px(anchor.right),
+          top: this.px(anchor.top),
         };
       case 'right-bottom':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
           flexDirection: 'column',
+          height: this.px(anchor.bottom),
           justifyContent: 'flex-end',
-          left: `${Math.round(anchor.right)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          left: this.px(anchor.right),
+          top: '0',
         };
       case 'bottom':
         return {
           ...common,
+          alignItems: 'flex-start',
           flexDirection: 'row',
-          left: `${Math.round(anchor.left)}px`,
-          right: `${Math.round(field.width - anchor.right)}px`,
-          top: `${Math.round(anchor.bottom)}px`,
+          height: this.px(field.height - anchor.bottom),
+          left: this.px(anchor.left),
+          top: this.px(anchor.bottom),
+          width: this.px(anchor.width),
         };
       case 'bottom-center':
         return {
           ...common,
+          alignItems: 'flex-start',
           flexDirection: 'row',
-          left: vSideLeft ? '0' : `${Math.round(anchor.left - (field.width - anchor.right))}px`,
-          right: vSideLeft ? `${Math.round(field.width - anchor.left - anchor.right)}px` : '0',
-          top: `${Math.round(anchor.bottom)}px`,
+          justifyContent: 'center',
+          height: this.px(field.height - anchor.bottom),
+          left: vSideLeft ? '0' : this.px(anchor.left - (field.width - anchor.right)),
+          top: this.px(anchor.bottom),
+          width: vSideLeft ? this.px(anchor.left + anchor.right) : this.px(anchor.width + (field.width - anchor.right) * 2),
         };
       case 'bottom-right':
         return {
           ...common,
+          alignItems: 'flex-start',
           flexDirection: 'row',
           justifyContent: 'flex-end',
-          left: `${Math.round(anchor.left)}px`,
-          right: `${Math.round(field.width - anchor.right)}px`,
-          top: `${Math.round(anchor.bottom)}px`,
+          height: this.px(field.height - anchor.bottom),
+          left: '0',
+          width: this.px(anchor.right),
+          top: this.px(anchor.bottom),
         };
       case 'bottom-left':
         return {
           ...common,
+          alignItems: 'flex-start',
           flexDirection: 'row',
           justifyContent: 'flex-start',
-          left: `${Math.round(anchor.left)}px`,
-          right: `${Math.round(field.width - anchor.right)}px`,
-          top: `${Math.round(anchor.bottom)}px`,
+          height: this.px(field.height - anchor.bottom),
+          left: this.px(anchor.left),
+          top: this.px(anchor.bottom),
+          width: this.px(field.width - anchor.left),
         };
       case 'left':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
+          alignItems: 'flex-end',
+          left: '0',
           flexDirection: 'column',
-          right: `${Math.round(field.width - anchor.left)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          height: this.px(anchor.height),
+          top: this.px(anchor.top),
+          width: this.px(anchor.left),
         };
       case 'left-center':
         return {
           ...common,
-          bottom: vSideTop ? `${Math.round(field.height - anchor.top - anchor.bottom)}px` : '0',
+          alignItems: 'flex-end',
           flexDirection: 'column',
-          right: `${Math.round(field.width - anchor.left)}px`,
-          top: vSideTop ? '0' : `${Math.round(anchor.top - (field.height - anchor.bottom))}px`,
+          justifyContent: 'center',
+          height: vSideTop ? this.px(anchor.top + anchor.bottom) : this.px(anchor.height + (field.height - anchor.bottom) * 2),
+          left: '0',
+          top: vSideTop ? '0' : this.px(anchor.top - (field.height - anchor.bottom)),
+          width: this.px(anchor.left),
         };
       case 'left-top':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
+          alignItems: 'flex-end',
           flexDirection: 'column',
           justifyContent: 'flex-start',
-          right: `${Math.round(field.width - anchor.left)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          height: this.px(field.height - anchor.top),
+          left: '0',
+          right: this.px(field.width - anchor.left),
+          top: this.px(anchor.top),
+          width: this.px(anchor.left),
         };
       case 'left-bottom':
         return {
           ...common,
-          bottom: `${Math.round(field.height - anchor.bottom)}px`,
+          alignItems: 'flex-end',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          right: `${Math.round(field.width - anchor.left)}px`,
-          top: `${Math.round(anchor.top)}px`,
+          height: this.px(anchor.bottom),
+          left: '0',
+          top: '0',
+          width: this.px(anchor.left),
         };
       default:
         throw new Error(`Position ${position} in not correct!`);
@@ -231,5 +263,9 @@ export class KitSidePositionDirective implements OnChanges {
       height: window.innerHeight,
       width: window.innerWidth,
     };
+  }
+
+  private px(value: number): string {
+    return `${Math.round(value)}px`;
   }
 }
