@@ -1,5 +1,6 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import {
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   EventEmitter,
   HostBinding,
@@ -10,9 +11,15 @@ import {
 
 @Component({
   selector: 'kit-modal-backdrop',
-  template: '',
+  template: `
+    <div *ngIf="display"
+         class="backdrop"
+         [@fade]="true"
+         (click)="close.emit()">
+    </div>
+  `,
   styles: [`
-    :host {
+    .backdrop {
       background: rgba(0, 0, 0, .4);
       position: fixed;
       top: 0;
@@ -22,22 +29,41 @@ import {
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+        }),
+        animate('150ms ease-out', style({
+          opacity: 1,
+        })),
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('150ms ease-in', style({
+          opacity: 0,
+        })),
+      ]),
+    ]),
+  ],
 })
 export class KitModalBackdropComponent {
   @Output() close = new EventEmitter<void>();
 
-  @HostBinding('style.display') styleDisplay = 'none';
-
   private _display = false;
+
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+  get display() {
+    return this._display;
+  }
 
   @Input() set display(display: boolean) {
     if (display !== this._display) {
       this._display = display;
-      this.styleDisplay = this._display ? 'block' : 'none';
+      this.cdr.detectChanges();
     }
-  }
-
-  @HostListener('click') clickHandler() {
-    this.close.emit();
   }
 }
