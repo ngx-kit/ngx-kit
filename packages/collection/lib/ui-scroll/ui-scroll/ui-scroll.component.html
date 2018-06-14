@@ -1,0 +1,33 @@
+<div #vBarWrapper
+     class="v-bar-wrapper"
+     [class.-active]="(hover || state.dragging) && state.vBar.active">
+  <div #vBar
+       class="bar"
+       [style.height.px]="state.vBar.size"
+       [style.top.px]="state.vBar.position">
+  </div>
+</div>
+
+<div #hBarWrapper
+     class="h-bar-wrapper"
+     [class.-active]="(hover || state.dragging) && state.hBar.active">
+  <div #hBar
+       class="bar"
+       [style.width.px]="state.hBar.size"
+       [style.left.px]="state.hBar.position">
+  </div>
+</div>
+
+<div #vWrapper
+     class="v-wrapper"
+     [style.marginBottom.px]="-state.nativeScrollbarWidth"
+     [style.paddingRight.px]="state.nativeScrollbarWidth"
+     (scroll)="updateVBar()">
+  <div #hWrapper
+       class="h-wrapper"
+       [style.marginRight.px]="-state.nativeScrollbarWidth"
+       [style.paddingBottom.px]="state.nativeScrollbarWidth"
+       (scroll)="updateHBar()">
+    <ng-content></ng-content>
+  </div>
+</div>

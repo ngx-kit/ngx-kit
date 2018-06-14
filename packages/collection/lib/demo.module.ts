@@ -24,6 +24,7 @@ import { UiNotificationDemoComponent } from './ui-notification/demo/ui-notificat
 import { UiPopupDemoComponent } from './ui-popup/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from './ui-radio/demo/ui-radio-demo.component';
 import { UiRatingDemoComponent } from './ui-rating/demo/ui-rating-demo.component';
+import { UiScrollDemoComponent } from './ui-scroll/demo/ui-scroll-demo.component';
 import { UiSelectDemoComponent } from './ui-select/demo/ui-select-demo.component';
 import { UiSliderDemoComponent } from './ui-slider/demo/ui-slider-demo.component';
 import { UiTabsDemoComponent } from './ui-tabs/demo/ui-tabs-demo.component';
@@ -50,6 +51,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiModalDemoComponent', UiModalDemoComponent],
   ['UiRadioDemoComponent', UiRadioDemoComponent],
   ['UiRatingDemoComponent', UiRatingDemoComponent],
+  ['UiScrollDemoComponent', UiScrollDemoComponent],
   ['UiSelectDemoComponent', UiSelectDemoComponent],
   ['UiSliderDemoComponent', UiSliderDemoComponent],
   ['UiTabsDemoComponent', UiTabsDemoComponent],
@@ -79,6 +81,7 @@ export const demoComponents = [
   UiPopupDemoComponent,
   UiRadioDemoComponent,
   UiRatingDemoComponent,
+  UiScrollDemoComponent,
   UiSelectDemoComponent,
   UiSliderDemoComponent,
   UiTabsDemoComponent,

@@ -18,6 +18,7 @@ import { UiNotificationDemoComponent } from '../../../packages/collection/lib/ui
 import { UiPopupDemoComponent } from '../../../packages/collection/lib/ui-popup/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from '../../../packages/collection/lib/ui-radio/demo/ui-radio-demo.component';
 import { UiRatingDemoComponent } from '../../../packages/collection/lib/ui-rating/demo/ui-rating-demo.component';
+import { UiScrollDemoComponent } from '../../../packages/collection/lib/ui-scroll/demo/ui-scroll-demo.component';
 import { UiSelectDemoComponent } from '../../../packages/collection/lib/ui-select/demo/ui-select-demo.component';
 import { UiSliderDemoComponent } from '../../../packages/collection/lib/ui-slider/demo/ui-slider-demo.component';
 import { UiTabsDemoComponent } from '../../../packages/collection/lib/ui-tabs/demo/ui-tabs-demo.component';
@@ -98,6 +99,10 @@ const routes: Routes = [
   {
     path: 'ui-rating',
     component: UiRatingDemoComponent,
+  },
+  {
+    path: 'ui-scroll',
+    component: UiScrollDemoComponent,
   },
   {
     path: 'ui-select',
