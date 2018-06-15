@@ -26,7 +26,7 @@ export class KitModalComponent implements OnDestroy, AfterContentInit {
     private service: KitModalService,
     private options: KitModalOptions,
   ) {
-    this.ref.params = this.options;
+    this.ref.options = this.options;
     this.ref.onClose.subscribe(() => {
       this.close.emit();
     });
