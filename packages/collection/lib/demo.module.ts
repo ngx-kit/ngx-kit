@@ -13,6 +13,7 @@ import { UiCarouselDemoComponent } from './ui-carousel/demo/ui-carousel-demo.com
 import { UiCheckboxDemoComponent } from './ui-checkbox/demo/ui-checkbox-demo.component';
 import { UiCustomSelectDemoComponent } from './ui-custom-select/demo/ui-custom-select-demo.component';
 import { UiDatePickerDemoComponent } from './ui-date-picker/demo/ui-date-picker-demo.component';
+import { UiDialogDemoComponent } from './ui-dialog/demo/ui-dialog-demo.component';
 import { UiDrawerDemoComponent } from './ui-drawer/demo/ui-drawer-demo.component';
 import { UiFormDemoComponent } from './ui-form/demo/ui-form-demo.component';
 import { UiLoadingBarDemoComponent } from './ui-loading-bar/demo/ui-loading-bar-demo.component';
@@ -44,6 +45,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiCheckboxDemoComponent', UiCheckboxDemoComponent],
   ['UiCustomSelectDemoComponent', UiCustomSelectDemoComponent],
   ['UiDatePickerDemoComponent', UiDatePickerDemoComponent],
+  ['UiDialogDemoComponent', UiDialogDemoComponent],
   ['UiDrawerDemoComponent', UiDrawerDemoComponent],
   ['UiFormDemoComponent', UiFormDemoComponent],
   ['UiLoadingBarDemoComponent', UiLoadingBarDemoComponent],
@@ -73,6 +75,7 @@ export const demoComponents = [
   UiCheckboxDemoComponent,
   UiCustomSelectDemoComponent,
   UiDatePickerDemoComponent,
+  UiDialogDemoComponent,
   UiDrawerDemoComponent,
   UiFormDemoComponent,
   UiLoadingBarDemoComponent,

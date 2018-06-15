@@ -1,0 +1,46 @@
+:host {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog {
+  background: #ffffff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+  max-height: 90%;
+  max-width: 90%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  &.color {
+    &-primary {
+      .header {
+        background: #2399e5;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.header {
+  background: #bfbfbf;
+  padding: 16px;
+}
+
+.body {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+.footer {
+  border-top: 1px solid #eeeeee;
+  display: block;
+  padding: 16px;
+  text-align: right;
+}

@@ -1,0 +1,35 @@
+<div>
+  <h3>Alert dialog</h3>
+  <button (click)="alert()">Alert</button>
+
+  <h4>Custom template</h4>
+  <button (click)="alertWithTemplate(alertTemplate)">Alert</button>
+  <ng-template #alertTemplate>
+    <strong>Custom alert body template.</strong>
+  </ng-template>
+
+  <h4>Handle submit</h4>
+  <button (click)="alertWithHandler()">Alert</button>
+</div>
+
+<div>
+  <h3>Confirm dialog</h3>
+  <button (click)="confirm()">Confirm</button>
+</div>
+
+<div>
+  <h3>Prompt dialog</h3>
+  <button (click)="prompt(promptTemplate)">Prompt</button>
+  <ng-template #promptTemplate let-form>
+    <label>
+      Model:
+      <input [(ngModel)]="form.model" name="model">
+    </label>
+  </ng-template>
+</div>
+
+<div>
+  <h3>Color</h3>
+  <button (click)="alertWithColor('default')">Default alert</button>
+  <button (click)="alertWithColor('primary')">Primary alert</button>
+</div>

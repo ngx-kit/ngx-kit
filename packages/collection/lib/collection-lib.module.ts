@@ -10,6 +10,7 @@ import { UiCarouselModule } from './ui-carousel/ui-carousel.module';
 import { UiCheckboxModule } from './ui-checkbox/ui-checkbox.module';
 import { UiCustomSelectModule } from './ui-custom-select/ui-custom-select.module';
 import { UiDatePickerModule } from './ui-date-picker/ui-date-picker.module';
+import { UiDialogModule } from './ui-dialog/ui-dialog.module';
 import { UiDrawerModule } from './ui-drawer/ui-drawer.module';
 import { UiFormModule } from './ui-form/ui-form.module';
 import { UiLoadingBarModule } from './ui-loading-bar/ui-loading-bar.module';
@@ -38,6 +39,7 @@ const lib = [
   UiCheckboxModule,
   UiCustomSelectModule,
   UiDatePickerModule,
+  UiDialogModule,
   UiDrawerModule,
   UiFormModule,
   UiLoadingBarModule,

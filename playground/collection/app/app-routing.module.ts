@@ -10,6 +10,7 @@ import { UiCarouselDemoComponent } from '../../../packages/collection/lib/ui-car
 import { UiCheckboxDemoComponent } from '../../../packages/collection/lib/ui-checkbox/demo/ui-checkbox-demo.component';
 import { UiCustomSelectDemoComponent } from '../../../packages/collection/lib/ui-custom-select/demo/ui-custom-select-demo.component';
 import { UiDatePickerDemoComponent } from '../../../packages/collection/lib/ui-date-picker/demo/ui-date-picker-demo.component';
+import { UiDialogDemoComponent } from '../../../packages/collection/lib/ui-dialog/demo/ui-dialog-demo.component';
 import { UiDrawerDemoComponent } from '../../../packages/collection/lib/ui-drawer/demo/ui-drawer-demo.component';
 import { UiFormDemoComponent } from '../../../packages/collection/lib/ui-form/demo/ui-form-demo.component';
 import { UiLoadingBarDemoComponent } from '../../../packages/collection/lib/ui-loading-bar/demo/ui-loading-bar-demo.component';
@@ -65,12 +66,16 @@ const routes: Routes = [
     component: UiCustomSelectDemoComponent,
   },
   {
-    path: 'ui-drawer',
-    component: UiDrawerDemoComponent,
-  },
-  {
     path: 'ui-date-picker',
     component: UiDatePickerDemoComponent,
+  },
+  {
+    path: 'ui-dialog',
+    component: UiDialogDemoComponent,
+  },
+  {
+    path: 'ui-drawer',
+    component: UiDrawerDemoComponent,
   },
   {
     path: 'ui-form',
