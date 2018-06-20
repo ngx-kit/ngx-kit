@@ -1,4 +1,4 @@
-# Notification
+# Notification (DEPRECATED)
 
 Service for proxying notifications.
 
