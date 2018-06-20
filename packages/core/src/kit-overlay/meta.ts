@@ -35,8 +35,8 @@ export interface StrategyField {
   height: number;
 }
 
-export interface KitOverlayInput {
-  [key: string]: any;
-}
+export type KitOverlayInput<T> = {
+  [key in keyof T]?: T[key];
+};
 
 export type KitOverlayToggleTrigger = 'click' | 'hover';

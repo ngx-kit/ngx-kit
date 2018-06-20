@@ -9,7 +9,7 @@ export enum UiDialogType {
 export interface UiDialogOptions {
   type: UiDialogType;
   header: string;
-  message: string;
-  template: TemplateRef<any>;
+  message?: string;
+  template?: TemplateRef<any>;
   color: string;
 }

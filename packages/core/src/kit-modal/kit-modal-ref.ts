@@ -69,7 +69,7 @@ export class KitModalRef<T> {
   /**
    * Pass input to the hosted component.
    */
-  input(input: KitOverlayInput) {
+  input(input: KitOverlayInput<T>) {
     if (this.componentRef) {
       this.componentRef.input(input);
     } else {
