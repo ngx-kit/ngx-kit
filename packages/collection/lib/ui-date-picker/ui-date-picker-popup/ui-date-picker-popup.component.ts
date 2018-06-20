@@ -66,7 +66,7 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.focusManager.focusItem('grid');
     this.outsideClick.outsideClick.subscribe(e => {
-      this.toggle.hide();
+      this.toggle.close();
     });
   }
 }

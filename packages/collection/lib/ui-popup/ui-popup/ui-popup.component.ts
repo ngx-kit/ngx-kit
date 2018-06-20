@@ -59,7 +59,7 @@ export class UiPopupComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.outsideClick.outsideClick.subscribe(e => {
-      this.toggle.hide();
+      this.toggle.close();
     });
   }
 }

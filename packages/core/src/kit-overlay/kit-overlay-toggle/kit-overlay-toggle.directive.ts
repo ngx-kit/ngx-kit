@@ -55,7 +55,7 @@ export class KitOverlayToggleDirective implements KitAnchor {
 
   @HostListener('mouseleave') mouseleaveHandler() {
     if (this.trigger === 'hover') {
-      this.hide();
+      this.close();
     }
   }
 
@@ -69,7 +69,7 @@ export class KitOverlayToggleDirective implements KitAnchor {
   /**
    * Set state to false.
    */
-  hide() {
+  close() {
     this._state.next(false);
   }
 
