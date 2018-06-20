@@ -1,8 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { KitNotificationItem, KitNotificationPosition, KitNotificationService } from '@ngx-kit/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UiNotificationItem, UiNotificationPosition } from '../meta';
+import { UiNotificationService } from '../ui-notification.service';
 
 @Component({
   selector: 'ui-notification-host',
@@ -45,19 +46,19 @@ import { map } from 'rxjs/operators';
   ],
 })
 export class UiNotificationHostComponent implements OnInit {
-  items: Observable<KitNotificationItem[]>;
+  items: Observable<UiNotificationItem[]>;
 
-  position: Observable<KitNotificationPosition>;
+  position: Observable<UiNotificationPosition>;
 
-  constructor(private notificationService: KitNotificationService) {
+  constructor(private notification: UiNotificationService) {
   }
 
   ngOnInit() {
-    this.position = this.notificationService.configChanges.pipe(map(c => c.position));
-    this.items = this.notificationService.itemsChanges;
+    this.position = this.notification.configChanges.pipe(map(c => c.position));
+    this.items = this.notification.itemsChanges;
   }
 
   close(__id: string) {
-    this.notificationService.close(__id);
+    this.notification.close(__id);
   }
 }

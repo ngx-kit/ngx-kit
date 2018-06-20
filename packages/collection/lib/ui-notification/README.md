@@ -12,7 +12,7 @@ imports: [
 ],
 ```
 
-2. Use `KitNotificationService` api to show notifications.
+2. Use `UiNotificationService` api to show notifications.
 
 
 ## Hammerjs
