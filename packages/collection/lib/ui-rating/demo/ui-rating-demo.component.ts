@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitIconsRegistryService } from '../../../../core';
+import { KitIconsRegistryService } from '@ngx-kit/core';
 
 @Component({
   templateUrl: './ui-rating-demo.component.html',

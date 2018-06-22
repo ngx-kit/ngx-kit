@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitLoadingService } from '../../../../core';
+import { KitLoadingService } from '@ngx-kit/core';
 
 @Component({
   templateUrl: './ui-loading-bar-demo.component.html',
