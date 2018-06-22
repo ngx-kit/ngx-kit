@@ -6,8 +6,8 @@ import {
   KitFocusManagerModule,
   KitOutsideClickModule,
   KitOverlayModule,
+  KitPositionModule,
 } from '@ngx-kit/core';
-import { KitPositionModule } from '../../../core/src/kit-position/kit-position.module';
 import { UiDatePickerPopupComponent } from './ui-date-picker-popup/ui-date-picker-popup.component';
 import { UiDatePickerComponent } from './ui-date-picker/ui-date-picker.component';
 
