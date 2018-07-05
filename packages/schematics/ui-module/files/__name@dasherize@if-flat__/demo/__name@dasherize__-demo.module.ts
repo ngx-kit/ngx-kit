@@ -11,6 +11,9 @@ import { <%= classify(name) %>Module } from '../<%= dasherize(name) %>.module';
   declarations: [
     <%= classify(name) %>DemoComponent,
   ],
+  entryComponents: [
+    <%= classify(name) %>DemoComponent,
+  ],
 })
 export class <%= classify(name) %>DemoModule {
 }
