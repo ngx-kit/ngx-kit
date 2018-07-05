@@ -13,6 +13,9 @@ import { UiAutocompleteDemoComponent } from './ui-autocomplete-demo.component';
   declarations: [
     UiAutocompleteDemoComponent,
   ],
+  entryComponents: [
+    UiAutocompleteDemoComponent,
+  ],
 })
 export class UiAutocompleteDemoModule {
 }

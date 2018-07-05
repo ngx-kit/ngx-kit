@@ -20,6 +20,7 @@ import { UiModalDemoComponent } from './ui-modal-demo.component';
     UiModalDemoCanCloseModalComponent,
   ],
   entryComponents: [
+    UiModalDemoComponent,
     UiModalDemoModalComponent,
     UiModalDemoBindingModalComponent,
     UiModalDemoCanCloseModalComponent,

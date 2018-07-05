@@ -11,6 +11,9 @@ import { UiCarouselDemoComponent } from './ui-carousel-demo.component';
   declarations: [
     UiCarouselDemoComponent,
   ],
+  entryComponents: [
+    UiCarouselDemoComponent,
+  ],
 })
 export class UiCarouselDemoModule {
 }

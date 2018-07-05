@@ -14,6 +14,9 @@ import { UiFormDemoComponent } from './ui-form-demo.component';
   declarations: [
     UiFormDemoComponent,
   ],
+  entryComponents: [
+    UiFormDemoComponent,
+  ],
 })
 export class UiFormDemoModule {
 }

@@ -13,6 +13,9 @@ import { UiDialogDemoComponent } from './ui-dialog-demo.component';
   declarations: [
     UiDialogDemoComponent,
   ],
+  entryComponents: [
+    UiDialogDemoComponent,
+  ],
 })
 export class UiDialogDemoModule {
 }

@@ -13,6 +13,9 @@ import { UiTextDemoComponent } from './ui-text-demo.component';
   declarations: [
     UiTextDemoComponent,
   ],
+  entryComponents: [
+    UiTextDemoComponent,
+  ],
 })
 export class UiTextDemoModule {
 }

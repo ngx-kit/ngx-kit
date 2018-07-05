@@ -13,6 +13,9 @@ import { UiRadioDemoComponent } from './ui-radio-demo.component';
   declarations: [
     UiRadioDemoComponent,
   ],
+  entryComponents: [
+    UiRadioDemoComponent,
+  ],
 })
 export class UiRadioDemoModule {
 }

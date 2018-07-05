@@ -11,6 +11,9 @@ import { UiVerticalMenuDemoComponent } from './ui-vertical-menu-demo.component';
   declarations: [
     UiVerticalMenuDemoComponent,
   ],
+  entryComponents: [
+    UiVerticalMenuDemoComponent,
+  ],
 })
 export class UiVerticalMenuDemoModule {
 }

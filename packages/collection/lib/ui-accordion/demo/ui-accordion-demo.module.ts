@@ -11,6 +11,9 @@ import { UiAccordionDemoComponent } from './ui-accordion-demo.component';
   declarations: [
     UiAccordionDemoComponent,
   ],
+  entryComponents: [
+    UiAccordionDemoComponent,
+  ],
 })
 export class UiAccordionDemoModule {
 }

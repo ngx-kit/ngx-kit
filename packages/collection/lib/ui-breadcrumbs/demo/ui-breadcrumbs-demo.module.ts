@@ -11,6 +11,9 @@ import { UiBreadcrumbsDemoComponent } from './ui-breadcrumbs-demo.component';
   declarations: [
     UiBreadcrumbsDemoComponent,
   ],
+  entryComponents: [
+    UiBreadcrumbsDemoComponent,
+  ],
 })
 export class UiBreadcrumbsDemoModule {
 }

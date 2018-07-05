@@ -11,6 +11,9 @@ import { UiTabsDemoComponent } from './ui-tabs-demo.component';
   declarations: [
     UiTabsDemoComponent,
   ],
+  entryComponents: [
+    UiTabsDemoComponent,
+  ],
 })
 export class UiTabsDemoModule {
 }

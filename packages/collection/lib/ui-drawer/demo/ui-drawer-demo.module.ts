@@ -11,6 +11,9 @@ import { UiDrawerDemoComponent } from './ui-drawer-demo.component';
   declarations: [
     UiDrawerDemoComponent,
   ],
+  entryComponents: [
+    UiDrawerDemoComponent,
+  ],
 })
 export class UiDrawerDemoModule {
 }

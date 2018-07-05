@@ -13,6 +13,9 @@ import { UiCustomSelectDemoComponent } from './ui-custom-select-demo.component';
   declarations: [
     UiCustomSelectDemoComponent,
   ],
+  entryComponents: [
+    UiCustomSelectDemoComponent,
+  ],
 })
 export class UiCustomSelectDemoModule {
 }

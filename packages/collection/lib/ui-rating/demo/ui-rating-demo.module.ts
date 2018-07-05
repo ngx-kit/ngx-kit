@@ -11,6 +11,9 @@ import { UiRatingDemoComponent } from './ui-rating-demo.component';
   declarations: [
     UiRatingDemoComponent,
   ],
+  entryComponents: [
+    UiRatingDemoComponent,
+  ],
 })
 export class UiRatingDemoModule {
 }

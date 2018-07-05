@@ -11,6 +11,9 @@ import { UiPopupDemoComponent } from './ui-popup-demo.component';
   declarations: [
     UiPopupDemoComponent,
   ],
+  entryComponents: [
+    UiPopupDemoComponent,
+  ],
 })
 export class UiPopupDemoModule {
 }

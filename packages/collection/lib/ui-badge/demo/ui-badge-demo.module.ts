@@ -11,6 +11,9 @@ import { UiBadgeDemoComponent } from './ui-badge-demo.component';
   declarations: [
     UiBadgeDemoComponent,
   ],
+  entryComponents: [
+    UiBadgeDemoComponent,
+  ],
 })
 export class UiBadgeDemoModule {
 }

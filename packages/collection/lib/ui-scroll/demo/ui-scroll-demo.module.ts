@@ -11,6 +11,9 @@ import { UiScrollDemoComponent } from './ui-scroll-demo.component';
   declarations: [
     UiScrollDemoComponent,
   ],
+  entryComponents: [
+    UiScrollDemoComponent,
+  ],
 })
 export class UiScrollDemoModule {
 }

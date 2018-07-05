@@ -13,6 +13,9 @@ import { UiToggleDemoComponent } from './ui-toggle-demo.component';
   declarations: [
     UiToggleDemoComponent,
   ],
+  entryComponents: [
+    UiToggleDemoComponent,
+  ],
 })
 export class UiToggleDemoModule {
 }

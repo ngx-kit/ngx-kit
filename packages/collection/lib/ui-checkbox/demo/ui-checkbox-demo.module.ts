@@ -13,6 +13,9 @@ import { UiCheckboxDemoComponent } from './ui-checkbox-demo.component';
   declarations: [
     UiCheckboxDemoComponent,
   ],
+  entryComponents: [
+    UiCheckboxDemoComponent,
+  ],
 })
 export class UiCheckboxDemoModule {
 }

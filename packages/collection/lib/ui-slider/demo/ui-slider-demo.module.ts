@@ -13,6 +13,9 @@ import { UiSliderDemoComponent } from './ui-slider-demo.component';
   declarations: [
     UiSliderDemoComponent,
   ],
+  entryComponents: [
+    UiSliderDemoComponent,
+  ],
 })
 export class UiSliderDemoModule {
 }

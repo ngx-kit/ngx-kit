@@ -11,6 +11,9 @@ import { UiNotificationDemoComponent } from './ui-notification-demo.component';
   declarations: [
     UiNotificationDemoComponent,
   ],
+  entryComponents: [
+    UiNotificationDemoComponent,
+  ],
 })
 export class UiNotificationDemoModule {
 }

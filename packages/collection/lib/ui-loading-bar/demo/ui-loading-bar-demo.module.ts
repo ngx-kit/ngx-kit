@@ -11,6 +11,9 @@ import { UiLoadingBarDemoComponent } from './ui-loading-bar-demo.component';
   declarations: [
     UiLoadingBarDemoComponent,
   ],
+  entryComponents: [
+    UiLoadingBarDemoComponent,
+  ],
 })
 export class UiLoadingBarDemoModule {
 }

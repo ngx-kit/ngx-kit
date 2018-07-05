@@ -11,6 +11,9 @@ import { UiTooltipDemoComponent } from './ui-tooltip-demo.component';
   declarations: [
     UiTooltipDemoComponent,
   ],
+  entryComponents: [
+    UiTooltipDemoComponent,
+  ],
 })
 export class UiTooltipDemoModule {
 }

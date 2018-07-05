@@ -13,6 +13,9 @@ import { UiDatePickerDemoComponent } from './ui-date-picker-demo.component';
   declarations: [
     UiDatePickerDemoComponent,
   ],
+  entryComponents: [
+    UiDatePickerDemoComponent,
+  ],
 })
 export class UiDatePickerDemoModule {
 }
