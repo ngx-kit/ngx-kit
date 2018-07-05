@@ -45,7 +45,7 @@ export class KitOutsideClickDirective implements OnInit, OnChanges {
     this.service.skip = [
       ...this.anchor ? [this.anchor.nativeEl] : [],
       ...this.skip
-        ? isArray(this.skip) ? this.skip.map(s => s.nativeEl) : [this.skip.nativeEl]
+        ? isArray(this.skip) ? this.skip.map(s => s.nativeEl || s) : [this.skip.nativeEl || this.skip]
         : [],
     ];
   }
