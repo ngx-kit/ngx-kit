@@ -10,6 +10,7 @@ export * from './src/kit-form-field/kit-form-field';
 export * from './src/kit-form-touch/kit-form-touch';
 export * from './src/kit-hammer/kit-hammer';
 export * from './src/kit-icons/kit-icons';
+export * from './src/kit-input-date/kit-input-date';
 export * from './src/kit-loading/kit-loading';
 export * from './src/kit-notification/kit-notification';
 export * from './src/kit-modal/kit-modal';
