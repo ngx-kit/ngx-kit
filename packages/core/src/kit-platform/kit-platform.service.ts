@@ -43,4 +43,19 @@ export class KitPlatformService {
       return 0;
     }
   }
+
+  /**
+   * Get moment.js instance if it has been registered.
+   */
+  getMoment(): any | null {
+    if (this.isBrowser()) {
+      if (window['moment']) {
+        return window['moment'];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
 }
