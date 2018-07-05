@@ -81,6 +81,10 @@
             "assets": [
               "playground/collection/favicon.ico",
               "playground/collection/assets"
+            ],
+            "scripts": [
+              "node_modules/hammerjs/hammer.js",
+              "node_modules/moment/moment.js"
             ]
           }
         },
