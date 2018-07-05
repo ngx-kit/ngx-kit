@@ -1,6 +1,6 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit } from '@angular/core';
-import { KitAnchor, KitFocusManagerService, KitOutsideClickService, KitOverlayToggleDirective } from '@ngx-kit/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { KitAnchor, KitFocusManagerService, KitOverlayToggleDirective } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-date-picker-popup',
@@ -9,7 +9,6 @@ import { KitAnchor, KitFocusManagerService, KitOutsideClickService, KitOverlayTo
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     KitFocusManagerService,
-    KitOutsideClickService,
   ],
   animations: [
     trigger('host', [
@@ -38,7 +37,7 @@ import { KitAnchor, KitFocusManagerService, KitOutsideClickService, KitOverlayTo
     ]),
   ],
 })
-export class UiDatePickerPopupComponent implements OnInit, OnChanges {
+export class UiDatePickerPopupComponent implements OnInit {
   @Input() anchor: KitAnchor | HTMLElement;
 
   @Input() toggle: KitOverlayToggleDirective;
@@ -53,20 +52,12 @@ export class UiDatePickerPopupComponent implements OnInit, OnChanges {
 
   constructor(
     private focusManager: KitFocusManagerService,
-    private outsideClick: KitOutsideClickService,
   ) {
     this.focusManager.autoCapture = true;
     this.focusManager.init();
   }
 
-  ngOnChanges() {
-    this.outsideClick.skip = [this.toggle.nativeEl];
-  }
-
   ngOnInit() {
     this.focusManager.focusItem('grid');
-    this.outsideClick.outsideClick.subscribe(e => {
-      this.toggle.close();
-    });
   }
 }

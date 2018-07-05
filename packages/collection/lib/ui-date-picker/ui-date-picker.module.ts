@@ -17,6 +17,7 @@ import { UiDatePickerComponent } from './ui-date-picker/ui-date-picker.component
     KitFocusManagerModule,
     KitClassModule,
     KitPositionModule,
+    KitOutsideClickModule,
   ],
   declarations: [
     UiDatePickerComponent,

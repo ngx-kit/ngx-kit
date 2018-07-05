@@ -2,7 +2,9 @@
      position="bottom-left"
      [anchor]="anchor || toggle">
   <div class="popup"
-       [@fade]="true">
+       [@fade]="true"
+       (kitOutsideClick)="toggle.close()"
+       [skip]="[toggle]">
     <ng-content></ng-content>
   </div>
 </div>
