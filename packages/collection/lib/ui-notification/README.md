@@ -17,4 +17,4 @@ imports: [
 
 ## Hammerjs
 
-Import `import 'hammerjs';` in `main.ts` for proper working.
+Add Hammer.JS from proper working.
