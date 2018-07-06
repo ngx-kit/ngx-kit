@@ -1,5 +1,5 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, } from '@angular/core';
+import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
 
 @Component({
@@ -11,15 +11,27 @@ import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger('host', [
+    trigger('modalHost', [
+      transition(':enter, :leave', [
+        query('@*', animateChild(), {optional: true}),
+      ]),
+    ]),
+    trigger('fade', [
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translate(-50%, -55%)',
+          transform: 'translateY(-20px)',
         }),
-        animate('250ms', style({
+        animate('250ms ease-out', style({
           opacity: 1,
-          transform: 'translate(-50%, -50%)',
+          transform: 'translateY(0)',
+        })),
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('250ms ease-in', style({
+          opacity: 0,
+          transform: 'translateY(-20px)',
         })),
       ]),
     ]),
@@ -28,7 +40,7 @@ import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
 export class UiModalComponent implements OnInit {
   @Input() header: string;
 
-  @HostBinding('@host') hostTrigger: void;
+  @HostBinding('@modalHost') hostTrigger: void;
 
   constructor(
     private ref: KitModalRef<UiModalComponent>,
@@ -39,6 +51,12 @@ export class UiModalComponent implements OnInit {
   ngOnInit() {
     this.fm.autoCapture = true;
     this.fm.init();
+  }
+
+  @HostListener('click', ['$event']) clickHandler(event: any) {
+    if (event.target === event.currentTarget) {
+      this.ref.close();
+    }
   }
 
   close() {
