@@ -1,6 +1,6 @@
 import { Directive, forwardRef, Input, OnChanges } from '@angular/core';
 import { Subject } from 'rxjs';
-import { KitPlatformService } from '../kit-platform/kit-platform.service';
+import { KitMomentProvider } from '../kit-moment/kit-moment-provider';
 import { KitModelInterceptor } from '../kit-value-accessor/kit-model-interceptor';
 
 @Directive({
@@ -31,8 +31,8 @@ export class KitInputDateDirective implements KitModelInterceptor, OnChanges {
 
   private moment: any = null;
 
-  constructor(private platform: KitPlatformService) {
-    this.moment = this.platform.getMoment();
+  constructor(private momentProvider: KitMomentProvider<any>) {
+    this.moment = this.momentProvider.moment;
   }
 
   ngOnChanges() {

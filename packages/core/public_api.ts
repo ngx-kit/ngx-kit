@@ -14,6 +14,7 @@ export * from './src/kit-input-date/kit-input-date';
 export * from './src/kit-loading/kit-loading';
 export * from './src/kit-notification/kit-notification';
 export * from './src/kit-modal/kit-modal';
+export * from './src/kit-moment/kit-moment';
 export * from './src/kit-outside-click/kit-outside-click';
 export * from './src/kit-overlay/kit-overlay';
 export * from './src/kit-platform/kit-platform';
