@@ -7,7 +7,7 @@ import {
   HostListener,
   ViewChild,
 } from '@angular/core';
-import { KitHammerService, KitScrollService, KitScrollState } from '@ngx-kit/core';
+import { KitHammerProvider, KitScrollService, KitScrollState } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-scroll',
@@ -38,7 +38,7 @@ export class UiScrollComponent implements AfterContentInit {
   constructor(
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef,
-    private hammer: KitHammerService,
+    private hammer: KitHammerProvider<any>,
     private scroll: KitScrollService,
   ) {
   }

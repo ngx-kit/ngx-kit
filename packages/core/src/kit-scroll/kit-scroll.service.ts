@@ -1,7 +1,7 @@
 import { ElementRef, Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { KitHammerProvider } from '../kit-hammer/kit-hammer-provider';
 import { KitHammerTypes } from '../kit-hammer/meta';
-import { KitHammerService } from '../kit-hammer/kit-hammer.service';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { KitScrollRefs, KitScrollState } from './meta';
 
@@ -33,8 +33,11 @@ export class KitScrollService implements OnDestroy {
   constructor(
     private platform: KitPlatformService,
     private elRef: ElementRef,
-    private hammer: KitHammerService,
+    private hammerProvider: KitHammerProvider<any>,
   ) {
+    if (!this.hammerProvider.hammer) {
+      throw new Error('KitScrollService requires Hammer.JS');
+    }
     this._state.next({
       ...this.state,
       nativeScrollbarWidth: this.platform.getScrollbarWidth(),
@@ -109,7 +112,7 @@ export class KitScrollService implements OnDestroy {
   }
 
   private initVListeners() {
-    const vBarHammer = this.hammer.build(this.refs.vBar, {
+    const vBarHammer = this.hammerProvider.build(this.refs.vBar, {
       pan: {
         direction: KitHammerTypes.DIRECTION_VERTICAL,
         threshold: 1,
@@ -143,10 +146,10 @@ export class KitScrollService implements OnDestroy {
       }
     });
     // Tap
-    const vBarWrapperHammer = this.hammer.build(this.refs.vBarWrapper);
+    const vBarWrapperHammer = this.hammerProvider.build(this.refs.vBarWrapper);
     vBarWrapperHammer.on('tap', (event: any) => {
       if (event.target === this.refs.vBarWrapper) {
-        const pos = this.hammer.calcRelatedPosition(this.refs.vBarWrapper, event.center);
+        const pos = this.hammerProvider.calcRelatedPosition(this.refs.vBarWrapper, event.center);
         // Calc
         this.refs.vWrapper.scrollTop += pos.y > this.state.vBar.position ? 200 : -200;
       }
@@ -154,7 +157,7 @@ export class KitScrollService implements OnDestroy {
   }
 
   private initHListeners() {
-    const hBarHammer = this.hammer.build(this.refs.hBar, {
+    const hBarHammer = this.hammerProvider.build(this.refs.hBar, {
       pan: {
         direction: KitHammerTypes.DIRECTION_HORIZONTAL,
         threshold: 1,
@@ -188,10 +191,10 @@ export class KitScrollService implements OnDestroy {
       }
     });
     // Tap
-    const hBarWrapperHammer = this.hammer.build(this.refs.hBarWrapper);
+    const hBarWrapperHammer = this.hammerProvider.build(this.refs.hBarWrapper);
     hBarWrapperHammer.on('tap', (event: any) => {
       if (event.target === this.refs.hBarWrapper) {
-        const pos = this.hammer.calcRelatedPosition(this.refs.hBarWrapper, event.center);
+        const pos = this.hammerProvider.calcRelatedPosition(this.refs.hBarWrapper, event.center);
         // Calc
         this.refs.hWrapper.scrollLeft += pos.x > this.state.hBar.position ? 200 : -200;
       }

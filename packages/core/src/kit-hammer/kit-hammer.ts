@@ -1,2 +1,2 @@
-export * from './kit-hammer.service';
+export * from './kit-hammer-provider';
 export * from './meta';
