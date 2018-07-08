@@ -3,6 +3,10 @@ import { KitStyleService } from '../../kit-style/kit-style.service';
 import { KitOverlayPositionDirectiveParams } from '../meta';
 import { KitOverlayPositionService } from './kit-overlay-position.service';
 
+/**
+ * @deprecated Use KitPositionModule instead.
+ * @todo remove in the next major release.
+ */
 @Directive({
   selector: '[kitOverlayPosition]',
   providers: [

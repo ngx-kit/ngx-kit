@@ -1,6 +1,6 @@
 import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
 import { KitAnchor } from '../../kit-anchor/meta';
 import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
@@ -20,6 +20,9 @@ import { SidePositioningService } from './side-positioning.service';
  * Implements positioning mechanism.
  *
  * Should be provided on component or directive.
+ *
+ * @deprecated Use KitPositionModule instead.
+ * @todo remove in the next major release.
  */
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
