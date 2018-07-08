@@ -25,7 +25,7 @@ export class UiDialogDemoComponent implements OnInit {
     this.dialog
       .alert({message: 'Alert message'})
       .subscribe(() => {
-        alert('Alert submitted');
+        alert('Alert closed');
       });
   }
 
