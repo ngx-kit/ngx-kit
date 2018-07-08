@@ -47,14 +47,6 @@ export class KitPinPositionDirective implements OnChanges {
             ];
           });
         });
-      // Handle auto-fix for automatic reposition
-//      this.unsubs.push(this.zone.onStable
-//        .subscribe(() => {
-//          if (this.rawPosition) {
-//            this.rawPosition = false;
-//            this.runAutofix();
-//          }
-//        }));
     }
   }
 

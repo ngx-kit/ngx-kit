@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchMouseEvent } from '../../../test/utils/dispatch-events';
 import { KitModalBackdropComponent } from './kit-modal-backdrop.component';
 
@@ -11,6 +12,9 @@ describe('KitModalBackdropComponent', () => {
   beforeEach(async(() => {
     TestBed
       .configureTestingModule({
+        imports: [
+          NoopAnimationsModule,
+        ],
         declarations: [
           TestComponent,
           KitModalBackdropComponent,
@@ -30,24 +34,25 @@ describe('KitModalBackdropComponent', () => {
         expect(true).toBeTruthy();
         done();
       });
-      const el = fixture.debugElement.query(By.css('kit-modal-backdrop')).nativeElement;
+      const el = fixture.debugElement.query(By.css('.backdrop')).nativeElement;
+      console.log('>>>>>> BCKDRP', el);
       dispatchMouseEvent(el, 'click');
     });
   });
   describe('.display', () => {
-    it('=true changes host css.display to block', () => {
+    it('=true displays backdrop', () => {
       component.display = true;
       fixture.detectChanges();
       fixture.detectChanges();
-      const styles = fixture.debugElement.query(By.css('kit-modal-backdrop')).styles;
-      expect(styles['display']).toEqual('block');
+      const backdrop = fixture.debugElement.query(By.css('.backdrop'));
+      expect(backdrop).toBeTruthy();
     });
-    it('=false changes host css.display to none', () => {
+    it('=false hides backdrop', () => {
       component.display = false;
       fixture.detectChanges();
       fixture.detectChanges();
-      const styles = fixture.debugElement.query(By.css('kit-modal-backdrop')).styles;
-      expect(styles['display']).toEqual('none');
+      const backdrop = fixture.debugElement.query(By.css('.backdrop'));
+      expect(backdrop).toBeFalsy();
     });
   });
 });
@@ -55,7 +60,7 @@ describe('KitModalBackdropComponent', () => {
 @Component({
   selector: 'test-component',
   template: `
-    <kit-modal-backdrop #cmp></kit-modal-backdrop>
+    <kit-modal-backdrop [display]="true" #cmp></kit-modal-backdrop>
   `,
 })
 class TestComponent {

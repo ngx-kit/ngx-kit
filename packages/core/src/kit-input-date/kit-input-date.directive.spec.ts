@@ -86,6 +86,10 @@ function createTestComponent(template: string): ComponentFixture<TestComponent> 
 }
 
 class KitPlatformServiceStub {
+  isBrowser() {
+    return true;
+  }
+
   getMoment() {
     return null;
   }
