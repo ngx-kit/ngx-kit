@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const dist = 'dist/schematics-build';
+const dist = 'dist/core/schematics';
 
 // Copy files
 fs.copySync(path.resolve('./packages/schematics'), path.resolve(dist), {
