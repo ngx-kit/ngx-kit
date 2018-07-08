@@ -3,7 +3,6 @@ import { UiDialogService } from '../ui-dialog.service';
 
 @Component({
   templateUrl: './ui-dialog-demo.component.html',
-  styleUrls: ['./ui-dialog-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiDialogDemoComponent implements OnInit {
