@@ -11,7 +11,7 @@ export class KitMomentProvider<T> {
     private platform: KitPlatformService,
   ) {
     if (this.platform.isBrowser()) {
-      if (window && (window as any)['moment']) {
+      if (window && 'moment' in window) {
         this._moment = (window as any)['moment'];
       }
     }

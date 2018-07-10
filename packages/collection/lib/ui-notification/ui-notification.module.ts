@@ -3,7 +3,7 @@ import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { KitClassModule, KitOverlayService } from '@ngx-kit/core';
 import { UiNotificationHostComponent } from './ui-notification-host/ui-notification-host.component';
 
-export function initFactory(overlay: KitOverlayService) {
+export function uiNotificationInitFactory(overlay: KitOverlayService) {
   return () => {
     // Host component in the overlay
     overlay.hostComponent({component: UiNotificationHostComponent});
@@ -29,7 +29,7 @@ export class UiNotificationModule {
       providers: [
         {
           provide: APP_INITIALIZER,
-          useFactory: initFactory,
+          useFactory: uiNotificationInitFactory,
           deps: [KitOverlayService],
           multi: true,
         },

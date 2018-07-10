@@ -14,8 +14,7 @@
          aria-haspopup="true">
   {{ toggle1.state | json }}
   <ui-date-picker-popup *kitOverlay="toggle1.state"
-                        [toggle]="toggle1"
-                        kitFocusTrap>
+                        [toggle]="toggle1">
     <ui-date-picker [(ngModel)]="model"
                     (ngModelChange)="toggle1.close()"
                     [style.width.px]="300">
