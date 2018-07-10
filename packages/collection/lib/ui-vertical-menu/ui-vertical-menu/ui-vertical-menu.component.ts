@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, } from '@angular/core';
 import { KitCollapseHostService } from '@ngx-kit/core';
 
-/**
- * @apiOrder 1
- */
 @Component({
   selector: 'ui-vertical-menu',
   template: '<ng-content></ng-content>',

@@ -39,18 +39,17 @@ Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
 
 ## Usage
 
-#### Install the packages
+#### Add ngx-kit to your project
 
 ```
-npm i @ngx-kit/core --save
-npm i @ngx-kit/collection --save-dev
+ng add @ngx-kit/core
 ```
 
-#### Generate via Angular CLI
+#### Generate UI module
 
 Pick a module from [Collection](https://ngx-kit.com/collection) and put the code to your project.
 
-Button for example:
+A button for example:
 
 ```
 ng g @ngx-kit/collection:ui-button ui-button

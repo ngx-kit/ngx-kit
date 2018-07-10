@@ -1,9 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, Input, } from '@angular/core';
 
-/**
- * @apiOrder 5
- */
 @Component({
   selector: 'ui-vertical-menu-sub',
   template: `

@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { KitSlideHostService } from '@ngx-kit/core';
 
-/**
- * @apiOrder 1
- */
 @Component({
   selector: 'ws-kit-tabs,[wsKitTabs]',
   template: `

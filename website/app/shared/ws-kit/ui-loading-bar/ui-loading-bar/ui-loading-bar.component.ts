@@ -4,9 +4,6 @@ import { KitLoadingService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 1
- */
 @Component({
   selector: 'ws-ui-loading-bar',
   template: `

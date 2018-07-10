@@ -3,9 +3,6 @@ import { KitClassService } from '@ngx-kit/core';
 import { UiButtonColor, UiButtonSize } from '../meta';
 import { UiButtonGroupComponent } from '../ui-button-group/ui-button-group.component';
 
-/**
- * @apiOrder 1
- */
 @Component({
   // tslint:disable-next-line
   selector: 'button[uiButton],a[uiButton]',

@@ -4,9 +4,6 @@ import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 4
- */
 @Component({
   selector: 'ws-kit-tabs-content,[wsKitTabsContent]',
   template: '<ng-content></ng-content>',

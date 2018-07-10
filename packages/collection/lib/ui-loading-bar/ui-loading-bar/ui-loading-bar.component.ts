@@ -13,9 +13,6 @@ import { kitLoadingGlobal, KitLoadingService, KitLoadingState } from '@ngx-kit/c
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 1
- */
 @Component({
   selector: 'ui-loading-bar',
   templateUrl: './ui-loading-bar.component.html',

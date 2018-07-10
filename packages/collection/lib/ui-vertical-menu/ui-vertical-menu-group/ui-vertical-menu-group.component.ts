@@ -9,9 +9,6 @@ import {
 } from '@angular/core';
 import { KitCollapseHostService, KitCollapseItemService } from '@ngx-kit/core';
 
-/**
- * @apiOrder 3
- */
 @Component({
   selector: 'ui-vertical-menu-group',
   template: `

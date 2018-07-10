@@ -4,9 +4,6 @@ import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 2
- */
 @Component({
   selector: 'ui-carousel-slide',
   template: '<ng-content></ng-content>',

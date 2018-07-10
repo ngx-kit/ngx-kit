@@ -3,8 +3,6 @@ import { KitCollapseItemService } from '@ngx-kit/core';
 
 /**
  * Accordion title.
- *
- * @apiOrder 3
  */
 @Component({
   selector: 'ui-accordion-title',

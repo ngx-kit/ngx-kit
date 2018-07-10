@@ -2,8 +2,6 @@ import { Component, } from '@angular/core';
 
 /**
  * Breadcrumbs item.
- *
- * @apiOrder 2
  */
 @Component({
   selector: 'ui-breadcrumbs-item,[uiBreadcrumbsItem]',
