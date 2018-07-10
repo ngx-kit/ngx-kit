@@ -19,7 +19,6 @@
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/core": "^6.0.0",
-    "hammerjs": "^2.0.8",
     "typescript": "~2.7.2"
   }
 }
