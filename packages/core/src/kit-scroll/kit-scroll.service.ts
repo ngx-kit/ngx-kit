@@ -1,4 +1,5 @@
 import { ElementRef, Injectable, OnDestroy } from '@angular/core';
+import { HammerGestureConfig } from '@angular/platform-browser';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KitHammerProvider } from '../kit-hammer/kit-hammer-provider';
 import { KitHammerTypes } from '../kit-hammer/meta';
@@ -112,12 +113,14 @@ export class KitScrollService implements OnDestroy {
   }
 
   private initVListeners() {
-    const vBarHammer = this.hammerProvider.build(this.refs.vBar, {
+    const vBarHammerConfig = new HammerGestureConfig();
+    vBarHammerConfig.overrides = {
       pan: {
         direction: KitHammerTypes.DIRECTION_VERTICAL,
         threshold: 1,
       },
-    });
+    };
+    const vBarHammer = vBarHammerConfig.buildHammer(this.refs.vBar);
     let scrollStart: number | null = null;
     // Pan
     vBarHammer.on('pan', (event: any) => {
@@ -146,7 +149,7 @@ export class KitScrollService implements OnDestroy {
       }
     });
     // Tap
-    const vBarWrapperHammer = this.hammerProvider.build(this.refs.vBarWrapper);
+    const vBarWrapperHammer = vBarHammerConfig.buildHammer(this.refs.vBarWrapper);
     vBarWrapperHammer.on('tap', (event: any) => {
       if (event.target === this.refs.vBarWrapper) {
         const pos = this.hammerProvider.calcRelatedPosition(this.refs.vBarWrapper, event.center);
@@ -157,12 +160,14 @@ export class KitScrollService implements OnDestroy {
   }
 
   private initHListeners() {
-    const hBarHammer = this.hammerProvider.build(this.refs.hBar, {
+    const hBarHammerConfig = new HammerGestureConfig();
+    hBarHammerConfig.overrides = {
       pan: {
         direction: KitHammerTypes.DIRECTION_HORIZONTAL,
         threshold: 1,
       },
-    });
+    };
+    const hBarHammer = hBarHammerConfig.buildHammer(this.refs.hBar);
     let scrollStart: number | null = null;
     // Pan
     hBarHammer.on('pan', (event: any) => {
@@ -191,7 +196,7 @@ export class KitScrollService implements OnDestroy {
       }
     });
     // Tap
-    const hBarWrapperHammer = this.hammerProvider.build(this.refs.hBarWrapper);
+    const hBarWrapperHammer = hBarHammerConfig.buildHammer(this.refs.hBarWrapper);
     hBarWrapperHammer.on('tap', (event: any) => {
       if (event.target === this.refs.hBarWrapper) {
         const pos = this.hammerProvider.calcRelatedPosition(this.refs.hBarWrapper, event.center);
