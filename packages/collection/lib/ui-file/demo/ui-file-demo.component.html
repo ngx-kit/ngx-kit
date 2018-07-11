@@ -1,0 +1,15 @@
+<div>
+  <button uiFileHolder>
+    Pick a file
+    <input uiFile
+           type="file"
+           (select)="files = $event">
+  </button>
+
+  <div style="overflow: hidden">
+    Files:
+    <div *ngFor="let file of files">
+      > {{ file.file.name }} | {{ file.file.size }} | {{ file.file.lastModifiedDate }} | {{ file.data }}
+    </div>
+  </div>
+</div>
