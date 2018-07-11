@@ -1,0 +1,14 @@
+<h1>Dropdown</h1>
+
+<div>
+  <button kitOverlayToggle
+          #toggle="toggle">
+    Click ME!
+  </button>
+  <ui-dropdown *kitOverlay="toggle.state"
+               [toggle]="toggle">
+    <button uiDropdownItem>Item 1</button>
+    <button uiDropdownItem>Item 2</button>
+    <button uiDropdownItem>Item 3</button>
+  </ui-dropdown>
+</div>
