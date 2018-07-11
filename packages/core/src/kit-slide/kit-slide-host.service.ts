@@ -126,20 +126,6 @@ export class KitSlideHostService {
     }
   }
 
-  /**
-   * Activate next item or first.
-   *
-   * @deprecated Use .next()/.prev() with cycle property.
-   */
-  rotate() {
-    const ids = Array.from(this.ids);
-    const currentIndex = this.getCurrentIndex();
-    const newIndex = currentIndex < ids.length - 1
-      ? currentIndex + 1
-      : 0;
-    this.active = ids[newIndex];
-  }
-
   private getCurrentIndex() {
     return this.getIndex(this._active.value);
   }
