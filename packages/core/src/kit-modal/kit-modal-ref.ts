@@ -30,22 +30,6 @@ export class KitModalRef<T> {
     this._options = {...options};
   }
 
-  /**
-   * @deprecated use `options` instead.
-   * @todo remove in next major version
-   */
-  get params(): Partial<KitModalOptions> {
-    return this._options;
-  }
-
-  /**
-   * @deprecated use `options` instead.
-   * @todo remove in next major version
-   */
-  set params(options: Partial<KitModalOptions>) {
-    this._options = {...options};
-  }
-
   get instance(): T {
     if (this.componentRef) {
       return this.componentRef.componentRef.instance;
