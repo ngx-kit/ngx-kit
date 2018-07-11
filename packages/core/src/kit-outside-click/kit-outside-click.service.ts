@@ -4,7 +4,7 @@ import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.s
 
 @Injectable()
 export class KitOutsideClickService implements OnDestroy {
-  skip: HTMLElement[];
+  skip: HTMLElement[] = [];
 
   private _outsideClick = new Subject<any>();
 
