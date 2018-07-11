@@ -1,12 +1,13 @@
-import { Component, } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Breadcrumbs item.
  */
 @Component({
   selector: 'ui-breadcrumbs-item,[uiBreadcrumbsItem]',
-  template: '<ng-content></ng-content>',
+  templateUrl: './ui-breadcrumbs-item.component.html',
   styleUrls: ['./ui-breadcrumbs-item.component.scss'],
 })
 export class UiBreadcrumbsItemComponent {
+  @Input() icon: string;
 }
