@@ -1,0 +1,42 @@
+<div>
+  <h3>Default</h3>
+  <ui-date-picker [(ngModel)]="model" [style.width.px]="300"></ui-date-picker>
+  {{ model | date }}
+</div>
+
+<div>
+  <h3>Date-picker in popup</h3>
+  <input [(ngModel)]="model"
+         kitOverlayToggle
+         kitInputDate
+         format="MMMM DD YYYY"
+         #toggle1="toggle"
+         aria-haspopup="true">
+  {{ toggle1.state | json }}
+  <ui-date-picker-popup *kitOverlay="toggle1.state"
+                        [toggle]="toggle1">
+    <ui-date-picker [(ngModel)]="model"
+                    (ngModelChange)="toggle1.close()"
+                    [style.width.px]="300">
+    </ui-date-picker>
+  </ui-date-picker-popup>
+</div>
+
+<div>
+  <h3>Date-picker in popup (separated toggle)</h3>
+  <input [(ngModel)]="model"
+         kitAnchor
+         kitInputDate
+         format="MMMM DD YYYY"
+         #anchor2="anchor"
+         aria-haspopup="true">
+  <button kitOverlayToggle #toggle2="toggle">Calendar</button>
+  <ui-date-picker-popup *kitOverlay="toggle2.state"
+                        [anchor]="anchor2"
+                        [toggle]="toggle2">
+    <ui-date-picker [(ngModel)]="model"
+                    (ngModelChange)="toggle2.close()"
+                    [style.width.px]="300">
+    </ui-date-picker>
+  </ui-date-picker-popup>
+</div>

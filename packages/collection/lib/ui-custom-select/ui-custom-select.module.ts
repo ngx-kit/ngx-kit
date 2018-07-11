@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { KitOverlayModule } from '@ngx-kit/core';
+import { KitOverlayModule, KitPositionModule } from '@ngx-kit/core';
 import { UiCustomSelectComponent } from './ui-custom-select/ui-custom-select.component';
 
 @NgModule({
   imports: [
     CommonModule,
     KitOverlayModule,
+    KitPositionModule,
   ],
   declarations: [
     UiCustomSelectComponent,

@@ -1,0 +1,22 @@
+<div class="dialog"
+     [kitClass]="{color: options?.color}"
+     [@fade]>
+  <div class="header">
+    {{ options?.header }}
+  </div>
+  <div class="body">
+    <ng-container *ngIf="options?.message">
+      {{ options?.message }}
+    </ng-container>
+    <ng-container *ngIf="options?.template">
+      <ng-container *ngTemplateOutlet="options?.template; context: {$implicit: result}"></ng-container>
+    </ng-container>
+  </div>
+  <div class="footer">
+    <button *ngIf="options?.type === 'confirm' || options?.type === 'prompt'"
+            (click)="cancelHandler()">
+      Cancel
+    </button>
+    <button (click)="submitHandler()">Okay</button>
+  </div>
+</div>

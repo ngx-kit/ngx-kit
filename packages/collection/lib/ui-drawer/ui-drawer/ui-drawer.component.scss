@@ -1,0 +1,27 @@
+.drawer {
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+  position: fixed;
+  &.position {
+    &-top {
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+    &-right {
+      bottom: 0;
+      right: 0;
+      top: 0;
+    }
+    &-bottom {
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    &-left {
+      bottom: 0;
+      left: 0;
+      top: 0;
+    }
+  }
+}

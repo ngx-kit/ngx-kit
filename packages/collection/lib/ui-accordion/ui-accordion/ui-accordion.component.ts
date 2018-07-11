@@ -3,8 +3,6 @@ import { KitCollapseHostService } from '@ngx-kit/core';
 
 /**
  * Main accordion component.
- *
- * @apiOrder 1
  */
 @Component({
   selector: 'ui-accordion',

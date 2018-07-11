@@ -1,8 +1,12 @@
-import { Directive, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Directive, Input, OnChanges } from '@angular/core';
 import { KitStyleService } from '../../kit-style/kit-style.service';
 import { KitOverlayPositionDirectiveParams } from '../meta';
 import { KitOverlayPositionService } from './kit-overlay-position.service';
 
+/**
+ * @deprecated Use KitPositionModule instead.
+ * @todo remove in the next major release.
+ */
 @Directive({
   selector: '[kitOverlayPosition]',
   providers: [
@@ -10,10 +14,8 @@ import { KitOverlayPositionService } from './kit-overlay-position.service';
     KitStyleService,
   ],
 })
-export class KitOverlayPositionDirective implements OnChanges, OnInit {
+export class KitOverlayPositionDirective implements OnChanges {
   @Input() kitOverlayPosition: Partial<KitOverlayPositionDirectiveParams>;
-
-  @Output() outsideClick = new EventEmitter<MouseEvent>();
 
   constructor(private service: KitOverlayPositionService) {
   }
@@ -21,11 +23,5 @@ export class KitOverlayPositionDirective implements OnChanges, OnInit {
   ngOnChanges() {
     this.service.applyParams(this.kitOverlayPosition);
     this.service.reposition();
-  }
-
-  ngOnInit() {
-    this.service.outsideClicks.subscribe((event) => {
-      this.outsideClick.emit(event);
-    });
   }
 }

@@ -2,6 +2,11 @@
   "name": "ngx-kit",
   "version": "0.1",
   "schematics": {
+    "ng-add": {
+      "description": "add ngx-kit",
+      "factory": "./ng-add",
+      "schema": "./ng-add/schema.json"
+    },
     "ui-module": {
       "aliases": [
         "m"

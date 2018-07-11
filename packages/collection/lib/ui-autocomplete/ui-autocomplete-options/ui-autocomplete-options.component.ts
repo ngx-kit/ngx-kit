@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
 import {
   Component,
   ElementRef,
@@ -12,34 +12,35 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { isString, KitFocusListenerService, KitOverlayPositionService, KitStyleService } from '@ngx-kit/core';
+import { isString, KitFocusListenerService } from '@ngx-kit/core';
 import { UiAutocompleteOption } from '../meta';
 
 @Component({
   selector: 'ui-autocomplete-options',
   templateUrl: './ui-autocomplete-options.component.html',
   styleUrls: ['./ui-autocomplete-options.component.scss'],
-  providers: [
-    KitOverlayPositionService,
-    KitStyleService,
-  ],
   animations: [
     trigger('host', [
+      transition(':enter, :leave', [
+        query('@*', animateChild(), {optional: true}),
+      ]),
+    ]),
+    trigger('fade', [
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translateY(-5px)',
+          transform: 'scaleY(0.5)',
         }),
-        animate('100ms', style({
+        animate('150ms ease-out', style({
           opacity: 1,
-          transform: 'translateY(0)',
+          transform: 'scaleY(1)',
         })),
       ]),
       transition(':leave', [
         style({opacity: 1}),
-        animate('100ms', style({
+        animate('150ms ease-in', style({
           opacity: 0,
-          transform: 'translateY(-5px)',
+          transform: 'scaleY(0.5)',
         })),
       ]),
     ]),
@@ -62,7 +63,6 @@ export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDest
 
   constructor(
     private elRef: ElementRef,
-    private overlayPosition: KitOverlayPositionService,
     private focusListener: KitFocusListenerService,
   ) {
   }
@@ -70,16 +70,9 @@ export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDest
   ngOnInit() {
     // Register in blur service
     this.focusListener.add(this.elRef.nativeElement);
-    // Setup overlay position
-    this.overlayPosition.type = 'dropdown';
-    this.overlayPosition.position = 'bottom';
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('anchor' in changes) {
-      this.overlayPosition.anchor = this.anchor;
-      this.overlayPosition.reposition();
-    }
     if ('options' in changes) {
       this.optionsLabels = this.options.map(o => isString(o) ? o : o.label);
     }

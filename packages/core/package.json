@@ -16,9 +16,9 @@
     "url": "https://github.com/ngx-kit/ngx-kit.git",
     "type": "git"
   },
+  "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/core": "^6.0.0",
-    "hammerjs": "^2.0.8",
     "typescript": "~2.7.2"
   }
 }

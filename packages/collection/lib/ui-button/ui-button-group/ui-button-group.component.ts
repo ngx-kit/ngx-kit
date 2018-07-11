@@ -2,9 +2,6 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, } from '@
 import { KitClassService } from '@ngx-kit/core';
 import { UiButtonGroupDirection } from '../meta';
 
-/**
- * @apiOrder 2
- */
 @Component({
   selector: 'ui-button-group',
   template: `

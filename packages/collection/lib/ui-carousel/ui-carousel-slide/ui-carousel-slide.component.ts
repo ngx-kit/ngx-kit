@@ -4,9 +4,6 @@ import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 2
- */
 @Component({
   selector: 'ui-carousel-slide',
   template: '<ng-content></ng-content>',
@@ -58,7 +55,7 @@ export class UiCarouselSlideComponent implements OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(d => {
         this.slideTrigger = d;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
   }
 

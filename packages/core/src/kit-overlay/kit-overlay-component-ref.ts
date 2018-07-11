@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ComponentRef, Injectable, SimpleChange, SimpleChanges, Type } from '@angular/core';
+import { ChangeDetectorRef, ComponentRef, Injectable, SimpleChange, SimpleChanges } from '@angular/core';
 import { KitOverlayInput } from './meta';
 
 @Injectable()
@@ -8,13 +8,14 @@ export class KitOverlayComponentRef<T> {
   /**
    * Pass input to the hosted component.
    */
-  input(input: KitOverlayInput) {
+  input(input: KitOverlayInput<T>) {
     if (this.componentRef && this.componentRef.instance) {
       // Set props and gather changes object
       const changes: SimpleChanges = {};
       for (const name in input) {
         if (input.hasOwnProperty(name)) {
-          const prev = this.componentRef[name];
+          const prev = this.componentRef.instance[name];
+          // @ts-ignore
           this.componentRef.instance[name] = input[name];
           changes[name] = new SimpleChange(prev, input[name], false);
         }

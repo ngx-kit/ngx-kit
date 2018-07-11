@@ -1,1 +1,10 @@
-<ng-content></ng-content>
+<div kitPinPosition
+     position="bottom-left"
+     [anchor]="anchor || toggle">
+  <div class="popup"
+       [@fade]="true"
+       (kitOutsideClick)="toggle.close()"
+       [skip]="[toggle]">
+    <ng-content></ng-content>
+  </div>
+</div>

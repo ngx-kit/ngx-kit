@@ -1,0 +1,9 @@
+<div kitPinPosition
+     [anchor]="toggle"
+     [position]="position">
+  <div class="popup"
+       [kitClass]="{position: position}"
+       [@fade]="true">
+    <ng-content></ng-content>
+  </div>
+</div>

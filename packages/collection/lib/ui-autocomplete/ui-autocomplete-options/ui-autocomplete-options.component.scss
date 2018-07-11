@@ -1,9 +1,13 @@
-:host {
+.options {
   background: #ffffff;
   border-radius: 3px;
   box-shadow: 0 0 25px 5px rgba(0, 0, 0, .1);
   box-sizing: border-box;
   margin-top: 4px;
+  max-height: 90%;
+  overflow-y: auto;
+  transform-origin: top;
+  width: 100%;
 }
 
 button {

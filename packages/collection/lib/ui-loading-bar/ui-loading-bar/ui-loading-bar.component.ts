@@ -11,11 +11,8 @@ import {
 } from '@angular/core';
 import { kitLoadingGlobal, KitLoadingService, KitLoadingState } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 1
- */
 @Component({
   selector: 'ui-loading-bar',
   templateUrl: './ui-loading-bar.component.html',
@@ -90,12 +87,14 @@ export class UiLoadingBarComponent implements OnInit, OnChanges, OnDestroy {
 
   private handleState() {
     this.idChange.next();
+    this.barState = this.loading.progress(this.id).state;
     this.loading
       .progress(this.id)
       .stateChanges
       .pipe(
         takeUntil(this.destroy),
         takeUntil(this.idChange),
+        debounceTime(10),
       )
       .subscribe(s => {
         this.barState = s;

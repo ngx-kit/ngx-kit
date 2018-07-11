@@ -1,10 +1,8 @@
-:host {
+.popup {
   background: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 4px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
   padding: 12px;
-  &:focus-within {
-    box-shadow: 0 0 4px 6px rgba(80, 88, 156, .2);
-  }
+  transform-origin: top left;
 }

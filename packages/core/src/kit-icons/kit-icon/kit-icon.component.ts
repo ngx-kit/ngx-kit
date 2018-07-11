@@ -8,8 +8,9 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { switchMap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
+import { filter, mapTo, switchMap, take, takeUntil } from 'rxjs/operators';
+import { KitIntersectionService } from '../../kit-intersection/kit-intersection.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { isArray } from '../../util/is-array';
 import { uuid } from '../../util/uuid';
@@ -27,6 +28,9 @@ import { KitIconSource } from '../meta';
       align-self: center;
     }
   `],
+  providers: [
+    KitIntersectionService,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitIconComponent implements OnChanges, OnDestroy {
@@ -57,6 +61,11 @@ export class KitIconComponent implements OnChanges, OnDestroy {
    */
   @Input() desc: string;
 
+  /**
+   * Load and render icon only when visible.
+   */
+  @Input() intersectionLoad = false;
+
   private source: KitIconSource;
 
   private svg: SVGElement;
@@ -74,11 +83,21 @@ export class KitIconComponent implements OnChanges, OnDestroy {
     private el: ElementRef,
     private renderer: Renderer2,
     private platform: KitPlatformService,
+    private intersection: KitIntersectionService,
   ) {
-    this
-      .nameChanges
+    this.nameChanges
       .pipe(
         takeUntil(this.destroy),
+        switchMap(name => {
+          // Debounce icon load until being visible (if needed).
+          return this.intersectionLoad
+            ? this.intersection.observe().pipe(
+              filter(Boolean),
+              take(1),
+              mapTo(name),
+            )
+            : from([name]);
+        }),
         switchMap(name => this.registry.get(name)),
       )
       .subscribe((source: KitIconSource) => {

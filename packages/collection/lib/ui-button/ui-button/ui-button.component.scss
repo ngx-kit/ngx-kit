@@ -78,4 +78,7 @@ $borderRadius: 3px;
       }
     }
   }
+  .icon + .content:not(:empty) {
+    padding-left: 8px;
+  }
 }

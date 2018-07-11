@@ -4,6 +4,7 @@ import { KitOverlayHostWrapperComponent } from './kit-overlay-host/kit-overlay-h
 import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.component';
 import { KitOverlayPositionDirective } from './kit-overlay-position/kit-overlay-position.directive';
 import { KitOverlayDirective } from './kit-overlay/kit-overlay.directive';
+import { KitOverlayToggleDirective } from './kit-overlay-toggle/kit-overlay-toggle.directive';
 
 @NgModule({
   imports: [
@@ -12,12 +13,14 @@ import { KitOverlayDirective } from './kit-overlay/kit-overlay.directive';
   exports: [
     KitOverlayDirective,
     KitOverlayPositionDirective,
+    KitOverlayToggleDirective,
   ],
   declarations: [
     KitOverlayDirective,
     KitOverlayHostWrapperComponent,
     KitOverlayHostComponent,
     KitOverlayPositionDirective,
+    KitOverlayToggleDirective,
   ],
   entryComponents: [
     KitOverlayHostWrapperComponent,

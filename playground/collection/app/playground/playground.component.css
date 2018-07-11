@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  background: #eeeeee;
+  padding: 24px;
+}
+
+.demo {
+  margin: 24px 0;
+  padding: 24px;
+  background: #ffffff;
+}

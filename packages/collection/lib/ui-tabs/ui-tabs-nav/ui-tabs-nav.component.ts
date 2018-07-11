@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, } from '@angular/core';
 
-/**
- * @apiOrder 2
- */
 @Component({
   selector: 'ui-tabs-nav',
   template: '<ng-content></ng-content>',

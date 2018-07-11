@@ -11,9 +11,6 @@ import { KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 3
- */
 @Component({
   selector: 'ws-kit-tabs-tab,[wsKitTabsTab]',
   template: '<ng-content></ng-content>',

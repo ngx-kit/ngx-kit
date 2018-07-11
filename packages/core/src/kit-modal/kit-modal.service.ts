@@ -57,7 +57,7 @@ export class KitModalService {
           componentFactoryResolver: componentFactoryResolver,
           viewContainerRef: viewContainerRef,
         });
-      ref.params = {...this.options, ...options};
+      ref.options = {...this.options, ...options};
       ref.componentRef = componentRef;
       ref.viewRef = componentRef.componentRef.hostView;
       ref.onClose.subscribe(() => {
@@ -104,7 +104,7 @@ export class KitModalService {
     }
     // handle body scroll-lock
     if (this.platform.isBrowser() && this.document) {
-      if (top && top.params.scrollLock) {
+      if (top && top.options.scrollLock) {
         this.document.body.style.overflow = 'hidden';
       } else {
         this.document.body.style.removeProperty('overflow');
@@ -114,14 +114,14 @@ export class KitModalService {
 
   private backdropClickHandler() {
     const top = this.getTopModalRef();
-    if (top && top.params.backdropClose) {
+    if (top && top.options.backdropClose) {
       top.onClose.next();
     }
   }
 
   private escHandler() {
     const top = this.getTopModalRef();
-    if (top && top.params.escClose) {
+    if (top && top.options.escClose) {
       top.onClose.next();
     }
   }

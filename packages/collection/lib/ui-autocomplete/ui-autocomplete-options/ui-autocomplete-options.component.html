@@ -1,8 +1,16 @@
-<button *ngFor="let option of options; let index = index"
-        (click)="select.emit(index)"
-        [class.-selected]="index === selected">
-  <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
-  <ng-container *ngIf="optionTemplate">
-    <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option}"></ng-container>
-  </ng-container>
-</button>
+<div *ngIf="anchor"
+     kitPinPosition
+     position="bottom"
+     [anchor]="anchor">
+  <div class="options"
+       [@fade]="true">
+    <button *ngFor="let option of options; let index = index"
+            (click)="select.emit(index)"
+            [class.-selected]="index === selected">
+      <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
+      <ng-container *ngIf="optionTemplate">
+        <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option, index: index}"></ng-container>
+      </ng-container>
+    </button>
+  </div>
+</div>

@@ -62,7 +62,7 @@ export class UiTooltipDirective implements OnInit, OnChanges, OnDestroy {
         anchorEl: this.el.nativeElement,
         content: this.uiTooltip,
         color: this.uiTooltipOptions.color || 'default',
-        position: this.uiTooltipOptions.position || 'top',
+        position: this.uiTooltipOptions.position || 'top-center',
       });
     }
   }

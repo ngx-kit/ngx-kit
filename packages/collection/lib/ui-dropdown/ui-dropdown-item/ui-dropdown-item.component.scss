@@ -1,0 +1,15 @@
+:host {
+  background: #ffffff;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  min-width: 80px;
+  outline: none;
+  padding: 4px 8px;
+  &:hover {
+    background: #eeeeee;
+  }
+  &:active {
+    color: #444444;
+  }
+}

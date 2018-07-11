@@ -27,6 +27,6 @@ class ComponentRefSub {
 }
 
 class ViewRefStub {
-  markForCheck() {
+  detectChanges() {
   }
 }

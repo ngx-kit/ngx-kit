@@ -9,9 +9,6 @@ import {
 } from '@angular/core';
 import { KitCollapseHostService, KitCollapseItemService } from '@ngx-kit/core';
 
-/**
- * @apiOrder 3
- */
 @Component({
   selector: 'ui-vertical-menu-group',
   template: `
@@ -45,7 +42,7 @@ export class UiVerticalMenuGroupComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.host.activeChanges.subscribe(() => {
       this.activeState = this.item.active;
-      this.cdr.markForCheck();
+      this.cdr.detectChanges();
     });
   }
 

@@ -23,6 +23,20 @@ Any element/component could be projected.
 
 `*kitOverlay` - expects a boolean expression, like `*ngIf`.
 
+### Toggle
+
+Instead of creating additional variable in a component and custom handler, you can handle click/hover by `kitOverlayToggle` directive.
+
+`KitOverlayToggleDirective` also implements `KitAnchor` interface.
+
+```html
+<button kitOverlayToggle #toggle="toggle">Dropdown here</button>
+<ui-dropdown *kitOverlay="toggle.state">
+             ...
+</ui-dropdown>
+```
+
+
 ### Use `KitOverlayService`
 
 ```typescript

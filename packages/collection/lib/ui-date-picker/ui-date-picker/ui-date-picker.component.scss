@@ -1,3 +1,9 @@
+.focus {
+  border-radius: 2px;
+  box-shadow: #2399e5 0 0 0 1px inset;
+  outline: none;
+}
+
 :host {
   display: block;
 }
@@ -12,11 +18,15 @@
   button {
     background: transparent;
     border: 0;
+    &:focus {
+      @extend .focus;
+    }
   }
 }
 
 .grid {
   border: 0;
+  padding: 4px;
   width: 100%;
   button {
     width: 100%;
@@ -28,28 +38,27 @@
     background: transparent;
     border: 0;
     margin: 0;
-    padding: 2px;
+    padding: 4px;
+    width: 14.29%;
   }
   &:focus {
-    outline: 1px solid #23a3f2;
+    @extend .focus;
   }
 }
 
 .date {
-  background: #fafafa;
-  border: 1px solid #dddddd;
   border-radius: 2px;
+  box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
+  padding: 2px;
   text-align: center;
   width: 100%;
   &.outside {
-    background: #ffffff;
-    border: 1px solid #dddddd;
     color: #b5b5b5;
   }
   &.focus {
-    border: 1px solid #2399e5;
+    @extend .focus;
   }
   &.active {
     background: #2399e5;
@@ -57,6 +66,6 @@
     color: #ffffff;
   }
   &:focus {
-    outline: 1px solid #23a3f2;
+    @extend .focus;
   }
 }

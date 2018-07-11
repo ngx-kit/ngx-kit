@@ -1,0 +1,112 @@
+<ng-template #contentTmpl>
+  <div class="content">
+    Popup content<br>
+    Popup content<br>
+    Popup content
+  </div>
+</ng-template>
+
+<div>
+  <h3>Default</h3>
+  <button kitOverlayToggle trigger="hover" #toggle="toggle">Hover to see popup</button>
+  <ui-popup *kitOverlay="toggle.state"
+            [toggle]="toggle">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+</div>
+
+<div>
+  <h3>Position</h3>
+  <button kitOverlayToggle trigger="hover" #toggle_p1="toggle">Top-center</button>
+  <ui-popup *kitOverlay="toggle_p1.state"
+            [toggle]="toggle_p1"
+            position="top-center">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_tr="toggle">Top-right</button>
+  <ui-popup *kitOverlay="toggle_tr.state"
+            [toggle]="toggle_tr"
+            position="top-right">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_tl="toggle">Top-left</button>
+  <ui-popup *kitOverlay="toggle_tl.state"
+            [toggle]="toggle_tl"
+            position="top-left">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_p2="toggle">Right-center</button>
+  <ui-popup *kitOverlay="toggle_p2.state"
+            [toggle]="toggle_p2"
+            position="right-center">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_rt="toggle">Right-top</button>
+  <ui-popup *kitOverlay="toggle_rt.state"
+            [toggle]="toggle_rt"
+            position="right-top">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_rb="toggle">Right-bottom</button>
+  <ui-popup *kitOverlay="toggle_rb.state"
+            [toggle]="toggle_rb"
+            position="right-bottom">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_p3="toggle">Bottom-center</button>
+  <ui-popup *kitOverlay="toggle_p3.state"
+            [toggle]="toggle_p3"
+            position="bottom-center">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_br="toggle">Bottom-right</button>
+  <ui-popup *kitOverlay="toggle_br.state"
+            [toggle]="toggle_br"
+            position="bottom-right">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_bl="toggle">Bottom-left</button>
+  <ui-popup *kitOverlay="toggle_bl.state"
+            [toggle]="toggle_bl"
+            position="bottom-left">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_p4="toggle">Left-center</button>
+  <ui-popup *kitOverlay="toggle_p4.state"
+            [toggle]="toggle_p4"
+            position="left-center">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_lt="toggle">Left-top</button>
+  <ui-popup *kitOverlay="toggle_lt.state"
+            [toggle]="toggle_lt"
+            position="left-top">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+
+  <button kitOverlayToggle trigger="hover" #toggle_lb="toggle">Left-bottom</button>
+  <ui-popup *kitOverlay="toggle_lb.state"
+            [toggle]="toggle_lb"
+            position="left-bottom">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+</div>
+
+<div>
+  <h3>Trigger - click</h3>
+  <button kitOverlayToggle #toggle_c="toggle">Click to see Popup</button>
+  <ui-popup *kitOverlay="toggle_c.state"
+            [toggle]="toggle_c">
+    <ng-container *ngTemplateOutlet="contentTmpl"></ng-container>
+  </ui-popup>
+</div>

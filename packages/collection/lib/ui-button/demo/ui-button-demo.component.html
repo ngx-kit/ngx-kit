@@ -1,0 +1,60 @@
+<div>
+  <h3>Default button</h3>
+  <button uiButton>Click!</button>
+</div>
+
+<div>
+  <h3>Color</h3>
+  <button uiButton color="default">Default color</button>
+  <button uiButton color="primary">Primary color</button>
+</div>
+
+<div>
+  <h3>Size</h3>
+  <button uiButton size="s">Size=s</button>
+  <button uiButton size="m">Size=m</button>
+  <button uiButton size="l">Size=l</button>
+</div>
+
+<div>
+  <h3>Icon</h3>
+  <button uiButton icon="star"></button>
+  <button uiButton icon="star">Labeled</button>
+</div>
+
+<h2>Buttons group</h2>
+
+<div>
+  <ui-button-group>
+    <button uiButton>Grouped 1</button>
+    <button uiButton>Grouped 2</button>
+    <button uiButton>Grouped 3</button>
+  </ui-button-group>
+</div>
+
+<div>
+  <h3>Vertical</h3>
+  <ui-button-group direction="column">
+    <button uiButton>Vert Grouped 1</button>
+    <button uiButton>Vert Grouped 2</button>
+    <button uiButton>Vert Grouped 3</button>
+  </ui-button-group>
+</div>
+
+<div>
+  <h3>Selectable</h3>
+  <ui-button-group>
+    <button uiButton kitCheck [(ngModel)]="radioModel" [value]="1">Radio button 1</button>
+    <button uiButton kitCheck [(ngModel)]="radioModel" [value]="2">Radio button 2</button>
+    <button uiButton kitCheck [(ngModel)]="radioModel" [value]="3">Radio button 3</button>
+  </ui-button-group>
+</div>
+
+<div>
+  <h3>Multiple</h3>
+  <ui-button-group>
+    <button uiButton kitCheck [(ngModel)]="checkboxModel1">Checkbox button 1</button>
+    <button uiButton kitCheck [(ngModel)]="checkboxModel2">Checkbox button 2</button>
+    <button uiButton kitCheck [(ngModel)]="checkboxModel3">Checkbox button 3</button>
+  </ui-button-group>
+</div>

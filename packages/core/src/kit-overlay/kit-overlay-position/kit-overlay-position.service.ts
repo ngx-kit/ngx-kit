@@ -1,7 +1,7 @@
 import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
-import { KitAnchorDirective } from '../../kit-anchor/kit-anchor.directive';
+import { KitAnchor } from '../../kit-anchor/meta';
 import { KitEventManagerService } from '../../kit-event-manager/kit-event-manager.service';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitStyleService } from '../../kit-style/kit-style.service';
@@ -20,13 +20,16 @@ import { SidePositioningService } from './side-positioning.service';
  * Implements positioning mechanism.
  *
  * Should be provided on component or directive.
+ *
+ * @deprecated Use KitPositionModule instead.
+ * @todo remove in the next major release.
  */
 @Injectable()
 export class KitOverlayPositionService implements OnDestroy {
   /**
    * Anchor element for placing.
    */
-  anchor: KitAnchorDirective | HTMLElement;
+  anchor: KitAnchor | HTMLElement;
 
   /**
    * Do not cross window boundaries.
@@ -35,8 +38,6 @@ export class KitOverlayPositionService implements OnDestroy {
    * * switch-position - change direction top-bottom / left-right
    */
   autofix: KitOverlayAutofix = 'switch-position';
-
-  outsideClicks = new Subject<MouseEvent>();
 
   position: KitOverlayPosition = 'top';
 
@@ -96,7 +97,7 @@ export class KitOverlayPositionService implements OnDestroy {
     }
   }
 
-  getRect(el: KitAnchorDirective | HTMLElement): StrategyEl {
+  getRect(el: KitAnchor | HTMLElement): StrategyEl {
     return this.getEl(el).getBoundingClientRect();
   }
 
@@ -139,8 +140,8 @@ export class KitOverlayPositionService implements OnDestroy {
     }
   }
 
-  private getEl(el: KitAnchorDirective | HTMLElement): HTMLElement {
-    return el instanceof KitAnchorDirective ? el.nativeEl : el;
+  private getEl(el: KitAnchor | HTMLElement): HTMLElement {
+    return el['nativeEl'] ? el['nativeEl'] : el;
   }
 
   private getFieldSize(): StrategyField {

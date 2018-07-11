@@ -4,9 +4,6 @@ import { KitSlideDirection, KitSlideHostService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-/**
- * @apiOrder 4
- */
 @Component({
   selector: 'ui-tabs-content',
   template: '<ng-content></ng-content>',
@@ -61,7 +58,7 @@ export class UiTabsContentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(d => {
         this.slideTrigger = d;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
       });
   }
 

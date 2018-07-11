@@ -39,12 +39,6 @@ describe('KitOverlayPositionDirective', () => {
   it('should be created on element', async(() => {
     expect(fixture.debugElement.query(By.directive(KitOverlayPositionDirective))).toBeTruthy();
   }));
-  it('should emit outside click from service', async(() => {
-    spyOn(component, 'outsideClick');
-    fixture.detectChanges();
-    service.outsideClicks.next();
-    expect(component.outsideClick).toHaveBeenCalled();
-  }));
   it('should apply params and run reposition on changes', async(() => {
     spyOn(service, 'applyParams');
     spyOn(service, 'reposition');
@@ -59,13 +53,10 @@ describe('KitOverlayPositionDirective', () => {
 
 @Component({
   selector: 'test-cmp',
-  template: '<div [kitOverlayPosition]="params" (outsideClick)="outsideClick()"></div>',
+  template: '<div [kitOverlayPosition]="params"></div>',
 })
 class TestComponent {
   params: any;
-
-  outsideClick() {
-  }
 }
 
 class KitOverlayPositionMockService {

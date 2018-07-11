@@ -12,9 +12,9 @@ imports: [
 ],
 ```
 
-2. Use `KitNotificationService` api to show notifications.
+2. Use `UiNotificationService` api to show notifications.
 
 
 ## Hammerjs
 
-Import `import 'hammerjs';` in `main.ts` for proper working.
+Add Hammer.JS from proper working.

@@ -3,8 +3,6 @@ import { KitCollapseItemService } from '@ngx-kit/core';
 
 /**
  * Accordion panel.
- *
- * @apiOrder 2
  */
 @Component({
   selector: 'ui-accordion-panel',

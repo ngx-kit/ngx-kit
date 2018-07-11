@@ -101,6 +101,6 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
   writeValue(rawValue: any) {
     this.state = rawValue ? new Date(rawValue) : new Date();
     this.service.active = this.state;
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 }

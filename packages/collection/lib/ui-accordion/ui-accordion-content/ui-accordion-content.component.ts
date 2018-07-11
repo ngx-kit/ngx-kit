@@ -3,8 +3,6 @@ import { ChangeDetectionStrategy, Component, HostBinding, } from '@angular/core'
 
 /**
  * Accordion content holder.
- *
- * @apiOrder 4
  */
 @Component({
   selector: 'ui-accordion-content',

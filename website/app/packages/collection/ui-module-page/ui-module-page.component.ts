@@ -31,11 +31,6 @@ export class UiModulePageComponent implements OnInit {
         const yOrder = this.extractApiOrderValue(y);
         return xOrder > yOrder ? 1 : -1;
       });
-      this.module.demo.sort((x: any, y: any) => {
-        const xOrder = this.extractMdOrderValue(x);
-        const yOrder = this.extractMdOrderValue(y);
-        return xOrder > yOrder ? 1 : -1;
-      });
     });
   }
 

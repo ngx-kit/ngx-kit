@@ -10,10 +10,8 @@ export class KitModalRef<T> {
   /** @internal */
   readonly id = uuid();
 
-  /** @internal */
   readonly onClose = new Subject<void>();
 
-  /** @internal */
   readonly onDestroy = new Subject<void>();
 
   /** @internal */
@@ -22,14 +20,30 @@ export class KitModalRef<T> {
   /** @internal */
   componentRef: KitOverlayComponentRef<T>;
 
-  private _params: Partial<KitModalOptions> = {};
+  private _options: Partial<KitModalOptions> = {};
 
-  get params(): Partial<KitModalOptions> {
-    return this._params;
+  get options(): Partial<KitModalOptions> {
+    return this._options;
   }
 
-  set params(params: Partial<KitModalOptions>) {
-    this._params = {...params};
+  set options(options: Partial<KitModalOptions>) {
+    this._options = {...options};
+  }
+
+  /**
+   * @deprecated use `options` instead.
+   * @todo remove in next major version
+   */
+  get params(): Partial<KitModalOptions> {
+    return this._options;
+  }
+
+  /**
+   * @deprecated use `options` instead.
+   * @todo remove in next major version
+   */
+  set params(options: Partial<KitModalOptions>) {
+    this._options = {...options};
   }
 
   get instance(): T {
@@ -42,7 +56,7 @@ export class KitModalRef<T> {
 
   /** @internal */
   applyParams(params: Partial<KitModalOptions>) {
-    this._params = {...this.params, ...params};
+    this._options = {...this.options, ...params};
   }
 
   /**
@@ -55,7 +69,7 @@ export class KitModalRef<T> {
   /**
    * Pass input to the hosted component.
    */
-  input(input: KitOverlayInput) {
+  input(input: KitOverlayInput<T>) {
     if (this.componentRef) {
       this.componentRef.input(input);
     } else {

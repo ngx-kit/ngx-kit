@@ -52,6 +52,10 @@ You can define fill color:
 Use `title` and `desc` properties to add `<title>` and `<desc>` elements into `<svg>`. Also binds `aria-labeledby` attribute that points to the elements.
 
 
+### Intersection load
+
+Icon can load and render only after viewport intersection, set `intersectionLoad` param to `true`.
+
 
 ### Server-rendering
 

@@ -1,0 +1,9 @@
+<div *ngIf="anchorEl"
+     kitPinPosition
+     [anchor]="anchorEl"
+     [position]="position">
+  <span [kitClass]="{color: color, position: position}"
+        [@fade]="true">
+    {{ content }}
+  </span>
+</div>

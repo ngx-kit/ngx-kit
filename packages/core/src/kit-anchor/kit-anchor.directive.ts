@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input } from '@angular/core';
+import { KitAnchor } from './meta';
 
 /**
  * Anchor for passing link to element to the overlay or similar.
@@ -7,12 +8,15 @@ import { Directive, ElementRef, Input } from '@angular/core';
   selector: '[kitAnchor]',
   exportAs: 'anchor',
 })
-export class KitAnchorDirective {
+export class KitAnchorDirective implements KitAnchor {
   @Input() kitAnchor: any;
 
   constructor(private _elementRef: ElementRef) {
   }
 
+  /**
+   * Get reference to anchored element.
+   */
   get elementRef(): ElementRef {
     return this._elementRef;
   }

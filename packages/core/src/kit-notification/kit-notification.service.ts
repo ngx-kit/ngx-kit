@@ -23,6 +23,11 @@ import { KitNotificationHostConfig, KitNotificationItem } from './meta';
  *   this.notificationService.open(NotifViewComponent, {first: 1, second: 2});
  * }
  *  ```
+ *
+ *  @deprecated Service is redundant, moved to the collection.
+ *
+ *  @todo remove in next major version.
+ *
  */
 @Injectable({
   providedIn: 'root',
