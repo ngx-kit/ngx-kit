@@ -1,14 +1,19 @@
-<span class="current">
+<span class="current"
+      kitOverlayToggle
+      #toggle="toggle">
   {{ viewState?.label }}
 </span>
 <span class="pointer">&#9661;</span>
-<div *kitOverlay="displayPopup"
+
+<div *kitOverlay="toggle.state"
      kitPinPosition
      position="bottom"
      [anchor]="nativeEl"
-     [@popup]
-     (outsideClick)="closePopup()">
-  <div class="popup">
+     [@popupHost]="true">
+  <div class="popup"
+       [@popup]="true"
+       (kitOutsideClick)="toggle.close()"
+       [skip]="[nativeEl]">
     <div *ngFor="let option of options"
          class="option"
          (click)="select(option.value)">
