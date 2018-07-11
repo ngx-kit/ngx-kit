@@ -47,3 +47,5 @@ debug.log
 
 packages/cli/node_modules
 website/assets/docs
+
+CHANGELOG.md
