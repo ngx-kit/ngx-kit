@@ -50,28 +50,6 @@ export class KitIconsRegistryService {
   }
 
   /**
-   * Register icon.
-   *
-   * @deprecated Use `.add()`
-   *
-   * @todo remove on 3.0 release
-   */
-  register(name: string, url: string) {
-    this.icons.push({name, url});
-  }
-
-  /**
-   * Register icons set.
-   *
-   * @deprecated Use `.add()`
-   *
-   * @todo remove on 3.0 release
-   */
-  registerSet(icons: KitIcon[]) {
-    this.icons = [...this.icons, ...icons];
-  }
-
-  /**
    * Get icon by name.
    *
    * @internal
