@@ -21,6 +21,10 @@
     "website:gen-docs": "npm run website:gen-docs:core && npm run website:gen-docs:collection",
     "website:gen-docs:core": "ngx-kit gen-docs ./packages/core ./website/assets/docs",
     "website:gen-docs:collection": "ngx-kit gen-docs ./packages/collection ./website/assets/docs",
+    "website:gen-docs2:core": "typedoc packages/core/ --json website/app/content/core.json --mode modules --exclude **/*.spec.ts --excludePrivate",
+    "website:gen-docs3:core": "compodoc -p packages/core/tsconfig.lib.json -e json -d website/app/content/core",
+    "website:docgen:core": "node ./dist/docgen/cli -p ./packages/core/ -o ./website/app/content/core3.json",
+    "website:docgen:collection": "node ./dist/docgen/cli -p ./packages/collection/ -o ./website/app/content/collection.json",
     "website:build": "npm run clean && ng run website:build",
     "website:server:build": "ng run website:server",
     "website:server:bundle": "webpack --config ./website/webpack.server.config.js --progress --colors",
@@ -36,7 +40,8 @@
     "lint": "npm run lint:ng && npm run lint:styles",
     "lint:ng": "ng lint --project=website",
     "lint:styles": "stylelint ./{packages/collection,playground,website}/**/*.scss",
-    "lint:styles:fix": "stylelint ./{packages/collection,playground,website}/**/*.scss --fix"
+    "lint:styles:fix": "stylelint ./{packages/collection,playground,website}/**/*.scss --fix",
+    "docgen:build": "tsc -p ./packages/docgen/tsconfig.json"
   },
   "private": true,
   "dependencies": {
@@ -69,6 +74,7 @@
     "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.5",
     "@ngx-kit/schematics": "^1.1.2",
     "@types/express": "^4.11.1",
+    "@types/glob": "^5.0.35",
     "@types/hammerjs": "^2.0.35",
     "@types/highlight.js": "^9.12.2",
     "@types/jasmine": "^2.8.2",
@@ -77,7 +83,9 @@
     "codelyzer": "^4.2.1",
     "core-js": "^2.5.2",
     "express": "^4.16.3",
+    "front-matter": "^2.3.0",
     "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
@@ -94,6 +102,7 @@
     "stylelint-order": "^0.8.1",
     "tslint": "^5.8.0",
     "typescript": "2.7.2",
-    "webpack-cli": "^2.1.3"
+    "webpack-cli": "^2.1.3",
+    "yargs-parser": "^10.1.0"
   }
 }

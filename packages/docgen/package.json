@@ -1,0 +1,12 @@
+{
+  "name": "@ngx-kit/docgen",
+  "version": "1.0.0",
+  "description": "Generate Angular lib documentation",
+  "license": "MIT",
+  "dependencies": {
+    "front-matter": "^2.3.0",
+    "glob": "^7.1.2",
+    "typescript": "2.7.2",
+    "yargs-parser": "^10.1.0"
+  }
+}
