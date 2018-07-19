@@ -1,37 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Source+Sans+Pro:300,400,700');
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Source+Sans+Pro:300,400,700");
 
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Source Sans Pro', Arial;
+  color: #444444;
+  font-family: "Source Sans Pro", "Arial";
   font-size: 16px;
   line-height: 1.35rem;
-  color: #444444;
+  margin: 0;
+  padding: 0;
 }
 
 button, input, textarea, select {
-  font-family: 'Source Sans Pro', Arial;
+  font-family: "Source Sans Pro", "Arial";
 }
 
 h2 {
-  padding: 8px 0;
   border-bottom: 1px solid #eeeeee;
+  padding: 8px 0;
 }
 
 table {
+  border: 1px solid #e9e9e9;
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
-  border: 1px solid #e9e9e9;
   width: 100%;
 }
 
 table th {
   border: 1px solid #e9e9e9;
+  font-weight: 600;
   padding: 8px 16px;
   text-align: left;
   white-space: nowrap;
-  font-weight: 600;
 }
 
 table td {
@@ -46,9 +46,9 @@ table td p {
 
 code {
   background: #f7f7f7;
-  padding: 2px 4px;
   border-radius: 2px;
-  font-size: 0.75em;
+  font-size: .75em;
+  padding: 2px 4px;
 }
 
 pre {
@@ -64,5 +64,5 @@ pre code {
 }
 
 tt, code, kbd, samp {
-  font-family: 'Droid Sans Mono', monospace;
+  font-family: "Droid Sans Mono", monospace;
 }
