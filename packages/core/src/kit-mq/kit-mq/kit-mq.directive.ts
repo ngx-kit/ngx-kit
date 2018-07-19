@@ -13,6 +13,20 @@ import { Subscription } from 'rxjs';
 import { KitMqService } from '../kit-mq.service';
 import { KitMqParams } from '../meta';
 
+/**
+ * Structural directive to check/observe media query.
+ *
+ * Works like `*ngIf`.
+ *
+ *
+ * ### Usage
+ *
+ * ```html
+ * <div *kitMq="{from: 'desktop'}">
+ *   Displays on desktops and wider.
+ * </div>
+ * ```
+ */
 @Directive({
   selector: '[kitMq]',
 })

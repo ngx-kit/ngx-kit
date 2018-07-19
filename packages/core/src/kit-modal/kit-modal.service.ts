@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ComponentFactoryResolver, forwardRef, Inject, Injectable, Optional, SkipSelf, } from '@angular/core';
+import { ComponentFactoryResolver, forwardRef, Inject, Injectable, Optional, SkipSelf } from '@angular/core';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 import { keyEscape } from '../kit-event-manager/meta';
 import { KitOverlayComponentRef } from '../kit-overlay/kit-overlay-component-ref';
@@ -9,6 +9,150 @@ import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdr
 import { KitModalRef } from './kit-modal-ref';
 import { KitModalOptions, KitModalShowArgs } from './meta';
 
+/**
+ * Modal dialogs are displayed in a layer is above of the page content.
+ *
+ *
+ * ### Usage
+ *
+ * Core does not provide styling or structure for modal, only tools for controlling overlay, backdrop, nesting, a11y.
+ *
+ * You can use Angular component composition and create any set of modals.
+ *
+ * ```typescript
+ * export class DemoComponent {
+ *   private modalRef: KitModalRef<DemoModalComponent>;
+ *
+ *   constructor(private modalService: KitModalService) {
+ *   }
+ *
+ *   showModal() {
+ *     this.modalRef = this.modalService.show({component: DemoModalComponent});
+ *   }
+ *
+ *   closeModal() {
+ *     this.modalRef.close();
+ *   }
+ * }
+ * ```
+ *
+ * You can provide `KitModalRef` in `DemoModalComponent`:
+ *
+ * ```typescript
+ * export class DemoModalComponent {
+ *   constructor(private modalRef: KitModalRef<DemoModalComponent>) {
+ *   }
+ *
+ *   close() {
+ *     this.modalRef.close();
+ *   }
+ * }
+ * ```
+ *
+ * When `KitModalRef.close()` called it destroys component instance.
+ *
+ * Do not forget to define `DemoModalComponent` in `entryComponents`.
+ *
+ * #### Configuration
+ *
+ * Available options:
+ *   * `backdropClose` (default: `true`) - indicating if clicking the backdrop should close the modal.
+ *   * `escClose` (default: `true`) - indicating if pressing the `esc` key should close the modal.
+ *   * `scrollLock` (default: `true`) - indicating if scroll of body is disabled while modal is displayed.
+ *
+ * Modal options can be passed by DI provider, `KitModelService.show()` method or with `kit-modal` params.
+ *
+ * ```typescript
+ * this.modalService.show({component: DemoModalComponent, options: {backdropClose: false}});
+ * ```
+ *
+ * ##### Default config
+ *
+ * If you want to redefine default options with DI you should define all options:
+ *
+ * ```typescript
+ * providers: [
+ *   {
+ *     provide: KitModalOptions,
+ *     useValue: {
+ *       backdropClose: true,
+ *       escClose: true,
+ *       scrollLock: true,
+ *     },
+ *   },
+ * ],
+ * ```
+ *
+ * #### Data-binding
+ *
+ * For service-hosted modals we have methods for communication with component instance.
+ *
+ * ##### input
+ *
+ * ```typescript
+ * export class DemoModalComponent {
+ *   @Input() field: string;
+ * }
+ * ```
+ *
+ * ```typescript
+ * this.modalRef = this.modalService.show({component: DemoModalComponent});
+ * this.modalRef.input({field: 'value'});
+ * ```
+ *
+ * `input` method passes value to the defined field and calls `ngOnChanges` life-cycle hook (if needed).
+ *
+ * ##### output
+ *
+ * ```typescript
+ * export class DemoModalComponent {
+ *   @Output() event = new EventEmitter<any>();
+ * }
+ * ```
+ *
+ * ```typescript
+ * this.modalRef = this.modalService.show({component: DemoModalComponent});
+ * this.modalRef.instance.event.subscribe((value: any) => {
+ * });
+ * ```
+ *
+ * As you can see `DemoModalComponent` can be used both in the service-hosted and in the template-hosted approach.
+ *
+ * ```html
+ * <kit-modal>
+ *   <demo-modal *kitOverlay="display"
+ *               [field]=""
+ *               (event)="">
+ *   </demo-modal>
+ * </kit-modal>
+ * ```
+ *
+ * #### Guards
+ *
+ * ##### `canClose`
+ *
+ * Handy for service-hosted modals when you don't have full control of closing process.
+ *
+ * If `canClose` method returns `false` modal will not be destroyed.
+ *
+ * ```typescript
+ * export class DemoModalComponent implements KitModalCanClose {
+ *   canClose(): boolean {
+ *   }
+ * }
+ * ```
+ *
+ * #### Modal components in Lazy Modules
+ *
+ * You could get error `No component factory found for NameOfModalComponent` inside Lazy Modules. To solve the problem
+ *     just provide `KitModelService` in this module.
+ *
+ *
+ * ### Example
+ *
+ * * collection:modal - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-modal),
+ *     [demo](https://ngx-kit.com/collection/module/ui-modal)
+ */
 @Injectable({
   providedIn: 'root',
 })

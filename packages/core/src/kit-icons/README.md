@@ -3,18 +3,20 @@
 Icons registry and component for svg icons. 
 
 
-## Usage
+### Usage
 
 Add icons to the registry:
 
 ```typescript
-// add one icon
+// add one icon (define url)
 this.iconsRegistry.add({name: 'star', url: '/assets/icons/star.svg'});
+// or define xml
+this.iconsRegistry.add({name: 'cloud', xml: '<svg xmlns="http://www.w3.org/2000/svg" ...'});
 
 // or a set of icons
 this.iconsRegistry.add([
   {name: 'star', url: '/assets/icons/star.svg'},
-  {name: 'cloud', url: '/assets/icons/cloud.svg'},
+  {name: 'cloud', xml: '<svg xmlns="http://www.w3.org/2000/svg" ...'},
 ]);
 ```
 
@@ -23,7 +25,7 @@ And then insert an icon:
 <kit-icon name="star"></kit-icon>
 ```
 
-### Size
+#### Size
 
 By default icons have `1em` height and proper shift to looking nice in a text line.
 
@@ -37,7 +39,7 @@ Also you can define any size:
 <kit-icon name="cloud" [size]="['80px', '40px']"></kit-icon>
 ```
 
-### Color
+#### Color
 
 By defaul fill color is `currentcolor` (use the text-color of parent element).
 
@@ -47,17 +49,17 @@ You can define fill color:
 <kit-icon name="star" color="#ff0000"></kit-icon>
 ```
 
-### A11y
+#### A11y
 
 Use `title` and `desc` properties to add `<title>` and `<desc>` elements into `<svg>`. Also binds `aria-labeledby` attribute that points to the elements.
 
 
-### Intersection load
+#### Intersection load
 
 Icon can load and render only after viewport intersection, set `intersectionLoad` param to `true`.
 
 
-### Server-rendering
+#### Server-rendering
 
 Do not forget to define full url-path to files:
 

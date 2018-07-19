@@ -13,6 +13,9 @@ import { KitCollapseItemService } from '../kit-collapse-item.service';
   selector: '[kitCollapse]',
 })
 export class KitCollapseDirective implements OnInit, OnDestroy {
+  /**
+   * @internal
+   */
   @Input() kitCollapse: void;
 
   private destroy = new Subject<void>();

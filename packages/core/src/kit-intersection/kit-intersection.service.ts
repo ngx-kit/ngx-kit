@@ -3,7 +3,34 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 
 /**
+ * Observe viewport intersection.
+ *
  * Should be provided on a component or a directive.
+ *
+ *
+ * ### Usage
+ *
+ * Provide `KitIntersectionService` on a component or a directive, that you want to observe.
+ *
+ * ```typescript
+ * \@Component({
+ *   ...
+ *   providers: [
+ *     KitIntersectionService,
+ *   ],
+ * })
+ * export class TestComponent {
+ *   constructor(private intersection: KitIntersectionService) {
+ *   }
+ *   ...
+ *   // Check
+ *   const visible = this.instersection.isIntersecting;
+ *   ...
+ *   // Observe
+ *   this.instersection.observe().subscribe(isIntersecting => {
+ *   });
+ * }
+ * ```
  */
 @Injectable()
 export class KitIntersectionService implements OnDestroy {

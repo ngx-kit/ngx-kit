@@ -2,14 +2,28 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { KitAnchor } from './meta';
 
 /**
- * Anchor for passing link to element to the overlay or similar.
+ * Returns a reference to `elementRef` of any element.
+ *
+ * If you define a template reference on the element that Angular views as a host element of the component, you will
+ * get a reference to the component instance. `kitAnchor` resolves the problem.
+ *
+ *
+ * ### Usage
+ *
+ * ```html
+ * <any-component kitAnchor #anchor="anchor"></any-component>
+ * <some-other-component [anchor]="anchor"></some-other-component>
+ * ```
  */
 @Directive({
   selector: '[kitAnchor]',
   exportAs: 'anchor',
 })
 export class KitAnchorDirective implements KitAnchor {
-  @Input() kitAnchor: any;
+  /**
+   * @internal
+   */
+  @Input() kitAnchor: void;
 
   constructor(private _elementRef: ElementRef) {
   }

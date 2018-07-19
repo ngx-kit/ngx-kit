@@ -18,6 +18,43 @@ const breakpointsError =
   ']';
 
 /**
+ * Check or observe media query.
+ *
+ * ### Usage
+ *
+ * Provide breakpoints in the root module:
+ *
+ * ```typescript
+ * ...
+ * providers: [
+ *   {
+ *     provide: kitMqBreakpoints,
+ *     useValue: {
+ *       mobile: '320px',
+ *       tablet: '740px',
+ *       desktop: '980px',
+ *       wide: '1300px',
+ *     },
+ *   },
+ * ],
+ * ```
+ *
+ * Set of breakpoint is a fully customizable.
+ *
+ * Use the service:
+ *
+ * ```typescript
+ * constructor(private mq: KitMqService) {
+ * }
+ * ...
+ * // Check
+ * const matches = this.mq.check({from: 'mobile', until: 'tablet'});
+ * ...
+ * // Observe
+ * this.mq.observe({from: 'tablet'}).subscribe(matches => {
+ * });
+ * ```
+ *
  * @todo remove mq observer on destroy
  */
 @Injectable({

@@ -1,6 +1,9 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
+/**
+ * Platform specific helpers.
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -8,10 +11,16 @@ export class KitPlatformService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
   }
 
+  /**
+   * Shortcut to `isPlatformBrowser` method.
+   */
   isBrowser() {
     return isPlatformBrowser(this.platformId);
   }
 
+  /**
+   * Shortcut to `isPlatformServer` method.
+   */
   isServer() {
     return isPlatformServer(this.platformId);
   }
