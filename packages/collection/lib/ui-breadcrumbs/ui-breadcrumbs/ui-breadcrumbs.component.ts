@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, QueryList } from '@angular/core';
 import { KitRefDirective } from '@ngx-kit/core';
 
 /**

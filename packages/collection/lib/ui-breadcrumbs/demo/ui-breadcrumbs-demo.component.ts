@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { KitIconsRegistryService } from '@ngx-kit/core';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-breadcrumbs-demo.component.html',
 })

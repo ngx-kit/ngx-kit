@@ -11,6 +11,9 @@ import { UiDropdownDemoComponent } from './ui-dropdown-demo.component';
   declarations: [
     UiDropdownDemoComponent,
   ],
+  entryComponents: [
+    UiDropdownDemoComponent,
+  ],
 })
 export class UiDropdownDemoModule {
 }
