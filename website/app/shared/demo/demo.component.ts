@@ -1,4 +1,6 @@
+import { source } from '@angular-devkit/schematics';
 import { Component, Input, OnChanges } from '@angular/core';
+import { DocGen } from '@ngx-kit/docgen';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { highlightAuto } from 'highlight.js';
 import { demoComponentsRef } from '../../../../packages/collection/lib/demo.module';
@@ -9,7 +11,9 @@ import { demoComponentsRef } from '../../../../packages/collection/lib/demo.modu
   styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnChanges {
-  add = false;
+  @Input() declar: DocGen.ClassDeclar;
+
+  @Input() sources: DocGen.File[];
 
   class: any;
 
@@ -25,17 +29,16 @@ export class DemoComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (this.demo && this.demo.files.length > 0) {
-      const main = this.demo.files.find(f => f.name.indexOf('-demo.component.ts') !== -1);
-      if (main) {
-        const cmp = demoComponentsRef.find(d => d[0] === main.class);
-        if (!cmp) {
-          throw new Error(`Class ${main.class} not found in demo-ref`);
-        }
-        this.class = cmp[1];
-        this.code = this.demo.files.reduce((prev: any, file: any) => ({
+    if (this.declar) {
+      const cmp = demoComponentsRef.find(d => d[0] === this.declar.name);
+      if (!cmp) {
+        throw new Error(`Class ${this.declar.name} not found in demo-ref`);
+      }
+      this.class = cmp[1];
+      if (this.sources) {
+        this.code = this.sources.reduce((prev: any, file: DocGen.File) => ({
           ...prev,
-          [file.name]: highlightAuto(file.content, [this.getLangByExt(file.ext)]).value,
+          [file.fileName]: highlightAuto(file.text, [this.getLangByExt(file.type)]).value,
         }), {});
       }
     }

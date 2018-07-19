@@ -1,45 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ContentService } from '../../../content/content.service';
+import { DocGen } from '@ngx-kit/docgen';
+import { ContentServiceBase } from '../../../content/content';
 
-/**
- * @todo the same as ModulePageComponent
- */
 @Component({
   selector: 'app-ui-module-page',
   templateUrl: './ui-module-page.component.html',
 })
 export class UiModulePageComponent implements OnInit {
-  module: any;
+  name: string;
 
-  private pkg: string;
+  files: DocGen.File[] = [];
+
+  mdFiles: DocGen.MdFile[] = [];
+
+  tsFiles: DocGen.TsFile[] = [];
+
+  demoFile?: DocGen.TsFile;
+
+  demoSources: DocGen.File[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private contentService: ContentService,
+    public content: ContentServiceBase,
   ) {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(d => {
-      this.pkg = d['pkg'];
-    });
     this.route.params.subscribe(params => {
-      this.module = this.contentService.get(this.pkg).modules.find((m: any) => m.name === params['name']);
-      this.module.api.sort((x: any, y: any) => {
-        const xOrder = this.extractApiOrderValue(x);
-        const yOrder = this.extractApiOrderValue(y);
-        return xOrder > yOrder ? 1 : -1;
-      });
+      this.name = params['name'];
+      this.files = this.content.getModuleFiles(this.name);
+      // Pick md
+      this.mdFiles = this.files.filter(file => file.type === 'md') as DocGen.MdFile[];
+      // Pick ts
+      this.tsFiles = this.files
+        .filter(tsFilter)
+        .filter(demoFilterFactory(false));
+      // Pick demo
+      const demoFiles = this.files
+        .filter(tsFilter)
+        .filter(demoFilterFactory(true));
+      this.demoFile = demoFiles && demoFiles[0] ? demoFiles[0] : undefined;
+      // Gather sources
+      this.demoSources = this.demoFile
+        ? this.files.filter(demoSourcesFilterFactory(true))
+        : [];
     });
   }
+}
 
-  private extractApiOrderValue(api: any) {
-    const orderTag = api.doc && api.doc.tags ? api.doc.tags.find((t: any) => t.name === 'apiOrder') : null;
-    return orderTag ? orderTag.value : null;
-  }
+function tsFilter(file: DocGen.File): file is DocGen.TsFile {
+  return file.type === 'ts';
+}
 
-  private extractMdOrderValue(demo: any) {
-    return demo.meta && demo.meta['apiOrder'] ? demo.meta['apiOrder'] : null;
-  }
+function demoFilterFactory(isDemo: boolean) {
+  return (file: DocGen.TsFile) => {
+    const declar = file.declars[0];
+    const curr = declar && declar['isDemo'];
+    return curr === isDemo;
+  };
+}
+
+function demoSourcesFilterFactory(isDemo: boolean) {
+  return (file: DocGen.TsFile) => {
+    const curr = file.fileName.indexOf('/demo/') !== -1;
+    return curr === isDemo;
+  };
 }

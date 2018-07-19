@@ -14,11 +14,15 @@
     <div class="layout-row">
       <div class="layout-side"
            [class.-opened]="sideOpened">
-        <app-content-menu [content]="content"></app-content-menu>
+        <app-content-menu [docs]="docs"
+                          [modules]="modules">
+        </app-content-menu>
       </div>
       <div class="layout-content" appScrollUp>
         <div class="layout-content-wrapper">
-          <router-outlet></router-outlet>
+          <div class="layout-content-outlet">
+            <router-outlet></router-outlet>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,8 @@
     "module": "commonjs",
     "baseUrl": "./",
     "paths": {
-      "@ngx-kit/core": ["../packages/core"]
+      "@ngx-kit/core": ["../packages/core"],
+      "@ngx-kit/docgen": ["../packages/docgen"]
     }
   },
   "exclude": [

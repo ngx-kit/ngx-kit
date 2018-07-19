@@ -1,0 +1,63 @@
+<div class="declar">
+  <h2 class="name">
+    <span class="type">[class]</span>
+    {{ declar.name }}
+  </h2>
+
+  <div *ngIf="declar.ngMeta?.decorator"
+       class="ng-meta">
+    <h3>@{{ declar.ngMeta?.type }}</h3>
+    <app-module-page3-decorator-field [decorator]="declar.ngMeta?.decorator"
+                                      title="Selector"
+                                      key="selector">
+    </app-module-page3-decorator-field>
+    <app-module-page3-decorator-field [decorator]="declar.ngMeta?.decorator"
+                                      title="Export as"
+                                      key="exportAs">
+    </app-module-page3-decorator-field>
+    <app-module-page3-decorator-field [decorator]="declar.ngMeta?.decorator"
+                                      title="Provided in"
+                                      key="providedIn">
+    </app-module-page3-decorator-field>
+    <app-module-page3-decorator-field [decorator]="declar.ngMeta?.decorator"
+                                      title="Exports"
+                                      key="exports">
+    </app-module-page3-decorator-field>
+    <app-module-page3-decorator-field [decorator]="declar.ngMeta?.decorator"
+                                      title="Providers"
+                                      key="providers">
+    </app-module-page3-decorator-field>
+  </div>
+
+  <div *ngIf="declar.jsDoc?.length > 0"
+       class="js-doc">
+    <app-md *ngFor="let doc of declar.jsDoc"
+            [content]="doc.comment">
+    </app-md>
+  </div>
+
+  <div *ngIf="publicMembers.length > 0"
+       class="members">
+    <h3>Members</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Signature</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of publicMembers">
+        <td>
+          <code>{{ member.signature }}</code>
+        </td>
+        <td>
+          <app-md *ngFor="let doc of member.jsDoc"
+                  [content]="doc.comment">
+          </app-md>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

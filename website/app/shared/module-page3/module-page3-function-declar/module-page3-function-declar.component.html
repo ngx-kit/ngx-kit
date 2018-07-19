@@ -1,0 +1,18 @@
+<div class="declar">
+  <h2 class="name">
+    <span class="type">[function]</span>
+    {{ declar.name }}
+  </h2>
+
+  <div *ngIf="declar.jsDoc?.length > 0"
+       class="js-doc">
+    <app-md *ngFor="let doc of declar.jsDoc"
+            [content]="doc.comment">
+    </app-md>
+  </div>
+
+  <div *ngIf="declar.signature">
+    <h3>Signature</h3>
+    <code>{{ declar.signature }}</code>
+  </div>
+</div>

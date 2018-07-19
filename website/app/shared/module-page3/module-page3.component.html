@@ -1,22 +1,10 @@
 <h1>{{ name }}</h1>
 
-<h2>Generation</h2>
-
-<pre><code>ng g @ngx-kit/collection:{{ name }} [name]</code></pre>
-
-<div *ngFor="let file of mdFiles"
-     class="declar">
-  <h2 class="name">{{ file.name }}</h2>
+<div *ngFor="let file of mdFiles">
+  <h2>{{ file.name }}</h2>
   <app-md [content]="file.content">
   </app-md>
 </div>
-
-<ng-container *ngIf="demoFile">
-  <h2>Demo</h2>
-  <app-demo [declar]="demoFile.declars[0]"
-            [sources]="demoSources">
-  </app-demo>
-</ng-container>
 
 <ng-container *ngIf="tsFiles?.length > 0">
   <h2>API</h2>
@@ -30,7 +18,7 @@
                                            [declar]="declar">
         </app-module-page3-interface-declar>
         <app-module-page3-function-declar *ngSwitchCase="'function'"
-                                          [declar]="declar">
+                                           [declar]="declar">
         </app-module-page3-function-declar>
       </ng-container>
     </ng-container>

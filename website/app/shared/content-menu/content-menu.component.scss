@@ -12,6 +12,9 @@ a {
   padding: 6px 8px;
   text-decoration: none;
   &:hover {
+    background: rgba(0, 0, 0, .6);
+  }
+  &.-active {
     background: rgba(0, 0, 0, .4);
   }
 }
