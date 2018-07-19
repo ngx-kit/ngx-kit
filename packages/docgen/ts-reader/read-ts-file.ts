@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import * as ts from 'typescript';
 import { DocGen } from '../meta';
 import { readClassDeclar } from './read-class-declar';
+import { readFunctionDeclar } from './read-function-declar';
 import { readInterfaceDeclar } from './read-interface-declar';
 import { readTypeAliasDeclar } from './read-type-alias-declar';
 
@@ -38,7 +39,7 @@ function processDeclarNode(node: ts.Node, sourceFile: ts.SourceFile): DocGen.Dec
       return [];
     // 229 @todo
     case ts.SyntaxKind.FunctionDeclaration:
-      return [];
+      return [readFunctionDeclar(node, sourceFile)];
     // 230
     case ts.SyntaxKind.ClassDeclaration:
       return [readClassDeclar(node, sourceFile)];

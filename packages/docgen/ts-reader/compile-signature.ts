@@ -32,3 +32,12 @@ export function compileSignatureSignature(member: DocGen.Signature): string {
     member.type ? `: ${member.type}` : '',
   ].join('');
 }
+
+export function compileFunctionSignature(member: DocGen.FunctionDeclar): string {
+  return [
+    member.decorators ? member.decorators.join(' ') + ' ' : '',
+    member.name,
+    `(${member.parameters ? member.parameters.join(', ') : ''})`,
+    member.type ? `: ${member.type}` : '',
+  ].join('');
+}

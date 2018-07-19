@@ -2,10 +2,6 @@ import * as ts from 'typescript';
 import { isArray } from 'util';
 import { DocGen } from '../meta';
 import { readNodeText } from './read-node-text';
-import NgComponentMeta = DocGen.NgComponentMeta;
-import NgDirectiveMeta = DocGen.NgDirectiveMeta;
-import NgInjectableMeta = DocGen.NgInjectableMeta;
-import NgModuleMeta = DocGen.NgModuleMeta;
 
 export function readNgMeta(decorators: ts.Decorator[], sourceFile: ts.SourceFile): DocGen.NgMeta | undefined {
   if (decorators && isArray(decorators)) {
@@ -17,7 +13,7 @@ export function readNgMeta(decorators: ts.Decorator[], sourceFile: ts.SourceFile
         const name = readNodeText(expression.expression, sourceFile);
         switch (name) {
           case 'Directive': {
-            const meta: NgDirectiveMeta = {
+            const meta: DocGen.NgMeta = {
               type: 'Directive',
               decorator: {
                 selector: readProp(expression, 'selector', sourceFile),
@@ -27,7 +23,7 @@ export function readNgMeta(decorators: ts.Decorator[], sourceFile: ts.SourceFile
             return meta;
           }
           case 'Component': {
-            const meta: NgComponentMeta = {
+            const meta: DocGen.NgMeta = {
               type: 'Component',
               decorator: {
                 selector: readProp(expression, 'selector', sourceFile),
@@ -37,7 +33,7 @@ export function readNgMeta(decorators: ts.Decorator[], sourceFile: ts.SourceFile
             return meta;
           }
           case 'Injectable': {
-            const meta: NgInjectableMeta = {
+            const meta: DocGen.NgMeta = {
               type: 'Injectable',
               decorator: {
                 providedIn: readProp(expression, 'providedIn', sourceFile),
@@ -46,7 +42,7 @@ export function readNgMeta(decorators: ts.Decorator[], sourceFile: ts.SourceFile
             return meta;
           }
           case 'NgModule': {
-            const meta: NgModuleMeta = {
+            const meta: DocGen.NgMeta = {
               type: 'NgModule',
               decorator: {
                 exports: readProp(expression, 'exports', sourceFile),
