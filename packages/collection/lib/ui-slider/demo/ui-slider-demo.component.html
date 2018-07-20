@@ -23,6 +23,6 @@
 
 <div>
   <h3>Range slider</h3>
-  Range: from -1000 to 1600, step: 50, value: {{ value | json }}<br>
+  Range: from -1000 to 1600, step: 50, value: {{ rangeValue | json }}<br>
   <ui-slider [(ngModel)]="rangeValue" [range]="true" [min]="-1000" [max]="1600" [step]="50"></ui-slider>
 </div>

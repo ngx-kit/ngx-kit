@@ -3,6 +3,11 @@ import { uuid } from '../util/uuid';
 import { KitCollapseHostService } from './kit-collapse-host.service';
 import { KitCollapseId } from './meta';
 
+/**
+ * Controls state of a collapsible item.
+ *
+ * Should be provided on component or directive.
+ */
 @Injectable()
 export class KitCollapseItemService implements OnDestroy {
   private _id: KitCollapseId;

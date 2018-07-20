@@ -4,6 +4,9 @@ import { UiModalDemoBindingModalComponent } from './ui-modal-demo-binding-modal.
 import { UiModalDemoCanCloseModalComponent } from './ui-modal-demo-can-close-modal.component';
 import { UiModalDemoModalComponent } from './ui-modal-demo-modal.component';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-modal-demo.component.html',
 })

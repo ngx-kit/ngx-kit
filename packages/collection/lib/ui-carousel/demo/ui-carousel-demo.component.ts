@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-carousel-demo.component.html',
 })

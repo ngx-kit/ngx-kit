@@ -5,6 +5,9 @@ import { KitClassSetter } from './meta';
 /**
  * Provides `KitClassService` and pass input value to `KitClassService.apply` method.
  *
+ *
+ * ### Usage
+ *
  * ```html
  * <div [kitClass]="{color: 'red', active: true, primary: false}">
  * <!--<div class="color-red active">-->

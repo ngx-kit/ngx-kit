@@ -13,7 +13,6 @@ export * from './src/kit-icons/kit-icons';
 export * from './src/kit-input-date/kit-input-date';
 export * from './src/kit-intersection/kit-intersection';
 export * from './src/kit-loading/kit-loading';
-export * from './src/kit-notification/kit-notification';
 export * from './src/kit-mq/kit-mq';
 export * from './src/kit-modal/kit-modal';
 export * from './src/kit-moment/kit-moment';

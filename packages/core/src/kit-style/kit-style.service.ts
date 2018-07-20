@@ -4,6 +4,11 @@ import { KitStyles } from './meta';
 /**
  * Service that works exactly like `ngStyle`, but can be provided on a component or directive.
  *
+ *
+ * ### Usage
+ *
+ * Provide and inject `KitStyleService` in a component, then apply styles:
+ *
  * ```typescript
  * providers: [KitStyleService],
  * ...

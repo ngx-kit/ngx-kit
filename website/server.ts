@@ -9,6 +9,11 @@ import * as express from 'express';
 import { join } from 'path';
 import { readFileSync } from 'fs';
 
+// Work around until @angular/angular fixes Node undefined bug
+const domino = require('domino');
+Object.assign(global, domino.impl);
+(global as any)['KeyboardEvent'] = domino.impl.Event;
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 

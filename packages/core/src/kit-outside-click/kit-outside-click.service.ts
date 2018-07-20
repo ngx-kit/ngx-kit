@@ -2,9 +2,12 @@ import { ElementRef, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { KitEventManagerService } from '../kit-event-manager/kit-event-manager.service';
 
+/**
+ * Emits event when user clicks not on a hosted element.
+ */
 @Injectable()
 export class KitOutsideClickService implements OnDestroy {
-  skip: HTMLElement[];
+  skip: HTMLElement[] = [];
 
   private _outsideClick = new Subject<any>();
 

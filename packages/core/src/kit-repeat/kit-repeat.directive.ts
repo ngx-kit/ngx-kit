@@ -1,13 +1,25 @@
-import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRef, } from '@angular/core';
+import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 
 /**
  * Structural directive for template repeating.
  *
- * Usage:
+ *
+ * ### Usage
  *
  * ```html
- * <ng-container *kitRepeat="number; let index = index"></ng-container>
+ * <ng-container *kitRepeat="number; let index = index">
+ *   Content
+ * </ng-container>
  * ```
+ *
+ *
+ * ##№ Example
+ *
+ * * collection:rating - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-rating),
+ * [demo](http://ngx-kit.com/collection/module/ui-rating)
+ *
+ *
+ * @todo do not recreate all views on changes.
  */
 @Directive({
   selector: '[kitRepeat]',

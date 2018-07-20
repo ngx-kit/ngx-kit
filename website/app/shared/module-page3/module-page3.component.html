@@ -1,0 +1,26 @@
+<h1>{{ name }}</h1>
+
+<div *ngFor="let file of mdFiles">
+  <h2>{{ file.name }}</h2>
+  <app-md [content]="file.content">
+  </app-md>
+</div>
+
+<ng-container *ngIf="tsFiles?.length > 0">
+  <h2>API</h2>
+  <ng-container *ngFor="let file of tsFiles">
+    <ng-container *ngFor="let declar of file.declars">
+      <ng-container [ngSwitch]="declar.kindString">
+        <app-module-page3-class-declar *ngSwitchCase="'class'"
+                                       [declar]="declar">
+        </app-module-page3-class-declar>
+        <app-module-page3-interface-declar *ngSwitchCase="'interface'"
+                                           [declar]="declar">
+        </app-module-page3-interface-declar>
+        <app-module-page3-function-declar *ngSwitchCase="'function'"
+                                           [declar]="declar">
+        </app-module-page3-function-declar>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>

@@ -1,11 +1,14 @@
 :host {
   background: #ffffff;
   border: 0;
+  box-sizing: border-box;
   cursor: pointer;
   display: block;
-  min-width: 80px;
+  margin: 0;
   outline: none;
   padding: 4px 8px;
+  text-align: left;
+  width: 100%;
   &:hover {
     background: #eeeeee;
   }

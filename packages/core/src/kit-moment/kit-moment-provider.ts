@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 
+/**
+ * Provides [Moment.js](https://momentjs.com/) instance if available.
+ */
 @Injectable({
   providedIn: 'root',
 })

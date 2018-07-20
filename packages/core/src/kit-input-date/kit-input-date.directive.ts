@@ -3,6 +3,38 @@ import { Subject } from 'rxjs';
 import { KitMomentProvider } from '../kit-moment/kit-moment-provider';
 import { KitModelInterceptor } from '../kit-value-accessor/kit-model-interceptor';
 
+/**
+ * Displays date in an input in any format and store JS Date-object in model.
+ *
+ *
+ * ### Usage
+ *
+ * Use the directive:
+ *
+ * ```html
+ * <input [(ngModel)]="date"
+ *        kitInputDate>
+ * ```
+ *
+ * #### Format
+ *
+ * You can define rendering/parsing format:
+ *
+ * ```html
+ * <input [(ngModel)]="date"
+ *        kitInputDate
+ *        format="YYYY/DD/MM">
+ * ```
+ *
+ * __Requires Moment.js.__
+ *
+ *
+ * ### Example
+ *
+ * * collection:date-picker -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
+ * [demo](http://ngx-kit.com/collection/module/ui-date-picker)
+ */
 @Directive({
   selector: '[kitInputDate]',
   providers: [
@@ -13,6 +45,9 @@ import { KitModelInterceptor } from '../kit-value-accessor/kit-model-interceptor
   ],
 })
 export class KitInputDateDirective implements KitModelInterceptor, OnChanges {
+  /**
+   * @internal
+   */
   @Input() kitInputDate: void;
 
   /**

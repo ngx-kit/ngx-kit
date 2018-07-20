@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MdRenderService } from '@nvxme/ngx-md-render';
-import { ContentPost } from '../../content/content-meta';
 
 @Component({
   selector: 'app-md',
@@ -9,12 +8,12 @@ import { ContentPost } from '../../content/content-meta';
 export class MdComponent implements OnChanges {
   html: string;
 
-  @Input() post: ContentPost;
+  @Input() content: string;
 
   constructor(private md: MdRenderService) {
   }
 
   ngOnChanges() {
-    this.html = this.md.render(this.post.content);
+    this.html = this.md.render(this.content);
   }
 }

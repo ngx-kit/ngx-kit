@@ -5,6 +5,48 @@ import { keyTab } from '../kit-event-manager/meta';
 import { KitFocusManagerRegistryService } from './kit-focus-manager-registry.service';
 import { KitFocusDirective } from './kit-focus/kit-focus.directive';
 
+/**
+ * ### Usage
+ *
+ * Provide `KitFocusManagerService` on component.
+ *
+ * #### Focus element
+ *
+ * Add directive and set id to an element.
+ *
+ * ```html
+ * <input kitFocus="start">
+ * ```
+ *
+ * Focus element by `id`
+ *
+ * ```typescript
+ * this.focusManager.focusItem('start');
+ * ```
+ *
+ * #### Focus trap
+ *
+ * Great tool for improve accessibility of components. Keep focus inside component that provide
+ * `KitFocusManagerService`.
+ *
+ * Inject and init service with `autoCapture`.
+ *
+ * ```typescript
+ * providers: [KitFocusManagerService],
+ * ...
+ * constructor(private focusManager: KitFocusManagerService) {
+ *   this.focusManager.autoCapture = true;
+ *   this.focusManager.init();
+ * }
+ * ```
+ *
+ *
+ * ### Example
+ *
+ * * collection:date-picker -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
+ * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
+ */
 @Injectable()
 export class KitFocusManagerService implements OnDestroy {
   /**

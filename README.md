@@ -29,15 +29,9 @@ Components customizing should be simple. Just generate components from ngx-kit c
 * Angular ^6
 * Angular-cli ^6
 
-
-## Watch the video
-
-https://www.youtube.com/watch?v=th9fhD1e3d4
-
-Stackblitz demo: https://stackblitz.com/edit/ngx-kit-date-picker-demo
-
-
 ## Usage
+
+![](./website/assets/demo.gif)
 
 #### Add ngx-kit to your project
 

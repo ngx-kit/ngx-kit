@@ -2,7 +2,8 @@ import { BehaviorSubject } from 'rxjs';
 
 export interface KitIcon {
   name: string;
-  url: string;
+  url?: string;
+  xml?: string;
   size?: string;
 }
 
@@ -13,5 +14,5 @@ export interface KitIconSource {
 
 export interface KitIconCached {
   name: string;
-  svg: BehaviorSubject<string|null>;
+  svg: BehaviorSubject<string | null>;
 }

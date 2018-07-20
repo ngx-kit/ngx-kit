@@ -1,6 +1,19 @@
 import { Directive, EventEmitter, OnInit, Output } from '@angular/core';
 import { KitIntersectionService } from '../kit-intersection.service';
 
+/**
+ * Observe viewport intersection.
+ *
+ *
+ * ### Usage
+ *
+ * And listen to intersection changes:
+ *
+ * ```html
+ * <div (kitIntersection)="visible = $event">
+ * </div>
+ * ```
+ */
 @Directive({
   selector: '[kitIntersection]',
   providers: [

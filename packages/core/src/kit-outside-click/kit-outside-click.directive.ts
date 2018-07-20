@@ -6,11 +6,41 @@ import { KitOutsideClickService } from './kit-outside-click.service';
 /**
  * Emitted when user clicks not on current element.
  *
- * Handy for popup closing.
+ *
+ * ### Usage
+ * ```html
+ * <div (kitOutsideClick)="outside()"></div>
+ * ```
+ *
+ * `outside()` method will be called on any click except at this `div` and his children.
+ *
+ * #### Skip
+ *
+ * You can define additional elements to skip:
  *
  * ```html
- * <div (kitOutsideClick)="close()">Popup content</div>
+ * <button #skip1>...</button>
+ * <button #skip2>...</button>
+ * <div (kitOutsideClick)="outside()"
+ *      [skip]="[skip1, skip2]">
+ * </div>
  * ```
+ *
+ * Use `kitAnchor` to skip components:
+ *
+ * ```html
+ * <app-some-component kitAnchor #skip1="anchor"></app-some-component>
+ * <div (kitOutsideClick)="outside()"
+ *      [skip]="[skip1]">
+ * </div>
+ * ```
+ *
+ *
+ * ### Example
+ *
+ * * collection:date-picker -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
+ * [demo](http://ngx-kit.com/collection/module/ui-date-picker)
  */
 @Directive({
   selector: '[kitOutsideClick]',

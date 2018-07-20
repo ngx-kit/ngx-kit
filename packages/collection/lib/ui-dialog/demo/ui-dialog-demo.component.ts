@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef } from '@angular/core';
 import { UiDialogService } from '../ui-dialog.service';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-dialog-demo.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

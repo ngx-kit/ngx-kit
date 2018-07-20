@@ -37,7 +37,7 @@ export class UiAlertComponent {
   /**
    * Alert close.
    */
-  @Output('close') close = new EventEmitter<null>();
+  @Output() close = new EventEmitter<null>();
 
   @Input() color = 'default';
 

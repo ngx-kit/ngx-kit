@@ -13,13 +13,27 @@ import { Subscription } from 'rxjs';
 import { KitMqService } from '../kit-mq.service';
 import { KitMqParams } from '../meta';
 
+/**
+ * Structural directive to check/observe media query.
+ *
+ * Works like `*ngIf`.
+ *
+ *
+ * ### Usage
+ *
+ * ```html
+ * <div *kitMq="{from: 'desktop'}">
+ *   Displays on desktops and wider.
+ * </div>
+ * ```
+ */
 @Directive({
   selector: '[kitMq]',
 })
 export class KitMqDirective implements OnChanges, OnDestroy {
   @Input() kitMq: KitMqParams;
 
-  private _viewRef: ViewRef | null;
+  private viewRef?: ViewRef;
 
   private subscription: Subscription;
 
@@ -31,10 +45,6 @@ export class KitMqDirective implements OnChanges, OnDestroy {
   ) {
   }
 
-  get viewRef(): ViewRef | null {
-    return this._viewRef;
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     if (changes['kitMq']) {
       if (this.subscription) {
@@ -43,28 +53,28 @@ export class KitMqDirective implements OnChanges, OnDestroy {
       this.subscription = this.mq.observe(this.kitMq)
         .subscribe(matches => {
           this.updateHost(!!matches);
-          this.cdr.detectChanges();
         });
     }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.destroyView();
   }
 
-  updateHost(matches: boolean) {
-    if (matches && !this._viewRef) {
-      this._viewRef = this.vcr.createEmbeddedView(this.templateRef);
+  private updateHost(matches: boolean) {
+    if (matches && !this.viewRef) {
+      this.viewRef = this.vcr.createEmbeddedView(this.templateRef);
+      this.cdr.detectChanges();
     } else if (!matches) {
-      this.destroyView();
+      this.clear();
+      this.cdr.detectChanges();
     }
   }
 
-  private destroyView() {
-    if (this._viewRef) {
-      this._viewRef.destroy();
-      this._viewRef = null;
+  private clear() {
+    if (this.viewRef) {
+      this.vcr.clear();
+      this.viewRef = undefined;
     }
   }
 }

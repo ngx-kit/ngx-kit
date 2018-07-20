@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KitCollapseId } from './meta';
 
+/**
+ * Controls set of collapsible items.
+ *
+ * Should be provided on component or directive.
+ */
 @Injectable()
 export class KitCollapseHostService {
   multiple = false;

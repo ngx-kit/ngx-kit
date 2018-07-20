@@ -2,16 +2,22 @@
   <li>
     Docs
     <ul>
-      <li *ngFor="let item of content.docs">
-        <a [routerLink]="['./docs', item.name]">{{ item.meta?.title || item.name }}</a>
+      <li *ngFor="let doc of docs">
+        <a [routerLink]="['./docs', doc.toLowerCase()]"
+           routerLinkActive="-active">
+          {{ doc }}
+        </a>
       </li>
     </ul>
   </li>
   <li>
     Modules
     <ul>
-      <li *ngFor="let item of content.modules">
-        <a [routerLink]="['./module', item.name]">{{ item.name }}</a>
+      <li *ngFor="let module of modules">
+        <a [routerLink]="['./module', module]"
+           routerLinkActive="-active">
+          {{ module }}
+        </a>
       </li>
     </ul>
   </li>

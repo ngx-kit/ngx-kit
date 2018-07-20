@@ -6,8 +6,23 @@ import { StrategyEl } from '../../kit-overlay/meta';
 import { KitPlatformService } from '../../kit-platform/kit-platform.service';
 import { KitStyleService } from '../../kit-style/kit-style.service';
 import { KitStyles } from '../../kit-style/meta';
-import { KitPositionField, KitPositionRect, KitPinPosition } from '../meta';
+import { KitPinPosition, KitPositionField, KitPositionRect } from '../meta';
 
+/**
+ * Pin positioning directive.
+ *
+ * Resizes & repositions hosted element around anchor. Uses css flex for proper centring, but container could overlap
+ * outside elements.
+ *
+ *
+ * ### Usage
+ *
+ * ```html
+ * <button kitAnchor #anchor="anchor"></button>
+ * <div kitPinPosition
+ *      [anchor]="anchor">
+ * ```
+ */
 @Directive({
   selector: '[kitPinPosition]',
   providers: [
@@ -15,10 +30,19 @@ import { KitPositionField, KitPositionRect, KitPinPosition } from '../meta';
   ],
 })
 export class KitPinPositionDirective implements OnChanges {
+  /**
+   * @internal
+   */
   @Input() kitPinPosition: void;
 
+  /**
+   * Relative element to positioning.
+   */
   @Input() anchor: KitAnchor | HTMLElement;
 
+  /**
+   * Position of elements inside container.
+   */
   @Input() position: KitPinPosition;
 
   private unsubs: any[] = [];

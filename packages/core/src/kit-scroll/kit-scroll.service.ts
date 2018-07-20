@@ -54,7 +54,9 @@ export class KitScrollService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.mutationObserver.disconnect();
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+    }
   }
 
   registerRefs(refs: KitScrollRefs) {

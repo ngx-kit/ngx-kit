@@ -39,28 +39,13 @@ export class KitIconsRegistryService {
    */
   add(icon: KitIcon | KitIcon[]) {
     const icons = isArray(icon) ? icon : [icon];
-    this.icons = [...this.icons, ...icons];
-  }
-
-  /**
-   * Register icon.
-   *
-   * @deprecated Use `.add()`
-   *
-   * @todo remove on 3.0 release
-   */
-  register(name: string, url: string) {
-    this.icons.push({name, url});
-  }
-
-  /**
-   * Register icons set.
-   *
-   * @deprecated Use `.add()`
-   *
-   * @todo remove on 3.0 release
-   */
-  registerSet(icons: KitIcon[]) {
+    // Validate
+    icons.forEach(i => {
+      if (!i.url && !i.xml) {
+        throw new Error('KitIconsRegistryService: icon registration requires url or xml.');
+      }
+    });
+    // Merge
     this.icons = [...this.icons, ...icons];
   }
 
@@ -80,15 +65,20 @@ export class KitIconsRegistryService {
           name,
           svg: new BehaviorSubject(null),
         };
-      // Fetch
       if (!fromCache) {
         // Add cached to the pull
         this.cache.push(cached);
-        return this.http.get(icon.url, {responseType: 'text'})
-          .pipe(
-            tap(svg => cached.svg.next(svg)),
-            map(svg => ({svg, size: icon.size})),
-          );
+        if (icon.url) {
+          // Fetch
+          return this.http.get(icon.url, {responseType: 'text'})
+            .pipe(
+              tap(svg => cached.svg.next(svg)),
+              map(svg => ({svg, size: icon.size})),
+            );
+        } else if (icon.xml) {
+          // Register xml
+          cached.svg.next(icon.xml);
+        }
       }
       // Return stream
       return cached.svg

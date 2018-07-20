@@ -6,6 +6,15 @@ import { KitModelInterceptor } from './kit-model-interceptor';
 
 /**
  * Service directive, injects middleware.
+ *
+ * Allows to intercept in communication between html `input` and `ngModel`.
+ *
+ *
+ * ### Examples
+ *
+ * * collection:autocomplete -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-autocomplete),
+ * [demo](http://ngx-kit.com/collection/module/ui-autocomplete)
  */
 @Directive({
   // tslint:disable-next-line
