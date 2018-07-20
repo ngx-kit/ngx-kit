@@ -113,6 +113,7 @@
             "polyfills": "website/polyfills.ts",
             "assets": [
               "website/favicon.ico",
+              "website/robots.txt",
               "website/assets"
             ],
             "styles": [
