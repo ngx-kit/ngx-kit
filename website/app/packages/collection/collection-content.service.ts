@@ -6,6 +6,8 @@ import { collectionContent, ContentServiceBase } from '../../content/content';
 export class CollectionContentService extends ContentServiceBase {
   readonly doc = collectionContent;
 
+  readonly section = 'collection';
+
   getModuleFiles(name: string) {
     return this.doc.files.filter(file => {
       return file.fileName.indexOf(`lib/${name}/`) === 0;

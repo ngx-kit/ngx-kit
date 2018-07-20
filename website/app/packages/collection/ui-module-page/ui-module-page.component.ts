@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DocGen } from '@ngx-kit/docgen';
 import { ContentServiceBase } from '../../../content/content';
+import { SeoService } from '../../../seo.service';
 
 @Component({
   selector: 'app-ui-module-page',
@@ -21,14 +22,16 @@ export class UiModulePageComponent implements OnInit {
   demoSources: DocGen.File[] = [];
 
   constructor(
-    private route: ActivatedRoute,
     public content: ContentServiceBase,
+    private route: ActivatedRoute,
+    private seo: SeoService,
   ) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.name = params['name'];
+      this.seo.setTitle(`${this.content.section}/${this.name}`);
       this.files = this.content.getModuleFiles(this.name);
       // Pick md
       this.mdFiles = this.files.filter(file => file.type === 'md') as DocGen.MdFile[];

@@ -6,6 +6,8 @@ import { ContentServiceBase, coreContent } from '../../content/content';
 export class CoreContentService extends ContentServiceBase {
   readonly doc = coreContent;
 
+  readonly section = 'core';
+
   getModuleFiles(name: string) {
     return this.doc.files.filter(file => {
       return file.fileName.indexOf(`src/${name}/`) === 0;
