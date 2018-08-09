@@ -55,7 +55,7 @@ export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDest
 
   @Input() optionTemplate: TemplateRef<any>;
 
-  @Output() select = new EventEmitter<any>();
+  @Output() optionSelect = new EventEmitter<any>();
 
   @HostBinding('@host') hostTrigger = true;
 

@@ -5,7 +5,7 @@
   <div class="options"
        [@fade]="true">
     <button *ngFor="let option of options; let index = index"
-            (click)="select.emit(index)"
+            (click)="optionSelect.emit(index)"
             [class.-selected]="index === selected">
       <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
       <ng-container *ngIf="optionTemplate">
