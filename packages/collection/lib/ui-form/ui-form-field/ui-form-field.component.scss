@@ -9,6 +9,8 @@
   label {
     display: flex;
     flex-direction: row-reverse;
+    flex-shrink: 0;
+    font-weight: 600;
     width: 150px;
     .required {
       margin-right: 4px;
