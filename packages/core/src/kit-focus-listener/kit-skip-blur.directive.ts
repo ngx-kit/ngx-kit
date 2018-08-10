@@ -1,4 +1,5 @@
-import { Directive, ElementRef, Input, OnDestroy, OnInit, Optional } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, Optional } from '@angular/core';
+import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { KitFocusListenerService } from './kit-focus-listener.service';
 
 /**
@@ -13,6 +14,7 @@ export class KitSkipBlurDirective implements OnInit, OnDestroy {
   constructor(
     @Optional() private focusListener: KitFocusListenerService,
     private elementRef: ElementRef,
+    private platform: KitPlatformService,
   ) {
     if (!this.focusListener) {
       throw new Error(`KitSkipBlurDirective: should be used under KitFocusListenerService, provide it in a parent component at any level.`);
@@ -25,5 +27,12 @@ export class KitSkipBlurDirective implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.focusListener.remove(this.elementRef.nativeElement);
+  }
+
+  @HostListener('mousedown', ['$event']) mousedownHandler(event: any) {
+    // Fix safari specific bug with blur prevention
+    if (this.platform.isBrowserSafari()) {
+      event.preventDefault();
+    }
   }
 }
