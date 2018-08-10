@@ -38,6 +38,10 @@ export class UiFileComponent {
     this.elementRef.nativeElement.click();
   }
 
+  reset() {
+    this.elementRef.nativeElement.value = '';
+  }
+
   private loadFile(file: File): Observable<UiFileSelect> {
     return new Observable(observer => {
       const reader = new FileReader();
