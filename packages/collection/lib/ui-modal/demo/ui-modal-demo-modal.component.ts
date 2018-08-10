@@ -1,6 +1,7 @@
 import { animateChild, query, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { KitModalRef } from '@ngx-kit/core';
+import { UiModalSize } from '../meta';
 
 @Component({
   selector: 'ui-modal-demo-modal',
@@ -16,6 +17,8 @@ import { KitModalRef } from '@ngx-kit/core';
 })
 export class UiModalDemoModalComponent {
   @HostBinding('@host') hostTrigger: void;
+
+  @Input() size: UiModalSize = 'm';
 
   constructor(
     private ref: KitModalRef<UiModalDemoModalComponent>,
