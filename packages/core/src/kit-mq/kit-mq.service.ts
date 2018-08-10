@@ -1,5 +1,5 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Inject, Injectable, NgZone, Optional } from '@angular/core';
+import { from, Observable } from 'rxjs';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { kitMqBreakpoints, KitMqParams } from './meta';
 
@@ -67,6 +67,7 @@ export class KitMqService {
 
   constructor(
     private platform: KitPlatformService,
+    private zone: NgZone,
     @Optional() @Inject(kitMqBreakpoints) private breakpoints: any,
   ) {
     if (!this.breakpoints) {
@@ -78,7 +79,11 @@ export class KitMqService {
   }
 
   check(params: KitMqParams) {
-    return this.checkRaw(this.buildQuery(params));
+    if (this.platform.isServer()) {
+      return !!params.server;
+    } else {
+      return this.checkRaw(this.buildQuery(params));
+    }
   }
 
   checkRaw(mediaQuery: string): boolean | null {
@@ -90,8 +95,12 @@ export class KitMqService {
     }
   }
 
-  observe(params: KitMqParams) {
-    return this.observeRaw(this.buildQuery(params));
+  observe(params: KitMqParams): Observable<boolean | null> {
+    if (this.platform.isServer()) {
+      return from([!!params.server]);
+    } else {
+      return this.observeRaw(this.buildQuery(params));
+    }
   }
 
   observeRaw(mediaQuery: string): Observable<boolean | null> {
@@ -102,7 +111,7 @@ export class KitMqService {
         };
         const mq = this.getMq(mediaQuery);
         observer.next(mq.matches);
-        mq.addListener(listener);
+        mq.addListener((e: MediaQueryList) => this.zone.run(() => listener(e)));
       } else {
         observer.next(null);
         observer.complete();

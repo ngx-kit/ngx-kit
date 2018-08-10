@@ -9,6 +9,7 @@ import { UiFileHolderDirective } from '../ui-file-holder/ui-file-holder.directiv
   template: '',
   styleUrls: ['./ui-file.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'uiFile',
 })
 export class UiFileComponent {
   @Output() select = new EventEmitter<UiFileSelect[]>();
@@ -35,6 +36,10 @@ export class UiFileComponent {
 
   emitClick() {
     this.elementRef.nativeElement.click();
+  }
+
+  reset() {
+    this.elementRef.nativeElement.value = '';
   }
 
   private loadFile(file: File): Observable<UiFileSelect> {

@@ -26,12 +26,33 @@ import { KitMqParams } from '../meta';
  *   Displays on desktops and wider.
  * </div>
  * ```
+ *
+ * ### Force render
+ *
+ * When you pass a boolean it works like `ngIf`.
+ *
+ * ```html
+ * <div *kitMq="true">
+ *   This block will be rendered
+ * </div>
+ * ```
+ *
+ * ### Server rendering
+ *
+ * By default block will not be rendered on the server platform.
+ * You can change this behavior:
+ *
+ * ```html
+ * <div *kitMq="{from: 'desktop', server: true}">
+ *   Displays on desktops and wider (and on server).
+ * </div>
+ * ```
  */
 @Directive({
   selector: '[kitMq]',
 })
 export class KitMqDirective implements OnChanges, OnDestroy {
-  @Input() kitMq: KitMqParams;
+  @Input() kitMq: KitMqParams | boolean;
 
   private viewRef?: ViewRef;
 
@@ -50,10 +71,17 @@ export class KitMqDirective implements OnChanges, OnDestroy {
       if (this.subscription) {
         this.subscription.unsubscribe();
       }
-      this.subscription = this.mq.observe(this.kitMq)
-        .subscribe(matches => {
-          this.updateHost(!!matches);
-        });
+      if (this.kitMq === true) {
+        // Force displaying
+        this.updateHost(true);
+      } else if (!this.kitMq) {
+        this.updateHost(false);
+      } else {
+        this.subscription = this.mq.observe(this.kitMq)
+          .subscribe(matches => {
+            this.updateHost(!!matches);
+          });
+      }
     }
   }
 
@@ -64,10 +92,8 @@ export class KitMqDirective implements OnChanges, OnDestroy {
   private updateHost(matches: boolean) {
     if (matches && !this.viewRef) {
       this.viewRef = this.vcr.createEmbeddedView(this.templateRef);
-      this.cdr.detectChanges();
     } else if (!matches) {
       this.clear();
-      this.cdr.detectChanges();
     }
   }
 

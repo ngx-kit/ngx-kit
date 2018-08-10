@@ -16,7 +16,15 @@
   flex-direction: column;
   max-height: 90%;
   max-width: 90%;
-  min-width: 400px;
+  &.size-s {
+    width: 250px;
+  }
+  &.size-m {
+    width: 500px;
+  }
+  &.size-l {
+    width: 800px;
+  }
 }
 
 .header {

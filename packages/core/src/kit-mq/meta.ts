@@ -7,4 +7,5 @@ export interface KitMqParams {
   from?: string;
   until?: string;
   and?: string;
+  server?: boolean;
 }
