@@ -69,6 +69,11 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
   @Input() optionTemplate: TemplateRef<any>;
 
   /**
+   * ngModel value should be presented in options to being displayed.
+   */
+  @Input() strict = false;
+
+  /**
    * Emits when user input a value.
    */
   @Output() search = new EventEmitter<string>();
@@ -256,7 +261,9 @@ export class UiAutocompleteDirective implements KitModelInterceptor, OnInit, OnC
     // request options for correct label displaying
     const option = this.options && this.options.length > 0
       ? this.options.find(o => isString(o) ? o === this.modelState : o.value === this.modelState)
-      : null;
+      : this.strict
+        ? null // In strict mode display nothing if option not found
+        : this.modelState; // Show model state if option not found
     this.viewState = option ? isString(option) ? option : option.label : this.viewState;
     this.viewStateChanges.next(this.viewState);
   }
