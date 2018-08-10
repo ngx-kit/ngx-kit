@@ -6,13 +6,12 @@ import {
   HostBinding,
   Input,
   OnChanges,
-  OnDestroy,
-  OnInit,
   Output,
   SimpleChanges,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
-import { isString, KitFocusListenerService } from '@ngx-kit/core';
+import { isString } from '@ngx-kit/core';
 import { UiAutocompleteOption } from '../meta';
 
 @Component({
@@ -46,7 +45,7 @@ import { UiAutocompleteOption } from '../meta';
     ]),
   ],
 })
-export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDestroy {
+export class UiAutocompleteOptionsComponent implements OnChanges {
   @Input() anchor: HTMLElement;
 
   @Input() options: UiAutocompleteOption[] = [];
@@ -59,26 +58,18 @@ export class UiAutocompleteOptionsComponent implements OnInit, OnChanges, OnDest
 
   @HostBinding('@host') hostTrigger = true;
 
+  @ViewChild('optionsRef') optionsRef: ElementRef;
+
   optionsLabels: string[] = [];
 
   constructor(
     private elRef: ElementRef,
-    private focusListener: KitFocusListenerService,
   ) {
-  }
-
-  ngOnInit() {
-    // Register in blur service
-    this.focusListener.add(this.elRef.nativeElement);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if ('options' in changes) {
       this.optionsLabels = this.options.map(o => isString(o) ? o : o.label);
     }
-  }
-
-  ngOnDestroy() {
-    this.focusListener.remove(this.elRef.nativeElement);
   }
 }

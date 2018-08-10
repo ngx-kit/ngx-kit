@@ -2,8 +2,10 @@
      kitPinPosition
      position="bottom"
      [anchor]="anchor">
-  <div class="options"
-       [@fade]="true">
+  <div #optionsRef
+       class="options"
+       [@fade]="true"
+       kitSkipBlur>
     <button *ngFor="let option of options; let index = index"
             (click)="optionSelect.emit(index)"
             [class.-selected]="index === selected">
