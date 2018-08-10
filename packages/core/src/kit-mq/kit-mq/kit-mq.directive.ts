@@ -31,7 +31,7 @@ import { KitMqParams } from '../meta';
   selector: '[kitMq]',
 })
 export class KitMqDirective implements OnChanges, OnDestroy {
-  @Input() kitMq: KitMqParams;
+  @Input() kitMq: KitMqParams | boolean;
 
   private viewRef?: ViewRef;
 
@@ -50,10 +50,17 @@ export class KitMqDirective implements OnChanges, OnDestroy {
       if (this.subscription) {
         this.subscription.unsubscribe();
       }
-      this.subscription = this.mq.observe(this.kitMq)
-        .subscribe(matches => {
-          this.updateHost(!!matches);
-        });
+      if (this.kitMq === true) {
+        // Force displaying
+        this.updateHost(true);
+      } else if (!this.kitMq) {
+        this.updateHost(false);
+      } else {
+        this.subscription = this.mq.observe(this.kitMq)
+          .subscribe(matches => {
+            this.updateHost(!!matches);
+          });
+      }
     }
   }
 
