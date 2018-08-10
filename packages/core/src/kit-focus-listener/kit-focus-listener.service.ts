@@ -89,7 +89,8 @@ export class KitFocusListenerService {
   private checkLeave(event?: any) {
     let leave = true;
     this.elements.forEach(el => {
-      if (el.el.contains(event.relatedTarget)) {
+      const relatedTarget = event.relatedTarget || event.explicitOriginalTarget || document.activeElement;
+      if (el.el.contains(relatedTarget)) {
         leave = false;
       }
     });
