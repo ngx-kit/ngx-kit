@@ -76,9 +76,11 @@ export class KitFocusListenerService {
     const index = this.elements.findIndex(e => e.el === el);
     if (index) {
       const element = this.elements[index];
-      // void handlers
-      element.focus();
-      element.blur();
+      if (element) {
+        // void handlers
+        element.focus();
+        element.blur();
+      }
       // remove from stack
       this.elements.splice(index, 1);
     } else {
