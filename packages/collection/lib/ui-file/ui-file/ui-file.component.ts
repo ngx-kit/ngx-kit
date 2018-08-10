@@ -9,6 +9,7 @@ import { UiFileHolderDirective } from '../ui-file-holder/ui-file-holder.directiv
   template: '',
   styleUrls: ['./ui-file.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'uiFile',
 })
 export class UiFileComponent {
   @Output() select = new EventEmitter<UiFileSelect[]>();
