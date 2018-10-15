@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { outputFile } from 'fs-extra';
 import * as glob from 'glob';
 import { relative, resolve } from 'path';
