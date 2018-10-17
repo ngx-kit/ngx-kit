@@ -1,6 +1,4 @@
-# UiNotification
-
-## Usage
+### Usage
 
 1. Import generated module into root.
 
@@ -15,6 +13,6 @@ imports: [
 2. Use `UiNotificationService` api to show notifications.
 
 
-## Hammerjs
+### Hammerjs
 
-Add Hammer.JS from proper working.
+Add Hammer.JS for proper working.

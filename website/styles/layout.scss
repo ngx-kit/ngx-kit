@@ -26,6 +26,7 @@
 }
 
 .layout-content {
+  box-shadow: inset 0 0 39px -10px rgba(0, 0, 0, .1);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -33,9 +34,13 @@
 }
 
 .layout-content-wrapper {
-  box-shadow: inset 0 0 39px -10px rgba(0, 0, 0, .1);
   flex-grow: 1;
   padding: 32px 64px 64px;
+}
+
+.layout-content-outlet {
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 .layout-row {

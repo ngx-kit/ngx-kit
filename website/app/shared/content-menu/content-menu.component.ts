@@ -8,6 +8,10 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class ContentMenuComponent implements OnChanges {
   @Input() content: any;
 
+  @Input() modules: string[] = [];
+
+  @Input() docs: string[] = [];
+
   ngOnChanges() {
     if (this.content && this.content.docs) {
       this.content.docs.sort((x: any, y: any) => {

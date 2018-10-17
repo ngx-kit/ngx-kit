@@ -1,9 +1,20 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { KitOverlayDirective } from '../../kit-overlay/kit-overlay/kit-overlay.directive';
 import { KitModalRef } from '../kit-modal-ref';
 import { KitModalService } from '../kit-modal.service';
 import { KitModalOptions } from '../meta';
 
+/**
+ * When modal hosted in template `KitModalRef.close()` just emit `(close)` event on the `kit-modal` component. Display
+ * state should be controlled by `*kitOverlay` directive:
+ *
+ * ```html
+ * <button (click)="display = true">Show modal</button>
+ * <kit-modal (close)="display = false">
+ *   <demo-modal *kitOverlay="display"></demo-modal>
+ * </kit-modal>
+ * ```
+ */
 @Component({
   selector: 'kit-modal',
   template: '<ng-content></ng-content>',

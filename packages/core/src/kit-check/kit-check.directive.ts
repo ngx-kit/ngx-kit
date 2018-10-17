@@ -15,7 +15,33 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
  *
  * When is checked - adds class "checked" to the element.
  *
- * For a value changing the directive listen click event.
+ * For a value changing the directive listen click event. Directive implements `ControlValueAccessor` interface and
+ * changes `ngModel` value on click event.
+ *
+ *
+ * ### Usage
+ *
+ * #### Emit checkboxes behavior:
+ *
+ * ```html
+ * <button kitCheck [(ngModel)]="buttonModel1">Checkbox button 1</button>
+ * <button kitCheck [(ngModel)]="buttonModel2">Checkbox button 2</button>
+ * <button kitCheck [(ngModel)]="buttonModel3">Checkbox button 3</button>
+ * ```
+ *
+ * #### Emit radio behavior
+ *
+ * ```html
+ * <button kitCheck [(ngModel)]="buttonModel" [value]="1">Radio button 1</button>
+ * <button kitCheck [(ngModel)]="buttonModel" [value]="2">Radio button 2</button>
+ * <button kitCheck [(ngModel)]="buttonModel" [value]="3">Radio button 3</button>
+ * ```
+ *
+ *
+ * ### Example
+ *
+ * * collection:button - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-button),
+ * [demo](http://ngx-kit.com/collection/module/ui-button)
  */
 @Directive({
   selector: '[kitCheck]',
@@ -30,6 +56,9 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
    */
   @Input() checkedClass = 'checked';
 
+  /**
+   * @internal
+   */
   @Input() kitCheck: void;
 
   /**
@@ -55,6 +84,8 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
 
   /**
    * Listen to mouse clicks on element.
+   *
+   * @internal
    */
   @HostListener('click')
   clickListener() {
@@ -71,18 +102,30 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
     this.applyClass();
   }
 
+  /**
+   * @internal
+   */
   registerOnChange(fn: any) {
     this.changes.subscribe(fn);
   }
 
+  /**
+   * @internal
+   */
   registerOnTouched(fn: any) {
     this.touches.subscribe(fn);
   }
 
+  /**
+   * @internal
+   */
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
   }
 
+  /**
+   * @internal
+   */
   writeValue(value: any) {
     if (isDefined(this.value)) {
       // radio-mode

@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, IterableChanges, IterableDiffer, IterableDiffers, Renderer2, } from '@angular/core';
+import { ElementRef, Injectable, IterableChanges, IterableDiffer, IterableDiffers, Renderer2 } from '@angular/core';
 import { isString } from '../util/is-string';
 import { KitClassSetter } from './meta';
 
@@ -7,6 +7,9 @@ import { KitClassSetter } from './meta';
  *
  * Must be provided on a component or directive.
  *
+ *
+ * ### Usage
+ *
  * ```typescript
  * constructor(private kitClass: KitClassService) {}
  * ...
@@ -14,6 +17,12 @@ import { KitClassSetter } from './meta';
  * ```
  *
  * Adds to element: `class="color-red active"`
+ *
+ *
+ * ### Example
+ *
+ * * collection:button - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-button),
+ * [demo](http://ngx-kit.com/collection/module/ui-button)
  */
 @Injectable()
 export class KitClassService {

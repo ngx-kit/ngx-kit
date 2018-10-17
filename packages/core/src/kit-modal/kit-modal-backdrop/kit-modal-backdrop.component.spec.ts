@@ -35,7 +35,6 @@ describe('KitModalBackdropComponent', () => {
         done();
       });
       const el = fixture.debugElement.query(By.css('.backdrop')).nativeElement;
-      console.log('>>>>>> BCKDRP', el);
       dispatchMouseEvent(el, 'click');
     });
   });

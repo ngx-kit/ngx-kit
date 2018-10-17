@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-drawer-demo.component.html',
   styleUrls: ['./ui-drawer-demo.component.scss'],

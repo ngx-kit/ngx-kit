@@ -4,6 +4,13 @@ import { KitDatePickerGrid } from './meta';
 
 /**
  * Service encapsulates complex date-picker grid logic.
+ *
+ *
+ * ### Example
+ *
+ * * collection:date-picker -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
+ * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
  */
 @Injectable()
 export class KitDatePickerService implements OnDestroy {
@@ -20,6 +27,13 @@ export class KitDatePickerService implements OnDestroy {
   private readonly _pick = new Subject<Date>();
 
   constructor(@Optional() private renderer: Renderer2) {
+  }
+
+  /**
+   * Get active date.
+   */
+  get active() {
+    return new Date();
   }
 
   /**

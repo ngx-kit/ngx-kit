@@ -13,13 +13,48 @@ import { Subscription } from 'rxjs';
 import { KitMqService } from '../kit-mq.service';
 import { KitMqParams } from '../meta';
 
+/**
+ * Structural directive to check/observe media query.
+ *
+ * Works like `*ngIf`.
+ *
+ *
+ * ### Usage
+ *
+ * ```html
+ * <div *kitMq="{from: 'desktop'}">
+ *   Displays on desktops and wider.
+ * </div>
+ * ```
+ *
+ * ### Force render
+ *
+ * When you pass a boolean it works like `ngIf`.
+ *
+ * ```html
+ * <div *kitMq="true">
+ *   This block will be rendered
+ * </div>
+ * ```
+ *
+ * ### Server rendering
+ *
+ * By default block will not be rendered on the server platform.
+ * You can change this behavior:
+ *
+ * ```html
+ * <div *kitMq="{from: 'desktop', server: true}">
+ *   Displays on desktops and wider (and on server).
+ * </div>
+ * ```
+ */
 @Directive({
   selector: '[kitMq]',
 })
 export class KitMqDirective implements OnChanges, OnDestroy {
-  @Input() kitMq: KitMqParams;
+  @Input() kitMq: KitMqParams | boolean;
 
-  private _viewRef: ViewRef | null;
+  private viewRef?: ViewRef;
 
   private subscription: Subscription;
 
@@ -31,40 +66,41 @@ export class KitMqDirective implements OnChanges, OnDestroy {
   ) {
   }
 
-  get viewRef(): ViewRef | null {
-    return this._viewRef;
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     if (changes['kitMq']) {
       if (this.subscription) {
         this.subscription.unsubscribe();
       }
-      this.subscription = this.mq.observe(this.kitMq)
-        .subscribe(matches => {
-          this.updateHost(!!matches);
-          this.cdr.detectChanges();
-        });
+      if (this.kitMq === true) {
+        // Force displaying
+        this.updateHost(true);
+      } else if (!this.kitMq) {
+        this.updateHost(false);
+      } else {
+        this.subscription = this.mq.observe(this.kitMq)
+          .subscribe(matches => {
+            this.updateHost(!!matches);
+          });
+      }
     }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.destroyView();
   }
 
-  updateHost(matches: boolean) {
-    if (matches && !this._viewRef) {
-      this._viewRef = this.vcr.createEmbeddedView(this.templateRef);
+  private updateHost(matches: boolean) {
+    if (matches && !this.viewRef) {
+      this.viewRef = this.vcr.createEmbeddedView(this.templateRef);
     } else if (!matches) {
-      this.destroyView();
+      this.clear();
     }
   }
 
-  private destroyView() {
-    if (this._viewRef) {
-      this._viewRef.destroy();
-      this._viewRef = null;
+  private clear() {
+    if (this.viewRef) {
+      this.vcr.clear();
+      this.viewRef = undefined;
     }
   }
 }

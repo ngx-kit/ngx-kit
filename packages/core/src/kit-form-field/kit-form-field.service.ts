@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { isUndefined } from '../util/is-undefined';
 import { KitNgControlDirective } from './kit-ng-control/kit-ng-control.directive';
 
+/**
+ * ### Example
+ *
+ * * collection:form - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-form),
+ * [demo](https://ngx-kit.com/collection/module/ui-form)
+ */
 @Injectable()
 export class KitFormFieldService {
   private _controls: KitNgControlDirective[] = [];

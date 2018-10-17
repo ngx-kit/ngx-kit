@@ -1,15 +1,16 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   forwardRef,
-  HostListener,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { KitOverlayToggleDirective } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { UiCustomSelectOption } from '../meta';
 
@@ -26,6 +27,11 @@ export const uiCustomSelectValueAccessor: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [uiCustomSelectValueAccessor],
   animations: [
+    trigger('popupHost', [
+      transition(':enter, :leave', [
+        query('@*', animateChild(), {optional: true}),
+      ]),
+    ]),
     trigger('popup', [
       transition(':enter', [
         style({
@@ -48,9 +54,9 @@ export const uiCustomSelectValueAccessor: any = {
   ],
 })
 export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
-  displayPopup = false;
-
   @Input() options: UiCustomSelectOption[] = [];
+
+  @ViewChild('toggle') toggle: KitOverlayToggleDirective;
 
   viewState: any;
 
@@ -75,16 +81,6 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  @HostListener('click')
-  clickHandler() {
-    this.displayPopup = !this.displayPopup;
-  }
-
-  closePopup() {
-    this.displayPopup = false;
-    this.cdr.detectChanges();
-  }
-
   registerOnChange(fn: any) {
     this.changes.subscribe(fn);
   }
@@ -97,7 +93,7 @@ export class UiCustomSelectComponent implements OnInit, ControlValueAccessor {
     this.state = value;
     this.changes.next(this.state);
     this.updateViewState();
-    this.displayPopup = false;
+    this.toggle.close();
   }
 
   setDisabledState(isDisabled: boolean): void {

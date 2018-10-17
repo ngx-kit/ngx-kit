@@ -1,6 +1,7 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
+import { UiModalSize } from '../meta';
 
 @Component({
   selector: 'ui-modal',
@@ -39,6 +40,8 @@ import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
 })
 export class UiModalComponent implements OnInit {
   @Input() header: string;
+
+  @Input() size: UiModalSize = 'm';
 
   @HostBinding('@modalHost') hostTrigger: void;
 

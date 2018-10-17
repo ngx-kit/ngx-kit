@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentResolverService } from '../../content/content-resolver.service';
 import { DocsPageComponent } from '../../shared/docs-page/docs-page.component';
-import { ModulePageComponent } from '../../shared/module-page/module-page.component';
+import { ModulePage3Component } from '../../shared/module-page3/module-page3.component';
 import { MainComponent } from './main/main.component';
 import { pkgName } from './meta';
 
@@ -10,17 +9,10 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    data: {
-      pkg: pkgName,
-      file: `/assets/docs/packages/${pkgName}.json`,
-    },
-    resolve: {
-      content: ContentResolverService,
-    },
     children: [
       {
         path: '',
-        redirectTo: 'docs/OVERVIEW',
+        redirectTo: 'docs/introduction',
       },
       {
         path: 'docs/:name',
@@ -31,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'module/:name',
-        component: ModulePageComponent,
+        component: ModulePage3Component,
         data: {
           pkg: pkgName,
         },

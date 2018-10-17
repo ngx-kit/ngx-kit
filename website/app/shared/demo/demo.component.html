@@ -1,18 +1,17 @@
 <ws-kit-tabs>
   <ws-kit-tabs-nav>
-    <ws-kit-tabs-tab [id]="'preview'">Preview</ws-kit-tabs-tab>
-    <ws-kit-tabs-tab *ngFor="let file of demo.files; let index = index" [id]="index"
-                     [title]="file.name">{{ file.ext.toUpperCase() }}</ws-kit-tabs-tab>
+    <ws-kit-tabs-tab id="preview">Preview</ws-kit-tabs-tab>
+    <ws-kit-tabs-tab id="sources">Sources</ws-kit-tabs-tab>
   </ws-kit-tabs-nav>
 
   <ws-kit-tabs-content *kitSlide="'preview'">
     <ng-container *ngComponentOutlet="class"></ng-container>
   </ws-kit-tabs-content>
-  <ng-container *ngFor="let file of demo.files; let index = index">
-    <ws-kit-tabs-content *kitSlide="index">
-      <div><b>{{ file.name }}</b></div>
-        <pre class="code-src"><code [ngClass]="[getLangByExt(file.ext), 'language-' + getLangByExt(file.ext), 'hljs']"
-                                    [innerHtml]="code[file.name]"></code></pre>
-    </ws-kit-tabs-content>
-  </ng-container>
+  <ws-kit-tabs-content *kitSlide="'sources'">
+    <div *ngFor="let source of sources">
+      <h4>{{ source.fileName }}</h4>
+      <pre class="code-src"><code [ngClass]="[getLangByExt(source.type), 'language-' + getLangByExt(source.type), 'hljs']"
+                                  [innerHtml]="code[source.fileName]"></code></pre>
+    </div>
+  </ws-kit-tabs-content>
 </ws-kit-tabs>

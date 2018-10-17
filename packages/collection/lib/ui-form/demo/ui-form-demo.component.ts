@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-form-demo.component.html',
 })
 export class UiFormDemoComponent {
   form1 = {
     email: '',
-    password: '',
+    name: '',
   };
 
   form2: FormGroup;
 
   form3 = {
     email: '',
-    password: '',
+    name: '',
   };
 
   form4 = {
     email: '',
-    password: '',
+    name: '',
   };
 
   constructor(private builder: FormBuilder) {

@@ -2,11 +2,13 @@
      kitPinPosition
      position="bottom"
      [anchor]="anchor">
-  <div class="options"
+  <div #optionsRef
+       class="options"
        [@fade]="true">
     <button *ngFor="let option of options; let index = index"
-            (click)="select.emit(index)"
-            [class.-selected]="index === selected">
+            (click)="optionSelect.emit(index)"
+            [class.-selected]="index === selected"
+            kitSkipBlur>
       <ng-container *ngIf="!optionTemplate">{{ optionsLabels[index] }}</ng-container>
       <ng-container *ngIf="optionTemplate">
         <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: option, index: index}"></ng-container>

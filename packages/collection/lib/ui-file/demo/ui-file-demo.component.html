@@ -1,10 +1,11 @@
 <div>
-  <button uiFileHolder>
+  <a uiFileHolder
+     href="javascript:void(0)">
     Pick a file
     <input uiFile
            type="file"
            (select)="files = $event">
-  </button>
+  </a>
 
   <div style="overflow: hidden">
     Files:

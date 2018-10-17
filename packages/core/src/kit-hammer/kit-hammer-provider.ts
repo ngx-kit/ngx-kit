@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 
+/**
+ * Provides [Hammer.JS](https://hammerjs.github.io/) instance if available.
+ */
 @Injectable({
   providedIn: 'root',
 })

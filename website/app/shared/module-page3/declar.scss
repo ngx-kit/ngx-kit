@@ -1,0 +1,14 @@
+.declar {
+  border-radius: 3px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+  display: block;
+  margin: 32px 0;
+  padding: 24px;
+  .name {
+    margin: 0 0 24px;
+  }
+  .type {
+    color: #888888;
+    font-weight: 400;
+  }
+}

@@ -5,12 +5,13 @@
     "module": "es2015",
     "baseUrl": "",
     "paths": {
-      "@ngx-kit/core": ["../packages/core"]
+      "@ngx-kit/core": ["../packages/core"],
+      "@ngx-kit/docgen": ["../packages/docgen"]
     }
   },
   "exclude": [
-    "server.ts",
     "test.ts",
+    "server.ts",
     "**/*.spec.ts"
   ]
 }

@@ -1,1 +1,3 @@
-<app-md [post]="doc"></app-md>
+<div *ngIf="file">
+  <app-md [content]="file.content"></app-md>
+</div>

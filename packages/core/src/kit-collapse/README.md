@@ -1,21 +1,10 @@
-# Collapse
-
-## Scope
+### Scope
  
 * Accordions
 * Collapsible menus
 
 
-## Features
-
-* handle state by services
-* use structural directive (no render if template is not displayed)
-* optional: multiple select
-* optional: auto activation first item 
-* optional: setup custom id for items
-
-
-## Usage
+### Usage
 
 Import `KitCollapseModule`.
 
@@ -63,7 +52,7 @@ toggle() {
 ```
 
 
-## Example
+### Example
 
 * collection:accordion - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-accordion), [demo](http://ngx-kit.com/collection/module/ui-accordion) 
 * collection:vertical-menu - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-vertical-menu), [demo](http://ngx-kit.com/collection/module/ui-vertical-menu) 

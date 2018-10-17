@@ -3,7 +3,21 @@ import { EventManager } from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
 
 /**
- * Handles leaving focus from a group of elements.
+ * Handles focus/blur from a group of elements.
+ *
+ * If focus moves among elements in a defined group, blur event will not be fired.
+ *
+ *
+ * ### Example
+ *
+ * In `ui-autocomplete` we heed to omit blur event, if user click on a suggestion.
+ *
+ * We provide `KitFocusListenerService` in the directive, register main input and `ui-autocomplete-options` element in
+ * the service and subscribe on `blur` event.
+ *
+ * * collection:modal -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-autocomplete),
+ * [demo](https://ngx-kit.com/collection/module/ui-autocomplete)
  */
 @Injectable()
 export class KitFocusListenerService {
@@ -62,9 +76,11 @@ export class KitFocusListenerService {
     const index = this.elements.findIndex(e => e.el === el);
     if (index) {
       const element = this.elements[index];
-      // void handlers
-      element.focus();
-      element.blur();
+      if (element) {
+        // void handlers
+        element.focus();
+        element.blur();
+      }
       // remove from stack
       this.elements.splice(index, 1);
     } else {
@@ -74,8 +90,9 @@ export class KitFocusListenerService {
 
   private checkLeave(event?: any) {
     let leave = true;
+    const relatedTarget = event.relatedTarget || event.explicitOriginalTarget || document.activeElement;
     this.elements.forEach(el => {
-      if (el.el.contains(event.relatedTarget)) {
+      if (el.el && el.el.contains(relatedTarget)) {
         leave = false;
       }
     });

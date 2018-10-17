@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { UiAutocompleteOptionObject } from '../meta';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-autocomplete-demo.component.html',
 })

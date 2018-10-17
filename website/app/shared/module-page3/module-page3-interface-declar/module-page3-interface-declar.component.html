@@ -1,0 +1,38 @@
+<div class="declar">
+  <h2 class="name">
+    <span class="type">[interface]</span>
+    {{ declar.name }}
+  </h2>
+
+  <div *ngIf="declar.jsDoc?.length > 0"
+       class="js-doc">
+    <app-md *ngFor="let doc of declar.jsDoc"
+            [content]="doc.comment">
+    </app-md>
+  </div>
+
+  <div *ngIf="publicMembers.length > 0"
+       class="members">
+    <h3>Members</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Signature</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of publicMembers">
+        <td>
+          <code>{{ member.signature }}</code>
+        </td>
+        <td>
+          <app-md *ngFor="let doc of member.jsDoc"
+                  [content]="doc.comment">
+          </app-md>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

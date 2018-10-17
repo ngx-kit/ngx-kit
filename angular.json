@@ -77,6 +77,7 @@
             "outputPath": "dist/playground-collection",
             "index": "playground/collection/index.html",
             "main": "playground/collection/main.ts",
+            "polyfills": "playground/collection/polyfills.ts",
             "tsConfig": "playground/collection/tsconfig.app.json",
             "assets": [
               "playground/collection/favicon.ico",
@@ -113,15 +114,39 @@
             "polyfills": "website/polyfills.ts",
             "assets": [
               "website/favicon.ico",
+              "website/robots.txt",
               "website/assets"
             ],
             "styles": [
-              "website/styles.css",
+              "website/styles/main.scss",
               "website/assets/hljs-default.scss"
+            ],
+            "scripts": [
+              "node_modules/hammerjs/hammer.js",
+              "node_modules/moment/moment.js"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "website/styles"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "website/environments/environment.ts",
+                  "with": "website/environments/environment.prod.ts"
+                }
               ]
             }
           }
@@ -152,6 +177,16 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "website/styles"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "website/environments/environment.ts",
+                  "with": "website/environments/environment.prod.ts"
+                }
               ]
             }
           }

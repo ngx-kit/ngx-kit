@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-accordion-demo.component.html',
 })

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, forwardRef, HostListener, Inject, Optional, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, Inject, Optional, Renderer2, Self } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { KitDefaultModelInterceptor } from './kit-default-model-interceptor';
@@ -6,6 +6,15 @@ import { KitModelInterceptor } from './kit-model-interceptor';
 
 /**
  * Service directive, injects middleware.
+ *
+ * Allows to intercept in communication between html `input` and `ngModel`.
+ *
+ *
+ * ### Examples
+ *
+ * * collection:autocomplete -
+ * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-autocomplete),
+ * [demo](http://ngx-kit.com/collection/module/ui-autocomplete)
  */
 @Directive({
   // tslint:disable-next-line
@@ -35,22 +44,32 @@ export class KitValueAccessorDirective implements ControlValueAccessor {
 
   private interceptor: KitModelInterceptor;
 
+  private lastView = '';
+
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
-    @Inject(KitModelInterceptor) @Optional() private injInterceptor: KitModelInterceptor,
+    @Inject(KitModelInterceptor) @Self() @Optional() private injInterceptor: KitModelInterceptor,
     private defaultInterceptor: KitDefaultModelInterceptor,
   ) {
     this.interceptor = this.injInterceptor || this.defaultInterceptor;
     this.interceptor.modelStateChanges.subscribe(this.changes$);
     this.interceptor.viewStateChanges.subscribe((value: any) => {
-      this.renderer.setProperty(this.el.nativeElement, 'value', value || '');
+      const stringValue = value ? value + '' : '';
+      // Setup lastView to avoid unnecessary input emits
+      this.lastView = stringValue;
+      this.renderer.setProperty(this.el.nativeElement, 'value', stringValue);
     });
   }
 
   @HostListener('input', ['$event'])
   inputHandler(event: any) {
-    this.interceptor.input(event.target.value, event);
+    const value = event.target.value + '';
+    // Emit input event if lastView changed
+    if (value !== this.lastView) {
+      this.lastView = value;
+      this.interceptor.input(value, event);
+    }
   }
 
   @HostListener('keydown', ['$event'])

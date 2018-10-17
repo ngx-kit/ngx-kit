@@ -1,9 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { KitModalService } from '@ngx-kit/core';
+import { UiModalSize } from '../meta';
 import { UiModalDemoBindingModalComponent } from './ui-modal-demo-binding-modal.component';
 import { UiModalDemoCanCloseModalComponent } from './ui-modal-demo-can-close-modal.component';
 import { UiModalDemoModalComponent } from './ui-modal-demo-modal.component';
 
+/**
+ * @demo
+ */
 @Component({
   templateUrl: './ui-modal-demo.component.html',
 })
@@ -37,5 +41,10 @@ export class UiModalDemoComponent {
 
   show5() {
     this.modal.show({component: UiModalDemoCanCloseModalComponent});
+  }
+
+  show6(size: UiModalSize) {
+    const ref = this.modal.show({component: UiModalDemoModalComponent});
+    ref.input({size});
   }
 }
