@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { KitSlideHostService } from '@ngx-kit/core';
+import { KitSlideHostService, KitSlideId } from '@ngx-kit/core';
 
 @Component({
   selector: 'ui-tabs',
@@ -26,5 +26,9 @@ export class UiTabsComponent implements OnInit {
 
   ngOnInit() {
     this.host.activateFirst = this.activateFirst;
+  }
+
+  set active(active: KitSlideId) {
+    this.host.active = active;
   }
 }
