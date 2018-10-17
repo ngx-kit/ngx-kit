@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
-import { KitOverlayService } from '@ngx-kit/core';
+import { KitOverlayModule, KitOverlayService } from '@ngx-kit/core';
 import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component';
 
 export function uiLoadingBarInitFactory(overlay: KitOverlayService) {
@@ -13,6 +13,7 @@ export function uiLoadingBarInitFactory(overlay: KitOverlayService) {
 @NgModule({
   imports: [
     CommonModule,
+    KitOverlayModule,
   ],
   declarations: [
     UiLoadingBarComponent,
