@@ -15,4 +15,4 @@ imports: [
 
 ### Hammerjs
 
-Add Hammer.JS from proper working.
+Add Hammer.JS for proper working.

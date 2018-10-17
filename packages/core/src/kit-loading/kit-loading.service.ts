@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { KitLoadingProgress } from './kit-loading-progress';
 import { kitLoadingGlobal } from './meta';
@@ -68,18 +68,22 @@ import { kitLoadingGlobal } from './meta';
 export class KitLoadingService {
   private progresses = new Map<string, KitLoadingProgress>();
 
-  constructor(private router: Router) {
+  constructor(
+    @Optional() private router: Router,
+  ) {
     // create global progress
     const globalProgress = this.progress(kitLoadingGlobal);
     // subscribe globalProgress to router events
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        globalProgress.start('routing');
-      }
-      if (event instanceof NavigationEnd) {
-        globalProgress.end('routing');
-      }
-    });
+    if (this.router) {
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationStart) {
+          globalProgress.start('routing');
+        }
+        if (event instanceof NavigationEnd) {
+          globalProgress.end('routing');
+        }
+      });
+    }
   }
 
   get global(): KitLoadingProgress {
