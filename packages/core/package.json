@@ -6,9 +6,9 @@
   "module": "./index.js",
   "typings": "./index.d.ts",
   "author": {
-    "name": "Sasha Novyk",
-    "email": "alex@nvx.me",
-    "url": "https://nvx.me/"
+    "name": "Oleksa Novyk",
+    "email": "oleksanovyk@gmail.com",
+    "url": "https://novyk.org/"
   },
   "license": "MIT",
   "homepage": "https://ngx-kit.com",
