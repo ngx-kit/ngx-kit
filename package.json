@@ -25,7 +25,7 @@
     "website:server:build": "ng run website:server:production",
     "website:server:bundle": "webpack --config ./website/webpack.server.config.js --progress --colors",
     "website:server:serve": "node ./dist/server",
-    "website:deploy": "npm run clean && npm run docgen:build && npm run website:docgen && npm run website:build && npm run website:server:build && npm run website:server:bundle && npm run website:docker:build && npm run website:docker:push",
+    "website:deploy": "npm run clean && npm run docgen:build:tsc && npm run website:docgen && npm run website:build && npm run website:server:build && npm run website:server:bundle && npm run website:docker:build && npm run website:docker:push",
     "website:docker:build": "docker build -t dhub.nvx.me:443/ngx-kit-website-prod .",
     "website:docker:run": "docker run -d -p 8002:8000 dhub.nvx.me:443/ngx-kit-website-prod",
     "website:docker:push": "docker push dhub.nvx.me:443/ngx-kit-website-prod",
@@ -37,7 +37,10 @@
     "lint:ng": "ng lint --project=website",
     "lint:styles": "stylelint ./{packages/collection,playground,website}/**/*.scss",
     "lint:styles:fix": "stylelint ./{packages/collection,playground,website}/**/*.scss --fix",
-    "docgen:build": "tsc -p ./packages/docgen/tsconfig.json"
+    "docgen:build": "npm run docgen:build:tsc && npm run docgen:build:release && npm run docgen:build:publish",
+    "docgen:build:tsc": "tsc -p ./packages/docgen/tsconfig.json",
+    "docgen:build:release": "node ./packages/docgen/release.js",
+    "docgen:build:publish": "publish-build.sh docgen"
   },
   "private": true,
   "dependencies": {
