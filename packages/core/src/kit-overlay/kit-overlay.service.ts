@@ -26,6 +26,8 @@ import { KitOverlayHostComponent } from './kit-overlay-host/kit-overlay-host.com
   providedIn: 'root',
 })
 export class KitOverlayService {
+  readonly containerClass = 'kit-overlay-container';
+
   private _onHostStable = new Subject<void>();
 
   private hostWrapperRef: ComponentRef<KitOverlayHostWrapperComponent>;
@@ -149,10 +151,11 @@ export class KitOverlayService {
       throw new Error(`Run .mountHost() only for root service`);
     }
     // Init container
+    this.cleanupContainer();
     this.container = this.document.createElement('div');
     // Append container, only in browser
     if (this.platform.isBrowser()) {
-      this.container.classList.add('kit-overlay-container');
+      this.container.classList.add(this.containerClass);
       this.document.body.appendChild(this.container);
     }
     // Create host-wrapper
@@ -169,5 +172,18 @@ export class KitOverlayService {
     this.host.zone.onStable.subscribe(() => {
       this._onHostStable.next();
     });
+  }
+
+  /**
+   * Check container existence and remove it.
+   * Need for proper working of SSR and HMR.
+   */
+  private cleanupContainer() {
+    if (this.platform.isBrowser()) {
+      const container = this.document.body.querySelector(`.${this.containerClass}`);
+      if (container) {
+        this.document.body.removeChild(container);
+      }
+    }
   }
 }
