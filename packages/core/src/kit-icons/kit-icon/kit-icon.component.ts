@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Renderer2,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges } from '@angular/core';
 import { from, Subject } from 'rxjs';
 import { filter, mapTo, switchMap, take, takeUntil } from 'rxjs/operators';
 import { KitIntersectionService } from '../../kit-intersection/kit-intersection.service';
@@ -17,6 +8,12 @@ import { uuid } from '../../util/uuid';
 import { KitIconsRegistryService } from '../kit-icons-registry.service';
 import { KitIconSource } from '../meta';
 
+/**
+ * Component for rendering svg icon.
+ *
+ * SVG element can be customized by component's inputs.
+ * Also you can declare next css vars: --kitIconSvgColor, --kitIconSvgHeight, --kitIconSvgPosition, --kitIconSvgTop, --kitIconSvgWidth.
+ */
 @Component({
   selector: 'kit-icon',
   template: `
@@ -165,11 +162,11 @@ export class KitIconComponent implements OnChanges, OnDestroy {
         top = 'auto';
       }
       // Set props
-      this.renderer.setStyle(this.svg, 'fill', this.color);
-      this.renderer.setStyle(this.svg, 'height', height);
-      this.renderer.setStyle(this.svg, 'position', position);
-      this.renderer.setStyle(this.svg, 'top', top);
-      this.renderer.setStyle(this.svg, 'width', width);
+      this.renderer.setStyle(this.svg, 'fill', `var(--kitIconSvgColor, ${this.color})`);
+      this.renderer.setStyle(this.svg, 'height', `var(--kitIconSvgHeight, ${height})`);
+      this.renderer.setStyle(this.svg, 'position', `var(--kitIconSvgPosition, ${position})`);
+      this.renderer.setStyle(this.svg, 'top', `var(--kitIconSvgTop, ${top})`);
+      this.renderer.setStyle(this.svg, 'width', `var(--kitIconSvgWidth, ${width})`);
     }
   }
 
