@@ -5,13 +5,13 @@ export function readJsDoc(nodes: any[]): DocGen.JsDoc[] {
   return nodes
     ? nodes.map(node => {
       return {
-        comment: node.comment,
+        comment: cleanupCodeBlock(node.comment),
         tags: node.tags
           ? node.tags
             .filter((t: any) => t.tagName)
             .map((t: any) => ({
               name: t.tagName.text,
-              value: t.comment,
+              value: cleanupCodeBlock(t.comment),
             }))
           : [],
       };
@@ -41,4 +41,10 @@ function checkTag(docs: DocGen.JsDoc[], name: string) {
     });
   }
   return is;
+}
+
+function cleanupCodeBlock(comment: string): string {
+  return comment
+    ? comment.replace(/^ \* /gm, '')
+    : undefined;
 }
