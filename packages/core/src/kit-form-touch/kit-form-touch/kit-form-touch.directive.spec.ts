@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { dispatchMouseEvent } from '../../../test/utils/dispatch-events';
 import { KitFormTouchDirective } from './kit-form-touch.directive';
 
 describe('KitFormTouchDirective', () => {
@@ -27,18 +26,20 @@ describe('KitFormTouchDirective', () => {
       fixture = TestBed.createComponent(TestComponent);
       fixture.detectChanges();
     });
-    it('before click model is not touched', fakeAsync(() => {
+    it('before click model is not touched', (done) => {
       fixture.whenStable().then(() => {
         expect(fixture.componentInstance.model.touched).toBeFalsy();
+        done();
       });
-    }));
-    it('click marks field as touched', fakeAsync(() => {
+    });
+    it('click marks field as touched', (done) => {
       fixture.whenStable().then(() => {
         const button = fixture.debugElement.query(By.css('button')).nativeElement;
-        dispatchMouseEvent(button, 'click');
+        button.dispatchEvent(new MouseEvent('click'));
         expect(fixture.componentInstance.model.touched).toBeTruthy();
+        done();
       });
-    }));
+    });
   });
   describe('in reactive forms', () => {
     let fixture: ComponentFixture<TestReactiveComponent>;
@@ -51,7 +52,7 @@ describe('KitFormTouchDirective', () => {
     }));
     it('click marks field as touched', fakeAsync(() => {
       const button = fixture.debugElement.query(By.css('button')).nativeElement;
-      dispatchMouseEvent(button, 'click');
+      button.dispatchEvent(new MouseEvent('click'));
       expect(fixture.componentInstance.form.controls['field'].touched).toBeTruthy();
     }));
   });

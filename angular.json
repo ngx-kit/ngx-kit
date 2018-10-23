@@ -87,12 +87,28 @@
               "node_modules/hammerjs/hammer.js",
               "node_modules/moment/moment.js"
             ]
+          },
+          "configurations": {
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "playground/collection/environments/environment.ts",
+                  "with": "playground/collection/environments/environment.hmr.ts"
+                }
+              ]
+            }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "collection-playground:build"
+          },
+          "configurations": {
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "collection-playground:build:hmr"
+            }
           }
         }
       }

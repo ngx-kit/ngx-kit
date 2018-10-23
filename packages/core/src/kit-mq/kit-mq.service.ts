@@ -106,12 +106,14 @@ export class KitMqService {
   observeRaw(mediaQuery: string): Observable<boolean | null> {
     return new Observable((observer) => {
       if (this.matchMedia) {
-        const listener: MediaQueryListListener = (mql) => {
-          observer.next(mql.matches);
+        const listener = (e: MediaQueryListEvent) => {
+          this.zone.run(() => {
+            observer.next(e.matches);
+          });
         };
         const mq = this.getMq(mediaQuery);
         observer.next(mq.matches);
-        mq.addListener((e: MediaQueryList) => this.zone.run(() => listener(e)));
+        mq.addEventListener('change', listener);
       } else {
         observer.next(null);
         observer.complete();

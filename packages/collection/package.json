@@ -3,9 +3,9 @@
   "version": "0.0.0-PLACEHOLDER",
   "description": "UI components schematics for Angular-cli based on ngx-kit",
   "author": {
-    "name": "Sasha Novik",
-    "email": "alex@nvx.me",
-    "url": "https://nvx.me/"
+    "name": "Oleksa Novyk",
+    "email": "oleksanovyk@gmail.com",
+    "url": "https://novyk.org/"
   },
   "license": "MIT",
   "homepage": "https://ngx-kit.com/collection",

@@ -1,6 +1,6 @@
 FROM node:latest
 
-MAINTAINER Sasha Novik <alex@nvx.me>
+MAINTAINER Oleksa Novyk <oleksanovyk@gmail.com>
 
 ARG env
 

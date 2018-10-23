@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { dispatchFakeEvent } from '../../test/utils/dispatch-events';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { KitInputDateDirective } from './kit-input-date.directive';
 import { KitInputDateModule } from './kit-input-date.module';
@@ -47,7 +46,7 @@ describe('KitInputDateDirective', () => {
     const input = fixture.debugElement.query(By.css('input'));
     const date = new Date('2018-01-01');
     input.nativeElement.value = date.toDateString();
-    dispatchFakeEvent(input.nativeElement, 'input');
+    input.nativeElement.dispatchEvent(new KeyboardEvent('input'));
     tick();
     expect(getComponent().model.toDateString()).toEqual(date.toDateString());
   }));
