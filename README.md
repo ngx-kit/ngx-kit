@@ -26,8 +26,8 @@ Components customizing should be simple. Just generate components from ngx-kit c
 
 ## Requirements
 
-* Angular ^6
-* Angular-cli ^6
+* Angular 7
+* Angular-cli 7
 
 ## Usage
 

@@ -1,8 +1,11 @@
 {
   "name": "@ngx-kit/docgen",
-  "version": "1.0.0",
+  "version": "0.0.0-PLACEHOLDER",
   "description": "Generate Angular lib documentation",
   "license": "MIT",
+  "bin": {
+    "docgen": "./cli.js"
+  },
   "dependencies": {
     "front-matter": "^2.3.0",
     "glob": "^7.1.2",

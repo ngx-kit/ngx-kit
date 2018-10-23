@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { dispatchMouseEvent } from '../../../test/utils/dispatch-events';
 import { KitModalBackdropComponent } from './kit-modal-backdrop.component';
 
 describe('KitModalBackdropComponent', () => {
@@ -35,7 +34,7 @@ describe('KitModalBackdropComponent', () => {
         done();
       });
       const el = fixture.debugElement.query(By.css('.backdrop')).nativeElement;
-      dispatchMouseEvent(el, 'click');
+      el.dispatchEvent(new MouseEvent('click'));
     });
   });
   describe('.display', () => {

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { dispatchMouseEvent } from '../../../test/utils/dispatch-events';
 import { KitOverlayHostComponent } from '../kit-overlay-host/kit-overlay-host.component';
 import { KitOverlayModule } from '../kit-overlay.module';
 import { KitOverlayDirective } from './kit-overlay.directive';
@@ -77,7 +76,7 @@ describe('KitOverlayDirective', () => {
     const act = document.querySelector('.kit-overlay-container .act');
     expect(act).toBeTruthy();
     if (act) {
-      dispatchMouseEvent(act, 'click');
+      act.dispatchEvent(new MouseEvent('click'));
     }
     expect(fixture.debugElement.query(By.css('.local')).nativeElement.innerText).toEqual('1');
   });

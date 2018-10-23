@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { dispatchKeyboardEvent } from '../../test/utils/dispatch-events';
-import { keyTab } from '../kit-event-manager/meta';
 import { KitFocusManagerRegistryService } from './kit-focus-manager-registry.service';
 import { KitFocusManagerService } from './kit-focus-manager.service';
 
@@ -54,7 +52,7 @@ describe('KitFocusManagerService', () => {
   });
   it('should focus next on tab keypress', (done) => {
     service.capture();
-    dispatchKeyboardEvent(fixture.nativeElement, 'keydown', keyTab);
+    fixture.nativeElement.dispatchEvent(new KeyboardEvent('keydown', {key: 'Tab'}));
     const second = fixture.debugElement.query(By.css('.second')).nativeElement;
     setTimeout(() => {
       const focused = document.activeElement;
@@ -65,7 +63,7 @@ describe('KitFocusManagerService', () => {
   it('should return to the start on tab if captured and reach the end', (done) => {
     service.capture();
     service.focusLast();
-    dispatchKeyboardEvent(fixture.nativeElement, 'keydown', keyTab);
+    fixture.nativeElement.dispatchEvent(new KeyboardEvent('keydown', {key: 'Tab'}));
     const first = fixture.debugElement.query(By.css('.first')).nativeElement;
     setTimeout(() => {
       const focused = document.activeElement;

@@ -1,6 +1,5 @@
 import { async } from '@angular/core/testing';
 import { Subject } from 'rxjs';
-import { keyEscape } from '../kit-event-manager/meta';
 import { KitModalBackdropComponent } from './kit-modal-backdrop/kit-modal-backdrop.component';
 import { KitModalService } from './kit-modal.service';
 
@@ -63,14 +62,14 @@ describe('KitModalService', () => {
       createService({escClose: true});
       service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
-      emStub.listener({keyCode: keyEscape});
+      emStub.listener({key: 'Escape'});
       expect(spy).toHaveBeenCalled();
     });
     it('=false does not close modal on esc press', () => {
       createService({escClose: false});
       service.show({component: ModalStub});
       const spy = spyOn(overlayStub.componentRef.componentRef, 'destroy');
-      emStub.listener({keyCode: keyEscape});
+      emStub.listener({key: 'Escape'});
       expect(spy).toHaveBeenCalledTimes(0);
     });
   });

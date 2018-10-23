@@ -12,5 +12,5 @@ export abstract class ContentServiceBase {
   abstract getDocFiles(): DocGen.MdFile[];
 }
 
-export const coreContent: DocGen.Doc = rawCoreContent as any;
-export const collectionContent: DocGen.Doc = rawCollectionContent as any;
+export const coreContent: DocGen.Doc = rawCoreContent.default as any;
+export const collectionContent: DocGen.Doc = rawCollectionContent.default as any;

@@ -13,6 +13,7 @@ import { KitFocusManagerService } from '../kit-focus-manager.service';
  */
 @Directive({
   selector: '[kitFocus]',
+  exportAs: 'kitFocus',
 })
 export class KitFocusDirective implements OnDestroy {
   /**

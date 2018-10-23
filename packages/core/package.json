@@ -6,9 +6,9 @@
   "module": "./index.js",
   "typings": "./index.d.ts",
   "author": {
-    "name": "Sasha Novik",
-    "email": "alex@nvx.me",
-    "url": "https://nvx.me/"
+    "name": "Oleksa Novyk",
+    "email": "oleksanovyk@gmail.com",
+    "url": "https://novyk.org/"
   },
   "license": "MIT",
   "homepage": "https://ngx-kit.com",
@@ -18,7 +18,6 @@
   },
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
-    "@angular/core": "^6.0.0",
-    "typescript": "~2.7.2"
+    "@angular/core": "^7.0.0"
   }
 }
