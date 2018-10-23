@@ -113,7 +113,7 @@ export class KitMqService {
         };
         const mq = this.getMq(mediaQuery);
         observer.next(mq.matches);
-        mq.addListener(listener);
+        mq.addEventListener('change', listener);
       } else {
         observer.next(null);
         observer.complete();

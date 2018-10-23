@@ -282,7 +282,7 @@ export class KitFocusManagerService implements OnDestroy {
   }
 
   private keydownHandler(event: KeyboardEvent) {
-    if (!this.onHold && event.keyCode === keyTab) {
+    if (!this.onHold && event.code === 'Tab') {
       event.preventDefault();
       if (event.shiftKey) {
         this.focusPrev();
