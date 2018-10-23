@@ -283,7 +283,7 @@ export class KitModalService {
       });
       // control esc
       this.em.listenGlobal('keydown', (event: KeyboardEvent) => {
-        if (event.code === 'Escape') {
+        if (event.key === 'Escape') {
           this.escHandler();
         }
       }, true);
