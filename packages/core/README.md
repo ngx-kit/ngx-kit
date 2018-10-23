@@ -12,7 +12,7 @@ Used in [@ngx-kit/collection](https://ngx-kit.com/collection) components.
 
 ## Features
 
-* Angular 6+ support
+* Angular 7 support
 * AOT support
 * Server-rendering support
 * Free and open-source

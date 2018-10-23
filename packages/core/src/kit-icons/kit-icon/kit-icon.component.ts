@@ -12,7 +12,8 @@ import { KitIconSource } from '../meta';
  * Component for rendering svg icon.
  *
  * SVG element can be customized by component's inputs.
- * Also you can declare next css vars: --kitIconSvgColor, --kitIconSvgHeight, --kitIconSvgPosition, --kitIconSvgTop, --kitIconSvgWidth.
+ * Also you can declare next css vars: `--kitIconSvgColor`, `--kitIconSvgHeight`, `--kitIconSvgPosition`, `--kitIconSvgTop`,
+ * `--kitIconSvgWidth`.
  */
 @Component({
   selector: 'kit-icon',

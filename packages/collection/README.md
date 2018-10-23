@@ -17,8 +17,8 @@ The best interface for ui-components is a possibility to change the source code.
 ## Usage
 
 Requirements:
-* angular 6+
-* angular-cli 6+
+* angular 7
+* angular-cli 7
 
 Install ngx-kit core and collection: 
 
