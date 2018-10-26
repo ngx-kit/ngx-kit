@@ -4,8 +4,6 @@ import { UiAccordionDemoComponent } from './ui-accordion/demo/ui-accordion-demo.
 import { UiAccordionDemoModule } from './ui-accordion/demo/ui-accordion-demo.module';
 import { UiAlertDemoComponent } from './ui-alert/demo/ui-alert-demo.component';
 import { UiAlertDemoModule } from './ui-alert/demo/ui-alert-demo.module';
-import { UiAutocompleteDemoComponent } from './ui-autocomplete/demo/ui-autocomplete-demo.component';
-import { UiAutocompleteDemoModule } from './ui-autocomplete/demo/ui-autocomplete-demo.module';
 import { UiBadgeDemoComponent } from './ui-badge/demo/ui-badge-demo.component';
 import { UiBadgeDemoModule } from './ui-badge/demo/ui-badge-demo.module';
 import { UiBreadcrumbsDemoComponent } from './ui-breadcrumbs/demo/ui-breadcrumbs-demo.component';
@@ -26,6 +24,8 @@ import { UiDrawerDemoComponent } from './ui-drawer/demo/ui-drawer-demo.component
 import { UiDrawerDemoModule } from './ui-drawer/demo/ui-drawer-demo.module';
 import { UiDropdownDemoComponent } from './ui-dropdown/demo/ui-dropdown-demo.component';
 import { UiDropdownDemoModule } from './ui-dropdown/demo/ui-dropdown-demo.module';
+import { UiExtSelectDemoComponent } from './ui-ext-select/demo/ui-ext-select-demo.component';
+import { UiExtSelectDemoModule } from './ui-ext-select/demo/ui-ext-select-demo.module';
 import { UiFileDemoComponent } from './ui-file/demo/ui-file-demo.component';
 import { UiFileDemoModule } from './ui-file/demo/ui-file-demo.module';
 import { UiFormDemoComponent } from './ui-form/demo/ui-form-demo.component';
@@ -65,7 +65,6 @@ import { UiVerticalMenuDemoModule } from './ui-vertical-menu/demo/ui-vertical-me
 export const demoComponentsRef: [string, Type<any>][] = [
   ['UiAccordionDemoComponent', UiAccordionDemoComponent],
   ['UiAlertDemoComponent', UiAlertDemoComponent],
-  ['UiAutocompleteDemoComponent', UiAutocompleteDemoComponent],
   ['UiBadgeDemoComponent', UiBadgeDemoComponent],
   ['UiBreadcrumbsDemoComponent', UiBreadcrumbsDemoComponent],
   ['UiButtonDemoComponent', UiButtonDemoComponent],
@@ -76,6 +75,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiDialogDemoComponent', UiDialogDemoComponent],
   ['UiDrawerDemoComponent', UiDrawerDemoComponent],
   ['UiDropdownDemoComponent', UiDropdownDemoComponent],
+  ['UiExtSelectDemoComponent', UiExtSelectDemoComponent],
   ['UiFileDemoComponent', UiFileDemoComponent],
   ['UiFormDemoComponent', UiFormDemoComponent],
   ['UiLoadingBarDemoComponent', UiLoadingBarDemoComponent],
@@ -99,7 +99,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   exports: [
     UiAccordionDemoModule,
     UiAlertDemoModule,
-    UiAutocompleteDemoModule,
     UiBadgeDemoModule,
     UiBreadcrumbsDemoModule,
     UiButtonDemoModule,
@@ -110,6 +109,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
     UiDialogDemoModule,
     UiDrawerDemoModule,
     UiDropdownDemoModule,
+    UiExtSelectDemoModule,
     UiFileDemoModule,
     UiFormDemoModule,
     UiLoadingBarDemoModule,

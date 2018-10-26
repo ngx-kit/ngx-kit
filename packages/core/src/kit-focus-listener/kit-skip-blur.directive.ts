@@ -4,6 +4,8 @@ import { KitFocusListenerService } from './kit-focus-listener.service';
 
 /**
  * Registers element in `KitFocusListener` to avoid emitting blur if focus moves to the current element.
+ *
+ * Important when you use `*kitOverlay`, because items are placed in overlay-container outside of a current component.
  */
 @Directive({
   selector: '[kitSkipBlur]',

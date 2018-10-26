@@ -7,6 +7,10 @@ import { Observable, Subject } from 'rxjs';
  *
  * If focus moves among elements in a defined group, blur event will not be fired.
  *
+ * Be aware that click on non-focusable elements will cause blur event (focus switch to `<body>`).
+ *
+ * Use `[kitSkipBlur]` when you need to add overlayed (`*kitOverlay`) element to a group.
+ *
  *
  * ### Example
  *
@@ -23,9 +27,11 @@ import { Observable, Subject } from 'rxjs';
 export class KitFocusListenerService {
   private _focused = false;
 
-  private _focus = new Subject<any>();
+  private readonly _focus = new Subject<any>();
 
-  private _blur = new Subject<any>();
+  private readonly _focusWithin = new Subject<any>();
+
+  private readonly _blur = new Subject<any>();
 
   private elements: {
     el: HTMLElement;
@@ -41,6 +47,13 @@ export class KitFocusListenerService {
    */
   get focus(): Observable<any> {
     return this._focus.asObservable();
+  }
+
+  /**
+   * Emits, if user focuses one of registered element or move focus among registered elements.
+   */
+  get focusWithin(): Observable<any> {
+    return this._focusWithin.asObservable();
   }
 
   /**
@@ -60,13 +73,14 @@ export class KitFocusListenerService {
   add(el: HTMLElement) {
     this.elements.push({
       el: el,
-      focus: this.em.addEventListener(el, 'focus', (event: any) => {
+      focus: this.em.addEventListener(el, 'focusin', (event: any) => {
+        this._focusWithin.next(event);
         if (!this._focused) {
           this._focused = true;
           this._focus.next(event);
         }
       }),
-      blur: this.em.addEventListener(el, 'blur', (event: any) => {
+      blur: this.em.addEventListener(el, 'focusout', (event: any) => {
         this.checkLeave(event);
       }),
     });
