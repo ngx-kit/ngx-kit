@@ -52,10 +52,10 @@ class EventManagerStub {
   }
 
   addEventListener(el: any, type: string, handler: Function) {
-    if (type === 'focus') {
+    if (type === 'focusin') {
       this.focusHandler = handler;
     }
-    if (type === 'blur') {
+    if (type === 'focusout') {
       this.blurHandler = handler;
     }
   }

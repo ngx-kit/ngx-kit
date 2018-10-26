@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { UiAccordionModule } from './ui-accordion/ui-accordion.module';
 import { UiAlertModule } from './ui-alert/ui-alert.module';
-import { UiAutocompleteModule } from './ui-autocomplete/ui-autocomplete.module';
 import { UiBadgeModule } from './ui-badge/ui-badge.module';
 import { UiBreadcrumbsModule } from './ui-breadcrumbs/ui-breadcrumbs.module';
 import { UiButtonModule } from './ui-button/ui-button.module';
@@ -13,6 +12,7 @@ import { UiDatePickerModule } from './ui-date-picker/ui-date-picker.module';
 import { UiDialogModule } from './ui-dialog/ui-dialog.module';
 import { UiDrawerModule } from './ui-drawer/ui-drawer.module';
 import { UiDropdownModule } from './ui-dropdown/ui-dropdown.module';
+import { UiExtSelectModule } from './ui-ext-select/ui-ext-select.module';
 import { UiFileModule } from './ui-file/ui-file.module';
 import { UiFormModule } from './ui-form/ui-form.module';
 import { UiLoadingBarModule } from './ui-loading-bar/ui-loading-bar.module';
@@ -33,7 +33,6 @@ import { UiTooltipModule } from './ui-tooltip/ui-tooltip.module';
 const lib = [
   UiAccordionModule,
   UiAlertModule,
-  UiAutocompleteModule,
   UiBadgeModule,
   UiBreadcrumbsModule,
   UiButtonModule,
@@ -44,6 +43,7 @@ const lib = [
   UiDialogModule,
   UiDrawerModule,
   UiDropdownModule,
+  UiExtSelectModule,
   UiFileModule,
   UiFormModule,
   UiLoadingBarModule,

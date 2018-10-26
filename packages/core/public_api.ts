@@ -23,6 +23,7 @@ export * from './src/kit-position/kit-position';
 export * from './src/kit-ref/kit-ref';
 export * from './src/kit-repeat/kit-repeat';
 export * from './src/kit-scroll/kit-scroll';
+export * from './src/kit-select/kit-select';
 export * from './src/kit-slide/kit-slide';
 export * from './src/kit-style/kit-style';
 export * from './src/kit-value-accessor/kit-value-accessor';

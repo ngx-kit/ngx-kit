@@ -40,7 +40,7 @@ export class KitIconComponent implements OnChanges, OnDestroy {
   /**
    * Name in the registry.
    */
-  @Input() name: string;
+  @Input() name?: string;
 
   /**
    * Size. If not specified icon size depends on line-height.
@@ -64,6 +64,11 @@ export class KitIconComponent implements OnChanges, OnDestroy {
    */
   @Input() intersectionLoad = false;
 
+  /**
+   * Pass svg xml directly.
+   */
+  @Input() xml?: string;
+
   private source: KitIconSource;
 
   private svg: SVGElement;
@@ -83,9 +88,11 @@ export class KitIconComponent implements OnChanges, OnDestroy {
     private platform: KitPlatformService,
     private intersection: KitIntersectionService,
   ) {
+    // Handle icon displayed by name
     this.nameChanges
       .pipe(
         takeUntil(this.destroy),
+        filter(name => !!name),
         switchMap(name => {
           // Debounce icon load until being visible (if needed).
           return this.intersectionLoad
@@ -100,11 +107,7 @@ export class KitIconComponent implements OnChanges, OnDestroy {
       )
       .subscribe((source: KitIconSource) => {
         this.source = source;
-        this.svg = this.svgElementFromString(this.source.svg);
-        this.clear();
-        this.updateStyles();
-        this.updateA11y();
-        this.mount();
+        this.render();
       });
   }
 
@@ -118,10 +121,23 @@ export class KitIconComponent implements OnChanges, OnDestroy {
     if ('title' in changes || 'desc' in changes) {
       this.updateA11y();
     }
+    if ('xml' in changes && this.xml) {
+      // @todo validate conflicts with name
+      this.source = {svg: this.xml};
+      this.render();
+    }
   }
 
   ngOnDestroy() {
     this.destroy.next();
+  }
+
+  private render() {
+    this.svg = this.svgElementFromString(this.source.svg);
+    this.clear();
+    this.updateStyles();
+    this.updateA11y();
+    this.mount();
   }
 
   private clear() {
