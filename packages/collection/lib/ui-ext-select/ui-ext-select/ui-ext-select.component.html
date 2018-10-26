@@ -19,7 +19,7 @@
       {{ service.inputView?.view }}
     </span>
     </div>
-    <ng-container *ngIf="multiple && service.inputView?.length > 0">
+    <ng-container *ngIf="multiple">
       <span *ngFor="let item of service.inputView" class="item">
         {{ item.view }}
         <kit-icon (mousedown)="removeItem($event, item.model)"
