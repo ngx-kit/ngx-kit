@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { UiAccordionModule } from './ui-accordion/ui-accordion.module';
 import { UiAlertModule } from './ui-alert/ui-alert.module';
-import { UiAutocompleteModule } from './ui-autocomplete/ui-autocomplete.module';
 import { UiBadgeModule } from './ui-badge/ui-badge.module';
 import { UiBreadcrumbsModule } from './ui-breadcrumbs/ui-breadcrumbs.module';
 import { UiButtonModule } from './ui-button/ui-button.module';
@@ -34,7 +33,6 @@ import { UiTooltipModule } from './ui-tooltip/ui-tooltip.module';
 const lib = [
   UiAccordionModule,
   UiAlertModule,
-  UiAutocompleteModule,
   UiBadgeModule,
   UiBreadcrumbsModule,
   UiButtonModule,

@@ -4,8 +4,6 @@ import { UiAccordionDemoComponent } from './ui-accordion/demo/ui-accordion-demo.
 import { UiAccordionDemoModule } from './ui-accordion/demo/ui-accordion-demo.module';
 import { UiAlertDemoComponent } from './ui-alert/demo/ui-alert-demo.component';
 import { UiAlertDemoModule } from './ui-alert/demo/ui-alert-demo.module';
-import { UiAutocompleteDemoComponent } from './ui-autocomplete/demo/ui-autocomplete-demo.component';
-import { UiAutocompleteDemoModule } from './ui-autocomplete/demo/ui-autocomplete-demo.module';
 import { UiBadgeDemoComponent } from './ui-badge/demo/ui-badge-demo.component';
 import { UiBadgeDemoModule } from './ui-badge/demo/ui-badge-demo.module';
 import { UiBreadcrumbsDemoComponent } from './ui-breadcrumbs/demo/ui-breadcrumbs-demo.component';
@@ -67,7 +65,6 @@ import { UiVerticalMenuDemoModule } from './ui-vertical-menu/demo/ui-vertical-me
 export const demoComponentsRef: [string, Type<any>][] = [
   ['UiAccordionDemoComponent', UiAccordionDemoComponent],
   ['UiAlertDemoComponent', UiAlertDemoComponent],
-  ['UiAutocompleteDemoComponent', UiAutocompleteDemoComponent],
   ['UiBadgeDemoComponent', UiBadgeDemoComponent],
   ['UiBreadcrumbsDemoComponent', UiBreadcrumbsDemoComponent],
   ['UiButtonDemoComponent', UiButtonDemoComponent],
@@ -102,7 +99,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   exports: [
     UiAccordionDemoModule,
     UiAlertDemoModule,
-    UiAutocompleteDemoModule,
     UiBadgeDemoModule,
     UiBreadcrumbsDemoModule,
     UiButtonDemoModule,
