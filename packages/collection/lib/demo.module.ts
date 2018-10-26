@@ -26,6 +26,8 @@ import { UiDrawerDemoComponent } from './ui-drawer/demo/ui-drawer-demo.component
 import { UiDrawerDemoModule } from './ui-drawer/demo/ui-drawer-demo.module';
 import { UiDropdownDemoComponent } from './ui-dropdown/demo/ui-dropdown-demo.component';
 import { UiDropdownDemoModule } from './ui-dropdown/demo/ui-dropdown-demo.module';
+import { UiExtSelectDemoComponent } from './ui-ext-select/demo/ui-ext-select-demo.component';
+import { UiExtSelectDemoModule } from './ui-ext-select/demo/ui-ext-select-demo.module';
 import { UiFileDemoComponent } from './ui-file/demo/ui-file-demo.component';
 import { UiFileDemoModule } from './ui-file/demo/ui-file-demo.module';
 import { UiFormDemoComponent } from './ui-form/demo/ui-form-demo.component';
@@ -76,6 +78,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiDialogDemoComponent', UiDialogDemoComponent],
   ['UiDrawerDemoComponent', UiDrawerDemoComponent],
   ['UiDropdownDemoComponent', UiDropdownDemoComponent],
+  ['UiExtSelectDemoComponent', UiExtSelectDemoComponent],
   ['UiFileDemoComponent', UiFileDemoComponent],
   ['UiFormDemoComponent', UiFormDemoComponent],
   ['UiLoadingBarDemoComponent', UiLoadingBarDemoComponent],
@@ -110,6 +113,7 @@ export const demoComponentsRef: [string, Type<any>][] = [
     UiDialogDemoModule,
     UiDrawerDemoModule,
     UiDropdownDemoModule,
+    UiExtSelectDemoModule,
     UiFileDemoModule,
     UiFormDemoModule,
     UiLoadingBarDemoModule,

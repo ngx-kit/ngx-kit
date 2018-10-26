@@ -13,6 +13,7 @@ import { UiDatePickerDemoComponent } from '../../../packages/collection/lib/ui-d
 import { UiDialogDemoComponent } from '../../../packages/collection/lib/ui-dialog/demo/ui-dialog-demo.component';
 import { UiDrawerDemoComponent } from '../../../packages/collection/lib/ui-drawer/demo/ui-drawer-demo.component';
 import { UiDropdownDemoComponent } from '../../../packages/collection/lib/ui-dropdown/demo/ui-dropdown-demo.component';
+import { UiExtSelectDemoComponent } from '../../../packages/collection/lib/ui-ext-select/demo/ui-ext-select-demo.component';
 import { UiFileDemoComponent } from '../../../packages/collection/lib/ui-file/demo/ui-file-demo.component';
 import { UiFormDemoComponent } from '../../../packages/collection/lib/ui-form/demo/ui-form-demo.component';
 import { UiLoadingBarDemoComponent } from '../../../packages/collection/lib/ui-loading-bar/demo/ui-loading-bar-demo.component';
@@ -82,6 +83,10 @@ const routes: Routes = [
   {
     path: 'ui-dropdown',
     component: UiDropdownDemoComponent,
+  },
+  {
+    path: 'ui-ext-select',
+    component: UiExtSelectDemoComponent,
   },
   {
     path: 'ui-file',
