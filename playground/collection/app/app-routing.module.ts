@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UiAccordionDemoComponent } from '../../../packages/collection/lib/ui-accordion/demo/ui-accordion-demo.component';
 import { UiAlertDemoComponent } from '../../../packages/collection/lib/ui-alert/demo/ui-alert-demo.component';
-import { UiAutocompleteDemoComponent } from '../../../packages/collection/lib/ui-autocomplete/demo/ui-autocomplete-demo.component';
 import { UiBadgeDemoComponent } from '../../../packages/collection/lib/ui-badge/demo/ui-badge-demo.component';
 import { UiBreadcrumbsDemoComponent } from '../../../packages/collection/lib/ui-breadcrumbs/demo/ui-breadcrumbs-demo.component';
 import { UiButtonDemoComponent } from '../../../packages/collection/lib/ui-button/demo/ui-button-demo.component';
@@ -39,10 +38,6 @@ const routes: Routes = [
   {
     path: 'ui-alert',
     component: UiAlertDemoComponent,
-  },
-  {
-    path: 'ui-autocomplete',
-    component: UiAutocompleteDemoComponent,
   },
   {
     path: 'ui-badge',

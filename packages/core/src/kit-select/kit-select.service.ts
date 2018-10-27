@@ -837,7 +837,6 @@ export class KitSelectService<M> implements OnDestroy {
         filter(e => !e.handled),
       )
       .subscribe(e => {
-        console.log('** EVNT', e);
         switch (e.event.key) {
           case 'ArrowUp':
           case 'Up': // EDGE fix
@@ -965,7 +964,6 @@ export class KitSelectService<M> implements OnDestroy {
       .pipe(
         mapTo(undefined),
         debounceTime(0),
-        tap(() => console.log('CD RUN')),
       )
       .subscribe(this._viewChanges);
   }
@@ -974,8 +972,6 @@ export class KitSelectService<M> implements OnDestroy {
     this.focusListener.add(this.selectRef.nativeElement);
     this.focusListener.focus
       .subscribe((event: any) => {
-        console.log('FCS EVNT', event);
-        console.log('SET TRUE FROM FOCUS', event.handled);
         event.handled = true;
         this.focus();
       });

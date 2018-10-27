@@ -1,5 +1,7 @@
-import { Directive, HostListener, Optional } from '@angular/core';
-import { ControlContainer, FormGroup } from '@angular/forms';
+import { Directive, HostListener, OnDestroy, OnInit, Optional } from '@angular/core';
+import { ControlContainer, FormGroup, NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * Touch all form's fields for proper errors displaying.
@@ -25,15 +27,40 @@ import { ControlContainer, FormGroup } from '@angular/forms';
   // tslint:disable-next-line
   selector: '[kitFormTouch]',
 })
-export class KitFormTouchDirective {
+export class KitFormTouchDirective implements OnInit, OnDestroy {
+  private destroy = new Subject();
+
   constructor(
     @Optional() private container: ControlContainer,
   ) {
   }
 
+  ngOnInit(): void {
+    if (this.ngForm) {
+      const form = this.ngForm.form;
+      this.ngForm.ngSubmit
+        .pipe(
+          takeUntil(this.destroy),
+        )
+        .subscribe(() => {
+          this.formTouchAll(form);
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+  }
+
+  get ngForm(): NgForm | undefined {
+    if (this.container && this.container.formDirective) {
+      return this.container.formDirective as NgForm;
+    }
+  }
+
   @HostListener('click') clickHandler() {
-    if (this.container) {
-      this.formTouchAll((this.container.formDirective as any).form);
+    if (this.ngForm) {
+      this.formTouchAll(this.ngForm.form);
     } else {
       throw new Error('Use kitFormTouch inside NgForm or FormGroup');
     }
