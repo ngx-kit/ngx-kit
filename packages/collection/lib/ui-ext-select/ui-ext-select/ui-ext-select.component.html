@@ -15,12 +15,12 @@
     </div>
     <div *ngIf="!service.multiple && !service.input"
          class="model">
-    <span class="value">
-      {{ service.inputView?.view }}
-    </span>
+      <span class="value">
+        {{ service.inputViews[0]?.view }}
+      </span>
     </div>
     <ng-container *ngIf="multiple">
-      <span *ngFor="let item of service.inputView" class="item">
+      <span *ngFor="let item of service.inputViews" class="item">
         {{ item.view }}
         <kit-icon (mousedown)="removeItem($event, item.model)"
                   [xml]="icons.cross"
