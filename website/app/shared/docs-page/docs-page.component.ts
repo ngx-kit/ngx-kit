@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DocGen } from '@ngx-kit/docgen';
 import { ContentServiceBase } from '../../content/content';
 import { SeoService } from '../../seo.service';
@@ -16,6 +16,7 @@ export class DocsPageComponent implements OnInit {
   constructor(
     public content: ContentServiceBase,
     private route: ActivatedRoute,
+    private router: Router,
     private seo: SeoService,
   ) {
   }
@@ -29,6 +30,9 @@ export class DocsPageComponent implements OnInit {
           const dName = d.meta && d.meta.title ? d.meta.title : d.name;
           return dName.toLowerCase() === name.toLowerCase();
         });
+      if (!this.file) {
+        this.router.navigate(['/e404']);
+      }
     });
   }
 }
