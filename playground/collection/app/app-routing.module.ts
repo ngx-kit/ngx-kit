@@ -7,7 +7,6 @@ import { UiBreadcrumbsDemoComponent } from '../../../packages/collection/lib/ui-
 import { UiButtonDemoComponent } from '../../../packages/collection/lib/ui-button/demo/ui-button-demo.component';
 import { UiCarouselDemoComponent } from '../../../packages/collection/lib/ui-carousel/demo/ui-carousel-demo.component';
 import { UiCheckboxDemoComponent } from '../../../packages/collection/lib/ui-checkbox/demo/ui-checkbox-demo.component';
-import { UiCustomSelectDemoComponent } from '../../../packages/collection/lib/ui-custom-select/demo/ui-custom-select-demo.component';
 import { UiDatePickerDemoComponent } from '../../../packages/collection/lib/ui-date-picker/demo/ui-date-picker-demo.component';
 import { UiDialogDemoComponent } from '../../../packages/collection/lib/ui-dialog/demo/ui-dialog-demo.component';
 import { UiDrawerDemoComponent } from '../../../packages/collection/lib/ui-drawer/demo/ui-drawer-demo.component';
@@ -58,10 +57,6 @@ const routes: Routes = [
   {
     path: 'ui-checkbox',
     component: UiCheckboxDemoComponent,
-  },
-  {
-    path: 'ui-custom-select',
-    component: UiCustomSelectDemoComponent,
   },
   {
     path: 'ui-date-picker',
