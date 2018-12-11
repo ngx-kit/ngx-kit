@@ -2,6 +2,7 @@
   "name": "@ngx-kit/core",
   "version": "0.0.0-PLACEHOLDER",
   "description": "ngx-kit - core module",
+  "keywords": ["angular", "toolkit", "core"],
   "main": "./index.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",

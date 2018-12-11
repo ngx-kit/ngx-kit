@@ -62,7 +62,7 @@ export class KitSelectService<M> implements OnDestroy {
 
   private selectRef: ElementRef;
 
-  private readonly _inputView = new BehaviorSubject<KitSelectInputView<M> | KitSelectInputView<M>[] | undefined>(undefined);
+  private readonly _inputView = new BehaviorSubject<KitSelectInputView<M>[] | undefined>(undefined);
 
   private readonly _itemsView = new BehaviorSubject<KitSelectItemView<M>[]>([]);
 
@@ -220,9 +220,21 @@ export class KitSelectService<M> implements OnDestroy {
 
   /**
    * View displayed in input section.
+   *
+   * @deprecated Use `.inputViews` instead.
+   *
+   * @todo Remove in the next major release.
    */
   get inputView(): KitSelectInputView<M> | KitSelectInputView<M>[] | undefined {
-    return this._inputView.value as KitSelectInputView<M>;
+    return this._inputView.value as any;
+  }
+
+  /**
+   * View displayed in input section.
+   * Always returns an array. For non-multiple select use the first item: `inputViews[0]`.
+   */
+  get inputViews(): KitSelectInputView<M>[] {
+    return this._inputView.value ? this._inputView.value : [];
   }
 
   /**
@@ -877,7 +889,7 @@ export class KitSelectService<M> implements OnDestroy {
     if (!this._multiple) {
       this._inputView.next(
         this.model
-          ? this.getItemInputView(this.model as M)
+          ? [this.getItemInputView(this.model as M)]
           : undefined);
     } else {
       this._inputView.next(

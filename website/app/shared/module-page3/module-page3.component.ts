@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DocGen } from '@ngx-kit/docgen';
 import { ContentServiceBase } from '../../content/content';
 import { SeoService } from '../../seo.service';
@@ -21,6 +21,7 @@ export class ModulePage3Component implements OnInit {
   constructor(
     public content: ContentServiceBase,
     private route: ActivatedRoute,
+    private router: Router,
     private seo: SeoService,
   ) {
   }
@@ -30,8 +31,12 @@ export class ModulePage3Component implements OnInit {
       this.name = params['name'];
       this.seo.setTitle(`${this.content.section}/${this.name}`);
       this.files = this.content.getModuleFiles(this.name);
-      this.mdFiles = this.files.filter(file => file.type === 'md') as DocGen.MdFile[];
-      this.tsFiles = this.files.filter(file => file.type === 'ts') as DocGen.TsFile[];
+      if (this.files && this.files.length > 0) {
+        this.mdFiles = this.files.filter(file => file.type === 'md') as DocGen.MdFile[];
+        this.tsFiles = this.files.filter(file => file.type === 'ts') as DocGen.TsFile[];
+      } else {
+        this.router.navigate(['/e404']);
+      }
     });
   }
 

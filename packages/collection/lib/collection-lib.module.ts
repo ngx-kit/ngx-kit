@@ -7,7 +7,6 @@ import { UiBreadcrumbsModule } from './ui-breadcrumbs/ui-breadcrumbs.module';
 import { UiButtonModule } from './ui-button/ui-button.module';
 import { UiCarouselModule } from './ui-carousel/ui-carousel.module';
 import { UiCheckboxModule } from './ui-checkbox/ui-checkbox.module';
-import { UiCustomSelectModule } from './ui-custom-select/ui-custom-select.module';
 import { UiDatePickerModule } from './ui-date-picker/ui-date-picker.module';
 import { UiDialogModule } from './ui-dialog/ui-dialog.module';
 import { UiDrawerModule } from './ui-drawer/ui-drawer.module';
@@ -38,7 +37,6 @@ const lib = [
   UiButtonModule,
   UiCarouselModule,
   UiCheckboxModule,
-  UiCustomSelectModule,
   UiDatePickerModule,
   UiDialogModule,
   UiDrawerModule,

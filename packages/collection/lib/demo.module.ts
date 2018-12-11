@@ -14,8 +14,6 @@ import { UiCarouselDemoComponent } from './ui-carousel/demo/ui-carousel-demo.com
 import { UiCarouselDemoModule } from './ui-carousel/demo/ui-carousel-demo.module';
 import { UiCheckboxDemoComponent } from './ui-checkbox/demo/ui-checkbox-demo.component';
 import { UiCheckboxDemoModule } from './ui-checkbox/demo/ui-checkbox-demo.module';
-import { UiCustomSelectDemoComponent } from './ui-custom-select/demo/ui-custom-select-demo.component';
-import { UiCustomSelectDemoModule } from './ui-custom-select/demo/ui-custom-select-demo.module';
 import { UiDatePickerDemoComponent } from './ui-date-picker/demo/ui-date-picker-demo.component';
 import { UiDatePickerDemoModule } from './ui-date-picker/demo/ui-date-picker-demo.module';
 import { UiDialogDemoComponent } from './ui-dialog/demo/ui-dialog-demo.component';
@@ -70,7 +68,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiButtonDemoComponent', UiButtonDemoComponent],
   ['UiCarouselDemoComponent', UiCarouselDemoComponent],
   ['UiCheckboxDemoComponent', UiCheckboxDemoComponent],
-  ['UiCustomSelectDemoComponent', UiCustomSelectDemoComponent],
   ['UiDatePickerDemoComponent', UiDatePickerDemoComponent],
   ['UiDialogDemoComponent', UiDialogDemoComponent],
   ['UiDrawerDemoComponent', UiDrawerDemoComponent],
@@ -104,7 +101,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
     UiButtonDemoModule,
     UiCarouselDemoModule,
     UiCheckboxDemoModule,
-    UiCustomSelectDemoModule,
     UiDatePickerDemoModule,
     UiDialogDemoModule,
     UiDrawerDemoModule,
