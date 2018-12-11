@@ -2,6 +2,7 @@ export * from './src/kit-anchor/kit-anchor';
 export * from './src/kit-check/kit-check';
 export * from './src/kit-class/kit-class';
 export * from './src/kit-collapse/kit-collapse';
+export * from './src/kit-css-var/kit-css-var';
 export * from './src/kit-date-picker/kit-date-picker';
 export * from './src/kit-event-manager/kit-event-manager';
 export * from './src/kit-focus-listener/kit-focus-listener';
