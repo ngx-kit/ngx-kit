@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-PACKAGE=$1
+while getopts "p:w" option; do
+  case $option in
+    p)
+      PACKAGE=${OPTARG}
+      ;;
+    w)
+      WAIT=true
+      ;;
+  esac
+done
+
+echo $WAIT
+
 ORG="ngx-kit"
 PKG_DIR="dist/${PACKAGE}"
 BUILD_REPO="${PACKAGE}-builds"
@@ -52,4 +64,6 @@ echo "Build published: ${NPM_LINK}"
 
 echo "${NPM_LINK}" > "${REPO_DIR}/npm_link"
 
-read -p "Press any key to continue... " -n1 -s
+if [ "$WAIT" = true ]; then
+  read -p "Press any key to continue... " -n1 -s
+fi

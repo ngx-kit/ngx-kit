@@ -30,4 +30,4 @@ fs.copySync(path.resolve(__dirname, 'schematics'), path.resolve(releaseDir), {
 // Copy README
 fs.copySync(path.resolve(__dirname, 'README.md'), path.resolve(releaseDir, 'README.md'));
 
-console.log('release.js finished!');
+console.log('pre-publish.js finished!');

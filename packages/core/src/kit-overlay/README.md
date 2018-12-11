@@ -84,6 +84,5 @@ You could get error `No component factory found for NameOfComponent` inside Lazy
 
 ### Example
 
-* collection:custom-select - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-custom-select), [demo](http://ngx-kit.com/collection/module/ui-custom-select) 
 * collection:modal - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-modal), [demo](http://ngx-kit.com/collection/module/ui-modal) 
 * collection:tooltip - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-tooltip), [demo](http://ngx-kit.com/collection/module/ui-tooltip) 

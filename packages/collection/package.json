@@ -1,7 +1,8 @@
 {
   "name": "@ngx-kit/collection",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "UI components schematics for Angular-cli based on ngx-kit",
+  "description": "UI components schematics for Angular-CLI based on ngx-kit",
+  "keywords": ["angular", "ui-kit", "components"],
   "author": {
     "name": "Oleksa Novyk",
     "email": "oleksanovyk@gmail.com",

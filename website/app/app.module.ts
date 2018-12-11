@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonitErrorHandler } from '@nvxme/monit-ng-client';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import { DemoModule } from '../../packages/collection/lib/demo.module';
 import { UiNotificationModule } from '../../packages/collection/lib/ui-notification/ui-notification.module';
 import { AppRoutingModule } from './app-routing.module';
+import { Error404Component } from './error404/error404.component';
 import { RootComponent } from './root/root.component';
 import { SharedModule } from './shared/shared.module';
 import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
@@ -26,8 +28,14 @@ import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
   ],
   declarations: [
     RootComponent,
+    Error404Component,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: MonitErrorHandler,
+    },
+  ],
   bootstrap: [RootComponent],
 })
 export class AppModule {
