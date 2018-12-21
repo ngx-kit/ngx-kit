@@ -139,7 +139,6 @@
             ],
             "scripts": [
               "node_modules/hammerjs/hammer.js",
-              "node_modules/moment/moment.js"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
