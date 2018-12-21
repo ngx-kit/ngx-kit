@@ -36,9 +36,6 @@ export class KitScrollService implements OnDestroy {
     private elRef: ElementRef,
     private hammerProvider: KitHammerProvider<any>,
   ) {
-    if (!this.hammerProvider.hammer) {
-      throw new Error('KitScrollService requires Hammer.JS');
-    }
     this._state.next({
       ...this.state,
       nativeScrollbarWidth: this.platform.getScrollbarWidth(),
@@ -61,9 +58,11 @@ export class KitScrollService implements OnDestroy {
 
   registerRefs(refs: KitScrollRefs) {
     this.refs = refs;
-    this.initVListeners();
-    this.initHListeners();
-    this.initMutationObserver();
+    if (this.hammerProvider.hammer) {
+      this.initVListeners();
+      this.initHListeners();
+      this.initMutationObserver();
+    }
   }
 
   update() {
