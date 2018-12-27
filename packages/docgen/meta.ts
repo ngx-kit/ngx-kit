@@ -3,7 +3,38 @@ import * as ts from 'typescript';
 export interface GenArgs {
   project: string;
   output: string;
+  config?: string;
 }
+
+export interface GenConfig {
+  addFileText?: boolean;
+  addKindText?: boolean;
+}
+
+export const genDefaultConfig: GenConfig = {
+  addFileText: true,
+  addKindText: true,
+};
+
+export const angularLifehooks = [
+  'ngOnInit',
+  'ngDoCheck',
+  'ngOnChanges',
+  'ngOnDestroy',
+  'ngAfterContentInit',
+  'ngAfterContentChecked',
+  'ngAfterViewInit',
+  'ngAfterContentChecked',
+];
+
+export const angularPropDecorators = [
+  '@HostListener',
+  '@HostBinding',
+  '@ContentChildren',
+  '@ContentChild',
+  '@ViewChildren',
+  '@ViewChild',
+];
 
 export namespace DocGen {
   export interface Doc {
@@ -14,7 +45,7 @@ export namespace DocGen {
   export interface File {
     fileName: string;
     type: string;
-    text: string;
+    text?: string;
   }
 
   export interface TsFile extends File {
@@ -90,6 +121,7 @@ export namespace DocGen {
     typeParameters?: string[];
     parameters?: string[];
     type?: string;
+    optional?: boolean;
     text?: string;
     signature?: string;
   }

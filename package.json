@@ -46,7 +46,7 @@
     "docgen:build": "npm run docgen:build:tsc && npm run docgen:build:release && npm run docgen:build:publish",
     "docgen:build:tsc": "tsc -p ./packages/docgen/tsconfig.json",
     "docgen:build:release": "node ./packages/docgen/release.js",
-    "docgen:build:publish": "publish-build.sh docgen"
+    "docgen:build:publish": "dev-publish.sh -p docgen -w"
   },
   "private": true,
   "dependencies": {

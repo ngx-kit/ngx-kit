@@ -1,10 +1,10 @@
 import * as ts from 'typescript';
-import { DocGen } from '../meta';
+import { DocGen, GenConfig } from '../meta';
 import { compileFunctionSignature } from './compile-signature';
 import { checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNodesText, readNodeText } from './read-node-text';
 
-export function readFunctionDeclar(node: any, sourceFile: ts.SourceFile): DocGen.FunctionDeclar {
+export function readFunctionDeclar(node: any, sourceFile: ts.SourceFile, config: GenConfig): DocGen.FunctionDeclar {
   const jsDoc = readJsDoc(node.jsDoc);
   const f: DocGen.FunctionDeclar = {
     kind: node.kind,

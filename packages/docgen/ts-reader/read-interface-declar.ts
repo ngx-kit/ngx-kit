@@ -1,11 +1,11 @@
 import * as ts from 'typescript';
 import { isArray } from 'util';
-import { DocGen } from '../meta';
+import { DocGen, GenConfig } from '../meta';
 import { compileSignatureSignature } from './compile-signature';
 import { checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNodesText, readNodeText } from './read-node-text';
 
-export function readInterfaceDeclar(node: any, sourceFile: ts.SourceFile): DocGen.InterfaceDeclar {
+export function readInterfaceDeclar(node: any, sourceFile: ts.SourceFile, config: GenConfig): DocGen.InterfaceDeclar {
   const jsDoc = readJsDoc(node.jsDoc);
   return {
     kind: node.kind,
@@ -13,17 +13,17 @@ export function readInterfaceDeclar(node: any, sourceFile: ts.SourceFile): DocGe
     jsDoc,
     isInternal: checkIsInternal(jsDoc),
     name: readNodeText(node.name),
-    members: readInterfaceMembers(node.members, sourceFile),
+    members: readInterfaceMembers(node.members, sourceFile, config),
   };
 }
 
-function readInterfaceMembers(members: any[], sourceFile: ts.SourceFile): DocGen.Signature[] | undefined {
+function readInterfaceMembers(members: any[], sourceFile: ts.SourceFile, config: GenConfig): DocGen.Signature[] | undefined {
   return members && isArray(members)
-    ? members.map(member => readSignature(member, sourceFile) as DocGen.Signature)
+    ? members.map(member => readSignature(member, sourceFile, config) as DocGen.Signature)
     : undefined;
 }
 
-export function readSignature(node: any, sourceFile: ts.SourceFile): DocGen.Signature | undefined {
+export function readSignature(node: any, sourceFile: ts.SourceFile, config: GenConfig): DocGen.Signature | undefined {
   // @todo check question token
   if (node) {
     const jsDoc = readJsDoc(node.jsDoc);
@@ -36,7 +36,8 @@ export function readSignature(node: any, sourceFile: ts.SourceFile): DocGen.Sign
       typeParameters: readNodesText(node.typeParameters, sourceFile),
       parameters: readNodesText(node.parameters, sourceFile),
       type: readNodeText(node.type, sourceFile),
-      text: readNodeText(node, sourceFile),
+      optional: !!node.questionToken,
+      ...config.addKindText ? {text: readNodeText(node, sourceFile)} : {},
     };
     return {
       ...s,
