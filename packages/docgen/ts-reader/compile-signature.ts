@@ -10,7 +10,6 @@ export function compileClassMemberSignature(member: DocGen.ClassMember): string 
     member.name,
     isMethod(member.kind) ? `(${member.parameters ? member.parameters.join(', ') : ''})` : '',
     member.type ? `: ${member.type}` : '',
-    member.initializer ? ` = ${member.initializer}` : '',
   ].join('');
 }
 
@@ -26,9 +25,10 @@ function isMethod(kind: ts.SyntaxKind) {
 export function compileSignatureSignature(member: DocGen.Signature): string {
   return [
     member.modifiers ? member.modifiers.join(' ') + ' ' : '',
-    member.kind === 158 ? `[${member.parameters ? member.parameters.join(', ') : ''}]` : '',
+    member.kind === 158 && member.kind !== 149 ? `[${member.parameters ? member.parameters.join(', ') : ''}]` : '',
     member.name,
-    member.kind !== 158 ? `(${member.parameters ? member.parameters.join(', ') : ''})` : '',
+    member.kind !== 158 && member.kind !== 149 ? `(${member.parameters ? member.parameters.join(', ') : ''})` : '',
+    member.optional ? '?' : '',
     member.type ? `: ${member.type}` : '',
   ].join('');
 }
