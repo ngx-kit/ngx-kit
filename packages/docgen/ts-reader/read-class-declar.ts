@@ -1,6 +1,7 @@
 import * as ts from 'typescript';
 import { DocGen, GenConfig } from '../meta';
 import { compileClassMemberSignature } from './compile-signature';
+import { getNodePos } from './get-node-pos';
 import { checkIsDemo, checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNgMeta } from './read-ng-meta';
 import { readNodesText, readNodeText } from './read-node-text';
@@ -18,6 +19,7 @@ export function readClassDeclar(node: any, sourceFile: ts.SourceFile, config: Ge
     name: readNodeText(node.name, sourceFile),
     members: readClassMembers(node['members'], sourceFile, config),
     ngMeta: readNgMeta(node.decorators, sourceFile),
+    pos: getNodePos(node, sourceFile),
   };
 }
 

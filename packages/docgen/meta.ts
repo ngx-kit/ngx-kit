@@ -79,6 +79,17 @@ export namespace DocGen {
     }[];
   }
 
+  export interface DeclarPos {
+    start?: {
+      line: number;
+      character: number;
+    };
+    end?: {
+      line: number;
+      character: number;
+    };
+  }
+
   export interface ClassDeclar extends Declar {
     kindString: 'class';
     isDemo?: boolean;
@@ -87,6 +98,7 @@ export namespace DocGen {
     name?: string;
     members?: ClassMember[];
     ngMeta?: NgMeta;
+    pos?: DeclarPos;
   }
 
   export interface ClassMember {
@@ -109,6 +121,7 @@ export namespace DocGen {
     modifiers?: string[];
     name?: string;
     members?: Signature[];
+    pos?: DeclarPos;
   }
 
   export interface Signature {
@@ -143,6 +156,7 @@ export namespace DocGen {
     parameters?: string[];
     type?: string;
     signature?: string;
+    pos?: DeclarPos;
   }
 
   // NgMeta

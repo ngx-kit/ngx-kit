@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import { isArray } from 'util';
 import { DocGen, GenConfig } from '../meta';
 import { compileSignatureSignature } from './compile-signature';
+import { getNodePos } from './get-node-pos';
 import { checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNodesText, readNodeText } from './read-node-text';
 
@@ -14,6 +15,7 @@ export function readInterfaceDeclar(node: any, sourceFile: ts.SourceFile, config
     isInternal: checkIsInternal(jsDoc),
     name: readNodeText(node.name),
     members: readInterfaceMembers(node.members, sourceFile, config),
+    pos: getNodePos(node, sourceFile),
   };
 }
 
