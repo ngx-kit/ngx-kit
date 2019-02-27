@@ -39,7 +39,7 @@ export class KitHammerProvider<T> {
 
   constructor(
     private platform: KitPlatformService,
-    @Optional() @Inject(kitHammerInstance) hammerInstance: T,
+    @Optional() @Inject(kitHammerInstance) hammerInstance: any,
   ) {
     if (hammerInstance) {
       this._hammer = hammerInstance;

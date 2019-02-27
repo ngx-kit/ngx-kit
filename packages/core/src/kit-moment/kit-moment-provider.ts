@@ -28,7 +28,7 @@ export class KitMomentProvider<T> {
 
   constructor(
     private platform: KitPlatformService,
-    @Optional() @Inject(kitMomentInstance) momentInstance: T,
+    @Optional() @Inject(kitMomentInstance) momentInstance: any,
   ) {
     if (momentInstance) {
       this._moment = momentInstance;
