@@ -12,9 +12,11 @@ import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
 
 const monit = new MonitClient({
-  host: 'ws://monit.novyk.org/ws/client',
-  id: 'ngx-kit-website',
-  token: process.env.MONIT_TOKEN || 'local',
+  project: 'Ngx-kit Website',
+  from: 'Ngx-kit Website Monit <monit@ngx-kit.com>',
+  to: 'inavix@gmail.com',
+  mailgunDomain: process.env.MAILGUN_DOMAIN || '',
+  mailgunApiKey: process.env.MAILGUN_API_KEY || '',
 });
 
 // Work around until @angular/angular fixes Node undefined bug
@@ -40,14 +42,6 @@ const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('../dist-server/main
 // Express Engine
 const {ngExpressEngine} = require('@nguniversal/express-engine');
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
-
-// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-//app.engine('html', ngExpressEngine({
-//  bootstrap: AppServerModuleNgFactory,
-//  providers: [
-//    provideModuleMap(LAZY_MODULE_MAP),
-//  ],
-//}));
 
 app.engine('html', (_: any, options: any, callback: any) => {
   renderModuleFactory(AppServerModuleNgFactory, {

@@ -6,7 +6,7 @@ import { relative, resolve } from 'path';
 import * as yargsParser from 'yargs-parser';
 import { generateFilesMap } from './generate-files-map';
 import { readMdFile } from './md-reader/read-md-file';
-import { DocGen, GenArgs } from './meta';
+import { DocGen, GenArgs, genDefaultConfig } from './meta';
 import { readTextFile } from './text-reader/read-text-file';
 import { readTsFile } from './ts-reader/read-ts-file';
 
@@ -15,14 +15,19 @@ const options = {
   alias: {
     project: ['p'],
     output: ['o'],
+    config: ['c'],
   },
   string: [
     'project', // Path to lib sources
     'output', // Path to generated file
+    'config', // Path to json configuration file
   ],
 };
 const args = yargsParser<GenArgs>(process.argv.slice(2), options);
 const projectRoot = resolve(args.project);
+const config = args.config
+  ? {...genDefaultConfig, ...require(resolve(args.config))}
+  : genDefaultConfig;
 
 const doc: DocGen.Doc = {
   files: [],
@@ -38,7 +43,7 @@ tsFiles.forEach(fullPath => {
 //  if (relativePath === 'src/kit-date-picker/kit-date-picker.service.ts') {
   if (relativePath) {
     console.log(`DocGen: parse ${relativePath}`);
-    const parsed = readTsFile(relativePath, fullPath);
+    const parsed = readTsFile(relativePath, fullPath, config);
     doc.files.push(parsed);
   }
 });

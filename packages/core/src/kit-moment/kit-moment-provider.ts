@@ -1,8 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
+import { kitMomentInstance } from './meta';
 
 /**
  * Provides [Moment.js](https://momentjs.com/) instance if available.
+ *
+ * Also you can manually inject Moment.js instance in the root module:
+ *
+ * ```typescript
+ * import * as Moment from 'moment';
+ * import { kitMomentInstance } from '@ngx-kit/core';
+ * ...
+ * @NgModule({
+ *   ...
+ *   providers: [
+ *     {
+ *       provide: kitMomentInstance,
+ *       useValue: Moment,
+ *     },
+ * ```
  */
 @Injectable({
   providedIn: 'root',
@@ -12,8 +28,11 @@ export class KitMomentProvider<T> {
 
   constructor(
     private platform: KitPlatformService,
+    @Optional() @Inject(kitMomentInstance) momentInstance: T,
   ) {
-    if (this.platform.isBrowser()) {
+    if (momentInstance) {
+      this._moment = momentInstance;
+    } else if (this.platform.isBrowser()) {
       if (window && 'moment' in window) {
         this._moment = (window as any)['moment'];
       }

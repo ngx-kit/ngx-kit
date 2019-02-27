@@ -3,8 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { kitMomentInstance } from '@ngx-kit/core';
 import { MonitErrorHandler } from '@nvxme/monit-ng-client';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
+import * as moment from 'moment';
 import { DemoModule } from '../../packages/collection/lib/demo.module';
 import { UiNotificationModule } from '../../packages/collection/lib/ui-notification/ui-notification.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +36,10 @@ import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
     {
       provide: ErrorHandler,
       useClass: MonitErrorHandler,
+    },
+    {
+      provide: kitMomentInstance,
+      useValue: moment,
     },
   ],
   bootstrap: [RootComponent],

@@ -1,3 +1,7 @@
+import { InjectionToken } from '@angular/core';
+
+export const kitHammerInstance = new InjectionToken('kitHammerInstance');
+
 export namespace KitHammerTypes {
   export const INPUT_TYPE_TOUCH = 'touch';
   export const INPUT_TYPE_PEN = 'pen';

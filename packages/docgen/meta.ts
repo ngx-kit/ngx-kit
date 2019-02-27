@@ -3,7 +3,38 @@ import * as ts from 'typescript';
 export interface GenArgs {
   project: string;
   output: string;
+  config?: string;
 }
+
+export interface GenConfig {
+  addFileText?: boolean;
+  addKindText?: boolean;
+}
+
+export const genDefaultConfig: GenConfig = {
+  addFileText: true,
+  addKindText: true,
+};
+
+export const angularLifehooks = [
+  'ngOnInit',
+  'ngDoCheck',
+  'ngOnChanges',
+  'ngOnDestroy',
+  'ngAfterContentInit',
+  'ngAfterContentChecked',
+  'ngAfterViewInit',
+  'ngAfterContentChecked',
+];
+
+export const angularPropDecorators = [
+  '@HostListener',
+  '@HostBinding',
+  '@ContentChildren',
+  '@ContentChild',
+  '@ViewChildren',
+  '@ViewChild',
+];
 
 export namespace DocGen {
   export interface Doc {
@@ -14,7 +45,7 @@ export namespace DocGen {
   export interface File {
     fileName: string;
     type: string;
-    text: string;
+    text?: string;
   }
 
   export interface TsFile extends File {
@@ -48,6 +79,17 @@ export namespace DocGen {
     }[];
   }
 
+  export interface DeclarPos {
+    start?: {
+      line: number;
+      character: number;
+    };
+    end?: {
+      line: number;
+      character: number;
+    };
+  }
+
   export interface ClassDeclar extends Declar {
     kindString: 'class';
     isDemo?: boolean;
@@ -56,6 +98,7 @@ export namespace DocGen {
     name?: string;
     members?: ClassMember[];
     ngMeta?: NgMeta;
+    pos?: DeclarPos;
   }
 
   export interface ClassMember {
@@ -78,6 +121,7 @@ export namespace DocGen {
     modifiers?: string[];
     name?: string;
     members?: Signature[];
+    pos?: DeclarPos;
   }
 
   export interface Signature {
@@ -90,6 +134,7 @@ export namespace DocGen {
     typeParameters?: string[];
     parameters?: string[];
     type?: string;
+    optional?: boolean;
     text?: string;
     signature?: string;
   }
@@ -111,6 +156,7 @@ export namespace DocGen {
     parameters?: string[];
     type?: string;
     signature?: string;
+    pos?: DeclarPos;
   }
 
   // NgMeta

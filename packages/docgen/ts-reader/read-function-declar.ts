@@ -1,10 +1,11 @@
 import * as ts from 'typescript';
-import { DocGen } from '../meta';
+import { DocGen, GenConfig } from '../meta';
 import { compileFunctionSignature } from './compile-signature';
+import { getNodePos } from './get-node-pos';
 import { checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNodesText, readNodeText } from './read-node-text';
 
-export function readFunctionDeclar(node: any, sourceFile: ts.SourceFile): DocGen.FunctionDeclar {
+export function readFunctionDeclar(node: any, sourceFile: ts.SourceFile, config: GenConfig): DocGen.FunctionDeclar {
   const jsDoc = readJsDoc(node.jsDoc);
   const f: DocGen.FunctionDeclar = {
     kind: node.kind,
@@ -16,6 +17,7 @@ export function readFunctionDeclar(node: any, sourceFile: ts.SourceFile): DocGen
     name: readNodeText(node.name, sourceFile),
     parameters: readNodesText(node.parameters, sourceFile),
     type: readNodeText(node.type, sourceFile),
+    pos: getNodePos(node, sourceFile),
   };
   return {
     ...f,
