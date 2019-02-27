@@ -1,6 +1,6 @@
 {
   "name": "ngx-kit-src",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./dist-server && rimraf ./covarage && rimraf ./tmp",
