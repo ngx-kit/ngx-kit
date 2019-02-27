@@ -1,8 +1,8 @@
-import { DocGen } from '../meta';
+import { DocGen, GenConfig } from '../meta';
 import { checkIsInternal, readJsDoc } from './read-js-doc';
 import { readNodesText, readNodeText } from './read-node-text';
 
-export function readTypeAliasDeclar(node: any): DocGen.TypeAliasDeclar {
+export function readTypeAliasDeclar(node: any, config: GenConfig): DocGen.TypeAliasDeclar {
   const jsDoc = readJsDoc(node.jsDoc);
   return {
     kind: node.kind,
@@ -13,6 +13,6 @@ export function readTypeAliasDeclar(node: any): DocGen.TypeAliasDeclar {
     name: readNodeText(node.name),
     typeParameters: readNodesText(node.typeParameters),
     type: readNodeText(node.type),
-    text: readNodeText(node),
+    ...config.addKindText ? {text: readNodeText(node)} : {},
   };
 }

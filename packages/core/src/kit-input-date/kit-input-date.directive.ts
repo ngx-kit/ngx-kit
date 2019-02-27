@@ -77,7 +77,8 @@ export class KitInputDateDirective implements KitModelInterceptor, OnChanges {
         '==========\n' +
         'Possible solution:\n' +
         '  1. Install moment: npm install moment\n' +
-        '  2. Add "node_modules/moment/moment.js" to angular.json scripts section.\n' +
+        /* tslint:disable-next-line */
+        '  2. Provide moment with `kitMomentInstance` injection token (in root module): `{provide: kitMomentInstance, useValue: moment}` \n' +
         '==========\n',
       );
     }

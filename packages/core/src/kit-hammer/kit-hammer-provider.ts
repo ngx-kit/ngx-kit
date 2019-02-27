@@ -1,8 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
+import { kitHammerInstance } from './meta';
 
 /**
  * Provides [Hammer.JS](https://hammerjs.github.io/) instance if available.
+ *
+ * Also you can manually inject HammerJS instance in the root module:
+ *
+ * ```typescript
+ * import * as Hammer from 'hammerjs';
+ * import { kitHammerInstance } from '@ngx-kit/core';
+ * ...
+ * @NgModule({
+ *   ...
+ *   providers: [
+ *     {
+ *       provide: kitHammerInstance,
+ *       useValue: Hammer,
+ *     },
+ * ```
+ *
+ * But be aware, Hammer.JS does not support server-side rendering.
+ *
+ * That's why it is better just to add it via `angular.json` scripts section:
+ *
+ * ```json
+ * ...
+ * "scripts": [
+ *   "node_modules/hammerjs/hammer.js",
+ * ],
+ * ```
  */
 @Injectable({
   providedIn: 'root',
@@ -12,8 +39,11 @@ export class KitHammerProvider<T> {
 
   constructor(
     private platform: KitPlatformService,
+    @Optional() @Inject(kitHammerInstance) hammerInstance: T,
   ) {
-    if (this.platform.isBrowser()) {
+    if (hammerInstance) {
+      this._hammer = hammerInstance;
+    } else if (this.platform.isBrowser()) {
       if (window && 'Hammer' in window) {
         this._hammer = (window as any)['Hammer'];
       }

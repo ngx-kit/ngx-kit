@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { DocGen } from '@ngx-kit/docgen';
+import { angularLifehooks, angularPropDecorators } from '../../../../../packages/docgen/meta';
 
 @Component({
   selector: 'app-module-page3-class-declar',
@@ -33,28 +34,12 @@ export class ModulePage3ClassDeclarComponent implements OnInit, OnChanges {
             return false;
           }
           // Skip angular specific
-          if ([
-            'ngOnInit',
-            'ngDoCheck',
-            'ngOnChanges',
-            'ngOnDestroy',
-            'ngAfterContentInit',
-            'ngAfterContentChecked',
-            'ngAfterViewInit',
-            'ngAfterContentChecked',
-          ].indexOf(member.name + '') !== -1) {
+          if (angularLifehooks.indexOf(member.name + '') !== -1) {
             return false;
           }
           // Skip angular directives
           if (member.decorators && member.decorators.find(decorator => {
-            return !![
-              '@HostListener',
-              '@HostBinding',
-              '@ContentChildren',
-              '@ContentChild',
-              '@ViewChildren',
-              '@ViewChild',
-            ].find(d => {
+            return !!angularPropDecorators.find(d => {
               return decorator.indexOf(d) !== -1;
             });
           })) {
