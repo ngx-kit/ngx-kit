@@ -4,10 +4,11 @@ import { KitOverlayModule, KitOverlayService } from '@ngx-kit/core';
 import { UiLoadingBarComponent } from './ui-loading-bar/ui-loading-bar.component';
 
 export function uiLoadingBarInitFactory(overlay: KitOverlayService) {
-  return () => {
+  const f = () => {
     // Host loading-bar component in the overlay
     overlay.hostComponent({component: UiLoadingBarComponent});
   };
+  return f;
 }
 
 @NgModule({

@@ -1,0 +1,1 @@
+# Modal component for Angular

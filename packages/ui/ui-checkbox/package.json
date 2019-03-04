@@ -1,0 +1,26 @@
+{
+  "name": "@ngx-kit/ui-checkbox",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Checkbox ui-component for Angular, provided by ngx-kit",
+  "keywords": ["angular", "toolkit", "core"],
+  "main": "./index.umd.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
+  "author": {
+    "name": "Oleksa Novyk",
+    "email": "oleksanovyk@gmail.com",
+    "url": "https://novyk.org/"
+  },
+  "license": "MIT",
+  "homepage": "https://ngx-kit.com/ui/ui-checkbox",
+  "repository": {
+    "url": "https://github.com/ngx-kit/ngx-kit/tree/master/packages/ui/ui-checkbox",
+    "type": "git"
+  },
+  "schematics": "./schematics/collection.json",
+  "peerDependencies": {
+    "@angular/animations": "^7.0.0",
+    "@angular/core": "^7.0.0",
+    "@ngx-kit/core": "^7.0.0"
+  }
+}

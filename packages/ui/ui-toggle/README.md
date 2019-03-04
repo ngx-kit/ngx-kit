@@ -1,0 +1,1 @@
+# Toggle component for Angular

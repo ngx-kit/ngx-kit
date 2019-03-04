@@ -11,8 +11,6 @@ while getopts "p:w" option; do
   esac
 done
 
-echo $WAIT
-
 ORG="ngx-kit"
 PKG_DIR="dist/${PACKAGE}"
 BUILD_REPO="${PACKAGE}-builds"

@@ -8,7 +8,7 @@ import { MonitErrorHandler } from '@nvxme/monit-ng-client';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import * as moment from 'moment';
 import { DemoModule } from '../../packages/collection/lib/demo.module';
-import { UiNotificationModule } from '../../packages/collection/lib/ui-notification/ui-notification.module';
+import { UiNotificationModule } from '../../packages/ui/ui-notification/src/ui-notification.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Error404Component } from './error404/error404.component';
 import { RootComponent } from './root/root.component';

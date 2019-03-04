@@ -4,10 +4,11 @@ import { KitClassModule, KitOverlayService } from '@ngx-kit/core';
 import { UiNotificationHostComponent } from './ui-notification-host/ui-notification-host.component';
 
 export function uiNotificationInitFactory(overlay: KitOverlayService) {
-  return () => {
+  const f = () => {
     // Host component in the overlay
     overlay.hostComponent({component: UiNotificationHostComponent});
   };
+  return f;
 }
 
 @NgModule({

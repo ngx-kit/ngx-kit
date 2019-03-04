@@ -1,0 +1,1 @@
+# File component for Angular

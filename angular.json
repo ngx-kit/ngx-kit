@@ -37,6 +37,398 @@
       "projectType": "library",
       "prefix": "ui"
     },
+    "ui-accordion": {
+      "root": "packages/ui/ui-accordion",
+      "sourceRoot": "packages/ui/ui-accordion/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-accordion/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-alert": {
+      "root": "packages/ui/ui-alert",
+      "sourceRoot": "packages/ui/ui-alert/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-alert/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-badge": {
+      "root": "packages/ui/ui-badge",
+      "sourceRoot": "packages/ui/ui-badge/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-badge/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-breadcrumbs": {
+      "root": "packages/ui/ui-breadcrumbs",
+      "sourceRoot": "packages/ui/ui-breadcrumbs/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-breadcrumbs/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-button": {
+      "root": "packages/ui/ui-button",
+      "sourceRoot": "packages/ui/ui-button/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-button/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-carousel": {
+      "root": "packages/ui/ui-carousel",
+      "sourceRoot": "packages/ui/ui-carousel/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-carousel/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-checkbox": {
+      "root": "packages/ui/ui-checkbox",
+      "sourceRoot": "packages/ui/ui-checkbox/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-checkbox/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-date-picker": {
+      "root": "packages/ui/ui-date-picker",
+      "sourceRoot": "packages/ui/ui-date-picker/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-date-picker/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-dialog": {
+      "root": "packages/ui/ui-dialog",
+      "sourceRoot": "packages/ui/ui-dialog/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-dialog/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-drawer": {
+      "root": "packages/ui/ui-drawer",
+      "sourceRoot": "packages/ui/ui-drawer/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-drawer/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-dropdown": {
+      "root": "packages/ui/ui-dropdown",
+      "sourceRoot": "packages/ui/ui-dropdown/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-dropdown/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-ext-select": {
+      "root": "packages/ui/ui-ext-select",
+      "sourceRoot": "packages/ui/ui-ext-select/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-ext-select/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-file": {
+      "root": "packages/ui/ui-file",
+      "sourceRoot": "packages/ui/ui-file/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-file/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-form": {
+      "root": "packages/ui/ui-form",
+      "sourceRoot": "packages/ui/ui-form/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-form/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-loading-bar": {
+      "root": "packages/ui/ui-loading-bar",
+      "sourceRoot": "packages/ui/ui-loading-bar/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-loading-bar/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-modal": {
+      "root": "packages/ui/ui-modal",
+      "sourceRoot": "packages/ui/ui-modal/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-modal/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-notification": {
+      "root": "packages/ui/ui-notification",
+      "sourceRoot": "packages/ui/ui-notification/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-notification/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-popup": {
+      "root": "packages/ui/ui-popup",
+      "sourceRoot": "packages/ui/ui-popup/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-popup/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-radio": {
+      "root": "packages/ui/ui-radio",
+      "sourceRoot": "packages/ui/ui-radio/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-radio/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-rating": {
+      "root": "packages/ui/ui-rating",
+      "sourceRoot": "packages/ui/ui-rating/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-rating/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-scroll": {
+      "root": "packages/ui/ui-scroll",
+      "sourceRoot": "packages/ui/ui-scroll/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-scroll/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-select": {
+      "root": "packages/ui/ui-select",
+      "sourceRoot": "packages/ui/ui-select/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-select/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-slider": {
+      "root": "packages/ui/ui-slider",
+      "sourceRoot": "packages/ui/ui-slider/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-slider/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-tabs": {
+      "root": "packages/ui/ui-tabs",
+      "sourceRoot": "packages/ui/ui-tabs/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-tabs/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-text": {
+      "root": "packages/ui/ui-text",
+      "sourceRoot": "packages/ui/ui-text/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-text/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-toggle": {
+      "root": "packages/ui/ui-toggle",
+      "sourceRoot": "packages/ui/ui-toggle/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-toggle/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-tooltip": {
+      "root": "packages/ui/ui-tooltip",
+      "sourceRoot": "packages/ui/ui-tooltip/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-tooltip/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-vertical-menu": {
+      "root": "packages/ui/ui-vertical-menu",
+      "sourceRoot": "packages/ui/ui-vertical-menu/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-vertical-menu/ng-package.json"
+          }
+        }
+      }
+    },
     "core-playground": {
       "root": "",
       "sourceRoot": "playground/core",
@@ -138,7 +530,7 @@
               "website/assets/hljs-default.scss"
             ],
             "scripts": [
-              "node_modules/hammerjs/hammer.js",
+              "node_modules/hammerjs/hammer.js"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

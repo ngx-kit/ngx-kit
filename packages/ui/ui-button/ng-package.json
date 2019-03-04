@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/ui-button",
+  "deleteDestPath": true,
+  "lib": {
+    "entryFile": "./public_api.ts",
+    "umdModuleIds": {
+      "@ngx-kit/core": "@ngx-kit/core"
+    }
+  }
+}

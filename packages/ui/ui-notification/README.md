@@ -1,0 +1,1 @@
+# Notification component for Angular

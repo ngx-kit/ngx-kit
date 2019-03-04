@@ -1,0 +1,1 @@
+# Slider component for Angular
