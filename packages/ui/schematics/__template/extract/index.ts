@@ -11,9 +11,9 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { getWorkspace } from '../../core/schematics/__template/util/config';
-import { parseName } from '../../core/schematics/__template/util/parse-name';
-import * as stringUtils from '../../core/schematics/__template/util/strings';
+import { getWorkspace } from '../util/config';
+import { parseName } from '../util/parse-name';
+import * as stringUtils from '../util/strings';
 import { Schema as ModuleOptions } from './schema';
 
 export default function (options: ModuleOptions): Rule {

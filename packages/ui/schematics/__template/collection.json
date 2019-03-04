@@ -1,0 +1,15 @@
+{
+  "name": "__NAME_PLACEHOLDER__",
+  "schematics": {
+    "ng-add": {
+      "description": "Add __NAME_PLACEHOLDER__ to your project.",
+      "factory": "./ng-add",
+      "schema": "./ng-add/schema.json"
+    },
+    "extract": {
+      "description": "Extract __NAME_PLACEHOLDER__ sources into your project.",
+      "factory": "./extract",
+      "schema": "./extract/schema.json"
+    }
+  }
+}

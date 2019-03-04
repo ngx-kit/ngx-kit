@@ -14,8 +14,8 @@ export default function (options: Schema): Rule {
 
 function updatePackageJson(): (host: Tree) => Tree {
   return (host: Tree) => {
-    addPackageToPackageJson(host, 'dependencies', '@ngx-kit/core', pkg.version);
-    addPackageToPackageJson(host, 'devDependencies', '@ngx-kit/collection', pkg.version);
+    addPackageToPackageJson(host, 'dependencies', '@ngx-kit/core', '~' + pkg.version);
+    addPackageToPackageJson(host, 'dependencies', '@ngx-kit/__NAME_PLACEHOLDER__', '~' + pkg.version);
     return host;
   };
 }

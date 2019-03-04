@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "outDir": ".",
+    "rootDir": ".",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "inlineSourceMap": true,
+    "sourceRoot": ".",
+    "inlineSources": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "lib": [
+      "es2017"
+    ],
+    "baseUrl": "tsconfig",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "exclude": [
+    "./*/files/**/*",
+    "./*/other-files/**/*"
+  ]
+}

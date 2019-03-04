@@ -11,25 +11,19 @@
     "noImplicitThis": true,
     "noUnusedParameters": false,
     "noUnusedLocals": true,
-    "outDir": "../../dist/core/schematics",
+    "outDir": ".",
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "inlineSourceMap": true,
     "sourceRoot": ".",
-    // Inline sources are necessary for our tests to show the proper sources, since we are using
-    // Istanbul (not Constantinople) as well, and applying both source maps to get the original
-    // source in devtools.
     "inlineSources": true,
     "strictNullChecks": true,
     "target": "es6",
     "lib": [
       "es2017"
     ],
-    "baseUrl": "",
-    "typeRoots": [
-      "../node_modules/@types"
-    ],
+    "baseUrl": "tsconfig",
     "types": [
       "jasmine",
       "node"

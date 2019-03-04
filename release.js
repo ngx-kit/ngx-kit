@@ -2,79 +2,88 @@ const sh = require('shelljs');
 const path = require('path');
 const fs = require('fs-extra');
 
-const pkg = require('./package.json');
+const pkgJson = require('./package.json');
 
 sh.echo('Starting ngx-kit release…');
 
-build();
-prepare();
+buildPkg();
+buildShematics();
+preparePublishing();
 publish();
 
-sh.echo(`ngx-kit ${pkg.version} released!`);
+sh.echo(`ngx-kit ${pkgJson.version} released!`);
 sh.exit(0);
 
 
 function packages() {
   return [
-    'core',
-    'ui-accordion',
-    'ui-alert',
-    'ui-badge',
-    'ui-breadcrumbs',
-    'ui-button',
-    'ui-carousel',
-    'ui-checkbox',
-    'ui-date-picker',
-    'ui-dialog',
-    'ui-drawer',
-    'ui-dropdown',
-    'ui-ext-select',
-    'ui-file',
-    'ui-form',
-    'ui-loading-bar',
-    'ui-modal',
-    'ui-notification',
-    'ui-popup',
-    'ui-radio',
-    'ui-rating',
-    'ui-scroll',
-    'ui-select',
-    'ui-slider',
-    'ui-tabs',
-    'ui-text',
-    'ui-toggle',
-    'ui-tooltip',
-    'ui-vertical-menu',
+    ['core', 'packages/core/schematics'],
+    ['ui-accordion', 'packages/ui/schematics'],
+    ['ui-alert', 'packages/ui/schematics'],
+    ['ui-badge', 'packages/ui/schematics'],
+    ['ui-breadcrumbs', 'packages/ui/schematics'],
+    ['ui-button', 'packages/ui/schematics'],
+    ['ui-carousel', 'packages/ui/schematics'],
+    ['ui-checkbox', 'packages/ui/schematics'],
+    ['ui-date-picker', 'packages/ui/schematics'],
+    ['ui-dialog', 'packages/ui/schematics'],
+    ['ui-drawer', 'packages/ui/schematics'],
+    ['ui-dropdown', 'packages/ui/schematics'],
+    ['ui-ext-select', 'packages/ui/schematics'],
+    ['ui-file', 'packages/ui/schematics'],
+    ['ui-form', 'packages/ui/schematics'],
+    ['ui-loading-bar', 'packages/ui/schematics'],
+    ['ui-modal', 'packages/ui/schematics'],
+    ['ui-notification', 'packages/ui/schematics'],
+    ['ui-popup', 'packages/ui/schematics'],
+    ['ui-radio', 'packages/ui/schematics'],
+    ['ui-rating', 'packages/ui/schematics'],
+    ['ui-scroll', 'packages/ui/schematics'],
+    ['ui-select', 'packages/ui/schematics'],
+    ['ui-slider', 'packages/ui/schematics'],
+    ['ui-tabs', 'packages/ui/schematics'],
+    ['ui-text', 'packages/ui/schematics'],
+    ['ui-toggle', 'packages/ui/schematics'],
+    ['ui-tooltip', 'packages/ui/schematics'],
+    ['ui-vertical-menu', 'packages/ui/schematics'],
   ];
 }
 
 
-function build() {
+function buildPkg() {
   sh.echo('Build packages with ng-packagr…');
-  packages().forEach(name => {
-    if (sh.exec(`ng run ${name}:build`).code !== 0) {
+  packages().forEach(pkg => {
+    if (sh.exec(`ng run ${pkg[0]}:build`).code !== 0) {
       sh.echo('Build error!');
       sh.exit(1);
     }
   });
 }
 
-function prepare() {
+function buildShematics() {
+  sh.echo('Build shematics…');
+  packages().forEach(pkg => {
+    const schem = require(path.resolve(pkg[1], 'schematics.js'));
+    schem(pkg[0], path.resolve(__dirname, 'dist'));
+  });
+}
+
+function preparePublishing() {
   sh.echo('Set version to package.json files…');
-  packages().forEach(name => {
-    const pkgPath = path.resolve(__dirname, `./dist/${name}/package.json`);
+  packages().forEach(pkg => {
+    const pkgPath = path.resolve(__dirname, `./dist/${pkg[0]}/package.json`);
     const source = fs.readFileSync(pkgPath, 'utf-8');
-    const result = source.replace(/0\.0\.0\-PLACEHOLDER/g, pkg.version);
+    const result = source.replace(/0\.0\.0\-PLACEHOLDER/g, pkgJson.version);
     fs.writeFileSync(pkgPath, result);
   });
 }
 
 function publish() {
   sh.echo('Publish packages to npm…');
-  packages().forEach(name => {
-    const alphaTag = pkg.version.indexOf('alpha') !== -1;
-    const betaTag = pkg.version.indexOf('beta') !== -1;
-    if (sh.exec(`npm publish ./dist/${name} --access=public ${alphaTag ? '--tag=alpha' : ''} ${betaTag ? '--tag=beta' : ''}`).code !== 0) {
+  packages().forEach(pkg => {
+    const alphaTag = pkgJson.version.indexOf('alpha') !== -1;
+    const betaTag = pkgJson.version.indexOf('beta') !== -1;
+    if (sh.exec(`npm publish ./dist/${pkg[0]} --access=public ${alphaTag ? '--tag=alpha' : ''} ${betaTag ? '--tag=beta' : ''}`).code !== 0) {
       sh.echo('Publishing error!');
       sh.exit(1);
     }
