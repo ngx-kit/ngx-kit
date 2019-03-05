@@ -1,20 +1,20 @@
 import { async } from '@angular/core/testing';
-import { KitDatePickerService } from './kit-date-picker.service';
-import { KitDatePickerGrid } from './meta';
+import { UiDatePickerService } from './ui-date-picker.service';
+import { UiDatePickerGrid } from '../meta';
 import createSpy = jasmine.createSpy;
 
-describe('KitDatePickerService', () => {
-  let service: KitDatePickerService;
+describe('UiDatePickerService', () => {
+  let service: UiDatePickerService;
   let rendererMock: RendererMock;
   beforeEach(async(() => {
     rendererMock = new RendererMock();
-    service = new KitDatePickerService(rendererMock as any);
+    service = new UiDatePickerService(rendererMock as any);
   }));
   it('should create the service', () => {
     expect(service).toBeTruthy();
   });
   it(`should generate grid and month cursor`, () => {
-    let grid: KitDatePickerGrid = [];
+    let grid: UiDatePickerGrid = [];
     service.gridChanges.subscribe(g => {
       grid = g;
     });

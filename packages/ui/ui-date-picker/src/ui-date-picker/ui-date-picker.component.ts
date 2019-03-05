@@ -9,8 +9,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { KitDatePickerGrid, KitDatePickerService } from '@ngx-kit/core';
 import { Observable, Subject } from 'rxjs';
+import { UiDatePickerGrid } from '../meta';
+import { UiDatePickerService } from './ui-date-picker.service';
 
 export const uiDatePickerValueAccessor: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -24,12 +25,12 @@ export const uiDatePickerValueAccessor: any = {
   styleUrls: ['./ui-date-picker.component.scss'],
   providers: [
     uiDatePickerValueAccessor,
-    KitDatePickerService,
+    UiDatePickerService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
-  datesGrid: Observable<KitDatePickerGrid>;
+  datesGrid: Observable<UiDatePickerGrid>;
 
   monthCursor: Observable<Date | null>;
 
@@ -47,7 +48,7 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private service: KitDatePickerService,
+    private service: UiDatePickerService,
   ) {
   }
 

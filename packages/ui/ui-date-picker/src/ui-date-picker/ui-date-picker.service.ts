@@ -1,26 +1,19 @@
 import { Injectable, OnDestroy, Optional, Renderer2 } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { KitDatePickerGrid } from './meta';
+import { UiDatePickerGrid } from '../meta';
 
 /**
  * Service encapsulates complex date-picker grid logic.
- *
- *
- * ### Example
- *
- * * collection:date-picker -
- * [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-date-picker),
- * [demo](https://ngx-kit.com/collection/module/ui-date-picker)
  */
 @Injectable()
-export class KitDatePickerService implements OnDestroy {
+export class UiDatePickerService implements OnDestroy {
   private _active: Date;
 
   private _focus: Date;
 
   private moveHandlerUnsubs: any[] = [];
 
-  private readonly _grid = new BehaviorSubject<KitDatePickerGrid>([]);
+  private readonly _grid = new BehaviorSubject<UiDatePickerGrid>([]);
 
   private readonly _monthCursor = new BehaviorSubject<Date | null>(null);
 
@@ -48,7 +41,7 @@ export class KitDatePickerService implements OnDestroy {
   /**
    * Observable with grid state.
    */
-  get gridChanges(): Observable<KitDatePickerGrid> {
+  get gridChanges(): Observable<UiDatePickerGrid> {
     return this._grid.asObservable();
   }
 
