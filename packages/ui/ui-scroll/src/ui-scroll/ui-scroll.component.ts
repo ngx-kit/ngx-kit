@@ -7,7 +7,9 @@ import {
   HostListener,
   ViewChild,
 } from '@angular/core';
-import { KitHammerProvider, KitScrollService, KitScrollState } from '@ngx-kit/core';
+import { KitHammerProvider } from '@ngx-kit/core';
+import { UiScrollState } from './meta';
+import { UiScrollService } from './ui-scroll.service';
 
 @Component({
   selector: 'ui-scroll',
@@ -15,11 +17,11 @@ import { KitHammerProvider, KitScrollService, KitScrollState } from '@ngx-kit/co
   styleUrls: ['./ui-scroll.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    KitScrollService,
+    UiScrollService,
   ],
 })
 export class UiScrollComponent implements AfterContentInit {
-  state: KitScrollState;
+  state: UiScrollState;
 
   hover = false;
 
@@ -39,7 +41,7 @@ export class UiScrollComponent implements AfterContentInit {
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef,
     private hammer: KitHammerProvider<any>,
-    private scroll: KitScrollService,
+    private scroll: UiScrollService,
   ) {
   }
 

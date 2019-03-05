@@ -1,20 +1,18 @@
 import { ElementRef, Injectable, OnDestroy } from '@angular/core';
 import { HammerGestureConfig } from '@angular/platform-browser';
+import { KitHammerProvider, KitHammerTypes, KitPlatformService } from '@ngx-kit/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { KitHammerProvider } from '../kit-hammer/kit-hammer-provider';
-import { KitHammerTypes } from '../kit-hammer/meta';
-import { KitPlatformService } from '../kit-platform/kit-platform.service';
-import { KitScrollRefs, KitScrollState } from './meta';
+import { UiScrollRefs, UiScrollState } from './meta';
 
 /**
  * Scroll area helpers.
  * Should be provided on component.
  */
 @Injectable()
-export class KitScrollService implements OnDestroy {
-  refs: KitScrollRefs;
+export class UiScrollService implements OnDestroy {
+  refs: UiScrollRefs;
 
-  private _state = new BehaviorSubject<KitScrollState>({
+  private _state = new BehaviorSubject<UiScrollState>({
     nativeScrollbarWidth: 0,
     dragging: false,
     vBar: {
@@ -42,11 +40,11 @@ export class KitScrollService implements OnDestroy {
     });
   }
 
-  get state(): KitScrollState {
+  get state(): UiScrollState {
     return this._state.value;
   }
 
-  get stateChanges(): Observable<KitScrollState> {
+  get stateChanges(): Observable<UiScrollState> {
     return this._state.asObservable();
   }
 
@@ -56,7 +54,7 @@ export class KitScrollService implements OnDestroy {
     }
   }
 
-  registerRefs(refs: KitScrollRefs) {
+  registerRefs(refs: UiScrollRefs) {
     this.refs = refs;
     if (this.hammerProvider.hammer) {
       this.initVListeners();

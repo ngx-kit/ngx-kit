@@ -1,4 +1,4 @@
-export interface KitScrollRefs {
+export interface UiScrollRefs {
   vBar: HTMLElement;
   vBarWrapper: HTMLElement;
   vWrapper: HTMLElement;
@@ -7,7 +7,7 @@ export interface KitScrollRefs {
   hWrapper: HTMLElement;
 }
 
-export interface KitScrollState {
+export interface UiScrollState {
   nativeScrollbarWidth: number;
   dragging: boolean;
   vBar: {
