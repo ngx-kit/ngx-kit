@@ -16,16 +16,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  KitFocusListenerService,
-  KitFormFieldService,
-  KitSelectFilter,
-  KitSelectItem,
-  KitSelectOptions,
-  KitSelectSearchFn,
-  KitSelectService,
-} from '@ngx-kit/core';
+import { KitFocusListenerService, KitFormFieldService } from '@ngx-kit/core';
 import { uiExtSelectIcons } from '../icons';
+import { UiExtSelectFilter, UiExtSelectItem, UiExtSelectOptions, UiExtSelectSearchFn } from './meta';
+import { UiExtSelectService } from './ui-ext-select.service';
 
 export const uiExtSelectValueAccessor: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -40,7 +34,7 @@ export const uiExtSelectValueAccessor: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     uiExtSelectValueAccessor,
-    KitSelectService,
+    UiExtSelectService,
     KitFocusListenerService,
   ],
   animations: [
@@ -74,17 +68,17 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   /**
    * List of items to pick.
    */
-  @Input() items: KitSelectItem<M>[] = [];
+  @Input() items: UiExtSelectItem<M>[] = [];
 
   /**
    * Use filter to search through the current list of `[items]`.
    */
-  @Input() filter?: KitSelectFilter<M>;
+  @Input() filter?: UiExtSelectFilter<M>;
 
   /**
    * Search function will be used instead of filter. The function should return list of items to pick.
    */
-  @Input() searchFn?: KitSelectSearchFn<M>;
+  @Input() searchFn?: UiExtSelectSearchFn<M>;
 
   /**
    * Enables multiple select.
@@ -94,7 +88,7 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   /**
    * Additional configuration.
    */
-  @Input() options: Partial<KitSelectOptions> = {};
+  @Input() options: Partial<UiExtSelectOptions> = {};
 
   /**
    * Placeholder displayed when model is empty.
@@ -104,7 +98,7 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   /**
    * Emits when items array changed by item selection.
    */
-  @Output() itemsChange = new EventEmitter<KitSelectItem<M>[]>();
+  @Output() itemsChange = new EventEmitter<UiExtSelectItem<M>[]>();
 
   @ViewChild('selectRef') selectRef: ElementRef;
 
@@ -115,7 +109,7 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   icons = uiExtSelectIcons;
 
   constructor(
-    public service: KitSelectService<M>,
+    public service: UiExtSelectService<M>,
     @Optional() private formFieldService: KitFormFieldService,
     private cdr: ChangeDetectorRef,
   ) {

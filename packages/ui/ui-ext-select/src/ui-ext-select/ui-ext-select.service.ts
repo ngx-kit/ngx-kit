@@ -1,20 +1,20 @@
 import { ChangeDetectorRef, ElementRef, Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, from, fromEvent, merge, Observable, Subject, timer } from 'rxjs';
 import { debounce, debounceTime, distinctUntilChanged, filter, map, mapTo, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { KitFocusListenerService } from '../kit-focus-listener/kit-focus-listener.service';
-import { KitPlatformService } from '../kit-platform/kit-platform.service';
-import { isArray } from '../util/is-array';
-import { isDefined } from '../util/is-defined';
-import { isFunction } from '../util/is-function';
-import { isNotUndefined } from '../util/is-undefined';
+import { KitFocusListenerService } from '../../../../core/src/kit-focus-listener/kit-focus-listener.service';
+import { KitPlatformService } from '../../../../core/src/kit-platform/kit-platform.service';
+import { isArray } from '../../../../core/src/util/is-array';
+import { isDefined } from '../../../../core/src/util/is-defined';
+import { isFunction } from '../../../../core/src/util/is-function';
+import { isNotUndefined } from '../../../../core/src/util/is-undefined';
 import {
-  kitSelectDefaultOptions,
-  KitSelectFilter,
-  KitSelectInputView,
-  KitSelectItem,
-  KitSelectItemView,
-  KitSelectOptions,
-  KitSelectSearchFn,
+  uiExtSelectDefaultOptions,
+  UiExtSelectFilter,
+  UiExtSelectInputView,
+  UiExtSelectItem,
+  UiExtSelectItemView,
+  UiExtSelectOptions,
+  UiExtSelectSearchFn,
 } from './meta';
 
 /**
@@ -27,7 +27,7 @@ import {
  * * collection:ext-select - [demo](https://ngx-kit.com/collection/module/ui-ext-select)
  */
 @Injectable()
-export class KitSelectService<M> implements OnDestroy {
+export class UiExtSelectService<M> implements OnDestroy {
   /**
    * Is control disabled.
    */
@@ -36,35 +36,35 @@ export class KitSelectService<M> implements OnDestroy {
   /**
    * @input
    */
-  private readonly _items = new BehaviorSubject<KitSelectItem<M>[]>([]);
+  private readonly _items = new BehaviorSubject<UiExtSelectItem<M>[]>([]);
 
   /**
    * @input
    */
-  private _searchFn?: KitSelectSearchFn<M>;
+  private _searchFn?: UiExtSelectSearchFn<M>;
 
   /**
    * @input
    */
-  private readonly _filter = new BehaviorSubject<KitSelectFilter<M> | undefined>(undefined);
+  private readonly _filter = new BehaviorSubject<UiExtSelectFilter<M> | undefined>(undefined);
 
   /**
    * @input
    */
-  private readonly _options = new BehaviorSubject<KitSelectOptions>(kitSelectDefaultOptions);
+  private readonly _options = new BehaviorSubject<UiExtSelectOptions>(uiExtSelectDefaultOptions);
 
   /**
    * @input
    */
   private _multiple?: boolean;
 
-  private readonly searchItems = new BehaviorSubject<KitSelectItem<M>[]>([]);
+  private readonly searchItems = new BehaviorSubject<UiExtSelectItem<M>[]>([]);
 
   private selectRef: ElementRef;
 
-  private readonly _inputView = new BehaviorSubject<KitSelectInputView<M>[] | undefined>(undefined);
+  private readonly _inputView = new BehaviorSubject<UiExtSelectInputView<M>[] | undefined>(undefined);
 
-  private readonly _itemsView = new BehaviorSubject<KitSelectItemView<M>[]>([]);
+  private readonly _itemsView = new BehaviorSubject<UiExtSelectItemView<M>[]>([]);
 
   private readonly _focused = new BehaviorSubject<boolean>(false);
 
@@ -168,7 +168,7 @@ export class KitSelectService<M> implements OnDestroy {
   /**
    * Set list of items to pick.
    */
-  set items(items: KitSelectItem<M>[]) {
+  set items(items: UiExtSelectItem<M>[]) {
     this._items.next(items);
   }
 
@@ -189,7 +189,7 @@ export class KitSelectService<M> implements OnDestroy {
    *
    * Enables autocomplete mode.
    */
-  set searchFn(searchFn: KitSelectSearchFn<M> | undefined) {
+  set searchFn(searchFn: UiExtSelectSearchFn<M> | undefined) {
     this._searchFn = searchFn;
   }
 
@@ -225,7 +225,7 @@ export class KitSelectService<M> implements OnDestroy {
    *
    * @todo Remove in the next major release.
    */
-  get inputView(): KitSelectInputView<M> | KitSelectInputView<M>[] | undefined {
+  get inputView(): UiExtSelectInputView<M> | UiExtSelectInputView<M>[] | undefined {
     return this._inputView.value as any;
   }
 
@@ -233,7 +233,7 @@ export class KitSelectService<M> implements OnDestroy {
    * View displayed in input section.
    * Always returns an array. For non-multiple select use the first item: `inputViews[0]`.
    */
-  get inputViews(): KitSelectInputView<M>[] {
+  get inputViews(): UiExtSelectInputView<M>[] {
     return this._inputView.value ? this._inputView.value : [];
   }
 
@@ -265,7 +265,7 @@ export class KitSelectService<M> implements OnDestroy {
   /**
    * Set filter to search through the current list of `[items]`.
    */
-  set filter(f: KitSelectFilter<M> | undefined) {
+  set filter(f: UiExtSelectFilter<M> | undefined) {
     this._filter.next(f);
   }
 
@@ -385,15 +385,15 @@ export class KitSelectService<M> implements OnDestroy {
    * Additional configuration.
    * If some values are not defined, will be used default value.
    */
-  overrideOptions(options: Partial<KitSelectOptions>) {
-    this._options.next(options ? {...kitSelectDefaultOptions, ...options} : {...kitSelectDefaultOptions});
+  overrideOptions(options: Partial<UiExtSelectOptions>) {
+    this._options.next(options ? {...uiExtSelectDefaultOptions, ...options} : {...uiExtSelectDefaultOptions});
   }
 
   /**
    * Update options.
    * If some values are not defined, will be used current value.
    */
-  updateOptions(options: Partial<KitSelectOptions>) {
+  updateOptions(options: Partial<UiExtSelectOptions>) {
     this._options.next({...this.options, ...options});
   }
 
@@ -655,7 +655,7 @@ export class KitSelectService<M> implements OnDestroy {
       });
   }
 
-  private processSearch(request: string): Observable<KitSelectItem<M>[]> {
+  private processSearch(request: string): Observable<UiExtSelectItem<M>[]> {
     if (this._searchFn) {
       if (isFunction(this._searchFn)) {
         const raw = this._searchFn(request);
@@ -901,7 +901,7 @@ export class KitSelectService<M> implements OnDestroy {
     }
   }
 
-  private getItemInputView(model: M): KitSelectInputView<M> {
+  private getItemInputView(model: M): UiExtSelectInputView<M> {
     const item = this.items.find(i => i.model === model);
     if (item) {
       return {

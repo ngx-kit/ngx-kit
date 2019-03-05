@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { KitSelectFilterFn, KitSelectItem, KitSelectListStateAsyncSourceFn, KitSelectListStateSourceFn } from '@ngx-kit/core';
 import { from } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import {
+  UiExtSelectFilterFn,
+  UiExtSelectItem,
+  UiExtSelectListStateAsyncSourceFn,
+  UiExtSelectListStateSourceFn,
+} from '../ui-ext-select/meta';
 
 /**
  * @demo
@@ -17,7 +22,7 @@ export class UiExtSelectDemoComponent implements OnInit {
 
   multiModel: number[] = [];
 
-  simpleItems: KitSelectItem<any>[] = [
+  simpleItems: UiExtSelectItem<any>[] = [
     {model: 1},
     {model: 2},
     {model: 3},
@@ -32,7 +37,7 @@ export class UiExtSelectDemoComponent implements OnInit {
     {model: 12},
   ];
 
-  itemsWithItemView: KitSelectItem<any>[] = [
+  itemsWithItemView: UiExtSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -83,9 +88,9 @@ export class UiExtSelectDemoComponent implements OnInit {
     },
   ];
 
-  itemsWithItemViewForSearch: KitSelectItem<any>[] = [];
+  itemsWithItemViewForSearch: UiExtSelectItem<any>[] = [];
 
-  fullViewItems: KitSelectItem<any>[] = [
+  fullViewItems: UiExtSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -108,15 +113,15 @@ export class UiExtSelectDemoComponent implements OnInit {
     },
   ];
 
-  filterFn: KitSelectFilterFn<any> = (input, item) => {
+  filterFn: UiExtSelectFilterFn<any> = (input, item) => {
     return !!item.filter && !item.filter.includes(input);
   };
 
-  searchFn: KitSelectListStateSourceFn<any> = (input: string) => {
+  searchFn: UiExtSelectListStateSourceFn<any> = (input: string) => {
     return this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()));
   };
 
-  asyncSearchFn: KitSelectListStateAsyncSourceFn<any> = (input: string) => {
+  asyncSearchFn: UiExtSelectListStateAsyncSourceFn<any> = (input: string) => {
     const items = input
       ? this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()))
       : this.itemsWithItemView;
