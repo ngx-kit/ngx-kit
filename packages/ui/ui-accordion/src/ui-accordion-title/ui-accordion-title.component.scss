@@ -1,9 +1,17 @@
 :host {
-  background: #eeeeee;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
   cursor: pointer;
   display: block;
-  padding: 8px 16px;
+  padding: .5em 1em;
+  text-align: left;
   transition-duration: .25s;
   transition-property: background;
   user-select: none;
+  width: 100%;
+  &:focus {
+    outline: 2px solid #0062ff;
+    outline-offset: -2px;
+  }
 }

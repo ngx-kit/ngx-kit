@@ -5,7 +5,7 @@ import { KitCollapseItemService } from '@ngx-kit/core';
  * Accordion title.
  */
 @Component({
-  selector: 'ui-accordion-title',
+  selector: 'ui-accordion-title, [uiAccordionTitle]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./ui-accordion-title.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
