@@ -6,7 +6,7 @@ import { KitCollapseItemService } from '@ngx-kit/core';
  */
 @Component({
   selector: 'ui-accordion-title, [uiAccordionTitle]',
-  template: '<ng-content></ng-content>',
+  templateUrl: './ui-accordion-title.component.html',
   styleUrls: ['./ui-accordion-title.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -17,5 +17,9 @@ export class UiAccordionTitleComponent {
   @HostListener('click')
   clickHandler() {
     this.item.toggle();
+  }
+
+  get active() {
+    return this.item.active;
   }
 }
