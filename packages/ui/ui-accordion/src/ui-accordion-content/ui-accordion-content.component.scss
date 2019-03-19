@@ -4,5 +4,5 @@
 }
 
 .content {
-  padding: 8px 16px;
+  padding: var(--ui-accordion-content-padding, 1em 1em 1.5em);
 }

@@ -1,5 +1,28 @@
-import { ChangeDetectionStrategy, Component, HostListener, } from '@angular/core';
-import { KitCollapseItemService } from '@ngx-kit/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  HostListener,
+  NgModule,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { KitCollapseHostService, KitCollapseItemService, KitIconsModule } from '@ngx-kit/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    KitIconsModule,
+  ],
+  declarations: [forwardRef(() => UiAccordionTitleComponent)],
+  exports: [forwardRef(() => UiAccordionTitleComponent)],
+})
+export class UiAccordionTitleModule {
+}
 
 /**
  * Accordion title.
@@ -10,16 +33,33 @@ import { KitCollapseItemService } from '@ngx-kit/core';
   styleUrls: ['./ui-accordion-title.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiAccordionTitleComponent {
-  constructor(private item: KitCollapseItemService) {
+export class UiAccordionTitleComponent implements OnInit, OnDestroy {
+  active: boolean;
+
+  private destroy = new Subject();
+
+  constructor(
+    private item: KitCollapseItemService,
+    private collapse: KitCollapseHostService,
+    private cdr: ChangeDetectorRef,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.collapse.activeChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        this.active = this.item.active;
+        this.cdr.detectChanges();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
   }
 
   @HostListener('click')
   clickHandler() {
     this.item.toggle();
-  }
-
-  get active() {
-    return this.item.active;
   }
 }

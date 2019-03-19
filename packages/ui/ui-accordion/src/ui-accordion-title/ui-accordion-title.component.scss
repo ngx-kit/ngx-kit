@@ -1,23 +1,24 @@
 :host {
-  background: transparent;
+  background: var(--ui-accordion-title-background, transparent);
   border: 0;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: var(--ui-accordion-title-border, 1px solid #dddddd);
+  color: var(--ui-accordion-title-color, #000000);
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  padding: .5em 1em;
+  outline: none;
+  padding: var(--ui-accordion-title-padding, .5em 1em);
   position: relative;
   text-align: left;
   transition-duration: .15s;
   transition-property: background;
   user-select: none;
   width: 100%;
-  outline: none;
   &:hover {
-    background: #eee;
+    background: var(--ui-accordion-title-hover-background, #eeeeee);
   }
   &:focus, &:active {
-    outline: 2px solid #0062ff;
+    outline: var(--ui-accordion-title-outline, 2px solid #3c40c6);
     outline-offset: -1px;
   }
 }

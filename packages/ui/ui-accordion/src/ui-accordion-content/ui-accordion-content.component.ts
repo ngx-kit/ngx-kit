@@ -1,5 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, HostBinding, NgModule } from '@angular/core';
+
+@NgModule({
+  declarations: [forwardRef(() => UiAccordionContentComponent)],
+  exports: [forwardRef(() => UiAccordionContentComponent)],
+})
+export class UiAccordionContentModule {
+}
 
 /**
  * Accordion content holder.

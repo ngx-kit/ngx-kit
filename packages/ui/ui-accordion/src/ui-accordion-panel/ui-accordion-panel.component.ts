@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, NgModule } from '@angular/core';
 import { KitCollapseItemService } from '@ngx-kit/core';
+
+@NgModule({
+  declarations: [forwardRef(() => UiAccordionPanelComponent)],
+  exports: [forwardRef(() => UiAccordionPanelComponent)],
+})
+export class UiAccordionPanelModule {
+}
 
 /**
  * Accordion panel.
