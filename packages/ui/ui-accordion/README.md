@@ -1,4 +1,10 @@
-# Accordion component for Angular
+# Accordion component for Angular 8
+
+## Installation
+
+```
+$ ng add @ngx-kit/ui-accordion
+```
 
 ## Usage
 
@@ -23,7 +29,7 @@
 
 ## Options
 
-### `<ui-accordion>`
+### `ui-accordion`
 
 * `activateFirst` — Automatically open first panel.
 * `multiple` — Allow few panels open at a time.

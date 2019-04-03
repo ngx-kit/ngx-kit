@@ -18,7 +18,7 @@
     background: var(--ui-accordion-title-hover-background, #eeeeee);
   }
   &:focus, &:active {
-    outline: var(--ui-accordion-title-outline, 2px solid #3c40c6);
+    outline: var(--ui-accordion-title-outline, 2px solid #ffbf47);
     outline-offset: -1px;
   }
 }
