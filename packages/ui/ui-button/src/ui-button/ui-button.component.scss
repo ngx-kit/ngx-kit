@@ -5,7 +5,9 @@
   ---color-default-color: var(--ui-button-color-default-color, #ffffff);
   ---color-default-hover-background: var(--ui-button-color-default-hover-background, #3d3d3d);
   ---color-default-hover-color: var(--ui-button-color-default-hover-color, #ffffff);
-  ---color-default-focus-box-shadow: var(--ui-button-color-default-focus-box-shadow, #ffbf47 0px 0px 0px 2px inset);
+  ---color-default-focus-box-shadow: var(--ui-button-color-default-focus-box-shadow, none);
+  ---color-default-focus-outline: var(--ui-button-color-default-focus-outline, 2px solid #ffbf47);
+  ---color-default-focus-outline-offset: var(--ui-button-color-default-focus-outline-offset, -2px);
   ---color-default-checked-background: var(--ui-button-color-default-checked-background, #4c4c4c);
   ---color-default-checked-color: var(--ui-button-color-default-checked-color, #ffffff);
   // Primary color
@@ -13,7 +15,9 @@
   ---color-primary-color: var(--ui-button-color-primary-color, #ffffff);
   ---color-primary-hover-background: var(--ui-button-color-primary-hover-background, #248acd);
   ---color-primary-hover-color: var(--ui-button-color-primary-hover-color, #ffffff);
-  ---color-primary-focus-box-shadow: var(--ui-button-color-primary-focus-box-shadow, #ffbf47 0px 0px 0px 2px inset);
+  ---color-primary-focus-box-shadow: var(--ui-button-color-primary-focus-box-shadow, none);
+  ---color-primary-focus-outline: var(--ui-button-color-primary-focus-outline, 2px solid #ffbf47);
+  ---color-primary-focus-outline-offset: var(--ui-button-color-primary-focus-outline-offset, -2px);
   ---color-primary-checked-background: var(--ui-button-color-primary-checked-background, #1e80cd);
   ---color-primary-checked-color: var(--ui-button-color-primary-checked-color, #ffffff);
   // S size
@@ -59,6 +63,8 @@
       }
       &:focus {
         box-shadow: var(---color-default-focus-box-shadow);
+        outline: var(---color-default-focus-outline);
+        outline-offset: var(---color-default-focus-outline-offset);
       }
       &.checked {
         background: var(---color-default-checked-background);
@@ -74,6 +80,8 @@
       }
       &:focus {
         box-shadow: var(---color-primary-focus-box-shadow);
+        outline: var(---color-primary-focus-outline);
+        outline-offset: var(---color-primary-focus-outline-offset);
       }
       &.checked {
         background: var(---color-primary-checked-background);
