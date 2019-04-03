@@ -1,26 +1,73 @@
 :host {
-  background: #f7f7f7;
-  border: 1px solid #d6d6d6;
-  border-radius: 2px;
-  box-shadow: 0 0 2px 0 rgba(50, 50, 50, .1);
+  ---background: var(--ui-input-background, #f0f0f0);
+  ---border-width: var(--ui-input-border-width, 0 0 1px 0);
+  ---border-color: var(--ui-input-border-color, #d6d6d6);
+  ---border-radius: var(--ui-input-border-radius, 2px);
+  ---box-shadow: var(--ui-input-box-shadow, none);
+  ---color: var(--ui-input-color, #000000);
+  ---font-family: var(---ui-input-font-family, inherit);
+  ---font-size: var(--ui-input-font-size, 1rem);
+  ---padding: var(--ui-input-padding, .7em 1em .6em);
+  ---hover-color: var(--ui-input-hover-color, #000000);
+  ---hover-border-color: var(--ui-input-hover-border-color, #c8c8c8);
+  ---hover-background: var(--ui-input-hover-background, #f0f0f0);
+  ---hover-box-shadow: var(--ui-input-hover-box-shadow, none);
+  ---focus-color: var(--ui-input-focus-color, #000000);
+  ---focus-border-color: var(--ui-input-focus-border-color, #d6d6d6);
+  ---focus-background: var(--ui-input-focus-background, #f0f0f0);
+  ---focus-box-shadow: var(--ui-input-focus-box-shadow, none);
+  ---focus-outline: var(--ui-input-focus-outline, 2px solid #ffbf47);
+  ---focus-outline-offset: var(--ui-input-focus-outline-offset, -2px);
+  ---error-color: var(--ui-input-error-color, #000000);
+  ---error-border-color: var(--ui-input-error-border-color, #ff0c09);
+  ---error-background: var(--ui-input-error-background, #f0f0f0);
+  ---error-box-shadow: var(--ui-input-error-box-shadow, none);
+  ---error-outline: var(--ui-input-error-outline, 2px solid #ff0c09);
+  ---error-outline-offset: var(--ui-input-error-outline-offset, -2px);
+}
+
+:host {
+  background: var(---background);
+  border-color: var(---border-color);
+  border-radius: var(---border-radius);
+  border-style: solid;
+  border-width: var(---border-width);
+  box-shadow: var(---box-shadow);
   box-sizing: border-box;
-  color: #4a505a;
-  padding: 4px 8px;
-  transition: all .3s;
+  color: var(---color);
+  font-family: var(---font-family);
+  font-size: var(---font-size);
+  padding: var(---padding);
   width: 100%;
   &:hover {
-    border-color: #acadb0;
+    background: var(---hover-background);
+    border-color: var(---hover-border-color);
+    box-shadow: var(---hover-box-shadow);
+    color: var(---hover-color);
     outline: none;
   }
   &:focus {
-    border-color: #2399e5;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
-    outline: none;
+    background: var(---focus-background);
+    border-color: var(---focus-border-color);
+    box-shadow: var(---focus-box-shadow);
+    color: var(---focus-color);
+    outline: var(---focus-outline);
+    outline-offset: var(---focus-outline-offset);
   }
   &.-has-errors {
-    border-color: #ff0c09;
+    background: var(---error-background);
+    border-color: var(---error-border-color);
+    box-shadow: var(---error-box-shadow);
+    color: var(---error-color);
+    outline: var(---error-outline);
+    outline-offset: var(---error-outline-offset);
     &:hover, &:focus {
-      border-color: #ff0c09;
+      background: var(---error-background);
+      border-color: var(---error-border-color);
+      box-shadow: var(---error-box-shadow);
+      color: var(---error-color);
+      outline: var(---error-outline);
+      outline-offset: var(---error-outline-offset);
     }
   }
 }
