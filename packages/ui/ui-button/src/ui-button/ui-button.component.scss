@@ -1,9 +1,36 @@
-$borderRadius: 3px;
+:host {
+  ---border-radius: var(--ui-button-border-radius, 3px);
+  // Default color
+  ---color-default-background: var(--ui-button-color-default-background, #333333);
+  ---color-default-color: var(--ui-button-color-default-color, #ffffff);
+  ---color-default-hover-background: var(--ui-button-color-default-hover-background, #3d3d3d);
+  ---color-default-hover-color: var(--ui-button-color-default-hover-color, #ffffff);
+  ---color-default-focus-box-shadow: var(--ui-button-color-default-focus-box-shadow, #ffbf47 0px 0px 0px 2px inset);
+  ---color-default-checked-background: var(--ui-button-color-default-checked-background, #4c4c4c);
+  ---color-default-checked-color: var(--ui-button-color-default-checked-color, #ffffff);
+  // Primary color
+  ---color-primary-background: var(--ui-button-color-primary-background, #2399e5);
+  ---color-primary-color: var(--ui-button-color-primary-color, #ffffff);
+  ---color-primary-hover-background: var(--ui-button-color-primary-hover-background, #248acd);
+  ---color-primary-hover-color: var(--ui-button-color-primary-hover-color, #ffffff);
+  ---color-primary-focus-box-shadow: var(--ui-button-color-primary-focus-box-shadow, #ffbf47 0px 0px 0px 2px inset);
+  ---color-primary-checked-background: var(--ui-button-color-primary-checked-background, #1e80cd);
+  ---color-primary-checked-color: var(--ui-button-color-primary-checked-color, #ffffff);
+  // S size
+  ---size-s-font-size: var(--ui-button-size-s-font-size, .85rem);
+  ---size-s-padding: var(--ui-button-size-s-padding, .2rem .65rem);
+  // M size
+  ---size-m-font-size: var(--ui-button-size-m-font-size, 1rem);
+  ---size-m-padding: var(--ui-button-size-m-padding, .4rem 1.2rem);
+  // L size
+  ---size-l-font-size: var(--ui-button-size-l-font-size, 1.15rem);
+  ---size-l-padding: var(--ui-button-size-l-padding, .8rem 2rem);
+}
 
 :host {
   background-image: none;
   border: 0;
-  border-radius: $borderRadius;
+  border-radius: var(---border-radius);
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
@@ -18,67 +45,81 @@ $borderRadius: 3px;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  &:focus {
+    outline: none;
+    outline-offset: 0;
+  }
   &.color {
     &-default {
-      background: #cccccc;
-      color: #333333;
+      background: var(---color-default-background);
+      color: var(---color-default-color);
       &:hover {
-        background: #bbbbbb;
+        background: var(---color-default-hover-background);
+        color: var(---color-default-hover-color);
+      }
+      &:focus {
+        box-shadow: var(---color-default-focus-box-shadow);
       }
       &.checked {
-        background: #aaaaaa;
+        background: var(---color-default-checked-background);
+        color: var(---color-default-checked-color);
       }
     }
     &-primary {
-      background: #2399e5;
-      color: #ffffff;
+      background: var(---color-primary-background);
+      color: var(---color-primary-color);
       &:hover {
-        background: #248acd;
+        background: var(---color-primary-hover-background);
+        color: var(---color-primary-hover-color);
+      }
+      &:focus {
+        box-shadow: var(---color-primary-focus-box-shadow);
       }
       &.checked {
-        background: #1e80cd;
+        background: var(---color-primary-checked-background);
+        color: var(---color-primary-checked-color);
       }
     }
   }
   &.size {
     &-s {
-      font-size: .85rem;
-      padding: 2px 6px;
+      font-size: var(---size-s-font-size);
+      padding: var(---size-s-padding);
     }
     &-m {
-      font-size: 1rem;
-      padding: 4px 12px;
+      font-size: var(---size-m-font-size);
+      padding: var(---size-m-padding);
     }
     &-l {
-      font-size: 1.15rem;
-      padding: 8px 20px;
+      font-size: var(---size-l-font-size);
+      padding: var(---size-l-padding);
     }
   }
   &.groupDirection {
     &-row {
       border-radius: 0;
       &:first-child {
-        border-bottom-left-radius: $borderRadius;
-        border-top-left-radius: $borderRadius;
+        border-bottom-left-radius: var(---border-radius);
+        border-top-left-radius: var(---border-radius);
       }
       &:last-child {
-        border-bottom-right-radius: $borderRadius;
-        border-top-right-radius: $borderRadius;
+        border-bottom-right-radius: var(---border-radius);
+        border-top-right-radius: var(---border-radius);
       }
     }
     &-column {
       border-radius: 0;
       &:first-child {
-        border-top-left-radius: $borderRadius;
-        border-top-right-radius: $borderRadius;
+        border-top-left-radius: var(---border-radius);
+        border-top-right-radius: var(---border-radius);
       }
       &:last-child {
-        border-bottom-left-radius: $borderRadius;
-        border-bottom-right-radius: $borderRadius;
+        border-bottom-left-radius: var(---border-radius);
+        border-bottom-right-radius: var(---border-radius);
       }
     }
   }
   .icon + .content:not(:empty) {
-    padding-left: 8px;
+    padding-left: .5em;
   }
 }

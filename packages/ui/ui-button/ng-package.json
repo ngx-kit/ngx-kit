@@ -3,9 +3,6 @@
   "dest": "../../../dist/ui-button",
   "deleteDestPath": true,
   "lib": {
-    "entryFile": "./public_api.ts",
-    "umdModuleIds": {
-      "@ngx-kit/core": "@ngx-kit/core"
-    }
+    "entryFile": "./public_api.ts"
   }
 }
