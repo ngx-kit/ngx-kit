@@ -1,12 +1,7 @@
 import { ChangeDetectorRef, ElementRef, Injectable, OnDestroy } from '@angular/core';
+import { isArray, isDefined, isFunction, isNotUndefined, KitFocusListenerService, KitPlatformService } from '@ngx-kit/core';
 import { BehaviorSubject, from, fromEvent, merge, Observable, Subject, timer } from 'rxjs';
 import { debounce, debounceTime, distinctUntilChanged, filter, map, mapTo, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { KitFocusListenerService } from '../../../../core/src/kit-focus-listener/kit-focus-listener.service';
-import { KitPlatformService } from '../../../../core/src/kit-platform/kit-platform.service';
-import { isArray } from '../../../../core/src/util/is-array';
-import { isDefined } from '../../../../core/src/util/is-defined';
-import { isFunction } from '../../../../core/src/util/is-function';
-import { isNotUndefined } from '../../../../core/src/util/is-undefined';
 import {
   uiExtSelectDefaultOptions,
   UiExtSelectFilter,

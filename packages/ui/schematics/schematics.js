@@ -11,7 +11,7 @@ module.exports = function(pkgName, distPath) {
   // Prepare & copy pkg sources
   processSources(path.resolve(__dirname, '..', pkgName, 'src'), path.resolve(schemDistPath, 'extract/files'), pkgName);
   // Build
-  if (sh.exec(`tsc -p ${schemDistPath}/tsconfig.json`).code !== 0) {
+  if (sh.exec(`"./node_modules/.bin/tsc" -p ${schemDistPath}/tsconfig.json`).code !== 0) {
     sh.echo('Schematics build error!');
     sh.exit(1);
   }

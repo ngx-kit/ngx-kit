@@ -1,19 +1,29 @@
-const sh = require('shelljs');
-const path = require('path');
-const fs = require('fs-extra');
+import chalk from 'chalk';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import * as sh from 'shelljs';
+import * as yargs from 'yargs';
+
+// tslint:disable
+
+const argv: {
+  package?: string;
+  publish?: boolean;
+  pack?: boolean;
+} = yargs.argv as any;
 
 const pkgJson = require('./package.json');
 
-sh.echo('Starting ngx-kit release…');
+console.log(chalk.bgBlue('Starting ngx-kit release…'));
 
 buildPkg();
 buildShematics();
 preparePublishing();
+pack();
 publish();
 
-sh.echo(`ngx-kit ${pkgJson.version} released!`);
+console.log(chalk.bgGreen(chalk.black(`ngx-kit ${pkgJson.version} release finished!`)));
 sh.exit(0);
-
 
 function packages() {
   return [
@@ -46,22 +56,27 @@ function packages() {
     ['ui-toggle', 'packages/ui/schematics'],
     ['ui-tooltip', 'packages/ui/schematics'],
     ['ui-vertical-menu', 'packages/ui/schematics'],
-  ];
+  ].filter(d => {
+    if (argv.package) {
+      return d[0] === argv.package;
+    } else {
+      return true;
+    }
+  });
 }
 
-
 function buildPkg() {
-  sh.echo('Build packages with ng-packagr…');
+  console.log('Build packages with ng-packagr…');
   packages().forEach(pkg => {
     if (sh.exec(`ng run ${pkg[0]}:build`).code !== 0) {
-      sh.echo('Build error!');
+      console.log(chalk.red('Build error!'));
       sh.exit(1);
     }
   });
 }
 
 function buildShematics() {
-  sh.echo('Build shematics…');
+  console.log('Build shematics…');
   packages().forEach(pkg => {
     const schem = require(path.resolve(pkg[1], 'schematics.js'));
     schem(pkg[0], path.resolve(__dirname, 'dist'));
@@ -69,7 +84,7 @@ function buildShematics() {
 }
 
 function preparePublishing() {
-  sh.echo('Set version to package.json files…');
+  console.log('Set version to package.json files…');
   packages().forEach(pkg => {
     const pkgPath = path.resolve(__dirname, `./dist/${pkg[0]}/package.json`);
     const source = fs.readFileSync(pkgPath, 'utf-8');
@@ -78,14 +93,34 @@ function preparePublishing() {
   });
 }
 
+function pack() {
+  if (argv.pack) {
+    console.log('Pack packages…');
+    packages().forEach(pkg => {
+      const res = sh.exec(`npm pack ./dist/${pkg[0]}`);
+      if (res.code === 0) {
+        const filename = res.toString().trim();
+        const dist = path.resolve('dist', filename);
+        fs.moveSync(path.resolve(filename), dist, {overwrite: true});
+        console.log(`Packed to:`, chalk.cyan(dist));
+      } else {
+        console.log(chalk.red('Publishing error!'));
+        sh.exit(1);
+      }
+    });
+  }
+}
+
 function publish() {
-  sh.echo('Publish packages to npm…');
-  packages().forEach(pkg => {
-    const alphaTag = pkgJson.version.indexOf('alpha') !== -1;
-    const betaTag = pkgJson.version.indexOf('beta') !== -1;
-    if (sh.exec(`npm publish ./dist/${pkg[0]} --access=public ${alphaTag ? '--tag=alpha' : ''} ${betaTag ? '--tag=beta' : ''}`).code !== 0) {
-      sh.echo('Publishing error!');
-      sh.exit(1);
-    }
-  });
+  if (argv.publish) {
+    console.log('Publish packages to npm…');
+    packages().forEach(pkg => {
+      const alphaTag = pkgJson.version.indexOf('alpha') !== -1;
+      const betaTag = pkgJson.version.indexOf('beta') !== -1;
+      if (sh.exec(`npm publish ./dist/${pkg[0]} --access=public ${alphaTag ? '--tag=alpha' : ''} ${betaTag ? '--tag=beta' : ''}`).code !== 0) {
+        console.log(chalk.red('Publishing error!'));
+        sh.exit(1);
+      }
+    });
+  }
 }
