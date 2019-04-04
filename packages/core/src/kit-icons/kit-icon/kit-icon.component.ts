@@ -133,11 +133,13 @@ export class KitIconComponent implements OnChanges, OnDestroy {
   }
 
   private render() {
-    this.svg = this.svgElementFromString(this.source.svg);
-    this.clear();
-    this.updateStyles();
-    this.updateA11y();
-    this.mount();
+    if (this.source.svg) {
+      this.svg = this.svgElementFromString(this.source.svg);
+      this.clear();
+      this.updateStyles();
+      this.updateA11y();
+      this.mount();
+    }
   }
 
   private clear() {

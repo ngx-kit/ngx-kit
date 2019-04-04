@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, filter, map, take, tap } from 'rxjs/operators';
+import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { isArray } from '../util/is-array';
 import { KitIcon, KitIconCached, KitIconSource } from './meta';
 
@@ -31,7 +32,10 @@ export class KitIconsRegistryService {
 
   private icons: KitIcon[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private platform: KitPlatformService,
+  ) {
   }
 
   /**
@@ -69,12 +73,20 @@ export class KitIconsRegistryService {
         // Add cached to the pull
         this.cache.push(cached);
         if (icon.url) {
-          // Fetch
-          return this.http.get(icon.url, {responseType: 'text'})
-            .pipe(
-              tap(svg => cached.svg.next(svg)),
-              map(svg => ({svg, size: icon.size})),
-            );
+          if (this.platform.isBrowser()) {
+            // Fetch
+            return this.http
+              .get(icon.url, {responseType: 'text'})
+              .pipe(
+                tap(svg => cached.svg.next(svg)),
+                map(svg => ({svg, size: icon.size})),
+                catchError((error: HttpErrorResponse) => {
+                  throw new Error(`Svg load failed, url: ${icon.url}, message: ${error.message}`);
+                }),
+              );
+          } else {
+            return of({svg: ''});
+          }
         } else if (icon.xml) {
           // Register xml
           cached.svg.next(icon.xml);
