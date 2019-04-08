@@ -20,6 +20,16 @@
   ---color-primary-focus-outline-offset: var(--ui-button-color-primary-focus-outline-offset, -2px);
   ---color-primary-checked-background: var(--ui-button-color-primary-checked-background, #1e80cd);
   ---color-primary-checked-color: var(--ui-button-color-primary-checked-color, #ffffff);
+  // Ghost color
+  ---color-ghost-background: var(--ui-button-color-ghost-background, transparent);
+  ---color-ghost-color: var(--ui-button-color-ghost-color, #333333);
+  ---color-ghost-hover-background: var(--ui-button-color-ghost-hover-background, #eeeeee);
+  ---color-ghost-hover-color: var(--ui-button-color-ghost-hover-color, #333333);
+  ---color-ghost-focus-box-shadow: var(--ui-button-color-ghost-focus-box-shadow, none);
+  ---color-ghost-focus-outline: var(--ui-button-color-ghost-focus-outline, 2px solid #ffbf47);
+  ---color-ghost-focus-outline-offset: var(--ui-button-color-ghost-focus-outline-offset, -2px);
+  ---color-ghost-checked-background: var(--ui-button-color-ghost-checked-background, #dddddd);
+  ---color-ghost-checked-color: var(--ui-button-color-ghost-checked-color, #333333);
   // S size
   ---size-s-font-size: var(--ui-button-size-s-font-size, .85rem);
   ---size-s-padding: var(--ui-button-size-s-padding, .2rem .65rem);
@@ -86,6 +96,23 @@
       &.checked {
         background: var(---color-primary-checked-background);
         color: var(---color-primary-checked-color);
+      }
+    }
+    &-ghost {
+      background: var(---color-ghost-background);
+      color: var(---color-ghost-color);
+      &:hover {
+        background: var(---color-ghost-hover-background);
+        color: var(---color-ghost-hover-color);
+      }
+      &:focus {
+        box-shadow: var(---color-ghost-focus-box-shadow);
+        outline: var(---color-ghost-focus-outline);
+        outline-offset: var(---color-ghost-focus-outline-offset);
+      }
+      &.checked {
+        background: var(---color-ghost-checked-background);
+        color: var(---color-ghost-checked-color);
       }
     }
   }

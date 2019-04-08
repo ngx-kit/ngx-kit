@@ -71,6 +71,7 @@ Multiple:
 
 ```
 --ui-button-border-radius
+// Default color
 --ui-button-color-default-background
 --ui-button-color-default-color
 --ui-button-color-default-hover-background
@@ -80,6 +81,7 @@ Multiple:
 --ui-button-color-default-focus-outline-offset
 --ui-button-color-default-checked-background
 --ui-button-color-default-checked-color
+// Primary color
 --ui-button-color-primary-background
 --ui-button-color-primary-color
 --ui-button-color-primary-hover-background
@@ -89,10 +91,23 @@ Multiple:
 --ui-button-color-primary-focus-outline-offset
 --ui-button-color-primary-checked-background
 --ui-button-color-primary-checked-color
+// Ghost color
+--ui-button-color-ghost-background
+--ui-button-color-ghost-color
+--ui-button-color-ghost-hover-background
+--ui-button-color-ghost-hover-color
+--ui-button-color-ghost-focus-box-shadow
+--ui-button-color-ghost-focus-outline
+--ui-button-color-ghost-focus-outline-offset
+--ui-button-color-ghost-checked-background
+--ui-button-color-ghost-checked-color
+// S size
 --ui-button-size-s-font-size
 --ui-button-size-s-padding
+// M size
 --ui-button-size-m-font-size
 --ui-button-size-m-padding
+// L size
 --ui-button-size-l-font-size
 --ui-button-size-l-padding
 ```
