@@ -1,4 +1,12 @@
-1. Import generated module into the root:
+# Loading bar component for Angular
+
+## Installation
+
+```
+$ ng add @ngx-kit/ui-loading-bar
+```
+
+Import UiLoadingBarModule to the root module:
 
 ```typescript
 ...
@@ -8,4 +16,16 @@ imports: [
 ],
 ```
 
-2. Use `KitLoadingService` api.
+
+## Usage
+
+`LoadingBar` automatically integrates with `Router`.
+
+
+## Theming
+
+```
+--ui-loading-bar-background
+--ui-loading-bar-box-shadow
+--ui-loading-bar-height
+```
