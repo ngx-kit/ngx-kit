@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { KitAnchor } from '../../kit-anchor/meta';
@@ -11,9 +11,20 @@ import { KitOverlayToggleTrigger } from '../meta';
 export class KitOverlayToggleDirective implements KitAnchor {
   @Input() trigger: KitOverlayToggleTrigger = 'click';
 
+  @Output() shows = new EventEmitter<void>();
+
+  @Output() closes = new EventEmitter<void>();
+
   private _state = new BehaviorSubject<boolean>(false);
 
   constructor(private _elementRef: ElementRef) {
+    this._state.asObservable().subscribe(state => {
+      if (state) {
+        this.shows.emit();
+      } else {
+        this.closes.emit();
+      }
+    });
   }
 
   get stateChanges(): Observable<boolean> {
