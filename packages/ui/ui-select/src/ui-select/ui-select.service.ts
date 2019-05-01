@@ -3,26 +3,21 @@ import { isArray, isDefined, isFunction, isNotUndefined, KitFocusListenerService
 import { BehaviorSubject, from, fromEvent, merge, Observable, Subject, timer } from 'rxjs';
 import { debounce, debounceTime, distinctUntilChanged, filter, map, mapTo, switchMap, takeUntil, tap } from 'rxjs/operators';
 import {
-  uiExtSelectDefaultOptions,
-  UiExtSelectFilter,
-  UiExtSelectInputView,
-  UiExtSelectItem,
-  UiExtSelectItemView,
-  UiExtSelectOptions,
-  UiExtSelectSearchFn,
+  uiSelectDefaultOptions,
+  UiSelectFilter,
+  UiSelectInputView,
+  UiSelectItem,
+  UiSelectItemView,
+  UiSelectOptions,
+  UiSelectSearchFn,
 } from './meta';
 
 /**
  * Service for handling state of extended selector.
  * Should be provided on a component.
- *
- *
- * ### Example
- *
- * * collection:ext-select - [demo](https://ngx-kit.com/collection/module/ui-ext-select)
  */
 @Injectable()
-export class UiExtSelectService<M> implements OnDestroy {
+export class UiSelectService<M> implements OnDestroy {
   /**
    * Is control disabled.
    */
@@ -31,35 +26,35 @@ export class UiExtSelectService<M> implements OnDestroy {
   /**
    * @input
    */
-  private readonly _items = new BehaviorSubject<UiExtSelectItem<M>[]>([]);
+  private readonly _items = new BehaviorSubject<UiSelectItem<M>[]>([]);
 
   /**
    * @input
    */
-  private _searchFn?: UiExtSelectSearchFn<M>;
+  private _searchFn?: UiSelectSearchFn<M>;
 
   /**
    * @input
    */
-  private readonly _filter = new BehaviorSubject<UiExtSelectFilter<M> | undefined>(undefined);
+  private readonly _filter = new BehaviorSubject<UiSelectFilter<M> | undefined>(undefined);
 
   /**
    * @input
    */
-  private readonly _options = new BehaviorSubject<UiExtSelectOptions>(uiExtSelectDefaultOptions);
+  private readonly _options = new BehaviorSubject<UiSelectOptions>(uiSelectDefaultOptions);
 
   /**
    * @input
    */
   private _multiple?: boolean;
 
-  private readonly searchItems = new BehaviorSubject<UiExtSelectItem<M>[]>([]);
+  private readonly searchItems = new BehaviorSubject<UiSelectItem<M>[]>([]);
 
   private selectRef: ElementRef;
 
-  private readonly _inputView = new BehaviorSubject<UiExtSelectInputView<M>[] | undefined>(undefined);
+  private readonly _inputView = new BehaviorSubject<UiSelectInputView<M>[] | undefined>(undefined);
 
-  private readonly _itemsView = new BehaviorSubject<UiExtSelectItemView<M>[]>([]);
+  private readonly _itemsView = new BehaviorSubject<UiSelectItemView<M>[]>([]);
 
   private readonly _focused = new BehaviorSubject<boolean>(false);
 
@@ -163,7 +158,7 @@ export class UiExtSelectService<M> implements OnDestroy {
   /**
    * Set list of items to pick.
    */
-  set items(items: UiExtSelectItem<M>[]) {
+  set items(items: UiSelectItem<M>[]) {
     this._items.next(items);
   }
 
@@ -184,7 +179,7 @@ export class UiExtSelectService<M> implements OnDestroy {
    *
    * Enables autocomplete mode.
    */
-  set searchFn(searchFn: UiExtSelectSearchFn<M> | undefined) {
+  set searchFn(searchFn: UiSelectSearchFn<M> | undefined) {
     this._searchFn = searchFn;
   }
 
@@ -220,7 +215,7 @@ export class UiExtSelectService<M> implements OnDestroy {
    *
    * @todo Remove in the next major release.
    */
-  get inputView(): UiExtSelectInputView<M> | UiExtSelectInputView<M>[] | undefined {
+  get inputView(): UiSelectInputView<M> | UiSelectInputView<M>[] | undefined {
     return this._inputView.value as any;
   }
 
@@ -228,7 +223,7 @@ export class UiExtSelectService<M> implements OnDestroy {
    * View displayed in input section.
    * Always returns an array. For non-multiple select use the first item: `inputViews[0]`.
    */
-  get inputViews(): UiExtSelectInputView<M>[] {
+  get inputViews(): UiSelectInputView<M>[] {
     return this._inputView.value ? this._inputView.value : [];
   }
 
@@ -260,7 +255,7 @@ export class UiExtSelectService<M> implements OnDestroy {
   /**
    * Set filter to search through the current list of `[items]`.
    */
-  set filter(f: UiExtSelectFilter<M> | undefined) {
+  set filter(f: UiSelectFilter<M> | undefined) {
     this._filter.next(f);
   }
 
@@ -380,15 +375,15 @@ export class UiExtSelectService<M> implements OnDestroy {
    * Additional configuration.
    * If some values are not defined, will be used default value.
    */
-  overrideOptions(options: Partial<UiExtSelectOptions>) {
-    this._options.next(options ? {...uiExtSelectDefaultOptions, ...options} : {...uiExtSelectDefaultOptions});
+  overrideOptions(options: Partial<UiSelectOptions>) {
+    this._options.next(options ? {...uiSelectDefaultOptions, ...options} : {...uiSelectDefaultOptions});
   }
 
   /**
    * Update options.
    * If some values are not defined, will be used current value.
    */
-  updateOptions(options: Partial<UiExtSelectOptions>) {
+  updateOptions(options: Partial<UiSelectOptions>) {
     this._options.next({...this.options, ...options});
   }
 
@@ -650,7 +645,7 @@ export class UiExtSelectService<M> implements OnDestroy {
       });
   }
 
-  private processSearch(request: string): Observable<UiExtSelectItem<M>[]> {
+  private processSearch(request: string): Observable<UiSelectItem<M>[]> {
     if (this._searchFn) {
       if (isFunction(this._searchFn)) {
         const raw = this._searchFn(request);
@@ -896,7 +891,7 @@ export class UiExtSelectService<M> implements OnDestroy {
     }
   }
 
-  private getItemInputView(model: M): UiExtSelectInputView<M> {
+  private getItemInputView(model: M): UiSelectInputView<M> {
     const item = this.items.find(i => i.model === model);
     if (item) {
       return {

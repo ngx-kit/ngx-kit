@@ -17,24 +17,22 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { KitFocusListenerService, KitFormFieldService } from '@ngx-kit/core';
-import { uiExtSelectIcons } from '../icons';
-import { UiExtSelectFilter, UiExtSelectItem, UiExtSelectOptions, UiExtSelectSearchFn } from './meta';
-import { UiExtSelectService } from './ui-ext-select.service';
-
-export const uiExtSelectValueAccessor: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => UiExtSelectComponent),
-  multi: true,
-};
+import { uiSelectIcons } from '../icons';
+import { UiSelectFilter, UiSelectItem, UiSelectOptions, UiSelectSearchFn } from './meta';
+import { UiSelectService } from './ui-select.service';
 
 @Component({
-  selector: 'ui-ext-select',
-  templateUrl: './ui-ext-select.component.html',
-  styleUrls: ['./ui-ext-select.component.scss'],
+  selector: 'ui-select',
+  templateUrl: './ui-select.component.html',
+  styleUrls: ['./ui-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    uiExtSelectValueAccessor,
-    UiExtSelectService,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => UiSelectComponent),
+      multi: true,
+    },
+    UiSelectService,
     KitFocusListenerService,
   ],
   animations: [
@@ -64,21 +62,21 @@ export const uiExtSelectValueAccessor: any = {
     ]),
   ],
 })
-export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, ControlValueAccessor {
+export class UiSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, ControlValueAccessor {
   /**
    * List of items to pick.
    */
-  @Input() items: UiExtSelectItem<M>[] = [];
+  @Input() items: UiSelectItem<M>[] = [];
 
   /**
    * Use filter to search through the current list of `[items]`.
    */
-  @Input() filter?: UiExtSelectFilter<M>;
+  @Input() filter?: UiSelectFilter<M>;
 
   /**
    * Search function will be used instead of filter. The function should return list of items to pick.
    */
-  @Input() searchFn?: UiExtSelectSearchFn<M>;
+  @Input() searchFn?: UiSelectSearchFn<M>;
 
   /**
    * Enables multiple select.
@@ -88,7 +86,7 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   /**
    * Additional configuration.
    */
-  @Input() options: Partial<UiExtSelectOptions> = {};
+  @Input() options: Partial<UiSelectOptions> = {};
 
   /**
    * Placeholder displayed when model is empty.
@@ -98,7 +96,7 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
   /**
    * Emits when items array changed by item selection.
    */
-  @Output() itemsChange = new EventEmitter<UiExtSelectItem<M>[]>();
+  @Output() itemsChange = new EventEmitter<UiSelectItem<M>[]>();
 
   @ViewChild('selectRef') selectRef: ElementRef;
 
@@ -106,10 +104,10 @@ export class UiExtSelectComponent<M> implements OnInit, OnChanges, AfterViewInit
 
   hasErrors?: boolean;
 
-  icons = uiExtSelectIcons;
+  icons = uiSelectIcons;
 
   constructor(
-    public service: UiExtSelectService<M>,
+    public service: UiSelectService<M>,
     @Optional() private formFieldService: KitFormFieldService,
     private cdr: ChangeDetectorRef,
   ) {

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { KitAnchorModule, KitFocusListenerModule, KitIconsModule, KitOverlayModule, KitPositionModule } from '@ngx-kit/core';
-import { UiExtSelectComponent } from './ui-ext-select/ui-ext-select.component';
+import { UiSelectComponent } from './ui-select/ui-select.component';
 
 @NgModule({
   imports: [
@@ -15,11 +15,11 @@ import { UiExtSelectComponent } from './ui-ext-select/ui-ext-select.component';
     KitIconsModule,
   ],
   declarations: [
-    UiExtSelectComponent,
+    UiSelectComponent,
   ],
   exports: [
-    UiExtSelectComponent,
+    UiSelectComponent,
   ],
 })
-export class UiExtSelectModule {
+export class UiSelectModule {
 }

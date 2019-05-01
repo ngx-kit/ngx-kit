@@ -7,7 +7,7 @@ import { UiCheckboxModule } from '../../ui/ui-checkbox/src/ui-checkbox.module';
 import { UiDatePickerModule } from '../../ui/ui-date-picker/src/ui-date-picker.module';
 import { UiDrawerModule } from '../../ui/ui-drawer/src/ui-drawer.module';
 import { UiDropdownModule } from '../../ui/ui-dropdown/src/ui-dropdown.module';
-import { UiExtSelectModule } from '../../ui/ui-ext-select/src/ui-ext-select.module';
+import { UiSelectModule } from '../../ui/ui-select/src/ui-select.module';
 import { UiFileModule } from '../../ui/ui-file/src/ui-file.module';
 import { UiFormModule } from '../../ui/ui-form/src/ui-form.module';
 import { UiLoadingBarModule } from '../../ui/ui-loading-bar/src/ui-loading-bar.module';
@@ -31,7 +31,7 @@ const lib = [
   UiDatePickerModule,
   UiDrawerModule,
   UiDropdownModule,
-  UiExtSelectModule,
+  UiSelectModule,
   UiFileModule,
   UiFormModule,
   UiLoadingBarModule,

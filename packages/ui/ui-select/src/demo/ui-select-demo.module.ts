@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiExtSelectDemoComponent } from './ui-ext-select-demo.component';
-import { UiExtSelectModule } from '../ui-ext-select.module';
+import { UiSelectDemoComponent } from './ui-select-demo.component';
+import { UiSelectModule } from '../ui-select.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    UiExtSelectModule,
+    UiSelectModule,
   ],
   declarations: [
-    UiExtSelectDemoComponent,
+    UiSelectDemoComponent,
   ],
   entryComponents: [
-    UiExtSelectDemoComponent,
+    UiSelectDemoComponent,
   ],
 })
-export class UiExtSelectDemoModule {
+export class UiSelectDemoModule {
 }

@@ -7,7 +7,6 @@ import { UiCheckboxDemoComponent } from '../../../packages/ui/ui-checkbox/src/de
 import { UiDatePickerDemoComponent } from '../../../packages/ui/ui-date-picker/src/demo/ui-date-picker-demo.component';
 import { UiDrawerDemoComponent } from '../../../packages/ui/ui-drawer/src/demo/ui-drawer-demo.component';
 import { UiDropdownDemoComponent } from '../../../packages/ui/ui-dropdown/src/demo/ui-dropdown-demo.component';
-import { UiExtSelectDemoComponent } from '../../../packages/ui/ui-ext-select/src/demo/ui-ext-select-demo.component';
 import { UiFileDemoComponent } from '../../../packages/ui/ui-file/src/demo/ui-file-demo.component';
 import { UiFormDemoComponent } from '../../../packages/ui/ui-form/src/demo/ui-form-demo.component';
 import { UiLoadingBarDemoComponent } from '../../../packages/ui/ui-loading-bar/src/demo/ui-loading-bar-demo.component';
@@ -16,6 +15,7 @@ import { UiNotificationDemoComponent } from '../../../packages/ui/ui-notificatio
 import { UiPopupDemoComponent } from '../../../packages/ui/ui-popup/src/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from '../../../packages/ui/ui-radio/src/demo/ui-radio-demo.component';
 import { UiScrollDemoComponent } from '../../../packages/ui/ui-scroll/src/demo/ui-scroll-demo.component';
+import { UiSelectDemoComponent } from '../../../packages/ui/ui-select/src/demo/ui-select-demo.component';
 import { UiSliderDemoComponent } from '../../../packages/ui/ui-slider/src/demo/ui-slider-demo.component';
 import { UiTabsDemoComponent } from '../../../packages/ui/ui-tabs/src/demo/ui-tabs-demo.component';
 import { UiTextDemoComponent } from '../../../packages/ui/ui-text/src/demo/ui-text-demo.component';
@@ -53,10 +53,6 @@ const routes: Routes = [
     component: UiDropdownDemoComponent,
   },
   {
-    path: 'ui-ext-select',
-    component: UiExtSelectDemoComponent,
-  },
-  {
     path: 'ui-file',
     component: UiFileDemoComponent,
   },
@@ -87,6 +83,10 @@ const routes: Routes = [
   {
     path: 'ui-scroll',
     component: UiScrollDemoComponent,
+  },
+  {
+    path: 'ui-select',
+    component: UiSelectDemoComponent,
   },
   {
     path: 'ui-slider',

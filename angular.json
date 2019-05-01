@@ -135,20 +135,6 @@
         }
       }
     },
-    "ui-ext-select": {
-      "root": "packages/ui/ui-ext-select",
-      "sourceRoot": "packages/ui/ui-ext-select/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-ext-select/ng-package.json"
-          }
-        }
-      }
-    },
     "ui-file": {
       "root": "packages/ui/ui-file",
       "sourceRoot": "packages/ui/ui-file/src",
@@ -257,6 +243,20 @@
           "options": {
             "tsConfig": "packages/ui/tsconfig.lib.json",
             "project": "packages/ui/ui-scroll/ng-package.json"
+          }
+        }
+      }
+    },
+    "ui-select": {
+      "root": "packages/ui/ui-select",
+      "sourceRoot": "packages/ui/ui-select/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ui/tsconfig.lib.json",
+            "project": "packages/ui/ui-select/ng-package.json"
           }
         }
       }

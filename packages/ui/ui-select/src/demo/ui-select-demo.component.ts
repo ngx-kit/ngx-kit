@@ -2,27 +2,27 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { from } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import {
-  UiExtSelectFilterFn,
-  UiExtSelectItem,
-  UiExtSelectListStateAsyncSourceFn,
-  UiExtSelectListStateSourceFn,
-} from '../ui-ext-select/meta';
+  UiSelectFilterFn,
+  UiSelectItem,
+  UiSelectListStateAsyncSourceFn,
+  UiSelectListStateSourceFn,
+} from '../ui-select/meta';
 
 /**
  * @demo
  */
 @Component({
-  templateUrl: './ui-ext-select-demo.component.html',
+  templateUrl: './ui-select-demo.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiExtSelectDemoComponent implements OnInit {
+export class UiSelectDemoComponent implements OnInit {
   model = 1;
 
   modelAutocomplete?: number;
 
   multiModel: number[] = [];
 
-  simpleItems: UiExtSelectItem<any>[] = [
+  simpleItems: UiSelectItem<any>[] = [
     {model: 1},
     {model: 2},
     {model: 3},
@@ -37,7 +37,7 @@ export class UiExtSelectDemoComponent implements OnInit {
     {model: 12},
   ];
 
-  itemsWithItemView: UiExtSelectItem<any>[] = [
+  itemsWithItemView: UiSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -88,9 +88,9 @@ export class UiExtSelectDemoComponent implements OnInit {
     },
   ];
 
-  itemsWithItemViewForSearch: UiExtSelectItem<any>[] = [];
+  itemsWithItemViewForSearch: UiSelectItem<any>[] = [];
 
-  fullViewItems: UiExtSelectItem<any>[] = [
+  fullViewItems: UiSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -113,15 +113,15 @@ export class UiExtSelectDemoComponent implements OnInit {
     },
   ];
 
-  filterFn: UiExtSelectFilterFn<any> = (input, item) => {
+  filterFn: UiSelectFilterFn<any> = (input, item) => {
     return !!item.filter && !item.filter.includes(input);
   };
 
-  searchFn: UiExtSelectListStateSourceFn<any> = (input: string) => {
+  searchFn: UiSelectListStateSourceFn<any> = (input: string) => {
     return this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()));
   };
 
-  asyncSearchFn: UiExtSelectListStateAsyncSourceFn<any> = (input: string) => {
+  asyncSearchFn: UiSelectListStateAsyncSourceFn<any> = (input: string) => {
     const items = input
       ? this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()))
       : this.itemsWithItemView;

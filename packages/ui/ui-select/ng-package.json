@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/ui-ext-select",
+  "dest": "../../../dist/ui-select",
   "deleteDestPath": true,
   "lib": {
     "entryFile": "./public_api.ts"
