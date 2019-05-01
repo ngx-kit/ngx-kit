@@ -261,20 +261,6 @@
         }
       }
     },
-    "ui-select": {
-      "root": "packages/ui/ui-select",
-      "sourceRoot": "packages/ui/ui-select/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-select/ng-package.json"
-          }
-        }
-      }
-    },
     "ui-slider": {
       "root": "packages/ui/ui-slider",
       "sourceRoot": "packages/ui/ui-slider/src",

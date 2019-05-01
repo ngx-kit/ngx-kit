@@ -16,7 +16,6 @@ import { UiNotificationModule } from '../../ui/ui-notification/src/ui-notificati
 import { UiPopupModule } from '../../ui/ui-popup/src/ui-popup.module';
 import { UiRadioModule } from '../../ui/ui-radio/src/ui-radio.module';
 import { UiScrollModule } from '../../ui/ui-scroll/src/ui-scroll.module';
-import { UiSelectModule } from '../../ui/ui-select/src/ui-select.module';
 import { UiVerticalMenuModule } from '../../ui/ui-vertical-menu/src/ui-vertical-menu.module';
 import { UiSliderModule } from '../../ui/ui-slider/src/ui-slider.module';
 import { UiTabsModule } from '../../ui/ui-tabs/src/ui-tabs.module';
@@ -41,7 +40,6 @@ const lib = [
   UiPopupModule,
   UiRadioModule,
   UiScrollModule,
-  UiSelectModule,
   UiSliderModule,
   UiVerticalMenuModule,
   UiTabsModule,

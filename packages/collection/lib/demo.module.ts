@@ -32,8 +32,6 @@ import { UiRadioDemoComponent } from '../../ui/ui-radio/src/demo/ui-radio-demo.c
 import { UiRadioDemoModule } from '../../ui/ui-radio/src/demo/ui-radio-demo.module';
 import { UiScrollDemoComponent } from '../../ui/ui-scroll/src/demo/ui-scroll-demo.component';
 import { UiScrollDemoModule } from '../../ui/ui-scroll/src/demo/ui-scroll-demo.module';
-import { UiSelectDemoComponent } from '../../ui/ui-select/src/demo/ui-select-demo.component';
-import { UiSelectDemoModule } from '../../ui/ui-select/src/demo/ui-select-demo.module';
 import { UiSliderDemoComponent } from '../../ui/ui-slider/src/demo/ui-slider-demo.component';
 import { UiSliderDemoModule } from '../../ui/ui-slider/src/demo/ui-slider-demo.module';
 import { UiTabsDemoComponent } from '../../ui/ui-tabs/src/demo/ui-tabs-demo.component';
@@ -67,7 +65,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiPopupDemoComponent', UiPopupDemoComponent],
   ['UiRadioDemoComponent', UiRadioDemoComponent],
   ['UiScrollDemoComponent', UiScrollDemoComponent],
-  ['UiSelectDemoComponent', UiSelectDemoComponent],
   ['UiSliderDemoComponent', UiSliderDemoComponent],
   ['UiTabsDemoComponent', UiTabsDemoComponent],
   ['UiTextDemoComponent', UiTextDemoComponent],
@@ -95,7 +92,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
     UiPopupDemoModule,
     UiRadioDemoModule,
     UiScrollDemoModule,
-    UiSelectDemoModule,
     UiSliderDemoModule,
     UiTabsDemoModule,
     UiTextDemoModule,

@@ -44,7 +44,6 @@ function packages() {
     ['ui-popup', 'packages/ui/schematics'],
     ['ui-radio', 'packages/ui/schematics'],
     ['ui-scroll', 'packages/ui/schematics'],
-    ['ui-select', 'packages/ui/schematics'],
     ['ui-slider', 'packages/ui/schematics'],
     ['ui-tabs', 'packages/ui/schematics'],
     ['ui-text', 'packages/ui/schematics'],
