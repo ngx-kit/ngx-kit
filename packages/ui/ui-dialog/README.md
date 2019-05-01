@@ -1,1 +1,0 @@
-# Dialog component for Angular

@@ -5,7 +5,6 @@ import { UiButtonModule } from '../../ui/ui-button/src/ui-button.module';
 import { UiCarouselModule } from '../../ui/ui-carousel/src/ui-carousel.module';
 import { UiCheckboxModule } from '../../ui/ui-checkbox/src/ui-checkbox.module';
 import { UiDatePickerModule } from '../../ui/ui-date-picker/src/ui-date-picker.module';
-import { UiDialogModule } from '../../ui/ui-dialog/src/ui-dialog.module';
 import { UiDrawerModule } from '../../ui/ui-drawer/src/ui-drawer.module';
 import { UiDropdownModule } from '../../ui/ui-dropdown/src/ui-dropdown.module';
 import { UiExtSelectModule } from '../../ui/ui-ext-select/src/ui-ext-select.module';
@@ -31,7 +30,6 @@ const lib = [
   UiCarouselModule,
   UiCheckboxModule,
   UiDatePickerModule,
-  UiDialogModule,
   UiDrawerModule,
   UiDropdownModule,
   UiExtSelectModule,

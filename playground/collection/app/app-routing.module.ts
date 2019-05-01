@@ -5,7 +5,6 @@ import { UiButtonDemoComponent } from '../../../packages/ui/ui-button/src/demo/u
 import { UiCarouselDemoComponent } from '../../../packages/ui/ui-carousel/src/demo/ui-carousel-demo.component';
 import { UiCheckboxDemoComponent } from '../../../packages/ui/ui-checkbox/src/demo/ui-checkbox-demo.component';
 import { UiDatePickerDemoComponent } from '../../../packages/ui/ui-date-picker/src/demo/ui-date-picker-demo.component';
-import { UiDialogDemoComponent } from '../../../packages/ui/ui-dialog/src/demo/ui-dialog-demo.component';
 import { UiDrawerDemoComponent } from '../../../packages/ui/ui-drawer/src/demo/ui-drawer-demo.component';
 import { UiDropdownDemoComponent } from '../../../packages/ui/ui-dropdown/src/demo/ui-dropdown-demo.component';
 import { UiExtSelectDemoComponent } from '../../../packages/ui/ui-ext-select/src/demo/ui-ext-select-demo.component';
@@ -45,10 +44,6 @@ const routes: Routes = [
   {
     path: 'ui-date-picker',
     component: UiDatePickerDemoComponent,
-  },
-  {
-    path: 'ui-dialog',
-    component: UiDialogDemoComponent,
   },
   {
     path: 'ui-drawer',

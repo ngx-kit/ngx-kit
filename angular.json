@@ -107,20 +107,6 @@
         }
       }
     },
-    "ui-dialog": {
-      "root": "packages/ui/ui-dialog",
-      "sourceRoot": "packages/ui/ui-dialog/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-dialog/ng-package.json"
-          }
-        }
-      }
-    },
     "ui-drawer": {
       "root": "packages/ui/ui-drawer",
       "sourceRoot": "packages/ui/ui-drawer/src",

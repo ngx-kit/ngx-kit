@@ -33,7 +33,6 @@ function packages() {
     ['ui-carousel', 'packages/ui/schematics'],
     ['ui-checkbox', 'packages/ui/schematics'],
     ['ui-date-picker', 'packages/ui/schematics'],
-    ['ui-dialog', 'packages/ui/schematics'],
     ['ui-drawer', 'packages/ui/schematics'],
     ['ui-dropdown', 'packages/ui/schematics'],
     ['ui-ext-select', 'packages/ui/schematics'],
