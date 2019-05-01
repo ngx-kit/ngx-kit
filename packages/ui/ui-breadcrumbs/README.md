@@ -1,1 +1,0 @@
-# Breadcrumbs component for Angular

@@ -1,1 +1,0 @@
-# Rating component for Angular

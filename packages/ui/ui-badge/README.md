@@ -1,1 +1,0 @@
-# Badge component for Angular

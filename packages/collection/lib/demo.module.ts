@@ -2,12 +2,6 @@ import { NgModule } from '@angular/core';
 import { Type } from '@angular/core/src/type';
 import { UiAccordionDemoComponent } from '../../ui/ui-accordion/src/demo/ui-accordion-demo.component';
 import { UiAccordionDemoModule } from '../../ui/ui-accordion/src/demo/ui-accordion-demo.module';
-import { UiAlertDemoComponent } from '../../ui/ui-alert/src/demo/ui-alert-demo.component';
-import { UiAlertDemoModule } from '../../ui/ui-alert/src/demo/ui-alert-demo.module';
-import { UiBadgeDemoComponent } from '../../ui/ui-badge/src/demo/ui-badge-demo.component';
-import { UiBadgeDemoModule } from '../../ui/ui-badge/src/demo/ui-badge-demo.module';
-import { UiBreadcrumbsDemoComponent } from '../../ui/ui-breadcrumbs/src/demo/ui-breadcrumbs-demo.component';
-import { UiBreadcrumbsDemoModule } from '../../ui/ui-breadcrumbs/src/demo/ui-breadcrumbs-demo.module';
 import { UiButtonDemoComponent } from '../../ui/ui-button/src/demo/ui-button-demo.component';
 import { UiButtonDemoModule } from '../../ui/ui-button/src/demo/ui-button-demo.module';
 import { UiCarouselDemoComponent } from '../../ui/ui-carousel/src/demo/ui-carousel-demo.component';
@@ -38,8 +32,6 @@ import { UiPopupDemoComponent } from '../../ui/ui-popup/src/demo/ui-popup-demo.c
 import { UiPopupDemoModule } from '../../ui/ui-popup/src/demo/ui-popup-demo.module';
 import { UiRadioDemoComponent } from '../../ui/ui-radio/src/demo/ui-radio-demo.component';
 import { UiRadioDemoModule } from '../../ui/ui-radio/src/demo/ui-radio-demo.module';
-import { UiRatingDemoComponent } from '../../ui/ui-rating/src/demo/ui-rating-demo.component';
-import { UiRatingDemoModule } from '../../ui/ui-rating/src/demo/ui-rating-demo.module';
 import { UiScrollDemoComponent } from '../../ui/ui-scroll/src/demo/ui-scroll-demo.component';
 import { UiScrollDemoModule } from '../../ui/ui-scroll/src/demo/ui-scroll-demo.module';
 import { UiSelectDemoComponent } from '../../ui/ui-select/src/demo/ui-select-demo.component';
@@ -62,9 +54,6 @@ import { UiVerticalMenuDemoModule } from '../../ui/ui-vertical-menu/src/demo/ui-
  */
 export const demoComponentsRef: [string, Type<any>][] = [
   ['UiAccordionDemoComponent', UiAccordionDemoComponent],
-  ['UiAlertDemoComponent', UiAlertDemoComponent],
-  ['UiBadgeDemoComponent', UiBadgeDemoComponent],
-  ['UiBreadcrumbsDemoComponent', UiBreadcrumbsDemoComponent],
   ['UiButtonDemoComponent', UiButtonDemoComponent],
   ['UiCarouselDemoComponent', UiCarouselDemoComponent],
   ['UiCheckboxDemoComponent', UiCheckboxDemoComponent],
@@ -80,7 +69,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   ['UiNotificationDemoComponent', UiNotificationDemoComponent],
   ['UiPopupDemoComponent', UiPopupDemoComponent],
   ['UiRadioDemoComponent', UiRadioDemoComponent],
-  ['UiRatingDemoComponent', UiRatingDemoComponent],
   ['UiScrollDemoComponent', UiScrollDemoComponent],
   ['UiSelectDemoComponent', UiSelectDemoComponent],
   ['UiSliderDemoComponent', UiSliderDemoComponent],
@@ -95,9 +83,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
   imports: [],
   exports: [
     UiAccordionDemoModule,
-    UiAlertDemoModule,
-    UiBadgeDemoModule,
-    UiBreadcrumbsDemoModule,
     UiButtonDemoModule,
     UiCarouselDemoModule,
     UiCheckboxDemoModule,
@@ -113,7 +98,6 @@ export const demoComponentsRef: [string, Type<any>][] = [
     UiNotificationDemoModule,
     UiPopupDemoModule,
     UiRadioDemoModule,
-    UiRatingDemoModule,
     UiScrollDemoModule,
     UiSelectDemoModule,
     UiSliderDemoModule,

@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { UiAccordionModule } from '../../ui/ui-accordion/src/ui-accordion.module';
-import { UiAlertModule } from '../../ui/ui-alert/src/ui-alert.module';
-import { UiBadgeModule } from '../../ui/ui-badge/src/ui-badge.module';
-import { UiBreadcrumbsModule } from '../../ui/ui-breadcrumbs/src/ui-breadcrumbs.module';
+import { UiAccordionModule } from '../../ui/ui-accordion/src/ui-accordion/ui-accordion.component';
 import { UiButtonModule } from '../../ui/ui-button/src/ui-button.module';
 import { UiCarouselModule } from '../../ui/ui-carousel/src/ui-carousel.module';
 import { UiCheckboxModule } from '../../ui/ui-checkbox/src/ui-checkbox.module';
@@ -19,7 +16,6 @@ import { UiModalModule } from '../../ui/ui-modal/src/ui-modal.module';
 import { UiNotificationModule } from '../../ui/ui-notification/src/ui-notification.module';
 import { UiPopupModule } from '../../ui/ui-popup/src/ui-popup.module';
 import { UiRadioModule } from '../../ui/ui-radio/src/ui-radio.module';
-import { UiRatingModule } from '../../ui/ui-rating/src/ui-rating.module';
 import { UiScrollModule } from '../../ui/ui-scroll/src/ui-scroll.module';
 import { UiSelectModule } from '../../ui/ui-select/src/ui-select.module';
 import { UiVerticalMenuModule } from '../../ui/ui-vertical-menu/src/ui-vertical-menu.module';
@@ -31,9 +27,6 @@ import { UiTooltipModule } from '../../ui/ui-tooltip/src/ui-tooltip.module';
 
 const lib = [
   UiAccordionModule,
-  UiAlertModule,
-  UiBadgeModule,
-  UiBreadcrumbsModule,
   UiButtonModule,
   UiCarouselModule,
   UiCheckboxModule,
@@ -49,7 +42,6 @@ const lib = [
   UiNotificationModule,
   UiPopupModule,
   UiRadioModule,
-  UiRatingModule,
   UiScrollModule,
   UiSelectModule,
   UiSliderModule,

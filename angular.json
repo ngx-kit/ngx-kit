@@ -51,48 +51,6 @@
         }
       }
     },
-    "ui-alert": {
-      "root": "packages/ui/ui-alert",
-      "sourceRoot": "packages/ui/ui-alert/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-alert/ng-package.json"
-          }
-        }
-      }
-    },
-    "ui-badge": {
-      "root": "packages/ui/ui-badge",
-      "sourceRoot": "packages/ui/ui-badge/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-badge/ng-package.json"
-          }
-        }
-      }
-    },
-    "ui-breadcrumbs": {
-      "root": "packages/ui/ui-breadcrumbs",
-      "sourceRoot": "packages/ui/ui-breadcrumbs/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-breadcrumbs/ng-package.json"
-          }
-        }
-      }
-    },
     "ui-button": {
       "root": "packages/ui/ui-button",
       "sourceRoot": "packages/ui/ui-button/src",
@@ -299,20 +257,6 @@
           "options": {
             "tsConfig": "packages/ui/tsconfig.lib.json",
             "project": "packages/ui/ui-radio/ng-package.json"
-          }
-        }
-      }
-    },
-    "ui-rating": {
-      "root": "packages/ui/ui-rating",
-      "sourceRoot": "packages/ui/ui-rating/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/ui/tsconfig.lib.json",
-            "project": "packages/ui/ui-rating/ng-package.json"
           }
         }
       }

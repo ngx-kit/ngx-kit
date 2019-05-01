@@ -1,1 +1,0 @@
-# Alert component for Angular

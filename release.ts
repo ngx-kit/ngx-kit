@@ -29,9 +29,6 @@ function packages() {
   return [
     ['core', 'packages/core/schematics'],
     ['ui-accordion', 'packages/ui/schematics'],
-    ['ui-alert', 'packages/ui/schematics'],
-    ['ui-badge', 'packages/ui/schematics'],
-    ['ui-breadcrumbs', 'packages/ui/schematics'],
     ['ui-button', 'packages/ui/schematics'],
     ['ui-carousel', 'packages/ui/schematics'],
     ['ui-checkbox', 'packages/ui/schematics'],
@@ -47,7 +44,6 @@ function packages() {
     ['ui-notification', 'packages/ui/schematics'],
     ['ui-popup', 'packages/ui/schematics'],
     ['ui-radio', 'packages/ui/schematics'],
-    ['ui-rating', 'packages/ui/schematics'],
     ['ui-scroll', 'packages/ui/schematics'],
     ['ui-select', 'packages/ui/schematics'],
     ['ui-slider', 'packages/ui/schematics'],

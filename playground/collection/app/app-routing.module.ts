@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UiAccordionDemoComponent } from '../../../packages/ui/ui-accordion/src/demo/ui-accordion-demo.component';
-import { UiAlertDemoComponent } from '../../../packages/ui/ui-alert/src/demo/ui-alert-demo.component';
-import { UiBadgeDemoComponent } from '../../../packages/ui/ui-badge/src/demo/ui-badge-demo.component';
-import { UiBreadcrumbsDemoComponent } from '../../../packages/ui/ui-breadcrumbs/src/demo/ui-breadcrumbs-demo.component';
 import { UiButtonDemoComponent } from '../../../packages/ui/ui-button/src/demo/ui-button-demo.component';
 import { UiCarouselDemoComponent } from '../../../packages/ui/ui-carousel/src/demo/ui-carousel-demo.component';
 import { UiCheckboxDemoComponent } from '../../../packages/ui/ui-checkbox/src/demo/ui-checkbox-demo.component';
@@ -19,7 +16,6 @@ import { UiModalDemoComponent } from '../../../packages/ui/ui-modal/src/demo/ui-
 import { UiNotificationDemoComponent } from '../../../packages/ui/ui-notification/src/demo/ui-notification-demo.component';
 import { UiPopupDemoComponent } from '../../../packages/ui/ui-popup/src/demo/ui-popup-demo.component';
 import { UiRadioDemoComponent } from '../../../packages/ui/ui-radio/src/demo/ui-radio-demo.component';
-import { UiRatingDemoComponent } from '../../../packages/ui/ui-rating/src/demo/ui-rating-demo.component';
 import { UiScrollDemoComponent } from '../../../packages/ui/ui-scroll/src/demo/ui-scroll-demo.component';
 import { UiSelectDemoComponent } from '../../../packages/ui/ui-select/src/demo/ui-select-demo.component';
 import { UiSliderDemoComponent } from '../../../packages/ui/ui-slider/src/demo/ui-slider-demo.component';
@@ -33,18 +29,6 @@ const routes: Routes = [
   {
     path: 'ui-accordion',
     component: UiAccordionDemoComponent,
-  },
-  {
-    path: 'ui-alert',
-    component: UiAlertDemoComponent,
-  },
-  {
-    path: 'ui-badge',
-    component: UiBadgeDemoComponent,
-  },
-  {
-    path: 'ui-breadcrumbs',
-    component: UiBreadcrumbsDemoComponent,
   },
   {
     path: 'ui-button',
@@ -105,10 +89,6 @@ const routes: Routes = [
   {
     path: 'ui-radio',
     component: UiRadioDemoComponent,
-  },
-  {
-    path: 'ui-rating',
-    component: UiRatingDemoComponent,
   },
   {
     path: 'ui-scroll',
