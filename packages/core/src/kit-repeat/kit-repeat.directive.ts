@@ -1,6 +1,9 @@
 import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 
 /**
+ * @deprecated Use native `*ngFor`. Depreated in version 8.0.
+ * @todo Remove in version 9.0.
+ *
  * Structural directive for template repeating.
  *
  *
@@ -17,9 +20,6 @@ import { ComponentRef, Directive, Input, OnChanges, TemplateRef, ViewContainerRe
  *
  * * collection:rating - [sources](https://github.com/ngx-kit/ngx-kit/tree/master/packages/collection/lib/ui-rating),
  * [demo](http://ngx-kit.com/collection/module/ui-rating)
- *
- *
- * @todo do not recreate all views on changes.
  */
 @Directive({
   selector: '[kitRepeat]',
