@@ -1,6 +1,9 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 /**
+ * @deprecated Use <ng-template> instead. Deprecated in version 8.0.
+ * @todo remove in version 9.0.
+ *
  * Structural directive for template projecting.
  *
  *
