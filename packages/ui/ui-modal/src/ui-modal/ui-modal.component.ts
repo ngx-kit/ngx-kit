@@ -1,5 +1,5 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { KitFocusManagerService, KitModalRef } from '@ngx-kit/core';
 import { UiModalSize } from '../meta';
 
@@ -54,12 +54,6 @@ export class UiModalComponent implements OnInit {
   ngOnInit() {
     this.fm.autoCapture = true;
     this.fm.init();
-  }
-
-  @HostListener('click', ['$event']) clickHandler(event: any) {
-    if (event.target === event.currentTarget) {
-      this.ref.close();
-    }
   }
 
   close() {

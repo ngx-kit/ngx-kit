@@ -4,9 +4,16 @@
   display: flex;
   justify-content: center;
   left: 0;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
+}
+
+.backdrop {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .modal {
@@ -16,6 +23,7 @@
   flex-direction: column;
   max-height: 90%;
   max-width: 90%;
+  z-index: 1;
   &.size-s {
     width: 250px;
   }
