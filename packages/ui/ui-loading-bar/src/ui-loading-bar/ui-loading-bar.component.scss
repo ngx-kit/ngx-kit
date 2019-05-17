@@ -2,6 +2,8 @@
   ---background: var(--ui-loading-bar-background, #2399e5);
   ---box-shadow: var(--ui-loading-bar-box-shadow, -7px 2px 11px 0 #2399e5);
   ---height: var(--ui-loading-bar-height, 2px);
+  position: relative;
+  z-index: 9999;
 }
 
 :host {
