@@ -1,4 +1,13 @@
 :host {
+  ---color-default-background: var(--ui-notification-color-default-background, rgba(0, 0, 0, .6));
+  ---color-default-color: var(--ui-notification-color-default-color, #ffffff);
+  ---color-primary-background: var(--ui-notification-color-primary-background, rgba(35, 153, 229, .75));
+  ---color-primary-color: var(--ui-notification-color-primary-color, #ffffff);
+  ---color-danger-background: var(--ui-notification-color-danger-background, rgba(255, 68, 78, .75));
+  ---color-danger-color: var(--ui-notification-color-danger-color, #ffffff);
+}
+
+:host {
   position: relative;
   z-index: 9999;
 }
@@ -32,15 +41,27 @@
 }
 
 .item {
-  background: rgba(0, 0, 0, .6);
   border-radius: 3px;
   box-shadow: 0 0 15px 0 rgba(50, 50, 50, .3);
-  color: #ffffff;
   margin: 8px;
   min-width: 150px;
   padding: 16px;
   .title {
     margin: 0;
     padding: 0;
+  }
+  &.color {
+    &-default {
+      background: var(---color-default-background);
+      color: var(---color-default-color);
+    }
+    &-primary {
+      background: var(---color-primary-background);
+      color: var(---color-primary-color);
+    }
+    &-danger {
+      background: var(---color-danger-background);
+      color: var(---color-danger-color);
+    }
   }
 }

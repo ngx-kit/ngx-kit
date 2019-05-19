@@ -7,5 +7,11 @@ export interface UiNotificationHostConfig {
 
 export interface UiNotificationItem {
   __id: string;
-  params: any;
+  params: UiNotificationItemParams;
+}
+
+export interface UiNotificationItemParams {
+  message: string;
+  title?: string;
+  color?: 'default' | 'primary' | 'danger';
 }

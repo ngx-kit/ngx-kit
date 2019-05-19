@@ -1,4 +1,4 @@
-# Accordion component for Angular 8
+# Accordion component for Angular
 
 ## Installation
 

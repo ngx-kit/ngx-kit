@@ -4,11 +4,10 @@
 </div>
 
 <div>
-  <h3>Position</h3>
-  <button (click)="open({position: 'top-right'})">Set top-right and open</button>
-  <button (click)="open({position: 'bottom-right'})">Set bottom-right and open</button>
-  <button (click)="open({position: 'bottom-left'})">Set bottom-left and open</button>
-  <button (click)="open({position: 'top-left'})">Set top-left and open</button>
+  <h3>Color</h3>
+  <button (click)="open({}, 'default')">Open default</button>
+  <button (click)="open({}, 'primary')">Open primary</button>
+  <button (click)="open({}, 'danger')">Open danger</button>
 </div>
 
 <div>
@@ -16,4 +15,12 @@
   <button (click)="open({duration: 2000})">Set duration=2000 and open</button>
   <button (click)="open({duration: 4000})">Set duration=4000 and open</button>
   <button (click)="open({duration: 10000})">Set duration=10000 and open</button>
+</div>
+
+<div>
+  <h3>Container position</h3>
+  <button (click)="open({position: 'top-right'})">Set top-right and open</button>
+  <button (click)="open({position: 'bottom-right'})">Set bottom-right and open</button>
+  <button (click)="open({position: 'bottom-left'})">Set bottom-left and open</button>
+  <button (click)="open({position: 'top-left'})">Set top-left and open</button>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { uuid } from '@ngx-kit/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UiNotificationHostConfig, UiNotificationItem } from './meta';
+import { UiNotificationHostConfig, UiNotificationItem, UiNotificationItemParams } from './meta';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +41,7 @@ export class UiNotificationService {
   /**
    * Display notification message.
    */
-  open(params: any) {
+  open(params: UiNotificationItemParams) {
     const __id = uuid();
     this._items.next([...this._items.value, {
       __id,
