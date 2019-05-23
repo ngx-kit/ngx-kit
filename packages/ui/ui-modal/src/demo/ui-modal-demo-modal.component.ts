@@ -21,7 +21,7 @@ export class UiModalDemoModalComponent {
   @Input() size: UiModalSize = 'm';
 
   constructor(
-    private ref: KitModalRef<UiModalDemoModalComponent>,
+    private ref: KitModalRef,
   ) {
   }
 

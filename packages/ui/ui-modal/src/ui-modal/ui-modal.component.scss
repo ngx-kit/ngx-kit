@@ -1,26 +1,19 @@
 :host {
-  align-items: center;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.backdrop {
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
+  ---background: var(--ui-modal-background, #ffffff);
+  ---color: var(--ui-modal-color, inherit);
+  ---box-shadow: var(--ui-modal-box-shadow, 0 0 20px 0 rgba(0, 0, 0, .25));
+  ---border-radius: var(--ui-modal-border-radius, 0);
+  ---body-padding: var(--ui-modal-body-padding, 1.5em);
 }
 
 .modal {
-  background: #ffffff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .25);
+  background: var(---background);
+  border-radius: var(---border-radius);
+  box-shadow: var(---box-shadow);
+  color: var(---color);
   display: flex;
   flex-direction: column;
+  margin-top: 5em;
   max-height: 90%;
   max-width: 90%;
   z-index: 1;
@@ -54,5 +47,5 @@
 .body {
   flex-grow: 1;
   overflow: auto;
-  padding: 16px;
+  padding: var(---body-padding);
 }

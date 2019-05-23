@@ -19,6 +19,7 @@
   },
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "@angular/cdk": "^7.0.0"
   }
 }

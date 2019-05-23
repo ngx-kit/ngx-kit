@@ -46,14 +46,11 @@ export class UiModalComponent implements OnInit {
   @HostBinding('@modalHost') hostTrigger: void;
 
   constructor(
-    private ref: KitModalRef<UiModalComponent>,
-    private fm: KitFocusManagerService,
+    private ref: KitModalRef,
   ) {
   }
 
   ngOnInit() {
-    this.fm.autoCapture = true;
-    this.fm.init();
   }
 
   close() {

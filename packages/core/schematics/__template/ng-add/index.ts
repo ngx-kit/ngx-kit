@@ -15,6 +15,7 @@ export default function (options: Schema): Rule {
 function updatePackageJson(): (host: Tree) => Tree {
   return (host: Tree) => {
     addPackageToPackageJson(host, 'dependencies', '@ngx-kit/core', '~' + pkg.version);
+    addPackageToPackageJson(host, 'dependencies', '@angular/cdk', '~' + pkg.peerDependencies['@angular/cdk']);
     return host;
   };
 }

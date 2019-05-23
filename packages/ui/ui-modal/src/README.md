@@ -1,1 +1,1 @@
-Modal window with optional header and footer.
+# Modal component for Angular

@@ -12,7 +12,7 @@ export class UiNotificationDemoComponent {
   constructor(private notification: UiNotificationService) {
   }
 
-  open(config: Partial<UiNotificationHostConfig>, color = 'default') {
+  open(config: Partial<UiNotificationHostConfig>, color: any = 'default') {
     this.notification.config(config);
     this.notification.open({title: 'Hello', message: 'Notification message content', color});
   }

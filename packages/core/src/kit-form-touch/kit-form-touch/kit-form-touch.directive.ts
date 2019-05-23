@@ -1,4 +1,4 @@
-import { Directive, HostListener, OnDestroy, OnInit, Optional } from '@angular/core';
+import { ChangeDetectorRef, Directive, HostListener, OnDestroy, OnInit, Optional } from '@angular/core';
 import { ControlContainer, FormGroup, NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -31,6 +31,7 @@ export class KitFormTouchDirective implements OnInit, OnDestroy {
   private destroy = new Subject();
 
   constructor(
+    private cdr: ChangeDetectorRef,
     @Optional() private container: ControlContainer,
   ) {
   }
@@ -84,5 +85,6 @@ export class KitFormTouchDirective implements OnInit, OnDestroy {
         }
       }
     }
+    this.cdr.detectChanges();
   }
 }
