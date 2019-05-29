@@ -54,5 +54,5 @@ class RegistryMock {
   `,
 })
 class TestComponent {
-  @ViewChild(KitIconComponent) icon: KitIconComponent;
+  @ViewChild(KitIconComponent, /* TODO: add static flag */ {}) icon: KitIconComponent;
 }

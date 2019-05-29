@@ -38,5 +38,5 @@ describe('KitRepeatDirective', () => {
 })
 class TestComponent {
   text: string;
-  @ViewChild(KitRefDirective) ref: KitRefDirective;
+  @ViewChild(KitRefDirective, /* TODO: add static flag */ {}) ref: KitRefDirective;
 }

@@ -9,15 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'core',
-    loadChildren: './packages/core/core-package.module#CorePackageModule',
+    loadChildren: () => import('./packages/core/core-package.module').then(m => m.CorePackageModule),
   },
   {
     path: 'collection',
-    loadChildren: './packages/collection/collection-package.module#CollectionPackageModule',
+    loadChildren: () => import('./packages/collection/collection-package.module').then(m => m.CollectionPackageModule),
   },
   {
     path: '',
-    loadChildren: './home/home.module#HomeModule',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
     path: '**',

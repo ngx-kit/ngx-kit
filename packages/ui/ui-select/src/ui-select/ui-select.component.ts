@@ -98,9 +98,9 @@ export class UiSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, C
    */
   @Output() itemsChange = new EventEmitter<UiSelectItem<M>[]>();
 
-  @ViewChild('selectRef') selectRef: ElementRef;
+  @ViewChild('selectRef', { static: true }) selectRef: ElementRef;
 
-  @ViewChild('inputRef') inputRef: ElementRef;
+  @ViewChild('inputRef', { static: true }) inputRef: ElementRef;
 
   hasErrors?: boolean;
 

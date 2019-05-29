@@ -25,17 +25,17 @@ export class UiScrollComponent implements AfterContentInit {
 
   hover = false;
 
-  @ViewChild('vBar') vBar: ElementRef;
+  @ViewChild('vBar', { static: true }) vBar: ElementRef;
 
-  @ViewChild('vBarWrapper') vBarWrapper: ElementRef;
+  @ViewChild('vBarWrapper', { static: true }) vBarWrapper: ElementRef;
 
-  @ViewChild('hBar') hBar: ElementRef;
+  @ViewChild('hBar', { static: true }) hBar: ElementRef;
 
-  @ViewChild('hBarWrapper') hBarWrapper: ElementRef;
+  @ViewChild('hBarWrapper', { static: true }) hBarWrapper: ElementRef;
 
-  @ViewChild('vWrapper') vWrapper: ElementRef;
+  @ViewChild('vWrapper', { static: true }) vWrapper: ElementRef;
 
-  @ViewChild('hWrapper') hWrapper: ElementRef;
+  @ViewChild('hWrapper', { static: true }) hWrapper: ElementRef;
 
   constructor(
     private elRef: ElementRef,

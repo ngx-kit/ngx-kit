@@ -1,50 +1,50 @@
 :host {
-  ---border-radius: var(--ui-button-border-radius, 3px);
+  --_border-radius: var(--ui-button-border-radius, 3px);
   // Default color
-  ---color-default-background: var(--ui-button-color-default-background, #333333);
-  ---color-default-color: var(--ui-button-color-default-color, #ffffff);
-  ---color-default-hover-background: var(--ui-button-color-default-hover-background, #3d3d3d);
-  ---color-default-hover-color: var(--ui-button-color-default-hover-color, #ffffff);
-  ---color-default-focus-box-shadow: var(--ui-button-color-default-focus-box-shadow, none);
-  ---color-default-focus-outline: var(--ui-button-color-default-focus-outline, 2px solid #ffbf47);
-  ---color-default-focus-outline-offset: var(--ui-button-color-default-focus-outline-offset, -2px);
-  ---color-default-checked-background: var(--ui-button-color-default-checked-background, #4c4c4c);
-  ---color-default-checked-color: var(--ui-button-color-default-checked-color, #ffffff);
+  --_color-default-background: var(--ui-button-color-default-background, #333333);
+  --_color-default-color: var(--ui-button-color-default-color, #ffffff);
+  --_color-default-hover-background: var(--ui-button-color-default-hover-background, #3d3d3d);
+  --_color-default-hover-color: var(--ui-button-color-default-hover-color, #ffffff);
+  --_color-default-focus-box-shadow: var(--ui-button-color-default-focus-box-shadow, none);
+  --_color-default-focus-outline: var(--ui-button-color-default-focus-outline, 2px solid #ffbf47);
+  --_color-default-focus-outline-offset: var(--ui-button-color-default-focus-outline-offset, -2px);
+  --_color-default-checked-background: var(--ui-button-color-default-checked-background, #4c4c4c);
+  --_color-default-checked-color: var(--ui-button-color-default-checked-color, #ffffff);
   // Primary color
-  ---color-primary-background: var(--ui-button-color-primary-background, #2399e5);
-  ---color-primary-color: var(--ui-button-color-primary-color, #ffffff);
-  ---color-primary-hover-background: var(--ui-button-color-primary-hover-background, #248acd);
-  ---color-primary-hover-color: var(--ui-button-color-primary-hover-color, #ffffff);
-  ---color-primary-focus-box-shadow: var(--ui-button-color-primary-focus-box-shadow, none);
-  ---color-primary-focus-outline: var(--ui-button-color-primary-focus-outline, 2px solid #ffbf47);
-  ---color-primary-focus-outline-offset: var(--ui-button-color-primary-focus-outline-offset, -2px);
-  ---color-primary-checked-background: var(--ui-button-color-primary-checked-background, #1e80cd);
-  ---color-primary-checked-color: var(--ui-button-color-primary-checked-color, #ffffff);
+  --_color-primary-background: var(--ui-button-color-primary-background, #2399e5);
+  --_color-primary-color: var(--ui-button-color-primary-color, #ffffff);
+  --_color-primary-hover-background: var(--ui-button-color-primary-hover-background, #248acd);
+  --_color-primary-hover-color: var(--ui-button-color-primary-hover-color, #ffffff);
+  --_color-primary-focus-box-shadow: var(--ui-button-color-primary-focus-box-shadow, none);
+  --_color-primary-focus-outline: var(--ui-button-color-primary-focus-outline, 2px solid #ffbf47);
+  --_color-primary-focus-outline-offset: var(--ui-button-color-primary-focus-outline-offset, -2px);
+  --_color-primary-checked-background: var(--ui-button-color-primary-checked-background, #1e80cd);
+  --_color-primary-checked-color: var(--ui-button-color-primary-checked-color, #ffffff);
   // Ghost color
-  ---color-ghost-background: var(--ui-button-color-ghost-background, transparent);
-  ---color-ghost-color: var(--ui-button-color-ghost-color, #333333);
-  ---color-ghost-hover-background: var(--ui-button-color-ghost-hover-background, #eeeeee);
-  ---color-ghost-hover-color: var(--ui-button-color-ghost-hover-color, #333333);
-  ---color-ghost-focus-box-shadow: var(--ui-button-color-ghost-focus-box-shadow, none);
-  ---color-ghost-focus-outline: var(--ui-button-color-ghost-focus-outline, 2px solid #ffbf47);
-  ---color-ghost-focus-outline-offset: var(--ui-button-color-ghost-focus-outline-offset, -2px);
-  ---color-ghost-checked-background: var(--ui-button-color-ghost-checked-background, #dddddd);
-  ---color-ghost-checked-color: var(--ui-button-color-ghost-checked-color, #333333);
+  --_color-ghost-background: var(--ui-button-color-ghost-background, transparent);
+  --_color-ghost-color: var(--ui-button-color-ghost-color, #333333);
+  --_color-ghost-hover-background: var(--ui-button-color-ghost-hover-background, #eeeeee);
+  --_color-ghost-hover-color: var(--ui-button-color-ghost-hover-color, #333333);
+  --_color-ghost-focus-box-shadow: var(--ui-button-color-ghost-focus-box-shadow, none);
+  --_color-ghost-focus-outline: var(--ui-button-color-ghost-focus-outline, 2px solid #ffbf47);
+  --_color-ghost-focus-outline-offset: var(--ui-button-color-ghost-focus-outline-offset, -2px);
+  --_color-ghost-checked-background: var(--ui-button-color-ghost-checked-background, #dddddd);
+  --_color-ghost-checked-color: var(--ui-button-color-ghost-checked-color, #333333);
   // S size
-  ---size-s-font-size: var(--ui-button-size-s-font-size, .85rem);
-  ---size-s-padding: var(--ui-button-size-s-padding, .2rem .65rem);
+  --_size-s-font-size: var(--ui-button-size-s-font-size, .85rem);
+  --_size-s-padding: var(--ui-button-size-s-padding, .2rem .65rem);
   // M size
-  ---size-m-font-size: var(--ui-button-size-m-font-size, 1rem);
-  ---size-m-padding: var(--ui-button-size-m-padding, .4rem 1.2rem);
+  --_size-m-font-size: var(--ui-button-size-m-font-size, 1rem);
+  --_size-m-padding: var(--ui-button-size-m-padding, .4rem 1.2rem);
   // L size
-  ---size-l-font-size: var(--ui-button-size-l-font-size, 1.15rem);
-  ---size-l-padding: var(--ui-button-size-l-padding, .8rem 2rem);
+  --_size-l-font-size: var(--ui-button-size-l-font-size, 1.15rem);
+  --_size-l-padding: var(--ui-button-size-l-padding, .8rem 2rem);
 }
 
 :host {
   background-image: none;
   border: 0;
-  border-radius: var(---border-radius);
+  border-radius: var(--_border-radius);
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
@@ -65,92 +65,92 @@
   }
   &.color {
     &-default {
-      background: var(---color-default-background);
-      color: var(---color-default-color);
+      background: var(--_color-default-background);
+      color: var(--_color-default-color);
       &:hover {
-        background: var(---color-default-hover-background);
-        color: var(---color-default-hover-color);
+        background: var(--_color-default-hover-background);
+        color: var(--_color-default-hover-color);
       }
       &:focus {
-        box-shadow: var(---color-default-focus-box-shadow);
-        outline: var(---color-default-focus-outline);
-        outline-offset: var(---color-default-focus-outline-offset);
+        box-shadow: var(--_color-default-focus-box-shadow);
+        outline: var(--_color-default-focus-outline);
+        outline-offset: var(--_color-default-focus-outline-offset);
       }
       &.checked {
-        background: var(---color-default-checked-background);
-        color: var(---color-default-checked-color);
+        background: var(--_color-default-checked-background);
+        color: var(--_color-default-checked-color);
       }
     }
     &-primary {
-      background: var(---color-primary-background);
-      color: var(---color-primary-color);
+      background: var(--_color-primary-background);
+      color: var(--_color-primary-color);
       &:hover {
-        background: var(---color-primary-hover-background);
-        color: var(---color-primary-hover-color);
+        background: var(--_color-primary-hover-background);
+        color: var(--_color-primary-hover-color);
       }
       &:focus {
-        box-shadow: var(---color-primary-focus-box-shadow);
-        outline: var(---color-primary-focus-outline);
-        outline-offset: var(---color-primary-focus-outline-offset);
+        box-shadow: var(--_color-primary-focus-box-shadow);
+        outline: var(--_color-primary-focus-outline);
+        outline-offset: var(--_color-primary-focus-outline-offset);
       }
       &.checked {
-        background: var(---color-primary-checked-background);
-        color: var(---color-primary-checked-color);
+        background: var(--_color-primary-checked-background);
+        color: var(--_color-primary-checked-color);
       }
     }
     &-ghost {
-      background: var(---color-ghost-background);
-      color: var(---color-ghost-color);
+      background: var(--_color-ghost-background);
+      color: var(--_color-ghost-color);
       &:hover {
-        background: var(---color-ghost-hover-background);
-        color: var(---color-ghost-hover-color);
+        background: var(--_color-ghost-hover-background);
+        color: var(--_color-ghost-hover-color);
       }
       &:focus {
-        box-shadow: var(---color-ghost-focus-box-shadow);
-        outline: var(---color-ghost-focus-outline);
-        outline-offset: var(---color-ghost-focus-outline-offset);
+        box-shadow: var(--_color-ghost-focus-box-shadow);
+        outline: var(--_color-ghost-focus-outline);
+        outline-offset: var(--_color-ghost-focus-outline-offset);
       }
       &.checked {
-        background: var(---color-ghost-checked-background);
-        color: var(---color-ghost-checked-color);
+        background: var(--_color-ghost-checked-background);
+        color: var(--_color-ghost-checked-color);
       }
     }
   }
   &.size {
     &-s {
-      font-size: var(---size-s-font-size);
-      padding: var(---size-s-padding);
+      font-size: var(--_size-s-font-size);
+      padding: var(--_size-s-padding);
     }
     &-m {
-      font-size: var(---size-m-font-size);
-      padding: var(---size-m-padding);
+      font-size: var(--_size-m-font-size);
+      padding: var(--_size-m-padding);
     }
     &-l {
-      font-size: var(---size-l-font-size);
-      padding: var(---size-l-padding);
+      font-size: var(--_size-l-font-size);
+      padding: var(--_size-l-padding);
     }
   }
   &.groupDirection {
     &-row {
       border-radius: 0;
       &:first-child {
-        border-bottom-left-radius: var(---border-radius);
-        border-top-left-radius: var(---border-radius);
+        border-bottom-left-radius: var(--_border-radius);
+        border-top-left-radius: var(--_border-radius);
       }
       &:last-child {
-        border-bottom-right-radius: var(---border-radius);
-        border-top-right-radius: var(---border-radius);
+        border-bottom-right-radius: var(--_border-radius);
+        border-top-right-radius: var(--_border-radius);
       }
     }
     &-column {
       border-radius: 0;
       &:first-child {
-        border-top-left-radius: var(---border-radius);
-        border-top-right-radius: var(---border-radius);
+        border-top-left-radius: var(--_border-radius);
+        border-top-right-radius: var(--_border-radius);
       }
       &:last-child {
-        border-bottom-left-radius: var(---border-radius);
-        border-bottom-right-radius: var(---border-radius);
+        border-bottom-left-radius: var(--_border-radius);
+        border-bottom-right-radius: var(--_border-radius);
       }
     }
   }

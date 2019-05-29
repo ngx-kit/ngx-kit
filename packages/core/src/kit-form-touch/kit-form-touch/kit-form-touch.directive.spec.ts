@@ -70,7 +70,7 @@ describe('KitFormTouchDirective', () => {
   `,
 })
 class TestComponent {
-  @ViewChild('model') model: NgModel;
+  @ViewChild('model', /* TODO: add static flag */ {}) model: NgModel;
 
   field: string;
 }

@@ -87,11 +87,11 @@ describe('KitOverlayDirective', () => {
   template: '',
 })
 class TestComponent {
-  @ViewChild(KitOverlayDirective) dir: KitOverlayDirective;
+  @ViewChild(KitOverlayDirective, /* TODO: add static flag */ {}) dir: KitOverlayDirective;
 
   display = true;
 
-  @ViewChild(KitOverlayHostComponent) host: KitOverlayHostComponent;
+  @ViewChild(KitOverlayHostComponent, /* TODO: add static flag */ {}) host: KitOverlayHostComponent;
 
   parentDisplay = true;
 

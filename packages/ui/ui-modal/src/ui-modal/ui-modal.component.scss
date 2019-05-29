@@ -1,16 +1,16 @@
 :host {
-  ---background: var(--ui-modal-background, #ffffff);
-  ---color: var(--ui-modal-color, inherit);
-  ---box-shadow: var(--ui-modal-box-shadow, 0 0 20px 0 rgba(0, 0, 0, .25));
-  ---border-radius: var(--ui-modal-border-radius, 0);
-  ---body-padding: var(--ui-modal-body-padding, 1.5em);
+  --_background: var(--ui-modal-background, #ffffff);
+  --_color: var(--ui-modal-color, inherit);
+  --_box-shadow: var(--ui-modal-box-shadow, 0 0 20px 0 rgba(0, 0, 0, .25));
+  --_border-radius: var(--ui-modal-border-radius, 0);
+  --_body-padding: var(--ui-modal-body-padding, 1.5em);
 }
 
 .modal {
-  background: var(---background);
-  border-radius: var(---border-radius);
-  box-shadow: var(---box-shadow);
-  color: var(---color);
+  background: var(--_background);
+  border-radius: var(--_border-radius);
+  box-shadow: var(--_box-shadow);
+  color: var(--_color);
   display: flex;
   flex-direction: column;
   margin-top: 5em;
@@ -45,5 +45,5 @@
 .body {
   flex-grow: 1;
   overflow: auto;
-  padding: var(---body-padding);
+  padding: var(--_body-padding);
 }

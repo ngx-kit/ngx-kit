@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Type } from '@angular/core/src/type';
+import { NgModule, Type } from '@angular/core';
 import { UiAccordionDemoComponent } from '../../ui/ui-accordion/src/demo/ui-accordion-demo.component';
 import { UiAccordionDemoModule } from '../../ui/ui-accordion/src/demo/ui-accordion-demo.module';
 import { UiButtonDemoComponent } from '../../ui/ui-button/src/demo/ui-button-demo.component';

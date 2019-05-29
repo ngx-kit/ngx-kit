@@ -111,5 +111,5 @@ class TestComponent {
   `,
 })
 class TestWrapperComponent {
-  @ViewChild(TestComponent) cmp: TestComponent;
+  @ViewChild(TestComponent, /* TODO: add static flag */ {}) cmp: TestComponent;
 }

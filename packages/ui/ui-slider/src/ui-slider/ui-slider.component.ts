@@ -44,7 +44,7 @@ export class UiSliderComponent implements ControlValueAccessor, OnChanges {
    */
   @Input() fill = true;
 
-  @ViewChild('sliderRef') sliderRef: ElementRef;
+  @ViewChild('sliderRef', { static: true }) sliderRef: ElementRef;
 
   mainPointerLeft: number;
 

@@ -58,7 +58,7 @@ class ServiceMock {
   `,
 })
 class TestComponent {
-  @ViewChild(KitClassDirective) directive: KitClassDirective;
+  @ViewChild(KitClassDirective, /* TODO: add static flag */ {}) directive: KitClassDirective;
 
   className: string;
 }

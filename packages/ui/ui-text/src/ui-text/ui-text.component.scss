@@ -1,73 +1,73 @@
 :host {
-  ---background: var(--ui-input-background, #f0f0f0);
-  ---border-width: var(--ui-input-border-width, 0 0 1px 0);
-  ---border-color: var(--ui-input-border-color, #d6d6d6);
-  ---border-radius: var(--ui-input-border-radius, 2px);
-  ---box-shadow: var(--ui-input-box-shadow, none);
-  ---color: var(--ui-input-color, #000000);
-  ---font-family: var(---ui-input-font-family, inherit);
-  ---font-size: var(--ui-input-font-size, 1rem);
-  ---padding: var(--ui-input-padding, .7em 1em .6em);
-  ---hover-color: var(--ui-input-hover-color, #000000);
-  ---hover-border-color: var(--ui-input-hover-border-color, #c8c8c8);
-  ---hover-background: var(--ui-input-hover-background, #f0f0f0);
-  ---hover-box-shadow: var(--ui-input-hover-box-shadow, none);
-  ---focus-color: var(--ui-input-focus-color, #000000);
-  ---focus-border-color: var(--ui-input-focus-border-color, #d6d6d6);
-  ---focus-background: var(--ui-input-focus-background, #f0f0f0);
-  ---focus-box-shadow: var(--ui-input-focus-box-shadow, none);
-  ---focus-outline: var(--ui-input-focus-outline, 2px solid #ffbf47);
-  ---focus-outline-offset: var(--ui-input-focus-outline-offset, -2px);
-  ---error-color: var(--ui-input-error-color, #000000);
-  ---error-border-color: var(--ui-input-error-border-color, #ff0c09);
-  ---error-background: var(--ui-input-error-background, #f0f0f0);
-  ---error-box-shadow: var(--ui-input-error-box-shadow, none);
-  ---error-outline: var(--ui-input-error-outline, 2px solid #ff0c09);
-  ---error-outline-offset: var(--ui-input-error-outline-offset, -2px);
+  --_background: var(--ui-input-background, #f0f0f0);
+  --_border-width: var(--ui-input-border-width, 0 0 1px 0);
+  --_border-color: var(--ui-input-border-color, #d6d6d6);
+  --_border-radius: var(--ui-input-border-radius, 2px);
+  --_box-shadow: var(--ui-input-box-shadow, none);
+  --_color: var(--ui-input-color, #000000);
+  --_font-family: var(---ui-input-font-family, inherit);
+  --_font-size: var(--ui-input-font-size, 1rem);
+  --_padding: var(--ui-input-padding, .7em 1em .6em);
+  --_hover-color: var(--ui-input-hover-color, #000000);
+  --_hover-border-color: var(--ui-input-hover-border-color, #c8c8c8);
+  --_hover-background: var(--ui-input-hover-background, #f0f0f0);
+  --_hover-box-shadow: var(--ui-input-hover-box-shadow, none);
+  --_focus-color: var(--ui-input-focus-color, #000000);
+  --_focus-border-color: var(--ui-input-focus-border-color, #d6d6d6);
+  --_focus-background: var(--ui-input-focus-background, #f0f0f0);
+  --_focus-box-shadow: var(--ui-input-focus-box-shadow, none);
+  --_focus-outline: var(--ui-input-focus-outline, 2px solid #ffbf47);
+  --_focus-outline-offset: var(--ui-input-focus-outline-offset, -2px);
+  --_error-color: var(--ui-input-error-color, #000000);
+  --_error-border-color: var(--ui-input-error-border-color, #ff0c09);
+  --_error-background: var(--ui-input-error-background, #f0f0f0);
+  --_error-box-shadow: var(--ui-input-error-box-shadow, none);
+  --_error-outline: var(--ui-input-error-outline, 2px solid #ff0c09);
+  --_error-outline-offset: var(--ui-input-error-outline-offset, -2px);
 }
 
 :host {
-  background: var(---background);
-  border-color: var(---border-color);
-  border-radius: var(---border-radius);
+  background: var(--_background);
+  border-color: var(--_border-color);
+  border-radius: var(--_border-radius);
   border-style: solid;
-  border-width: var(---border-width);
-  box-shadow: var(---box-shadow);
+  border-width: var(--_border-width);
+  box-shadow: var(--_box-shadow);
   box-sizing: border-box;
-  color: var(---color);
-  font-family: var(---font-family);
-  font-size: var(---font-size);
-  padding: var(---padding);
+  color: var(--_color);
+  font-family: var(--_font-family);
+  font-size: var(--_font-size);
+  padding: var(--_padding);
   width: 100%;
   &:hover {
-    background: var(---hover-background);
-    border-color: var(---hover-border-color);
-    box-shadow: var(---hover-box-shadow);
-    color: var(---hover-color);
+    background: var(--_hover-background);
+    border-color: var(--_hover-border-color);
+    box-shadow: var(--_hover-box-shadow);
+    color: var(--_hover-color);
     outline: none;
   }
   &:focus {
-    background: var(---focus-background);
-    border-color: var(---focus-border-color);
-    box-shadow: var(---focus-box-shadow);
-    color: var(---focus-color);
-    outline: var(---focus-outline);
-    outline-offset: var(---focus-outline-offset);
+    background: var(--_focus-background);
+    border-color: var(--_focus-border-color);
+    box-shadow: var(--_focus-box-shadow);
+    color: var(--_focus-color);
+    outline: var(--_focus-outline);
+    outline-offset: var(--_focus-outline-offset);
   }
   &.-has-errors {
-    background: var(---error-background);
-    border-color: var(---error-border-color);
-    box-shadow: var(---error-box-shadow);
-    color: var(---error-color);
-    outline: var(---error-outline);
-    outline-offset: var(---error-outline-offset);
+    background: var(--_error-background);
+    border-color: var(--_error-border-color);
+    box-shadow: var(--_error-box-shadow);
+    color: var(--_error-color);
+    outline: var(--_error-outline);
+    outline-offset: var(--_error-outline-offset);
     &:hover, &:focus {
-      background: var(---error-background);
-      border-color: var(---error-border-color);
-      box-shadow: var(---error-box-shadow);
-      color: var(---error-color);
-      outline: var(---error-outline);
-      outline-offset: var(---error-outline-offset);
+      background: var(--_error-background);
+      border-color: var(--_error-border-color);
+      box-shadow: var(--_error-box-shadow);
+      color: var(--_error-color);
+      outline: var(--_error-outline);
+      outline-offset: var(--_error-outline-offset);
     }
   }
 }

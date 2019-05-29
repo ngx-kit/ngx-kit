@@ -43,7 +43,7 @@ describe('KitAnchorDirective', () => {
   `,
 })
 class ContainerComponent {
-  @ViewChild('anchorRef') anchorRef: KitAnchorDirective;
+  @ViewChild('anchorRef', /* TODO: add static flag */ {}) anchorRef: KitAnchorDirective;
 
   clicks = false;
 }

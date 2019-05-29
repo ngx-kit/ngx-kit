@@ -36,7 +36,7 @@ export class UiDatePickerComponent implements OnInit, ControlValueAccessor {
 
   weekdays: Date[] = [];
 
-  @ViewChild('grid') grid: ElementRef;
+  @ViewChild('grid', { static: true }) grid: ElementRef;
 
   private changes = new Subject<Date>();
 
