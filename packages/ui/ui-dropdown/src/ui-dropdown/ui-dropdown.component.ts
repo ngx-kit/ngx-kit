@@ -1,6 +1,6 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { KitOverlayToggleDirective, KitPinPosition } from '@ngx-kit/core';
+import { UiDropdownToggleDirective } from '../ui-dropdown-toggle/ui-dropdown-toggle.directive';
 
 @Component({
   selector: 'ui-dropdown',
@@ -35,9 +35,14 @@ import { KitOverlayToggleDirective, KitPinPosition } from '@ngx-kit/core';
   ],
 })
 export class UiDropdownComponent {
-  @Input() toggle: KitOverlayToggleDirective;
-
-  @Input() position: KitPinPosition = 'bottom-right';
-
   @HostBinding('@host') hostTrigger = true;
+
+  constructor(
+    private toggle: UiDropdownToggleDirective,
+  ) {
+  }
+
+  close() {
+    this.toggle.close();
+  }
 }

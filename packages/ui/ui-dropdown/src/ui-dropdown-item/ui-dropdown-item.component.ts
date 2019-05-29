@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angular/core';
-import { UiDropdownComponent } from '../ui-dropdown/ui-dropdown.component';
+import { UiDropdownToggleDirective } from '../ui-dropdown-toggle/ui-dropdown-toggle.directive';
 
 @Component({
   selector: 'ui-dropdown-item,button[uiDropdownItem],a[uiDropdownItem]',
@@ -10,10 +10,16 @@ import { UiDropdownComponent } from '../ui-dropdown/ui-dropdown.component';
 export class UiDropdownItemComponent {
   @Input() uiDropdownItem: void;
 
-  constructor(private dropdown: UiDropdownComponent) {
+  @Input() closeOnClick?: boolean;
+
+  constructor(
+    private toggle: UiDropdownToggleDirective,
+  ) {
   }
 
   @HostListener('click') clickHandler() {
-    this.dropdown.toggle.close();
+    if (this.closeOnClick || (typeof this.closeOnClick === 'undefined' && this.toggle.closeOnItemClick)) {
+      this.toggle.close();
+    }
   }
 }
