@@ -14,8 +14,8 @@ import {
   Type,
   ViewContainerRef,
   ViewRef,
+  StaticProvider
 } from '@angular/core';
-import { StaticProvider } from '@angular/core/src/di/provider';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { KitPlatformService } from '../kit-platform/kit-platform.service';
 import { KitOverlayComponentRef } from './kit-overlay-component-ref';
