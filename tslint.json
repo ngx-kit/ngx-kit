@@ -123,12 +123,10 @@
       true,
       "attribute",
       [
-        "kit",
+        "evo",
         "test",
         "app",
-        "ui",
-        "demo",
-        "ws"
+        "demo"
       ],
       "camelCase"
     ],
@@ -136,12 +134,10 @@
       true,
       "element",
       [
-        "kit",
+        "evo",
         "test",
         "app",
-        "ui",
-        "demo",
-        "ws"
+        "demo"
       ],
       "kebab-case"
     ],

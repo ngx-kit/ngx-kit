@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "baseUrl": "tsconfig.app",
+    "paths": {
+      "@ngx-kit/evo/*": [
+        "../../packages/evo/*"
+      ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

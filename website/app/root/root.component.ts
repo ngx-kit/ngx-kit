@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { KitIconsRegistryService } from '@ngx-kit/core';
+import { EvoIconRegistryService } from '@ngx-kit/core';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 declare const gtag: Function;
@@ -14,7 +14,7 @@ export class RootComponent {
   hljsTheme = 'hljs-theme-default';
 
   constructor(
-    private icons: KitIconsRegistryService,
+    private icons: EvoIconRegistryService,
     private router: Router,
   ) {
     // icons & theme

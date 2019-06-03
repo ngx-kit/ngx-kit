@@ -17,7 +17,7 @@ const pkgJson = require('./package.json');
 console.log(chalk.bgBlue('Starting ngx-kit release…'));
 
 buildPkg();
-buildShematics();
+//buildShematics();
 preparePublishing();
 pack();
 publish();
@@ -27,29 +27,7 @@ sh.exit(0);
 
 function packages() {
   return [
-    ['core', 'packages/core/schematics'],
-    ['ui-accordion', 'packages/ui/schematics'],
-    ['ui-button', 'packages/ui/schematics'],
-    ['ui-carousel', 'packages/ui/schematics'],
-    ['ui-checkbox', 'packages/ui/schematics'],
-    ['ui-date-picker', 'packages/ui/schematics'],
-    ['ui-drawer', 'packages/ui/schematics'],
-    ['ui-dropdown', 'packages/ui/schematics'],
-    ['ui-file', 'packages/ui/schematics'],
-    ['ui-form', 'packages/ui/schematics'],
-    ['ui-loading-bar', 'packages/ui/schematics'],
-    ['ui-modal', 'packages/ui/schematics'],
-    ['ui-notification', 'packages/ui/schematics'],
-    ['ui-popup', 'packages/ui/schematics'],
-    ['ui-radio', 'packages/ui/schematics'],
-    ['ui-scroll', 'packages/ui/schematics'],
-    ['ui-select', 'packages/ui/schematics'],
-    ['ui-slider', 'packages/ui/schematics'],
-    ['ui-tabs', 'packages/ui/schematics'],
-    ['ui-text', 'packages/ui/schematics'],
-    ['ui-toggle', 'packages/ui/schematics'],
-    ['ui-tooltip', 'packages/ui/schematics'],
-    ['ui-vertical-menu', 'packages/ui/schematics'],
+    ['evo', 'packages/evo/schematics'],
   ].filter(d => {
     if (argv.package) {
       return d[0] === argv.package;

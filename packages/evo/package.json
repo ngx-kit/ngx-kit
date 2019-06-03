@@ -1,0 +1,25 @@
+{
+  "name": "@ngx-kit/evo",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Set of Angular components and utils.",
+  "keywords": ["angular", "toolkit", "core", "coponents", "utils"],
+  "main": "./index.umd.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
+  "author": {
+    "name": "Oleksa Novyk",
+    "email": "inavix@gmail.com",
+    "url": "https://novyk.org/"
+  },
+  "license": "MIT",
+  "homepage": "https://ngx-kit.com/",
+  "repository": {
+    "url": "https://github.com/ngx-kit/ngx-kit/tree/master/packages/evo",
+    "type": "git"
+  },
+  "schematics": "./schematics/collection.json",
+  "peerDependencies": {
+    "@angular/core": "^8.0.0",
+    "@angular/cdk": "^8.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+<div class="modal"
+     [evoClass]="{size: size}"
+     [@fade]="true">
+  <div *ngIf="header" class="header">
+    <div class="title">{{ header }}</div>
+    <div>
+      <button class="close" (click)="close()">X</button>
+    </div>
+  </div>
+  <div class="body">
+    <ng-content></ng-content>
+  </div>
+  <ng-content select="[footer]"></ng-content>
+</div>

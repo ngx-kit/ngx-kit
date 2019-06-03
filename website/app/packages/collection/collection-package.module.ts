@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { KitIconsModule } from '@ngx-kit/core';
+import { EvoIconModule } from '@ngx-kit/core';
 import { CollectionLibModule } from '../../../../packages/collection/lib/collection-lib.module';
 import { ContentServiceBase } from '../../content/content';
 import { SharedModule } from '../../shared/shared.module';
@@ -16,7 +16,7 @@ import { UiModulePageComponent } from './ui-module-page/ui-module-page.component
     FormsModule,
     SharedModule,
     CollectionPackageRoutingModule,
-    KitIconsModule,
+    EvoIconModule,
     CollectionLibModule,
   ],
   declarations: [

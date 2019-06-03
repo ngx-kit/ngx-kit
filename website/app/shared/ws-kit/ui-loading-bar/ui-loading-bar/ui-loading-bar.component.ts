@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { KitLoadingService } from '@ngx-kit/core';
+import { EvoLoadingService } from '@ngx-kit/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -51,7 +51,7 @@ export class UiLoadingBarComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(
-    private loading: KitLoadingService,
+    private loading: EvoLoadingService,
     private cdr: ChangeDetectorRef,
   ) {
   }

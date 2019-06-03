@@ -14,11 +14,14 @@
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "stripInternal": false,
-    "lib": ["es5", "es2015", "dom"],
+    "lib": [
+      "es5",
+      "es2015",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@ngx-kit/core": ["./packages/core"],
-      "@ngx-kit/docgen": ["./packages/docgen"]
+      "@ngx-kit/evo/*": ["./packages/evo/*"]
     }
   },
   "exclude": [
