@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EvoFormModule } from '../evo-form.module';
-import { UiFormDemoComponent } from './ui-form-demo.component';
+import { EvoFormDemoComponent } from './evo-form-demo.component';
 
 @NgModule({
   imports: [
@@ -12,11 +12,11 @@ import { UiFormDemoComponent } from './ui-form-demo.component';
     EvoFormModule,
   ],
   declarations: [
-    UiFormDemoComponent,
+    EvoFormDemoComponent,
   ],
   entryComponents: [
-    UiFormDemoComponent,
+    EvoFormDemoComponent,
   ],
 })
-export class UiFormDemoModule {
+export class EvoFormDemoModule {
 }

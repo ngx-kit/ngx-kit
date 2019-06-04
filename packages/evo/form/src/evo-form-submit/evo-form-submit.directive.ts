@@ -4,19 +4,15 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 /**
- * @todo move to EvoForm
- *
  * Touch all form's fields for proper errors displaying.
  *
  *
  * ### Usage
  *
- * Add `kitFormTouch` directive to submit button:
- *
  * ```html
  * <form ...>
  *   ...
- *   <button kitFormTouch ...>Submit</button>
+ *   <button evoFormSubmit ...>Submit</button>
  * </form>
  * ```
  *
@@ -26,10 +22,9 @@ import { takeUntil } from 'rxjs/operators';
  * * collection:form - [demo](https://ngx-kit.com/collection/module/ui-form)
  */
 @Directive({
-  // tslint:disable-next-line
-  selector: '[kitFormTouch]',
+  selector: '[evoFormSubmit]',
 })
-export class KitFormTouchDirective implements OnInit, OnDestroy {
+export class EvoFormSubmitDirective implements OnInit, OnDestroy {
   private destroy = new Subject();
 
   constructor(

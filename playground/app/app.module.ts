@@ -8,6 +8,7 @@ import { EvoButtonDemoModule } from '../../packages/evo/button/src/demo/evo-butt
 import { EvoDialogDemoModule } from '../../packages/evo/dialog/src/demo/evo-dialog-demo.module';
 import { EvoDropdownDemoModule } from '../../packages/evo/dropdown/src/demo/evo-dropdown-demo.module';
 import { EvoFileDemoModule } from '../../packages/evo/file/src/demo/evo-file-demo.module';
+import { EvoFormDemoModule } from '../../packages/evo/form/src/demo/evo-form-demo.module';
 import { EvoLoadingDemoModule } from '../../packages/evo/loading/src/demo/evo-loading-demo.module';
 import { EvoNotificationDemoModule } from '../../packages/evo/notification/src/demo/evo-notification-demo.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     EvoDialogDemoModule,
     EvoDropdownDemoModule,
     EvoFileDemoModule,
+    EvoFormDemoModule,
     EvoLoadingBarModule.forRoot(),
     EvoLoadingDemoModule,
     EvoNotificationModule.forRoot(),

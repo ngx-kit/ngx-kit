@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { KitFormTouchDirective } from './kit-form-touch.directive';
+import { EvoFormSubmitDirective } from './evo-form-submit.directive';
 
 describe('KitFormTouchDirective', () => {
   // setup
@@ -14,7 +14,7 @@ describe('KitFormTouchDirective', () => {
           ReactiveFormsModule,
         ],
         declarations: [
-          KitFormTouchDirective,
+          EvoFormSubmitDirective,
           TestComponent,
           TestReactiveComponent,
         ],

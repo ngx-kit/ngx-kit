@@ -5,9 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * @demo
  */
 @Component({
-  templateUrl: './ui-form-demo.component.html',
+  templateUrl: './evo-form-demo.component.html',
 })
-export class UiFormDemoComponent {
+export class EvoFormDemoComponent {
   form1 = {
     email: '',
     name: '',
