@@ -1,12 +1,12 @@
 import { async } from '@angular/core/testing';
-import { EvoIconRegistryService } from './evo-icon-registry.service';
+import { EvoIconRegistry } from './evo-icon-registry';
 
 describe('KitIconsRegistryService', () => {
-  let service: EvoIconRegistryService;
+  let service: EvoIconRegistry;
   let httpMock: HttpMock;
   beforeEach(async(() => {
     httpMock = new HttpMock();
-    service = new EvoIconRegistryService(httpMock as any);
+    service = new EvoIconRegistry(httpMock as any);
   }));
   it('should create the service', () => {
     expect(service).toBeTruthy();

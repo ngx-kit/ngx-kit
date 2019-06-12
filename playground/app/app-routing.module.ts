@@ -7,6 +7,7 @@ import { EvoFileDemoComponent } from '../../packages/evo/file/src/demo/evo-file-
 import { EvoFormDemoComponent } from '../../packages/evo/form/src/demo/evo-form-demo.component';
 import { EvoLoadingDemoComponent } from '../../packages/evo/loading/src/demo/evo-loading-demo.component';
 import { EvoNotificationDemoComponent } from '../../packages/evo/notification/src/demo/evo-notification-demo.component';
+import { EvoSelectDemoComponent } from '../../packages/evo/select/src/demo/evo-select-demo.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'notification',
     component: EvoNotificationDemoComponent,
+  },
+  {
+    path: 'select',
+    component: EvoSelectDemoComponent,
   },
 ];
 

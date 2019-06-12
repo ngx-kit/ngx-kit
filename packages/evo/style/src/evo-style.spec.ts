@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EvoStyleService } from './evo-style.service';
+import { EvoStyle } from './evo-style';
 
 describe('KitStyleService', () => {
   let fixture: ComponentFixture<TestComponent>;
-  let service: EvoStyleService;
+  let service: EvoStyle;
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -38,10 +38,10 @@ describe('KitStyleService', () => {
   selector: 'test-cmp',
   template: ``,
   providers: [
-    EvoStyleService,
+    EvoStyle,
   ],
 })
 class TestComponent {
-  constructor(public service: EvoStyleService) {
+  constructor(public service: EvoStyle) {
   }
 }

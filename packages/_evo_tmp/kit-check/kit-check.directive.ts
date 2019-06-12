@@ -1,7 +1,7 @@
 import { Directive, forwardRef, Host, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { EvoClassService } from '@ngx-kit/evo/class/src/evo-class.service';
+import { EvoClass } from '@ngx-kit/evo/class/src/evo-class';
 import { isDefined } from '../util/is-defined';
 
 export const KIT_CHECK_VALUE_ACCESSOR: any = {
@@ -49,7 +49,7 @@ export const KIT_CHECK_VALUE_ACCESSOR: any = {
   selector: '[kitCheck]',
   providers: [
     KIT_CHECK_VALUE_ACCESSOR,
-    EvoClassService,
+    EvoClass,
   ],
 })
 export class KitCheckDirective implements OnChanges, ControlValueAccessor {
@@ -78,7 +78,7 @@ export class KitCheckDirective implements OnChanges, ControlValueAccessor {
 
   private touches = new Subject<void>();
 
-  constructor(@Host() private kitClass: EvoClassService) {
+  constructor(@Host() private kitClass: EvoClass) {
   }
 
   ngOnChanges(changes: SimpleChanges) {

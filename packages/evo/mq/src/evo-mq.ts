@@ -60,7 +60,7 @@ const breakpointsError =
 @Injectable({
   providedIn: 'root',
 })
-export class EvoMqService {
+export class EvoMq {
   private matchMedia: ((mediaQuery: string) => MediaQueryList);
 
   private mqs = new Map<string, MediaQueryList>();

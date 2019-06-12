@@ -27,7 +27,7 @@ import { EvoIcon, EvoIconCached, EvoIconSource } from './meta';
 @Injectable({
   providedIn: 'root',
 })
-export class EvoIconRegistryService {
+export class EvoIconRegistry {
   private cache: EvoIconCached[] = [];
 
   private icons: EvoIcon[] = [];

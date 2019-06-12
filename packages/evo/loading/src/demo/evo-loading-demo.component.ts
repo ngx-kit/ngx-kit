@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EvoLoadingService } from '../evo-loading.service';
+import { EvoLoading } from '../evo-loading';
 
 /**
  * @demo
@@ -8,7 +8,7 @@ import { EvoLoadingService } from '../evo-loading.service';
   templateUrl: './evo-loading-demo.component.html',
 })
 export class EvoLoadingDemoComponent {
-  constructor(private loading: EvoLoadingService) {
+  constructor(private loading: EvoLoading) {
   }
 
   start() {

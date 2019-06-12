@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, OnInit, Output } from '@angular/core';
-import { EvoIntersectionObserverService } from './evo-intersection-observer.service';
+import { EvoIntersectionObserver } from './evo-intersection-observer';
 
 /**
  * Observe viewport intersection.
@@ -17,14 +17,14 @@ import { EvoIntersectionObserverService } from './evo-intersection-observer.serv
 @Directive({
   selector: '[kitIntersection]',
   providers: [
-    EvoIntersectionObserverService,
+    EvoIntersectionObserver,
   ],
 })
 export class EvoIntersectionObserverDirective implements OnInit {
   @Output() kitIntersection = new EventEmitter<boolean>();
 
   constructor(
-    private intersection: EvoIntersectionObserverService,
+    private intersection: EvoIntersectionObserver,
   ) {
   }
 

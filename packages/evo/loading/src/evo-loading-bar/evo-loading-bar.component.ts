@@ -9,7 +9,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { EvoLoadingService } from '../evo-loading.service';
+import { EvoLoading } from '../evo-loading';
 import { evoLoadingGlobal, EvoLoadingState } from '../meta';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -67,7 +67,7 @@ export class EvoLoadingBarComponent implements OnInit, OnChanges, OnDestroy {
   private idChange = new Subject<void>();
 
   constructor(
-    private loading: EvoLoadingService,
+    private loading: EvoLoading,
     private cdr: ChangeDetectorRef,
   ) {
   }

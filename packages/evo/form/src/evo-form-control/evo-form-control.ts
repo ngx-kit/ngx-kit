@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EvoFormControlDirective } from './evo-form-control.directive';
 
 @Injectable()
-export class EvoFormControlService {
+export class EvoFormControl {
   private _controls: EvoFormControlDirective[] = [];
 
   get control(): EvoFormControlDirective {

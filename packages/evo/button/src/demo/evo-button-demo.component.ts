@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EvoIconRegistryService } from '@ngx-kit/evo/icon';
+import { EvoIconRegistry } from '@ngx-kit/evo/icon';
 
 /**
  * @demo
@@ -17,7 +17,7 @@ export class EvoButtonDemoComponent {
 
   radioModel = 1;
 
-  constructor(private icons: EvoIconRegistryService) {
+  constructor(private icons: EvoIconRegistry) {
     this.icons.add({
       name: 'star', xml: `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">

@@ -1,10 +1,10 @@
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges } from '@angular/core';
-import { EvoIntersectionObserverService } from '@ngx-kit/evo/intersection-observer';
+import { EvoIntersectionObserver } from '@ngx-kit/evo/intersection-observer';
 import { uuid } from '@ngx-kit/evo/util';
 import { from, Subject } from 'rxjs';
 import { filter, mapTo, switchMap, take, takeUntil } from 'rxjs/operators';
-import { EvoIconRegistryService } from './evo-icon-registry.service';
+import { EvoIconRegistry } from './evo-icon-registry';
 import { EvoIconSource } from './meta';
 
 /**
@@ -26,7 +26,7 @@ import { EvoIconSource } from './meta';
     }
   `],
   providers: [
-    EvoIntersectionObserverService,
+    EvoIntersectionObserver,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -81,11 +81,11 @@ export class EvoIconComponent implements OnChanges, OnDestroy {
   private descEl: any;
 
   constructor(
-    private registry: EvoIconRegistryService,
+    private registry: EvoIconRegistry,
     private el: ElementRef,
     private renderer: Renderer2,
     private platform: Platform,
-    private intersection: EvoIntersectionObserverService,
+    private intersection: EvoIntersectionObserver,
   ) {
     // Handle icon displayed by name
     this.nameChanges

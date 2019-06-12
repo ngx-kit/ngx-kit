@@ -11,7 +11,7 @@ import {
 import { NgControl } from '@angular/forms';
 import { uuid } from '@ngx-kit/evo/util';
 import { Observable, Subject } from 'rxjs';
-import { EvoFormControlService } from './evo-form-control.service';
+import { EvoFormControl } from './evo-form-control';
 
 /**
  * Registers `control` in `EvoFormFieldService`.
@@ -33,7 +33,7 @@ export class EvoFormControlDirective implements OnDestroy, DoCheck {
 
   constructor(
     @Host() @Optional() public ngControl: NgControl,
-    @Optional() private formFieldService: EvoFormControlService,
+    @Optional() private formFieldService: EvoFormControl,
     private differs: IterableDiffers,
   ) {
     if (this.ngControl && this.formFieldService) {

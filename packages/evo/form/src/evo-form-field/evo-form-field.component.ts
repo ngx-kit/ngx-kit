@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { EvoFormErrorDirective } from '../evo-form-error/evo-form-error.directive';
-import { EvoFormControlService } from '../evo-form-control/evo-form-control.service';
+import { EvoFormControl } from '../evo-form-control/evo-form-control';
 
 @Component({
   selector: 'evo-form-field',
@@ -19,7 +19,7 @@ import { EvoFormControlService } from '../evo-form-control/evo-form-control.serv
   styleUrls: ['./evo-form-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    EvoFormControlService,
+    EvoFormControl,
   ],
   animations: [
     trigger('error', [
@@ -57,7 +57,7 @@ export class EvoFormFieldComponent implements OnInit {
   errors: string[];
 
   constructor(
-    public formFieldService: EvoFormControlService,
+    public formFieldService: EvoFormControl,
     private cdr: ChangeDetectorRef,
   ) {
   }

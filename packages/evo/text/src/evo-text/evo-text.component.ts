@@ -11,7 +11,7 @@ import {
   Optional,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { EvoFormControlService } from '@ngx-kit/evo/form';
+import { EvoFormControl } from '@ngx-kit/evo/form';
 
 @Component({
   // tslint:disable-next-line
@@ -28,7 +28,7 @@ export class EvoTextComponent implements OnInit {
   @HostBinding('class.-has-errors') hasErrorsClass = false;
 
   constructor(
-    @Optional() private formControl: EvoFormControlService,
+    @Optional() private formControl: EvoFormControl,
     @Optional() private ngControl: NgControl,
     private cdr: ChangeDetectorRef,
     private el: ElementRef,

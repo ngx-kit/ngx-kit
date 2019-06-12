@@ -10,7 +10,7 @@ import {
   ViewRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EvoMqService } from './evo-mq.service';
+import { EvoMq } from './evo-mq';
 import { EvoMqParams } from './meta';
 
 /**
@@ -62,7 +62,7 @@ export class EvoMqDirective implements OnChanges, OnDestroy {
     private templateRef: TemplateRef<any>,
     private cdr: ChangeDetectorRef,
     private vcr: ViewContainerRef,
-    private mq: EvoMqService,
+    private mq: EvoMq,
   ) {
   }
 

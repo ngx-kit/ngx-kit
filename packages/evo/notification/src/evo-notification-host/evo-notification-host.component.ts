@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EvoNotificationItem, EvoNotificationPosition } from '../meta';
-import { EvoNotificationService } from '../evo-notification.service';
+import { EvoNotification } from '../evo-notification';
 
 @Component({
   selector: 'evo-notification-host',
@@ -50,7 +50,7 @@ export class EvoNotificationHostComponent implements OnInit {
 
   position: Observable<EvoNotificationPosition>;
 
-  constructor(private notification: EvoNotificationService) {
+  constructor(private notification: EvoNotification) {
   }
 
   ngOnInit() {

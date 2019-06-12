@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, Optional } from '@angular/core';
-import { EvoClassService } from '@ngx-kit/evo/class';
+import { EvoClass } from '@ngx-kit/evo/class';
 import { EvoButtonColor, EvoButtonSize } from '../meta';
 import { EvoButtonGroupComponent } from '../evo-button-group/evo-button-group.component';
 
@@ -9,7 +9,7 @@ import { EvoButtonGroupComponent } from '../evo-button-group/evo-button-group.co
   templateUrl: './evo-button.component.html',
   styleUrls: ['./evo-button.component.scss'],
   providers: [
-    EvoClassService,
+    EvoClass,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -25,7 +25,7 @@ export class EvoButtonComponent implements OnInit, OnChanges {
   @Input() icon: string;
 
   constructor(
-    private kitClass: EvoClassService,
+    private kitClass: EvoClass,
     @Optional() private group: EvoButtonGroupComponent,
   ) {
   }

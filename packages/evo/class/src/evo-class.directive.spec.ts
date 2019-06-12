@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EvoClassDirective } from './evo-class.directive';
-import { EvoClassService } from './evo-class.service';
+import { EvoClass } from './evo-class';
 
 describe('KitClassDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -20,7 +20,7 @@ describe('KitClassDirective', () => {
         set: {
           providers: [
             {
-              provide: EvoClassService,
+              provide: EvoClass,
               useExisting: ServiceMock,
             },
           ],

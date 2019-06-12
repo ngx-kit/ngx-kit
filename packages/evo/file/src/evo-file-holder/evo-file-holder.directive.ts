@@ -1,11 +1,11 @@
 import { Directive, HostListener, Input, OnInit } from '@angular/core';
-import { EvoStyleService } from '@ngx-kit/evo/style';
+import { EvoStyle } from '@ngx-kit/evo/style';
 import { EvoFileComponent } from '../evo-file/evo-file.component';
 
 @Directive({
   selector: '[evoFileHolder]',
   providers: [
-    EvoStyleService,
+    EvoStyle,
   ],
 })
 export class EvoFileHolderDirective implements OnInit {
@@ -14,7 +14,7 @@ export class EvoFileHolderDirective implements OnInit {
   file?: EvoFileComponent;
 
   constructor(
-    private style: EvoStyleService,
+    private style: EvoStyle,
   ) {
   }
 

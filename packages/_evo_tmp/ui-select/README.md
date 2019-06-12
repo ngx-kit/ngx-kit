@@ -1,1 +1,0 @@
-# Select component for Angular

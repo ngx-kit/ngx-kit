@@ -11,6 +11,7 @@ import { EvoFileDemoModule } from '../../packages/evo/file/src/demo/evo-file-dem
 import { EvoFormDemoModule } from '../../packages/evo/form/src/demo/evo-form-demo.module';
 import { EvoLoadingDemoModule } from '../../packages/evo/loading/src/demo/evo-loading-demo.module';
 import { EvoNotificationDemoModule } from '../../packages/evo/notification/src/demo/evo-notification-demo.module';
+import { EvoSelectDemoModule } from '../../packages/evo/select/src/demo/evo-select-demo.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
@@ -36,6 +37,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     EvoLoadingDemoModule,
     EvoNotificationModule.forRoot(),
     EvoNotificationDemoModule,
+    EvoSelectDemoModule,
   ],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, } from '@angular/core';
-import { EvoClassService } from '@ngx-kit/evo/class';
+import { EvoClass } from '@ngx-kit/evo/class';
 import { EvoButtonGroupDirection } from '../meta';
 
 @Component({
@@ -10,13 +10,13 @@ import { EvoButtonGroupDirection } from '../meta';
   styleUrls: ['./evo-button-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    EvoClassService,
+    EvoClass,
   ],
 })
 export class EvoButtonGroupComponent implements OnInit, OnChanges {
   @Input() direction: EvoButtonGroupDirection = 'row';
 
-  constructor(private evoClass: EvoClassService) {
+  constructor(private evoClass: EvoClass) {
   }
 
   ngOnChanges() {

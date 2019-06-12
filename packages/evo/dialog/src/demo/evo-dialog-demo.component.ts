@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EvoDialogService } from '../evo-dialog.service';
+import { EvoDialog } from '../evo-dialog';
 import { EvoDialogDemoModalComponent } from './evo-dialog-demo-modal.component';
 
 /**
@@ -10,7 +10,7 @@ import { EvoDialogDemoModalComponent } from './evo-dialog-demo-modal.component';
 })
 export class EvoDialogDemoComponent {
   constructor(
-    private modal: EvoDialogService,
+    private modal: EvoDialog,
   ) {
   }
 

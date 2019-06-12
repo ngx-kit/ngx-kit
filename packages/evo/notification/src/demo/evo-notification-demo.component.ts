@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EvoNotificationHostConfig } from '../meta';
-import { EvoNotificationService } from '../evo-notification.service';
+import { EvoNotification } from '../evo-notification';
 
 /**
  * @demo
@@ -9,7 +9,7 @@ import { EvoNotificationService } from '../evo-notification.service';
   templateUrl: './evo-notification-demo.component.html',
 })
 export class EvoNotificationDemoComponent {
-  constructor(private notification: EvoNotificationService) {
+  constructor(private notification: EvoNotification) {
   }
 
   open(config: Partial<EvoNotificationHostConfig>, color: any = 'default') {

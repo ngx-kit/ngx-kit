@@ -1,7 +1,7 @@
 import { Component, Injectable, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { from } from 'rxjs';
-import { EvoIconRegistryService } from './evo-icon-registry.service';
+import { EvoIconRegistry } from './evo-icon-registry';
 import { EvoIconComponent } from './evo-icon.component';
 
 describe('KitIconComponent', () => {
@@ -18,7 +18,7 @@ describe('KitIconComponent', () => {
       ],
       providers: [
         {
-          provide: EvoIconRegistryService,
+          provide: EvoIconRegistry,
           useClass: RegistryMock,
         },
       ],
@@ -27,7 +27,7 @@ describe('KitIconComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
     icon = fixture.componentInstance.icon;
-    registry = TestBed.get(EvoIconRegistryService);
+    registry = TestBed.get(EvoIconRegistry);
   });
   it('should be created', () => {
     expect(icon).toBeTruthy();

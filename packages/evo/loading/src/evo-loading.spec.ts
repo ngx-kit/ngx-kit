@@ -1,15 +1,15 @@
 import { async } from '@angular/core/testing';
 import { NavigationEnd, NavigationStart } from '@angular/router';
 import { Subject } from 'rxjs';
-import { EvoLoadingService } from './evo-loading.service';
+import { EvoLoading } from './evo-loading';
 import { EvoLoadingState } from './meta';
 
 describe('KitLoadingService', () => {
-  let service: EvoLoadingService;
+  let service: EvoLoading;
   let routerMock: RouterMock;
   beforeEach(async(() => {
     routerMock = new RouterMock();
-    service = new EvoLoadingService(routerMock as any);
+    service = new EvoLoading(routerMock as any);
   }));
   describe('constructor', () => {
     it(`handles navigation start`, () => {
