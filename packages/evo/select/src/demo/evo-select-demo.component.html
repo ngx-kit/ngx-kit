@@ -1,0 +1,137 @@
+<p>
+  Simple items:<br>
+  <evo-select [(ngModel)]="model"
+              [items]="simpleItems">
+  </evo-select>
+</p>
+
+<p>
+  Items with itemView:<br>
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView">
+  </evo-select>
+</p>
+
+<p>
+  Items with itemView and inputView:
+  <evo-select [(ngModel)]="model"
+              [items]="fullViewItems">
+  </evo-select>
+</p>
+
+<p>
+  Built-in filtering:
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              filter="includes">
+  </evo-select>
+</p>
+
+<p>
+  Built-in filtering (with null model):
+  <evo-select [items]="itemsWithItemView"
+              filter="includes">
+  </evo-select>
+</p>
+
+<p>
+  Provide filtering function (exclude for example):
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [filter]="filterFn">
+  </evo-select>
+</p>
+
+<p>
+  Search (pass to [searchFn] a function that will return array of items):
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [searchFn]="searchFn">
+  </evo-select>
+</p>
+
+<p>
+  Async search (pass to [searchFn] a function that will return Observable):
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [searchFn]="asyncSearchFn">
+  </evo-select>
+</p>
+
+<div>
+  Async search (items array updated with selected item from search):
+  <evo-select [(ngModel)]="modelAutocomplete"
+              [(items)]="itemsWithItemViewForSearch"
+              [searchFn]="asyncSearchFn">
+  </evo-select>
+  <div>Model: {{ modelAutocomplete | json }}</div>
+  <div>Items: {{ itemsWithItemViewForSearch | json }}</div>
+</div>
+
+<p>
+  Multiple:
+  <evo-select [(ngModel)]="multiModel"
+              [items]="itemsWithItemView"
+              [multiple]="true">
+  </evo-select>
+</p>
+
+<p>
+  Multiple (with filter):
+  <evo-select [(ngModel)]="multiModel"
+              [items]="itemsWithItemView"
+              [multiple]="true"
+              filter="includes">
+  </evo-select>
+</p>
+
+<p>
+  Multiple (with async search):
+  <evo-select [(ngModel)]="multiModel"
+              [items]="itemsWithItemView"
+              [searchFn]="asyncSearchFn"
+              [multiple]="true">
+  </evo-select>
+</p>
+
+<h3>Options</h3>
+<p>
+  Show items on focus (use tab to test):<br>
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [options]="{showItemsOnFocus: true}">
+  </evo-select>
+</p>
+
+<p>
+  Search on focus:<br>
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [searchFn]="searchFn"
+              [options]="{searchOnFocus: true}">
+  </evo-select>
+</p>
+
+<p>
+  Search debounce:<br>
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [searchFn]="searchFn"
+              [options]="{searchDebounce: 1000}">
+  </evo-select>
+</p>
+
+<p>
+  Placeholder:<br>
+  <evo-select [items]="itemsWithItemView"
+              placeholder="Pick an item…">
+  </evo-select>
+</p>
+
+<p>
+  Disabled:<br>
+  <evo-select [(ngModel)]="model"
+              [items]="itemsWithItemView"
+              [disabled]="true">
+  </evo-select>
+</p>

@@ -1,0 +1,63 @@
+<div #selectRef
+     (mousedown)="mousedown($event)"
+     [class.-disabled]="service.disabled"
+     [class.-focused]="service.focused"
+     [class.-has-errors]="hasErrors"
+     [class.-multiple]="service.multiple"
+     class="select"
+     tabindex="-1">
+  <div class="holder">
+    <div *ngIf="placeholder && !service.model && !service.input"
+         class="placeholder">
+      {{ placeholder }}
+    </div>
+    <div *ngIf="!service.multiple && !service.input"
+         class="model">
+      <span class="value">
+        {{ service.inputViews[0]?.view }}
+      </span>
+    </div>
+    <ng-container *ngIf="multiple">
+      <span *ngFor="let item of service.inputViews" class="item">
+        {{ item.view }}
+        <evo-icon (mousedown)="removeItem($event, item.model)"
+                  [xml]="icons.cross"
+                  aria-hidden="true"
+                  class="remove"
+                  size="10px">
+        </evo-icon>
+      </span>
+    </ng-container>
+    <input #inputRef
+           (ngModelChange)="service.userInput($event)"
+           [ngModel]="service.input"
+           [readonly]="!service.searchable"
+           [tabindex]="service.disabled ? -1 : 0"
+           aria-autocomplete="list"
+           autocapitalize="none"
+           autocomplete="off"
+           autocorrect="off"
+           name="input"
+           spellcheck="false"
+           type="text">
+  </div>
+  <div class="controls">
+    <evo-icon (mousedown)="removeItem($event)"
+              *ngIf="service.isClearable"
+              [xml]="icons.cross"
+              aria-hidden="true"
+              class="clear"
+              size="12px"
+              title="Clear">
+    </evo-icon>
+    <span *ngIf="!service.isAutocomplete"
+          class="separator">
+    </span>
+    <evo-icon *ngIf="!service.isAutocomplete"
+              [xml]="icons.chevron"
+              aria-hidden="true"
+              class="pointer"
+              size="16px">
+    </evo-icon>
+  </div>
+</div>

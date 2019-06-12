@@ -1,0 +1,23 @@
+<div class="popup"
+     [@popup]="true"
+     evoSkipBlur>
+  <div *ngIf="state.loading.value"
+       class="loading">
+    Loading&hellip;
+  </div>
+  <div *ngIf="!state.loading.value && state.itemsView.value?.length === 0"
+       class="empty">
+    No items to display.
+  </div>
+  <div *ngIf="!state.loading.value && state.itemsView.value?.length > 0"
+       class="list">
+    <button *ngFor="let item of state.itemsView.value"
+            class="item"
+            role="option"
+            [class.-active]="isActive(item.model)"
+            [class.-checked]="isChecked(item.model)"
+            (click)="select(item.model)">
+      {{ item.view }}
+    </button>
+  </div>
+</div>
