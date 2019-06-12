@@ -19,6 +19,16 @@
     min-height: 1.4rem;
     overflow: hidden;
     position: relative;
+    &.-left-icon {
+      input {
+        left: calc(16px + .5em);
+      }
+    }
+  }
+  .icon {
+    color: #777777;
+    cursor: default;
+    margin-right: .5em;
   }
   .placeholder {
     color: #777777;

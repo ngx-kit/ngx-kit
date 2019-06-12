@@ -6,7 +6,14 @@
      [class.-multiple]="service.multiple"
      class="select"
      tabindex="-1">
-  <div class="holder">
+  <div [class.-left-icon]="icon"
+       class="holder">
+    <evo-icon *ngIf="icon"
+              [name]="icon"
+              aria-hidden="true"
+              class="icon"
+              size="16px">
+    </evo-icon>
     <div *ngIf="placeholder && !service.model && !service.input"
          class="placeholder">
       {{ placeholder }}

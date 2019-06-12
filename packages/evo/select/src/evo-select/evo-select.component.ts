@@ -16,7 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EvoFocusListener } from '@ngx-kit/evo/focus-listener';
 import { EvoFormControl } from '@ngx-kit/evo/form';
 import { EvoSelect } from '../evo-select';
-import { uiSelectIcons } from '../icons';
+import { evoSelectIcons } from '../icons';
 import { UiSelectFilter, UiSelectItem, UiSelectOptions, UiSelectSearchFn } from '../meta';
 
 @Component({
@@ -65,13 +65,15 @@ export class EvoSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, 
    */
   @Input() placeholder?: string;
 
+  @Input() icon?: string;
+
   @ViewChild('selectRef', {static: true}) selectRef: ElementRef;
 
   @ViewChild('inputRef', {static: true}) inputRef: ElementRef;
 
   hasErrors?: boolean;
 
-  icons = uiSelectIcons;
+  icons = evoSelectIcons;
 
   constructor(
     public service: EvoSelect<M>,
