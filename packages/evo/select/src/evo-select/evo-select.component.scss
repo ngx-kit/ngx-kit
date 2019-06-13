@@ -1,15 +1,46 @@
+:host {
+  --_background: var(--ui-input-background, #f0f0f0);
+  --_border-width: var(--ui-input-border-width, 0 0 1px 0);
+  --_border-color: var(--ui-input-border-color, #d6d6d6);
+  --_border-radius: var(--ui-input-border-radius, 2px);
+  --_box-shadow: var(--ui-input-box-shadow, none);
+  --_color: var(--ui-input-color, #000000);
+  --_font-family: var(---ui-input-font-family, inherit);
+  --_font-size: var(--ui-input-font-size, 1rem);
+  --_padding: var(--ui-input-padding, .7em 1em .6em);
+  --_hover-color: var(--ui-input-hover-color, #000000);
+  --_hover-border-color: var(--ui-input-hover-border-color, #c8c8c8);
+  --_hover-background: var(--ui-input-hover-background, #f0f0f0);
+  --_hover-box-shadow: var(--ui-input-hover-box-shadow, none);
+  --_focus-color: var(--ui-input-focus-color, #000000);
+  --_focus-border-color: var(--ui-input-focus-border-color, #d6d6d6);
+  --_focus-background: var(--ui-input-focus-background, #f0f0f0);
+  --_focus-box-shadow: var(--ui-input-focus-box-shadow, none);
+  --_focus-outline: var(--ui-input-focus-outline, 2px solid #ffbf47);
+  --_focus-outline-offset: var(--ui-input-focus-outline-offset, -2px);
+  --_error-color: var(--ui-input-error-color, #000000);
+  --_error-border-color: var(--ui-input-error-border-color, #ff0c09);
+  --_error-background: var(--ui-input-error-background, #f0f0f0);
+  --_error-box-shadow: var(--ui-input-error-box-shadow, none);
+  --_error-outline: var(--ui-input-error-outline, 2px solid #ff0c09);
+  --_error-outline-offset: var(--ui-input-error-outline-offset, -2px);
+}
+
 .select {
-  background: #f7f7f7;
-  border: 1px solid #d6d6d6;
-  border-radius: 2px;
-  box-shadow: 0 0 2px 0 rgba(50, 50, 50, .1);
+  background: var(--_background);
+  border-color: var(--_border-color);
+  border-radius: var(--_border-radius);
+  border-style: solid;
+  border-width: var(--_border-width);
+  box-shadow: var(--_box-shadow);
   box-sizing: border-box;
-  color: #4a505a;
+  color: var(--_color);
   cursor: default;
   display: flex;
   flex-direction: row;
-  padding: 4px 8px;
-  transition: all .3s;
+  font-family: var(--_font-family);
+  font-size: var(--_font-size);
+  padding: var(--_padding);
   width: 100%;
   .holder {
     display: flex;
@@ -93,12 +124,19 @@
     }
   }
   &:hover {
-    border-color: #acadb0;
+    background: var(--_hover-background);
+    border-color: var(--_hover-border-color);
+    box-shadow: var(--_hover-box-shadow);
+    color: var(--_hover-color);
     outline: none;
   }
   &.-focused {
-    border-color: #2399e5;
-    outline: none;
+    background: var(--_focus-background);
+    border-color: var(--_focus-border-color);
+    box-shadow: var(--_focus-box-shadow);
+    color: var(--_focus-color);
+    outline: var(--_focus-outline);
+    outline-offset: var(--_focus-outline-offset);
   }
   &.-multiple {
     .holder {
@@ -118,9 +156,19 @@
     pointer-events: none;
   }
   &.-has-errors {
-    border-color: #ff0c09;
+    background: var(--_error-background);
+    border-color: var(--_error-border-color);
+    box-shadow: var(--_error-box-shadow);
+    color: var(--_error-color);
+    outline: var(--_error-outline);
+    outline-offset: var(--_error-outline-offset);
     &:hover, &._focused {
-      border-color: #ff0c09;
+      background: var(--_error-background);
+      border-color: var(--_error-border-color);
+      box-shadow: var(--_error-box-shadow);
+      color: var(--_error-color);
+      outline: var(--_error-outline);
+      outline-offset: var(--_error-outline-offset);
     }
   }
 }
