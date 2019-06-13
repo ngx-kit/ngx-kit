@@ -90,6 +90,10 @@ export class EvoSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, 
         this.cdr.detectChanges();
       });
     }
+    // Focus input after selction (for proper blur control)
+    this.service.state.selections.subscribe(() => {
+      this.focusInput();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -150,11 +154,6 @@ export class EvoSelectComponent<M> implements OnInit, OnChanges, AfterViewInit, 
     event.stopPropagation();
     event.preventDefault();
     this.service.remove(model);
-    this.focusInput();
-  }
-
-  select(model: M) {
-    this.service.select(model);
     this.focusInput();
   }
 
