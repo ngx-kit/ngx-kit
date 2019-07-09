@@ -22,7 +22,7 @@ export class EvoDialog {
     const overlayRef = this.cdkOverlay.create({
       hasBackdrop: true,
       scrollStrategy: this.cdkOverlay.scrollStrategies.block(),
-      positionStrategy: this.cdkOverlay.position().global().top('4em').centerHorizontally(),
+      positionStrategy: this.cdkOverlay.position().global().centerHorizontally().top('5%'),
     });
     const modalRef = new EvoDialogRef(overlayRef);
     // Handle backdrop click

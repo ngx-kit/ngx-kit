@@ -4,16 +4,11 @@
   --_box-shadow: var(--ui-modal-box-shadow, 0 0 20px 0 rgba(0, 0, 0, .25));
   --_border-radius: var(--ui-modal-border-radius, 0);
   --_body-padding: var(--ui-modal-body-padding, 1.5em);
-}
-
-.modal {
-  background: var(--_background);
-  border-radius: var(--_border-radius);
-  box-shadow: var(--_box-shadow);
-  color: var(--_color);
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: auto;
   &.size-s {
     width: 250px;
   }
@@ -23,6 +18,16 @@
   &.size-l {
     width: 800px;
   }
+}
+
+.dialog {
+  background: var(--_background);
+  border-radius: var(--_border-radius);
+  box-shadow: var(--_box-shadow);
+  color: var(--_color);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
 }
 
 .header {

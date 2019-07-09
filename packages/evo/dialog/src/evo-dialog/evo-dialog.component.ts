@@ -1,5 +1,6 @@
 import { animate, animateChild, query, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit } from '@angular/core';
+import { EvoClass } from '@ngx-kit/evo/class';
 import { EvoDialogRef } from '../evo-dialog-ref';
 import { EvoDialogSize } from '../meta';
 
@@ -8,6 +9,9 @@ import { EvoDialogSize } from '../meta';
   templateUrl: './evo-dialog.component.html',
   styleUrls: ['./evo-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    EvoClass,
+  ],
   animations: [
     trigger('modalHost', [
       transition(':enter, :leave', [
@@ -35,7 +39,7 @@ import { EvoDialogSize } from '../meta';
     ]),
   ],
 })
-export class EvoDialogComponent implements OnInit {
+export class EvoDialogComponent implements OnInit, OnChanges {
   @Input() header: string;
 
   @Input() size: EvoDialogSize = 'm';
@@ -44,10 +48,17 @@ export class EvoDialogComponent implements OnInit {
 
   constructor(
     private ref: EvoDialogRef,
+    private cl: EvoClass,
   ) {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.cl.apply({
+      size: this.size,
+    });
   }
 
   close() {
