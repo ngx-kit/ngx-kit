@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { uuid } from '@ngx-kit/evo/util';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UiNotificationHostConfig, UiNotificationItem, UiNotificationItemParams } from '../../ui-evo/src/notification/meta';
+import { UiNotificationHostConfig, UiNotificationItem, UiNotificationItemParams } from '../../ui-lite/src/notification/meta';
 
 @Injectable({
   providedIn: 'root',

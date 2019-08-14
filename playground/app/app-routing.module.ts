@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ButtonDemoComponent } from '../../packages/evo/ui-evo/src/button/demo/button-demo.component';
-import { CheckboxDemoComponent } from '../../packages/evo/ui-evo/src/checkbox/demo/checkbox-demo.component';
-import { DialogDemoComponent } from '../../packages/evo/ui-evo/src/dialog/demo/dialog-demo.component';
-import { DropdownDemoComponent } from '../../packages/evo/ui-evo/src/dropdown/demo/dropdown-demo.component';
-import { FileDemoComponent } from '../../packages/evo/ui-evo/src/file/demo/file-demo.component';
-import { FormDemoComponent } from '../../packages/evo/ui-evo/src/form/demo/form-demo.component';
-import { LoadingBarDemoComponent } from '../../packages/evo/ui-evo/src/loading-bar/demo/loading-bar-demo.component';
-import { NotificationDemoComponent } from '../../packages/evo/ui-evo/src/notification/demo/notification-demo.component';
-import { RadioDemoComponent } from '../../packages/evo/ui-evo/src/radio/demo/radio-demo.component';
-import { SelectDemoComponent } from '../../packages/evo/ui-evo/src/select/demo/select-demo.component';
-import { TextDemoComponent } from '../../packages/evo/ui-evo/src/text/demo/text-demo.component';
+import { ButtonDemoComponent } from '../../packages/evo/ui-lite/src/button/demo/button-demo.component';
+import { CheckboxDemoComponent } from '../../packages/evo/ui-lite/src/checkbox/demo/checkbox-demo.component';
+import { DialogDemoComponent } from '../../packages/evo/ui-lite/src/dialog/demo/dialog-demo.component';
+import { DropdownDemoComponent } from '../../packages/evo/ui-lite/src/dropdown/demo/dropdown-demo.component';
+import { FileDemoComponent } from '../../packages/evo/ui-lite/src/file/demo/file-demo.component';
+import { FormDemoComponent } from '../../packages/evo/ui-lite/src/form/demo/form-demo.component';
+import { LoadingBarDemoComponent } from '../../packages/evo/ui-lite/src/loading-bar/demo/loading-bar-demo.component';
+import { NotificationDemoComponent } from '../../packages/evo/ui-lite/src/notification/demo/notification-demo.component';
+import { RadioDemoComponent } from '../../packages/evo/ui-lite/src/radio/demo/radio-demo.component';
+import { SelectDemoComponent } from '../../packages/evo/ui-lite/src/select/demo/select-demo.component';
+import { TextDemoComponent } from '../../packages/evo/ui-lite/src/text/demo/text-demo.component';
 
 const routes: Routes = [
   {
