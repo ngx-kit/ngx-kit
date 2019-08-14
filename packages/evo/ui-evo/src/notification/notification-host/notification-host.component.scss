@@ -1,0 +1,67 @@
+:host {
+  --_color-default-background: var(--ui-notification-color-default-background, rgba(0, 0, 0, .6));
+  --_color-default-color: var(--ui-notification-color-default-color, #ffffff);
+  --_color-primary-background: var(--ui-notification-color-primary-background, rgba(35, 153, 229, .75));
+  --_color-primary-color: var(--ui-notification-color-primary-color, #ffffff);
+  --_color-danger-background: var(--ui-notification-color-danger-background, rgba(255, 68, 78, .75));
+  --_color-danger-color: var(--ui-notification-color-danger-color, #ffffff);
+}
+
+:host {
+  position: relative;
+  z-index: 2000;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  &.position {
+    &-top-right {
+      align-items: flex-end;
+      right: 0;
+      top: 0;
+    }
+    &-bottom-right {
+      align-items: flex-end;
+      bottom: 0;
+      right: 0;
+    }
+    &-bottom-left {
+      align-items: flex-start;
+      bottom: 0;
+      left: 0;
+    }
+    &-top-left {
+      align-items: flex-start;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.item {
+  border-radius: 3px;
+  box-shadow: 0 0 15px 0 rgba(50, 50, 50, .3);
+  margin: 8px;
+  min-width: 150px;
+  padding: 16px;
+  .title {
+    margin: 0;
+    padding: 0;
+  }
+  &.color {
+    &-default {
+      background: var(--_color-default-background);
+      color: var(--_color-default-color);
+    }
+    &-primary {
+      background: var(--_color-primary-background);
+      color: var(--_color-primary-color);
+    }
+    &-danger {
+      background: var(--_color-danger-background);
+      color: var(--_color-danger-color);
+    }
+  }
+}

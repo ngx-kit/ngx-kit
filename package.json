@@ -1,11 +1,12 @@
 {
   "name": "ngx-kit-src",
-  "version": "8.0.0-beta.2",
+  "version": "8.0.0-beta.4",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./dist-server && rimraf ./covarage && rimraf ./tmp",
     "evo:build": "ng run evo:build",
     "evo:pack": "npm run release:cli -- --package=evo --pack",
+    "evo:release": "npm run release:cli -- --package=evo --publish",
     "playground": "ng serve --project=playground",
     "playground:hmr": "ng run playground:serve:hmr",
     "schematics:build": "tsc -p ./packages/schematics/tsconfig.json && node ./release-schematics",
@@ -23,7 +24,6 @@
     "website:docker:run": "docker run -d -p 8002:8000 registry.gitlab.com/navix/dhub/ngx-kit/website",
     "website:docker:push": "docker push registry.gitlab.com/navix/dhub/ngx-kit/website",
     "release:cli": "ts-node --project tsconfig.cli.json release.ts",
-    "release": "npm run release:cli -- --publish",
     "test": "ng test --watch=false",
     "test:watch": "ng test --watch=true",
     "lint": "npm run lint:ng && npm run lint:styles",

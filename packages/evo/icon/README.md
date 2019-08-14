@@ -1,4 +1,4 @@
-# EvoIcon — Angular module for managing and including SVG icons
+# Angular module for managing and including SVG icons
 
 Icons registry and component for svg icons. 
 

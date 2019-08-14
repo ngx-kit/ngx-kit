@@ -1,0 +1,144 @@
+<p>
+  Simple items:<br>
+  <ui-select [(ngModel)]="model"
+             [items]="simpleItems">
+  </ui-select>
+</p>
+
+<p>
+  Items with itemView:<br>
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView">
+  </ui-select>
+</p>
+
+<p>
+  Items with itemView and inputView:
+  <ui-select [(ngModel)]="model"
+             [items]="fullViewItems">
+  </ui-select>
+</p>
+
+<p>
+  Built-in filtering:
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             filter="includes">
+  </ui-select>
+</p>
+
+<p>
+  Built-in filtering (with null model):
+  <ui-select [items]="itemsWithItemView"
+             filter="includes">
+  </ui-select>
+</p>
+
+<p>
+  Provide filtering function (exclude for example):
+  <ui-select [(ngModel)]="model"
+             [filter]="filterFn"
+             [items]="itemsWithItemView">
+  </ui-select>
+</p>
+
+<p>
+  Search (pass to [searchFn] a function that will return array of items):
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             [searchFn]="searchFn">
+  </ui-select>
+</p>
+
+<p>
+  Async search (pass to [searchFn] a function that will return Observable):
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             [searchFn]="asyncSearchFn">
+  </ui-select>
+</p>
+
+<div>
+  Async search (items array updated with selected item from search):
+  <ui-select [items]="itemsWithItemViewForSearch"
+             [(ngModel)]="modelAutocomplete"
+             [searchFn]="asyncSearchFn">
+  </ui-select>
+  <div>Model: {{ modelAutocomplete | json }}</div>
+  <div>Items: {{ itemsWithItemViewForSearch | json }}</div>
+</div>
+
+<p>
+  Multiple:
+  <ui-select [(ngModel)]="multiModel"
+             [items]="itemsWithItemView"
+             [multiple]="true">
+  </ui-select>
+</p>
+
+<p>
+  Multiple (with filter):
+  <ui-select [(ngModel)]="multiModel"
+             [items]="itemsWithItemView"
+             [multiple]="true"
+             filter="includes">
+  </ui-select>
+</p>
+
+<p>
+  Multiple (with async search):
+  <ui-select [(ngModel)]="multiModel"
+             [items]="itemsWithItemView"
+             [multiple]="true"
+             [searchFn]="asyncSearchFn">
+  </ui-select>
+</p>
+
+<h3>Options</h3>
+<p>
+  Show items on focus (use tab to test):<br>
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             [options]="{showItemsOnFocus: true}">
+  </ui-select>
+</p>
+
+<p>
+  Search on focus:<br>
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             [options]="{searchOnFocus: true}"
+             [searchFn]="searchFn">
+  </ui-select>
+</p>
+
+<p>
+  Search debounce:<br>
+  <ui-select [(ngModel)]="model"
+             [items]="itemsWithItemView"
+             [options]="{searchDebounce: 1000}"
+             [searchFn]="searchFn">
+  </ui-select>
+</p>
+
+<p>
+  Placeholder:<br>
+  <ui-select [items]="itemsWithItemView"
+             placeholder="Pick an item…">
+  </ui-select>
+</p>
+
+<p>
+  Icon:<br>
+  <ui-select [items]="itemsWithItemView"
+             icon="search">
+  </ui-select>
+</p>
+
+<p>
+  Disabled:<br>
+  <ui-select [(ngModel)]="model"
+             [disabled]="true"
+             [items]="itemsWithItemView">
+  </ui-select>
+</p>

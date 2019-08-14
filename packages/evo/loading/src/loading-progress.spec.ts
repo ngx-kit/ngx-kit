@@ -1,0 +1,51 @@
+import { async } from '@angular/core/testing';
+import { LoadingProgress } from './loading-progress';
+import { LoadingState } from './meta';
+
+describe('KitLoadingProgress', () => {
+  let service: LoadingProgress;
+  const key = 'test';
+  beforeEach(async(() => {
+    service = new LoadingProgress('test');
+  }));
+  describe('.start()', () => {
+    it('changes None state to InProgress', () => {
+      service.start(key);
+      expect(service.state).toEqual(LoadingState.InProgress);
+    });
+    it('emits stateChange with InProgress', (done) => {
+      service.stateChanges.subscribe(state => {
+        expect(state).toEqual(LoadingState.InProgress);
+        done();
+      });
+      service.start(key);
+    });
+    it('returns end function that stops progress', () => {
+      const fn = service.start(key);
+      fn();
+      expect(service.state).toEqual(LoadingState.None);
+    });
+  });
+  describe('.end()', () => {
+    beforeEach(() => {
+      service.start(key);
+    });
+    it('changes InProgress state to None', () => {
+      service.end(key);
+      expect(service.state).toEqual(LoadingState.None);
+    });
+    it('emits stateChange with None', (done) => {
+      service.stateChanges.subscribe(state => {
+        expect(state).toEqual(LoadingState.None);
+        done();
+      });
+      service.end(key);
+    });
+    it('forces state to None if key is not passed', () => {
+      service.start('test1');
+      service.start('test2');
+      service.end();
+      expect(service.state).toEqual(LoadingState.None);
+    });
+  });
+});

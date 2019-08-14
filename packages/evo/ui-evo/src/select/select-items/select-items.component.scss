@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.popup {
+  background: var(--evo-select--popup-background, #ffffff);
+  border-radius: 3px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, .15);
+  box-sizing: border-box;
+  margin: 4px 0;
+  max-height: 90%;
+  overflow-y: auto;
+  width: 100%;
+  .item {
+    background: var(--evo-select--item-background, transparent);
+    border: 0;
+    color: var(--evo-select--item-color, #000000);
+    cursor: default;
+    display: block;
+    overflow: hidden;
+    padding: 8px;
+    text-align: left;
+    width: 100%;
+    &:hover {
+      background: var(--evo-select--item-hover-background, #fafafa);
+    }
+    &.-active {
+      background: var(--evo-select--item-active-background, #eeeeee);
+    }
+    &.-checked {
+      background: var(--evo-select--item-checked-background, #2399e5);
+      color: var(--evo-select--item-checked-color, #ffffff);
+    }
+  }
+  .empty, .loading {
+    color: var(--evo-select--popup-info-color, #777777);
+    padding: 16px;
+    text-align: center;
+  }
+}

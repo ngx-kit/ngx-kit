@@ -1,39 +1,39 @@
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
 
-export interface UiSelectItem<M = any, V = any, I = any> {
+export interface SelectItem<M = any, V = any, I = any> {
   model: M;
   itemView?: V;
   inputView?: I;
 }
 
-export type UiSelectListStateSourceFn<M> = (input: string) => UiSelectItem<M>[];
+export type SelectListStateSourceFn<M> = (input: string) => SelectItem<M>[];
 
-export type UiSelectListStateAsyncSourceFn<M> = (input: string) => Observable<UiSelectItem<M>[]>;
+export type SelectListStateAsyncSourceFn<M> = (input: string) => Observable<SelectItem<M>[]>;
 
-export type UiSelectListStateSource<M> = UiSelectItem<M>[] | UiSelectListStateSourceFn<M> | UiSelectListStateAsyncSourceFn<M>;
+export type SelectListStateSource<M> = SelectItem<M>[] | SelectListStateSourceFn<M> | SelectListStateAsyncSourceFn<M>;
 
-export type UiSelectFilterFn<M> = (input: string, item: UiSelectItemView<M>) => boolean;
+export type SelectFilterFn<M> = (input: string, item: SelectItemView<M>) => boolean;
 
-export type UiSelectFilter<M> =
+export type SelectFilter<M> =
   undefined
   | 'includes' | 'startsWith' | 'endsWith'
-  | UiSelectFilterFn<M>;
+  | SelectFilterFn<M>;
 
-export type UiSelectSearchFn<M> = (input: string) => UiSelectItem<M>[] | Observable<UiSelectItem<M>[]>;
+export type SelectSearchFn<M> = (input: string) => SelectItem<M>[] | Observable<SelectItem<M>[]>;
 
-export interface UiSelectItemView<M> {
+export interface SelectItemView<M> {
   model: M;
   view: any;
   filter?: string;
 }
 
-export interface UiSelectInputView<M> {
+export interface SelectInputView<M> {
   model: M;
   view: any;
 }
 
-export interface UiSelectOptions {
+export interface SelectOptions {
   showItemsOnFocus?: boolean;
   searchDebounce?: number;
   searchOnFocus?: boolean;
@@ -41,7 +41,7 @@ export interface UiSelectOptions {
   itemsPosition: ConnectedPosition;
 }
 
-export const uiSelectDefaultOptions: UiSelectOptions = {
+export const selectDefaultOptions: SelectOptions = {
   clearable: true,
   itemsPosition: {
     originX: 'start',

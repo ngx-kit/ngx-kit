@@ -1,0 +1,15 @@
+<div>
+  <h3>Global progress</h3>
+  <button (click)="start()">Start</button>
+  <button (click)="end()">End</button>
+</div>
+
+<div>
+  <h3>Local progress</h3>
+  <div [ngStyle]="{position: 'relative', background: '#eeeeee', height: '50px', marginBottom: '16px', overflow: 'hidden'}">
+    <ui-loading-bar [ngStyle]="{position: 'absolute'}" id="local"></ui-loading-bar>
+  </div>
+
+  <button (click)="startLocal()">Start</button>
+  <button (click)="endLocal()">End</button>
+</div>

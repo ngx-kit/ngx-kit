@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { uuid } from '@ngx-kit/evo/util/src/uuid';
+import { uuid } from '@ngx-kit/evo/util/src/uuid/uuid';
 import { KitCollapseHostService } from './kit-collapse-host.service';
 import { KitCollapseId } from './meta';
 

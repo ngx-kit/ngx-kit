@@ -1,4 +1,0 @@
-### Scope
-
-* Button groups
-* Toolbars

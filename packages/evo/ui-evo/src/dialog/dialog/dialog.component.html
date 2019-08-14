@@ -1,0 +1,12 @@
+<div [@fade]="true"
+     class="dialog">
+  <div *ngIf="header" class="header">
+    <div class="title">{{ header }}</div>
+    <div>
+      <button (click)="close()" class="close">X</button>
+    </div>
+  </div>
+  <div class="body">
+    <ng-container *ngComponentOutlet="ref.component"></ng-container>
+  </div>
+</div>

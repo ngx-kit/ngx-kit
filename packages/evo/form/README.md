@@ -1,1 +1,3 @@
-# Form component for Angular
+# Angular Form Helpers
+
+Extends default Angular forms logic.

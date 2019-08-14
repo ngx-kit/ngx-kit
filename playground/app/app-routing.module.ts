@@ -1,46 +1,61 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EvoButtonDemoComponent } from '../../packages/evo/button/src/demo/evo-button-demo.component';
-import { EvoDialogDemoComponent } from '../../packages/evo/dialog/src/demo/evo-dialog-demo.component';
-import { EvoDropdownDemoComponent } from '../../packages/evo/dropdown/src/demo/evo-dropdown-demo.component';
-import { EvoFileDemoComponent } from '../../packages/evo/file/src/demo/evo-file-demo.component';
-import { EvoFormDemoComponent } from '../../packages/evo/form/src/demo/evo-form-demo.component';
-import { EvoLoadingDemoComponent } from '../../packages/evo/loading/src/demo/evo-loading-demo.component';
-import { EvoNotificationDemoComponent } from '../../packages/evo/notification/src/demo/evo-notification-demo.component';
-import { EvoSelectDemoComponent } from '../../packages/evo/select/src/demo/evo-select-demo.component';
+import { ButtonDemoComponent } from '../../packages/evo/ui-evo/src/button/demo/button-demo.component';
+import { CheckboxDemoComponent } from '../../packages/evo/ui-evo/src/checkbox/demo/checkbox-demo.component';
+import { DialogDemoComponent } from '../../packages/evo/ui-evo/src/dialog/demo/dialog-demo.component';
+import { DropdownDemoComponent } from '../../packages/evo/ui-evo/src/dropdown/demo/dropdown-demo.component';
+import { FileDemoComponent } from '../../packages/evo/ui-evo/src/file/demo/file-demo.component';
+import { FormDemoComponent } from '../../packages/evo/ui-evo/src/form/demo/form-demo.component';
+import { LoadingBarDemoComponent } from '../../packages/evo/ui-evo/src/loading-bar/demo/loading-bar-demo.component';
+import { NotificationDemoComponent } from '../../packages/evo/ui-evo/src/notification/demo/notification-demo.component';
+import { RadioDemoComponent } from '../../packages/evo/ui-evo/src/radio/demo/radio-demo.component';
+import { SelectDemoComponent } from '../../packages/evo/ui-evo/src/select/demo/select-demo.component';
+import { TextDemoComponent } from '../../packages/evo/ui-evo/src/text/demo/text-demo.component';
 
 const routes: Routes = [
   {
     path: 'button',
-    component: EvoButtonDemoComponent,
+    component: ButtonDemoComponent,
+  },
+  {
+    path: 'checkbox',
+    component: CheckboxDemoComponent,
   },
   {
     path: 'dialog',
-    component: EvoDialogDemoComponent,
+    component: DialogDemoComponent,
   },
   {
     path: 'dropdown',
-    component: EvoDropdownDemoComponent,
+    component: DropdownDemoComponent,
   },
   {
     path: 'file',
-    component: EvoFileDemoComponent,
+    component: FileDemoComponent,
   },
   {
     path: 'form',
-    component: EvoFormDemoComponent,
+    component: FormDemoComponent,
   },
   {
-    path: 'loading',
-    component: EvoLoadingDemoComponent,
+    path: 'loading-bar',
+    component: LoadingBarDemoComponent,
   },
   {
     path: 'notification',
-    component: EvoNotificationDemoComponent,
+    component: NotificationDemoComponent,
+  },
+  {
+    path: 'radio',
+    component: RadioDemoComponent,
   },
   {
     path: 'select',
-    component: EvoSelectDemoComponent,
+    component: SelectDemoComponent,
+  },
+  {
+    path: 'text',
+    component: TextDemoComponent,
   },
 ];
 

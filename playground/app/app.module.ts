@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EvoLoadingBarModule } from '../../packages/evo/loading/index';
-import { EvoNotificationModule } from '../../packages/evo/notification/index';
-import { EvoButtonDemoModule } from '../../packages/evo/button/src/demo/evo-button-demo.module';
-import { EvoDialogDemoModule } from '../../packages/evo/dialog/src/demo/evo-dialog-demo.module';
-import { EvoDropdownDemoModule } from '../../packages/evo/dropdown/src/demo/evo-dropdown-demo.module';
-import { EvoFileDemoModule } from '../../packages/evo/file/src/demo/evo-file-demo.module';
-import { EvoFormDemoModule } from '../../packages/evo/form/src/demo/evo-form-demo.module';
-import { EvoLoadingDemoModule } from '../../packages/evo/loading/src/demo/evo-loading-demo.module';
-import { EvoNotificationDemoModule } from '../../packages/evo/notification/src/demo/evo-notification-demo.module';
-import { EvoSelectDemoModule } from '../../packages/evo/select/src/demo/evo-select-demo.module';
+import { ButtonDemoModule } from '../../packages/evo/ui-evo/src/button/demo/button-demo.module';
+import { CheckboxDemoModule } from '../../packages/evo/ui-evo/src/checkbox/demo/checkbox-demo.module';
+import { DialogDemoModule } from '../../packages/evo/ui-evo/src/dialog/demo/dialog-demo.module';
+import { DropdownDemoModule } from '../../packages/evo/ui-evo/src/dropdown/demo/dropdown-demo.module';
+import { FileDemoModule } from '../../packages/evo/ui-evo/src/file/demo/file-demo.module';
+import { FormDemoModule } from '../../packages/evo/ui-evo/src/form/demo/form-demo.module';
+import { LoadingBarDemoModule } from '../../packages/evo/ui-evo/src/loading-bar/demo/loading-bar-demo.module';
+import { LoadingBarModule } from '../../packages/evo/ui-evo/src/loading-bar/loading-bar.module';
+import { NotificationDemoModule } from '../../packages/evo/ui-evo/src/notification/demo/notification-demo.module';
+import { NotificationModule } from '../../packages/evo/ui-evo/src/notification/notification.module';
+import { RadioDemoModule } from '../../packages/evo/ui-evo/src/radio/demo/radio-demo.module';
+import { SelectDemoModule } from '../../packages/evo/ui-evo/src/select/demo/select-demo.module';
+import { TextDemoModule } from '../../packages/evo/ui-evo/src/text/demo/text-demo.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
@@ -27,17 +30,20 @@ import { PlaygroundComponent } from './playground/playground.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    LoadingBarModule,
+    NotificationModule,
     // Demos
-    EvoButtonDemoModule,
-    EvoDialogDemoModule,
-    EvoDropdownDemoModule,
-    EvoFileDemoModule,
-    EvoFormDemoModule,
-    EvoLoadingBarModule.forRoot(),
-    EvoLoadingDemoModule,
-    EvoNotificationModule.forRoot(),
-    EvoNotificationDemoModule,
-    EvoSelectDemoModule,
+    ButtonDemoModule,
+    CheckboxDemoModule,
+    DialogDemoModule,
+    DropdownDemoModule,
+    FileDemoModule,
+    FormDemoModule,
+    LoadingBarDemoModule,
+    NotificationDemoModule,
+    RadioDemoModule,
+    SelectDemoModule,
+    TextDemoModule,
   ],
   bootstrap: [AppComponent],
 })

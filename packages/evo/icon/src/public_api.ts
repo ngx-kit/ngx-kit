@@ -1,4 +1,4 @@
 export * from './meta';
-export * from './evo-icon.component';
-export * from './evo-icon.module';
-export * from './evo-icon-registry';
+export * from './icon.component';
+export * from './icon.module';
+export * from './icons-registry';

@@ -1,8 +1,8 @@
-export const evoLoadingGlobal = 'global';
+export const loadingGlobal = 'global';
 
-export type EvoLoadingEndFn = () => void;
+export type LoadingEndFn = () => void;
 
-export enum EvoLoadingState {
+export enum LoadingState {
   InProgress = 'in-progress',
   None = 'none',
 }

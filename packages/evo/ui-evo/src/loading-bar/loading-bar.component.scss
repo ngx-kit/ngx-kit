@@ -1,0 +1,21 @@
+:host {
+  --_background: var(--ui-loading-bar-background, #2399e5);
+  --_box-shadow: var(--ui-loading-bar-box-shadow, -7px 2px 11px 0 #2399e5);
+  --_height: var(--ui-loading-bar-height, 2px);
+  position: relative;
+}
+
+:host {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+}
+
+.bar {
+  background: var(--_background);
+  box-shadow: var(--_box-shadow);
+  height: var(--_height);
+  min-height: 1px;
+}

@@ -1,2 +1,0 @@
-# Checkbox component for Angular
-

@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@ngx-kit/evo/dialog": ["./packages/evo/dialog"],
+      "@ngx-kit/evo/form": ["./packages/evo/form"],
+      "@ngx-kit/evo/icon": ["./packages/evo/icon"],
+      "@ngx-kit/evo/loading": ["./packages/evo/loading"],
+      "@ngx-kit/evo/notification": ["./packages/evo/notification"],
+      "@ngx-kit/evo/select": ["./packages/evo/select"],
+      "@ngx-kit/evo/util": ["./packages/evo/util"]
+    }
+  }
+}
