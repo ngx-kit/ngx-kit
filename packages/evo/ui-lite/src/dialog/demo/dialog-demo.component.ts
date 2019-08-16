@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Dialog } from '@ngx-kit/evo/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
+import { EvoDialog } from '@ngx-kit/evo/dialog';
+import { LiteDialogComponent } from '../dialog/lite-dialog.component';
 import { DialogDemoModalComponent } from './dialog-demo-modal.component';
 
 /**
@@ -11,14 +11,14 @@ import { DialogDemoModalComponent } from './dialog-demo-modal.component';
 })
 export class DialogDemoComponent {
   constructor(
-    private dialog: Dialog,
+    private dialog: EvoDialog,
   ) {
   }
 
   showComponent() {
     this.dialog.show({
       component: DialogDemoModalComponent,
-      dialogComponent: DialogComponent,
+      dialogComponent: LiteDialogComponent,
       closeOnEsc: true,
       overlayConfig: {
         width: 500,

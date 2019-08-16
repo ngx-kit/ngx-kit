@@ -1,2 +1,2 @@
-export * from './dialog';
-export * from './dialog-ref';
+export * from './evo-dialog';
+export * from './evo-dialog-ref';

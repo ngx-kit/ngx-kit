@@ -1,3 +1,3 @@
-export * from './form.module';
-export * from './form/form.component';
-export * from './form-field/form-field.component';
+export * from './lite-form.module';
+export * from './form/lite-form.component';
+export * from './form-field/lite-form-field.component';

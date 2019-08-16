@@ -8,8 +8,8 @@ WIP
 ## Usage
 
 ```html
-<input type="text" uiText>
-<textarea uiText [autoResize]="true"></textarea>
+<input type="text" liteText>
+<textarea liteText [autoResize]="true"></textarea>
 ```
 
 

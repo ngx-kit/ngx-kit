@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { IconsRegistry } from '@ngx-kit/evo/icon';
+import { EvoIconsRegistry } from '@ngx-kit/evo/icon';
 import { from } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { SelectFilterFn, SelectItem, SelectListStateAsyncSourceFn, SelectListStateSourceFn } from '../../../../select/src/meta';
+import { EvoSelectFilterFn, EvoSelectItem, EvoSelectListStateAsyncSourceFn, EvoSelectListStateSourceFn } from '../../../../select/src/meta';
 
 /**
  * @demo
@@ -18,7 +18,7 @@ export class SelectDemoComponent implements OnInit {
 
   multiModel: number[] = [];
 
-  simpleItems: SelectItem<any>[] = [
+  simpleItems: EvoSelectItem<any>[] = [
     {model: 1},
     {model: 2},
     {model: 3},
@@ -33,7 +33,7 @@ export class SelectDemoComponent implements OnInit {
     {model: 12},
   ];
 
-  itemsWithItemView: SelectItem<any>[] = [
+  itemsWithItemView: EvoSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -84,9 +84,9 @@ export class SelectDemoComponent implements OnInit {
     },
   ];
 
-  itemsWithItemViewForSearch: SelectItem<any>[] = [];
+  itemsWithItemViewForSearch: EvoSelectItem<any>[] = [];
 
-  fullViewItems: SelectItem<any>[] = [
+  fullViewItems: EvoSelectItem<any>[] = [
     {
       model: 1,
       itemView: 'January',
@@ -109,15 +109,15 @@ export class SelectDemoComponent implements OnInit {
     },
   ];
 
-  filterFn: SelectFilterFn<any> = (input, item) => {
+  filterFn: EvoSelectFilterFn<any> = (input, item) => {
     return !!item.filter && !item.filter.includes(input);
   };
 
-  searchFn: SelectListStateSourceFn<any> = (input: string) => {
+  searchFn: EvoSelectListStateSourceFn<any> = (input: string) => {
     return this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()));
   };
 
-  asyncSearchFn: SelectListStateAsyncSourceFn<any> = (input: string) => {
+  asyncSearchFn: EvoSelectListStateAsyncSourceFn<any> = (input: string) => {
     const items = input
       ? this.itemsWithItemView.filter(i => !input || i.itemView.toLowerCase().includes(input.toLowerCase()))
       : this.itemsWithItemView;
@@ -126,7 +126,7 @@ export class SelectDemoComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private icons: IconsRegistry,
+    private icons: EvoIconsRegistry,
   ) {
     this.icons.add({
       name: 'search',

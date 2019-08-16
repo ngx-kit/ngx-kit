@@ -1,2 +1,2 @@
-export * from './dialog.module';
-export * from './dialog/dialog.component';
+export * from './lite-dialog.module';
+export * from './dialog/lite-dialog.component';

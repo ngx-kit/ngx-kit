@@ -1,3 +1,3 @@
-export * from './intersection.module';
-export * from './intersection.service';
-export * from './intersection.directive';
+export * from './evo-intersection.module';
+export * from './evo-intersection.service';
+export * from './evo-intersection.directive';

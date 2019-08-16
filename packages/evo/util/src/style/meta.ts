@@ -1,3 +1,3 @@
-export interface Styles {
+export interface EvoStyles {
   [key: string]: string;
 }

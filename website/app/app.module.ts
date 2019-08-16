@@ -8,7 +8,7 @@ import { MonitErrorHandler } from '@nvxme/monit-ng-client';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
 import * as moment from 'moment';
 import { DemoModule } from '../../packages/collection/lib/demo.module';
-import { NotificationModule } from '../../packages/evo/ui-lite/src/notification/notification.module';
+import { LiteNotificationModule } from '../../packages/evo/ui-lite/src/notification/lite-notification.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Error404Component } from './error404/error404.component';
 import { RootComponent } from './root/root.component';
@@ -25,7 +25,7 @@ import { UiLoadingBarModule } from './shared/ws-kit/ui-loading-bar';
     SharedModule,
     AppRoutingModule,
     DemoModule,
-    NotificationModule.forRoot(),
+    LiteNotificationModule.forRoot(),
     UiLoadingBarModule.forRoot(),
   ],
   declarations: [

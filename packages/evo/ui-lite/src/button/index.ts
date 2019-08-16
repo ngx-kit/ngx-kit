@@ -1,4 +1,4 @@
 export * from './meta';
-export * from './button.module';
-export * from './button/button.component';
-export * from './button-group/button-group.component';
+export * from './lite-button';
+export * from './button/lite-button.component';
+export * from './button-group/lite-button-group.component';

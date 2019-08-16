@@ -1,1 +1,1 @@
-export type UiFormLayout = 'stacked' | 'aligned' | 'inline';
+export type LiteFormLayout = 'stacked' | 'aligned' | 'inline';

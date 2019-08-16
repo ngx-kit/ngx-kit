@@ -1,2 +1,2 @@
-export * from './style';
+export * from './evo-style';
 export * from './meta';

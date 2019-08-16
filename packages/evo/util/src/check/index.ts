@@ -1,2 +1,2 @@
-export * from './check.directive';
-export * from './check.module';
+export * from './evo-check.directive';
+export * from './evo-check.module';

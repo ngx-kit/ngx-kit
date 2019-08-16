@@ -1,7 +1,7 @@
 import { animateChild, query, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { DialogRef } from '@ngx-kit/evo/dialog';
-import { DialogSize } from '../meta';
+import { EvoDialogRef } from '@ngx-kit/evo/dialog';
+import { LiteDialogSize } from '../meta';
 
 @Component({
   templateUrl: './dialog-demo-modal.component.html',
@@ -17,10 +17,10 @@ import { DialogSize } from '../meta';
 export class DialogDemoModalComponent {
   @HostBinding('@host') hostTrigger: void;
 
-  @Input() size: DialogSize = 'm';
+  @Input() size: LiteDialogSize = 'm';
 
   constructor(
-    private ref: DialogRef,
+    private ref: EvoDialogRef,
   ) {
   }
 

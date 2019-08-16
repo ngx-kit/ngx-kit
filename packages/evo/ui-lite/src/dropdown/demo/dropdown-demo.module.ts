@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { EvoDropdownModule } from '../evo-dropdown.module';
+import { LiteDropdownModule } from '../lite-dropdown.module';
 import { DropdownDemoComponent } from './dropdown-demo.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    EvoDropdownModule,
+    LiteDropdownModule,
   ],
   declarations: [
     DropdownDemoComponent,

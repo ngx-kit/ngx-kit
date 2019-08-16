@@ -1,8 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
-export const mqBreakpoints = new InjectionToken('evoMqPoints');
+export const evoMqBreakpoints = new InjectionToken('evoMqPoints');
 
-export interface MqParams {
+export interface EvoMqParams {
   type?: 'all' | 'print' | 'screen' | 'speech';
   from?: string;
   until?: string;

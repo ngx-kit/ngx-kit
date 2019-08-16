@@ -1,2 +1,2 @@
-export * from './css-var.directive';
-export * from './css-var.module';
+export * from './evo-css-var.directive';
+export * from './evo-css-var.module';

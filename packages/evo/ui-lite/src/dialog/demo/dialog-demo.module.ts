@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DialogModule } from '../dialog.module';
+import { LiteDialogModule } from '../lite-dialog.module';
 import { DialogDemoModalComponent } from './dialog-demo-modal.component';
 import { DialogDemoComponent } from './dialog-demo.component';
 
@@ -9,7 +9,7 @@ import { DialogDemoComponent } from './dialog-demo.component';
   imports: [
     CommonModule,
     FormsModule,
-    DialogModule,
+    LiteDialogModule,
   ],
   declarations: [
     DialogDemoComponent,

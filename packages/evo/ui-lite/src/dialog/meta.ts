@@ -1,1 +1,1 @@
-export type DialogSize = 's' | 'm' | 'l';
+export type LiteDialogSize = 's' | 'm' | 'l';

@@ -1,2 +1,2 @@
-export * from './radio.module';
-export * from './radio/radio.component';
+export * from './lite-radio.module';
+export * from './radio/lite-radio.component';

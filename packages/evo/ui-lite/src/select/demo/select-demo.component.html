@@ -1,144 +1,144 @@
 <p>
   Simple items:<br>
-  <ui-select [(ngModel)]="model"
-             [items]="simpleItems">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="simpleItems">
+  </lite-select>
 </p>
 
 <p>
   Items with itemView:<br>
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView">
+  </lite-select>
 </p>
 
 <p>
   Items with itemView and inputView:
-  <ui-select [(ngModel)]="model"
-             [items]="fullViewItems">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="fullViewItems">
+  </lite-select>
 </p>
 
 <p>
   Built-in filtering:
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             filter="includes">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               filter="includes">
+  </lite-select>
 </p>
 
 <p>
   Built-in filtering (with null model):
-  <ui-select [items]="itemsWithItemView"
-             filter="includes">
-  </ui-select>
+  <lite-select [items]="itemsWithItemView"
+               filter="includes">
+  </lite-select>
 </p>
 
 <p>
   Provide filtering function (exclude for example):
-  <ui-select [(ngModel)]="model"
-             [filter]="filterFn"
-             [items]="itemsWithItemView">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [filter]="filterFn"
+               [items]="itemsWithItemView">
+  </lite-select>
 </p>
 
 <p>
   Search (pass to [searchFn] a function that will return array of items):
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             [searchFn]="searchFn">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               [searchFn]="searchFn">
+  </lite-select>
 </p>
 
 <p>
   Async search (pass to [searchFn] a function that will return Observable):
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             [searchFn]="asyncSearchFn">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               [searchFn]="asyncSearchFn">
+  </lite-select>
 </p>
 
 <div>
   Async search (items array updated with selected item from search):
-  <ui-select [items]="itemsWithItemViewForSearch"
-             [(ngModel)]="modelAutocomplete"
-             [searchFn]="asyncSearchFn">
-  </ui-select>
+  <lite-select [items]="itemsWithItemViewForSearch"
+               [(ngModel)]="modelAutocomplete"
+               [searchFn]="asyncSearchFn">
+  </lite-select>
   <div>Model: {{ modelAutocomplete | json }}</div>
   <div>Items: {{ itemsWithItemViewForSearch | json }}</div>
 </div>
 
 <p>
   Multiple:
-  <ui-select [(ngModel)]="multiModel"
-             [items]="itemsWithItemView"
-             [multiple]="true">
-  </ui-select>
+  <lite-select [(ngModel)]="multiModel"
+               [items]="itemsWithItemView"
+               [multiple]="true">
+  </lite-select>
 </p>
 
 <p>
   Multiple (with filter):
-  <ui-select [(ngModel)]="multiModel"
-             [items]="itemsWithItemView"
-             [multiple]="true"
-             filter="includes">
-  </ui-select>
+  <lite-select [(ngModel)]="multiModel"
+               [items]="itemsWithItemView"
+               [multiple]="true"
+               filter="includes">
+  </lite-select>
 </p>
 
 <p>
   Multiple (with async search):
-  <ui-select [(ngModel)]="multiModel"
-             [items]="itemsWithItemView"
-             [multiple]="true"
-             [searchFn]="asyncSearchFn">
-  </ui-select>
+  <lite-select [(ngModel)]="multiModel"
+               [items]="itemsWithItemView"
+               [multiple]="true"
+               [searchFn]="asyncSearchFn">
+  </lite-select>
 </p>
 
 <h3>Options</h3>
 <p>
   Show items on focus (use tab to test):<br>
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             [options]="{showItemsOnFocus: true}">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               [options]="{showItemsOnFocus: true}">
+  </lite-select>
 </p>
 
 <p>
   Search on focus:<br>
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             [options]="{searchOnFocus: true}"
-             [searchFn]="searchFn">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               [options]="{searchOnFocus: true}"
+               [searchFn]="searchFn">
+  </lite-select>
 </p>
 
 <p>
   Search debounce:<br>
-  <ui-select [(ngModel)]="model"
-             [items]="itemsWithItemView"
-             [options]="{searchDebounce: 1000}"
-             [searchFn]="searchFn">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [items]="itemsWithItemView"
+               [options]="{searchDebounce: 1000}"
+               [searchFn]="searchFn">
+  </lite-select>
 </p>
 
 <p>
   Placeholder:<br>
-  <ui-select [items]="itemsWithItemView"
-             placeholder="Pick an item…">
-  </ui-select>
+  <lite-select [items]="itemsWithItemView"
+               placeholder="Pick an item…">
+  </lite-select>
 </p>
 
 <p>
   Icon:<br>
-  <ui-select [items]="itemsWithItemView"
-             icon="search">
-  </ui-select>
+  <lite-select [items]="itemsWithItemView"
+               icon="search">
+  </lite-select>
 </p>
 
 <p>
   Disabled:<br>
-  <ui-select [(ngModel)]="model"
-             [disabled]="true"
-             [items]="itemsWithItemView">
-  </ui-select>
+  <lite-select [(ngModel)]="model"
+               [disabled]="true"
+               [items]="itemsWithItemView">
+  </lite-select>
 </p>

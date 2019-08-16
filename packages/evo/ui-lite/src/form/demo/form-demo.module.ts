@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormModule } from '../form.module';
+import { LiteFormModule } from '../lite-form.module';
 import { FormDemoComponent } from './form-demo.component';
 
 @NgModule({
@@ -9,7 +9,7 @@ import { FormDemoComponent } from './form-demo.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FormModule,
+    LiteFormModule,
   ],
   declarations: [
     FormDemoComponent,

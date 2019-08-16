@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UiFileSelect } from '../meta';
+import { LiteFileSelect } from '../meta';
 
 /**
  * @demo
@@ -9,5 +9,5 @@ import { UiFileSelect } from '../meta';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileDemoComponent {
-  files: UiFileSelect;
+  files: LiteFileSelect;
 }

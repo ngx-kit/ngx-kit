@@ -1,2 +1,2 @@
-export * from './focus-listener.module';
-export * from './focus-listener';
+export * from './evo-focus-listener.module';
+export * from './evo-focus-listener';

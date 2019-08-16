@@ -1,39 +1,39 @@
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
 
-export interface SelectItem<M = any, V = any, I = any> {
+export interface EvoSelectItem<M = any, V = any, I = any> {
   model: M;
   itemView?: V;
   inputView?: I;
 }
 
-export type SelectListStateSourceFn<M> = (input: string) => SelectItem<M>[];
+export type EvoSelectListStateSourceFn<M> = (input: string) => EvoSelectItem<M>[];
 
-export type SelectListStateAsyncSourceFn<M> = (input: string) => Observable<SelectItem<M>[]>;
+export type EvoSelectListStateAsyncSourceFn<M> = (input: string) => Observable<EvoSelectItem<M>[]>;
 
-export type SelectListStateSource<M> = SelectItem<M>[] | SelectListStateSourceFn<M> | SelectListStateAsyncSourceFn<M>;
+export type EvoSelectListStateSource<M> = EvoSelectItem<M>[] | EvoSelectListStateSourceFn<M> | EvoSelectListStateAsyncSourceFn<M>;
 
-export type SelectFilterFn<M> = (input: string, item: SelectItemView<M>) => boolean;
+export type EvoSelectFilterFn<M> = (input: string, item: EvoSelectItemView<M>) => boolean;
 
-export type SelectFilter<M> =
+export type EvoSelectFilter<M> =
   undefined
   | 'includes' | 'startsWith' | 'endsWith'
-  | SelectFilterFn<M>;
+  | EvoSelectFilterFn<M>;
 
-export type SelectSearchFn<M> = (input: string) => SelectItem<M>[] | Observable<SelectItem<M>[]>;
+export type EvoSelectSearchFn<M> = (input: string) => EvoSelectItem<M>[] | Observable<EvoSelectItem<M>[]>;
 
-export interface SelectItemView<M> {
+export interface EvoSelectItemView<M> {
   model: M;
   view: any;
   filter?: string;
 }
 
-export interface SelectInputView<M> {
+export interface EvoSelectInputView<M> {
   model: M;
   view: any;
 }
 
-export interface SelectOptions {
+export interface EvoSelectOptions {
   showItemsOnFocus?: boolean;
   searchDebounce?: number;
   searchOnFocus?: boolean;
@@ -41,7 +41,7 @@ export interface SelectOptions {
   itemsPosition: ConnectedPosition;
 }
 
-export const selectDefaultOptions: SelectOptions = {
+export const evoSelectDefaultOptions: EvoSelectOptions = {
   clearable: true,
   itemsPosition: {
     originX: 'start',

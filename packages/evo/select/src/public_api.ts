@@ -1,3 +1,3 @@
 export * from './meta';
-export * from './select';
-export * from './select-state';
+export * from './evo-select';
+export * from './evo-select-state';

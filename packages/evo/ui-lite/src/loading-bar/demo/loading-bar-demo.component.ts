@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Loading } from '../../../../loading/src/loading';
+import { EvoLoading } from '../../../../loading/src/evo-loading';
 
 /**
  * @demo
@@ -8,7 +8,7 @@ import { Loading } from '../../../../loading/src/loading';
   templateUrl: './loading-bar-demo.component.html',
 })
 export class LoadingBarDemoComponent {
-  constructor(private loading: Loading) {
+  constructor(private loading: EvoLoading) {
   }
 
   start() {

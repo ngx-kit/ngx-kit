@@ -1,18 +1,18 @@
 <div>
   <h3>Default form</h3>
-  <form uiForm>
-    <ui-form-field label="Email">
+  <form liteForm>
+    <lite-form-field label="Email">
       <input [(ngModel)]="form1.email"
              email
              name="email"
              required>
       <span *evoFormError="'required'">Field is required</span>
       <span *evoFormError="'email'">Enter a valid email</span>
-    </ui-form-field>
-    <ui-form-field label="Name">
+    </lite-form-field>
+    <lite-form-field label="Name">
       <input [(ngModel)]="form1.name"
              name="name">
-    </ui-form-field>
+    </lite-form-field>
     <button evoFormSubmit>Submit</button>
   </form>
 </div>
@@ -20,16 +20,16 @@
 <div>
   <h3>Form with reactive controls</h3>
   <form [formGroup]="form2"
-        uiForm>
-    <ui-form-field [required]="true"
-                   label="Email">
+        liteForm>
+    <lite-form-field [required]="true"
+                     label="Email">
       <input formControlName="email">
       <span *evoFormError="'required'">Field is required</span>
       <span *evoFormError="'email'">Enter a valid email</span>
-    </ui-form-field>
-    <ui-form-field label="Name">
+    </lite-form-field>
+    <lite-form-field label="Name">
       <input formControlName="name">
-    </ui-form-field>
+    </lite-form-field>
     <button evoFormSubmit>Submit</button>
   </form>
 </div>
@@ -38,19 +38,19 @@
   <h3>Form with aligned layout</h3>
   <p>Add class `layout-aligned` to `uiForm` or `uiFormField`.</p>
   <form class="layout-aligned"
-        uiForm>
-    <ui-form-field label="Email">
+        liteForm>
+    <lite-form-field label="Email">
       <input [(ngModel)]="form3.email"
              email
              name="email"
              required>
       <span *evoFormError="'required'">Field is required</span>
       <span *evoFormError="'email'">Enter a valid email</span>
-    </ui-form-field>
-    <ui-form-field label="Name">
+    </lite-form-field>
+    <lite-form-field label="Name">
       <input [(ngModel)]="form3.name"
              name="name">
-    </ui-form-field>
+    </lite-form-field>
     <button evoFormSubmit>Submit</button>
   </form>
 </div>
@@ -59,19 +59,19 @@
   <h3>Form with inline layout</h3>
   <p>Add class `layout-inline` to `uiForm` or `uiFormField`.</p>
   <form class="layout-inline"
-        uiForm>
-    <ui-form-field label="Email">
+        liteForm>
+    <lite-form-field label="Email">
       <input [(ngModel)]="form4.email"
              email
              name="email"
              required>
       <span *evoFormError="'required'">Field is required</span>
       <span *evoFormError="'email'">Enter a valid email</span>
-    </ui-form-field>
-    <ui-form-field label="Name">
+    </lite-form-field>
+    <lite-form-field label="Name">
       <input [(ngModel)]="form4.name"
              name="name">
-    </ui-form-field>
+    </lite-form-field>
     <button evoFormSubmit>Submit</button>
   </form>
 </div>

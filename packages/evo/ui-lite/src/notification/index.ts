@@ -1,2 +1,2 @@
-export * from './notification.module';
-export * from './notification-host/notification-host.component';
+export * from './lite-notification.module';
+export * from './notification-host/lite-notification-host.component';

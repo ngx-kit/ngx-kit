@@ -1,2 +1,2 @@
-export * from './text.module';
-export * from './text/text.component';
+export * from './lite-text.module';
+export * from './text/lite-text.component';

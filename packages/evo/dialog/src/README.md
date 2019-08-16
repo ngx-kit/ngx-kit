@@ -1,1 +1,1 @@
-# Modal component for Angular
+# Dialog services for Angular
