@@ -20,5 +20,5 @@ import { LiteButtonComponent } from './button/lite-button.component';
     EvoCheckModule,
   ],
 })
-export class LiteButton {
+export class LiteButtonModule {
 }

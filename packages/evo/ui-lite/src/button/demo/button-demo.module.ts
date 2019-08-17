@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LiteButton } from '../lite-button';
+import { LiteButtonModule } from '../lite-button.module';
 import { ButtonDemoComponent } from './button-demo.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    LiteButton,
+    LiteButtonModule,
   ],
   declarations: [
     ButtonDemoComponent,
