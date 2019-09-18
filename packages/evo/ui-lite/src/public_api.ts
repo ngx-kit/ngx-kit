@@ -6,6 +6,7 @@ export * from './file/index';
 export * from './form/index';
 export * from './loading-bar/index';
 export * from './notification/index';
+export * from './popup/index';
 export * from './radio/index';
 export * from './select/index';
 export * from './text/index';

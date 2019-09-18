@@ -12,6 +12,7 @@ import { LoadingBarDemoModule } from '../../packages/evo/ui-lite/src/loading-bar
 import { LiteLoadingBarModule } from '../../packages/evo/ui-lite/src/loading-bar/lite-loading-bar.module';
 import { NotificationDemoModule } from '../../packages/evo/ui-lite/src/notification/demo/notification-demo.module';
 import { LiteNotificationModule } from '../../packages/evo/ui-lite/src/notification/lite-notification.module';
+import { PopupDemoModule } from '../../packages/evo/ui-lite/src/popup/demo/popup-demo.module';
 import { RadioDemoModule } from '../../packages/evo/ui-lite/src/radio/demo/radio-demo.module';
 import { SelectDemoModule } from '../../packages/evo/ui-lite/src/select/demo/select-demo.module';
 import { TextDemoModule } from '../../packages/evo/ui-lite/src/text/demo/text-demo.module';
@@ -41,6 +42,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     FormDemoModule,
     LoadingBarDemoModule,
     NotificationDemoModule,
+    PopupDemoModule,
     RadioDemoModule,
     SelectDemoModule,
     TextDemoModule,

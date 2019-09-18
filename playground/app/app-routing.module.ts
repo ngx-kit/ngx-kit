@@ -8,6 +8,7 @@ import { FileDemoComponent } from '../../packages/evo/ui-lite/src/file/demo/file
 import { FormDemoComponent } from '../../packages/evo/ui-lite/src/form/demo/form-demo.component';
 import { LoadingBarDemoComponent } from '../../packages/evo/ui-lite/src/loading-bar/demo/loading-bar-demo.component';
 import { NotificationDemoComponent } from '../../packages/evo/ui-lite/src/notification/demo/notification-demo.component';
+import { PopupDemoComponent } from '../../packages/evo/ui-lite/src/popup/demo/popup-demo.component';
 import { RadioDemoComponent } from '../../packages/evo/ui-lite/src/radio/demo/radio-demo.component';
 import { SelectDemoComponent } from '../../packages/evo/ui-lite/src/select/demo/select-demo.component';
 import { TextDemoComponent } from '../../packages/evo/ui-lite/src/text/demo/text-demo.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'notification',
     component: NotificationDemoComponent,
+  },
+  {
+    path: 'popup',
+    component: PopupDemoComponent,
   },
   {
     path: 'radio',
