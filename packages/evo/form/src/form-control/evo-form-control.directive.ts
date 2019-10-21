@@ -1,7 +1,7 @@
 import {
   Directive, DoCheck,
   Host,
-  HostBinding,
+  HostBinding, HostListener,
   Input,
   IterableDiffer,
   IterableDiffers,
@@ -33,16 +33,28 @@ export class EvoFormControlDirective implements OnDestroy, DoCheck {
 
   constructor(
     @Host() @Optional() public ngControl: NgControl,
-    @Optional() private formFieldService: EvoFormControl,
+    @Optional() private formControl: EvoFormControl,
     private differs: IterableDiffers,
   ) {
-    if (this.ngControl && this.formFieldService) {
-      this.formFieldService.add(this);
+    if (this.ngControl && this.formControl) {
+      this.formControl.add(this);
     }
   }
 
   @HostBinding('attr.id') get idBinding(): string {
     return this._id;
+  }
+
+  @HostListener('focus') onFocus() {
+    if (this.formControl) {
+      this.formControl.focused = true;
+    }
+  }
+
+  @HostListener('blur') onBlur() {
+    if (this.formControl) {
+      this.formControl.focused = false;
+    }
   }
 
   get id(): string {
@@ -58,14 +70,14 @@ export class EvoFormControlDirective implements OnDestroy, DoCheck {
   }
 
   ngOnDestroy() {
-    if (this.formFieldService) {
-      this.formFieldService.remove(this);
+    if (this.formControl) {
+      this.formControl.remove(this);
     }
   }
 
   ngDoCheck() {
-    if (this.formFieldService) {
-      const errors = this.formFieldService.getErrorsToDisplay();
+    if (this.formControl) {
+      const errors = this.formControl.getErrorsToDisplay();
       if (errors && !this.errorsDiffer) {
         this.errorsDiffer = this.differs.find(errors).create();
         this._errorStateChanges.next(errors);

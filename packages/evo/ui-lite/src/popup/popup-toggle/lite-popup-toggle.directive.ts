@@ -1,14 +1,25 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, HostListener, Inject, Input, Optional, Output, TemplateRef, ViewContainerRef } from '@angular/core';
-import { BehaviorSubject, merge } from 'rxjs';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Inject,
+  Input,
+  OnDestroy,
+  Optional,
+  Output,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Directive({
   selector: '[litePopupToggle]',
   exportAs: 'toggle',
 })
-export class LitePopupToggleDirective {
+export class LitePopupToggleDirective implements OnDestroy {
   @Input() litePopupToggle: TemplateRef<any>;
 
   @Input() closeOnItemClick = true;
@@ -32,12 +43,12 @@ export class LitePopupToggleDirective {
   ) {
   }
 
-  get open() {
-    return this._open.value;
+  ngOnDestroy(): void {
+    this.close();
   }
 
-  @Output() get openChanges() {
-    return this._open.asObservable();
+  get open() {
+    return this._open.value;
   }
 
 //  @HostListener('click') clickHandler() {
@@ -47,6 +58,10 @@ export class LitePopupToggleDirective {
 //      this.show();
 //    }
 //  }
+
+  @Output() get openChanges() {
+    return this._open.asObservable();
+  }
 
   @HostListener('mouseenter')
   mouseenterHandler() {

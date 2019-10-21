@@ -288,8 +288,8 @@ export class EvoSelect<M> implements OnDestroy {
   /**
    * Register `ElementRef` of select element.
    */
-  registerSelectRef(selectRem: ElementRef) {
-    this.selectRef = selectRem;
+  registerSelectRef(selectRef: ElementRef) {
+    this.selectRef = selectRef;
     this.handleFocus();
   }
 

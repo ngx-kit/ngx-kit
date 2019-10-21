@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { EvoFormControlDirective } from './evo-form-control.directive';
 
 @Injectable()
 export class EvoFormControl {
   private _controls: EvoFormControlDirective[] = [];
+
+  private _focused = new BehaviorSubject<boolean>(false);
 
   get control(): EvoFormControlDirective {
     return this._controls[0];
@@ -11,6 +14,18 @@ export class EvoFormControl {
 
   get controls(): EvoFormControlDirective[] {
     return this._controls;
+  }
+
+  get focused() {
+    return this._focused.value;
+  }
+
+  set focused(focused: boolean) {
+    this._focused.next(focused);
+  }
+
+  get focusedChanges() {
+    return this._focused.asObservable();
   }
 
   /**

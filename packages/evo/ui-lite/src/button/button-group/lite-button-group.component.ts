@@ -3,7 +3,7 @@ import { EvoClass } from '@ngx-kit/evo/util';
 import { LiteButtonGroupDirection } from '../meta';
 
 @Component({
-  selector: 'evo-button-group',
+  selector: 'lite-button-group',
   template: `
     <ng-content></ng-content>
   `,
